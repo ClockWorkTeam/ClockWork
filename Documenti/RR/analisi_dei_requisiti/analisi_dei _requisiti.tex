@@ -1,0 +1,217 @@
+%**VARIABILI PROGETTO DA MODIFICARE****************************
+\def\DOCUMENTO       {Analisi dei Requisiti}        %titolo del documento
+\def\PROGETTO                 {\textbf{MyTalk}}          %nome del progetto
+\def\VERSIONE                        {0.1}                     %inserire qui la versione attuale (di base 0.1)                                                                                  
+\def\CREAZIONE		{04/12/2012}              %data di creazione
+\def\ULTIMA_MOD		{04/12/2012}              %data di ultima modifica
+\def\USO_DOCUMENTO	{Interno}                       %Interno, Esterno
+
+%Personale
+%se ci sono pi\'u persone da indicare scrivere: {nome1, \\&nome2, \\&nome3 ecc..}
+\def\REDATTORI		{Palmisano Maria Antonietta}
+\def\VERIFICATORI	{}
+\def\APPROVATORE	{}
+\def\COMMITTENTI	{Gruppo {\textit{clockwork}} \\&Prof. Tullio Vardanega}
+
+%Variabili documento
+\def\TABELLE	{false} %abilita - disabilita l'indice delle tabelle
+\def\FIGURE		{false} %abilita - disabilita l'indice delle figure
+
+
+\documentclass[a4paper,11pt]{article}
+
+%Non modificare
+\def\CAPITOLATO       {\mbox{MyTalk}}
+\def\SUBTITLE             {Sofware di comunicazione tra utenti senza requisiti di installazione}
+\def\EMAIL                    {clockworkTeam7@gmail.com}
+\def\NOME_GRUPPO               {\textit{clockwork}}
+\def\PROPONENTE	   {}
+
+%*****nuovi comandi************************
+%fornisce il caption per riferirsi ad una particolare sezione
+\newcommand{\numref}[1]{\textsf{\textsl{``\nameref{#1}'' (\ref{#1})}}}
+%formattazione per il glossario
+\newcommand{\gl}[1]{\underline{#1}}
+
+
+%**IMPORTAZIONE PACKAGE**************************
+
+\usepackage{ifthen}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{chapterbib}
+\usepackage{graphicx}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm,bindingoffset=5mm]{geometry}
+\usepackage[colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=black]{hyperref}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{totpages}
+\usepackage{tabularx, array}
+\usepackage{dcolumn}
+\usepackage{epstopdf}
+\usepackage{booktabs}   %pacchetto per le tabelle
+\usepackage{fancyhdr}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{eurosym} % simbolo euro col comando \euro
+
+\usepackage{datatool}
+\usepackage[bottom]{footmisc}
+\usepackage{listings} % used to report code
+
+
+
+%**STILE PAGINA**********************************
+
+\pagestyle{fancy}
+
+%no indentazione paragrafo
+\setlength{\parindent}{0pt}
+
+
+%intestazione
+\lhead{\includegraphics[keepaspectratio = true, width = 110px] {logo.png}}
+\rhead{\Large{\bfseries{\PROGETTO}}}
+\renewcommand{\headrulewidth}{0.4pt}  %Linea sotto l'intestazione
+
+%piè di pagina
+\lfoot{{\DOCUMENTO} v {\VERSIONE}}
+\rfoot{\thepage} %per le prime pagine: mostra solo il numero romano
+\cfoot{}
+\renewcommand{\footrulewidth}{0.4pt}   %Linea sopra il piè di pagina
+
+
+
+%**PRIMA PAGINA***************************
+\begin{document}
+
+%Prima pagina senza intestazione nè piè di pagina									
+\thispagestyle{empty}
+
+%Centra il testo
+\begin{center}
+\vspace{1cm}
+
+%Titolo del capitolato
+\Huge{\textbf{\CAPITOLATO}} \\\Large{\textbf{\SUBTITLE}}
+
+%Linea sotto il nome del capitolato
+\rule{\textwidth}{0.2mm}	
+ 
+%Spazio verticale
+\vspace{2cm}
+
+%Inserimento logo e e-mail
+\includegraphics[keepaspectratio = true, width = 340px] {logo.png} \\ {\EMAIL}
+
+
+%Spazio verticale
+\vspace{0.7cm}
+
+\Huge{\textbf{\DOCUMENTO}}
+
+\vspace{0.7cm}
+
+%Tabella con informazioni documento. 
+\normalsize{
+          \begin{tabular}{r|l}
+                     \multicolumn{2}{c} {\textbf{Informazioni sul documento}} \\
+	            \midrule
+	            \textbf{Nome file}                                      & \DOCUMENTO \\
+	            \textbf{Versione}                                       & v \VERSIONE \\
+	            \textbf{Data creazione}                            & \CREAZIONE \\
+	            \textbf{Data ultima modifica}                  & \ULTIMA_MOD \\
+	            \textbf{Stato}                                              & Formale \\
+	            \textbf{Uso}                                                & \USO_DOCUMENTO \\
+	           \textbf{Redazione}                                   & \REDATTORI \\
+      	          \textbf{Approvazione}                             & \APPROVATORE \\
+	          \textbf{Verifica}                                         & \VERIFICATORI \\
+	          \textbf{Distribuzione}                               & \COMMITTENTI \
+     \end{tabular}
+}
+
+\vspace{0.7cm}
+
+\textbf{Sommario} \\
+Questo documento presenta l'analisi dei requisiti che il sistema {\PROGETTO} dovr\`a rispettare, individuati a partire dal capitolato e dai successivi incontri col proponente Zucchetti S.p.a..
+%Fine zona centrata
+\end{center}
+
+%Indica che è finita la pagina corrente ed inizia la prossima
+\newpage
+%si usa la numerazione romana per gli indici e la tabella delle modifiche
+\pagenumbering{Roman}
+
+
+%**TABELLA DELLE MODIFICHE***************************
+%vari comandi per la struttura della tabella, NON MODIFICARE!
+\begin{center}
+\begin{tabular}{|c|p{5cm}|c|c|}
+\hline
+\textbf{Autore} & \textbf{Descrizione} & \textbf{Data} & \textbf{Versione} \\
+\hline\hline
+Palmisano Maria Antonietta & Inizio stesura documento & 05/12/2012 & 0.1 \\\hline
+\hline
+%*******************MODIFICA QUI*****************
+%Scrivere qui la lista delle modifiche fatte al documento (dalla più recente alla più vecchia)
+%tuttle le righe devono finire con \\\hline 
+%Esempio:
+% Cognome Nome & Modificato qualcosa & data & versione \\\hline
+%*******************FINE MODIFICA****************
+\end{tabular}
+\end{center}
+\newpage
+
+%Inserisce il link all'indice
+%\addcontentsline{toc}{section}{Indice}
+\newpage
+\tableofcontents
+\newpage
+
+%se è stata impostata a true la variabile per la lista delle tabelle, la mostra
+\ifthenelse{\equal{\TABELLE}{true}} 
+{\listoftables \newpage}{}
+
+%se è stata impostata a true la variabile per la lista delle figure, la mostra
+\ifthenelse{\equal{\FIGURE}{true}}
+{\listoffigures \newpage}{}
+
+%da qui comincia la numerazione normale
+\pagenumbering{arabic}
+
+%imposta il formato di visualizzazione
+\rfoot{\thepage ~di~\pageref{TotPages}}
+
+
+
+% Inizio delle sezioni di documentazione
+
+
+\section{Introduzione}
+\subsection{Scopo del Documento}
+\subsection{Scopo del Prodotto}
+\subsection{Glossario}
+\subsection{Riferimenti}
+\subsubsection{Normativi}
+\subsubsection{Informativi}
+
+\section{Descrizione Generale}
+\subsection{Contesto d'uso del prodotto} 
+\subsubsection{Processi produttivi e modalit\`a d'uso}
+\subsubsection{Piattaforma di esecuzione ed interfacciamento con l'ambiente di installazione e uso}
+\subsection{Funzioni del prodotto}
+\subsection{Caratteristiche degli utenti}
+\subsection{Vincoli generali}
+\subsection{Assunzioni e dipendenze}
+
+
+\section{Casi d'uso}
+
+\section{Requisiti}
+
+\section{Tracciamento casi d'uso - requisiti}
+
+
+\end{document}
