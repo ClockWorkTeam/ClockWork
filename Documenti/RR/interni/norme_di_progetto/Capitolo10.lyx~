@@ -127,21 +127,176 @@ Nome del Responsabile
 Data di conclusione della milestone
 \end_layout
 
+\end_deeper
+\begin_layout Enumerate
+Creazione di un ticket: il Responsabile dovrà creare un ticket per ogni
+ compito che dovrà essere assegnato ad un mebro del gruppo clockwork.
+ Le segnalazioni di Anomalie e Discrepanze sono altri casi previsti per
+ la creazione di un ticket, e queste possono essere fatte da un qualsiasi
+ altro membro del gruppo
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-Inoltre il Responsabile dovrà assegnare agli altri membri del gruppo i compiti
- che dovranno essere svolti per terminare la milestone tramite il servizio
- di ticketing e associarli alla milestone corrispondente 
+La creazione di un ticket va fatta definendo obbligatoriamente i campi:
+\end_layout
+
+\begin_layout Itemize
+Title: nome del compito assegnato
+\end_layout
+
+\begin_layout Itemize
+Assegnee: colui a che dovrà concludere il ticket
+\end_layout
+
+\begin_layout Itemize
+Milestone: la milestone per la quale il compito dovrà essere terminato
+\end_layout
+
+\begin_layout Itemize
+Label: impostate a seconda di precisi argomenti nella fase di progettazione
+ e alla creazione del ticket andrà scelta quella più appropriata
+\end_layout
+
+\begin_layout Itemize
+Text: il test riassuntivo del compito
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Creazione di un ticket: 
+Esecuzione compito e risoluzione di un ticket: ogni membro del gruppo dovrà
+ visionare i ticket a lui assegnati e inserire un nuovo commento per ogni
+ aggiornamento sullo stato del ticket.
+ Ogni volta che viene concluso il compito, o risolta l'Anomalia descritti
+ nel ticket, si dovrà aggiungere l'apposita label 
+\begin_inset Quotes eld
+\end_inset
+
+fixed
+\begin_inset Quotes erd
+\end_inset
+
+ e menzionare il ticket nel relativo 
+\bar under
+commit
+\bar default
+.
+ Sarà il Responsabile di Progetto che dovrà cofermare l'effettiva chiusura
+ del ticket solo se il compito è stato eseguito o se le modifiche hanno
+ realmente risolto l'anomalia.
+ La label_ aiuta il Responsabile di Progetto ad individuare i ticket presumibilm
+ente da chiudere.
+\end_layout
+
+\begin_layout Enumerate
+Ticket di verifica: questa tipologia di ticket verranno creati secondo quanto
+ scritto precedentemente
+\end_layout
+
+\begin_layout Enumerate
+Chiusura milestone: una milestone verrà considerata terminata una volta
+ che tutti i ticket creati sono stati chiudi.
+ Quando una milestone viene conclusa, il responsabile dovrà ripartire dal
+ punto numero uno di questa procedura
 \end_layout
 
 \begin_layout Subsection
 Casi d'uso (lambda + committed)
 \end_layout
 
+\begin_layout Subsection
+Diagrammi UML
+\end_layout
+
+\begin_layout Standard
+Di seguito sono elencate una serie di convenzioni adottate per tutti i grafici
+ UML.
+\end_layout
+
+\begin_layout Itemize
+Standar: lo standard adottato per tutti i grafici UML è lo standard 2.0
+\end_layout
+
+\begin_layout Itemize
+Lingua: la lingua di adozione per i grafici è l'italiano
+\end_layout
+
+\begin_layout Subsubsection*
+Diagrammi use case
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Diagrammi-use-case"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use case: ogni use case dovrà essere associato ad una particolare funzionalità
+ del programma
+\end_layout
+
+\begin_layout Itemize
+Attori: gli attori dovranno essere scritti con l'iniziale maiuscola e, nel
+ caso di composizione di più parole, queste saranno concatenate da un carattere
+ di spaziatura, seguito da una lettera maiuscola.
+ Per gli acronimi vale quanto scritto nella sezione 5.2 a pagina 12
+\end_layout
+
+\begin_layout Itemize
+Funzioni: tutte le funzioni dovranno essere scritte in maniera atomica
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Inserendo quindi il minor numero di termini possibili
+\end_layout
+
+\end_inset
+
+, senza lasciare spazio ad interpretazione al nome della funzione.
+ Infine i verbi dovranno essere sostantivatizzati 
+\end_layout
+
+\begin_layout Itemize
+Nomenclatura: il nome di ogni Use Case dovrà essere un acronimo formato
+ da:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+UC{XX}{YY}
+\end_layout
+
+\begin_layout Standard
+dove:
+\end_layout
+
+\begin_layout Itemize
+UC: Use Case
+\end_layout
+
+\begin_layout Itemize
+{XX}: iniziali dell'attore principale del caso d'uso
+\end_layout
+
+\begin_layout Itemize
+{YY}: numero sequenziale che contraddistingue il caso d'uso
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se è un'esplosione di un caso d'uso, sarà formato dal numero del caso d'uso
+ che espande seguito da .{ZZ}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Rischi (lambda)
 \end_layout
