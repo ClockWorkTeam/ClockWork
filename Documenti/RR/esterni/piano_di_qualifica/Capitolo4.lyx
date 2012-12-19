@@ -75,7 +75,7 @@ Il gruppo potrà avvalersi dei seguenti strumenti per effettuare i processi
 \begin_layout Itemize
 
 \series bold
-Aspell (≥ 0.60.6):
+Aspell (≥ 0.50.3):
 \series default
  strumento per la correzione grammaticale dei documenti redatti.
  L’utilizzo di Aspell avverrà tramite apposito plugin per LyX (
@@ -95,46 +95,17 @@ http://aspell.net/
 \begin_layout Itemize
 
 \series bold
-Requiseeds ???:
-\series default
- strumento realizzato internamente al gruppo 
-\emph on
-clockwork
-\emph default
- che raccoglie tutti i requisiti individuati dall’Analisi dei Requisiti
- e i relativi 
-\bar under
-casi d’uso
-\bar default
-, organizzandoli gerarchicamente e permettendo un facile tracciamento tra
- essi (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://requirements.clockwork.info/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Selenium ??? (≥ 1.0.10):
+Chromedriver (≥ 21.0.1180.4):
 \series default
  plugin per Chrome che registra ed esegue test direttamente sul browser,
  permettendo la verifica dei casi d’uso stabiliti, e quindi i relativi requisiti
  (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://seleniumhq.org/
+http://code.google.com/p/cromedriver
 \end_layout
 
 \end_inset
@@ -168,7 +139,7 @@ thread
  in esecuzione, ecc.
  (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -199,7 +170,7 @@ worst practice
  Ogni errore riscontrato verrà analizzato e discusso per valutarne l’eventuale
  modifica correttiva (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -214,14 +185,14 @@ http://findbugs.sourceforge.net/
 \begin_layout Itemize
 
 \series bold
-EclEmma (≥ 1.5.1):
+EclEmma (≥ 2.2.0):
 \series default
  plugin per Eclipse, in grado di verificare automaticamente la copertura
  del codice, sia durante la normale esecuzione, sia durante l’analisi dinamica
  tramite test.
  I test devono coprire il codice sorgente per intero (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -277,7 +248,7 @@ Indice di dipendenza
 \labelwidthstring 00.00.0000
 (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -302,7 +273,7 @@ GAE
 \bar default
  dall’interno di Eclipse stesso (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -375,7 +346,7 @@ Speed Tracer (≥ 2.4):
  plugin per Google Chrome che permette di verificare l’efficienza di un’applicaz
 ione web durante la sua esecuzione (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -390,12 +361,12 @@ http: //code.google.com/intl/it-IT/webtoolkit/speedtracer/
 \begin_layout Itemize
 
 \series bold
-JUnit (≥ 4.8.2):
+JUnit (≥ 4.11):
 \series default
  framework per effettuare test di unità per il linguaggio di programmazione
  Java (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -475,7 +446,7 @@ Inspection:
 
 \begin_deeper
 \begin_layout Itemize
-Latex:
+LaTeX:
 \end_layout
 
 \begin_deeper
@@ -742,19 +713,8 @@ Metodi di Analisi Dinamica:
 \series bold
 Test di unità:
 \series default
- verifica di ciascun modulo, singolarmente e insieme agli altri moduli,
- di ogni unità, con l’uso di 
-\bar under
-driver
-\bar default
- e/o 
-\bar under
-stub
-\bar default
- di supporto.
- Si verifica che ogni unità soddisfi i requisiti per lei stabiliti, e i
- test esplorino tutti i cammini di esecuzione possibili, utilizzando JUnit
- ed EclEmma (vedi sezione 4.1)
+ test che vengono applicati alle singole unità di sistema al fine di verificarne
+ la presenza di malfunzionamenti
 \end_layout
 
 \begin_layout Itemize
@@ -762,12 +722,8 @@ stub
 \series bold
 Test di integrazione:
 \series default
- verifica dei componenti costituiti dall’integrazione di più unità che hanno
- soddisfatto i test di unità; aiuta ad identificare errori residui nella
- realizzazione dei componenti, modifiche delle interfacce o cambiamenti
- nei requisiti.
- A questo scopo verranno utilizzate classi simulate per verificarne l’interazion
-e, senza più la necessità di verificare il loro comportamento interno
+ rappresenta il test effettuato su più unità software messe in comunicazione
+ tra di loro per verificare che le loro interazioni siano quelle previste.
 \end_layout
 
 \begin_layout Itemize
@@ -775,9 +731,9 @@ e, senza più la necessità di verificare il loro comportamento interno
 \series bold
 Test di sistema:
 \series default
- validazione del sistema attraverso la verifica della copertura dei requisiti
- software individuati nell’Analisi dei Requisiti, grazie al plugin Selenium
- ???(vedi sezione 4.1)
+ rappresenta il test effettuato su tutte le unità software messe in comunicazion
+e tra di loro per verificare che il prodotto nel suo insieme abbia le funzionali
+tà e le caratteristiche previste
 \end_layout
 
 \begin_layout Itemize
@@ -785,9 +741,9 @@ Test di sistema:
 \series bold
 Test di regressione:
 \series default
- ogniqualvolta che si applica una modifica ad una parte del codice precedentemen
-te testato e dimostrato funzionante, devono essere svolti tutti i test di
- unità e integrazione ad essa relativa, eventualmente aggiungendo nuovi
+ tutte le volte che si applica una modifica ad una parte del codice precedenteme
+nte testato e dimostrato funzionante, devono essere svolti tutti i test
+ di unità e integrazione ad essa relativa, eventualmente aggiungendo nuovi
  test se necessario, al fine di non pregiudicare le funzionalità già verificate.
  Se due test risulteranno simili, il meno efficace tra i due dovrà essere
  eliminato
