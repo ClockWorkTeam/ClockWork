@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -38,8 +38,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\use_refstyle 1
-\index Index
+\use_refstyle 0
+\index Indice
 \shortcut idx
 \color #008000
 \end_index
@@ -50,9 +50,9 @@
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle fancy
 \tracking_changes false
-\output_changes false
+\output_changes true
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -61,66 +61,107 @@
 \begin_body
 
 \begin_layout Section*
-Come fare i documenti---in attesa di conferma
+Diario delle modifiche
 \end_layout
 
 \begin_layout Standard
-Questo file serve per spiegarvi come impaginare NON come scrivere i file,
- quello lo trovate nelle norme di progetto!
-\end_layout
+\begin_inset ERT
+status open
 
-\begin_layout Section*
-PRIMA PARTE
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Enumerate
-creare dentro alla cartella del documento (x es: Studio di fattibilità)
- una cartella img.
-\end_layout
 
-\begin_layout Enumerate
-copiare il file logoBW.pdf e logo.pdf nella cartella img, e il file preface
- nella cartella in cui state lavorando.
-\end_layout
-
-\begin_layout Enumerate
-modificare i dati del file preface: DA QUI POTETE MODIFICARE in poi!!!
-\end_layout
-
-\begin_layout Section*
-SECONDA PARTE (CREAZIONE DEL DOC FINALE)
-\end_layout
-
-\begin_layout Enumerate
-creare il doc finale (x es: Studio_di_fattibilità.lyx)
-\end_layout
-
-\begin_layout Enumerate
-andare su Document/Settings/ Latex Preamble e scrivere: 
 \backslash
-include{preface}
+begin{center}
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-ATTENZIONE!!!! includere con indirizzo: ../../../Modelli/frontpage.lyx
+\begin_layout Plain Layout
+
+
+\backslash
+begin{longtable}{ p{6cm} | c | c | r }
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
-includere: frontpage (che si trova (E DEVE RIMANERE) in Documenti/Modelli)
+\begin_layout Plain Layout
+
+		Autore & Modifica & Data & Versione 
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Enumerate
-mettere l'indice (Insert/ List/TOC / table of contents )
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\backslash
+hline
 \end_layout
 
-\begin_layout Enumerate
-includere diario modifiche
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Enumerate
-includere i capitoli
+\begin_layout Plain Layout
+
+%DA QUI MODIFICARE DA QUI: CON
+\end_layout
+
+\begin_layout Plain Layout
+
+% "COGNOME_NOME & MODIFICA & DATA(GG/MM/AAAA) & VERSIONE(SENZA LA V!!!!!)
+ 
+\backslash
+
+\backslash
+ 
+\backslash
+hline"
+\end_layout
+
+\begin_layout Plain Layout
+
+%Quando copierete questo schema, togliete questa sezione che è di solo commento
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		Autore & Modifica & Data & Versione 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{longtable}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

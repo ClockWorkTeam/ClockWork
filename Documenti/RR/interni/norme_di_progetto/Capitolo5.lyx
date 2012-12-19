@@ -73,33 +73,101 @@ clockwork
 \end_layout
 
 \begin_layout Subsection
-Template
+Formattazione e copertina
 \end_layout
 
 \begin_layout Standard
-Ogni documento dovrà essere realizzato utilizzando il template LATEX presente
- nel repository all’indirizzo 
-\begin_inset Flex URL
+Ogni documento dovrà essere redatto seguendo queste indicazioni
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+Ogni file citato in questa sezione è possibile trovarlo nel repository all’inter
+no della cartella /root/Modelli.
+\end_layout
 
-https://github.com/ClockWorkTeam/ClockWork
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Copertina:
+\series default
+ ogni file LYX dovrà includere come primo oggetto il file frontpage.lyx
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Il percorso del file fornito a LYX non dovrà essere assoluto, ma relativo
+ (ex.
+ “ ../../../Modelli/frontpage.lyx” ).
 \end_layout
 
 \end_inset
 
 .
- L’utilizzo del template dovrà limitarsi all’invocazione delle funzionalità
- che permettono la formattazione dei documenti: ciò permette di effettuare
- modifiche stilistiche localizzate al codice del template per farle ricadere
- in maniera automatica a tutti i documenti invece di dover modificare il
- codice sorgente di ogni documento a mano.
- In caso di necessità ogni membro del gruppo potrà richiedere all’Amministratore
- delle modifiche al template.
- Per ogni modifica apportata a quest’ultimo, si dovranno informare tutti
- i membri del gruppo.
- 
+ Il file non dovrà essere spostato dalla sua posizione iniziale in quanto
+ sarà Lyx, assieme alle impostazioni contenute nel file preface.tex, a modificare
+ automaticamente il file.
+ Il file non dovrà essere spostato dalla sua posizione iniziale in quanto
+ sarà Lyx, assieme alle impostazioni contenute nel file preface.tex, a modificare
+ automaticamente il file.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Diario delle modifiche:
+\series default
+ il codice del diario delle modifiche è possibile trovarlo nel file Diario_modif
+iche.lyx.
+ Il file contiene il codice LATEX che dovrà essere copiato ed incollato
+ subito dopo l’inclusione della copertina.
+ All’interno si troveranno le istruzioni su come utilizzare il file e come
+ deve essere modificato il codice per mostrare correttamente il diario delle
+ mo- difiche.
+ Non è necessario copiare e incollare il file all’interno della cartella
+ del documento in lavorazione, in quanto si dovrà invece copiare-incollare
+ il suo contenuto e modificarlo di conseguenza all’interno del documento
+ che si sta modificando.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Impostazioni del “Preambolo di LATEX”:
+\series default
+ le impostazioni che dovranno essere applicate ad ogni documento è possibile
+ trovarle all’interno del file preface.tex.
+ Questo file dovrà essere copiato-incollato all’interno della cartella del
+ proprio documento in lavorazione.
+ Inoltre dovrà essere modificato (la copia “locale”) secondo quanto scritto
+ al suo interno.
+ All’interno di LYX, invece, si dovrà andare in Documento->Impostazioni,
+ selezionare nell’elenco di sinistra la voce Preambolo di LATEX, quindi
+ scrivere 
+\backslash
+include{preface}
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Loghi: 
+\series default
+all’interno della cartella /root/Modelli/img si troveranno i file logoBW.pdf
+ e logo.pdf.
+ Si dovrà creare all’interno della cartella del documento in lavorazione
+ una nuova cartella chiamata img e copiarvi all’interno il logo piccolo
+\end_layout
+
+\begin_layout Standard
+Nel caso si rendessero necessarie delle modifiche al codice di uno di questi
+ due file, si dovranno seguire le indicazioni descritte nella Sezione 2.1
+ a pagina 7, con destinatario del ticket l’Amministratore di Progetto.
 \end_layout
 
 \begin_layout Subsection
