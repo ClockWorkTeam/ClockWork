@@ -3,9 +3,12 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\include{preface}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language italian
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -38,8 +41,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\use_refstyle 0
-\index Indice
+\use_refstyle 1
+\index Index
 \shortcut idx
 \color #008000
 \end_index
@@ -50,9 +53,9 @@
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle fancy
+\paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -60,109 +63,89 @@
 
 \begin_body
 
-\begin_layout Section*
-Diario delle modifiche
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../../Modelli/frontpage.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
+\begin_inset CommandInset include
+LatexCommand include
+filename "diario_modifiche.lyx"
 
-\begin_layout Plain Layout
+\end_inset
 
-
-\backslash
-begin{center}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{longtable}{ p{6cm} | c | c | r }
-\end_layout
-
-\begin_layout Plain Layout
-
-		Autore & Modifica & Data & Versione 
-\backslash
-
-\backslash
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
+\end_inset
 
-\backslash
-hline 
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo1.lyx"
 
-%DA QUI MODIFICARE DA QUI: CON
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
-
-% "COGNOME_NOME & MODIFICA & DATA(GG/MM/AAAA) & VERSIONE(SENZA LA V!!!!!)
- 
-\backslash
-
-\backslash
- 
-\backslash
-hline"
-\end_layout
-
-\begin_layout Plain Layout
-
-%!!!!! IL DIARIO VA CON LE DATE IN ORDINE DECRESCENTE!!!
-\end_layout
-
-\begin_layout Plain Layout
-
-%Quando copierete questo schema, togliete questa sezione che è di solo commento
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo2.lyx"
 
-		Autore & Modifica & Data & Versione 
-\backslash
+\end_inset
 
-\backslash
- 
-\backslash
-hline
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo3.lyx"
+
+\end_inset
 
 
-\backslash
-end{longtable}
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo4.lyx"
+
+\end_inset
 
 
-\backslash
-end{center}
 \end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo5.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo6.lyx"
 
 \end_inset
 
