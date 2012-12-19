@@ -14,9 +14,17 @@
     linkcolor=black,
     urlcolor=black
 }
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
+\fancypagestyle{frontmatter}{
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+\fancyhf{}
+
+}
+\fancypagestyle{mainmatter}{
+\fancyhf{}
+\clearpage
+\renewcommand{\headrulewidth}{.4pt}% Header rule
+\renewcommand{\footrulewidth}{.4pt}% Footer rule
 
 \lhead{\setlength{\unitlength}{1mm}
 	\begin{picture}(0,0)
@@ -26,6 +34,8 @@
 
 \lfoot{\DOCUMENTO  \VERSIONE}
 \rfoot{\thepage\ di \pageref{LastPage}}
+\setcounter{page}{1}
+}
 
 %%Comandi particolari per i nomi delle figure. Chiamare come una funzione LaTeX
 \newcommand{\PROGETTO}{\bf{MyTalk}}
