@@ -3,9 +3,12 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\include{preface}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +28,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,40 +63,51 @@
 
 \begin_body
 
-\begin_layout Section
-Glossario
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../../Modelli/frontpage.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Il glossario andrà formattato come deciso nela sezione 5 di questo stesso
- documento.
- Il glossario sarà unico e riassuntivo per tutti i documenti.
- Il glossario riporterà al suo interno tutte le definizioni, in ordine lessicogra
-fico, delle parole che possono generare confusione o ambiguità all'interno
- dei documenti, che appariranno sottolineate alla loro prima occorrenza.
-\end_layout
+\begin_inset CommandInset include
+LatexCommand include
+filename "diario_modifiche_AR.lyx"
 
-\begin_layout Subsection
-Inserimento vocaboli
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Data l'universalità del glossario rispetto a tutti i documenti redatti dal
- gruppo clockwork, viene nominato Responsabile del Glossario il Responsabile
- di Progetto.
- Per poter chiedere l'inserimento di un nuovo vocabolo si dovrà quindi fare
- richiesta al Responsabile di Progetto che si appresterà a decidere se la
- parola presa in esame possa essere fonte di ambiguità e/o confusione.
- Per procedere all'inserimento di una nuova parola il Responsabile di Progetto
- dovrà seguire le seguenti regole:
-\end_layout
 
-\begin_layout Itemize
-Verificare la presenza della parola presa in esame
-\end_layout
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo1.lyx"
 
-\begin_layout Itemize
-Inserire il vocabolo nella posizione che gli compete
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo2.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo3.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

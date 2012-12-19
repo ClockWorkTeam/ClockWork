@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -70,11 +71,55 @@ Di seguito sono riportati i casi d'uso identificati a partire dal capitolato
 
 \begin_layout Subsection
 UC0: Caso d'uso generale
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC0:-Caso-d'uso"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
-Figura uc0
+\begin_inset Graphics
+	filename img/UC0-caso d'uso generale.pdf
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Caso d'uso generale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Itemize
@@ -92,9 +137,8 @@ Scopo e descrizione:
 \series default
  Un utente deve poter registrarsi nel sistema, autenticarsi e, una volta
  autenticato, eventualmente modicare proprie credenziali.
- Deve poter inoltre effettuare chiamate verso un altro utente conoscendone
- l'indirizzo IP e chiamare o fare una teleconferenza con utenti presenti
- in linea.
+ Deve poter inoltre selezionare la funzionalità desiderata per interagire
+ con altri utenti.
 \end_layout
 
 \begin_layout Itemize
@@ -103,7 +147,7 @@ Scopo e descrizione:
 Precondizioni:
 \series default
  Il sistema si trova nello stato iniziale, e propone una schermata grafica
- all'utente; e' inoltre in attesa che quest'ultimo selezioni una funzionalita.
+ all'utente; è inoltre in attesa che quest'ultimo selezioni una funzionalita.
 \end_layout
 
 \begin_layout Itemize
@@ -123,32 +167,89 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente crea un nuovo account (si veda UC1)
+L'utente crea un nuovo account (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC1:-Registrazione]{UC1}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente si autentica con il proprio account (si veda UC2)
+L'utente si autentica con il proprio account (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC2:-Autenticazione]{UC2}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente autenticato modifica il proprio account (si veda UCU3)
+L'utente autenticato può modificare i dati del proprio account (si veda
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC3:-Modifica-dati]{UC3}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente guarda i video tutorial (si veda UCU4)
+L'utente guarda i video tutorial (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC4:-Tutorial-video]{UC4}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente effettua una chiamata attraverso un indirizzo IP (si veda UCU5)
+L'utente effettua una funzionalità (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5:-Selezione-funzionalit=0000E0]{UC5}
 \end_layout
 
-\begin_layout Itemize
-L'utente effettua una chiamata ad un contatto presente in linea (si veda
- UCU6)
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-L'utente effettua una teleconferenza (si veda UCU7)
+)
 \end_layout
 
 \end_deeper
@@ -164,11 +265,52 @@ Dal momento che il caso d'uso appena descritto rappresenta una visione di
 
 \begin_layout Subsubsection
 UC1: Registrazione
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC1:-Registrazione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
-Figura uc1
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC1-registrazione.pdf
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Registrazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -254,11 +396,51 @@ L'user ID fornito dall'utente potrebbe essere gia' in uso, in questo caso
 
 \begin_layout Subsubsection
 UC2: Autenticazione
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC2:-Autenticazione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
-Figura uc2
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC2-autenticazione.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Autenticazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -342,11 +524,51 @@ Le credenziali inserite dall'utente non sono presenti sul server, in questo
 
 \begin_layout Subsubsection
 UC3: Modifica dati account
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC3:-Modifica-dati"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
-Figura uc3
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC3-modifica dati account.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Modifica dati account
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -428,11 +650,51 @@ L'utente puo' annullare la procedura di modifica, in questo caso il sistema
 
 \begin_layout Subsubsection
 UC4: Tutorial video
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC4:-Tutorial-video"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
-Figura uc4
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC4-tutorial.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Tutorial video
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -496,11 +758,51 @@ L'utente non visualizza alcun video e termina la funzionalita' del tutorial
 
 \begin_layout Subsubsection
 UC4.1: Selezione video
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC4.1:-Selezione-video"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
-Figura uc4.1
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC4.1-Selezione video.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Selezione video
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -565,11 +867,51 @@ L'utente puo' decidere di vedere il video precedente o di tornare alla pagina
 
 \begin_layout Subsubsection
 UC5: Selezione funzionalità
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC5:-Selezione-funzionalità"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
-Figura uc5
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC5-Selezione funzionalita.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Selezione funzionalità
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -585,8 +927,8 @@ Utente
 \series bold
 Scopo e descrizione: 
 \series default
-Un Utente può chiamare un destinatario, inviare ad esso un messaggio di
- testo o un videomessaggio.
+L'Utente può chiamare un destinatario, inviare ad esso un messaggio di testo
+ o un videomessaggio.
 \end_layout
 
 \begin_layout Itemize
@@ -651,12 +993,172 @@ Se il sistema non riesce ad effettuare la connessione viene visualizzato
 \end_layout
 
 \begin_layout Subsubsection
-UC5.4: Chiamata
+UC5.1: Selezione destinatario
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC5.1:-Selezione-destinatario"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+Utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'Utente può selezionare un destinatario per la chiamata conoscendone l'indirizz
+o IP o selezionandolo dalla lista dei contatti.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad Internet e presenta all'Utente una schermata grafica.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema mostra la selezione del destinatario.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'Utente seleziona un destinatario
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'Utente può scegliere di selezionare più di un destinatario per effettuare
+ una teleconferenza
+\end_layout
+
+\begin_layout Itemize
+L'Utente può rimuovere un destinatario precedentemente selezionato
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC5.2:
+\end_layout
+
+\begin_layout Subsubsection
+UC5.4: Chiamata audio
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC5.4:-Chiamata-audio"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 Figura uc5.4
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+Utente, Utente Chiamato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'Utente Chiamato può accettare la chiamata da parte dell'Utente, entrambi
+ possono terminare la chiamata.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad Internet, l'Utente ha scelto come destinatario
+ della chiamata l'Utente Chiamato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema presenta all'Utente e all'Utente Chiamato la schermata grafica
+ delle statistiche della chiamata.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'Utente Chiamato accetta la chiamata audio
+\end_layout
+
+\begin_layout Itemize
+L'Utente Chiamato abbandona la chiamata oppure 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenario alternativo: 
+\series default
+Se l'Utente Chiamato non accetta la chiamata o la connessione si interrompe
+ il sistema mostrerà un messaggio di errore.
+\end_layout
+
+\begin_layout Subsubsection
+UC5.4: Chiamata video
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC5.4:-Chiamata-video"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Figura uc5.6
 \end_layout
 
 \begin_layout Itemize
@@ -716,7 +1218,7 @@ L'Utente o l'Utente Chiamato terminano la chiamata
 Scenario alternativo: 
 \series default
 Se l'Utente Chiamato non accetta la chiamata o la connessione si interrompe
- il sistemma mostrerà un messaggio di errore.
+ il sistema mostrerà un messaggio di errore.
 \end_layout
 
 \end_body
