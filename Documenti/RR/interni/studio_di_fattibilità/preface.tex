@@ -3,6 +3,9 @@
 \usepackage[latin9]{inputenc}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+
+\usepackage{lipsum}
+
 \usepackage{ucs}
 \usepackage{lastpage}
 \usepackage{longtable}
@@ -14,10 +17,18 @@
     linkcolor=black,
     urlcolor=black
 }
-\pagestyle{fancy}
+
+\fancypagestyle{frontmatter}{
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+}
+\fancypagestyle{mainmatter}{
+\fancyhf{}
+\renewcommand{\headrulewidth}{.4pt}% Header rule
+\renewcommand{\footrulewidth}{.4pt}% Footer rule
+
 \fancyhead{}
 \fancyfoot{}
-
 \lhead{\setlength{\unitlength}{1mm}
 	\begin{picture}(0,0)
 		\put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
@@ -26,6 +37,10 @@
 
 \lfoot{\DOCUMENTO  \VERSIONE}
 \rfoot{\thepage\ di \pageref{LastPage}}
+
+}
+
+
 
 %%Comandi particolari per i nomi delle figure. Chiamare come una funzione LaTeX
 \newcommand{\PROGETTO}{\bf{MyTalk}}
