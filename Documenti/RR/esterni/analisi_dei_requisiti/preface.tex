@@ -14,18 +14,30 @@
     linkcolor=black,
     urlcolor=black
 }
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
+\fancypagestyle{frontmatter}{
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+\fancyhf{}
+
+}
+\fancypagestyle{mainmatter}{
+\fancyhf{}
+\clearpage
+\renewcommand{\headrulewidth}{.4pt}% Header rule
+\renewcommand{\footrulewidth}{.4pt}% Footer rule
+
 \lhead{\setlength{\unitlength}{1mm}
 	\begin{picture}(0,0)
-		\put(5,0){\includegraphics[scale=0.07]{img/logoBW}}
+		\put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
 	\end{picture}}
 \rhead{\PROGETTO}
-\lfoot{\DOCUMENTO \VERSIONE}
+
+\lfoot{\DOCUMENTO  \VERSIONE}
 \rfoot{\thepage\ di \pageref{LastPage}}
-\newcommand{\PROGETTO}{MyTalk}
-\newcommand{\NOMEGRUPPO}{\emph{clockwork}}
+\setcounter{page}{1}
+}
+\newcommand{\PROGETTO}{\bf{MyTalk}}
+\newcommand{\NOMEGRUPPO}{gruppo \emph{Clockwork}}
 \newcommand{\PROPONENTIPROG}{Zucchetti SPA }
 \newcommand{\COMMITENTIPROG}{Prof. Tullio Vardanega }
 \newcommand{\SUBTITLE}{Sofware di comunicazione tra utenti senza requisiti di installazione}
@@ -46,12 +58,8 @@
 
 
 
-%%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO (NOTA: INTERNI SOLO NOI!!!!)
-\newcommand{\LISTADISTRIB}{\begin{itemize}
-\item \NOMEGRUPPO
-\item \COMMITENTIPROG
-\item \PROPONENTIPROG
-\end{itemize}}
+%%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO
+\newcommand{\LISTADISTRIB}{\NOMEGRUPPO \\ \COMMITENTIPROG \\ \PROPONENTIPROG}
 
 %%INSERIRE IL SOMMARIO DEL DOCUMENTO
 \newcommand{\SOMMARIO}{xxxxxxxxxxxx}
