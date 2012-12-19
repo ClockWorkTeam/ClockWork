@@ -65,9 +65,9 @@ Documenti
 \end_layout
 
 \begin_layout Standard
-In questa sezione si presenteranno i vari standard adottati dal gruppo 
+In questa sezione si presenteranno i vari standard adottati dal gruppo C
 \emph on
-clockwork
+lockwork
 \emph default
  per i vari documenti prodotti durante il processo di sviluppo del software.
 \end_layout
@@ -83,7 +83,7 @@ status open
 
 \begin_layout Plain Layout
 Ogni file citato in questa sezione è possibile trovarlo nel repository all’inter
-no della cartella /root/Modelli.
+no della cartella /root/Documenti/Modelli.
 \end_layout
 
 \end_inset
@@ -94,16 +94,15 @@ no della cartella /root/Modelli.
 \begin_layout Itemize
 
 \series bold
-Copertina:
+Frontpage:
 \series default
- ogni file LYX dovrà includere come primo oggetto il file frontpage.lyx
+ ogni documento LyX, dovrà includere come primo oggetto il file frontpage.lyx
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
 Il percorso del file fornito a LYX non dovrà essere assoluto, ma relativo
- (ex.
- “ ../../../Modelli/frontpage.lyx” ).
+ ( ../../../Modelli/frontpage.lyx).
 \end_layout
 
 \end_inset
@@ -111,10 +110,9 @@ Il percorso del file fornito a LYX non dovrà essere assoluto, ma relativo
 .
  Il file non dovrà essere spostato dalla sua posizione iniziale in quanto
  sarà Lyx, assieme alle impostazioni contenute nel file preface.tex, a modificare
- automaticamente il file.
- Il file non dovrà essere spostato dalla sua posizione iniziale in quanto
- sarà Lyx, assieme alle impostazioni contenute nel file preface.tex, a modificare
- automaticamente il file.
+ automaticamente il contenuto del file.
+ Nel file sono presenti le pagine di copertina e un'altra contente le informazio
+ni sul documento
 \end_layout
 
 \begin_layout Itemize
@@ -122,23 +120,36 @@ Il percorso del file fornito a LYX non dovrà essere assoluto, ma relativo
 \series bold
 Diario delle modifiche:
 \series default
- il codice del diario delle modifiche è possibile trovarlo nel file Diario_modif
-iche.lyx.
- Il file contiene il codice LATEX che dovrà essere copiato ed incollato
- subito dopo l’inclusione della copertina.
- All’interno si troveranno le istruzioni su come utilizzare il file e come
- deve essere modificato il codice per mostrare correttamente il diario delle
- mo- difiche.
- Non è necessario copiare e incollare il file all’interno della cartella
- del documento in lavorazione, in quanto si dovrà invece copiare-incollare
- il suo contenuto e modificarlo di conseguenza all’interno del documento
- che si sta modificando.
+ La struttura del diario delle modifiche è possibile trovarla nel file diario_mo
+difiche.lyx.
+ Questo file dovrà essere copiato-incollato all’interno della cartella del
+ proprio documento in lavorazione e incluso, all'interno del documento,
+ subito dopo il frontpage.
+ Inoltre dovrà essere modificato (la copia “locale”) per mostrare correttamente
+ il diario delle modifiche del documento
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Impostazioni del “Preambolo di LATEX”:
+Impostazioni del “Preambolo di 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\end_layout
+
+\end_inset
+
+
+\series bold
+”:
 \series default
  le impostazioni che dovranno essere applicate ad ogni documento è possibile
  trovarle all’interno del file preface.tex.
@@ -147,8 +158,20 @@ Impostazioni del “Preambolo di LATEX”:
  Inoltre dovrà essere modificato (la copia “locale”) secondo quanto scritto
  al suo interno.
  All’interno di LYX, invece, si dovrà andare in Documento->Impostazioni,
- selezionare nell’elenco di sinistra la voce Preambolo di LATEX, quindi
- scrivere 
+ selezionare nell’elenco di sinistra la voce Preambolo di 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\end_layout
+
+\end_inset
+
+, quindi scrivere 
 \backslash
 include{preface}
 \end_layout
@@ -158,16 +181,8 @@ include{preface}
 \series bold
 Loghi: 
 \series default
-all’interno della cartella /root/Modelli/img si troveranno i file logoBW.pdf
- e logo.pdf.
- Si dovrà creare all’interno della cartella del documento in lavorazione
- una nuova cartella chiamata img e copiarvi all’interno il logo piccolo
-\end_layout
-
-\begin_layout Standard
-Nel caso si rendessero necessarie delle modifiche al codice di uno di questi
- due file, si dovranno seguire le indicazioni descritte nella Sezione 2.1
- a pagina 7, con destinatario del ticket l’Amministratore di Progetto.
+all’interno della cartella img si troveranno i file logoBW.pdf e logo.pdf.
+ Si dovrà copiare la cartella all'interno della cartella del proprio documento
 \end_layout
 
 \begin_layout Subsection
@@ -180,7 +195,7 @@ Al fine di evitare incongruenze tra i vari file, si rimanda a questa sezione
  di uno stile uniforme in tutti i documenti.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Stile del testo
 \begin_inset CommandInset label
 LatexCommand label
@@ -207,7 +222,7 @@ Grassetto:
 Corsivo:
 \series default
  il corsivo deve essere utilizzato per evidenziare passaggi o parole estremament
-e significativi a cui si vuole dare particolare enfasi, per riportare passaggi
+e significativi a cui si vuole dare particolare enfasi e per riportare passaggi
  provenienti da fonti esterne 
 \end_layout
 
@@ -217,7 +232,7 @@ e significativi a cui si vuole dare particolare enfasi, per riportare passaggi
 Sottolineato:
 \series default
  termini contenuti nel glossario, se lo stesso termine figura più volte
- nel documento basta che sia sottolineato solo alla prima occorrenza
+ nel documento viene sottolineato solo la prima occorrenza
 \begin_inset Foot
 status open
 
@@ -322,8 +337,8 @@ Formati ricorrenti
 \series bold
 Path:
 \series default
- per gli indirizzi web completi e indirizzi mail andrà utilizzato il comando
- appositamente fornito da LyX
+ per gli indirizzi web completi andrà utilizzato il comando appositamente
+ fornito da LyX
 \backslash
 url, mentre per eventuali indirizzi web relativi verrà utilizzata la formattazio
 ne monospace 
@@ -336,18 +351,36 @@ Date:
 \series default
  se non specificato diversamente, dovrà essere espressa seguendo la “notazione
  italiana”, ovvero: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
 \end_layout
 
-\begin_layout Standard
-\align center
+\end_inset
+
 GG/MM/AAAA
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 dove:
 \end_layout
 
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Itemize
 GG rappresenta il giorno trascritto utilizzando esattamente due cifre
 \begin_inset Foot
 status open
@@ -362,7 +395,7 @@ Nel caso il numero potesse essere rappresentato con una singola cifra, si
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 MM rappresenta il mese trascritto utilizzando esattamente due cifre
 \begin_inset Foot
 status open
@@ -376,10 +409,11 @@ Vedi nota precedente.
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 AAAA rappresenta l’anno trascritto utilizzando esattamente quattro cifre
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
