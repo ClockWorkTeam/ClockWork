@@ -14,27 +14,24 @@
     linkcolor=black,
     urlcolor=black
 }
-\fancypagestyle{frontmatter}{
-  \renewcommand{\headrulewidth}{0pt}% No header rule
-  \renewcommand{\footrulewidth}{0pt}% No footer rule
-\fancyhf{}
 
+\fancypagestyle{frontmatter}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{.4pt}% Header rule
+  \renewcommand{\footrulewidth}{.4pt}% Footer rule
+
+  \lhead{\setlength{\unitlength}{1mm}
+    \begin{picture}(0,0)
+      \put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
+    \end{picture}
+  }
+  \rhead{\PROGETTO}
+  \lfoot{\DOCUMENTO  \VERSIONE}
 }
 \fancypagestyle{mainmatter}{
-\fancyhf{}
-\clearpage
-\renewcommand{\headrulewidth}{.4pt}% Header rule
-\renewcommand{\footrulewidth}{.4pt}% Footer rule
-
-\lhead{\setlength{\unitlength}{1mm}
-	\begin{picture}(0,0)
-		\put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
-	\end{picture}}
-\rhead{\PROGETTO}
-
-\lfoot{\DOCUMENTO  \VERSIONE}
-\rfoot{\thepage\ di \pageref{LastPage}}
-\setcounter{page}{1}
+  \clearpage
+  \rfoot{\thepage\ di \pageref{LastPage}}
+  \setcounter{page}{1}
 }
 
 %%Comandi particolari per i nomi delle figure. Chiamare come una funzione LaTeX
