@@ -21,14 +21,15 @@
 \fancypagestyle{frontmatter}{
   \renewcommand{\headrulewidth}{0pt}% No header rule
   \renewcommand{\footrulewidth}{0pt}% No footer rule
+\fancyhf{}
+
 }
 \fancypagestyle{mainmatter}{
 \fancyhf{}
+\clearpage
 \renewcommand{\headrulewidth}{.4pt}% Header rule
 \renewcommand{\footrulewidth}{.4pt}% Footer rule
 
-\fancyhead{}
-\fancyfoot{}
 \lhead{\setlength{\unitlength}{1mm}
 	\begin{picture}(0,0)
 		\put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
@@ -37,7 +38,7 @@
 
 \lfoot{\DOCUMENTO  \VERSIONE}
 \rfoot{\thepage\ di \pageref{LastPage}}
-
+\setcounter{page}{1}
 }
 
 
