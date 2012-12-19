@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\include{preface}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +28,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,39 +63,109 @@
 
 \begin_body
 
-\begin_layout Section*
-S
-\end_layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../../Modelli/frontpage.lyx"
+
+\end_inset
 
 
-\begin_layout Subsection*
-Step-by-step
 \end_layout
 
 \begin_layout Standard
-Esecuzione controllata del codice sorgente, fatta un’istruzione per volta,
- in modo da verificare nel dettaglio il comportamento rilevato per confrontarlo
- con quello atteso.
-\end_layout
+\begin_inset CommandInset include
+LatexCommand include
+filename "diario_modifiche.lyx"
 
-\begin_layout Subsection*
-Stub
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Porzione di codice che, dati certi input, fornisce sempre gli stessi output
- prestabiliti, al fine di verificare se la funzione chiamante fornisce i
- risultati attesi dal test.
-\end_layout
 
-\begin_layout Subsection*
-SWEBOK - SoftWare Engineering Body Of Knowledge
 \end_layout
 
 \begin_layout Standard
-Documento sponsorizzato dalla IEEE Computer Society, che cerca di identificare
- e descrivere l’insieme di conoscenze, generalmente accettate, relative
- all’ingegneria del software.
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{mainmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo3.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo4.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo5.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Capitolo6.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

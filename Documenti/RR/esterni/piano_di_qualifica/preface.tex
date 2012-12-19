@@ -14,22 +14,29 @@
     linkcolor=black,
     urlcolor=black
 }
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
 
-\lhead{\setlength{\unitlength}{1mm}
-	\begin{picture}(0,0)
-		\put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
-	\end{picture}}
-\rhead{\PROGETTO}
+\fancypagestyle{frontmatter}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{.4pt}% Header rule
+  \renewcommand{\footrulewidth}{.4pt}% Footer rule
 
-\lfoot{\DOCUMENTO  \VERSIONE}
-\rfoot{\thepage\ di \pageref{LastPage}}
+  \lhead{\setlength{\unitlength}{1mm}
+    \begin{picture}(0,0)
+      \put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
+    \end{picture}
+  }
+  \rhead{\PROGETTO}
+  \lfoot{\DOCUMENTO  \VERSIONE}
+}
+\fancypagestyle{mainmatter}{
+  \clearpage
+  \rfoot{\thepage\ di \pageref{LastPage}}
+  \setcounter{page}{1}
+}
 
 %%Comandi particolari per i nomi delle figure. Chiamare come una funzione LaTeX
-\newcommand{\PROGETTO}{MyTalk}
-\newcommand{\NOMEGRUPPO}{ClockWork}
+\newcommand{\PROGETTO}{\bf{MyTalk}}
+\newcommand{\NOMEGRUPPO}{gruppo \emph{Clockwork}}
 \newcommand{\PROPONENTIPROG}{Zucchetti SPA }
 \newcommand{\COMMITENTIPROG}{Prof. Tullio Vardanega }
 
@@ -51,7 +58,7 @@
 
 
 %%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO 
-\newcommand{\LISTADISTRIB}{\NOMEGRUPPO \\ \COMMITENTIPROG}
+\newcommand{\LISTADISTRIB}{\NOMEGRUPPO \\ \PROPONENTEPROG\\ \COMMITENTIPROG}
 
 %%INSERIRE IL SOMMARIO DEL DOCUMENTO
 \newcommand{\SOMMARIO}{Questo documento si prefigge di regolamentare le operazioni di verifica e validazione del gruppo Clockwork nello svolgimento del progetto MyTalk.}
