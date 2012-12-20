@@ -3,9 +3,6 @@
 \begin_document
 \begin_header
 \textclass article
-\begin_preamble
-\include{preface}
-\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language italian
@@ -41,8 +38,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\use_refstyle 1
-\index Index
+\use_refstyle 0
+\index Indice
 \shortcut idx
 \color #008000
 \end_index
@@ -53,9 +50,9 @@
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle fancy
 \tracking_changes false
-\output_changes false
+\output_changes true
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -63,32 +60,11 @@
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "../../../Modelli/frontpage.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "diario_modifiche.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
+\begin_layout Section*
+Diario delle modifiche
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -96,42 +72,92 @@ status open
 
 
 \backslash
-pagestyle{mainmatter}
+setlength
+\backslash
+LTleft{-1cm}
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
 
+\backslash
+begin{longtable}{ p{5cm} | p{5cm} | c | l }
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Capitolo1.lyx"
+\begin_layout Plain Layout
 
-\end_inset
+		Autore & Modifica & Data & Versione 
+\backslash
 
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "Capitolo2.lyx"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "Capitolo3.lyx"
-
-\end_inset
-
+\backslash
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Capitolo5.lyx"
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%DA QUI MODIFICARE DA QUI: CON
+\end_layout
+
+\begin_layout Plain Layout
+
+% "COGNOME_NOME & MODIFICA & DATA(GG/MM/AAAA) & VERSIONE(SENZA LA V!!!!!)
+ 
+\backslash
+
+\backslash
+ 
+\backslash
+hline"
+\end_layout
+
+\begin_layout Plain Layout
+
+%!!!!! IL DIARIO VA CON LE DATE IN ORDINE DECRESCENTE!!!
+\end_layout
+
+\begin_layout Plain Layout
+
+%Quando copierete questo schema, togliete questa sezione che è di solo commento
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		Autore & Modifica & Data & Versione 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{longtable}
+\end_layout
 
 \end_inset
 
