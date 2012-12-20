@@ -65,8 +65,11 @@ Ambiente di progetto
 
 \begin_layout Standard
 Nella seguente sezione verrà descritto in dettaglio l'ambiente di sviluppo
- che il gruppo Clockworkteam andrà ad utilizzare per lo svolgimento del
- progetto
+ che il gruppo 
+\shape italic
+Clockwork
+\shape default
+ andrà ad utilizzare per lo svolgimento del progetto
 \end_layout
 
 \begin_layout Subsection
@@ -103,11 +106,15 @@ La scrittura dei documenti averrà tramite codice
 \bar under
 LATEX
 \bar default
- utilizzando il seguente editor:
-\end_layout
+ utilizzando l'editor LyX 
+\lang italian
+(
+\begin_inset Formula $\geqslant2.0$
+\end_inset
 
-\begin_layout Itemize
-LyX (
+),
+\lang english
+ (
 \begin_inset Flex URL
 status open
 
@@ -118,13 +125,9 @@ http://www.lyx.org
 
 \end_inset
 
-) versione 2.0
-\end_layout
-
-\begin_layout Standard
-Ogni capitolo di un qualsiasi documento verrà scritto attraverso l'editor
- LyX, successivamente verranno uniti sempre tramite LyX generando un  documento
- in formato 
+).
+ Verrà creato un documento per ogni capitolo di ogni documento, successivamente
+ verranno uniti sempre tramite LyX generando un  documento in formato 
 \bar under
 PDF
 \bar default
@@ -136,9 +139,51 @@ Verifica ortografica
 \end_layout
 
 \begin_layout Standard
-Per la verifica ortografica verrà utilizzato il controllore interno dell'editor
- LyX che verrà eseguito direttamente dal compilatore stesso dal menu Strumenti>C
-orrettore Ortografico o premendo il tasto F7.
+\align block
+Per la verifica ortografica verranno utilizzati Hunspell (
+\lang italian
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+
+\lang english
+1.3.2-4build1)
+\series bold
+ 
+\series default
+(
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://hunspell.sourceforge.net/
+\end_layout
+
+\end_inset
+
+) ed Enchant (
+\lang italian
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+
+\lang english
+1.6.0-7build1) (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://abisource.com/projects/enchant/
+\end_layout
+
+\end_inset
+
+) all'interno dell'editor LyX lanciandolo attraverso il menu Strumenti>Correttor
+e Ortografico o premendo il tasto F7.
  
 \end_layout
 
@@ -156,8 +201,8 @@ MSDNAA
  di Microsoft in collaborazione con la facoltà di Matematica Pura ed Applicata
  dell'Università degli studi di Padova.
  Consci del fatto che il programma è compatibile solo con sistemi operativi
- Windows si è deciso di installare una macchina virtuale Windows XP (fornito
- anch'essa dalla MSDNAA) con installato il programma.
+ Windows in caso di necessità sarà possibile utilizzare una macchina virtuale
+ Windows XP (fornito anch'essa dalla MSDNAA) con installato il programma.
 \end_layout
 
 \begin_layout Subsubsection
@@ -176,8 +221,8 @@ I grafici UML verranno realizzati tramite programma ArgoUml
 , scelto in quanto software open source e multipiattaforma e perchè in grado
  di esportare i grafici in formato vettoriale.
  Tuttavia il programma non supporta ufficialmente lo standard UML2, quindi
- andrà prestata attenzione nell'espressione delle notazioni grafiche secondo
- le specifiche 2.0.
+ verrà prestata attenzione nell'espressione delle notazioni grafiche affinchè
+ rispettino le specifiche 2.0.
 \end_layout
 
 \begin_layout Subsubsection
@@ -187,11 +232,7 @@ Documentazione semi-automatica
 \begin_layout Standard
 
 \lang italian
-Lo strumento di documentazione semi-automatica impiegato sarà 
-\series bold
-Javadoc
-\series default
- (
+Lo strumento di documentazione semi-automatica impiegato sarà Javadoc (
 \begin_inset Formula $\geqslant1.5$
 \end_inset
 
@@ -215,17 +256,9 @@ Strumenti di versionamento
 Come strumento di versionamento si è deciso di utilzzare 
 \bar under
 git
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-\bar under
-\lang italian
-git
-\emph default
 \bar default
- è uno strumento di versionamento veloce e di facile apprendimento.
+\lang italian
+ in quanto veloce da utilizzare e di facile apprendimento.
  Per lo sviluppo collaborativo abbiamo deciso di appoggiarci al servizio
  
 \bar under
@@ -247,10 +280,8 @@ https://github.com/
 \lang italian
 che fornisce non solo un repository 
 \emph on
-\bar under
 git
 \emph default
-\bar default
 , ma anche strumenti utili alla collaborazione fra più persone, come il
  servizio di 
 \emph on
@@ -268,20 +299,20 @@ e
 milestone
 \bar default
 .
-\end_layout
 
-\begin_layout Standard
-
-\lang italian
-Per quanto riguarda l'uso di
+\emph default
+ Per quanto riguarda l'uso di
 \bar under
  
 \emph on
-git
 \bar default
- 
+git 
 \emph default
-sui computer di sviluppo, si è deciso l'uso della versione ufficiale rilasciata
+e 
+\emph on
+Github
+\emph default
+ sui computer di sviluppo, si è deciso l'uso della versione ufficiale rilasciata
  dal team di sviluppo di 
 \emph on
 git
@@ -290,7 +321,35 @@ git
 \begin_inset Formula $\geqslant1.7.8$
 \end_inset
 
+) e le interfacce grafiche per i rispettivi sistemi operativi: 
+\emph on
+Github for Windows 
+\emph default
+(
+\begin_inset Formula $\geqslant1.0$
+\end_inset
+
 )
+\emph on
+, Github for Mac 
+\emph default
+(
+\begin_inset Formula $\geqslant$
+\end_inset
+
+The Snappy, Actually)
+\emph on
+ 
+\emph default
+e
+\emph on
+ Git-Cola 
+\emph default
+(
+\begin_inset Formula $\geqslant1.4.3.5-1$
+\end_inset
+
+) (Linux).
 \end_layout
 
 \begin_layout Subsubsection
@@ -298,17 +357,18 @@ Ambiente di codifica
 \end_layout
 
 \begin_layout Standard
-Per la scrittura del codice del codice HTML si è deciso di utilizzare 
-\bar under
-Geany
-\bar default
- 
+Per la scrittura del codice HTML si è deciso di utilizzare Geany 
 \lang italian
 (
 \begin_inset Formula $\geqslant0.21$
 \end_inset
 
-)
+), mentre per la scrittura del codice Java della parte lato server si è
+ deciso di utilizzare l'IDE Eclipse (
+\begin_inset Formula $\geqslant3.8.0$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -325,9 +385,9 @@ Analisi statica
 \end_layout
 
 \begin_layout Standard
-L'analisi statica verrà eseguita tramite il programma 
+L'analisi statica verrà eseguita tramite il programma Yasca
 \bar under
-Yasca 
+ 
 \bar default
 \lang italian
 (
@@ -339,7 +399,7 @@ Yasca
 \lang english
  (
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -363,13 +423,30 @@ Per i test su browser useremo il plug-in per
 Google Chrome
 \series bold
 \emph default
- Chromedrive
+ 
 \series default
- (
+Chromedrive
+\series bold
+ 
+\series default
+(
 \begin_inset Formula $\geqslant23.0.1240.0$
 \end_inset
 
-)
+) 
+\lang english
+(
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://code.google.com/p/chromedriver
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsubsection
@@ -383,15 +460,30 @@ L'analisi dinamica verrà effettuata con il plug-in per
 \emph on
 Google Chrome
 \emph default
- 
+ Firebug Lite
 \series bold
-Firebug Lite 
+ 
 \series default
 (
 \begin_inset Formula $\geqslant1.4$
 \end_inset
 
-).
+) 
+\lang english
+(
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://getfirebug.com/releases/lite/chrome
+\end_layout
+
+\end_inset
+
+)
+\lang italian
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -399,14 +491,25 @@ Validazione
 \end_layout
 
 \begin_layout Standard
-Per la verifica del codice HTML5 e CSS 2.1 utilizzeremo il W3C Validator
- raggiungibile al seguente indirizzo: 
+Per la verifica del codice HTML5 e CSS versione 3 utilizzeremo i validatori
+ del W3C raggiungibili ai seguenti indirizzi: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 http://validator.w3.org/
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://jigsaw.w3.org/css-validator/
 \end_layout
 
 \end_inset
