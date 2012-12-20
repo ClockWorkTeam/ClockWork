@@ -329,7 +329,14 @@ Note a piè pagina:
 \end_layout
 
 \begin_layout Subsubsection
-Formati ricorrenti
+Formati ricorrenti 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Formati-ricorrenti"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -573,7 +580,17 @@ Tabelle
 Ogni tabella utilizzata all’interno dei documenti con lo scopo di proporre
  informazioni in modo ordinato e coerente deve essere fornita di didascalia,
  in cui dovrà necessariamente comparire un nome identificativo per la tracciabil
-ità di tale tabella all’interno del testo.
+ità di tale tabella all’interno del testo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ad esclusione del diario delle modifiche, per ovi motivi
+\end_layout
+
+\end_inset
+
+.
  Tutte le tabelle saranno inserite nell’elenco delle tabelle all’inizio
  del documento per accedere facilmente alla loro ubicazione.
 \end_layout
@@ -658,7 +675,7 @@ Per il corretto utilizzo del formalismo si dovranno seguire le seguenti
 \end_layout
 
 \begin_layout Itemize
-Nei nomi dei file approvati: NomeDelDocumento vX.Y.estensione 
+Nei nomi dei file approvati: NomeDelDocumento_vX.Y.estensione 
 \end_layout
 
 \begin_layout Itemize
@@ -676,18 +693,8 @@ Formattazione documenti
 \end_layout
 
 \begin_layout Standard
-In ogni pagina
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ad esclusione delle pagine di apertura del documento stesso, ovvero quelle
- precedenti l’indice.
-\end_layout
-
-\end_inset
-
- di ogni documento formale dovranno comparire:
+In ogni pagina di ogni documento formale, ad eccezione della copertina,
+ dovranno comparire:
 \end_layout
 
 \begin_layout Itemize
@@ -735,6 +742,21 @@ reference "sub:Componenti-visive"
  del documento
 \series default
  da posizionare a piè pagina sulla sinistra
+\end_layout
+
+\begin_layout Standard
+Inoltre nelle pagine succesive a quelle di apertura 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Le pagine di apertura sono quelle prima dell'indice, e l'indice stesso.
+ 
+\end_layout
+
+\end_inset
+
+ deve essere presente:
 \end_layout
 
 \begin_layout Itemize
@@ -827,6 +849,10 @@ Nome documento
 \emph on
 Versione
 \emph default
+ 
+\emph on
+documento 
+\emph default
 
 \begin_inset Foot
 status open
@@ -867,16 +893,7 @@ Data ultima modifica
 \begin_layout Itemize
 
 \emph on
-Stato
-\emph default
- che può essere Preliminare (solo a scopo informativo), Formale (soggetto
- a revisione)
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Uso
+Uso documento
 \emph default
  ovvero se il documento ha visibilità interna o esterna
 \end_layout
@@ -892,14 +909,6 @@ ovvero quali membri del gruppo hanno contribuito alla stesura del documento
 \begin_layout Itemize
 
 \emph on
-Approvazione
-\emph default
- ovvero chi ha approvato la versione formale del documento
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
 Verifica
 \emph default
  ovvero quali membri del gruppo hanno verificato il documento
@@ -908,16 +917,40 @@ Verifica
 \begin_layout Itemize
 
 \emph on
-Distribuzione
+Approvazione
+\emph default
+ ovvero chi ha approvato la versione formale del documento
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Lista distribuzione
 \emph default
  ovvero la lista di persone alle quali dovrà pervenire il documento
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Per i documenti interni nella lista saranno presenti il gruppo e il committente,
+ mentre per i documenti esterni sarà presente anche il proponente.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inoltre in questa pagina è presente il 
+\emph on
+Sommario
+\emph default
+, in qui è presente una breve descrizione del documento.
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-La pagina seguente dovrà contenere:
-\end_layout
-
 \begin_layout Itemize
 
 \series bold
@@ -929,21 +962,37 @@ Diario delle modifiche
  dovrà contenere le informazioni riguardanti le ultime modifiche, mentre
  l’ultima riga dovrà contenere le informazioni riguardanti le prime modifiche
  effettuate al documento.
+ Ogni riga dovrà contenere le seguenti informazioni:
 \end_layout
 
-\begin_layout Standard
-Ogni riga dovrà contenere le seguenti informazioni:
-\end_layout
-
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Itemize
 
 \emph on
 Autore
 \emph default
 : dovrà contenere il nominativo di chi ha apportato la modifica in oggetto
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Notazione definita nalla sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Formati-ricorrenti"
+
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 
 \emph on
 Descrizione
@@ -951,7 +1000,7 @@ Descrizione
 : breve descrizione dei cambiamenti apportati
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \emph on
 Data
@@ -961,7 +1010,15 @@ Data
 status open
 
 \begin_layout Plain Layout
-Notazione definita nella sezione 5.2.4 a pag…)
+Notazione definita nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Formati-ricorrenti"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_inset
@@ -969,23 +1026,40 @@ Notazione definita nella sezione 5.2.4 a pag…)
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \emph on
 Versione
 \emph default
 : il numero della versione corrispondente al documento in cui è stata applicata
- la modifica
+ la modifica 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
-A questa seguiranno l'indice dei contenuti, l'elenco delle figure e l'elenco
- delle tabelle qualora fossero necessari.
+A questa seguiranno: 
 \end_layout
 
-\begin_layout Standard
-Per la formattazione vera e propria si rimanda al template recuperabile
- nel repository all’indirizzo root/Template/Template.tex????? 
+\begin_layout Itemize
+
+\series bold
+Indice dei contenuti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+elenco delle figure
+\series default
+, qualora fosse necessario
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+elenco delle tabelle
+\series default
+, qualora fosse necessario
 \end_layout
 
 \begin_layout Subsection
@@ -1008,54 +1082,63 @@ Per Verbali degli Incontri si intendono quei documenti redatti dal Responsabile
  di Progetto in occasione di incontri esterni.
  Per tali documenti è prevista una sola stesura in quanto promemoria dell’incont
 ro avvenuto e tematiche trattate: per tale motivo non è previsto versionamento.
- I verbali degli incontri dovranno essere denominati secondo il seguente
- criterio: 
-\end_layout
-
-\begin_layout Standard
-\align center
-Verbale{numero verbale}_{data incontro}
-\end_layout
-
-\begin_layout Standard
-\align left
-dove
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Numero verbale
-\series default
- indica un intero progressivo non ripetibile.
- La conta dovrà partire dal numero uno
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Data incontro
-\series default
- indica la data in cui è stato tenuto l’incontro e non la data della stesura
- del documento
-\begin_inset Foot
+ Nei verbali non sono presenti il diario delle modifiche e l'indice.
+ Il documento dovrà essere denominato secondo il seguente criterio: 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Notazione definita nella sezione 5.2.4 a pag….
- 
+
+
+\backslash
+begin{center}
 \end_layout
 
 \end_inset
 
+Verbale{data incontro
+\begin_inset Foot
+status open
 
+\begin_layout Plain Layout
+In questo caso il formato della data dev'essere AAAAMMGG.
+\end_layout
+
+\end_inset
+
+}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+ .
 \end_layout
 
 \begin_layout Standard
+\noindent
 \align left
-La prima pagina di ogni verbale deve sottostare alle regole descritte nella
- formattazione del documento.
- Dovranno seguire i seguenti campi nell’ordine indicato: 
+Le pagine copertina e informazioni del documento, di ogni verbale, devono
+ sottostare alle regole descritte nella formattazione del documento
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ad eccezione, ovviamente, del versionamento.
+\end_layout
+
+\end_inset
+
+.
+ A seguire dovrà essere presente una pagina con le informazioni logistiche
+ dell'incontro, in particolare dovranno essere presenti:
 \end_layout
 
 \begin_layout Itemize
@@ -1068,7 +1151,14 @@ Data
 status open
 
 \begin_layout Plain Layout
-Notazione definita nella sezione 5.2.4 a pag…
+Notazione definita nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Formati-ricorrenti"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -1082,11 +1172,35 @@ Notazione definita nella sezione 5.2.4 a pag…
 Luogo
 \series default
  espresso nel formato:
+ 
+\lang italian
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
 \end_layout
 
-\begin_layout Standard
-\align center
+\end_inset
+
 {città}({provincia}) {indirizzo}{numero civico} 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
