@@ -60,39 +60,269 @@
 \begin_body
 
 \begin_layout Section
-Glossario
-\end_layout
-
-\begin_layout Standard
-Il glossario andrà formattato come deciso nela sezione 5 di questo stesso
- documento.
- Il glossario sarà unico e riassuntivo per tutti i documenti.
- Il glossario riporterà al suo interno tutte le definizioni, in ordine lessicogra
-fico, delle parole che possono generare confusione o ambiguità all'interno
- dei documenti, che appariranno sottolineate alla loro prima occorrenza.
+Codifica
 \end_layout
 
 \begin_layout Subsection
-Inserimento vocaboli
+Intestazione del file
 \end_layout
 
 \begin_layout Standard
-Data l'universalità del glossario rispetto a tutti i documenti redatti dal
- gruppo clockwork, viene nominato Responsabile del Glossario il Responsabile
- di Progetto.
- Per poter chiedere l'inserimento di un nuovo vocabolo si dovrà quindi fare
- richiesta al Responsabile di Progetto che si appresterà a decidere se la
- parola presa in esame possa essere fonte di ambiguità e/o confusione.
- Per procedere all'inserimento di una nuova parola il Responsabile di Progetto
- dovrà seguire le seguenti regole:
+Ogni file di codice corrisponderà esattamente ad ogni singola classe, ed
+ inizierà con un'intestazione che dovrà rispecchiare il seguente standard:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+/*
+\end_layout
+
+\begin_layout Plain Layout
+
+* Nome: {nome del file}
+\end_layout
+
+\begin_layout Plain Layout
+
+* Package: {package di appartenenza}
+\end_layout
+
+\begin_layout Plain Layout
+
+* Autore: {autore del file}
+\end_layout
+
+\begin_layout Plain Layout
+
+* Data: {data di creazione del file}
+\end_layout
+
+\begin_layout Plain Layout
+
+* Versione: {versione del file}
+\end_layout
+
+\begin_layout Plain Layout
+
+*
+\end_layout
+
+\begin_layout Plain Layout
+
+* Modifiche:
+\end_layout
+
+\begin_layout Plain Layout
+
+* +---------+---------------+------------------+
+\end_layout
+
+\begin_layout Plain Layout
+
+* |  Data   | Programmatore | Modifiche        |
+\end_layout
+
+\begin_layout Plain Layout
+
+* +---------+---------------+------------------+
+\end_layout
+
+\begin_layout Plain Layout
+
+* | GGMMAA  |  NomeCognome  | - [label]metodo1 |
+\end_layout
+
+\begin_layout Plain Layout
+
+* |         |               | - [label]metodo2 |
+\end_layout
+
+\begin_layout Plain Layout
+
+* |         |               | - ....
+           |
+\end_layout
+
+\begin_layout Plain Layout
+
+* +---------+---------------+------------------+
+\end_layout
+
+\begin_layout Plain Layout
+
+*
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+dove: 
 \end_layout
 
 \begin_layout Itemize
-Verificare la presenza della parola presa in esame
+
+\series bold
+Nome
+\series default
+: sarà il nome del file comprensivo di estensione
 \end_layout
 
 \begin_layout Itemize
-Inserire il vocabolo nella posizione che gli compete
+
+\series bold
+Package
+\series default
+: sarà comprensivo della gerarchia del package
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Autore
+\series default
+: sarà l'autore del file e non necessariamente il programmatore che sta
+ modificando il file attualmente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data
+\series default
+: sarà la data di creazione del file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Versione
+\series default
+: indica la versione attuale del file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modifiche
+\series default
+: rappresenta la tabella di avanzamento del file.
+ Per convenzione:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Data
+\series default
+: rappresenta la data dell'avvenuta modifica nel formato GGMMAA con le cifre:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GG che rappresentano il giorno con eventuali zeri iniziali
+\end_layout
+
+\begin_layout Itemize
+MM che rappresentano il mese con eventuali zeri iniziali
+\end_layout
+
+\begin_layout Itemize
+AA che rappresentano l'anno
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+NomeCognome
+\series default
+: rappresenta il programmatore che ha effettuato le modifiche.
+Conterrà la prima lettera del nome seguita dalle prime quattro lettere 
+ del cognome.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Nel caso in cui il cognome sia più corto di quattro lettere non verranno
+ inseriti altri caratteri.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modifiche
+\series default
+: rappresenta la lista dei cambiamenti.
+ Per ogni riga dovrà esserci un solo cambiamento.
+ 
+\emph on
+Label
+\emph default
+ potrà essere:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\series medium
+\emph on
+[+]
+\emph default
+:
+\series default
+ per indicare la creazione del metodo
+\end_layout
+
+\begin_layout Description
+
+\series medium
+\emph on
+[-]
+\emph default
+:
+\series default
+ per indicare l'eliminazione del metodo
+\end_layout
+
+\begin_layout Description
+
+\series medium
+\emph on
+[*]
+\emph default
+:
+\series default
+ per indicare la modifica del metodo
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Convenzioni di codifica
+\end_layout
+
+\begin_layout Standard
+Le convenzioni di codifica saranno formalizzate all'inizio della fase di
+ progettazione.
 \end_layout
 
 \end_body

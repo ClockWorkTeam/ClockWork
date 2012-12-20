@@ -60,336 +60,278 @@
 \begin_body
 
 \begin_layout Section
-Ambiente di progetto
+Gestione delle attività
 \end_layout
 
 \begin_layout Standard
-Nella seguente sezione verrà descritto in dettaglio l'ambiente di sviluppo
- che il gruppo Clockworkteam andrà ad utilizzare per lo svolgimento del
- progetto
-\end_layout
-
-\begin_layout Subsection
-Ambiente generale
-\end_layout
-
-\begin_layout Standard
-Questa sezione è dedicata a caratteristiche dell'ambiente di progetto che
- si ripercuotono su tutti gli altri ambienti
-\end_layout
-
-\begin_layout Subsubsection
-Sistema operativo
-\end_layout
-
-\begin_layout Standard
-Il sistema operativo utilizzato durante lo sviluppo del progetto non è vincolant
-e, i vari membri del gruppo avranno a disposizione libertà di sceltà sulla
- piattaforma di sviluppo.
- Inoltre l'utilizzo di SO diversi permetterà di verificare la portabilità su più
- SO.
-\end_layout
-
-\begin_layout Subsection
-Ambientale documentale
-\end_layout
-
-\begin_layout Subsubsection
-Scrittura documenti
-\end_layout
-
-\begin_layout Standard
-La scrittura dei documenti averrà tramite codice 
+Le attività saranno gestite tramite i servizi 
 \bar under
-LATEX
+ticketing
 \bar default
- utilizzando il seguente editor:
-\end_layout
-
-\begin_layout Itemize
-LyX (
-\begin_inset Flex URL
+ offerto da GitHub
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-http://www.lyx.org
-\end_layout
+Questo servizio sarà usato anche per le comunicazioni fra membri singoli
+ come descritto nella sezione 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Comunicazioni-interne"
 
 \end_inset
 
-) versione 2.0
-\end_layout
-
-\begin_layout Standard
-Ogni capitolo di un qualsiasi documento verrà scritto attraverso l'editor
- LyX, successivamente verranno uniti sempre trammite LyX generando un 
- documento in formato 
-\bar under
-PDF
-\bar default
 .
 \end_layout
 
-\begin_layout Subsubsection
-Verifica ortografica
-\end_layout
-
-\begin_layout Standard
-Per la verifica ortografica verrà utilizzato il controllore interno dell'editor
- LyX che verrà eseguito direttamente dal compilatore stesso dal menu Strumenti>C
-orrettore Ortografico o premendo il tasto F8.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Pianificazione
-\end_layout
-
-\begin_layout Standard
-Per quanto riguarda la pianificazione delle attività legate allo sviluppo
- del progetto e la gestione delle risorse verrà utilizzato lo strumento
- Microsoft Project 2010, strumento fornito dal servizio 
-\bar under
-MSDNAA
-\bar default
- di Microsoft in collaborazione con la facoltà di Matematica Pura ed Applicata
- dell'Università degli studi di Padova.
- Consci del fatto che il programma è compatibile solo con sistemi operativi
- Windows si è deciso di installare una macchina virtuale Windows XP (fornito
- anch'essa dalla MSDNAA) con installato il programma.
-\end_layout
-
-\begin_layout Subsubsection
-Grafici UML
-\end_layout
-
-\begin_layout Standard
-I grafici UML verranno realizzati trammite programma Bouml versione 4.23
- per via della facilità di utilizzo e per il fatto che il programma aderisce
- agli standard UML2
-\end_layout
-
-\begin_layout Subsubsection
-Documentazione semi-automatica
-\end_layout
-
-\begin_layout Standard
-
-\lang italian
-Lo strumento di documentazione semi-automatica impiegato sarà 
-\series bold
-Javadoc
-\series default
- versione 1.5, funzionalità di 
-\bar under
-Java
-\bar default
- che permette di creare tutta la documentazione relativa ad una porzione
- di codice a partire dai commenti.
-\end_layout
-
-\begin_layout Subsection
-Ambiente di sviluppo
-\end_layout
-
-\begin_layout Subsubsection
-Strumenti di versionamento
-\end_layout
-
-\begin_layout Standard
-Come strumento di versionamento si è deciso di utilzzare 
-\bar under
-git
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-\bar under
-\lang italian
-git
-\emph default
-\bar default
- è uno strumento di versionamento veloce e di facile apprendimento.
- Per lo sviluppo collaborativo abbiamo deciso di appoggiarci al servizio
- 
-\bar under
-Github
-\bar default
-\lang english
-(
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/
-\end_layout
-
 \end_inset
 
-) 
-\lang italian
-che fornisce non solo un repository 
+ in quanto, assieme al servizio di milestone si possono tenere facilmente
+ lo stato di avanzamento dei lavori.
+\end_layout
+
+\begin_layout Standard
+Questi strumenti saranno utilizzati come dice il seguente protocollo:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Creazione milestone
+\series default
+: sarà il Responsabile a creare una 
 \emph on
-\bar under
-git
-\emph default
-\bar default
-, ma anche strumenti utili alla collaborazione fra più persone, come il
- servizio di 
-\emph on
-\bar under
-ticket
-\emph default
-\bar default
-, 
-\emph on
-wiki 
-\emph default
-e 
-\emph on
-\bar under
 milestone
+\emph default
+ per la successiva revisione a cui il gruppo clockwork ha intenzione di
+ partecipare.
+ Lo stato di avanzamento si potrà vedere dal numero di ticket completati
+ rispetto al numero di ticket aperti.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Per fare ciò, bisogna accedere al repository, andare su
+\emph on
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Issues -> Milestones -> Create a new milestone
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+milestone
+\emph default
+ dovrà contenere le seguenti informazioni:
+\end_layout
+
+\begin_layout Itemize
+Nome della milestone
+\end_layout
+
+\begin_layout Itemize
+Nome del Responsabile
+\end_layout
+
+\begin_layout Itemize
+Data di conclusione della milestone
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Creazione di un ticket
+\series default
+: il Responsabile dovrà creare un ticket per ogni compito che dovrà essere
+ assegnato ad un mebro del gruppo clockwork.
+ Le segnalazioni di 
+\emph on
+\bar under
+Anomalie
+\emph default
 \bar default
+ e 
+\emph on
+\bar under
+Discrepanze
+\emph default
+\bar default
+ sono altri casi previsti per la creazione di un ticket, e queste possono
+ essere fatte da un qualsiasi altro membro del gruppo.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Per creare un ticket bisogna accedere al repository, andare su 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Issues -> New Issue
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
+La creazione di un ticket va fatta definendo obbligatoriamente i campi:
+\end_layout
 
-\lang italian
-Per quanto riguarda l'uso di
-\bar under
- 
+\begin_layout Itemize
+
+\series bold
+Title
+\series default
+: nome del compito assegnato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assegnee
+\series default
+: colui a che dovrà concludere il ticket
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Milestone
+\series default
+: la 
 \emph on
-git
-\bar default
- 
+milestone
 \emph default
-sui computer di sviluppo, si è deciso l'uso della versione ufficiale rilasciata
- dal team di sviluppo di 
-\emph on
-git
-\emph default
- (
-\begin_inset Formula $\geqslant1.7.8$
-\end_inset
-
-)
+ per la quale il compito dovrà essere terminato
 \end_layout
 
-\begin_layout Subsubsection
-Ambiente di codifica
+\begin_layout Itemize
+
+\series bold
+Label
+\series default
+: impostate a seconda di precisi argomenti nella fase di progettazione e
+ alla creazione del ticket andrà scelta quella più appropriata
 \end_layout
 
-\begin_layout Standard
-Per la scrittura del codice del codice HTML si è deciso di utilizzare 
-\bar under
-Geany
-\bar default
- versione 0.21
+\begin_layout Itemize
+
+\series bold
+Text
+\series default
+: dovrà contenere le seguenti informazioni:
 \end_layout
 
-\begin_layout Subsection
-Ambiente di verifica e validazione
+\begin_deeper
+\begin_layout Itemize
+Descrizione del compito affidato
 \end_layout
 
-\begin_layout Standard
-Di seguito vengono elencati gli strumenti scelti per la verifica e la validazion
-e
+\begin_layout Itemize
+Data di inizio prevista
 \end_layout
 
-\begin_layout Subsubsection
-Analisi statica
+\begin_layout Itemize
+Data di fine prevista
 \end_layout
 
-\begin_layout Standard
-L'analisi statica verrà eseguita tramite il programma 
-\bar under
-Yasca
-\bar default
- (
-\begin_inset Flex URL
-status collapsed
+\begin_layout Itemize
+Collega
+\begin_inset Foot
+status open
 
 \begin_layout Plain Layout
-
-http://www.scovetta.com/yasca.html
+Questo campo solo se più di un membro è affidato allo stesso compito, dunque
+ è facoltativo.
 \end_layout
 
 \end_inset
 
-) programma open source che permette l'analisi statica del codice HTML.
- La versione che andremo ad utilizzare è la 2.1
+
 \end_layout
 
-\begin_layout Subsubsection
-Test
-\end_layout
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
 
-\begin_layout Standard
-
-\lang italian
-Per i test su browser useremo il plug-in per 
-\emph on
-Mozilla Firefox
 \series bold
+Esecuzione compito e risoluzione di un ticket
+\series default
+: ogni membro del gruppo dovrà visionare i ticket a lui assegnati e inserire
+ un nuovo commento per ogni aggiornamento sullo stato del ticket.
+ Ogni volta che viene concluso il compito, o risolta l'Anomalia descritti
+ nel ticket, si dovrà aggiungere l'apposita 
+\emph on
+label
 \emph default
  
-\series default
-Selenium IDE versione 1.4.1.
-\end_layout
-
-\begin_layout Subsubsection
-Analisi dinamica
-\end_layout
-
-\begin_layout Standard
-
-\lang italian
-L'analisi dinamica verrà effettuata con il plug-in per 
-\emph on
-Mozilla Firefox
-\emph default
- 
-\series bold
-Firebug 
-\series default
-(
-\begin_inset Formula $\geqslant1.8.3$
+\begin_inset Quotes eld
 \end_inset
 
-).
- Per i test di velocità dell'applicazione web useremo il plugin per 
+
 \emph on
-Chrome
+fixed
 \emph default
- 
-\series bold
-SpeedTracer
-\series default
- versione 2.4
-\end_layout
 
-\begin_layout Subsubsection
-Validazione
-\end_layout
-
-\begin_layout Standard
-Per la verifica del codice HTML5 e CSS 2.1 andremo ad utilizzare il W3C Validator
- raggiungibile al seguente indirizzo: 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://validator.w3.org/
-\end_layout
-
+\begin_inset Quotes erd
 \end_inset
 
+ e menzionare il ticket nel relativo 
+\bar under
+commit
+\bar default
 .
+ Sarà il Responsabile di Progetto che dovrà cofermare l'effettiva chiusura
+ del ticket solo se il compito è stato eseguito o se le modifiche hanno
+ realmente risolto l'Anomalia.
+ La 
+\emph on
+label
+\emph default
+ aiuta il Responsabile di Progetto ad individuare i ticket presumibilmente
+ da chiudere
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Ticket di verifica
+\series default
+: questa tipologia di ticket verranno creati secondo quanto scritto precedenteme
+nte
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Chiusura milestone
+\series default
+: una 
+\emph on
+milestone
+\emph default
+ verrà considerata terminata una volta che tutti i ticket creati sono stati
+ chiudi.
+ Quando una 
+\emph on
+milestone
+\emph default
+ viene conclusa, il responsabile dovrà ripartire dal punto numero uno di
+ questa procedura.
 \end_layout
 
 \end_body

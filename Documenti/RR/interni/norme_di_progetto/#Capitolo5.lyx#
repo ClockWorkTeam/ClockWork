@@ -465,11 +465,11 @@ Nome del gruppo
 \emph default
 : ci si riferirà al gruppo 
 \emph on
-clockwork
+Clockwork
 \emph default
  con la dicitura “gruppo 
 \emph on
-clockwork
+Clockwork
 \emph default
 ” con il nome del gruppo in corsivo
 \end_layout
@@ -546,7 +546,11 @@ Immagini
 Tutte le immagini utilizzate all'interno dei documenti dovranno rigorosamente
  essere in formato 
 \bar under
-PNG
+PDF
+\bar default
+,
+\bar under
+ PNG
 \bar default
  o 
 \bar under
@@ -581,15 +585,32 @@ Versionamento
 \begin_layout Standard
 Il formalismo utilizzato per esprimere l’avanzamento di versione dei vari
  documenti sarà il seguente: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
 \end_layout
 
-\begin_layout Standard
-\align center
-v{X}.{Y}
+\end_inset
+
+v {X}.{Y}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
 \end_layout
 
-\begin_layout Standard
-dove:
+\end_inset
+
+ dove:
 \end_layout
 
 \begin_layout Itemize
@@ -674,7 +695,8 @@ Ad esclusione delle pagine di apertura del documento stesso, ovvero quelle
 \series bold
 Logo 
 \series default
-come miniatura, da posizionare nel frontespizio sulla sinistra
+(versione in bianco e nero) come miniatura, da posizionare nel frontespizio
+ sulla sinistra
 \end_layout
 
 \begin_layout Itemize
@@ -688,27 +710,11 @@ Nome del progetto
 \begin_layout Itemize
 
 \series bold
-Nome del documento
-\series default
- da posizionare a piè pagina sulla sinistra
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Versione
-\series default
- 
-\series bold
-del
-\series default
- 
-\series bold
-documento
+Nome e versione
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Il formato utilizzato per tracciare le versioni è definito nella sezione
@@ -719,24 +725,16 @@ reference "sub:Componenti-visive"
 
 \end_inset
 
- a pag.
- … .
-\end_layout
-
-\end_inset
-
- da posizionare a piè pagina al centro
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Qualora la versione del documento non avesse significato nel documento (ad
- esempio per i verbali) questo campo è da omettersi.
+.
 \end_layout
 
 \end_inset
 
 
+\series bold
+ del documento
+\series default
+ da posizionare a piè pagina sulla sinistra
 \end_layout
 
 \begin_layout Itemize
@@ -745,14 +743,31 @@ Qualora la versione del documento non avesse significato nel documento (ad
 Numero di pagina
 \series default
  espresso nel formato:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
 \end_layout
 
-\begin_layout Standard
-\align center
-n di tot 
+\end_inset
+
+ n di tot 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 da posizionare a piè pagina sulla destra 
 \end_layout
 

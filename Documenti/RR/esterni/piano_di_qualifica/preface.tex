@@ -14,18 +14,25 @@
     linkcolor=black,
     urlcolor=black
 }
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
 
-\lhead{\setlength{\unitlength}{1mm}
-	\begin{picture}(0,0)
-		\put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
-	\end{picture}}
-\rhead{\PROGETTO}
+\fancypagestyle{frontmatter}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{.4pt}% Header rule
+  \renewcommand{\footrulewidth}{.4pt}% Footer rule
 
-\lfoot{\DOCUMENTO  \VERSIONE}
-\rfoot{\thepage\ di \pageref{LastPage}}
+  \lhead{\setlength{\unitlength}{1mm}
+    \begin{picture}(0,0)
+      \put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
+    \end{picture}
+  }
+  \rhead{\PROGETTO}
+  \lfoot{\DOCUMENTO  \VERSIONE}
+}
+\fancypagestyle{mainmatter}{
+  \clearpage
+  \rfoot{\thepage\ di \pageref{LastPage}}
+  \setcounter{page}{1}
+}
 
 %%Comandi particolari per i nomi delle figure. Chiamare come una funzione LaTeX
 \newcommand{\PROGETTO}{\bf{MyTalk}}
