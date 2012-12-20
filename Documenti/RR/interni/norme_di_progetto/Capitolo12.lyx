@@ -86,8 +86,8 @@ Sistema operativo
 Il sistema operativo utilizzato durante lo sviluppo del progetto non è vincolant
 e, i vari membri del gruppo avranno a disposizione libertà di sceltà sulla
  piattaforma di sviluppo.
- Inoltre l'utilizzo di SO diversi permetterà di verificare la portabilità su più
- SO.
+ Inoltre l'utilizzo di SO diversi permetterà di verificare la portabilità
+ su più SO.
 \end_layout
 
 \begin_layout Subsection
@@ -123,8 +123,8 @@ http://www.lyx.org
 
 \begin_layout Standard
 Ogni capitolo di un qualsiasi documento verrà scritto attraverso l'editor
- LyX, successivamente verranno uniti sempre trammite LyX generando un 
- documento in formato 
+ LyX, successivamente verranno uniti sempre tramite LyX generando un  documento
+ in formato 
 \bar under
 PDF
 \bar default
@@ -138,7 +138,7 @@ Verifica ortografica
 \begin_layout Standard
 Per la verifica ortografica verrà utilizzato il controllore interno dell'editor
  LyX che verrà eseguito direttamente dal compilatore stesso dal menu Strumenti>C
-orrettore Ortografico o premendo il tasto F8.
+orrettore Ortografico o premendo il tasto F7.
  
 \end_layout
 
@@ -165,9 +165,19 @@ Grafici UML
 \end_layout
 
 \begin_layout Standard
-I grafici UML verranno realizzati trammite programma Bouml versione 4.23
- per via della facilità di utilizzo e per il fatto che il programma aderisce
- agli standard UML2
+I grafici UML verranno realizzati tramite programma ArgoUml 
+\lang italian
+(
+\begin_inset Formula $\geqslant0.34$
+\end_inset
+
+)
+\lang english
+, scelto in quanto software open source e multipiattaforma e perchè in grado
+ di esportare i grafici in formato vettoriale.
+ Tuttavia il programma non supporta ufficialmente lo standard UML2, quindi
+ andrà prestata attenzione nell'espressione delle notazioni grafiche secondo
+ le specifiche 2.0.
 \end_layout
 
 \begin_layout Subsubsection
@@ -181,7 +191,11 @@ Lo strumento di documentazione semi-automatica impiegato sarà
 \series bold
 Javadoc
 \series default
- versione 1.5, funzionalità di 
+ (
+\begin_inset Formula $\geqslant1.5$
+\end_inset
+
+), funzionalità di 
 \bar under
 Java
 \bar default
@@ -288,7 +302,13 @@ Per la scrittura del codice del codice HTML si è deciso di utilizzare
 \bar under
 Geany
 \bar default
- versione 0.21
+ 
+\lang italian
+(
+\begin_inset Formula $\geqslant0.21$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsection
@@ -307,8 +327,16 @@ Analisi statica
 \begin_layout Standard
 L'analisi statica verrà eseguita tramite il programma 
 \bar under
-Yasca
+Yasca 
 \bar default
+\lang italian
+(
+\begin_inset Formula $\geqslant2.1$
+\end_inset
+
+).
+
+\lang english
  (
 \begin_inset Flex URL
 status collapsed
@@ -321,7 +349,6 @@ http://www.scovetta.com/yasca.html
 \end_inset
 
 ) programma open source che permette l'analisi statica del codice HTML.
- La versione che andremo ad utilizzare è la 2.1
 \end_layout
 
 \begin_layout Subsubsection
@@ -333,12 +360,16 @@ Test
 \lang italian
 Per i test su browser useremo il plug-in per 
 \emph on
-Mozilla Firefox
+Google Chrome
 \series bold
 \emph default
- 
+ Chromedrive
 \series default
-Selenium IDE versione 1.4.1.
+ (
+\begin_inset Formula $\geqslant23.0.1240.0$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
@@ -350,26 +381,17 @@ Analisi dinamica
 \lang italian
 L'analisi dinamica verrà effettuata con il plug-in per 
 \emph on
-Mozilla Firefox
+Google Chrome
 \emph default
  
 \series bold
-Firebug 
+Firebug Lite 
 \series default
 (
-\begin_inset Formula $\geqslant1.8.3$
+\begin_inset Formula $\geqslant1.4$
 \end_inset
 
 ).
- Per i test di velocità dell'applicazione web useremo il plugin per 
-\emph on
-Chrome
-\emph default
- 
-\series bold
-SpeedTracer
-\series default
- versione 2.4
 \end_layout
 
 \begin_layout Subsubsection
@@ -377,7 +399,7 @@ Validazione
 \end_layout
 
 \begin_layout Standard
-Per la verifica del codice HTML5 e CSS 2.1 andremo ad utilizzare il W3C Validator
+Per la verifica del codice HTML5 e CSS 2.1 utilizzeremo il W3C Validator
  raggiungibile al seguente indirizzo: 
 \begin_inset Flex URL
 status collapsed
