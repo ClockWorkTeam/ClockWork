@@ -236,7 +236,7 @@ hyperref[sub:UC4:-Tutorial-video]{UC4}
 \end_layout
 
 \begin_layout Itemize
-L'utente effettua una funzionalità (si veda 
+L'utente seleziona una funzionalità (si veda 
 \begin_inset ERT
 status open
 
@@ -955,31 +955,88 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona un destinatario
+L'utente seleziona un destinatario (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5.1:-Selezione-destinatario]{UC5.1}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente può effettuare una chiamata vocale
+L'utente può effettuare una chiamata vocale (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5.4:-Chiamata-audio]{UC5.4}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente può effettuare una chiamata video
+L'utente può effettuare una chiamata video (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5.5:-Chiamata-video]{UC5.5}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente può registrare la chiamata vocale
+L'utente può inviare un messaggio video (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5.6:-Invia-messaggio-video]{UC5.6}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-L'utente può registrare la chiamata video
+L'utente può inviare un messaggio di testo (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5.7:-Invia-messaggio-di-chat]{UC5.7}
 \end_layout
 
-\begin_layout Itemize
-L'utente può inviare un messaggio di testo
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-L'utente può inviare un messaggio video
+)
 \end_layout
 
 \end_deeper
@@ -1114,23 +1171,6 @@ L'utente inserisce l'indirizzo IP del destinatario
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-Scenari alternativi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-L'utente può scegliere di inserisce l'indirizzo IP di più di un destinatario
- per effettuare una teleconferenza
-\end_layout
-
-\begin_layout Itemize
-L'utente può rimuovere un destinatario precedentemente selezionato
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
 UC5.3: Selezione contatto
 \end_layout
@@ -1176,24 +1216,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente inserisce l'indirizzo IP del destinatario
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Scenari alternativi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-L'utente può scegliere di inserisce l'indirizzo IP di più di un destinatario
- per effettuare una teleconferenza
-\end_layout
-
-\begin_layout Itemize
-L'utente può rimuovere un destinatario precedentemente selezionato
+L'utente seleziona dalla lista dei contatti un destinatario
 \end_layout
 
 \end_deeper
@@ -1320,10 +1343,10 @@ In caso di teleconferenza audio se tutti gli utenti chiamati abbandonano
 
 \end_deeper
 \begin_layout Subsubsection
-UC5.4: Chiamata video
+UC5.5: Chiamata video
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:UC5.4:-Chiamata-video"
+name "sub:UC5.5:-Chiamata-video"
 
 \end_inset
 
@@ -1341,7 +1364,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC5.6-Videochiamata.pdf
+	filename img/UC5.5-Videochiamata.pdf
 	scale 70
 
 \end_inset
@@ -1438,6 +1461,120 @@ Se l'utente chiamato abbandona la chiamata essa viene terminata
 \begin_layout Itemize
 In caso di teleconferenza video se tutti gli utenti chiamati abbandonano
  la chiamata essa viene terminata
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC5.6: Invia messaggio video
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC5.6:-Invia-messaggio-video"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente può registrare un messaggio video da inviare successivamente ad
+ un destinatario.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
+ cui inviare il messaggio video.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema ha registrato il messaggio video ed è in attesa di recapitarlo
+ al destinatario; mostra all'utente la schermata iniziale.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente registra un messaggio video
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC5.7: Invia messaggio di testo
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC5.7:-Invia-messaggio-di-chat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente può inviare un messaggio di testo ad un destinatario.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
+ cui inviare il messaggio di testo.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema ha inviato il messaggio di testo.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente inserisce il messaggio di testo
 \end_layout
 
 \end_deeper
