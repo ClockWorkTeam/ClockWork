@@ -135,7 +135,7 @@ utente, utente autenticato.
 \series bold
 Scopo e descrizione:
 \series default
- Un utente deve poter registrarsi nel sistema, autenticarsi e, una volta
+ L'utente deve poter registrarsi nel sistema, autenticarsi e, una volta
  autenticato, eventualmente modicare proprie credenziali.
  Deve poter inoltre selezionare la funzionalità desiderata per interagire
  con altri utenti.
@@ -919,7 +919,7 @@ Selezione funzionalità
 \series bold
 Attori principali: 
 \series default
-Utente
+utente
 \end_layout
 
 \begin_layout Itemize
@@ -927,7 +927,7 @@ Utente
 \series bold
 Scopo e descrizione: 
 \series default
-L'Utente può chiamare un destinatario, inviare ad esso un messaggio di testo
+L'utente può chiamare un destinatario, inviare ad esso un messaggio di testo
  o un videomessaggio.
 \end_layout
 
@@ -936,7 +936,7 @@ L'Utente può chiamare un destinatario, inviare ad esso un messaggio di testo
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet e presenta all'Utente una schermata grafica.
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
 \end_layout
 
 \begin_layout Itemize
@@ -944,7 +944,7 @@ Il sistema è connesso ad Internet e presenta all'Utente una schermata grafica.
 \series bold
 Postcondizioni: 
 \series default
-Il sistema ha connesso due Utenti.
+Il sistema ha connesso due utenti.
 \end_layout
 
 \begin_layout Itemize
@@ -955,31 +955,31 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'Utente seleziona un destinatario
+L'utente seleziona un destinatario
 \end_layout
 
 \begin_layout Itemize
-L'Utente può effettuare una chiamata vocale
+L'utente può effettuare una chiamata vocale
 \end_layout
 
 \begin_layout Itemize
-L'Utente può effettuare una chiamata video
+L'utente può effettuare una chiamata video
 \end_layout
 
 \begin_layout Itemize
-L'Utente può registrare la chiamata vocale
+L'utente può registrare la chiamata vocale
 \end_layout
 
 \begin_layout Itemize
-L'Utente può registrare la chiamata video
+L'utente può registrare la chiamata video
 \end_layout
 
 \begin_layout Itemize
-L'Utente può inviare un messaggio di testo
+L'utente può inviare un messaggio di testo
 \end_layout
 
 \begin_layout Itemize
-L'Utente può inviare un messaggio video
+L'utente può inviare un messaggio video
 \end_layout
 
 \end_deeper
@@ -1008,7 +1008,7 @@ name "sub:UC5.1:-Selezione-destinatario"
 \series bold
 Attori principali: 
 \series default
-Utente
+utente
 \end_layout
 
 \begin_layout Itemize
@@ -1016,7 +1016,7 @@ Utente
 \series bold
 Scopo e descrizione: 
 \series default
-L'Utente può selezionare un destinatario per la chiamata conoscendone l'indirizz
+L'utente può selezionare un destinatario per la chiamata conoscendone l'indirizz
 o IP o selezionandolo dalla lista dei contatti.
 \end_layout
 
@@ -1025,7 +1025,7 @@ o IP o selezionandolo dalla lista dei contatti.
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet e presenta all'Utente una schermata grafica.
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
 \end_layout
 
 \begin_layout Itemize
@@ -1044,7 +1044,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'Utente seleziona un destinatario
+L'utente seleziona un destinatario
 \end_layout
 
 \end_deeper
@@ -1056,19 +1056,147 @@ Scenari alternativi:
 
 \begin_deeper
 \begin_layout Itemize
-L'Utente può scegliere di selezionare più di un destinatario per effettuare
+L'utente può scegliere di selezionare più di un destinatario per effettuare
  una teleconferenza
 \end_layout
 
 \begin_layout Itemize
-L'Utente può rimuovere un destinatario precedentemente selezionato
+L'utente può rimuovere un destinatario precedentemente selezionato
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
-UC5.2:
+UC5.2: Inserimento indirizzo IP
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
+ di input.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema mostra la selezione del destinatario.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente inserisce l'indirizzo IP del destinatario
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può scegliere di inserisce l'indirizzo IP di più di un destinatario
+ per effettuare una teleconferenza
+\end_layout
+
+\begin_layout Itemize
+L'utente può rimuovere un destinatario precedentemente selezionato
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC5.3: Selezione contatto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
+ di input.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema mostra la selezione del destinatario.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente inserisce l'indirizzo IP del destinatario
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può scegliere di inserisce l'indirizzo IP di più di un destinatario
+ per effettuare una teleconferenza
+\end_layout
+
+\begin_layout Itemize
+L'utente può rimuovere un destinatario precedentemente selezionato
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 UC5.4: Chiamata audio
 \begin_inset CommandInset label
@@ -1082,7 +1210,40 @@ name "sub:UC5.4:-Chiamata-audio"
 
 \begin_layout Standard
 \align center
-Figura uc5.4
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC5.4-Chiamata.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Chiamata audio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1090,7 +1251,7 @@ Figura uc5.4
 \series bold
 Attori principali: 
 \series default
-Utente, Utente Chiamato
+utente, utente chiamato
 \end_layout
 
 \begin_layout Itemize
@@ -1098,8 +1259,8 @@ Utente, Utente Chiamato
 \series bold
 Scopo e descrizione: 
 \series default
-L'Utente Chiamato può accettare la chiamata da parte dell'Utente, entrambi
- possono terminare la chiamata.
+L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarla.
+ L'utente può terminare la chiamata.
 \end_layout
 
 \begin_layout Itemize
@@ -1107,8 +1268,8 @@ L'Utente Chiamato può accettare la chiamata da parte dell'Utente, entrambi
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet, l'Utente ha scelto come destinatario
- della chiamata l'Utente Chiamato
+Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
+ della chiamata l'utente chiamato
 \end_layout
 
 \begin_layout Itemize
@@ -1116,7 +1277,7 @@ Il sistema è connesso ad Internet, l'Utente ha scelto come destinatario
 \series bold
 Postcondizioni: 
 \series default
-Il sistema presenta all'Utente e all'Utente Chiamato la schermata grafica
+Il sistema presenta all'utente e all'utente chiamato la schermata grafica
  delle statistiche della chiamata.
 \end_layout
 
@@ -1128,23 +1289,36 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'Utente Chiamato accetta la chiamata audio
+L'utente chiamato accetta la chiamata audio
 \end_layout
 
 \begin_layout Itemize
-L'Utente Chiamato abbandona la chiamata oppure 
+L'utente termina la chiamata
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-Scenario alternativo: 
-\series default
-Se l'Utente Chiamato non accetta la chiamata o la connessione si interrompe
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se l'utente chiamato non accetta la chiamata o la connessione si interrompe
  il sistema mostrerà un messaggio di errore.
 \end_layout
 
+\begin_layout Itemize
+Se l'utente chiamato abbandona la chiamata essa viene terminata
+\end_layout
+
+\begin_layout Itemize
+In caso di teleconferenza audio se tutti gli utenti chiamati abbandonano
+ la chiamata essa viene terminata
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 UC5.4: Chiamata video
 \begin_inset CommandInset label
@@ -1158,7 +1332,40 @@ name "sub:UC5.4:-Chiamata-video"
 
 \begin_layout Standard
 \align center
-Figura uc5.6
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC5.6-Videochiamata.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\shape italic
+Chiamata video
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1166,7 +1373,7 @@ Figura uc5.6
 \series bold
 Attori principali: 
 \series default
-Utente, Utente Chiamato
+utente, utente chiamato
 \end_layout
 
 \begin_layout Itemize
@@ -1174,8 +1381,8 @@ Utente, Utente Chiamato
 \series bold
 Scopo e descrizione: 
 \series default
-L'Utente Chiamato può accettare la chiamata da parte dell'Utente, entrambi
- possono terminare la chiamata.
+L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarla.
+ L'utente può terminare la chiamata.
 \end_layout
 
 \begin_layout Itemize
@@ -1183,8 +1390,8 @@ L'Utente Chiamato può accettare la chiamata da parte dell'Utente, entrambi
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet, l'Utente ha scelto come destinatario
- della chiamata l'Utente Chiamato
+Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
+ della chiamata l'utente chiamato
 \end_layout
 
 \begin_layout Itemize
@@ -1192,7 +1399,7 @@ Il sistema è connesso ad Internet, l'Utente ha scelto come destinatario
 \series bold
 Postcondizioni: 
 \series default
-Il sistema presenta all'Utente e all'Utente Chiamato la schermata grafica
+Il sistema presenta all'utente e all'utente chiamato la schermata grafica
  delle statistiche della chiamata.
 \end_layout
 
@@ -1204,22 +1411,35 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'Utente Chiamato accetta la chiamata
+L'utente chiamato accetta la chiamata video
 \end_layout
 
 \begin_layout Itemize
-L'Utente o l'Utente Chiamato terminano la chiamata
+L'utente termina la chiamata
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-Scenario alternativo: 
-\series default
-Se l'Utente Chiamato non accetta la chiamata o la connessione si interrompe
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se l'utente chiamato non accetta la chiamata o la connessione si interrompe
  il sistema mostrerà un messaggio di errore.
 \end_layout
 
+\begin_layout Itemize
+Se l'utente chiamato abbandona la chiamata essa viene terminata
+\end_layout
+
+\begin_layout Itemize
+In caso di teleconferenza video se tutti gli utenti chiamati abbandonano
+ la chiamata essa viene terminata
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
