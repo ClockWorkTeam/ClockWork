@@ -658,7 +658,7 @@ Per il corretto utilizzo del formalismo si dovranno seguire le seguenti
 \end_layout
 
 \begin_layout Itemize
-Nei nomi dei file approvati: NomeDelDocumento vX.Y.estensione 
+Nei nomi dei file approvati: NomeDelDocumento_vX.Y.estensione 
 \end_layout
 
 \begin_layout Itemize
@@ -710,23 +710,7 @@ Nome del progetto
 \begin_layout Itemize
 
 \series bold
-Nome e versione del documento
-\series default
- da posizionare a piè pagina sulla sinistra
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Versione
-\series default
- 
-\series bold
-del
-\series default
- 
-\series bold
-documento
+Nome e versione
 \series default
 
 \begin_inset Foot
@@ -741,24 +725,16 @@ reference "sub:Componenti-visive"
 
 \end_inset
 
- a pag.
- … .
-\end_layout
-
-\end_inset
-
- da posizionare a piè pagina al centro
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Qualora la versione del documento non avesse significato nel documento (ad
- esempio per i verbali) questo campo è da omettersi.
+.
 \end_layout
 
 \end_inset
 
 
+\series bold
+ del documento
+\series default
+ da posizionare a piè pagina sulla sinistra
 \end_layout
 
 \begin_layout Itemize
@@ -796,32 +772,41 @@ da posizionare a piè pagina sulla destra
 \end_layout
 
 \begin_layout Standard
-Ogni documento prodotto deve contenere nella pagina di apertura nel seguente
- ordine:
+Ogni documento prodotto deve contenere come pagine di apertura:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Nome del progetto
+Copertina
 \series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Nome del progetto
+\emph default
  acquisito dal gruppo
 \end_layout
 
 \begin_layout Itemize
 
-\series bold
+\emph on
 Logo del gruppo
-\series default
+\emph default
  sotto il quale deve comparire la mail per contattare il gruppo
 \end_layout
 
 \begin_layout Itemize
 
-\series bold
-Nome del documento
+\emph on
+Nome e versione del documento
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -834,7 +819,7 @@ Informazioni generali
 \begin_layout Itemize
 
 \emph on
-Nome file
+Nome documento
 \end_layout
 
 \begin_layout Itemize
@@ -848,7 +833,14 @@ status open
 
 \begin_layout Plain Layout
 Tale campo dovrà essere omesso nei documenti di tipo Verbale descritti nella
- sezione 5.6.1 a pag....
+ sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Verbali incontri"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -922,10 +914,6 @@ Distribuzione
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-La pagina seguente dovrà contenere:
-\end_layout
-
 \begin_layout Itemize
 
 \series bold
@@ -937,13 +925,11 @@ Diario delle modifiche
  dovrà contenere le informazioni riguardanti le ultime modifiche, mentre
  l’ultima riga dovrà contenere le informazioni riguardanti le prime modifiche
  effettuate al documento.
+ Ogni riga dovrà contenere le seguenti informazioni:
 \end_layout
 
-\begin_layout Standard
-Ogni riga dovrà contenere le seguenti informazioni:
-\end_layout
-
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Itemize
 
 \emph on
 Autore
@@ -951,7 +937,7 @@ Autore
 : dovrà contenere il nominativo di chi ha apportato la modifica in oggetto
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \emph on
 Descrizione
@@ -959,7 +945,7 @@ Descrizione
 : breve descrizione dei cambiamenti apportati
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \emph on
 Data
@@ -977,15 +963,16 @@ Notazione definita nella sezione 5.2.4 a pag…)
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \emph on
 Versione
 \emph default
 : il numero della versione corrispondente al documento in cui è stata applicata
- la modifica
+ la modifica 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 A questa seguiranno l'indice dei contenuti, l'elenco delle figure e l'elenco
  delle tabelle qualora fossero necessari.
@@ -1001,7 +988,14 @@ Tipi di documenti
 \end_layout
 
 \begin_layout Subsubsection
-Verbali incontri
+Verbali incontri 
+\begin_inset CommandInset label
+LatexCommand label
+name "Verbali incontri"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
