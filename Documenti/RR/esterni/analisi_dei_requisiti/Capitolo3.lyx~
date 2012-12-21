@@ -66,7 +66,11 @@ Casi d'uso
 
 \begin_layout Standard
 Di seguito sono riportati i casi d'uso identificati a partire dal capitolato
- d'appalto MyTalk.
+ d'appalto 
+\series bold
+MyTalk
+\series default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -109,16 +113,8 @@ Caso d'uso generale
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -127,7 +123,7 @@ Caso d'uso generale
 \series bold
 Attori principali: 
 \series default
-utente, utente autenticato.
+utente, utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -136,9 +132,9 @@ utente, utente autenticato.
 Scopo e descrizione:
 \series default
  L'utente deve poter registrarsi nel sistema, autenticarsi e, una volta
- autenticato, eventualmente modicare proprie credenziali.
+ autenticato, eventualmente modificare proprie credenziali.
  Deve poter inoltre selezionare la funzionalità desiderata per interagire
- con altri utenti.
+ con altri utenti
 \end_layout
 
 \begin_layout Itemize
@@ -147,7 +143,7 @@ Scopo e descrizione:
 Precondizioni:
 \series default
  Il sistema si trova nello stato iniziale, e propone una schermata grafica
- all'utente; è inoltre in attesa che quest'ultimo selezioni una funzionalita.
+ all'utente; è inoltre in attesa che quest'ultimo selezioni una funzionalità
 \end_layout
 
 \begin_layout Itemize
@@ -156,7 +152,7 @@ Precondizioni:
 Postcondizioni: 
 \series default
 Il sistema ha ottenuto le informazioni sulle operazioni che l'utente desidera
- eseguire.
+ eseguire
 \end_layout
 
 \begin_layout Itemize
@@ -260,7 +256,7 @@ Scenari alternativi:
 \series default
 Dal momento che il caso d'uso appena descritto rappresenta una visione di
  alto livello non si descrivono gli scenari alternativi che saranno analizzati
- in dettaglio nei casi d'uso seguenti.
+ in dettaglio nei casi d'uso seguenti
 \end_layout
 
 \begin_layout Subsubsection
@@ -304,10 +300,6 @@ Registrazione
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -318,7 +310,7 @@ Registrazione
 \series bold
 Attori principali: 
 \series default
-utente.
+utente
 \end_layout
 
 \begin_layout Itemize
@@ -328,7 +320,7 @@ Scopo e descrizione:
 \series default
 Il sistema permette all'utente di registrare i propri dati.
  Questo caso d'uso esprime le operazioni necessarie alla creazione di un
- nuovo account.
+ nuovo account
 \end_layout
 
 \begin_layout Itemize
@@ -338,7 +330,7 @@ Precondizioni:
 \series default
  Il sistema presenta all'utente una schermata grafica per l'inserimento
  delle proprie credenziali.
- Inoltre il sistema risulta connesso ad internet.
+ Inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -348,7 +340,7 @@ Postcondizioni:
 \series default
  Il sistema ha memorizzato le credenziali inserite dall'utente.
  Successivamente l'utente viene autenticato e viene mostrata la schermata
- principale.
+ principale
 \end_layout
 
 \begin_layout Itemize
@@ -359,7 +351,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona la funzionalita' di registrazione
+L'utente seleziona la funzionalità di registrazione
 \end_layout
 
 \begin_layout Itemize
@@ -388,10 +380,10 @@ L'utente viene autenticato e gli viene mostrata la schermata principale.
 \series bold
 Scenari alternativi: 
 \series default
-L'user ID fornito dall'utente potrebbe essere gia' in uso, in questo caso
+L'user ID fornito dall'utente potrebbe essere già in uso, in questo caso
  la creazione dell'account viene fermata segnalando il problema riscontrato.
- L'utente puo' annullare la procedura di creazione, in questo caso il sistema
- ritorna alla scermata principale.
+ L'utente può annullare la procedura di creazione, in questo caso il sistema
+ ritorna alla schermata principale
 \end_layout
 
 \begin_layout Subsubsection
@@ -448,7 +440,7 @@ Autenticazione
 \series bold
 Attori principali: 
 \series default
-utente, utente autenticato.
+utente, utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -458,7 +450,7 @@ Scopo e descrizione:
 \series default
 Il sistema permette all'utente di autenticare i propri dati.
  Questo caso d'uso esprime le operazioni necessarie all'autenticazione dell'acco
-unt.
+unt
 \end_layout
 
 \begin_layout Itemize
@@ -468,7 +460,7 @@ Precondizioni:
 \series default
  Il sistema presenta all'utente una schermata grafica per l'inserimento
  delle proprie credenziali.
- Inoltre il sistema risulta connesso ad internet.
+ Inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -484,7 +476,7 @@ online
 \begin_inset Quotes erd
 \end_inset
 
- e, se l'utente autenticato decide di disconnerttersi, il sistema lo segnala
+ e, se l'utente autenticato decide di disconnettersi, il sistema lo segnala
  come 
 \begin_inset Quotes eld
 \end_inset
@@ -493,7 +485,7 @@ offline
 \begin_inset Quotes erd
 \end_inset
 
- e gli mostra la schermata principale.
+ e gli mostra la schermata principale
 \end_layout
 
 \begin_layout Itemize
@@ -508,7 +500,7 @@ L'utente inserisce il proprio user ID e password ed effettua il login
 \end_layout
 
 \begin_layout Itemize
-L'utente autenticato puo' effettuare il logout.
+L'utente autenticato può effettuare il logout
 \end_layout
 
 \end_deeper
@@ -519,7 +511,7 @@ Scenari alternativi:
 \series default
 Le credenziali inserite dall'utente non sono presenti sul server, in questo
  caso viene visualizzato un messaggio d'errore e viene riproposta la schermata
- principale.
+ principale
 \end_layout
 
 \begin_layout Subsubsection
@@ -576,7 +568,7 @@ Modifica dati account
 \series bold
 Attori principali: 
 \series default
-utente autenticato.
+utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -585,7 +577,7 @@ utente autenticato.
 Scopo e descrizione: 
 \series default
 Il sistema permette all'utente autenticato di visualizzare i propri dati
- e modificare il proprio nome, cognome e password.
+ e modificare il proprio nome, cognome e password
 \end_layout
 
 \begin_layout Itemize
@@ -595,7 +587,7 @@ Precondizioni:
 \series default
  Il sistema presenta all'utente autenticato una schermata grafica per la
  visualizzazione delle attuali credenziali e l'inserimento delle nuove.
- Inoltre il sistema risulta connesso ad internet.
+ Inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -604,7 +596,7 @@ Precondizioni:
 Postcondizioni:
 \series default
  Il sistema ha modificato le credenziali inserite dall'utente.
- Successivamente viene mostrata la schermata principale.
+ Successivamente viene mostrata la schermata principale
 \end_layout
 
 \begin_layout Itemize
@@ -615,7 +607,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona la funzionalita' di modifica dati account
+L'utente seleziona la funzionalità di modifica dati account
 \end_layout
 
 \begin_layout Itemize
@@ -631,11 +623,11 @@ L'utente inserisce la nuova password
 \end_layout
 
 \begin_layout Itemize
-Viene aggiornato l'account dul server
+Viene aggiornato l'account sul server
 \end_layout
 
 \begin_layout Itemize
-Viene mostrata la pagina principale.
+Viene mostrata la pagina principale
 \end_layout
 
 \end_deeper
@@ -644,8 +636,8 @@ Viene mostrata la pagina principale.
 \series bold
 Scenari alternativi: 
 \series default
-L'utente puo' annullare la procedura di modifica, in questo caso il sistema
- ritorna alla schermata principale.
+L'utente può annullare la procedura di modifica, in questo caso il sistema
+ ritorna alla schermata principale
 \end_layout
 
 \begin_layout Subsubsection
@@ -702,7 +694,7 @@ Tutorial video
 \series bold
 Attori principali: 
 \series default
-utente.
+utente
 \end_layout
 
 \begin_layout Itemize
@@ -711,7 +703,7 @@ utente.
 Scopo e descrizione: 
 \series default
 Il sistema mette a disposizione dell'utente una serie di video dimostrativi
- allo scop di facilitarne la comprensione e l'utilizzo.
+ allo scopo di facilitarne la comprensione e l'utilizzo
 \end_layout
 
 \begin_layout Itemize
@@ -720,7 +712,7 @@ Il sistema mette a disposizione dell'utente una serie di video dimostrativi
 Precondizioni:
 \series default
  Il sistema presenta all'utente una schermata grafica con la lista dei tutorial.
- Inoltre il sistema risulta connesso ad internet.
+ Inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -728,7 +720,7 @@ Precondizioni:
 \series bold
 Postcondizioni:
 \series default
- Il sistema ha terminato la visualizzazione dei video tutorial.
+ Il sistema ha terminato la visualizzazione dei video tutorial
 \end_layout
 
 \begin_layout Itemize
@@ -739,11 +731,11 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona la funzionalita' dei tutorial video
+L'utente seleziona la funzionalità dei tutorial video
 \end_layout
 
 \begin_layout Itemize
-L'utente seleziona un video.
+L'utente seleziona un video
 \end_layout
 
 \end_deeper
@@ -752,8 +744,8 @@ L'utente seleziona un video.
 \series bold
 Scenari alternativi: 
 \series default
-L'utente non visualizza alcun video e termina la funzionalita' del tutorial
- video.
+L'utente non visualizza alcun video e termina la funzionalità del tutorial
+ video
 \end_layout
 
 \begin_layout Subsubsection
@@ -810,7 +802,7 @@ Selezione video
 \series bold
 Attori principali: 
 \series default
-utente.
+utente
 \end_layout
 
 \begin_layout Itemize
@@ -819,7 +811,7 @@ utente.
 Scopo e descrizione: 
 \series default
 Il sistema visualizza il video selezionato e permette la visualizzazione
- di altri video.
+ di altri video
 \end_layout
 
 \begin_layout Itemize
@@ -829,7 +821,7 @@ Precondizioni:
 \series default
  Il sistema presenta all'utente una schermata grafica per la visualizzazione
  del video selezionato.
- Inoltre il sistema risulta connesso ad internet.
+ Inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -837,7 +829,7 @@ Precondizioni:
 \series bold
 Postcondizioni:
 \series default
- Il sistema ha terminato la visualizzazione del video selezionato dall'utente.
+ Il sistema ha terminato la visualizzazione del video selezionato dall'utente
 \end_layout
 
 \begin_layout Itemize
@@ -852,7 +844,7 @@ L'utente visualizza il video
 \end_layout
 
 \begin_layout Itemize
-L'utente seglie di vedere il video successivo.
+L'utente sceglie di vedere il video successivo
 \end_layout
 
 \end_deeper
@@ -861,8 +853,8 @@ L'utente seglie di vedere il video successivo.
 \series bold
 Scenari alternativi: 
 \series default
-L'utente puo' decidere di vedere il video precedente o di tornare alla pagina
- di selezione dei video.
+L'utente può decidere di vedere il video precedente o di tornare alla pagina
+ di selezione dei video
 \end_layout
 
 \begin_layout Subsubsection
@@ -928,7 +920,7 @@ utente
 Scopo e descrizione: 
 \series default
 L'utente può chiamare un destinatario, inviare ad esso un messaggio di testo
- o un videomessaggio.
+ o un video messaggio
 \end_layout
 
 \begin_layout Itemize
@@ -936,7 +928,7 @@ L'utente può chiamare un destinatario, inviare ad esso un messaggio di testo
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \end_layout
 
 \begin_layout Itemize
@@ -944,7 +936,7 @@ Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
 \series bold
 Postcondizioni: 
 \series default
-Il sistema ha connesso due utenti.
+Il sistema ha connesso due utenti
 \end_layout
 
 \begin_layout Itemize
@@ -1043,10 +1035,10 @@ hyperref[sub:UC5.7:-Invia-messaggio-di-chat]{UC5.7}
 \begin_layout Itemize
 
 \series bold
-Scenario alernativo: 
+Scenario alternativo: 
 \series default
 Se il sistema non riesce ad effettuare la connessione viene visualizzato
- un messaggio di errore.
+ un messaggio di errore
 \end_layout
 
 \begin_layout Subsubsection
@@ -1074,7 +1066,7 @@ utente
 Scopo e descrizione: 
 \series default
 L'utente può selezionare un destinatario per la chiamata conoscendone l'indirizz
-o IP o selezionandolo dalla lista dei contatti.
+o IP o selezionandolo dalla lista dei contatti
 \end_layout
 
 \begin_layout Itemize
@@ -1082,7 +1074,7 @@ o IP o selezionandolo dalla lista dei contatti.
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \end_layout
 
 \begin_layout Itemize
@@ -1090,7 +1082,7 @@ Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
 \series bold
 Postcondizioni: 
 \series default
-Il sistema mostra la selezione del destinatario.
+Il sistema mostra la selezione del destinatario
 \end_layout
 
 \begin_layout Itemize
@@ -1140,7 +1132,7 @@ utente
 Scopo e descrizione: 
 \series default
 L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
- di input.
+ di input
 \end_layout
 
 \begin_layout Itemize
@@ -1148,7 +1140,7 @@ L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \end_layout
 
 \begin_layout Itemize
@@ -1156,7 +1148,7 @@ Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
 \series bold
 Postcondizioni: 
 \series default
-Il sistema mostra la selezione del destinatario.
+Il sistema mostra la selezione del destinatario
 \end_layout
 
 \begin_layout Itemize
@@ -1189,7 +1181,7 @@ utente
 Scopo e descrizione: 
 \series default
 L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
- di input.
+ di input
 \end_layout
 
 \begin_layout Itemize
@@ -1197,7 +1189,7 @@ L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
+Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \end_layout
 
 \begin_layout Itemize
@@ -1205,7 +1197,7 @@ Il sistema è connesso ad Internet e presenta all'utente una schermata grafica.
 \series bold
 Postcondizioni: 
 \series default
-Il sistema mostra la selezione del destinatario.
+Il sistema mostra la selezione del destinatario
 \end_layout
 
 \begin_layout Itemize
@@ -1283,7 +1275,7 @@ utente, utente chiamato
 Scopo e descrizione: 
 \series default
 L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarla.
- L'utente può terminare la chiamata.
+ L'utente può terminare la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1301,7 +1293,7 @@ Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
 Postcondizioni: 
 \series default
 Il sistema presenta all'utente e all'utente chiamato la schermata grafica
- delle statistiche della chiamata.
+ delle statistiche della chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1329,7 +1321,7 @@ Scenari alternativi:
 \begin_deeper
 \begin_layout Itemize
 Se l'utente chiamato non accetta la chiamata o la connessione si interrompe
- il sistema mostrerà un messaggio di errore.
+ il sistema mostrerà un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
@@ -1405,7 +1397,7 @@ utente, utente chiamato
 Scopo e descrizione: 
 \series default
 L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarla.
- L'utente può terminare la chiamata.
+ L'utente può terminare la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1423,7 +1415,7 @@ Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
 Postcondizioni: 
 \series default
 Il sistema presenta all'utente e all'utente chiamato la schermata grafica
- delle statistiche della chiamata.
+ delle statistiche della chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1451,7 +1443,7 @@ Scenari alternativi:
 \begin_deeper
 \begin_layout Itemize
 Se l'utente chiamato non accetta la chiamata o la connessione si interrompe
- il sistema mostrerà un messaggio di errore.
+ il sistema mostrerà un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
@@ -1489,7 +1481,7 @@ utente
 Scopo e descrizione: 
 \series default
 L'utente può registrare un messaggio video da inviare successivamente ad
- un destinatario.
+ un destinatario
 \end_layout
 
 \begin_layout Itemize
@@ -1498,7 +1490,7 @@ L'utente può registrare un messaggio video da inviare successivamente ad
 Precondizioni: 
 \series default
 Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
- cui inviare il messaggio video.
+ cui inviare il messaggio video
 \end_layout
 
 \begin_layout Itemize
@@ -1507,7 +1499,7 @@ Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
 Postcondizioni: 
 \series default
 Il sistema ha registrato il messaggio video ed è in attesa di recapitarlo
- al destinatario; mostra all'utente la schermata iniziale.
+ al destinatario; mostra all'utente la schermata iniziale
 \end_layout
 
 \begin_layout Itemize
@@ -1533,5 +1525,50 @@ name "sub:UC5.7:-Invia-messaggio-di-chat"
 
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente può inviare un messaggio di testo ad un destinatario
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
+ cui inviare il messaggio di testo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema ha inviato il messaggio di testo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente inserisce il messaggio di testo
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

@@ -96,7 +96,11 @@ no della cartella /root/Documenti/Modelli.
 \series bold
 Frontpage:
 \series default
- ogni documento LyX, dovrà includere come primo oggetto il file frontpage.lyx
+ ogni documento LyX, dovrà includere come primo oggetto il file 
+\family typewriter
+frontpage.lyx
+\family default
+
 \begin_inset Foot
 status open
 
@@ -109,8 +113,11 @@ Il percorso del file fornito a LyX non dovrà essere assoluto, ma relativo
 
 .
  Il file non dovrà essere spostato dalla sua posizione iniziale in quanto
- sarà LyX, assieme alle impostazioni contenute nel file preface.tex, a modificare
- automaticamente il contenuto del file.
+ sarà LyX, assieme alle impostazioni contenute nel file
+\family typewriter
+ preface.tex
+\family default
+, a modificare automaticamente il contenuto del file.
  Nel file sono presenti le pagine di copertina e un'altra contente le informazio
 ni sul documento
 \end_layout
@@ -120,8 +127,11 @@ ni sul documento
 \series bold
 Diario delle modifiche:
 \series default
- la struttura del diario delle modifiche è possibile trovarla nel file diario_mo
-difiche.lyx.
+ la struttura del diario delle modifiche è possibile trovarla nel file 
+\family typewriter
+diario_modifiche.lyx
+\family default
+.
  Questo file dovrà essere copiato ed incollato all'interno della cartella
  del proprio documento in lavorazione e incluso, all'interno del documento,
  subito dopo il frontpage.
@@ -172,6 +182,8 @@ LaTeX
 \end_inset
 
 , quindi scrivere 
+\family typewriter
+
 \backslash
 include{preface}
 \end_layout
@@ -181,7 +193,15 @@ include{preface}
 \series bold
 Loghi: 
 \series default
-all'interno della cartella img si troveranno i file logoBW.pdf e logo.pdf.
+all'interno della cartella img si troveranno i file 
+\family typewriter
+logoBW.pdf
+\family default
+ e 
+\family typewriter
+logo.pdf
+\family default
+.
  Si dovrà copiare la cartella all'interno della cartella del proprio documento
 \end_layout
 
@@ -238,7 +258,7 @@ status open
 
 \begin_layout Plain Layout
 Non si considerano valide come occorrenze le parole all'interno dei titoli
- delle sezioni, all'interno di percorsi o all'interno di definizioni.
+ delle sezioni, all'interno di percorsi.
 \end_layout
 
 \end_inset
@@ -458,8 +478,16 @@ Nomi dei documenti
 \emph on
 Nomi dei file
 \emph default
-: qualora si dovesse utilizzare il nome di un file senza riferirlo con l'indiriz
-zo completo, si impone che venga formattato con un carattere monospace
+ 
+\emph on
+e delle cartelle:
+\emph default
+ nei nomi non andranno utilizzati caratteri speciali e/o caratteri accentati;
+\emph on
+ 
+\emph default
+qualora si dovesse utilizzare il nome di un file senza riferirlo con l'indirizzo
+ completo si impone che venga formattato con un carattere monospace
 \end_layout
 
 \begin_layout Itemize
@@ -1528,7 +1556,7 @@ Mancanza di verificatori:
  il primo che ha smesso di contribuire al documento; costui sarà il verificatore.
  Nel caso in cui ci sia bisogno di più di un verificatore, si applicherà
  la stessa norma, selezionando la seconda persona che ha smesso di contribuire
- al documento e così per le successive nomine.
+ al documento e così per le successive nomine
 \end_layout
 
 \end_deeper
