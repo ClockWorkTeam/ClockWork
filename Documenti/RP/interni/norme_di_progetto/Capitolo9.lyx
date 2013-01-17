@@ -61,269 +61,246 @@
 \begin_body
 
 \begin_layout Section
-Codifica
+Studio di fattibilità
+\end_layout
+
+\begin_layout Standard
+In questo documento si richiede lo studio di ogni capitolato analizzando
+ i seguenti punti:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fattibilità tecnica
+\series default
+: comprende la valutazione dei rischi legati alle tecnologie richieste per
+ soddisfare i requisiti e alla difficoltà stimata da parte del gruppo di
+ apprendere l'utilizzo delle stesse
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fattibilità socioeconomica
+\series default
+: comprende la valutazione dei rischi legati agli aspetti socioeconomici
+ del progetto come, ad esempio, i costi da affrontare e la concorrenza di
+ altri fornitori
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fattibilità implementativa
+\series default
+: comprende la valutazione dei rischi legati alla soddisfacibilità dei requisiti
+ del capitolato e quindi la stima della capacità del gruppo di completare
+ le richieste obbligatorie, desiderabili e opzionali
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Altro
+\series default
+: qualsiasi altro fattore di rischio stimato dagli analisti non compreso
+ nei casi precedenti
 \end_layout
 
 \begin_layout Subsection
-Intestazione del file
+Rischi
 \end_layout
 
 \begin_layout Standard
-Ogni file di codice corrisponderà esattamente ad ogni singola classe, ed
- inizierà con un'intestazione che dovrà rispecchiare il seguente standard:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-/*
-\end_layout
-
-\begin_layout Plain Layout
-
-* Nome: {nome del file}
-\end_layout
-
-\begin_layout Plain Layout
-
-* Package: {package di appartenenza}
-\end_layout
-
-\begin_layout Plain Layout
-
-* Autore: {autore del file}
-\end_layout
-
-\begin_layout Plain Layout
-
-* Data: {data di creazione del file}
-\end_layout
-
-\begin_layout Plain Layout
-
-* Versione: {versione del file}
-\end_layout
-
-\begin_layout Plain Layout
-
-*
-\end_layout
-
-\begin_layout Plain Layout
-
-* Modifiche:
-\end_layout
-
-\begin_layout Plain Layout
-
-* +---------+---------------+------------------+
-\end_layout
-
-\begin_layout Plain Layout
-
-* |  Data   | Programmatore | Modifiche        |
-\end_layout
-
-\begin_layout Plain Layout
-
-* +---------+---------------+------------------+
-\end_layout
-
-\begin_layout Plain Layout
-
-* | GGMMAA  |  NomeCognome  | - [label]metodo1 |
-\end_layout
-
-\begin_layout Plain Layout
-
-* |         |               | - [label]metodo2 |
-\end_layout
-
-\begin_layout Plain Layout
-
-* |         |               | - ....
-           |
-\end_layout
-
-\begin_layout Plain Layout
-
-* +---------+---------------+------------------+
-\end_layout
-
-\begin_layout Plain Layout
-
-*
-\end_layout
-
-\begin_layout Plain Layout
-
-*/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-dove: 
+Per ogni fattore enunciato precedentemente dovranno essere catalogati i
+ rischi come viene descritto nel seguente protocollo:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Nome
+Nome del rischio
 \series default
-: sarà il nome del file comprensivo di estensione
+: sintetizza il rischio individuato con un nome significativo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Package
+Descrizione del rischio
 \series default
-: sarà comprensivo della gerarchia del package
+: descrive brevemente il rischio individuato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Autore
+Stima di probabilità
 \series default
-: sarà l'autore del file e non necessariamente il programmatore che sta
- modificando il file attualmente
+: l'analista indica la probabilità che si verifichi la situazione di rischio
+ in esame con un parametro compreso nell'insieme {
+\emph on
+Certa, Alta, Media, Bassa, Nulla
+\emph default
+}
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Data
+Stima di incidenza
 \series default
-: sarà la data di creazione del file
+: l'analista indica quanto ritiene grave il verificarsi della situazione
+ di rischio in esame con un parametro compreso nell'insieme {
+\emph on
+Catastrofica, Alta, Media, Bassa, Trascurabile
+\emph default
+}
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Giustificazione della stima
+\series default
+: l'analista spiega le motivazioni dell'assegnamento alle stime di probabilità
+ e di incidenza assegnate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Versione
+Analista
 \series default
-: indica la versione attuale del file
+: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
+ dal Verificatore per conto del Responsabile di Progetto) nel caso in cui
+ le valutazioni appaiano inesatte o poco giustificate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Modifiche
+Riferimenti
 \series default
-: rappresenta la tabella di avanzamento del file.
- Per convenzione:
-\end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Data
-\series default
-: rappresenta la data dell'avvenuta modifica nel formato GGMMAA con le cifre:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-GG che rappresentano il giorno con eventuali zeri iniziali
-\end_layout
-
-\begin_layout Itemize
-MM che rappresentano il mese con eventuali zeri iniziali
-\end_layout
-
-\begin_layout Itemize
-AA che rappresentano l'anno
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-NomeCognome
-\series default
-: rappresenta il programmatore che ha effettuato le modifiche.
- Conterrà la prima lettera del nome seguita dalle prime quattro lettere
-  del cognome
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Nel caso in cui il cognome sia più corto di quattro lettere non verranno
- inseriti altri caratteri.
+Questo punto è facoltativo.
 \end_layout
 
 \end_inset
 
+: elenco puntato di tutte le fonti utilizzate, per consentire una futura
+ verifica delle fonti 
+\end_layout
 
+\begin_layout Subsection
+Vantaggi
+\end_layout
+
+\begin_layout Standard
+Per ogni fattore enunciato precedentemente dovranno essere catalogati i
+ vantaggi come viene descritto nel seguente protocollo:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Modifiche
+Nome del vantaggio
 \series default
-: rappresenta la lista dei cambiamenti.
- Per ogni riga dovrà esserci un solo cambiamento.
- 
-\emph on
-Label
-\emph default
- potrà essere:
+: sintetizza il vantaggio individuato con un nome significativo
 \end_layout
 
-\begin_deeper
-\begin_layout Description
+\begin_layout Itemize
 
-\series medium
-\emph on
-[+]
-\emph default
-:
+\series bold
+Descrizione del vantaggio
 \series default
- per indicare la creazione del metodo
+: descrive brevemente il vantaggio individuato
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 
-\series medium
-\emph on
-[-]
-\emph default
-:
+\series bold
+Stima di incidenza
 \series default
- per indicare l'eliminazione del metodo
+: indica quanto l'analista ritiene incidente nella valutazione del vantaggio
+ complessivo il vantaggio in esame con un parametro compreso nell'insieme
+ {
+\emph on
+Ottimale, Alta, Media, Bassa, Trascurabile
+\emph default
+}
 \end_layout
 
-\begin_layout Description
+\begin_layout Itemize
 
-\series medium
-\emph on
-[*]
-\emph default
-:
+\series bold
+Giustificazione della stima
 \series default
- per indicare la modifica del metodo
+: l'analista spiega le motivazioni dell'assegnamento alla stima di incidenza
+ assegnata
 \end_layout
 
-\end_deeper
-\end_deeper
-\begin_layout Subsection
-Convenzioni di codifica
+\begin_layout Itemize
+
+\series bold
+Analista
+\series default
+: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
+ dal Verificatore per conto del Responsabile) nel caso in cui le valutazioni
+ appaiano inesatte o poco giustificate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Riferimenti
+\series default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo punto è facoltativo.
+\end_layout
+
+\end_inset
+
+: elenco puntato di tutte le fonti utilizzate, per consentire una futura
+ verifica delle fonti
 \end_layout
 
 \begin_layout Standard
-Le convenzioni di codifica saranno formalizzate all'inizio della fase di
- progettazione.
+Una volta terminato lo studio di fattibilità di tutti i capitolati, l'analista
+ redattore del documento finale dovrà inserire una conclusione in cui si
+ esporrà:
+\end_layout
+
+\begin_layout Itemize
+una 
+\series bold
+valutazione complessiva 
+\series default
+dei rischi e dei vantaggi di ciascun capitolato
+\end_layout
+
+\begin_layout Itemize
+il 
+\series bold
+capitolato scelto
+\end_layout
+
+\begin_layout Itemize
+un'
+\series bold
+analisi sintetica
+\series default
+ di vantaggi e rischi di ciascun capitolato
 \end_layout
 
 \end_body

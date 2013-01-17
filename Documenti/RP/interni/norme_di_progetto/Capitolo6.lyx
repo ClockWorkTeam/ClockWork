@@ -61,219 +61,253 @@
 \begin_body
 
 \begin_layout Section
-Analisi dei Requisiti
+Gestione delle attività
 \end_layout
 
 \begin_layout Standard
-L'analisi dei Requisiti sarà redatta dagli analisti.
+Le attività saranno gestite tramite il servizio di 
+\bar under
+ticketing
+\bar default
+ offerto da GitHub
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo servizio sarà usato anche per le comunicazioni fra membri singoli
+ come descritto nella sezione 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:Comunicazioni-interne"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ in quanto, assieme al servizio di milestone si può tenere facilmente traccia
+ dello stato di avanzamento dei lavori.
 \end_layout
 
 \begin_layout Standard
 \noindent
-In tale documento dovranno comparire ordinatamente tutti i 
-\bar under
-requisiti
-\bar default
- rilevati dal Capitolato e/o dagli incontri effettuati col proponente.
+Questi strumenti saranno utilizzati come dice il seguente protocollo:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Creazione milestone
+\series default
+: sarà il Responsabile di Progetto a creare una 
+\emph on
+milestone
+\emph default
+ per la successiva revisione a cui il gruppo 
+\emph on
+Clockwork
+\emph default
+ ha intenzione di partecipare.
+ Lo stato di avanzamento si potrà vedere dal numero di ticket completati
+ rispetto al numero di ticket aperti.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Per fare ciò, bisogna accedere al repository, andare su Issues -> Milestones
+ -> Create a new milestone
+\emph on
+.
 \end_layout
 
 \begin_layout Standard
-\noindent
-Ogni requisito dovrà essere il più completo e chiaro possibile.
- Per tale motivo si richiede che per ogni requisito siano specificati:
+La 
+\emph on
+milestone
+\emph default
+ dovrà contenere le seguenti informazioni:
 \end_layout
 
 \begin_layout Itemize
+Nome della milestone
+\end_layout
+
+\begin_layout Itemize
+Nome del Responsabile
+\end_layout
+
+\begin_layout Itemize
+Data di conclusione della milestone
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
 
 \series bold
-Fonti
+Creazione di un ticket
 \series default
-: ovvero da che luogo è emerso il requisito
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classificazione
-\series default
-: ovvero raggruppare i requisiti in insiemi coerenti in modo da poter definire
- una segnatura specifica, univoca e gerarchica secondo il seguente formalismo:
-\end_layout
-
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-R{AMBITO}{TIPO_REQUISITO}{PRIORITÀ} {GERARCHIA}
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-dove:
-\end_layout
-
-\begin_layout Itemize
-AMBITO: distinguerà l'ambito per cui sarà definito il requisito:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-U
-\series default
- indicherà qualsiasi tipo di 
+: il Responsabile dovrà creare un ticket per ogni compito che dovrà essere
+ assegnato ad un membro del gruppo 
+\emph on
+Clockwork
+\emph default
+.
+ Le segnalazioni di 
+\emph on
 \bar under
-utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-G
-\series default
- indicherà un requisito generale di sistema
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-TIPO_REQUISITO: distinguerà la tipologia del requisito:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-F
-\series default
- indica un requisito funzionale
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Q 
-\series default
-indica un requisito di qualità
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-V
-\series default
- indica un requisito di vincolo
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-PRIORITÀ: distinguerà la priorità associata al requisito:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-O
-\series default
- indicherà un requisito obbligatorio, ossia un requisito la cui implementazione
- è fondamentale per la riuscita dell'applicazione
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-D 
-\series default
-indicherà un requisito desiderabile, ossia un requisito la cui implementazione
- è gradita ma non fondamentale e la cui realizzazione è da intendersi di
- importanza secondaria rispetto ai requisiti facoltativi
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-F
-\series default
- indicherà un requisito facoltativo, ossia un requisito la cui implementazione
- non è da ritenersi vincolante per la riuscita del progetto: saranno requisiti
- ricavati dal capitolato o dal proponente e che il gruppo si impegnerà ad
- implementare qualora le risorse disponibili saranno sufficienti
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-GERARCHIA: distinguerà la gerarchia presente tra i vari requisiti
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Descrizione grafica
-\series default
-: utilizzare il formalismo di 
-\bar under
-UML
+Anomalie
+\emph default
 \bar default
- per creare diagrammi di 
+ e 
+\emph on
 \bar under
-casi d'uso
+Discrepanze
+\emph default
 \bar default
- che facilitino la comprensione di tali requisiti.
- I diagrammi dei casi d'uso utilizzeranno una nomenclatura simile alla precedent
-e:
+ sono altri casi previsti per la creazione di un ticket, e queste possono
+ essere fatte da un qualsiasi membro del gruppo.
 \end_layout
 
 \begin_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-UC{GERARCHIA}
+\begin_layout Standard
+Per creare un ticket bisogna accedere al repository, andare su Issues ->
+ New Issue.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-dove:
+\begin_layout Standard
+La creazione di un ticket va fatta definendo obbligatoriamente i campi:
 \end_layout
 
-\begin_layout Itemize
-GERARCHIA: distinguerà la gerarchia presente tra i vari casi d'uso
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-Descrizione didascalica
+Title
 \series default
-: si dovrà accompagnare ogni diagramma di caso d'uso con una descrizione
- dove dovranno comparire le seguenti informazioni:
+: nome del compito assegnato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assegnee
+\series default
+: colui a che dovrà concludere il ticket
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Milestone
+\series default
+: la 
+\emph on
+milestone
+\emph default
+ per la quale il compito dovrà essere terminato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Label
+\series default
+: impostate a seconda di precisi argomenti nella fase di progettazione,
+ alla creazione del ticket andrà scelta quella più appropriata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Text
+\series default
+: dovrà contenere le seguenti informazioni:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Attori coinvolti
+Descrizione del compito affidato
 \end_layout
 
 \begin_layout Itemize
-Scopo e descrizione del requisito
+Data di inizio prevista
 \end_layout
 
 \begin_layout Itemize
-Precondizione
+Data di fine prevista
 \end_layout
 
 \begin_layout Itemize
-Postcondizione
+Collega
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo campo solo se più di un membro è affidato allo stesso compito, dunque
+ è facoltativo.
 \end_layout
 
-\begin_layout Itemize
-Flusso principale degli eventi
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Scenari alternativi
+
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Esecuzione compito e risoluzione di un ticket
+\series default
+: ogni membro del gruppo dovrà visionare i ticket a lui assegnati e inserire
+ un nuovo commento per ogni aggiornamento sullo stato del ticket.
+ Ogni volta che viene concluso il compito, si dovrà aggiungere l'apposita
+ label 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Completato
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ e menzionare il ticket nel relativo 
+\bar under
+commit
+\bar default
+.
+ Sarà il Responsabile di Progetto che dovrà confermare l'effettiva chiusura
+ del ticket solo se il compito è stato eseguito.
+ La label aiuta il Responsabile di Progetto ad individuare i ticket da chiudere
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Ticket di verifica
+\series default
+: ticket  di questa tipologia verranno creati secondo quanto scritto precedentem
+ente
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Chiusura milestone
+\series default
+: una milestone verrà considerata terminata una volta che tutti i ticket
+ creati sono stati chiusi.
+ Quando una milestone
+\emph on
+ 
+\emph default
+viene conclusa, il Responsabile di Progetto dovrà ripartire dal punto numero
+ uno di questa procedura
+\end_layout
+
 \end_body
 \end_document

@@ -61,162 +61,217 @@
 \begin_body
 
 \begin_layout Section
-Progettazione
+Analisi dei Requisiti
 \end_layout
 
 \begin_layout Standard
-Durante la fase di progettazione i progettisti dovranno adeguarsi alle seguenti
- specifiche:
+L'analisi dei Requisiti sarà redatta dagli analisti.
+\end_layout
+
+\begin_layout Standard
+\noindent
+In tale documento dovranno comparire ordinatamente tutti i 
+\bar under
+requisiti
+\bar default
+ rilevati dal Capitolato e/o dagli incontri effettuati col proponente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ogni requisito dovrà essere il più completo e chiaro possibile.
+ Per tale motivo si richiede che per ogni requisito siano specificati:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Diagrammi
+Fonti
 \series default
-: si andrà ad utilizzare il linguaggio UML per definire:
+: ovvero da che luogo è emerso il requisito
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classificazione
+\series default
+: ovvero raggruppare i requisiti in insiemi coerenti in modo da poter definire
+ una segnatura specifica, univoca e gerarchica secondo il seguente formalismo:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+R{AMBITO}{TIPO_REQUISITO}{PRIORITÀ} {GERARCHIA}
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+dove:
+\end_layout
+
+\begin_layout Itemize
+AMBITO: distinguerà l'ambito per cui sarà definito il requisito:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
-\emph on
-Diagrammi delle classi
-\emph default
-: dovrà essere presente all'interno dei documenti l'intera architettura
- generale e di dettaglio
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Diagrammi di flusso
-\emph default
-: presente nel nel caso in cui l'azione di codifica dei programmatori dovesse
- portare aleatorietà e conseguentemente non garantire il corretto funzionamento
- dell'applicazione supposta dall'architettura
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Diagrammi di package
-\emph default
-: presenti sia nell'architettura generale che di dettaglio.
- I vari 
+\series bold
+U
+\series default
+ indicherà qualsiasi tipo di 
 \bar under
-package
-\bar default
- saranno definiti in maniera univoca per poterli distribuire a vari codificatori
- durante la fase di codifica differenti package che interagiscono tra loro
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+G
+\series default
+ indicherà un requisito generale di sistema
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+TIPO_REQUISITO: distinguerà la tipologia del requisito:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+F
+\series default
+ indica un requisito funzionale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Q 
+\series default
+indica un requisito di qualità
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+V
+\series default
+ indica un requisito di vincolo
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+PRIORITÀ: distinguerà la priorità associata al requisito:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+O
+\series default
+ indicherà un requisito obbligatorio, ossia un requisito la cui implementazione
+ è fondamentale per la riuscita dell'applicazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+D 
+\series default
+indicherà un requisito desiderabile, ossia un requisito la cui implementazione
+ è gradita ma non fondamentale e la cui realizzazione è da intendersi di
+ importanza secondaria rispetto ai requisiti facoltativi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+F
+\series default
+ indicherà un requisito facoltativo, ossia un requisito la cui implementazione
+ non è da ritenersi vincolante per la riuscita del progetto: saranno requisiti
+ ricavati dal capitolato o dal proponente e che il gruppo si impegnerà ad
+ implementare qualora le risorse disponibili saranno sufficienti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+GERARCHIA: distinguerà la gerarchia presente tra i vari requisiti
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-Design di pattern
+Descrizione grafica
 \series default
-: per i vari 
+: utilizzare il formalismo di 
 \bar under
-design pattern
+UML
 \bar default
- andremo a specificare:
+ per creare diagrammi di 
+\bar under
+casi d'uso
+\bar default
+ che facilitino la comprensione di tali requisiti.
+ I diagrammi dei casi d'uso utilizzeranno una nomenclatura simile alla precedent
+e:
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-una 
-\emph on
-descrizione generale
-\emph default
- per presentare brevemente la struttura del design di pattern
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+UC{GERARCHIA}
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+dove:
 \end_layout
 
 \begin_layout Itemize
-una 
-\emph on
-motivazione
-\emph default
- di tale design di pattern
-\end_layout
-
-\begin_layout Itemize
-il 
-\emph on
-contesto applicativo
-\emph default
- dove andremo ad utilizzarlo
+GERARCHIA: distinguerà la gerarchia presente tra i vari casi d'uso
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-Classi di verifica
+Descrizione didascalica
 \series default
-: da sviluppare quando possibile, soprattutto per le classi generali, delle
- classi fittizie da utilizzare durante la fase di verifica e come prototipo
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Stile di progettazione
-\series default
-: per la semplificazione degli schemi e per la prossima fase di progettazione
- si cercheranno di rispettare le seguenti norme
+: si dovrà accompagnare ogni diagramma di caso d'uso con una descrizione
+ dove dovranno comparire le seguenti informazioni:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\emph on
-Ricorsione: 
-\emph default
-si cercherà di evitare l'utilizzo della ricorsione qualora fosse possibile
- una soluzione: nel caso si andasse ad utilizzare la tecnica della ricorsione
- si dovrà stimare l'utilizzo di memoria che si andrà ad occupare ed in caso
- la memoria occupata fosse eccessiva si andrà ad eliminare la ricorsione
- 
+Attori coinvolti
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Concorrenza: 
-\emph default
-si andranno a fornire i diagrammi di flusso ed una stima delle risorse necessari
-e.
- Nel caso in cui i benefici ricavati dalla concorrenza non siano equivalenti
- o superiori alle risorse utilizzate si andrà ad eliminare la concorrenza
+Scopo e descrizione del requisito
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Annidamento di chiamata: 
-\emph default
-non dovrà esserci una profondità di annidamento maggiore di dieci (10)
+Precondizione
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Flussi di condizione: 
-\emph default
-per la chiarezza e la semplicità di verifica del codice, qualora vengano
- utilizzati costrutti condizionali (if-then-else) non ci dovrà essere un
- annidamento maggiore di cinque (5)
+Postcondizione
 \end_layout
 
 \begin_layout Itemize
+Flusso principale degli eventi
+\end_layout
 
-\emph on
-Numero di parametri: 
-\emph default
-non dovranno essere presenti metodi con un numero di parametri maggiore
- di dieci (10)
+\begin_layout Itemize
+Scenari alternativi
 \end_layout
 
 \end_deeper

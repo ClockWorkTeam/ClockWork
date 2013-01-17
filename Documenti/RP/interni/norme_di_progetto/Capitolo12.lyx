@@ -61,757 +61,269 @@
 \begin_body
 
 \begin_layout Section
-Ambiente di progetto
-\end_layout
-
-\begin_layout Standard
-Nella seguente sezione verrà descritto in dettaglio l'ambiente di sviluppo
- che il gruppo 
-\shape italic
-Clockwork
-\shape default
- andrà ad utilizzare per lo svolgimento del progetto
+Codifica
 \end_layout
 
 \begin_layout Subsection
-Ambiente generale
+Intestazione del file
 \end_layout
 
 \begin_layout Standard
-Questa sezione è dedicata a caratteristiche dell'ambiente di progetto che
- si ripercuotono su tutti gli altri ambienti
-\end_layout
-
-\begin_layout Subsubsection
-Sistema operativo
+Ogni file di codice corrisponderà esattamente ad ogni singola classe, ed
+ inizierà con un'intestazione che dovrà rispecchiare il seguente standard:
 \end_layout
 
 \begin_layout Standard
-Il sistema operativo utilizzato durante lo sviluppo del progetto non è vincolant
-e, i vari membri del gruppo avranno a disposizione libertà di scelta sulla
- piattaforma di sviluppo.
- Inoltre l'utilizzo di SO diversi permetterà di verificare la portabilità
- su più SO.
-\end_layout
-
-\begin_layout Subsection
-Ambientale documentale
-\end_layout
-
-\begin_layout Subsubsection
-Scrittura documenti
-\end_layout
-
-\begin_layout Standard
-La scrittura dei documenti avverrà tramite codice 
-\bar under
-
-\begin_inset ERT
+\begin_inset listings
+inline false
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-LaTeX
+/*
 \end_layout
-
-\end_inset
-
-
-\bar default
- utilizzando l'editor LyX (
-\begin_inset Formula $\geqslant2.0$
-\end_inset
-
-), (
-\begin_inset Flex URL
-status open
 
 \begin_layout Plain Layout
 
-http://www.lyx.org
+* Nome: {nome del file}
 \end_layout
-
-\end_inset
-
-).
- Verrà creato un documento per ogni capitolo di ogni documento, successivamente
- verranno uniti sempre tramite LyX generando un  documento in formato PDF.
-\end_layout
-
-\begin_layout Subsubsection
-Verifica ortografica
-\end_layout
-
-\begin_layout Standard
-\align block
-Per la verifica ortografica verranno utilizzati Hunspell (
-\begin_inset Formula $\geqslant$
-\end_inset
-
-1.3.2-4build1)
-\series bold
- 
-\series default
-(
-\begin_inset Flex URL
-status open
 
 \begin_layout Plain Layout
 
-http://hunspell.sourceforge.net/
+* Package: {package di appartenenza}
 \end_layout
-
-\end_inset
-
-) ed Enchant (
-\begin_inset Formula $\geqslant$
-\end_inset
-
-1.6.0-7build1) (
-\begin_inset Flex URL
-status open
 
 \begin_layout Plain Layout
 
-http://abisource.com/projects/enchant/
+* Autore: {autore del file}
 \end_layout
-
-\end_inset
-
-) all'interno dell'editor LyX lanciandolo attraverso il menu Strumenti->Corretto
-re Ortografico o premendo il tasto F7.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Pianificazione
-\end_layout
-
-\begin_layout Standard
-Per quanto riguarda la pianificazione delle attività legate allo sviluppo
- del progetto e la gestione delle risorse verrà utilizzato lo strumento
- Microsoft Project 2010, strumento fornito dal servizio 
-\bar under
-MSDNAA
-\bar default
- di Microsoft in collaborazione con il Dipartimento di Matematica Pura ed
- Applicata dell'Università degli studi di Padova.
- Consci del fatto che il programma è compatibile solo con sistemi operativi
- Windows in caso di necessità sarà possibile utilizzare una macchina virtuale
- Windows XP (fornito anch'essa dalla MSDNAA) con installato il programma.
-\end_layout
-
-\begin_layout Subsubsection
-Grafici UML
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Grafici-UML"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-I grafici UML verranno realizzati tramite programma ArgoUml (
-\begin_inset Formula $\geqslant0.34$
-\end_inset
-
-), scelto in quanto software open source e multipiattaforma e perché in
- grado di esportare i grafici in formato vettoriale.
- Tuttavia il programma non supporta ufficialmente lo standard UML2, quindi
- verrà prestata attenzione nell'espressione delle notazioni grafiche affinché
- rispettino le specifiche 2.0.
-\end_layout
-
-\begin_layout Subsubsection
-Mockup
-\end_layout
-
-\begin_layout Standard
-Per la realizzazione di mockup dell'interfaccia grafica verrà utilizzato
- il programma open source Pencil (
-\begin_inset Formula $\geqslant2.0.3$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsubsection
-Documentazione semi-automatica
-\end_layout
-
-\begin_layout Standard
-Lo strumento di documentazione semi-automatica impiegato sarà 
-\bar under
-Javadoc
-\bar default
-(
-\begin_inset Formula $\geqslant1.5$
-\end_inset
-
-), funzionalità di 
-\bar under
-Java
-\bar default
- che permette di creare tutta la documentazione relativa ad una porzione
- di codice a partire dai commenti.
-\end_layout
-
-\begin_layout Subsection
-Ambiente di sviluppo
-\end_layout
-
-\begin_layout Subsubsection
-Strumenti di versionamento
-\end_layout
-
-\begin_layout Standard
-Come strumento di versionamento si è deciso di utilizzare 
-\bar under
-git
-\bar default
- in quanto veloce da utilizzare e di facile apprendimento.
- Per lo sviluppo collaborativo abbiamo deciso di appoggiarci al servizio
- Github (
-\begin_inset Flex URL
-status collapsed
 
 \begin_layout Plain Layout
 
-https://github.com/
+* Data: {data di creazione del file}
+\end_layout
+
+\begin_layout Plain Layout
+
+* Versione: {versione del file}
+\end_layout
+
+\begin_layout Plain Layout
+
+*
+\end_layout
+
+\begin_layout Plain Layout
+
+* Modifiche:
+\end_layout
+
+\begin_layout Plain Layout
+
+* +---------+---------------+------------------+
+\end_layout
+
+\begin_layout Plain Layout
+
+* |  Data   | Programmatore | Modifiche        |
+\end_layout
+
+\begin_layout Plain Layout
+
+* +---------+---------------+------------------+
+\end_layout
+
+\begin_layout Plain Layout
+
+* | GGMMAA  |  NomeCognome  | - [label]metodo1 |
+\end_layout
+
+\begin_layout Plain Layout
+
+* |         |               | - [label]metodo2 |
+\end_layout
+
+\begin_layout Plain Layout
+
+* |         |               | - ....
+           |
+\end_layout
+
+\begin_layout Plain Layout
+
+* +---------+---------------+------------------+
+\end_layout
+
+\begin_layout Plain Layout
+
+*
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
 \end_layout
 
 \end_inset
 
-) che fornisce non solo un repository 
-\emph on
-git
-\emph default
-, ma anche strumenti utili alla collaborazione fra più persone, come il
- servizio di 
-\emph on
-ticket
-\emph default
-, 
-\emph on
-wiki 
-\emph default
-e 
-\emph on
-milestone.
 
-\emph default
- Per quanto riguarda l'uso di
-\emph on
- git 
-\emph default
-e 
-\emph on
-Github
-\emph default
- sui computer di sviluppo, si è deciso l'uso della versione ufficiale rilasciata
- dal team di sviluppo di 
-\emph on
-git
-\emph default
- (
-\begin_inset Formula $\geqslant1.7.8$
-\end_inset
-
-) e le interfacce grafiche per i rispettivi sistemi operativi: 
-\emph on
-Github for Windows 
-\emph default
-(
-\begin_inset Formula $\geqslant1.0$
-\end_inset
-
-)
-\emph on
-, Github for Mac 
-\emph default
-(
-\begin_inset Formula $\geqslant$
-\end_inset
-
-The Snappy, Actually)
-\emph on
- 
-\emph default
-e
-\emph on
- Git-Cola 
-\emph default
-(
-\begin_inset Formula $\geqslant1.4.3.5-1$
-\end_inset
-
-) (Linux).
-\end_layout
-
-\begin_layout Subsubsection
-Ambiente di codifica
 \end_layout
 
 \begin_layout Standard
-Per la scrittura del codice HTML si è deciso di utilizzare Geany (
-\begin_inset Formula $\geqslant0.21$
-\end_inset
-
-), mentre per la scrittura del codice Java della parte lato server si è
- deciso di utilizzare l'IDE Eclipse (
-\begin_inset Formula $\geqslant3.8.0$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsection
-Ambiente di verifica e validazione
-\end_layout
-
-\begin_layout Standard
-Di seguito vengono elencati gli strumenti scelti per la verifica e la validazion
-e
-\end_layout
-
-\begin_layout Standard
-Il gruppo potrà avvalersi dei seguenti strumenti per effettuare i processi
- di verifica:
+dove: 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Hunspell (
+Nome
 \series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-1.3.2-4build1):
-\series default
- strumento per la correzione grammaticale dei documenti redatti.
- L'utilizzo di Hunspell avverrà tramite apposito plugin per LyX (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://hunspell.sourceforge.net/
-\end_layout
-
-\end_inset
-
-)
+: sarà il nome del file comprensivo di estensione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Enchant (
+Package
 \series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-1.6.0-7build1):
-\series default
- strumento per la correzione grammaticale dei documenti redatti.
- L'utilizzo di Enchant avverrà tramite apposito plugin per LyX (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://abisource.com/projects/enchant/
-\end_layout
-
-\end_inset
-
-)
+: sarà comprensivo della gerarchia del package
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Yasca (
+Autore
 \series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-2.1): 
-\series default
-programma open source che permette l'analisi statica del codice HTML 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.scovetta.com/yasca.html
-\end_layout
-
-\end_inset
-
-
+: sarà l'autore del file e non necessariamente il programmatore che sta
+ modificando il file attualmente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Chromedriver (
+Data
 \series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-23.0.1240.0):
-\series default
- plugin per Google Chrome esegue test direttamente sul browser (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://code.google.com/p/chromedriver
-\end_layout
-
-\end_inset
-
-)
+: sarà la data di creazione del file
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Firebug Lite
+Versione
 \series default
- 
-\series bold
-(
-\begin_inset Formula $\geqslant\mathbf{1.4}$
-\end_inset
-
-): 
-\series default
-plugin per Google Chrome per l'analisi dinamica 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://getfirebug.com/releases/lite/chrome
-\end_layout
-
-\end_inset
-
-
+: indica la versione attuale del file
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Eclipse (
+Modifiche
 \series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-3.8.0):
-\series default
- 
-\bar under
-IDE
-\bar default
- multi-linguaggio e multi-piattaforma che fornisce, nella versione base,
- alcune funzionalità utili di debugging, come l'esecuzione del codice 
-\bar under
-step-by-step
-\bar default
-, l'impostazione di 
-\bar under
-breakpoint
-\bar default
-, visualizzazione dei valori di variabili e strutture dati durante l'esecuzione,
- sospensione e riavvio di 
-\bar under
-thread
-\bar default
- in esecuzione, ecc.
- (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.eclipse.org/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-FindBugs (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-2.0.0): 
-\series default
-plugin per Eclipse, in grado di individuare ed evidenziare staticamente,
- nel codice sorgente, alcuni tra i più comuni errori nella scrittura di
- codice 
-\bar under
-Java
-\bar default
- (come l'uso di 
-\bar under
-worst practice
-\bar default
-).
- Ogni errore riscontrato verrà analizzato e discusso per valutarne l'eventuale
- modifica correttiva (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://findbugs.sourceforge.net/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-EclEmma (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-2.2.0):
-\series default
- plugin per Eclipse, in grado di verificare automaticamente la copertura
- del codice, sia durante la normale esecuzione, sia durante l'analisi dinamica
- tramite test.
- I test devono coprire il codice sorgente per intero (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.eclemma.org/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Metrics Plugin for Eclipse (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-1.3.6):
-\series default
- plugin per Eclipse che fornisce informazioni riguardanti le misure statiche
- del codice (vedi sezione X per chiarimenti) come:
+: rappresenta la tabella di avanzamento del file.
+ Per convenzione:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Complessità ciclomatica
+
+\series bold
+Data
+\series default
+: rappresenta la data dell'avvenuta modifica nel formato GGMMAA con le cifre:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GG che rappresentano il giorno con eventuali zeri iniziali
 \end_layout
 
 \begin_layout Itemize
-Peso delle classi 
+MM che rappresentano il mese con eventuali zeri iniziali
 \end_layout
 
 \begin_layout Itemize
-Numero di parametri 
-\end_layout
-
-\begin_layout Itemize
-Numero di campi dati per classe
-\end_layout
-
-\begin_layout Itemize
-Numero livelli di annidamento
-\end_layout
-
-\begin_layout Itemize
-Indice di utilità
-\end_layout
-
-\begin_layout Itemize
-Indice di dipendenza
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-(
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://metrics.sourceforge.net/
-\end_layout
-
-\end_inset
-
-)
+AA che rappresentano l'anno
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Strumenti di validazione 
-\bar under
-W3C
-\bar default
+
+\series bold
+NomeCognome
+\series default
+: rappresenta il programmatore che ha effettuato le modifiche.
+ Conterrà la prima lettera del nome seguita dalle prime quattro lettere
+  del cognome
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Nel caso in cui il cognome sia più corto di quattro lettere non verranno
+ inseriti altri caratteri.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modifiche
+\series default
+: rappresenta la lista dei cambiamenti.
+ Per ogni riga dovrà esserci un solo cambiamento.
+ 
+\emph on
+Label
+\emph default
+ potrà essere:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\series medium
+\emph on
+[+]
+\emph default
 :
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Markup Validation Service:
 \series default
- per effettuare test su tutte le pagine navigabili del sistema e verificare
- l'aderenza 
-\bar under
-HTML5
-\bar default
- (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://validator.w3.org/
+ per indicare la creazione del metodo
 \end_layout
 
-\end_inset
+\begin_layout Description
 
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\bar under
-CSS
-\bar default
- Validation Service:
+\series medium
+\emph on
+[-]
+\emph default
+:
 \series default
- per effettuare test sui fogli di stile di tutte le pagine del sistema e
- verificare l'aderenza allo standard CSS versione 3 (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://jigsaw.w3.org/css-validator/
+ per indicare l'eliminazione del metodo
 \end_layout
 
-\end_inset
+\begin_layout Description
 
-)
+\series medium
+\emph on
+[*]
+\emph default
+:
+\series default
+ per indicare la modifica del metodo
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-Speed Tracer (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
-
-\series bold
-2.4):
-\series default
- plugin per Google Chrome che permette di verificare l'efficienza di un'applicaz
-ione web durante la sua esecuzione (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http: //code.google.com/intl/it-IT/webtoolkit/speedtracer/
+\end_deeper
+\begin_layout Subsection
+Convenzioni di codifica
 \end_layout
 
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-JUnit (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
-
-\series bold
-4.11):
-\series default
- 
-\bar under
-framework
-\bar default
- per effettuare test di unità per il linguaggio di programmazione Java (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.junit.org/
-\end_layout
-
-\end_inset
-
-)
+\begin_layout Standard
+Le convenzioni di codifica saranno formalizzate all'inizio della fase di
+ progettazione.
 \end_layout
 
 \end_body
