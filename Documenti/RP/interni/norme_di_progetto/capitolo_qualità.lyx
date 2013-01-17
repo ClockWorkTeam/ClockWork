@@ -1,0 +1,278 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+
+\series bold
+Qualità
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Prendendo come riferimento lo standard ISO/IEC 9126, il gruppo 
+\emph on
+Clockwork
+\emph default
+ si impegna a garantire le seguenti qualità per il prodotto 
+\series bold
+MyTalk
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Funzionalità: 
+\series default
+il software deve soddisfare i compiti prestabiliti, poter interagire con
+ altri sistemi, aderire a standard e convenzioni nell'ambiente in cui viene
+ applicato, gestire i dati in modo sicuro, negando l'accesso a entità non
+ autorizzate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Affidabilità:
+\series default
+ il software deve poter evitare che si verifichino malfunzionamenti, poter
+ gestire situazioni non attese o usi scorretti, poter essere riutilizzabile
+ nel caso in cui avvengano errori critici, sia affidabile in conformità
+ all'ambiente di applicazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Efficienza:
+\series default
+ l'esecuzione non deve allocare risorse in modo spropositato e i suoi tempi
+ di risposta devono essere adeguati alle aspettative dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Usabilità:
+\series default
+ l'esecuzione delle funzioni offerte dal software devono poter essere intuibili
+ anche all'utente non esperto, o non difficilmente apprese
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Manutenibilità:
+\series default
+ la modifica del codice del software deve poter essere quanto più facile
+ possibile, grazie a un codice comprensibile
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Portabilità: 
+\series default
+il software deve poter funzionare in ambienti di lavoro diversi
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+\lang italian
+METRICHE
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+In base ai criteri elencati nella precedente sezione si definiscono le seguenti
+ metriche per la composizione di codice di qualità:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Complessità ciclomatica:
+\series default
+ rappresenta la complessità di un metodo, basata sulla misurazione del numero
+ di cammini linearmente indipendenti che attraversano il grafo di flusso
+ di controllo, nel quale i nodi rappresentano gruppi indivisibili di istruzioni
+ e gli archi connettono due nodi se le istruzioni di un nodo possono essere
+ eseguite immediatamente dopo le istruzioni dell'altro nodo.
+ Un valore elevato di complessità riduce la manutenibilità e le possibilità
+ di riuso del metodo: se dovesse risultare tale, parte delle sue funzionalità
+ deve essere demandando ad altri metodi da richiamare.
+ Particolare attenzione va posta sulla stima di questo valore: il costrutto
+ switch, ad esempio, moltiplica i cammini linearmente indipendenti e quindi
+ può, molto facilmente, comportare una misurazione di complessità ciclomatica
+ molto elevata (e comunque oltre i limiti imposti).
+ Tuttavia potrebbe verificarsi l'eventualità che, al fine di garantire una
+ velocità di esecuzione maggiore per un certo metodo, si decida di assumere
+ limiti di complessità ciclomatica più laschi.
+ I valori di complessità ciclomatica misurati verranno trattati, dunque,
+ con le dovute considerazioni.
+ Il valore ideale di complessità ciclomatica massima posto come obiettivo
+ è dieci
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Peso delle classi:
+\series default
+ è la somma totale della complessità ciclomatica di tutti i metodi appartenenti
+ ad una determinata classe.
+ Il valore deve essere ragionevole, e dove venisse ritenuto troppo alto,
+ si procederà ad aumentare il numero di metodi della classe in considerazione,
+ oppure verrà affidata parte dei compiti ad una o più nuove classi coese
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Numero di parametri:
+\series default
+ indica il numero di parametri formali per metodo.
+ Un numero molto elevato può essere ridotto, e quindi migliorato, grazie
+ alla creazione di ulteriori classi che contengano più parametri tra loro
+ correlati, aumentando la manutenibilità e l'astrazione del codice.
+ La finalità è quella di mantenere un numero massimo di parametri pari a
+ dieci
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Numero di campi dati per classe:
+\series default
+ un numero elevato di attributi interni ad una classe potrebbe palesare
+ la necessità di incapsulamento di parte di essi in nuove classi coese,
+ che forniscano inoltre metodi utili al loro utilizzo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Numero di variabili locali:
+\series default
+ denota il numero di variabili locali interne a ciascun metodo.
+ Come per il numero di campi dati per classe, potrebbe essere necessario
+ incapsulare alcune di queste variabili in nuove classi coese qualora il
+ numero sia troppo elevato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Numero di livelli di annidamento:
+\series default
+ rappresenta il numero di livelli di annidamento dei metodi.
+ Un valore elevato determina alta complessità e riduce il livello di astrazione
+ del codice: per questo deve mantenersi a livelli bassi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Grado di accoppiamento:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Indice di utilità:
+\series default
+ numero di classi esterne al 
+\bar under
+package
+\bar default
+ che dipendono da classi interne ad esso.
+ Deve avere un valore ragionevole: se troppo basso indicherà che il package
+ non fornisce molte funzionalità al suo esterno e quindi potrebbe essere
+ scarsamente utile; se troppo alto indicherà che altre classi sono strettamente
+ dipendenti dal package in questione, e quindi potrebbe accadere che eventuali
+ modifiche ad esso comportino costi elevati di adattamento delle classi
+ che vi dipendono, qualora non fosse stato progettato adeguatamente il sistema
+ di interfacce
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Indice di dipendenza: 
+\series default
+numero di classi interne al package che dipendono da classi esterne ad esso.
+ In generale va sempre minimizzato, aumentando quindi le funzionalità proprie
+ di un package, senza la necessità di affidarsi al servizio offerto da altre
+ classi esterne
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

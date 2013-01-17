@@ -1,0 +1,138 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Analisi statica
+\end_layout
+
+\begin_layout Standard
+Le tipologie di analisi statica che il 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+ intende adottare sono:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi del flusso di controllo:
+\series default
+ verificherà, analizzando i vari flussi possibili, che il codice proceda
+ correttamente e quindi rispetti la sequenza specificata.
+ Accerteremo che il codice sia ben strutturato, che non esistano parti di
+ codice che non vengono mai raggiunte o che non terminano.
+ Il tutto tramite la tecnica di call-tree analysis (albero delle chiamate),
+ sfruttando la capacità dei compilatori di calcolarlo, e verificando che
+ le variabili di controllo delle iterazioni non vengano modificate.
+ Il flusso di controllo sarà opportunamente analizzato in quelle parti di
+ codice in cui, per esempio, vengono effettuate diverse chiamate di metodi
+ a catena o vi siano variabili di controllo delle iterazioni
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi di flusso dei dati:
+\series default
+ assicura che il flusso di dati non faccia uso di variabili non ancora inizializ
+zate o prive di valore in modo da evitare possibili errori al momento del
+ loro utilizzo.
+ Tali errori verranno facilmente evitati con una buona costruzione del codice
+ da parte del programmatore, prestando particolare attenzione ad inizializzare
+ quelle variabili alle quali non viene assegnato un valore in automatico
+ dal compilatore.
+ I verificatori avranno comunque il compito di effettuare tale analisi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi flusso d'informazione:
+\series default
+ individuazione delle relazioni tra ingressi ed uscite tra i vari moduli,
+ accertando che le uniche dipendenze consentite siano quelle previste dalla
+ specifica dei moduli.
+ Questo tipo di analisi può essere effettuata a tre livelli: singolo modulo,
+ più moduli tra loro correlati, intero sistema.
+ In base ai moduli che otterremo si deciderà quali livelli di analisi utilizzare
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verifica formale del codice:
+\series default
+ tramite l'esplorazione di tutte le esecuzioni possibili si verifica la
+ correttezza del codice rispetto alla specifica dei requisiti
+\end_layout
+
+\end_body
+\end_document

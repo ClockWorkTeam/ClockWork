@@ -302,6 +302,7 @@ wiki
 e 
 \emph on
 milestone.
+
 \emph default
  Per quanto riguarda l'uso di
 \emph on
@@ -377,19 +378,83 @@ Di seguito vengono elencati gli strumenti scelti per la verifica e la validazion
 e
 \end_layout
 
-\begin_layout Subsubsection
-Analisi statica
+\begin_layout Standard
+Il gruppo potrà avvalersi dei seguenti strumenti per effettuare i processi
+ di verifica:
 \end_layout
 
-\begin_layout Standard
-L'analisi statica verrà eseguita tramite il programma Yasca (
-\begin_inset Formula $\geqslant2.1$
+\begin_layout Itemize
+
+\series bold
+Hunspell (
+\series default
+
+\begin_inset Formula $\geqslant$
 \end_inset
 
-).
- (
+ 
+\series bold
+1.3.2-4build1):
+\series default
+ strumento per la correzione grammaticale dei documenti redatti.
+ L'utilizzo di Hunspell avverrà tramite apposito plugin per LyX (
 \begin_inset Flex URL
 status open
+
+\begin_layout Plain Layout
+
+http://hunspell.sourceforge.net/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Enchant (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series bold
+1.6.0-7build1):
+\series default
+ strumento per la correzione grammaticale dei documenti redatti.
+ L'utilizzo di Enchant avverrà tramite apposito plugin per LyX (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://abisource.com/projects/enchant/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Yasca (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series bold
+2.1): 
+\series default
+programma open source che permette l'analisi statica del codice HTML 
+\begin_inset Flex URL
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -398,30 +463,23 @@ http://www.scovetta.com/yasca.html
 
 \end_inset
 
-) programma open source che permette l'analisi statica del codice HTML.
+
 \end_layout
 
-\begin_layout Subsubsection
-Test
-\end_layout
+\begin_layout Itemize
 
-\begin_layout Standard
-Per i test su browser useremo il plugin per 
-\emph on
-Google Chrome
 \series bold
-\emph default
- 
+Chromedriver (
 \series default
-Chromedriver
-\series bold
- 
-\series default
-(
-\begin_inset Formula $\geqslant23.0.1240.0$
+
+\begin_inset Formula $\geqslant$
 \end_inset
 
-) (
+ 
+\series bold
+23.0.1240.0):
+\series default
+ plugin per Google Chrome esegue test direttamente sul browser (
 \begin_inset Flex URL
 status open
 
@@ -432,29 +490,25 @@ http://code.google.com/p/chromedriver
 
 \end_inset
 
-).
+)
 \end_layout
 
-\begin_layout Subsubsection
-Analisi dinamica
-\end_layout
+\begin_layout Itemize
 
-\begin_layout Standard
-L'analisi dinamica verrà effettuata con il plugin per 
-\emph on
-Google Chrome
-\emph default
- Firebug Lite
 \series bold
- 
+Firebug Lite
 \series default
+ 
+\series bold
 (
-\begin_inset Formula $\geqslant1.4$
+\begin_inset Formula $\geqslant\mathbf{1.4}$
 \end_inset
 
-) (
+): 
+\series default
+plugin per Google Chrome per l'analisi dinamica 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -463,18 +517,209 @@ http://getfirebug.com/releases/lite/chrome
 
 \end_inset
 
-).
+
 \end_layout
 
-\begin_layout Subsubsection
-Validazione
-\end_layout
+\begin_layout Itemize
 
-\begin_layout Standard
-Per la verifica del codice HTML5 e CSS versione 3 utilizzeremo i validatori
- del W3C raggiungibili ai seguenti indirizzi: 
+\series bold
+Eclipse (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series bold
+3.8.0):
+\series default
+ 
+\bar under
+IDE
+\bar default
+ multi-linguaggio e multi-piattaforma che fornisce, nella versione base,
+ alcune funzionalità utili di debugging, come l'esecuzione del codice 
+\bar under
+step-by-step
+\bar default
+, l'impostazione di 
+\bar under
+breakpoint
+\bar default
+, visualizzazione dei valori di variabili e strutture dati durante l'esecuzione,
+ sospensione e riavvio di 
+\bar under
+thread
+\bar default
+ in esecuzione, ecc.
+ (
 \begin_inset Flex URL
 status open
+
+\begin_layout Plain Layout
+
+http://www.eclipse.org/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+FindBugs (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series bold
+2.0.0): 
+\series default
+plugin per Eclipse, in grado di individuare ed evidenziare staticamente,
+ nel codice sorgente, alcuni tra i più comuni errori nella scrittura di
+ codice 
+\bar under
+Java
+\bar default
+ (come l'uso di 
+\bar under
+worst practice
+\bar default
+).
+ Ogni errore riscontrato verrà analizzato e discusso per valutarne l'eventuale
+ modifica correttiva (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://findbugs.sourceforge.net/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+EclEmma (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series bold
+2.2.0):
+\series default
+ plugin per Eclipse, in grado di verificare automaticamente la copertura
+ del codice, sia durante la normale esecuzione, sia durante l'analisi dinamica
+ tramite test.
+ I test devono coprire il codice sorgente per intero (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.eclemma.org/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Metrics Plugin for Eclipse (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series bold
+1.3.6):
+\series default
+ plugin per Eclipse che fornisce informazioni riguardanti le misure statiche
+ del codice (vedi sezione X per chiarimenti) come:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Complessità ciclomatica
+\end_layout
+
+\begin_layout Itemize
+Peso delle classi 
+\end_layout
+
+\begin_layout Itemize
+Numero di parametri 
+\end_layout
+
+\begin_layout Itemize
+Numero di campi dati per classe
+\end_layout
+
+\begin_layout Itemize
+Numero livelli di annidamento
+\end_layout
+
+\begin_layout Itemize
+Indice di utilità
+\end_layout
+
+\begin_layout Itemize
+Indice di dipendenza
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+(
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://metrics.sourceforge.net/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Strumenti di validazione 
+\bar under
+W3C
+\bar default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Markup Validation Service:
+\series default
+ per effettuare test su tutte le pagine navigabili del sistema e verificare
+ l'aderenza 
+\bar under
+HTML5
+\bar default
+ (
+\begin_inset Flex URL
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -483,7 +728,19 @@ http://validator.w3.org/
 
 \end_inset
 
-, 
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+CSS
+\bar default
+ Validation Service:
+\series default
+ per effettuare test sui fogli di stile di tutte le pagine del sistema e
+ verificare l'aderenza allo standard CSS versione 3 (
 \begin_inset Flex URL
 status open
 
@@ -494,9 +751,68 @@ http://jigsaw.w3.org/css-validator/
 
 \end_inset
 
-.
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Speed Tracer (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+
+\series bold
+2.4):
+\series default
+ plugin per Google Chrome che permette di verificare l'efficienza di un'applicaz
+ione web durante la sua esecuzione (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http: //code.google.com/intl/it-IT/webtoolkit/speedtracer/
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JUnit (
+\series default
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+
+\series bold
+4.11):
+\series default
+ 
+\bar under
+framework
+\bar default
+ per effettuare test di unità per il linguaggio di programmazione Java (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.junit.org/
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_body
 \end_document
-
