@@ -613,6 +613,88 @@ PDF
  
 \end_layout
 
+\begin_layout Subsubsection
+Tabelle
+\end_layout
+
+\begin_layout Standard
+Istruzioni e regole per la creazione delle tabelle:
+\end_layout
+
+\begin_layout Itemize
+Le tabelle dovranno essere tutte long table.
+ Per fare ciò bisogna posizioni il cursore in una delle celle e si vada
+ su Edit/Table Settings/Longtable e si spunti 
+\begin_inset Quotes eld
+\end_inset
+
+use long table
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ogni tabella dovrà essere fornita di didascalia
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È escluso il 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Diario delle modifiche
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ per ovvi motivi
+\end_layout
+
+\end_inset
+
+, in cui dovrà comparire un numero identificativo incrementale per la tracciabil
+ità di tale tabella all'interno del documento.
+ Per fare ciò bisogna aggiungere una riga alla fine della tabella, la si
+ selezioni e si spunti 
+\begin_inset Quotes eld
+\end_inset
+
+Caption: on
+\begin_inset Quotes erd
+\end_inset
+
+ nella finestra indicata nel punto precedente
+\end_layout
+
+\begin_layout Itemize
+La didascalia dev'essere sempre posizionata sotto la rispettiva tabella,
+ quindi nella cella della didascalia, subito dopo la stessa, si metta il
+ codice 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTex
+\end_layout
+
+\end_inset
+
+ 
+\family sans
+
+\backslash
+endlastfoot
+\end_layout
+
 \begin_layout Subsection
 Versionamento
 \end_layout
