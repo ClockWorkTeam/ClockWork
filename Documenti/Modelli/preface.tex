@@ -7,6 +7,12 @@
 \usepackage{lastpage}
 \usepackage{longtable}
 \usepackage[colorlinks=true]{hyperref}
+\usepackage{color, colortbl} 
+
+\usepackage[labelfont=bf]{caption}
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -14,6 +20,7 @@
     linkcolor=black,
     urlcolor=black
 }
+\setlength{\parindent}{0pt}
 
 \fancypagestyle{frontmatter}{
   \fancyhf{}
@@ -44,20 +51,20 @@
 
 %%DA QUI IN POI POTETE MODIFICARE
 
-\newcommand{\DOCUMENTO}{Hai modificato il file preface.tex? }
-\newcommand{\CREAZIONE}{GG/MM/AAAA}	%data di creazione
-\newcommand{\ULTIMAMOD}{GG/MM/AAAA}	%data di ultima modifica
-\newcommand{\USODOC}{Interno}		%Interno, Esterno
-\newcommand{\VERSIONE}{v X.Y }
+\newcommand{\DOCUMENTO}{ NOME DOC }
+\newcommand{\CREAZIONE}{}	%data di creazione
+\newcommand{\ULTIMAMOD}{}	%data di ultima modifica
+\newcommand{\USODOC}{ }		%Interno, Esterno
+\newcommand{\VERSIONE}{v }
 
-\newcommand{\REDATTORI}{xxxxxxxxxxxxx}  % COGNOME NOME!!!
-\newcommand{\VERIFICATORI}{xxxxxx}
-\newcommand{\APPROVATORE}{xxxxxx}
+\newcommand{\REDATTORI}{}
+\newcommand{\VERIFICATORI}{}
+\newcommand{\APPROVATORE}{}
 
 
 
-%%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO (NOTA: INTERNI SOLO NOI!!!!)
-\newcommand{\LISTADISTRIB}{ \NOMEGRUPPO \\ \COMMITENTIPROG \\ \PROPONENTIPROG }
+%%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO
+\newcommand{\LISTADISTRIB}{\NOMEGRUPPO \\ \COMMITENTIPROG \\ \PROPONENTIPROG}
 
 %%INSERIRE IL SOMMARIO DEL DOCUMENTO
-\newcommand{\SOMMARIO}{xxxxxxxxxxxx}
+\newcommand{\SOMMARIO}{}
