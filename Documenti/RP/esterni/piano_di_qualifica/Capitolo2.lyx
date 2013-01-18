@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language italian
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,7 +25,6 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -65,64 +64,35 @@ Visione generale delle strategie di verifica
 \end_layout
 
 \begin_layout Subsection
-Organizzazione
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Organizzazione"
-
-\end_inset
-
-
+Organizzazione e responsabilità
 \end_layout
 
 \begin_layout Standard
-Il processo di verifica verrà istanziato quando il prodotto di un processo
- raggiungerà uno stato ritenuto sostanzialmente diverso da quello precedente:
- grazie al registro delle modifiche sarà possibile operare una verifica
- circoscritta ai soli cambiamenti.
- Se, eventualmente, saranno riscontrati problemi o anomalie nel corretto
- funzionamento di un prodotto, essi verranno trattati dal processo di risoluzion
-e dei problemi.
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-Il gruppo 
+Al fine di sviluppare un prodotto di qualità il gruppo 
 \emph on
-Clockwork
+ClockWork 
 \emph default
- ha deciso di adottare per lo sviluppo del progetto un ciclo di vita incremental
-e (vedi Piano di Progetto).
- In base a tale scelta, il processo di verifica che verrà adottato opererà
- durante le diverse fasi del progetto nel seguente modo:
+si impegna ad applicare il processo di verifica e validazione in ogni fase
+ del progetto, sia sul prodotto software che sui documenti del progetto.
+ All’interno del gruppo i ruoli destinati all’attuazione del processo di
+ verifica e di validazione sono i Verificatori e il Responsabile:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Analisi dei requisiti:
+Verificatore:
 \series default
- ogni documento necessario alla revisione dei requisiti (RR), quando verrà
- completato, entrerà nella dedicata fase di revisione per controllare la
- presenza di eventuali irregolarità lessico/grammaticali e nei contenuti
- esposti.
- Nel dettaglio, il controllo ortografico verrà effettuato con gli strumenti
- messi a disposizione da LyX, per la precisione tramite i plugin Hunspell
- ed Enchant mentre il controllo grammaticale e sintattico da un'accurata
- rilettura del testo.
- I contenuti verranno invece controllati in modo tale da verificare la copertura
- delle richieste del proponente e questo tramite un'accurata rilettura e
- confronto con il Capitolato d'Appalto ed i verbali degli incontri.
- Si constaterà poi che ogni 
-\bar under
-caso d'uso
-\bar default
- abbia almeno un requisito corrispondente, effettuando un controllo delle
- apposite tabelle di tracciamento.
- Verranno verificati inoltre i contenuti grafici e tabellari e la conformità
- dei documenti alle Norme di Progetto stabilite.
- Se durante la verifica saranno state rilevate irregolarità queste verranno
+ ha il compito di applicare le tecniche di verifica descritte successivamente
+ per ogni fase del ciclo di vita.
+ Il processo di verifica e validazione inizia sui documenti, il Verificatore
+ deve accertare che la documentazione prodotta sia corretta, a livello grammatic
+ale e sintattico e che rispetti le norme descritte nelle Norme di Progetto.
+ Il controllo ortografico, sarà automatizzato utilizzando la strumentazione
+ descritta nella sezione “Strumenti” (XX).
+ Il controllo dei termini nel glossario, inseriti nei documenti, avverrà
+ tramite un'attenta lettura dei documenti.
+ Se durante la verifica saranno state rilevate irregolarità, queste verranno
  segnalate tramite un apposito 
 \bar under
 ticket
@@ -138,65 +108,49 @@ committente
 \begin_layout Itemize
 
 \series bold
-Progettazione:
+Responsabile:
 \series default
- il processo di verifica riguardante la fase di Progettazione consisterà
- nel verificare che tutti i requisiti descritti durante la fase di Analisi
- dei Requisiti rientrino nei componenti individuati; ciò verrà effettuato
- tramite un'accurata analisi delle tabelle di tracciamento.
- Qualora dalla verifica sorgano incongruenze o mancanze, queste verranno
- segnalate tramite ticket e successivamente risolte
+ ha il dovere di coordinare e gestire l’attuazione del processo di validazione
+ e verifica.
+ È il solo a poter approvare o meno la correttezza di un documento.
+ Ha l’obbligo di accertarsi che i doveri assegnati ai componenti del gruppo
+ siano eseguiti secondo i criteri dettati nel Piano di Progetto e che non
+ ci siano conflitti di interessi fra i Verificatori e l’oggetto di verifica.
+ Deve tenere traccia di eventuali anomalie e di conseguenza poter intervenire
+ tempestivamente.
+ Assieme all’Amministratore è responsabile della emanazione dei ticket e
+ della loro assegnazione.
+ Deve inoltre essere la figura di riferimento del gruppo e quindi deve saper
+ accogliere e risolvere eventuali problematiche riscontrate fra i vari component
+i del gruppo.
+ Deve inoltre tener traccia dei problemi e delle relative soluzioni adottate
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Realizzazione:
-\series default
- la verifica in questa fase verrà effettuata sia da parte dei programmatori
- stessi che utilizzando appositi e specifici strumenti di verifica automatizzata
- del codice, come elencato nella sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Strumenti"
-
-\end_inset
-
- dove si possono visionare quelli adottati dal gruppo 
-\emph on
-Clockwork
-\emph default
- con una relativa descrizione della loro funzione.
- La presenza di errori verrà segnalata da un apposito ticket che verrà preso
- in carico dai programmatori e chiuso una volta risolto il problema
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Validazione:
-\series default
- alla fase di collaudo (RA), il gruppo 
-\emph on
-Clockwork
-\emph default
- garantisce il corretto funzionamento del prodotto realizzato.
- Se verranno riscontrati difetti o caratteristiche non attinenti alle richieste
- del cliente, ogni modifica che verrà effettuata per eliminare tali incongruenze
- rispetto al prodotto atteso sarà a carico del 
-\bar under
-fornitore
+\begin_layout Standard
+Al fine di garantire un costante riscontro dell’evoluzione del lavoro, ogni
+ singolo membro del gruppo è tenuto a cronometrare le proprie ore di lavoro
+ dedicate al progetto, per ogni ruolo che sta adempiendo, e renderlo noto
+ al Responsabile, in modo tale che possa effettuare un controllo sulle ore
+ di lavoro preventivate e di conseguenza agire per la nuova pianificazione
+ della fase successiva.
+ Inoltre tutti i membri del gruppo hanno l’obbligo di controllare quotidianament
+e l’emanazione dei ticket.
+ I documenti prodotti devono essere forniti di un diario delle modifiche,
+ questo consentirà di agevolare la verifica sugli stessi.
+ La conformità alle norme definite nel documento Norme di Progetto consentirà
+ di ridurre gli errori dovuti a incomprensioni che possono nascere durante
+ lo sviluppo del progetto.
 \end_layout
 
 \begin_layout Subsection
-Pianificazione strategica generale
+Pianificazione Strategica e Temporale
 \end_layout
 
 \begin_layout Standard
 Una verifica continua sui processi e sui prodotti, attuata in modo preventivo
  e non retrospettivo, può garantire un alto livello di qualità al fine di
  rispettare le aspettative del cliente e il pieno soddisfacimento dei requisiti
- richiesti dal Capitolato d'Appalto, minimizzando i rischi di fallimento
+ richiesti dal Capitolato d’Appalto, minimizzando i rischi di fallimento
  prematuro del progetto e riducendo i costi di correzione degli eventuali
  errori.
  
@@ -218,16 +172,16 @@ I processi di revisione adottati saranno di due tipi:
 
 \begin_layout Itemize
 Revisioni formali condotte dal cliente e con effetto sanzionatorio (corrisponden
-ti all'Audit Process di ISO/IEC 12207)
+ti all’Audit Process di ISO/IEC 12207)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Revisione dei Requisiti (RR): 09/01/2013
+Revisione dei Requisiti (RR): 2013/09/01
 \end_layout
 
 \begin_layout Itemize
-Revisione di Accettazione (RA): da destinarsi, ipotizzata al 21/03/2013
+Revisione di Accettazione (RA): da destinarsi, ipotizzata al 2013/21/03
 \end_layout
 
 \end_deeper
@@ -238,242 +192,499 @@ Revisioni informali di revisione interna (di progresso) con il coinvolgimento
 
 \begin_deeper
 \begin_layout Itemize
-Revisione di Progettazione (RP): 06/02/2013
+Revisione di Progettazione (RP): 2013/05/02
 \end_layout
 
 \begin_layout Itemize
-Revisione di Qualifica (RQ): 05/03/2013
+Revisione di Qualifica (RQ): 2013/05/03
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
-Responsabilità
+\begin_layout Standard
+Come indicato nel Piano di Progetto il modello di ciclo di vita adottato
+ per lo sviluppo del software è di tipo incrementale.
+ In base a questo modello di ciclo di vita vengono definite le strategie
+ di verifica per ogni fase del ciclo di vita.
+\end_layout
+
+\begin_layout Subsubsection
+Fase di Analisi
 \end_layout
 
 \begin_layout Standard
-Al Responsabile di Progetto saranno affidate le responsabilità riguardanti
- tutte le attività di verifica e validazione, ponendosi quindi come garante
- del corretto svolgimento delle attività volte alla qualità del materiale
- prodotto nei confronti del committente.
- L'Amministratore di Progetto si occuperà invece di assicurare che l'ambiente
- in cui tutte le attività di realizzazione del prodotto si svolgeranno sia
- adeguato a tale scopo.
+In questa fase i Verificatori hanno il compito di controllare che l’Analisi
+ dei Requisiti soddisfi le norme definite nel documento Norme di Progetto
+ e che rispetti le seguenti caratteristiche:
 \end_layout
 
-\begin_layout Subsection
-Risorse necessarie
+\begin_layout Itemize
+
+\series bold
+Priva di ambiguità:
+\series default
+ il documento non è ambiguo se e solo se ogni requisito individuato ha solo
+ una interpretazione.
+ Il Verificatore per controllare questa qualità dovrà procedere alla lettura
+ del singolo requisito, non è un processo automatizzabile
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Corretta:
+\series default
+ il documento è corretto se e solo se ogni requisito individuato è un requisito
+ che il software deve avere.
+ Il Verificatore per controllare questa qualità deve avere una buona conoscenza
+ dei documenti forniti dal Proponente, inoltre questo controllo sarà agevolato
+ da una corretto tracciamento dei requisiti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Completa:
+\series default
+ il documento è completo se e solo se include tutti i requisiti fondamentali,
+ definisce come deve reagire il software agli input, ed è completo di riferiment
+i e etichette per tutte le figure, tabelle, diagrammi e definizioni.
+ Il Verificatore dovrà quindi procedere a una lettura attenta del documento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verificabile:
+\series default
+ il documento è verificabile se e solo se per ogni suo requisito è definito
+ il modo con cui si possa verificare che il software soddisfa tale requisito.
+ Il Verificatore in primo luogo deve controllare che ogni requisito individuato
+ sia tracciabile e atomico, in quanto requisiti non atomici sono difficilmente
+ verificabili.
+ Questa attività non è automatizzabile, pertanto si richiede una attenta
+ lettura
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consistente:
+\series default
+ il documento è consistente se non genera contraddizioni al suo interno
+ e con documenti di più alto livello.
+ Si richiede una attenta lettura da parte del Verificatore dell’intero documento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modificabile:
+\series default
+ il documento è modificabile se la sua struttura consenta di effettuare
+ delle modifiche facilmente e in modo consistente.
+ La conformità delle norme stabilite nelle Norme di Progetto facilità il
+ raggiungimento di questa qualità
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tracciabile:
+\series default
+ il documento è tracciabile se ogni requisito ha una fonte chiara e se il
+ documento definisce il modo con cui riferirsi al requisito.
+ Il Verificatore dovrà controllare che nella tabella riassuntiva dei requisiti
+ per ogni requisito sia stata definita la sua provenienza
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ordinata per rilevanza:
+\series default
+ il documento soddisfa questa qualità se per ogni requisito è definito il
+ suo livello di importanza.
+ Il Verificatore dovrà controllare nella tabella riassuntiva dei requisiti
+ che i requisiti siano ordinati secondo le norme descritte nelle Norme di
+ Progetto
 \end_layout
 
 \begin_layout Standard
-La verifica di qualità del prodotto e dei processi impone l'utilizzo di
- risorse umane e tecnologiche.
+Per una descrizione più dettagliata di queste qualità si rimanda a IEEE
+ 830-1998.
+ Per la verifica del documento principalmente verrà usata la tecnica 
+\bar under
+walkthrough
+\bar default
+, inoltre se è possibile verrà utilizzata la tecnica 
+\bar under
+inspection
+\bar default
+ per individuare errori, o non conformità, già riscontrati dal Committente
+ nelle versioni precedenti del documento.
+ Le tipologie di tecniche sono descritte nella sezione “Tecniche” (XX) delle
+ Norme di Progetto.
+ I Verificatori controlleranno che i diagrammi 
+\bar under
+UML
+\bar default
+ dei casi d'uso siano tracciabili, atomici, corretti ortograficamente e
+ sintatticamente, in quanto su questi non è possibile fare controllo automatico.
+ Ci aspettiamo che una buona progettazione e verifica in questa fase individui
+ i requisiti necessari al raggiungimento delle seguenti qualità:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sufficienza:
+\series default
+ i portatori di interesse si aspettano che il software sia capace di soddisfare
+ tutti i requisiti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Comprensibilità:
+\series default
+ il software deve essere facilmente comprensibile ai portatori di interesse.
+ Questa qualità sarà raggiunta se in fase di analisi saranno individuati
+ completamente i requisiti, in particolare anche quelli mirati alla usabilità
 \end_layout
 
 \begin_layout Subsubsection
-Risorse umane
+Fase di Progettazione
 \end_layout
 
 \begin_layout Standard
-I ruoli necessari alla garanzia di qualità sono i seguenti:
+In questa fase i Verificatori dovranno accertare che ogni requisito individuato
+ nell’Analisi dei Requisiti venga correttamente tradotto nell’architettura
+ del sistema software, descritta nella Specifica Tecnica.
+ La verifica in questa fase deve accertare che la progettazione effettuata
+ rispetti i principi di:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Responsabile di Progetto:
+Disaccoppiamento:
 \series default
- controlla la qualità dei processi interni, assegnando le attività di verifica
- ai ruoli preposti, ed è responsabile della corretta realizzazione nel prodotto
- nei confronti del committente.
- Si preoccupa inoltre di approvare o respingere ogni proposta di azione
- correttiva o migliorativa fornita dai verificatori decidendone anche l'assegnaz
-ione (vedi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Gestione-amministrativa-della"
-
-\end_inset
-
-)
+ le classi definite devono essere il più possibile indipendenti
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Amministratore di Progetto:
+Packaging:
 \series default
- definisce le metodologie e le norme delle attività di verifica, compresa
- la distribuzione dei resoconti relativi ai test eseguiti, e la gestione
- e risoluzione di anomalie e discrepanze (vedi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Comunicazione-e-risoluzione"
-
-\end_inset
-
-)
+ le classi devono essere raggruppate per criterio logico
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Programmatore:
+Coesione: 
 \series default
- a sua discrezione può applicare procedure di 
-\bar under
-debugging
-\bar default
- per verificare il codice che ha prodotto; inoltre si impegna a risolvere
- tutte le anomalie evidenziate dai verificatori e dai test effettuati sul
- codice da lui prodotto
+le classi devono contenere solo il necessario per raggiungere gli obiettivi
+\end_layout
+
+\begin_layout Standard
+Tale attività sarà agevolata da un corretto tracciamento dei requisiti.
+ Una buona progettazione e verifica in questa fase porterà al raggiungimento
+ delle seguenti qualità:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Verificatore:
+Modularità:
 \series default
- applica processi di verifica e validazione su ogni prodotto e su ogni processo,
- e tiene traccia dei risultati ottenuti
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Il tracciamento verrà effettuato esclusivamente all'interno dei processi
- che lo richiedono (es: la verifica della documentazione non richiede tracciamen
-to).
+ poiché è richiesto che il software sia migliorabile deve essere diviso
+ in parti chiare e distinte.
+ I Verificatori dovranno quindi verificare il livello di disaccoppiamento
+ e di incapsulamento delle classi
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-.
- Tali attività riassumeranno gli esiti delle analisi delle misurazioni,
- individuando eventuali problematiche che verranno presentate al Responsabile
- di Progetto per essere risolte (vedi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Gestione-amministrativa-della"
+\series bold
+Semplicità:
+\series default
+ l’architettura del software deve contenere solo il necessario, niente di
+ superfluo
+\end_layout
 
-\end_inset
-
-)
+\begin_layout Standard
+La verifica in questa fase non è automatizzabile, si richiede ai Verificatori
+ di porre la massima attenzione in questa fase, in quanto è di fondamentale
+ importanza per il successo della fase successiva.
 \end_layout
 
 \begin_layout Subsubsection
-Risorse software
+Fase di Codifica
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+In questa fase il Verificatore dovrà esaminare le unità di codice prodotte
+ per accertarsi che rispettino le norme definite nelle Norme di Progetto,
+ le norme di codifica definite nel capitolo “Metriche” (XX) delle Norme
+ di Progetto, e che non contenga errori di programmazione.
+ Deve controllare che ogni requisito sia tradotto in qualche unità di codice
+ e che non ci sia codice non associato ad alcun requisito.
+ Questo sarà possibile tramite un buon tracciamento dei requisiti.
+\end_layout
 
+\begin_layout Standard
+\noindent
+Il modello di sviluppo adottato è di tipo incrementale, come descritto nel
+ documento Piano di Progetto.
+ Ogni incremento ha lo scopo di sviluppare unità software che verranno successiv
+amente integrate le une con le altre.
+ La priorità di sviluppo delle varie unità sarà determinata da una visione
+ “bottom-up”, ovvero verranno prima prodotte le unità di codice con un livello
+ minore di dipendenza dalle altre, al fine di ridurre la produzione di 
 \bar under
-Framework
+driver
 \bar default
- utilizzati per i test di unità inerenti al linguaggio di programmazione
- scelto
+ per l’attività di test.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Prima di procedere all’integrazione, ogni unità dovrà compilare correttamente
+ senza provocare 
+\bar under
+warning
+\bar default
+, in seguito deve essere sottoposta ad analisi statica, nelle forme descritte
+ in “Tecniche” (XX) delle Norme di Progetto, mediante i software di analisi
+ statica descritti in “Strumenti” (XX) alla voce “Analisi statica sul codice”.
+ Sulle componenti software dove è richiesta l’esecuzione di una prova, dopo
+ la compilazione e l’analisi statica, si effettueranno test funzionali (
+\bar under
+black-box
+\bar default
+), e in seguito se richiesto test strutturali (
+\bar under
+white-box
+\bar default
+), nelle forme descritte in “Tecniche” (XX), questa attività sarà supportata
+ dalla strumentazione descritta in “Strumenti” (3.4), alla voce “Analisi
+ dinamica sul codice”.
+ Una volta che una unità di codice compila senza provocare warning, è pronta
+ per essere integrata nel sistema.
+ Nel caso si riscontrino malfunzionamenti dopo una integrazione sarà necessario
+ individuare tramite l’uso del compilatore l’unità responsabile del malfunzionam
+ento, ripristinare l’ultima versione stabile del sistema e avvisare immediatamen
+te il Programmatore che ha introdotto il problema, avvisando anche il Responsabi
+le.
+ Nel caso che dopo l’integrazione di una nuova unità il compilatore non
+ generi errori si effettueranno test di integrazione descritti in “Descrizione
+ dei test” (XX) alla voce “Test di integrazione”.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ci aspettiamo che dall’attuazione di una buona codifica, associata a un
+ buon metodo di verifica il software raggiunga le seguenti qualità:
 \end_layout
 
 \begin_layout Itemize
-Strumenti per automatizzare i test e produrre resoconti sulle eventuali
- anomalie riscontrate
+
+\series bold
+Robustezza:
+\series default
+ poiché il software è destinato a persone con limitate conoscenze informatiche,
+ deve essere capace di sopportare ingressi errati.
+ I Verificatori, mediante l’uso dei test, dovranno verificare che il software
+ sia stabile anche con input errati
 \end_layout
 
 \begin_layout Itemize
-Strumenti aggiuntivi per permettere una semplice e automatizzata analisi
- statica del codice in modo da poterne ricavare il maggior numero di informazion
-i possibile
-\end_layout
 
-\begin_layout Itemize
-Software utile alla comunicazione fra i membri del gruppo
+\series bold
+Efficienza:
+\series default
+ per dare un riscontro veloce con l’utente, per migliorarne l’usabilità,
+ il software deve essere efficiente in termini di tempo.
+ I Verificatori valuteranno questa qualità tramite l’uso di test automatizzati
 \end_layout
 
 \begin_layout Subsubsection
-Risorse hardware
+Fase di Collaudo
+\end_layout
+
+\begin_layout Standard
+In questa fase il Verificatore effettuerà dei test di accettazione sui requisiti
+ definiti nella sezione “Descrizione dei test” (XX), e verificherà che non
+ si presentino malfunzionamenti durante l’utilizzo del prodotto.
+ La strategia di verifica adottata è descritta nella sezione “Tecniche”
+ (3.5).
+ Verrà testato il corretto funzionamento del programma e verrà testata la
+ facilità da parte dell’utente di compiere le operazioni per cui il software
+ si è posto il compito.
+ Tramite i loro giudizi valuteremo l’usabilità del nostro prodotto.
+ Per il soddisfacimento dei requisiti obbligatori di qualità definiti nella
+ Analisi dei Requisiti si adotteranno tecniche di walkthrough e inspection.
+ Per il soddisfacimento dei vincoli sarà effettuata una prova ad hoc.
+ Al termine della fase di 
+\bar under
+beta-test
+\bar default
+ si passerà alla Revisione di Accettazione.
+ La buona riuscita di questa fase porterà al raggiungimento della seguente
+ qualità:
 \end_layout
 
 \begin_layout Itemize
-Computer con ambiente di lavoro adatto allo sviluppo del progetto e per
- la fase di testing dello stesso
-\end_layout
 
-\begin_layout Itemize
-Luogo di lavoro dove potersi incontrare e lavorare insieme quando necessario
+\series bold
+Affidabilità:
+\series default
+ i portatori di interesse si aspettano che il software funzioni correttamente.
+ I Verificatori valuteranno questa caratteristica eseguendo personalmente
+ il codice
 \end_layout
 
 \begin_layout Subsection
-Risorse disponibili
+Risorse necessarie e risorse disponibili
+\end_layout
+
+\begin_layout Standard
+Tali risorse serviranno per la realizzazione del progetto, esse sono distinte
+ in risorse umane e risorse tecnologiche.
+ Le risorse umane sono costituite dalle figure di Responsabile, Responsabile
+ standard, Amministratore, Analista, Progettista, Verificatore, Programmatore.
+ Per una descrizione di questi ruoli si rimanda al documento Norme di Progetto.
+ Le risorse tecnologiche che serviranno per lo sviluppo del progetto sono
+ i Personal Computer dei singoli componenti del gruppo, dotati della strumentazi
+one software descritta nelle Norme di Progetto.
+ 
+\end_layout
+
+\begin_layout Subsection
+Strumenti
+\end_layout
+
+\begin_layout Standard
+Strumenti software per facilitare e automatizzare l’attività di verifica
+ e validazione, come strumenti per l’analisi statica e dinamica, strumenti
+ di test, strumenti per il tracciamento dei requisiti, strumenti per la
+ misurazione della qualità dei processi.
+ Tali strumenti sono descritti nelle Norme di Progetto.
+\end_layout
+
+\begin_layout Subsection
+Tecniche
+\end_layout
+
+\begin_layout Standard
+I Verificatori dovranno adottare le seguenti tecniche di analisi dove è
+ richiesto:
 \end_layout
 
 \begin_layout Subsubsection
-Risorse software
+Analisi statica
 \end_layout
 
-\begin_layout Itemize
-Github e correlati: risorse messe a disposizione dal servizio 
-\bar under
-web
-\bar default
- Github per gestire commenti o problemi a codice, documentazione e ticket
-\end_layout
-
-\begin_layout Itemize
-Hunspell ed Enchant per il controllo ortografico dei documenti
-\end_layout
-
-\begin_layout Itemize
-Eclipse con relativi strumenti già inclusi o aggiunti tramite plugin
-\end_layout
-
-\begin_layout Itemize
-Firebug Lite per l'analisi dinamica
-\end_layout
-
-\begin_layout Itemize
-Yasca per l'analisi statica del codice HTML
-\end_layout
-
-\begin_layout Itemize
-Chromedriver e Firebug Lite plugin per Google Chrome per l'analisi dinamica
-\end_layout
-
-\begin_layout Itemize
-JUnit per i test di unità
-\end_layout
-
-\begin_layout Itemize
-Strumenti 
-\bar under
-W3C
-\bar default
- per la validazione dell'
-\bar under
-applicativo web
-\end_layout
-
-\begin_layout Itemize
-Gruppo Facebook per poter comunicare fra membri del gruppo
-\end_layout
-
-\begin_layout Itemize
-Speed Tracer per il controllo dell'efficienza dell'applicativo web
+\begin_layout Standard
+Analisi che non richiede l’esecuzione del codice e si può applicare ad ogni
+ prodotto di processo, non solo al codice.
+ Per la verifica di prodotti semplici si può ricorrere ai metodi di lettura
+ (desk check), distinti in inspection, ovvero una lettura mirata all’individuazi
+one di un errore presupposto e walkthrough, ovvero una lettura a largo spettro
+ per rilevamento di errori non presupposti.
+ Per effettuare analisi statica sulle unità di codice si ricorre a metodi
+ formali, descritti nella sezione “Metodi” (XX), che dimostrano una certa
+ proprietà del prodotto.
+ Nelle prime fasi del progetto i Verificatori adotteranno principalmente
+ la tecnica walkthrough.
+ Gli errori rilevati più frequentemente forniranno al gruppo una maggiore
+ esperienza, che consentirà ai Verificatori di utilizzare una tecnica di
+ inspection per l’individuazione di tali errori.
+ Inoltre ogni correzione o suggerimento fornito dal Committente fornirà
+ anch’essa maggiore esperienza e saranno utilizzate per procedere con la
+ tecnica inspection.
 \end_layout
 
 \begin_layout Subsubsection
-Risorse hardware
+Analisi dinamica
+\end_layout
+
+\begin_layout Standard
+Analisi che richiede l’esecuzione del codice, che può essere un’unità, un
+ aggregato o il sistema completo.
+ Utilizzata sia nelle fasi di verifica che di validazione.
+ Le esecuzioni che applicano analisi dinamica sono denominate test o prove.
+ I tipi di test che il gruppo 
+\emph on
+ClockWork
+\emph default
+ intende seguire sono riportati nella sezione x delle Norme di Progetto.
+\end_layout
+
+\begin_layout Subsection
+Metodi
+\end_layout
+
+\begin_layout Standard
+Poter garantire un software di qualità, capace quindi di esibire le proprietà
+ richieste, è un obiettivo di fondamentale importanza, reso possibile allocando
+ risorse per effettuare controllo sul prodotto.
+ Tuttavia, essendo le risorse limitate e che comportano dei costi, è altresì
+ importante saper gestire tali risorse in modo da mantenere un buon rapporto
+ fra qualità del prodotto e risorse necessarie.
+ Pertanto, in base alla complessità del prodotto che ci è stato richiesto
+ di sviluppare, e in base alle caratteristiche che esso deve avere, il nostro
+ gruppo ha deciso di adottare le seguenti tipologie di analisi statica:
 \end_layout
 
 \begin_layout Itemize
-Computer personali, portatili e fissi, di ogni membro del gruppo
+
+\series bold
+Analisi di flusso di controllo
 \end_layout
 
 \begin_layout Itemize
-Aule studio del dipartimento di Matematica Pura ed Applicata dell'Università
- degli Studi di Padova
+
+\series bold
+Analisi di flusso dei dati
 \end_layout
 
 \begin_layout Itemize
-Computer dei laboratori di informatica del dipartimento di Matematica Pura
- ed Applicata dell'Università degli Studi di Padova
+
+\series bold
+Analisi di flusso di informazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verifica formale del codice
+\end_layout
+
+\begin_layout Standard
+Tali metodologie vengono descritte nalle sezione x delle Norme di Progetto.
+\end_layout
+
+\begin_layout Subsection
+Misure e metriche
+\end_layout
+
+\begin_layout Standard
+Le misure rilevate dal processo di verifica, che permettono di ottenere
+ informazioni quantitative relative ai prodotti di ogni processo produttivo
+ (sia esso progettuale o di codifica), devono essere basate su metriche
+ stabilite a priori quando è possibile ritenere di avere sufficienti conoscenze
+ dell'argomento trattato.
+ Qualora ci fossero metriche, riguardanti determinate misure, ancora incerte
+ e approssimative, si cercherà di provvedere a stabilirle precisamente durante
+ il corso della progettazione e realizzazione del prodotto, attraverso l'analisi
+ di ciò che sarà stato realizzato fino a quel momento e grazie anche all'apprend
+imento graduale del gruppo.
+ Le misure e le metriche suddette sono riportate nella sezione x delle Norme
+ di Progetto.
 \end_layout
 
 \end_body
