@@ -96,24 +96,38 @@ NOMEGRUPPO}
 \series bold
 Test di unità:
 \series default
- test che vengono applicati alle singole unità di sistema al fine di verificare
- la presenza di malfunzionamenti.
- Il test sul software si suddivide in due tipologie: verifica funzionale,
- 
+ test applicati alle singole unità di sistema al fine di verificare la presenza
+ di malfunzionamenti.
+ Il test sul software si suddivide in due tipologie:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+verifica funzionale, 
 \bar under
 black-box
 \bar default
- e verifica strutturale, 
+ 
+\end_layout
+
+\begin_layout Itemize
+verifica strutturale, 
 \bar under
 white-box
-\bar default
+\end_layout
+
+\begin_layout Standard
+La strumentazione adottata per automatizzare questa attività è definita
+ nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ambiente-di-verifica"
+
+\end_inset
+
 .
- La strumentazione adottata per automatizzare questa attività è definita
- in “Strumenti” (sezione degli strumenti norme) alla voce “Analisi dinamica
- sul codice”.
  La verifica strutturale deve avvenire mediante la scelta strategica degli
- input al fine di poter eseguire tutti i possibili branch del codice e di
- tutti gli statement.
+ input al fine di poter eseguire tutti i possibili branch del codice e statement.
  Il test sarà valido se questo comporterà la copertura di branch e statement
  vicina al 100%.
  Se ciò non si verificherà è necessario scrivere altri test per coprire
@@ -125,6 +139,7 @@ ione automatica che identificherà le porzioni di codice che ancora devono
  al funzionamento del programma e quindi da eliminare
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -142,8 +157,8 @@ Test di integrazione:
 \series bold
 Test di accettazione:
 \series default
- test che viene eseguito sull’intero sistema allo scopo di accertare che
- il sistema prodotto adempie ai requisiti richiesti.
+ test eseguito sull’intero sistema allo scopo di accertare che il sistema
+ prodotto adempie ai requisiti richiesti.
  I test di accettazione possono essere 
 \bar under
 alpha-test
@@ -152,8 +167,22 @@ alpha-test
 \bar under
 beta-test
 \bar default
-, gli alpha-test precedono i beta-test.
- Alpha-test vien fatto da parte di persone interne al 
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Gli alpha-test precedono i beta-test.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alpha-test: svolto da persone interne al 
 \begin_inset ERT
 status open
 
@@ -166,11 +195,32 @@ NOMEGRUPPO}
 
 \end_inset
 
-, mentre beta-test vien fatto da persone esterne al gruppo.
- Verranno forniti ai beta-tester le istruzioni minimali all’uso del sistema,
+
+\end_layout
+
+\begin_layout Itemize
+Beta-test: svolto da persone esterne al 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Verranno forniti ai beta-tester le istruzioni minimali all’uso del sistema,
  e i risultati attesi
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 Procedure dei test
 \end_layout
@@ -180,40 +230,62 @@ I passi per effettuare test sono:
 \end_layout
 
 \begin_layout Enumerate
-definizione del test sul componente: se il componente soggetto a test è
- un componente attivo, e ancora non sono state prodotte le componenti passive
- pilotate da tale componente, il test dovrà definire gli 
+Definizione del test sul componente: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se il componente soggetto a test è un componente attivo, e non sono state
+ prodotte le componenti passive pilotate da tale componente, il test dovrà
+ definire gli 
 \bar under
 stub
 \bar default
  necessari.
- Viceversa se il componente soggetto a test è un componente passivo e ancora
- non sono state prodotte le componenti attive che pilotano il componente
- soggetto a test, il test dovrà definire i driver necessari.
  
 \end_layout
 
+\begin_layout Itemize
+Se il componente soggetto a test è un componente passivo e ancora non sono
+ state prodotte le componenti attive che pilotano il componente soggetto
+ a test, il test dovrà definire i driver necessari.
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
-preparazione del caso di prova: l’esecuzione del test deve avvenire in un
+Preparazione del caso di prova: l’esecuzione del test deve avvenire in un
  definito ambiente, con dati in ingresso controllati, e devono essere definiti
  gli output attesi; i dati in input devono essere distinti in 3 classi di
- equivalenza, gli input interni al dominio, input al limite del dominio
- e input al di fuori del dominio
+ equivalenza,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+interni al dominio
+\end_layout
+
+\begin_layout Itemize
+al limite del dominio 
+\end_layout
+
+\begin_layout Itemize
+al di fuori del dominio
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Esecuzione del test sul componente
 \end_layout
 
 \begin_layout Enumerate
-esecuzione del test sul componente
+Analisi dei risultati ottenuti con quelli attesi
 \end_layout
 
 \begin_layout Enumerate
-analisi dei risultati ottenuti con quelli attesi
-\end_layout
-
-\begin_layout Enumerate
-se i risultati ottenuti differiscono da quelli attesi comunicare gli errori
+Se i risultati ottenuti differiscono da quelli attesi comunicare gli errori
  tramite appositi ticket, correggere gli errori e rieseguire il test; altrimenti
- se i risultati ottenuti sono conformi a quelli attesi procedere con la
- registrazione dei risultati
+ procedere con la registrazione dei risultati
 \end_layout
 
 \end_body

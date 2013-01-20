@@ -75,22 +75,33 @@ name "Qualità"
 \begin_layout Standard
 
 \lang italian
-Prendendo come riferimento lo standard ISO/IEC 9126, il gruppo 
-\emph on
-Clockwork
-\emph default
+Prendendo come riferimento lo standard ISO/IEC 9126, il 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
  si impegna a garantire le seguenti qualità per il prodotto 
 \series bold
 MyTalk
+\series default
+:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 \lang italian
-Funzionalità: 
+Funzionalità:
 \series default
-il software deve soddisfare i compiti prestabiliti, poter interagire con
+ il prodotto deve soddisfare i compiti prestabiliti, poter interagire con
  altri sistemi, aderire a standard e convenzioni nell'ambiente in cui viene
  applicato, gestire i dati in modo sicuro, negando l'accesso a entità non
  autorizzate
@@ -102,10 +113,9 @@ il software deve soddisfare i compiti prestabiliti, poter interagire con
 \lang italian
 Affidabilità:
 \series default
- il software deve poter evitare che si verifichino malfunzionamenti, poter
- gestire situazioni non attese o usi scorretti, poter essere riutilizzabile
- nel caso in cui avvengano errori critici, sia affidabile in conformità
- all'ambiente di applicazione
+ il software deve evitare che si verifichino malfunzionamenti, gestire situazion
+i non attese o usi scorretti, essere riutilizzabile nel caso in cui avvengano
+ errori critici, sia affidabile in conformità all'ambiente di applicazione
 \end_layout
 
 \begin_layout Itemize
@@ -134,8 +144,8 @@ Usabilità:
 \lang italian
 Manutenibilità:
 \series default
- la modifica del codice del software deve poter essere quanto più facile
- possibile, grazie a un codice comprensibile
+ la modifica del codice del prodotto deve poter essere quanto più facile
+ possibile, con un codice comprensibile
 \end_layout
 
 \begin_layout Itemize
@@ -157,8 +167,14 @@ METRICHE
 \begin_layout Standard
 
 \lang italian
-In base ai criteri elencati nella precedente sezione si definiscono le seguenti
- metriche per la composizione di codice di qualità:
+In base ai criteri elencati nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ambiente-di-verifica"
+
+\end_inset
+
+ si definiscono le seguenti metriche per la composizione di codice di qualità:
 \end_layout
 
 \begin_layout Itemize
@@ -168,16 +184,30 @@ Complessità ciclomatica:
 \series default
  rappresenta la complessità di un metodo, basata sulla misurazione del numero
  di cammini linearmente indipendenti che attraversano il grafo di flusso
- di controllo, nel quale i nodi rappresentano gruppi indivisibili di istruzioni
- e gli archi connettono due nodi se le istruzioni di un nodo possono essere
- eseguite immediatamente dopo le istruzioni dell'altro nodo.
- Un valore elevato di complessità riduce la manutenibilità e le possibilità
+ di controllo, dove:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nodi: rappresentano gruppi indivisibili di istruzioni
+\end_layout
+
+\begin_layout Itemize
+Archi: connettono due nodi se le istruzioni di un nodo possono essere eseguite
+ immediatamente dopo le istruzioni dell'altro nodo
+\end_layout
+
+\begin_layout Standard
+Un valore elevato di complessità riduce la manutenibilità e le possibilità
  di riuso del metodo: se dovesse risultare tale, parte delle sue funzionalità
  deve essere demandando ad altri metodi da richiamare.
- Particolare attenzione va posta sulla stima di questo valore: il costrutto
+\end_layout
+
+\begin_layout Standard
+Particolare attenzione va posta sulla stima di questo valore: il costrutto
  switch, ad esempio, moltiplica i cammini linearmente indipendenti e quindi
- può, molto facilmente, comportare una misurazione di complessità ciclomatica
- molto elevata (e comunque oltre i limiti imposti).
+ può comportare una misurazione di complessità ciclomatica molto elevata
+ (e oltre i limiti imposti).
  Tuttavia potrebbe verificarsi l'eventualità che, al fine di garantire una
  velocità di esecuzione maggiore per un certo metodo, si decida di assumere
  limiti di complessità ciclomatica più laschi.
@@ -187,6 +217,7 @@ Complessità ciclomatica:
  è dieci
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -204,12 +235,14 @@ Peso delle classi:
 \series bold
 Numero di parametri:
 \series default
- indica il numero di parametri formali per metodo.
- Un numero molto elevato può essere ridotto, e quindi migliorato, grazie
- alla creazione di ulteriori classi che contengano più parametri tra loro
- correlati, aumentando la manutenibilità e l'astrazione del codice.
- La finalità è quella di mantenere un numero massimo di parametri pari a
- dieci
+ vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Progettazione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -238,9 +271,14 @@ Numero di variabili locali:
 \series bold
 Numero di livelli di annidamento:
 \series default
- rappresenta il numero di livelli di annidamento dei metodi.
- Un valore elevato determina alta complessità e riduce il livello di astrazione
- del codice: per questo deve mantenersi a livelli bassi
+ vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Progettazione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -253,31 +291,47 @@ Grado di accoppiamento:
 \begin_layout Itemize
 
 \series bold
-Indice di utilità:
+Indice di utilità
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Indica il numero di classi esterne al package che dipendono da classi interno
+ ad esso.
+\end_layout
+
+\end_inset
+
+:
 \series default
- numero di classi esterne al 
-\bar under
-package
-\bar default
- che dipendono da classi interne ad esso.
- Deve avere un valore ragionevole: se troppo basso indicherà che il package
- non fornisce molte funzionalità al suo esterno e quindi potrebbe essere
- scarsamente utile; se troppo alto indicherà che altre classi sono strettamente
- dipendenti dal package in questione, e quindi potrebbe accadere che eventuali
- modifiche ad esso comportino costi elevati di adattamento delle classi
- che vi dipendono, qualora non fosse stato progettato adeguatamente il sistema
- di interfacce
+ se troppo basso indicherà che il package non fornisce molte funzionalità
+ al suo esterno, potrebbe essere scarsamente utile; se troppo alto indicherà
+ che altre classi sono strettamente dipendenti dal package in questione,
+ e quindi potrebbe accadere che eventuali modifiche ad esso comportino costi
+ elevati di adattamento delle classi che vi dipendono, qualora non fosse
+ stato progettato adeguatamente il sistema di interfacce
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Indice di dipendenza: 
+Indice di dipendenza
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size normal
+Indica il numero di classi interne al package che dipendono da classi esterne
+ ad esso
+\end_layout
+
+\end_inset
+
+: 
 \series default
-numero di classi interne al package che dipendono da classi esterne ad esso.
- In generale va sempre minimizzato, aumentando quindi le funzionalità proprie
- di un package, senza la necessità di affidarsi al servizio offerto da altre
- classi esterne
+va sempre minimizzato, aumentando le funzionalità proprie di un package,
+ senza la necessità di affidarsi al servizio offerto da altre classi esterne
 \end_layout
 
 \end_deeper

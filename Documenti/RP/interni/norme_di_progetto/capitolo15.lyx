@@ -96,7 +96,7 @@ Analisi del flusso di controllo:
  correttamente e quindi rispetti la sequenza specificata.
  Accerteremo che il codice sia ben strutturato, che non esistano parti di
  codice che non vengono mai raggiunte o che non terminano.
- Il tutto tramite la tecnica di call-tree analysis (albero delle chiamate),
+ Si utilizzerà la tecnica di call-tree analysis (albero delle chiamate),
  sfruttando la capacità dei compilatori di calcolarlo, e verificando che
  le variabili di controllo delle iterazioni non vengano modificate.
  Il flusso di controllo sarà opportunamente analizzato in quelle parti di
@@ -110,7 +110,7 @@ Analisi del flusso di controllo:
 Analisi di flusso dei dati:
 \series default
  assicura che il flusso di dati non faccia uso di variabili non ancora inizializ
-zate o prive di valore in modo da evitare possibili errori al momento del
+zate o prive di valore, in modo da evitare possibili errori al momento del
  loro utilizzo.
  Tali errori verranno facilmente evitati con una buona costruzione del codice
  da parte del programmatore, prestando particolare attenzione ad inizializzare
@@ -127,17 +127,34 @@ Analisi flusso d'informazione:
  individuazione delle relazioni tra ingressi ed uscite tra i vari moduli,
  accertando che le uniche dipendenze consentite siano quelle previste dalla
  specifica dei moduli.
- Questo tipo di analisi può essere effettuata a tre livelli: singolo modulo,
- più moduli tra loro correlati, intero sistema.
- In base ai moduli che otterremo si deciderà quali livelli di analisi utilizzare
+ Questo tipo di analisi può essere effettuata a tre livelli: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+singolo modulo
+\end_layout
+
+\begin_layout Itemize
+più moduli tra loro correlati
+\end_layout
+
+\begin_layout Itemize
+intero sistema.
+ 
+\end_layout
+
+\begin_layout Standard
+In base ai moduli che otterremo si deciderà quali livelli di analisi utilizzare
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 Verifica formale del codice:
 \series default
- tramite l'esplorazione di tutte le esecuzioni possibili si verifica la
+ tramite l'esplorazione di tutte le esecuzioni possibili, si verifica la
  correttezza del codice rispetto alla specifica dei requisiti
 \end_layout
 

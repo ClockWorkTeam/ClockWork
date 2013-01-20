@@ -202,9 +202,27 @@ e.
 \begin_layout Itemize
 
 \emph on
-Annidamento di chiamata: 
+Annidamento di chiamata
 \emph default
-non dovrà esserci una profondità di annidamento maggiore di dieci (10)
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+indica il numero di livelli di annidamento dei metodi
+\end_layout
+
+\end_inset
+
+:
+\lang english
+ 
+\lang italian
+la profondità massima di annidamento tollerata è dieci.
+
+\lang english
+ Un valore elevato determina alta complessità e riduce il livello di astrazione
+ del codice
 \end_layout
 
 \begin_layout Itemize
@@ -214,16 +232,29 @@ Flussi di condizione:
 \emph default
 per la chiarezza e la semplicità di verifica del codice, qualora vengano
  utilizzati costrutti condizionali (if-then-else) non ci dovrà essere un
- annidamento maggiore di cinque (5)
+ annidamento maggiore di cinque
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Numero di parametri: 
+Numero di parametri
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+indica il numero di parametri formali per metodo.
+\end_layout
+
+\end_inset
+
+
 \emph default
-non dovranno essere presenti metodi con un numero di parametri maggiore
- di dieci (10)
+\lang english
+: il numero massimo di parametri tollerati è dieci.
+ Se il numero di parametri supera questa soglia, deve essere ridotto, tramite
+ la creazione di ulteriori classi che contengano più parametri tra loro
+ correlati, aumentando la manutenibilità e l'astrazione del codice
 \end_layout
 
 \end_deeper
