@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language italian
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,7 +25,6 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -61,107 +60,655 @@
 \begin_body
 
 \begin_layout Section
-Gestione amministrativa della revisione
+Obiettivi di qualità
 \end_layout
 
 \begin_layout Subsection
-Comunicazione e risoluzione di anomalie
+Qualità di processo
 \end_layout
 
 \begin_layout Standard
-Un'
+Per poter garantire la qualità del prodotto è necessario poter garantire
+ anche la qualità dei processi che determinano la sua realizzazione.
+ Per garantire la qualità dei processi impiegati si è quindi deciso di adottare
+ lo standard ISO/IEC 15504:2007 SPICE “Software Process Improvement Capability
+ dEtermination”, che definisce un modello per la valutazione della qualità
+ dei processi nello sviluppo software SPA-I “Software Process Assessment
+ & Improvement”.
+ Tutti i processi saranno quindi valutati per misurarne la qualità e permetterne
+ il miglioramento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/modello_SPA-I.png
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+modello SPA-I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Per la misurazione della maturità del processo lo SPICE definisce i seguenti
+ 9 attributi di processo.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
 \series bold
-anomalia
+Process performance:
 \series default
- consiste in una deviazione del prodotto dalle aspettative prefissate.
- Per la gestione e risoluzione di anomalie ci si affida allo strumento di
- ticketing messo a disposizione dal servizio Github nell'apposita sezione
- “Issue”.
- Il Verificatore, per ogni anomalia che riscontrerà e non ancora individuata
- da altri verificatori, dovrà aprire un nuovo ticket.
- Per la struttura e risoluzione di un ticket vedere 
-\family typewriter
-Norme_di_Progetto_v2.0.pdf
-\family default
-.
+ capacità di un processo di raggiungere i suoi obiettivi, trasformando input
+ identificabili in output identificabili
 \end_layout
 
-\begin_layout Subsection
-Trattamento delle discrepanze
-\end_layout
+\begin_layout Enumerate
+\noindent
 
-\begin_layout Standard
-Una 
 \series bold
-discrepanza
+Process management:
 \series default
- è un tipo di anomalia non grave, non concerne il corretto funzionamento
- del prodotto, ma può riguardare un allontanamento dai requisiti attesi
- specificati nel Capitolato d'Appalto oppure una violazione delle Norme
- di Progetto.
- Le modalità di ricerca e comunicazione delle discrepanze è del tutto simile
- alle modalità specificate per le anomalie; la risoluzione presenta invece
- modalità differenti.
- Una volta creato il ticket sarà compito del verificatore riconoscere quale
- tipo di discrepanza si tratta e nel caso riguardi una violazione delle
- Norme di Progetto provvederà a comunicare il problema all'Amministratore
- che prenderà provvedimenti.
- Se invece il problema riguarda un allontanamento dai requisiti, una volta
- identificata l'origine della discrepanza, il Verificatore solleciterà l'Analist
-a per valutare la gravità e i costi per risolverla.
+ insieme di attività di pianificazione e monitoraggio delle performance
+ di un processo
 \end_layout
 
-\begin_layout Subsection
-Procedure di controllo di qualità di processo
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Work product management:
+\series default
+ lo sviluppo del processo è correttamente pianificato e monitorato per consentir
+e la corretta verifica e documentazione dei risultati ottenuti
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Process definition:
+\series default
+ l’attuazione di un processo si basa su approcci standardizzati 
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Process resource:
+\series default
+ il processo ha a disposizione sufficienti risorse umane e tecnologiche
+ per poter essere attuato
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Process deployment:
+\series default
+ i risultati ottenuti sono misurabili al fine di determinare il raggiungimento
+ degli obiettivi desiderati
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Process control: 
+\series default
+vengono raccolte ed analizzate delle misurazioni allo scopo di poter applicare
+ le correzioni necessarie alla corretta attuazione del processo
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Process innovation:
+\series default
+ riguarda l’attenzione al miglioramento e alla realizzazione degli obiettivi
+ attuali e futuri pianificati dall’azienda.
+ I cambiamenti proposti ai processi esistenti devono essere valutati rispetto
+ agli obiettivi di business attuali e futuri al fine di selezionare le modifiche
+ più appropriate da implementare
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\series bold
+Process optimization: 
+\series default
+le modifiche al processo vengono definite ed implementate in modo da garantire
+ il continuo incremento delle performance per il raggiungimento degli obiettivi
+ prefissati
 \end_layout
 
 \begin_layout Standard
-L'organizzazione interna dei processi si basa sul principio 
+Per ciascuno dei seguenti attributi viene assegnata una valutazione che
+ ne definisce il livello di possesso dell’attributo da parte del processo.
+ Lo standard definisce 4 possibili valutazioni assegnabili:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+N - Non posseduto
+\series default
+ (0 - 15% di possesso): non c’è evidenza oppure ce n’è poca del possesso
+ di un attributo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+P - Parzialmente posseduto
+\series default
+ (16 - 50% di possesso): c’è evidenza di approccio sistematico al raggiungimento
+ del possesso di un attributo e del raggiungimento di tale possesso, ma
+ alcuni aspetti del possesso possono essere non prevedibili
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+L - Largamente posseduto
+\series default
+ (51 - 85% di possesso): vi è evidenza di approccio sistematico al raggiungiment
+o del possesso di un attributo e di un significativo livello di possesso
+ di tale attributo, ma l’attuazione del processo può variare nelle diverse
+ unità operative della organizzazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+F - (Fully) Pienamente posseduto
+\series default
+ (86 - 100% di possesso): vi è evidenza di un totale e sistematico approccio
+ e di un completo raggiungimento del possesso dell’attributo e non esistono
+ significative differenze nel modo di attuare il processo tra le diverse
+ unità operative
+\end_layout
+
+\begin_layout Standard
+SPICE prevede 6 possibili livelli di ‘maturità’ per la valutazione:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livello 0 - Processo incompleto: 
+\series default
+il processo non è implementato o non raggiunge gli obiettivi.
+ Non vi è evidenza di approcci sistematici agli attributi definiti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livello 1 - Processo semplicemente attuato:
+\series default
+ il processo viene messo in atto e raggiunge i suoi obiettivi.
+ Non vi è evidenza di approcci sistematici agli attributi definiti.
+ Il raggiungimento di questo livello è dimostrato attraverso il possesso
+ degli attributi di “Process performance”
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livello 2 - Processo gestito:
+\series default
+ il processo è attuato, ma anche pianificato, tracciato, verificato ed aggiustat
+o se necessario, sulla base di obiettivi ben definiti.
+ Il raggiungimento di questo livello è dimostrato attraverso il possessi
+ degli attributi di “Process management” e “Work product management”
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livello 3 - Processo definito:
+\series default
+ il processo è attuato, pianificato e controllato sulla base di procedure
+ ben definite, basate sui principi del software engineering.
+ Il raggiungimento di questo livello è dimostrato attraverso il possesso
+ degli attributi di “Process definition” e “Process resource”
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livello 4 - Processo predicibile:
+\series default
+ il processo è stabilizzato ed è attuato all’interno di definiti limiti
+ riguardo i risultati attesi, le performance, le risorse impiegate ecc.
+ Il raggiungimento di questo livello è dimostrato attraverso il possesso
+ degli attributi di “Process deployment” e “Process control”
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Livello 5 - Processo ottimizzante:
+\series default
+ il processo è predicibile ed in grado di adattarsi per raggiungere obiettivi
+ specifici e rilevanti per l’organizzazione.
+ Il raggiungimento di questo livello è dimostrato attraverso il possesso
+ degli attributi di “Process innovation” e “Process optimization”
+\end_layout
+
+\begin_layout Standard
+L’applicazione dello standard ISO/IEC 15504 porta a benefici sia agli sviluppato
+ri del software che ai suoi utilizzatori o acquirenti.
+ Per gli sviluppatori porta vantaggi nell’ottimizzazione dell’uso delle
+ risorse, un contenimento dei costi, una maggiore tempestività di consegna
+ del prodotto ultimato, migliore stima dei rischi e degli impegni e la possibili
+tà di confrontarsi con delle 
 \bar under
-PDCA
+best practice
 \bar default
-, in grado di garantire un miglioramento continuo della qualità di tutti
- i processi (compreso quello di verifica stesso) e, conseguentemente, dei
- prodotti risultanti.
- I processi devono essere pianificati dettagliatamente rispetto ai requisiti
- richiesti e alle risorse disponibili, e quindi attuati secondo il piano.
- La verifica sui processi avviene attraverso l'analisi costante delle misurazion
-i sul prodotto di ciascun processo e sul processo stesso.
- Se l'analisi di tali misure evidenzia valori che si discostano, in modo
- peggiorativo, dai piani prefissati, questo denoterà la presenza di un problema:
- per ognuno di essi che verrà identificato, si provvederà a stabilirne le
- cause e le possibili soluzioni, intervenendo in modo correttivo sul processo
- ed, eventualmente, sul piano iniziale ad esso relativo.
- Le misurazioni sul processo consistono principalmente in:
+.
+ Per gli utenti invece abbiamo una maggior facilità nella selezione dei
+ fornitori, una migliore valutazione dei rischi di progetto, controllo dello
+ stato di avanzamento in corso d’opera, riduzione dei costi di correzione
+ degli errori ed un controllo dei rischi e delle varianti in corso d’opera.
 \end_layout
 
-\begin_layout Itemize
-Tempo impiegato per essere completato
-\end_layout
-
-\begin_layout Itemize
-Cicli iterativi interni al processo
-\end_layout
-
-\begin_layout Itemize
-Attinenza ai piani stabiliti
-\end_layout
-
-\begin_layout Itemize
-Soddisfazione dei requisiti richiesti
-\end_layout
-
-\begin_layout Itemize
-Risorse utilizzate e/o consumate durante il processo
+\begin_layout Subsection
+Qualità del prodotto
 \end_layout
 
 \begin_layout Standard
-Se non vengono identificati problemi relativi ad un processo, è possibile
- intervenire comunque in modo migliorativo: tale miglioramento consiste
- evidentemente nel ridurre il numero di cicli iterativi, risorse e tempo
- utilizzati, comunque garantendo che l'esecuzione del processo sia fedele
- al piano e soddisfi i requisiti, aumentandone quindi la sua efficienza
- e determinando una variazione nel grado di efficacia non negativo.
+Per quanto concerne la qualità del prodotto si è scelto di seguire alcune
+ linee guida dettate dallo standard ISO/IEC 9126, classificato da sei caratteris
+tiche generali e varie sotto-caratteristiche.
+ Per ogni caratteristica generale sarà poi specificato quale sarà il grado
+ minimo di raggiungimento per definire un determinato obiettivo di qualita
+ conseguito.
+ In conclusione, il prodotto si potrà considerare completo e di qualità
+ solo quando tutte le caratteristiche saranno soddisfatte almeno ad un grado
+ minimo.
+\end_layout
+
+\begin_layout Subsubsection
+Funzionalità
+\end_layout
+
+\begin_layout Standard
+Il prodotto software realizzato deve essere in grado di offrire apposite
+ funzionalità che siano in grado di soddisfare le esigenze stabilite, necessarie
+ per operare sotto condizioni specifiche.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Appropiatezza:
+\series default
+ costituisce la capacità del software di offrire un insieme di funzioni
+ per i compiti ed obbiettivi prefissati all’utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Accuratezza:
+\series default
+ capacità del software di fornire i risultati concordati o i precisi effetti
+ richiesti 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Interoperabilità:
+\series default
+ capacità del prodotto software di interagire ed operare con specifici sistemi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conformità:
+\series default
+ capacità del prodotto software di aderire a standard, convenzioni e regolamenta
+zioni rilevanti al settore operativo a cui vengono applicate 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sicurezza:
+\series default
+ la capacità del prodotto software di proteggere informazioni e dati impedendo
+ che persone o sistemi non autorizzati possano accedervi o modificarli,
+ mentre garantire queste operazioni a utenti o sistemi autorizzati
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantificazione del raggiungimento dell’obbiettivo di qualità:
+\series default
+ la misurazione del raggiungimento di questo obiettivo si calcolerà verificando
+ la quantità di requisiti soddisfatti che avranno un riscontro in elementi
+ funzionanti nell’applicazione prodotta.
+ La soglia di sufficienza sarà quindi data dal soddis- facimento di tutti
+ i requisiti obbligatori previsti dal capitolato d’appalto.
+\end_layout
+
+\begin_layout Subsubsection
+Affidabilità
+\end_layout
+
+\begin_layout Standard
+L’affidabilità misura la capacità di un prodotto software di mantenere un
+ determinato livello di prestazioni se usato in determinate condizioni e
+ per un certo periodo.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Maturità:
+\series default
+ capacità del prodotto software di evitare che si verifichino errori, malfunzion
+amenti o siano prodotti risultati non coerenti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tolleranza agli errori:
+\series default
+ capacità di mantenere determinati livelli di prestazioni nonostante la
+ presenza di errori, malfunzionamenti o usi scorretti del prodotto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Recuperabilità:
+\series default
+ capacità di un prodotto di ripristinare il livello appropriato di prestazioni
+ e di essere in grado di recuperare le informazioni rilevanti in seguito
+ ad un malfunzionamento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Aderenza:
+\series default
+ capacità di aderire a standard, regole e convenzioni inerenti l’affidabilità
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantificazione del raggiungimento dell’obbiettivo di qualità:
+\series default
+ la misurazione del raggiungimento di questo obiettivo si calcolerà confrontando
+ il numero di esecuzioni totale con quelle andate a buon fine e che hanno
+ mantenuto un livello di prestazioni tali da poter permettere l’utilizzo
+ previsto del prodotto.
+\end_layout
+
+\begin_layout Subsubsection
+Efficienza
+\end_layout
+
+\begin_layout Standard
+La capacità di fornire adeguate prestazioni in relazione alla quantità di
+ risorse usate determina l’efficienza.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Comportamento rispetto al tempo: 
+\series default
+capacità di fornire adeguati tempi di risposta, elaborazione e velocità,
+ sotto condizioni determinate 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Utilizzo delle risorse:
+\series default
+ capacità di utilizzare in maniera adeguata la giusta quantità e tipologia
+ di risorse 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conformità:
+\series default
+ capacità di aderire a standard e specifiche sull’efficienza
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantificazione del raggiungimento dell’obbiettivo di qualità:
+\series default
+ la misurazione del raggiungimento di questo obiettivo sarà determinata
+ dal tempo necessario per ottenere una risposta dal servizio sia in condizioni
+ normali che in condizioni di sovraccarico.
+\end_layout
+
+\begin_layout Subsubsection
+Usabilità
+\end_layout
+
+\begin_layout Standard
+La capacità di un prodotto software di essere capito, appreso e usato dall’utent
+e in certe condizioni determina la sua usabilità.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Comprensibilità:
+\series default
+ costituisce la facilità di comprensione dei concetti del prodotto, permettendo
+ all’utente quindi di comprendere se il software è appropriato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Apprendibilità:
+\series default
+ capacità di diminuire l’impegno richiesto agli utenti per imparare ad utilizzar
+e l’applicazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Operabilità:
+\series default
+ capacità di porre gli utenti in condizioni tali da utilizzare il prodotto
+ per i propri scopi e controllarne l’uso 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attrattiva: 
+\series default
+capacità del software di essere piacevole per l’utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conformità: 
+\series default
+capacità del software di aderire a standard o convenzioni relativi all’usabilità
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantificazione del raggiungimento dell’obbiettivo di qualità:
+\series default
+ la misurazione del raggiungimento di questo obiettivo sarà costituita dalla
+ capacità dell’applicativo di adattarsi ai vari tipi di ambienti in cui
+ esso verrà eseguito.
+ L’usabilità sarà poi ritenuta raggiunta fornendo un’interfaccia il più
+ possibile chiara, semplice ed intuitiva.
+\end_layout
+
+\begin_layout Subsubsection
+Manutenibilità
+\end_layout
+
+\begin_layout Standard
+La manutenibilità rappresenta la capacità del software di essere modificato,
+ includendo correzioni, miglioramenti o adattamenti.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Facilità di analisi:
+\series default
+ rappresenta la facilità con la quale è possibile analizzare il codice per
+ localizzare un eventuale errore 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modificabilità:
+\series default
+ capacità del prodotto software di permettere l’implementazione di una specifica
+ta modifica
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stabilità:
+\series default
+ capacità del software di evitare effetti inaspettati derivanti da modifiche
+ errate 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Testabilità:
+\series default
+ capacità del software di essere facilmente testato per validare le modifiche
+ apportate
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantificazione del raggiungimento dell’obbiettivo di qualità:
+\series default
+ la misurazione del raggiungimento di questo obiettivo sarà legata al rispetto
+ delle misure metriche descritte nel capitolo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Pianificazione-Strategica-e-Temporale"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Portabilità
+\end_layout
+
+\begin_layout Standard
+La portabilità è la capacità di un software d’essere portato da un ambiente
+ di lavoro ad un altro.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Adattabilità:
+\series default
+ capacità del software di essere adattato per differenti ambienti operativi
+ senza dover applicare modifiche diverse da quelle fornite per il software
+ considerato 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Installabilità:
+\series default
+ capacità del software di essere installato in uno specifico ambiente 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conformità: 
+\series default
+capacità del software di aderire a standard e convenzioni relative alla
+ portabilità
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sostituibilità:
+\series default
+ capacità di essere utilizzato al posto di un altro software per svolgere
+ gli stessi compiti 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantificazione del raggiungimento dell’obbiettivo di qualità:
+\series default
+ il sistema deve essere funzionante con i principali browser (Google Chrome,
+ Firefox, Opera, Safari, Internet Explorer) e browser ospitati su dispositivi
+ 
+\bar under
+mobile
+\bar default
+.
 \end_layout
 
 \end_body

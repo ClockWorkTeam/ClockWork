@@ -89,12 +89,8 @@ Verificatore:
  deve accertare che la documentazione prodotta sia corretta, a livello grammatic
 ale e sintattico e che rispetti le norme descritte nelle Norme di Progetto.
  Il controllo ortografico, sarà automatizzato utilizzando la strumentazione
- descritta in (
-\family typewriter
-Norme_di_Progetto_v2.0.pdf
-\family default
-, sez.
- Ambiente di verifica e validazione).
+ descritta nel capitolo Ambiente di verifica e validazione delle Norme di
+ Progetto.
  Il controllo dei termini nel glossario, inseriti nei documenti, avverrà
  tramite un'attenta lettura dei documenti.
  Se durante la verifica saranno state rilevate irregolarità, queste verranno
@@ -149,6 +145,13 @@ e l’emanazione dei ticket.
 
 \begin_layout Subsection
 Pianificazione Strategica e Temporale
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Pianificazione-Strategica-e-Temporale"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -327,8 +330,14 @@ inspection
 \bar default
  per individuare errori, o non conformità, già riscontrati dal Committente
  nelle versioni precedenti del documento.
- Le tipologie di tecniche sono descritte nella sezione “Tecniche” (XX) delle
- Norme di Progetto.
+ Le tipologie di tecniche sono descritte nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Analisi-statica"
+
+\end_inset
+
+.
  I Verificatori controlleranno che i diagrammi 
 \bar under
 UML
@@ -433,8 +442,8 @@ Fase di Codifica
 \begin_layout Standard
 In questa fase il Verificatore dovrà esaminare le unità di codice prodotte
  per accertarsi che rispettino le norme definite nelle Norme di Progetto,
- le norme di codifica definite nel capitolo “Metriche” (XX) delle Norme
- di Progetto, e che non contenga errori di programmazione.
+ le norme di codifica definite nella sezione Metriche delle Norme di Progetto,
+ e che non contenga errori di programmazione.
  Deve controllare che ogni requisito sia tradotto in qualche unità di codice
  e che non ci sia codice non associato ad alcun requisito.
  Questo sarà possibile tramite un buon tracciamento dei requisiti.
@@ -442,8 +451,8 @@ In questa fase il Verificatore dovrà esaminare le unità di codice prodotte
 
 \begin_layout Standard
 \noindent
-Il modello di sviluppo adottato è di tipo incrementale, come descritto nel
- documento Piano di Progetto.
+Il modello di sviluppo adottato è di tipo incremmentale, come descritto
+ nel documento Piano di Progetto.
  Ogni incremento ha lo scopo di sviluppare unità software che verranno successiv
 amente integrate le une con le altre.
  La priorità di sviluppo delle varie unità sarà determinata da una visione
@@ -458,13 +467,10 @@ driver
 \begin_layout Standard
 \noindent
 Prima di procedere all’integrazione, ogni unità dovrà compilare correttamente
- senza provocare 
-\bar under
-warning
-\bar default
-, in seguito deve essere sottoposta ad analisi statica, nelle forme descritte
- in “Tecniche” (XX) delle Norme di Progetto, mediante i software di analisi
- statica descritti in “Strumenti” (XX) alla voce “Analisi statica sul codice”.
+ senza provocare warning, in seguito deve essere sottoposta ad analisi statica,
+ nelle forme descritte in “Tecniche” (XX) delle Norme di Progetto, mediante
+ i software di analisi statica descritti in “Strumenti” (XX) alla voce “Analisi
+ statica sul codice”.
  Sulle componenti software dove è richiesta l’esecuzione di una prova, dopo
  la compilazione e l’analisi statica, si effettueranno test funzionali (
 \bar under
@@ -591,6 +597,13 @@ I Verificatori dovranno adottare le seguenti tecniche di analisi dove è
 
 \begin_layout Subsubsection
 Analisi statica
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Analisi-statica"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -601,8 +614,14 @@ Analisi che non richiede l’esecuzione del codice e si può applicare ad ogni
 one di un errore presupposto e walkthrough, ovvero una lettura a largo spettro
  per rilevamento di errori non presupposti.
  Per effettuare analisi statica sulle unità di codice si ricorre a metodi
- formali, descritti nella sezione “Metodi” (XX), che dimostrano una certa
- proprietà del prodotto.
+ formali, descritti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Analisi-statica"
+
+\end_inset
+
+, che dimostrano una certa proprietà del prodotto.
  Nelle prime fasi del progetto i Verificatori adotteranno principalmente
  la tecnica walkthrough.
  Gli errori rilevati più frequentemente forniranno al gruppo una maggiore
@@ -626,7 +645,12 @@ Analisi che richiede l’esecuzione del codice, che può essere un’unità, un
 \emph on
 ClockWork
 \emph default
- intende seguire sono riportati nella sezione x delle Norme di Progetto.
+ intende seguire sono riportati nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Test.
 \end_layout
 
 \begin_layout Subsection
@@ -670,7 +694,12 @@ Verifica formale del codice
 \end_layout
 
 \begin_layout Standard
-Tali metodologie vengono descritte nalle sezione x delle Norme di Progetto.
+Tali metodologie vengono descritte nal documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Analisi statica.
 \end_layout
 
 \begin_layout Subsection
@@ -688,8 +717,12 @@ Le misure rilevate dal processo di verifica, che permettono di ottenere
  il corso della progettazione e realizzazione del prodotto, attraverso l'analisi
  di ciò che sarà stato realizzato fino a quel momento e grazie anche all'apprend
 imento graduale del gruppo.
- Le misure e le metriche suddette sono riportate nella sezione x delle Norme
- di Progetto.
+ Le misure e le metriche suddette sono riportate nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Metriche.
 \end_layout
 
 \end_body
