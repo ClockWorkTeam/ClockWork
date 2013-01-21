@@ -89,12 +89,12 @@ name "sub:UC0:-Caso-d'uso"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC0-caso d'uso generale.pdf
+	filename img/UC0Casodusogenerale.pdf
 	scale 70
 
 \end_inset
@@ -178,7 +178,7 @@ hyperref[sub:UC1:-Registrazione]{UC1}
 \end_layout
 
 \begin_layout Itemize
-L'utente si autentica con il proprio account (si veda 
+L'utente si collega al server con il proprio account (si veda 
 \begin_inset ERT
 status open
 
@@ -230,6 +230,24 @@ hyperref[sub:UC4:-Tutorial-video]{UC4}
 \end_layout
 
 \begin_layout Itemize
+L'utente può visualizzare gli utenti registrati presso il server (si veda
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC5:-Visualizzazione-utenti]{UC5}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
 L'utente seleziona una funzionalità (si veda 
 \begin_inset ERT
 status open
@@ -238,7 +256,42 @@ status open
 
 
 \backslash
-hyperref[sub:UC5:-Selezione-funzionalit=0000E0]{UC5}
+hyperref[sub:UC6:-Selezione-funzionalit=0000E0]{UC6}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+L'utente può gestire le richieste di chiamata che gli arrivano (si veda
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC7:-Gestione-chiamata]{UC7}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+L'utente può scollegarsi (si veda 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[sub:UC8:-Logout]{UC8}
 \end_layout
 
 \end_inset
@@ -279,7 +332,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC1-registrazione.pdf
+	filename img/UC1Registrazione.pdf
 	scale 70
 
 \end_inset
@@ -383,7 +436,7 @@ L'user ID fornito dall'utente potrebbe essere già in uso, in questo caso
 \end_layout
 
 \begin_layout Subsubsection
-UC2: Autenticazione
+UC2: Login
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:UC2:-Autenticazione"
@@ -404,7 +457,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC2-autenticazione.pdf
+	filename img/UC2Login.pdf
 	scale 70
 
 \end_inset
@@ -530,7 +583,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC3-modifica dati account.pdf
+	filename img/UC3Modificadatiaccount.pdf
 	scale 70
 
 \end_inset
@@ -633,7 +686,7 @@ L'utente può annullare la procedura di modifica, in questo caso il sistema
 \end_layout
 
 \begin_layout Subsubsection
-UC4: Tutorial video
+UC4: Visualizzazione tutorial video
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:UC4:-Tutorial-video"
@@ -654,7 +707,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC4-tutorial.pdf
+	filename img/UC4Visualizzatutorialvideo.pdf
 	scale 70
 
 \end_inset
@@ -760,7 +813,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC4.1-Selezione video.pdf
+	filename img/UC41Selezionevideo.pdf
 	scale 70
 
 \end_inset
@@ -846,10 +899,21 @@ L'utente può decidere di vedere il video precedente o di tornare alla pagina
 \end_layout
 
 \begin_layout Subsubsection
-UC5: Selezione funzionalità
+UC5: Visualizzazione lista utenti
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:UC5:-Selezione-funzionalità"
+name "sub:UC5:-Visualizzazione-utenti"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+UC6: Selezione funzionalità
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC6:-Selezione-funzionalità"
 
 \end_inset
 
@@ -867,7 +931,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC5-Selezione funzionalita.pdf
+	filename img/UC6Selezionefunzionalità.pdf
 	scale 50
 
 \end_inset
@@ -1009,7 +1073,7 @@ status open
 
 
 \backslash
-hyperref[sub:UC5.7:-Invia-messaggio-di-chat]{UC5.7}
+hyperref[sub:UC6.5:-Chat]{UC6.5}
 \end_layout
 
 \end_inset
@@ -1028,80 +1092,7 @@ Se il sistema non riesce ad effettuare la connessione viene visualizzato
 \end_layout
 
 \begin_layout Subsubsection
-UC5.1: Selezione destinatario
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:UC5.1:-Selezione-destinatario"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Attori principali: 
-\series default
-utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Scopo e descrizione: 
-\series default
-L'utente può selezionare un destinatario per la chiamata conoscendone l'indirizz
-o IP o selezionandolo dalla lista dei contatti
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Precondizioni: 
-\series default
-Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Postcondizioni: 
-\series default
-Il sistema mostra la selezione del destinatario
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Flusso principale degli eventi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-L'utente seleziona un destinatario
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Scenari alternativi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-L'utente può scegliere di selezionare più di un destinatario per effettuare
- una teleconferenza
-\end_layout
-
-\begin_layout Itemize
-L'utente può rimuovere un destinatario precedentemente selezionato
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-UC5.2: Inserimento indirizzo IP
+UC6.1: Inserimento indirizzo IP
 \end_layout
 
 \begin_layout Itemize
@@ -1150,7 +1141,14 @@ L'utente inserisce l'indirizzo IP del destinatario
 
 \end_deeper
 \begin_layout Subsubsection
-UC5.3: Selezione contatto
+UC6.2: Selezione contatto
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC6.2:-Selezione-contatto"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1166,8 +1164,7 @@ utente
 \series bold
 Scopo e descrizione: 
 \series default
-L'utente inserisce l'indirizzo IP del destinatario in un'apposita casella
- di input
+L'utente può selezionare un destinatario dalla lista dei contatti
 \end_layout
 
 \begin_layout Itemize
@@ -1183,7 +1180,7 @@ Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \series bold
 Postcondizioni: 
 \series default
-Il sistema mostra la selezione del destinatario
+Il sistema mostra la selezione del contatto
 \end_layout
 
 \begin_layout Itemize
@@ -1194,15 +1191,32 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona dalla lista dei contatti un destinatario
+L'utente seleziona un contatto
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può scegliere di selezionare più di un destinatario per effettuare
+ una teleconferenza
+\end_layout
+
+\begin_layout Itemize
+L'utente può rimuovere un destinatario precedentemente selezionato
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
-UC5.4: Chiamata audio
+UC6.3: Chiamata
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:UC5.4:-Chiamata-audio"
+name "sub:UC6.3:-Chiamata"
 
 \end_inset
 
@@ -1220,7 +1234,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC5.4-Chiamata.pdf
+	filename img/UC63Chiamata.pdf
 	scale 70
 
 \end_inset
@@ -1319,10 +1333,10 @@ In caso di teleconferenza audio se tutti gli utenti chiamati abbandonano
 
 \end_deeper
 \begin_layout Subsubsection
-UC5.5: Chiamata video
+UC6.4: Invia messaggio differito
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:UC5.5:-Chiamata-video"
+name "sub:UC5.6:-Invia-messaggio-differito"
 
 \end_inset
 
@@ -1340,7 +1354,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC5.5-Videochiamata.pdf
+	filename img/UC64Inviomessaggiodifferito.pdf
 	scale 70
 
 \end_inset
@@ -1352,97 +1366,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chiamata video
+Chiamata audio
 \end_layout
 
 \end_inset
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Attori principali: 
-\series default
-utente, utente chiamato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Scopo e descrizione: 
-\series default
-L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarla.
- L'utente può terminare la chiamata
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Precondizioni: 
-\series default
-Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
- della chiamata l'utente chiamato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Postcondizioni: 
-\series default
-Il sistema presenta all'utente e all'utente chiamato la schermata grafica
- delle statistiche della chiamata
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Flusso principale degli eventi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-L'utente chiamato accetta la chiamata video
-\end_layout
-
-\begin_layout Itemize
-L'utente termina la chiamata
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Scenari alternativi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Se l'utente chiamato non accetta la chiamata o la connessione si interrompe
- il sistema mostrerà un messaggio di errore
-\end_layout
-
-\begin_layout Itemize
-Se l'utente chiamato abbandona la chiamata essa viene terminata
-\end_layout
-
-\begin_layout Itemize
-In caso di teleconferenza video se tutti gli utenti chiamati abbandonano
- la chiamata essa viene terminata
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-UC5.6: Invia messaggio video
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:UC5.6:-Invia-messaggio-video"
 
 \end_inset
 
@@ -1497,10 +1427,46 @@ L'utente registra un messaggio video
 
 \end_deeper
 \begin_layout Subsubsection
-UC5.7: Invia messaggio di testo
+UC6.5: Chat
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:UC5.7:-Invia-messaggio-di-chat"
+name "sub:UC5.7:-Chat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC65Chat.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Chiamata audio
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -1549,6 +1515,183 @@ Flusso principale degli eventi:
 \begin_deeper
 \begin_layout Itemize
 L'utente inserisce il messaggio di testo
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC6.6: Invio file
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC66Inviofile.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Chiamata audio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali:
+\series default
+ utente autenticato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente può inviare un file ad un destinatario
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
+ cui mandare il file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema ha inviato il file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente seleziona il file da inviare
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC7: Gestione chiamata in arrivo
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC7:-Gestione-chiamata"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC7Gestionechiamatainarrivo.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Chiamata audio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali:
+\series default
+ utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente può inviare un file ad un destinatario
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
+ cui mandare il file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema ha inviato il file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente seleziona il file da inviare
 \end_layout
 
 \end_deeper
