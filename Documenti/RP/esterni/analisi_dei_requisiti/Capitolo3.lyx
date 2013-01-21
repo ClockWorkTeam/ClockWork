@@ -141,7 +141,8 @@ Scopo e descrizione:
  L'utente deve poter registrarsi nel sistema, autenticarsi e, una volta
  autenticato, eventualmente modificare proprie credenziali.
  Deve poter inoltre selezionare la funzionalità desiderata per interagire
- con altri utenti
+ con altri utenti ed essere in grado di gestire eventuali richieste di chiamate
+ in arrivo
 \end_layout
 
 \begin_layout Itemize
@@ -171,32 +172,23 @@ Flusso principale degli eventi:
 \begin_deeper
 \begin_layout Itemize
 L'utente crea un nuovo account (si veda 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC1:-Registrazione]{UC1}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC1:-Registrazione"
 
 \end_inset
 
+
+\lang italian
 )
 \end_layout
 
 \begin_layout Itemize
 L'utente si collega al server con il proprio account (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC2:-Autenticazione]{UC2}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC2:-Autenticazione"
 
 \end_inset
 
@@ -206,15 +198,9 @@ hyperref[sub:UC2:-Autenticazione]{UC2}
 \begin_layout Itemize
 L'utente autenticato può modificare i dati del proprio account (si veda
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC3:-Modifica-dati]{UC3}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC3:-Modifica-dati"
 
 \end_inset
 
@@ -223,15 +209,9 @@ hyperref[sub:UC3:-Modifica-dati]{UC3}
 
 \begin_layout Itemize
 L'utente guarda i video tutorial (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC4:-Tutorial-video]{UC4}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC4:-Tutorial-video"
 
 \end_inset
 
@@ -241,15 +221,9 @@ hyperref[sub:UC4:-Tutorial-video]{UC4}
 \begin_layout Itemize
 L'utente può visualizzare gli utenti registrati presso il server (si veda
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC5:-Visualizzazione-utenti]{UC5}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC5:-Visualizzazione-utenti"
 
 \end_inset
 
@@ -258,15 +232,9 @@ hyperref[sub:UC5:-Visualizzazione-utenti]{UC5}
 
 \begin_layout Itemize
 L'utente seleziona una funzionalità (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC6:-Selezione-funzionalit=0000E0]{UC6}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC6:-Selezione-funzionalità"
 
 \end_inset
 
@@ -276,15 +244,9 @@ hyperref[sub:UC6:-Selezione-funzionalit=0000E0]{UC6}
 \begin_layout Itemize
 L'utente può gestire le richieste di chiamata che gli arrivano (si veda
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC7:-Gestione-chiamata]{UC7}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC7:-Gestione-chiamata"
 
 \end_inset
 
@@ -293,15 +255,9 @@ hyperref[sub:UC7:-Gestione-chiamata]{UC7}
 
 \begin_layout Itemize
 L'utente può scollegarsi (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC8:-Logout]{UC8}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC8:-Logout"
 
 \end_inset
 
@@ -319,7 +275,7 @@ Dal momento che il caso d'uso appena descritto rappresenta una visione di
  in dettaglio nei casi d'uso seguenti
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 UC1: Registrazione
 \begin_inset CommandInset label
 LatexCommand label
@@ -421,7 +377,11 @@ L'utente inserisce la propria password
 \end_layout
 
 \begin_layout Itemize
-L'utente inserisce il proprio nome e cognome
+L'utente inserisce il proprio nome
+\end_layout
+
+\begin_layout Itemize
+L'utente inserisce il proprio cognome
 \end_layout
 
 \begin_layout Itemize
@@ -444,7 +404,7 @@ L'user ID fornito dall'utente potrebbe essere già in uso, in questo caso
  ritorna alla schermata principale
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 UC2: Login
 \begin_inset CommandInset label
 LatexCommand label
@@ -570,7 +530,7 @@ Le credenziali inserite dall'utente non sono presenti sul server, in questo
  principale
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 UC3: Modifica dati account
 \begin_inset CommandInset label
 LatexCommand label
@@ -694,7 +654,7 @@ L'utente può annullare la procedura di modifica, in questo caso il sistema
  ritorna alla schermata principale
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 UC4: Visualizzazione tutorial video
 \begin_inset CommandInset label
 LatexCommand label
@@ -907,7 +867,7 @@ L'utente può decidere di vedere il video precedente o di tornare alla pagina
  di selezione dei video
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 UC5: Visualizzazione lista utenti
 \begin_inset CommandInset label
 LatexCommand label
@@ -918,7 +878,30 @@ name "sub:UC5:-Visualizzazione-utenti"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
+
+\series bold
+Attori principali: 
+\series default
+utente autenticato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+Il sistema presenta la lista degli utenti registrati presso il server, distinti
+ in online e offline.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\end_layout
+
+\begin_layout Subsection
 UC6: Selezione funzionalità
 \begin_inset CommandInset label
 LatexCommand label
@@ -1154,6 +1137,37 @@ UC6.2: Selezione contatto
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:UC6.2:-Selezione-contatto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -1612,7 +1626,7 @@ L'utente seleziona il file da inviare
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection
+\begin_layout Subsection
 UC7: Gestione chiamata in arrivo
 \begin_inset CommandInset label
 LatexCommand label
@@ -1703,6 +1717,64 @@ Flusso principale degli eventi:
 L'utente seleziona il file da inviare
 \end_layout
 
+\end_deeper
+\begin_layout Subsection
+UC8: Logout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC8:-Logout"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali:
+\series default
+ utente autenticato
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+L'utente può inviare un file ad un destinatario
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
+ cui mandare il file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema ha inviato il file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente seleziona il file da inviare
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_body
 \end_document
