@@ -830,5 +830,179 @@ di chiusura: deve essere in una riga a sé stante, senza alcuna indentazione
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+ogni gruppo di selettori non legati logicamente saranno divisi da una linea
+ vuota
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+.menu_navigazione_principale{
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+.menu_navigazione_secondario{
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+.content{
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Selettori unici
+\series default
+: ogni selettore sarà su una linea singola.
+ Ad esempio:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#form td.uno,
+\end_layout
+
+\begin_layout Plain Layout
+
+#form td.due{
+\end_layout
+
+\begin_layout Plain Layout
+
+   blocco codice
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Proprietà
+\end_layout
+
+\begin_layout Standard
+Le proprietà sono la parte interna alle parentesi graffe e descrivono come
+ i selettori devono essere visualizzati.
+\end_layout
+
+\begin_layout Standard
+Ogni proprietà deve:
+\end_layout
+
+\begin_layout Itemize
+essere su una riga
+\end_layout
+
+\begin_layout Itemize
+indentata con tre spazi
+\end_layout
+
+\begin_layout Itemize
+avere uno spazio dopo il nome della proprietà e uno prima del valore, ad
+ esempio:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+.selettore{
+\end_layout
+
+\begin_layout Plain Layout
+
+   proprietà : valore;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+terminare con un punto e virgola (;)
+\end_layout
+
+\begin_layout Itemize
+le proprietà multivalore devono essere separate da una virgola seguita da
+ uno spazio
+\end_layout
+
+\begin_layout Subsection
+Convenzioni di codifica - Javascript
+\end_layout
+
+\begin_layout Standard
+Per tali convenzioni si farà riferimento alla guida che Google mette a disposizi
+one, tramite il sito 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \end_body
 \end_document
