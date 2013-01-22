@@ -112,7 +112,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Caso d'uso generale
+Diagramma che illustra i casi d'uso di ambito generale
 \end_layout
 
 \end_inset
@@ -141,8 +141,8 @@ Scopo e descrizione:
  L'utente deve poter registrarsi nel sistema, autenticarsi e, una volta
  autenticato, eventualmente modificare proprie credenziali.
  Deve poter inoltre selezionare la funzionalità desiderata per interagire
- con altri utenti ed essere in grado di gestire eventuali richieste di chiamate
- in arrivo
+ con altri utenti ed essere in grado di gestire eventuali richieste di comunicaz
+ione da parte di altri utenti
 \end_layout
 
 \begin_layout Itemize
@@ -172,15 +172,12 @@ Flusso principale degli eventi:
 \begin_deeper
 \begin_layout Itemize
 L'utente crea un nuovo account (si veda 
-
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC1:-Registrazione"
 
 \end_inset
 
-
-\lang italian
 )
 \end_layout
 
@@ -189,18 +186,6 @@ L'utente si collega al server con il proprio account (si veda
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC2:-Autenticazione"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-L'utente autenticato può modificare i dati del proprio account (si veda
- 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "sub:UC3:-Modifica-dati"
 
 \end_inset
 
@@ -219,8 +204,7 @@ reference "sub:UC4:-Tutorial-video"
 \end_layout
 
 \begin_layout Itemize
-L'utente può visualizzare gli utenti registrati presso il server (si veda
- 
+L'utente visualizza gli utenti registrati presso il server (si veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC5:-Visualizzazione-utenti"
@@ -242,19 +226,7 @@ reference "sub:UC6:-Selezione-funzionalità"
 \end_layout
 
 \begin_layout Itemize
-L'utente può gestire le richieste di chiamata che gli arrivano (si veda
- 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "sub:UC7:-Gestione-chiamata"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-L'utente può scollegarsi (si veda 
+L'utente si scollega (si veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC8:-Logout"
@@ -269,12 +241,34 @@ reference "sub:UC8:-Logout"
 
 \series bold
 Scenari alternativi: 
-\series default
-Dal momento che il caso d'uso appena descritto rappresenta una visione di
- alto livello non si descrivono gli scenari alternativi che saranno analizzati
- in dettaglio nei casi d'uso seguenti
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+L'utente autenticato può modificare i dati del proprio account (si veda
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC3:-Modifica-dati"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+L'utente può gestire le richieste di chiamata che gli arrivano (si veda
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC7:-Gestione-chiamata"
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 UC1: Registrazione
 \begin_inset CommandInset label
@@ -306,7 +300,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Registrazione
+Diagramma che descrive i casi d'uso relativi alla registrazione presso un
+ server
 \end_layout
 
 \end_inset
@@ -344,7 +339,8 @@ Precondizioni:
 \series default
  Il sistema presenta all'utente una schermata grafica per l'inserimento
  delle proprie credenziali.
- Inoltre il sistema risulta connesso ad internet
+ Nessun utente è già autenticato correntemente nella medesima sessione del
+ browser, inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -365,11 +361,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona la funzionalità di registrazione
-\end_layout
-
-\begin_layout Itemize
-L'utente inserisce il proprio user ID
+L'utente inserisce il proprio username
 \end_layout
 
 \begin_layout Itemize
@@ -401,7 +393,9 @@ Scenari alternativi:
 L'user ID fornito dall'utente potrebbe essere già in uso, in questo caso
  la creazione dell'account viene fermata segnalando il problema riscontrato.
  L'utente può annullare la procedura di creazione, in questo caso il sistema
- ritorna alla schermata principale
+ ritorna alla schermata principale.
+ Se un utente è già autenticato dovrà prima terminare la sessione corrente
+ prima di effettuare una registrazione
 \end_layout
 
 \begin_layout Subsection
@@ -438,7 +432,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Autenticazione
+Diagramma che illustra i casi d'uso relativi all'autenticazione di un utente
 \end_layout
 
 \end_inset
@@ -456,7 +450,7 @@ Autenticazione
 \series bold
 Attori principali: 
 \series default
-utente, utente autenticato
+utente
 \end_layout
 
 \begin_layout Itemize
@@ -476,7 +470,8 @@ Precondizioni:
 \series default
  Il sistema presenta all'utente una schermata grafica per l'inserimento
  delle proprie credenziali.
- Inoltre il sistema risulta connesso ad internet
+ Nessun utente è già autenticato correntemente nella medesima sessione del
+ browser, inoltre il sistema risulta connesso ad internet
 \end_layout
 
 \begin_layout Itemize
@@ -492,16 +487,7 @@ online
 \begin_inset Quotes erd
 \end_inset
 
- e, se l'utente autenticato decide di disconnettersi, il sistema lo segnala
- come 
-\begin_inset Quotes eld
-\end_inset
 
-offline
-\begin_inset Quotes erd
-\end_inset
-
- e gli mostra la schermata principale
 \end_layout
 
 \begin_layout Itemize
@@ -512,11 +498,11 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente inserisce il proprio user ID e password ed effettua il login
+L'utente inserisce il proprio username
 \end_layout
 
 \begin_layout Itemize
-L'utente autenticato può effettuare il logout
+L'utente inserisce la propria password
 \end_layout
 
 \end_deeper
@@ -527,7 +513,9 @@ Scenari alternativi:
 \series default
 Le credenziali inserite dall'utente non sono presenti sul server, in questo
  caso viene visualizzato un messaggio d'errore e viene riproposta la schermata
- principale
+ principale.
+ Se un utente è già autenticato dovrà prima terminare la sessione corrente
+ prima di effettuare un'altra autenticazione
 \end_layout
 
 \begin_layout Subsection
@@ -564,7 +552,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Modifica dati account
+Diagramma che illustra i casi d'uso relativi alla modifica dei dati di un
+ account esistente
 \end_layout
 
 \end_inset
@@ -599,6 +588,7 @@ Il sistema permette all'utente autenticato di visualizzare i propri dati
 \series bold
 Precondizioni:
 \series default
+ Un utente è autenticato nella sessione corrente del browser.
  Il sistema presenta all'utente autenticato una schermata grafica per la
  visualizzazione delle attuali credenziali e l'inserimento delle nuove.
  Inoltre il sistema risulta connesso ad internet
@@ -609,8 +599,8 @@ Precondizioni:
 \series bold
 Postcondizioni:
 \series default
- Il sistema ha modificato le credenziali inserite dall'utente.
- Successivamente viene mostrata la schermata principale
+ Il sistema ha modificato le credenziali inserite dall'utente e mostra la
+ schermata principale
 \end_layout
 
 \begin_layout Itemize
@@ -621,11 +611,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona la funzionalità di modifica dati account
-\end_layout
-
-\begin_layout Itemize
-L'utente inserisce in nuovo nome
+L'utente inserisce il nuovo nome
 \end_layout
 
 \begin_layout Itemize
@@ -633,11 +619,11 @@ L'utente inserisce la nuova password
 \end_layout
 
 \begin_layout Itemize
-Viene aggiornato l'account sul server
+L'utente inserisce il nuovo cognome
 \end_layout
 
 \begin_layout Itemize
-L'utente inserisce in nuovo cognome
+Viene aggiornato l'account sul server
 \end_layout
 
 \begin_layout Itemize
@@ -688,7 +674,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tutorial video
+Diagramma che illustra il caso d'uso relativo alla visualizzazione dei tutorial
+ video
 \end_layout
 
 \end_inset
@@ -732,7 +719,7 @@ Precondizioni:
 \series bold
 Postcondizioni:
 \series default
- Il sistema ha terminato la visualizzazione dei video tutorial
+ Il sistema visualizza il video scelto dall'utente
 \end_layout
 
 \begin_layout Itemize
@@ -743,11 +730,14 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona la funzionalità dei tutorial video
-\end_layout
+L'utente seleziona un video (si veda 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sub:UC4.1:-Selezione-video"
 
-\begin_layout Itemize
-L'utente seleziona un video
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
@@ -794,7 +784,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Selezione video
+Diagramma che illustra i casi d'uso relativi alla scelta di un tutorial
+ video 
 \end_layout
 
 \end_inset
@@ -899,6 +890,38 @@ Il sistema presenta la lista degli utenti registrati presso il server, distinti
 
 \series bold
 Precondizioni: 
+\series default
+L'utente si è autenticato presso il server.
+ Il sistema risulta connesso ad internet
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+Il sistema sta mostrando la lista degli utenti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente sta visualizzando la lista degli utenti registrati presso il server
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi: 
+\series default
+se il sistema non riesce a collegarsi al server viene mostrato un messaggio
+ di errore e viene ritentata la connessione dopo un intervallo di tempo
 \end_layout
 
 \begin_layout Subsection
@@ -935,7 +958,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Selezione funzionalità
+Diagramma che illustra i casi d'uso relativi alla selezione delle funzionalità
+ di comunicazione
 \end_layout
 
 \end_inset
@@ -953,7 +977,7 @@ Selezione funzionalità
 \series bold
 Attori principali: 
 \series default
-utente
+utente, utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -962,7 +986,7 @@ utente
 Scopo e descrizione: 
 \series default
 L'utente può chiamare un destinatario, inviare ad esso un messaggio di testo
- o un video messaggio
+ o registrare un messaggio da inviare ad un destinatario offline
 \end_layout
 
 \begin_layout Itemize
@@ -971,6 +995,7 @@ L'utente può chiamare un destinatario, inviare ad esso un messaggio di testo
 Precondizioni: 
 \series default
 Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
+ per la selezione delle funzionalità di comunicazione
 \end_layout
 
 \begin_layout Itemize
@@ -978,7 +1003,8 @@ Il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \series bold
 Postcondizioni: 
 \series default
-Il sistema ha connesso due utenti
+Il sistema ha registrato la scelta dell'utente e ha svolto l'operazione
+ scelta
 \end_layout
 
 \begin_layout Itemize
@@ -990,15 +1016,9 @@ Flusso principale degli eventi:
 \begin_deeper
 \begin_layout Itemize
 L'utente seleziona un destinatario (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC5.1:-Selezione-destinatario]{UC5.1}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UC6.2:-Selezione-contatto"
 
 \end_inset
 
@@ -1006,67 +1026,10 @@ hyperref[sub:UC5.1:-Selezione-destinatario]{UC5.1}
 \end_layout
 
 \begin_layout Itemize
-L'utente può effettuare una chiamata vocale (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC5.4:-Chiamata-audio]{UC5.4}
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-L'utente può effettuare una chiamata video (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC5.5:-Chiamata-video]{UC5.5}
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-L'utente può inviare un messaggio video (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC5.6:-Invia-messaggio-video]{UC5.6}
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-L'utente può inviare un messaggio di testo (si veda 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[sub:UC6.5:-Chat]{UC6.5}
-\end_layout
+L'utente può effettuare una chiamata (si veda 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UC6.3:-Chiamata"
 
 \end_inset
 
@@ -1078,11 +1041,40 @@ hyperref[sub:UC6.5:-Chat]{UC6.5}
 
 \series bold
 Scenario alternativo: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può inviare un messaggio video (si veda 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UC5.6:-Invia-messaggio-differito"
+
+\end_inset
+
+
+\lang italian
+)
+\end_layout
+
+\begin_layout Itemize
+L'utente può inviare un messaggio di testo (si veda 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UC5.7:-Chat"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
 Se il sistema non riesce ad effettuare la connessione viene visualizzato
  un messaggio di errore
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
 UC6.1: Inserimento indirizzo IP
 \end_layout
@@ -1150,10 +1142,13 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC62Selezionecontatto.pdf
 
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1543,6 +1538,13 @@ L'utente inserisce il messaggio di testo
 \end_deeper
 \begin_layout Subsubsection
 UC6.6: Invio file
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UC6.6:-Invio-file"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
