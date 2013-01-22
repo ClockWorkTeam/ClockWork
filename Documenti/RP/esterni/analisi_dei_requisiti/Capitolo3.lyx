@@ -1152,7 +1152,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
+Diagramma che illustra i casi d'uso relativi alla selezione di un contatto
 \end_layout
 
 \end_inset
@@ -1264,7 +1264,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chiamata audio
+Diagramma che illustra i casi d'uso relativi allo svolgimento di una chiamata
 \end_layout
 
 \end_inset
@@ -1282,7 +1282,7 @@ Chiamata audio
 \series bold
 Attori principali: 
 \series default
-utente, utente chiamato
+utente, utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -1290,8 +1290,8 @@ utente, utente chiamato
 \series bold
 Scopo e descrizione: 
 \series default
-L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarla.
- L'utente può terminare la chiamata
+Durante una chiamata l'utente può attivare o disattivare il video e registrare
+ il flusso audio e video
 \end_layout
 
 \begin_layout Itemize
@@ -1299,8 +1299,8 @@ L'utente chiamato può accettare la chiamata da parte dell'utente ed abbandonarl
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
- della chiamata l'utente chiamato
+Il sistema è connesso ad Internet, l'utente ha scelto un destinatario per
+ la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1308,8 +1308,8 @@ Il sistema è connesso ad Internet, l'utente ha scelto come destinatario
 \series bold
 Postcondizioni: 
 \series default
-Il sistema presenta all'utente e all'utente chiamato la schermata grafica
- delle statistiche della chiamata
+Il sistema presenta all'utente la schermata grafica delle statistiche della
+ chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1320,7 +1320,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente chiamato accetta la chiamata audio
+L'utente attiva il video
 \end_layout
 
 \begin_layout Itemize
@@ -1336,17 +1336,16 @@ Scenari alternativi:
 
 \begin_deeper
 \begin_layout Itemize
-Se l'utente chiamato non accetta la chiamata o la connessione si interrompe
+Se il destinatario non accetta la chiamata o la connessione si interrompe
  il sistema mostrerà un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
-Se l'utente chiamato abbandona la chiamata essa viene terminata
+Se il video è acceso l'utente può disabilitarlo
 \end_layout
 
 \begin_layout Itemize
-In caso di teleconferenza audio se tutti gli utenti chiamati abbandonano
- la chiamata essa viene terminata
+L'utente può registrare la chiamata
 \end_layout
 
 \end_deeper
@@ -1384,7 +1383,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chiamata audio
+Diagramma che illustra i casi d'uso relativi all'invio di un messaggio differito
 \end_layout
 
 \end_inset
@@ -1402,7 +1401,7 @@ Chiamata audio
 \series bold
 Attori principali: 
 \series default
-utente
+utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -1410,8 +1409,8 @@ utente
 \series bold
 Scopo e descrizione: 
 \series default
-L'utente può registrare un messaggio video da inviare successivamente ad
- un destinatario
+L'utente può registrare un messaggio che verrà recapitato successivamente
+ al destinatario
 \end_layout
 
 \begin_layout Itemize
@@ -1420,7 +1419,7 @@ L'utente può registrare un messaggio video da inviare successivamente ad
 Precondizioni: 
 \series default
 Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
- cui inviare il messaggio video
+ cui inviare il messaggio
 \end_layout
 
 \begin_layout Itemize
@@ -1440,7 +1439,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente registra un messaggio video
+L'utente registra un messaggio
 \end_layout
 
 \end_deeper
@@ -1478,7 +1477,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chiamata audio
+Diagramma che illustra i casi d'uso relativi alla chat
 \end_layout
 
 \end_inset
@@ -1504,7 +1503,7 @@ utente
 \series bold
 Scopo e descrizione: 
 \series default
-L'utente può inviare un messaggio di testo ad un destinatario
+L'utente può inviare messaggi di testo ad un destinatario
 \end_layout
 
 \begin_layout Itemize
@@ -1513,7 +1512,7 @@ L'utente può inviare un messaggio di testo ad un destinatario
 Precondizioni: 
 \series default
 Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
- cui inviare il messaggio di testo
+ cui inviare i messaggi di testo
 \end_layout
 
 \begin_layout Itemize
@@ -1521,7 +1520,7 @@ Il sistema è connesso ad internet, l'utente ha scelto un destinatario a
 \series bold
 Postcondizioni: 
 \series default
-Il sistema ha inviato il messaggio di testo
+Il sistema ha inviato i messaggi di testo
 \end_layout
 
 \begin_layout Itemize
@@ -1533,6 +1532,11 @@ Flusso principale degli eventi:
 \begin_deeper
 \begin_layout Itemize
 L'utente inserisce il messaggio di testo
+\end_layout
+
+\begin_layout Itemize
+Il sistema mostra i messaggi fin'ora inviati e ricevuti da quel contatto
+ in questa sessione
 \end_layout
 
 \end_deeper
@@ -1570,7 +1574,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chiamata audio
+Diagramma che illustra i casi d'uso relativi all'invio di un file
 \end_layout
 
 \end_inset
@@ -1662,7 +1666,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chiamata audio
+Diagramma che illustra i casi d'uso relativi alla gestione di una chiamata
+ in arrivo
 \end_layout
 
 \end_inset
@@ -1688,7 +1693,8 @@ Attori principali:
 \series bold
 Scopo e descrizione: 
 \series default
-L'utente può inviare un file ad un destinatario
+L'utente può accettare o rifiutare la richiesta di comunicazione da parte
+ di un altro utente
 \end_layout
 
 \begin_layout Itemize
@@ -1696,8 +1702,8 @@ L'utente può inviare un file ad un destinatario
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
- cui mandare il file
+Il sistema è connesso ad internet e l'utente non è impegnato in un'altra
+ conversazione
 \end_layout
 
 \begin_layout Itemize
@@ -1705,7 +1711,7 @@ Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
 \series bold
 Postcondizioni: 
 \series default
-Il sistema ha inviato il file
+Il sistema ha messo in comunicazione due o più utenti
 \end_layout
 
 \begin_layout Itemize
@@ -1716,7 +1722,19 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona il file da inviare
+L'utente accetta la chiamata da parte di un altro utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può decidere di rifiutare la chiamata
 \end_layout
 
 \end_deeper
@@ -1739,13 +1757,12 @@ Attori principali:
  utente autenticato
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \series bold
 Scopo e descrizione: 
 \series default
-L'utente può inviare un file ad un destinatario
+L'utente può terminare la sessione di lavoro e scollegarsi dal server
 \end_layout
 
 \begin_layout Itemize
@@ -1753,8 +1770,8 @@ L'utente può inviare un file ad un destinatario
 \series bold
 Precondizioni: 
 \series default
-Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
- cui mandare il file
+Il sistema è connesso ad internet e l'utente è autenticato nella sessione
+ corrente del browser.
 \end_layout
 
 \begin_layout Itemize
@@ -1762,7 +1779,7 @@ Il sistema è connesso ad internet e l'utente ha scelto un destinatario a
 \series bold
 Postcondizioni: 
 \series default
-Il sistema ha inviato il file
+Il sistema ha terminato la sessione dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -1773,10 +1790,9 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente seleziona il file da inviare
+L'utente effettua la disconnessione
 \end_layout
 
-\end_deeper
 \end_deeper
 \end_body
 \end_document
