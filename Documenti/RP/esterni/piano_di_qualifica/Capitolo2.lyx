@@ -98,8 +98,12 @@ Verificatore:
  deve accertare che la documentazione prodotta sia corretta, a livello grammatic
 ale e sintattico e che rispetti le norme descritte nelle Norme di Progetto.
  Il controllo ortografico, sarà automatizzato utilizzando la strumentazione
- descritta nel capitolo Ambiente di verifica e validazione delle Norme di
- Progetto.
+ descritta nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ambiente di verifica e validazione.
  Il controllo dei termini nel glossario, inseriti nei documenti, avverrà
  tramite un'attenta lettura dei documenti.
  Se durante la verifica saranno state rilevate irregolarità, queste verranno
@@ -142,9 +146,17 @@ Al fine di garantire un costante riscontro dell’evoluzione del lavoro, ogni
  dedicate al progetto, per ogni ruolo che sta adempiendo, e renderlo noto
  al Responsabile, in modo tale che possa effettuare un controllo sulle ore
  di lavoro preventivate e di conseguenza agire per la nuova pianificazione
- della fase successiva.
- Inoltre tutti i membri del gruppo hanno l’obbligo di controllare quotidianament
-e l’emanazione dei ticket.
+ della 
+\lang italian
+fase
+\lang english
+ successiva.
+ 
+\lang italian
+Inoltre
+\lang english
+ tutti i membri del gruppo hanno l’obbligo di controllare quotidianamente
+ l’emanazione dei ticket.
  I documenti prodotti devono essere forniti di un diario delle modifiche,
  questo consentirà di agevolare la verifica sugli stessi.
  La conformità alle norme definite nel documento Norme di Progetto consentirà
@@ -264,7 +276,7 @@ Completa:
 \series default
  il documento è completo se e solo se include tutti i requisiti fondamentali,
  definisce come deve reagire il software agli input, ed è completo di riferiment
-i e etichette per tutte le figure, tabelle, diagrammi e definizioni.
+i e etichette per tutte le figure, tabelle, diagrammi e sezioni .
  Il Verificatore dovrà quindi procedere a una lettura attenta del documento
 \end_layout
 
@@ -342,7 +354,7 @@ inspection
  Le tipologie di tecniche sono descritte nella sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Analisi-statica"
+reference "sub:Tecniche"
 
 \end_inset
 
@@ -450,9 +462,14 @@ Fase di Codifica
 
 \begin_layout Standard
 In questa fase il Verificatore dovrà esaminare le unità di codice prodotte
- per accertarsi che rispettino le norme definite nelle Norme di Progetto,
- le norme di codifica definite nella sezione Metriche delle Norme di Progetto,
- e che non contenga errori di programmazione.
+ per accertarsi che non contengano errori di programmazione, rispettino
+ le norme definite nelle Norme di Progetto e le norme di codifica definite
+ nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Metriche.
  Deve controllare che ogni requisito sia tradotto in qualche unità di codice
  e che non ci sia codice non associato ad alcun requisito.
  Questo sarà possibile tramite un buon tracciamento dei requisiti.
@@ -477,9 +494,19 @@ driver
 \noindent
 Prima di procedere all’integrazione, ogni unità dovrà compilare correttamente
  senza provocare warning, in seguito deve essere sottoposta ad analisi statica,
- nelle forme descritte in “Tecniche” (XX) delle Norme di Progetto, mediante
- i software di analisi statica descritti in “Strumenti” (XX) alla voce “Analisi
- statica sul codice”.
+ nelle forme descritte nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tecniche"
+
+\end_inset
+
+, mediante i software di analisi statica descritti nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ambiente di verifica e validazione.
  Sulle componenti software dove è richiesta l’esecuzione di una prova, dopo
  la compilazione e l’analisi statica, si effettueranno test funzionali (
 \bar under
@@ -489,9 +516,18 @@ black-box
 \bar under
 white-box
 \bar default
-), nelle forme descritte in “Tecniche” (XX), questa attività sarà supportata
- dalla strumentazione descritta in “Strumenti” (3.4), alla voce “Analisi
- dinamica sul codice”.
+), nelle forme descritte nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf,
+\family default
+ sez.
+ Test, questa attività sarà supportata dalla strumentazione descritta nel
+ documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ambiente di verifica e validazione.
  Una volta che una unità di codice compila senza provocare warning, è pronta
  per essere integrata nel sistema.
  Nel caso si riscontrino malfunzionamenti dopo una integrazione sarà necessario
@@ -500,8 +536,8 @@ ento, ripristinare l’ultima versione stabile del sistema e avvisare immediatam
 te il Programmatore che ha introdotto il problema, avvisando anche il Responsabi
 le.
  Nel caso che dopo l’integrazione di una nuova unità il compilatore non
- generi errori si effettueranno test di integrazione descritti in “Descrizione
- dei test” (XX) alla voce “Test di integrazione”.
+ generi errori si effettueranno test di integrazione descritti nella sezione
+ Test di interazione.
 \end_layout
 
 \begin_layout Standard
@@ -537,10 +573,17 @@ Fase di Collaudo
 
 \begin_layout Standard
 In questa fase il Verificatore effettuerà dei test di accettazione sui requisiti
- definiti nella sezione “Descrizione dei test” (XX), e verificherà che non
- si presentino malfunzionamenti durante l’utilizzo del prodotto.
- La strategia di verifica adottata è descritta nella sezione “Tecniche”
- (3.5).
+ definiti nella sezione ''Pianificazione ed esecuzione del collaudo'', e
+ verificherà che non si presentino malfunzionamenti durante l’utilizzo del
+ prodotto.
+ La strategia di verifica adottata è descritta nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tecniche"
+
+\end_inset
+
+.
  Verrà testato il corretto funzionamento del programma e verrà testata la
  facilità da parte dell’utente di compiere le operazioni per cui il software
  si è posto il compito.
@@ -576,10 +619,20 @@ Tali risorse serviranno per la realizzazione del progetto, esse sono distinte
  in risorse umane e risorse tecnologiche.
  Le risorse umane sono costituite dalle figure di Responsabile, Responsabile
  standard, Amministratore, Analista, Progettista, Verificatore, Programmatore.
- Per una descrizione di questi ruoli si rimanda al documento Norme di Progetto.
+ Per una descrizione di questi ruoli si rimanda al documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ruoli.
  Le risorse tecnologiche che serviranno per lo sviluppo del progetto sono
  i Personal Computer dei singoli componenti del gruppo, dotati della strumentazi
-one software descritta nelle Norme di Progetto.
+one software descritta nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ambiente di verifica e validazione.
  
 \end_layout
 
@@ -592,11 +645,23 @@ Strumenti software per facilitare e automatizzare l’attività di verifica
  e validazione, come strumenti per l’analisi statica e dinamica, strumenti
  di test, strumenti per il tracciamento dei requisiti, strumenti per la
  misurazione della qualità dei processi.
- Tali strumenti sono descritti nelle Norme di Progetto.
+ Tali strumenti sono descritti nel docuento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ambiente di verifica e validazione.
 \end_layout
 
 \begin_layout Subsection
 Tecniche
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Tecniche"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -623,14 +688,12 @@ Analisi che non richiede l’esecuzione del codice e si può applicare ad ogni
 one di un errore presupposto e walkthrough, ovvero una lettura a largo spettro
  per rilevamento di errori non presupposti.
  Per effettuare analisi statica sulle unità di codice si ricorre a metodi
- formali, descritti nella sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Analisi-statica"
-
-\end_inset
-
-, che dimostrano una certa proprietà del prodotto.
+ formali, descritti nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Analisi statica, che dimostrano una certa proprietà del prodotto.
  Nelle prime fasi del progetto i Verificatori adotteranno principalmente
  la tecnica walkthrough.
  Gli errori rilevati più frequentemente forniranno al gruppo una maggiore
