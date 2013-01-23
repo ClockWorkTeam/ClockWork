@@ -252,12 +252,83 @@ Approvati
 
 \end_deeper
 \begin_layout Subsection
-Cartella Codice
+Cartella codice
 \end_layout
 
 \begin_layout Standard
-La struttura che ordinerà la cartella codice sarà decisa a inizio della
- fase di progettazione.
+La cartella codice è così suddivisa:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+prodotto
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+client
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+css: conterrà i fogli di stile applicati al prodotto
+\end_layout
+
+\begin_layout Itemize
+img: conterrà le immagini usate nel prodotto
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Usate nel layout, come loghi e icone.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+js
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+server
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Java: conterrà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+package: cartella contenente i package usati, nel caso di package innestati
+ pure le relative cartelle saranno innestate
+\end_layout
+
+\begin_layout Itemize
+nome_classe: cartella contentente la singola nome_classe.java, tale cartella
+ sarà denominata come la classe, ma senza espansione
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+SQLite
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+test
 \end_layout
 
 \end_body
