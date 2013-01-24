@@ -389,15 +389,25 @@ L'utente viene autenticato e gli viene mostrata la schermata principale
 
 \series bold
 Scenari alternativi: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 L'user ID fornito dall'utente potrebbe essere già in uso, in questo caso
  la creazione dell'account viene fermata segnalando il problema riscontrato.
- L'utente può annullare la procedura di creazione, in questo caso il sistema
+\end_layout
+
+\begin_layout Itemize
+L'utente può annullare la procedura di creazione, in questo caso il sistema
  ritorna alla schermata principale.
- Se un utente è già autenticato dovrà prima terminare la sessione corrente
+\end_layout
+
+\begin_layout Itemize
+Se un utente è già autenticato dovrà prima terminare la sessione corrente
  prima di effettuare una registrazione
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 UC2: Login
 \begin_inset CommandInset label
@@ -510,14 +520,21 @@ L'utente inserisce la propria password
 
 \series bold
 Scenari alternativi: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 Le credenziali inserite dall'utente non sono presenti sul server, in questo
  caso viene visualizzato un messaggio d'errore e viene riproposta la schermata
  principale.
- Se un utente è già autenticato dovrà prima terminare la sessione corrente
+\end_layout
+
+\begin_layout Itemize
+Se un utente è già autenticato dovrà prima terminare la sessione corrente
  prima di effettuare un'altra autenticazione
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 UC3: Modifica dati account
 \begin_inset CommandInset label
@@ -920,7 +937,7 @@ L'utente sta visualizzando la lista degli utenti registrati presso il server
 \series bold
 Scenari alternativi: 
 \series default
-se il sistema non riesce a collegarsi al server viene mostrato un messaggio
+se il sistema non riesce a collegarsi al server, viene mostrato un messaggio
  di errore e viene ritentata la connessione dopo un intervallo di tempo
 \end_layout
 
@@ -1026,7 +1043,7 @@ reference "sub:UC6.2:-Selezione-contatto"
 \end_layout
 
 \begin_layout Itemize
-L'utente può effettuare una chiamata (si veda 
+L'utente può effettua una chiamata (si veda 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:UC6.3:-Chiamata"
@@ -1315,7 +1332,7 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente attiva trasmissione del proprio video
+L'utente attiva la trasmissione del proprio video
 \end_layout
 
 \begin_layout Itemize
@@ -1344,7 +1361,7 @@ L'utente può registrare la chiamata
 \end_layout
 
 \begin_layout Itemize
-L'utente può condividere la schermata del prioprio browser con l'interlocutore,
+L'utente può condividere la schermata del proprio browser con l'interlocutore,
  in tal caso se è attiva la trasmissione del video essa si disattiva e si
  passa alla modalità di condivisione schermata
 \end_layout
@@ -1541,7 +1558,7 @@ L'utente inserisce il messaggio di testo
 \end_layout
 
 \begin_layout Itemize
-Il sistema mostra i messaggi fin'ora inviati e ricevuti da quel contatto
+Il sistema mostra i messaggi finora inviati e ricevuti da quel contatto
  in questa sessione
 \end_layout
 
