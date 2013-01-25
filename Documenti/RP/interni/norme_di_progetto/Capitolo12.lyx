@@ -1051,5 +1051,146 @@ Non ci sarà alcun carattere di spaziatura.
  l'eventuale attributo associato
 \end_layout
 
+\begin_layout Subsection
+
+\lang english
+Procedura di Verifica e Validazione
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Di seguito vengono riportate le norme che regolano le attività di verifica
+ riguaranti al codice
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Per una specifica dettagliata delle tecniche e delle modalità con cui verranno
+ condotte tali attività si rimanda al 
+\family typewriter
+Piano_di_Qualifica_v2.0.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Analisi statica 
+\begin_inset CommandInset label
+LatexCommand label
+name "Analisi-statica"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Analisi del flusso di controllo:
+\series default
+ si verificherà, analizzando i vari flussi possibili, che il codice segua
+ la sequenza specificata.
+ Si accerterà che il codice sia ben strutturato, che non esistano parti
+ di codice che non vengono mai raggiunte o che non terminano.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Analisi di flusso dei dati:
+\series default
+ bisogna assicurare che il flusso di dati non usi variabili non ancora inizializ
+zate o prive di valore, oppure che si scriva più volte prima di usare una
+ variabile
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Analisi flusso d'informazione:
+\series default
+ bisogna verificare che input ed output di ogni unità di codice (o più unità)
+ rientrino nelle specifiche del programma
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Verifica formale del codice:
+\series default
+ bisogna verificare la correttezza del codice rispetto alla specifica dei
+ requisiti
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Analisi dinamica 
+\begin_inset CommandInset label
+LatexCommand label
+name "Test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Test di unità:
+\series default
+ test applicati alle singole unità di sistema al fine di verificare la presenza
+ di malfunzionamenti.
+ Bisognerà fare tali test con il massimo grado di parallelismo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Test di integrazione:
+\series default
+ test effettuato per verificare che i componenti formati dall'unione delle
+ varie unità che hanno superato il test di unità cooperino nel modo corretto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Test di sistema e collaudo:
+\series default
+ test eseguito sull’intero sistema allo scopo di accertare che il sistema
+ prodotto adempie ai requisiti richiesti, che riesca ad adattarsi correttamente
+ al contesto richiesto dal proponente.
+ Il collaudo sarà sul software finito e, se superata, seguirà il rilascio
+ del prodotto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Test di regressione
+\series default
+: nel caso bisogna apportare delle modifiche ad un singolo componente, tale
+ componente ricomincerà i test a partire da quelli di unità
+\end_layout
+
 \end_body
 \end_document
