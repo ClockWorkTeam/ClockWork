@@ -153,8 +153,14 @@ http://www.lyx.org
 
 ).
  Verrà creato un documento per ogni capitolo di ogni documento.
- Tali capitoli saranno uniti tramite LyX generando un  documento in formato
- PDF.
+ Tali capitoli saranno uniti tramite LyX(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Formattazione-documenti"
+
+\end_inset
+
+) generando un  documento in formato PDF.
 \end_layout
 
 \begin_layout Subsubsection
@@ -168,23 +174,18 @@ name "sub:Verifica-ortografica"
 
 \end_layout
 
-\begin_layout Itemize
-
+\begin_layout Standard
+Per la verfica ortografica dei documenti si utilizzeranno
 \series bold
-Hunspell (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
  
-\series bold
-1.3.2-4build1):
 \series default
- strumento per la correzione grammaticale dei documenti redatti.
- L'utilizzo di Hunspell avverrà tramite apposito plugin per LyX (
-\begin_inset Flex URL
+Hunspell
+\begin_inset Foot
 status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -193,26 +194,26 @@ http://hunspell.sourceforge.net/
 
 \end_inset
 
-)
+
 \end_layout
 
-\begin_layout Itemize
+\end_inset
 
+ (
 \series bold
-Enchant (
-\series default
 
 \begin_inset Formula $\geqslant$
 \end_inset
 
  
-\series bold
-1.6.0-7build1):
 \series default
- strumento per la correzione grammaticale dei documenti redatti.
- L'utilizzo di Enchant avverrà tramite apposito plugin per LyX (
-\begin_inset Flex URL
+1.3.2-4build1) e Enchant
+\begin_inset Foot
 status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -221,15 +222,30 @@ http://abisource.com/projects/enchant/
 
 \end_inset
 
-)
+
+\end_layout
+
+\end_inset
+
+ (
+\series bold
+
+\begin_inset Formula $\geqslant$
+\end_inset
+
+ 
+\series default
+1.6.0-7build1), l'utilizzo dei quali avverrà tramite apposito plugin per LyX.
 \end_layout
 
 \begin_layout Subsubsection
 Pianificazione
 \end_layout
 
-\begin_layout Itemize
-Microsoft Project 2010: fornito dal servizio 
+\begin_layout Standard
+Come supporto alla pianificazione del progetto e realizzazione dei dirammi
+ di Gantt si utilizzerà il software proprietario Microsoft Project 2010.
+ Il software, fornito dal servizio 
 \bar under
 MSDNAA
 \bar default
@@ -238,7 +254,7 @@ MSDNAA
  e la gestione delle risorse.
  Tale strumento è compatibile solo con sistemi operativi Windows; in caso
  di necessità si potrà utilizzare una macchina virtuale Windows XP (fornita
- dalla MSDNAA) con installato il programma
+ dalla MSDNAA) con installato il programma.
 \end_layout
 
 \begin_layout Subsubsection
@@ -252,52 +268,45 @@ name "sub:Grafici-UML"
 
 \end_layout
 
-\begin_layout Itemize
-ArgoUML(
+\begin_layout Standard
+Per la definizione dei grafici 
+\bar under
+UML
+\bar default
+ sarà utilizzato il software ArgoUML(
 \begin_inset Formula $\geqslant0.34$
 \end_inset
 
-): open source e multipiattaforma, ed è in grado di esportare i diagrammi
- in formato vettoriale
+), che è stato scelto perchè è open source, multipiattaforma ed è in grado
+ di esportare i diagrammi in formato vettoriale.
+ 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Nota: ArgoUML non supporta ufficialmente lo standard UML2, dunque verrà
- prestata attenzione nell'espressione delle notazioni grafiche affinchè
- rispettino le specifiche 2.0
+\begin_layout Standard
+Si ricorda che ArgoUML non supporta ufficialmente lo standard UML2, dunque
+ verrà prestata attenzione nell'espressione delle notazioni grafiche affinchè
+ rispettino le specifiche 2.0.
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 Mockup
 \end_layout
 
-\begin_layout Itemize
-Pencil (
+\begin_layout Standard
+Per la realizzazione di mockup dell'interfaccia grafica si è scelto di utilizzar
+e il software open source Pencil (
 \begin_inset Formula $\geqslant2.0.3$
 \end_inset
 
-): open source (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://pencil.evolus.vn/
-\end_layout
-
-\end_inset
-
-) , per la realizzazione di mockup dell'interfaccia grafica per il mockup
+).
 \end_layout
 
 \begin_layout Subsubsection
 Documentazione semi-automatica
 \end_layout
 
-\begin_layout Itemize
-Javadoc(
+\begin_layout Standard
+Si userà Javadoc(
 \begin_inset Formula $\geqslant1.5$
 \end_inset
 
@@ -317,12 +326,9 @@ Ambiente di sviluppo
 Strumenti di versionamento
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Git:
-\series default
- veloce da utilizzare e di facile apprendimento.
+\begin_layout Standard
+Si è deciso di adoperare Git, perchè risulta veloce da utilizzare e di facile
+ apprendimento.
  Ci appoggeremo al servizio Github (
 \begin_inset Flex URL
 status collapsed
@@ -374,7 +380,6 @@ git
 ) e le interfacce grafiche per i rispettivi sistemi operativi:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -413,7 +418,6 @@ Git-Cola
 ) (Linux)
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 Ambiente di codifica
 \begin_inset CommandInset label
@@ -425,33 +429,44 @@ name "sub:Ambiente-di-codifica"
 
 \end_layout
 
-\begin_layout Itemize
-
+\begin_layout Standard
+Si userà
 \series bold
-Geany
+ 
 \series default
-(
+Geany (
 \begin_inset Formula $\geqslant0.21$
 \end_inset
 
 ): per la scrittura del codice HTML5
+\bar default
+, 
+\bar under
+CSS3 
+\bar default
+e 
+\bar under
+Javascript.
+
+\bar default
+ 
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Eclipse
-\series default
-(
-\begin_inset Formula $\geqslant3.8.0$
-\end_inset
-
-): 
+\begin_layout Standard
+Si utilizzerà l'
 \bar under
 IDE
 \bar default
- multi-linguaggio e multi-piattaforma che fornisce, nella versione base,
- alcune funzionalità utili di debugging, come l'esecuzione del codice 
+ multi-linguaggio e multi-piattaforma, Eclipse(
+\series bold
+
+\begin_inset Formula $\geqslant3.8.0$
+\end_inset
+
+
+\series default
+) per Java, che fornisce, nella versione base, alcune funzionalità utili
+ di debugging, come l'esecuzione del codice 
 \bar under
 step-by-step
 \bar default
@@ -476,7 +491,8 @@ http://www.eclipse.org/
 
 \end_inset
 
-)
+).
+ 
 \end_layout
 
 \begin_layout Subsection
