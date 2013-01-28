@@ -87,6 +87,13 @@ status open
 
 \begin_layout Plain Layout
 Rappresentazione Three Tier
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-Three-Tier"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -160,5 +167,172 @@ Data Layer: si occuperà di gestire la base di dati in cui saranno memorizzati
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+MVP
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione MVP
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-MVP"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Il design pattern di tipo MVP verrà implementato per rappresentare l'architettur
+a generale e più specificamente nel front-end.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+tale design pattern permette una completa disgiunzioni tra le funzionalità
+ che il prodotto deve offrire ed è strutturato in tre livelli
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Model: 
+\series default
+che rappresenta la parte in grado di recuperare le informazioni presenti
+ nel sistema
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+View: 
+\series default
+che rappresenta l'interfaccia grafica del sistema con la quale gli utenti
+ possono interagire
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Presenter: 
+\series default
+rappresenta la componente che riceve le richieste dalla view e le traduce
+ in operazioni che agiranno sia sui dati che sui modelli
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Motivazione: 
+\series default
+Questo design pattern permette un buon livello di disaccoppiamento tra la
+ vista ed il modello.
+ L'architettura risulta facilmente mantenibile poichè le modifiche ad uno
+ dei tre componenti non comporta modifiche ai restanti 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo: 
+\series default
+il design pattern verrà utilizzato nello sviluppo dell'architettura generale
+ e come struttura rappresentante il front-end.
+ Sono state individuate tre macro componenti:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Model: 
+\series default
+ha il compito di astrarre i dati presenti nel database recuperandone le
+ informazioni o aggiungendone e disportli in modo tale da essere visibili
+ alla vista.
+ Questo sarà implementato all'interno del data layer del back-end
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+View: 
+\series default
+rappresenta l'interfaccia grafica che consente l'iterazione tra gli utenti
+ ed il sistema
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Presenter: 
+\series default
+si occupa di ricevere le richieste dalla view e della comunicazione tra
+ il front-end ed il back-end del sistema
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Observer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+tale design pattern si occupa di gestire i cambiamenti che avvengono in
+ un oggetto riflettendone le conseguenze su tutti gli oggetti ad esso legato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Motivazione: 
+\series default
+Questo design pattern permette la gestione di oggetti a causa di modifiche
+ su altri.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+Si rivela utile per quanto riguarda la mantenibilità della lista utenti
+ connessi o meno o nel caso nuovi uttenti si andassero a registrare
+\end_layout
+
 \end_body
 \end_document
