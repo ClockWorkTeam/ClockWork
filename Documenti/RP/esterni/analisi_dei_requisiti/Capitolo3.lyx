@@ -112,7 +112,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso di ambito generale
+UC0 - ambito generale del software, descrive le funzionalità permesse
 \end_layout
 
 \end_inset
@@ -257,8 +257,7 @@ reference "sub:UC3:-Modifica-dati"
 \end_layout
 
 \begin_layout Itemize
-L'utente può gestire le richieste di chiamata che gli arrivano (si veda
- 
+L'utente può gestire le richieste che gli arrivano (si veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC7:-Gestione-chiamata"
@@ -300,8 +299,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che descrive i casi d'uso relativi alla registrazione presso un
- server
+UC1 - registrazione presso il server, con l'inserimento dei dati personali
+ richiesti
 \end_layout
 
 \end_inset
@@ -361,11 +360,15 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente inserisce il proprio username
+L'utente inserisce l'username scelto
 \end_layout
 
 \begin_layout Itemize
-L'utente inserisce la propria password
+L'utente inserisce la password scelta
+\end_layout
+
+\begin_layout Itemize
+L'utente inserisce nuovamente la password scelta per conferma 
 \end_layout
 
 \begin_layout Itemize
@@ -393,8 +396,13 @@ Scenari alternativi:
 
 \begin_deeper
 \begin_layout Itemize
-L'user ID fornito dall'utente potrebbe essere già in uso, in questo caso
+L'username fornito dall'utente potrebbe essere già in uso, in questo caso
  la creazione dell'account viene fermata segnalando il problema riscontrato.
+\end_layout
+
+\begin_layout Itemize
+Se la password e la password di conferma non corrispondono viene mostrato
+ un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
@@ -442,7 +450,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi all'autenticazione di un utente
+UC2 - inserimento dello username e della password per effettuare l'autenticazion
+e
 \end_layout
 
 \end_inset
@@ -569,8 +578,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi alla modifica dei dati di un
- account esistente
+UC3 - modifiche possibili dei dati personali di un account esistente
 \end_layout
 
 \end_inset
@@ -691,8 +699,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra il caso d'uso relativo alla visualizzazione dei tutorial
- video
+UC4 - visualizzazione dei tutorial video, permette di scegliere il tutorial
+ da visualizzare
 \end_layout
 
 \end_inset
@@ -801,8 +809,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi alla scelta di un tutorial
- video
+UC4.1 - Scelta di visualizzazione del precedente/successivo tutorial o tornare
+ all'indice dei tutorial
 \end_layout
 
 \end_inset
@@ -828,7 +836,7 @@ utente
 \series bold
 Scopo e descrizione: 
 \series default
-il sistema visualizza il video selezionato e permette la visualizzazione
+il sistema sta visualizzando il video selezionato e permette la visualizzazione
  di altri video
 \end_layout
 
@@ -975,8 +983,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi alla selezione delle funzionalità
- di comunicazione
+UC6 - selezione della tipologia di comunicazione tra quelle offerte dal
+ sistema
 \end_layout
 
 \end_inset
@@ -1138,6 +1146,19 @@ L'utente inserisce l'indirizzo IP del destinatario
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenario alternativo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se l'indirizzo IP inserito non è valido o il sistema non riesce ad effettuare
+ la connessione viene visualizzato un messaggio di errore
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 UC6.2: Selezione contatto
 \begin_inset CommandInset label
@@ -1168,7 +1189,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi alla selezione di un contatto
+UC6.2 - selezione di un contatto con cui utilizzare le funzionalità del software,
+ se selezionati più contatti si può effettuare una teleconferenza
 \end_layout
 
 \end_inset
@@ -1265,7 +1287,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/UC63Chiamata.pdf
-	scale 70
+	scale 60
 
 \end_inset
 
@@ -1276,7 +1298,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi allo svolgimento di una chiamata
+UC6.3 - azioni permesse durante lo svolgimento di una chiamata
 \end_layout
 
 \end_inset
@@ -1311,8 +1333,8 @@ durante una chiamata l'utente può attivare o disattivare il video e registrare
 \series bold
 Precondizioni: 
 \series default
-il sistema è connesso ad Internet, l'utente ha scelto un destinatario per
- la chiamata
+il sistema è connesso ad Internet, l'utente ha scelto almeno un destinatario
+ per la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1406,7 +1428,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi all'invio di un messaggio differito
+UC6.4 - invio di un messaggio audio/video differito
 \end_layout
 
 \end_inset
@@ -1433,7 +1455,10 @@ utente autenticato
 Scopo e descrizione: 
 \series default
 l'utente può registrare un messaggio che verrà recapitato successivamente
- al destinatario
+ al destinatario.
+ Questo messaggio verrà conservato per 4 giorni a partire dalla data di
+ registrazione presso il server, poi, se non è ancora stato consegnato,
+ verrà cancellato
 \end_layout
 
 \begin_layout Itemize
@@ -1462,7 +1487,23 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
-L'utente registra un messaggio
+L'utente registra un messaggio audio e video
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può registrare un messaggio con solamente la parte audio
+\end_layout
+
+\begin_layout Itemize
+L'utente termina la funzionalità senza aver registrato alcun messaggio
 \end_layout
 
 \end_deeper
@@ -1500,7 +1541,8 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi alla chat
+UC6.5 - visualizzazione della chat; si può inviare un nuovo messaggio, vengono
+ visualizzati tutti i messaggi inviati/ricevuti
 \end_layout
 
 \end_inset
@@ -1597,7 +1639,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi all'invio di un file
+UC6.6: invio di un file ad un contatto
 \end_layout
 
 \end_inset
@@ -1656,7 +1698,7 @@ L'utente seleziona il file da inviare
 
 \end_deeper
 \begin_layout Subsection
-UC7: Gestione chiamata in arrivo
+UC7: Gestione richieste
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:UC7:-Gestione-chiamata"
@@ -1677,7 +1719,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UC7Gestionechiamatainarrivo.pdf
+	filename img/UC7Gestionerichieste.pdf
 	scale 70
 
 \end_inset
@@ -1689,8 +1731,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma che illustra i casi d'uso relativi alla gestione di una chiamata
- in arrivo
+UC7 - gestione delle richieste in arrivo da parte di altri utenti
 \end_layout
 
 \end_inset
@@ -1726,7 +1767,8 @@ l'utente può accettare o rifiutare la richiesta di comunicazione da parte
 Precondizioni: 
 \series default
 il sistema è connesso ad internet e l'utente non è impegnato in un'altra
- conversazione
+ conversazione.
+ Un altro utente sta cercando di chiamare l'utente
 \end_layout
 
 \begin_layout Itemize
@@ -1745,6 +1787,11 @@ Flusso principale degli eventi:
 
 \begin_deeper
 \begin_layout Itemize
+Il sistema mostra all'utente una notifica che qualcuno desidera iniziare
+ una chiamata con lui
+\end_layout
+
+\begin_layout Itemize
 L'utente accetta la chiamata da parte di un altro utente
 \end_layout
 
@@ -1758,6 +1805,324 @@ Scenari alternativi:
 \begin_deeper
 \begin_layout Itemize
 L'utente può decidere di rifiutare la chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC7.1 Gestione chiamata in arrivo
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC71Gestionechiamatainarrivo.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+UC7.1 - accettazione/rifiuto di una chiamata in arrivo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali:
+\series default
+ utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+l'utente può accettare o rifiutare la richiesta di chiamata da parte di
+ un altro utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+il sistema è connesso ad internet e l'utente non è impegnato in un'altra
+ conversazione.
+ Un altro utente sta cercando di chiamare l'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+il sistema ha messo in comunicazione due o più utenti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Il sistema mostra all'utente una notifica che qualcuno desidera iniziare
+ una chiamata con lui
+\end_layout
+
+\begin_layout Itemize
+L'utente accetta la chiamata da parte di un altro utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può decidere di rifiutare la chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC7
+\series bold
+.2 Gestione messaggio differito in arrivo
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC72Gestionemessaggiodifferitoinarrivo.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+UC7.2 - visualizzazione/cancellazione di un messaggio differito in arrivo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali:
+\series default
+ utente autenticato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+l'utente può visualizzare o cancellare un messaggio audio e/o video inviato
+ da un altro utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+il sistema è connesso ad internet e l'utente non è impegnato in un'altra
+ conversazione.
+ Un altro utente ha registrato e inviato un messaggio all'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+il sistema ha cancellato il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Il sistema mostra all'utente una notifica che un altro utente gli ha inviato
+ un messaggio
+\end_layout
+
+\begin_layout Itemize
+L'utente accetta di visualizzare il messaggio
+\end_layout
+
+\begin_layout Itemize
+Il sistema cancella il messaggio
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può decidere di cancellare il messaggio senza prima averlo visualizzato
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+UC7.3 Gestione file in arrivo
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UC73Gestionefileinarrivo.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+UC7.3 - accettazione/rifiuto di trasferimento di un file
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attori principali:
+\series default
+ utente autenticato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Scopo e descrizione: 
+\series default
+l'utente può accettare o rifiutare la richiesta di trasfrimento di un file
+ da parte di un altro utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precondizioni: 
+\series default
+il sistema è connesso ad internet e l'utente non è impegnato in un'altra
+ conversazione.
+ Un altro utente ha inviato un file all'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Postcondizioni: 
+\series default
+il sistema ha terminato la funzionalità di trasferimento file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flusso principale degli eventi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Il sistema mostra all'utente una notifica che qualcuno desidera inviargli
+ un file
+\end_layout
+
+\begin_layout Itemize
+L'utente accetta di salvare il file
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Scenari alternativi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'utente può decidere di rifiutare il trasferimento del file
 \end_layout
 
 \end_deeper
