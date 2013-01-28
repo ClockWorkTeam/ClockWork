@@ -102,7 +102,7 @@ View
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 costituisce la parte del sistema che definisce ed implementa l'interfaccia
  web usufruibile dagli utenti mediante pagine web
@@ -112,23 +112,23 @@ costituisce la parte del sistema che definisce ed implementa l'interfaccia
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 il componente è costituito dal package view, e andrà a comunicare con il
- package presenter che farà da tramite per la comunicazione tra il lato
- client e il lato server controllandone i dati in transito
+ package mytalk.client.presenter che farà da tramite per la comunicazione
+ tra il lato client e il lato server controllandone i dati in transito
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.Login
+mytalk.client.view.LoginView
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
-la classe Login definisce la struttura, e la conseguente visualizzazione,
+la classe LoginView definisce la struttura, e la conseguente visualizzazione,
  della pagine web per effettuare l'accesso al sistema
 \end_layout
 
@@ -136,22 +136,12 @@ la classe Login definisce la struttura, e la conseguente visualizzazione,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
-la classe Login comunicherà con la classe AuthenticationControl per poter
- verificare se le credenziale inserite siano corrette o meno e quindi effettuare
- l'accesso al sistema
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti: 
-\series default
-la classe Login viene utilizzata dalla classe AuthenticationControl per
- visualizzare uno o più errori di inserimento dei dati nella fase di autenticazi
-one
+la classe LoginView comunicherà con la classe mytalk.client.presenter.Authenticatio
+nControl per poter verificare se le credenziale inserite siano corrette
+ o meno e quindi effettuare l'accesso al sistema o mostrare i relativi messaggi
+ di errore
 \end_layout
 
 \begin_layout Standard
@@ -168,15 +158,15 @@ la classe definisce la struttura della pagina web che consente agli utenti
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.Tutorial
+mytalk.client.view.TutorialView
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
-la classe Tutorial definisce la struttura, e la conseguente visualizzazione,
+la classe TutorialView definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per la visualizzazione dei video tutorial del prodotto
  
 \begin_inset ERT
@@ -198,11 +188,11 @@ PRODOTTO}
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
-la classe Tutorial comunicherà con la classe Tutorial del package Model
+la classe TutorialView comunicherà con la classe mytalk.client.presenter.Tutorial
  che avrà lo scopo di caricare i dati del video e caricarlo per renderlo
- visibile all'utente
+ visibile dall'utente
 \end_layout
 
 \begin_layout Standard
@@ -238,7 +228,7 @@ mytalk.client.view.UserList
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe UserList definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per la visualizzazione della lista utenti iscritti al
@@ -249,7 +239,7 @@ la classe UserList definisce la struttura, e la conseguente visualizzazione,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe UserList comunicherà con la classe UserListControl che restituirà
  gli iscritti al server connessi in quel momento o meno
@@ -282,7 +272,7 @@ mytalk.client.view.IpCall
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe IpCall definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare chiamate inserendo unicamente l'
@@ -296,7 +286,7 @@ indirizzo IP
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe IpCall comunicherà con la classe CallControl che permetterà una
  comunicazione audio e se possibile anche video tra due utenti.
@@ -333,7 +323,7 @@ mytalk.client.view.AudioCall
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe AudioCall definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare chiamate audio
@@ -343,7 +333,7 @@ la classe AudioCall definisce la struttura, e la conseguente visualizzazione,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe AudioCall comunicherà con la classe CallControl che permetterà
  una comunicazione audio tra due utenti.
@@ -377,7 +367,7 @@ mytalk.client.view.VideoCall
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe VideoCall definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare chiamate video
@@ -387,7 +377,7 @@ la classe VideoCall definisce la struttura, e la conseguente visualizzazione,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe VideoCall comunicherà con la classe CallControl che permetterà
  una comunicazione audio e video tra due utenti.
@@ -410,7 +400,7 @@ la classe VideoCall verrà utilizzata dalla classe CallControl che attraverso
 Attività svolte e dati trattati: : 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
- di effettuare chiamate audio selezionando l'utente da chiamare dalla lista
+ di effettuare chiamate video selezionando l'utente da chiamare dalla lista
  utenti presente
 \end_layout
 
@@ -421,7 +411,7 @@ mytalk.client.view.Notification
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe Notification definisce la struttura, e la conseguente visualizzazioni,
  delle pagine web per visualizzare notifiche di chiamate in entrata
@@ -431,7 +421,7 @@ la classe Notification definisce la struttura, e la conseguente visualizzazioni,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe Notification comunicherà con la classe NotificationControl che
  invierà segnali di chiamata in arrivo da parte di altri.
@@ -466,7 +456,7 @@ mytalk.client.view.Chat
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe Chat definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare comunicazioni testuali
@@ -476,7 +466,7 @@ la classe Chat definisce la struttura, e la conseguente visualizzazione,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe Chat comunicherà con la classe ChatControl che permetterà una
  comunicazione testuale tra due utenti.
@@ -504,20 +494,20 @@ la classe definisce la struttura della pagina web che consente agli utenti
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.VideoAccountData
+mytalk.client.view.ViewAccountData
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -541,7 +531,7 @@ mytalk.client.view.RecordMessage
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe RecordMessage definisce la struttura, e la conseguente visualizzazione
 , delle pagine web per effettuare registrazioni audio da inviare
@@ -551,7 +541,7 @@ la classe RecordMessage definisce la struttura, e la conseguente visualizzazione
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe RecordMessage comunicherà con la classe RecordMessageControl che
  con i suoi metodi permetterà la registrazione di un video da inviare ad
@@ -586,7 +576,7 @@ mytalk.client.view.CallStatistics
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 la classe CallStatistics definisce la struttura, e la conseguente visualizzazion
 e, delle pagine web per la visualizzazione di statistiche durante lo svolgimento
@@ -597,7 +587,7 @@ e, delle pagine web per la visualizzazione di statistiche durante lo svolgimento
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 la classe CallStatistics comunicherà con la classe CallStatisticsControl
  che avrà lo scopo di visualizzare le statistiche della chiamata
@@ -610,14 +600,14 @@ la classe CallStatistics comunicherà con la classe CallStatisticsControl
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
 la classe CallStatistic verrà utilizzata dalla classe CallStatisticControl
- che le invierà i dati durante la fase di chiaamata
+ che le invierà i dati durante la fase di chiamata
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce quindi la struttura della pagina web che visualizza
  i dati della chiamata che viene effettuata
@@ -630,9 +620,9 @@ mytalk.client.view.SignUp
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
-la classe SignUp definisce la struttura, e la conseguente visualizazione,
+la classe SignUp definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per la registrazione di un nuovo utente al server
 \end_layout
 
@@ -640,7 +630,7 @@ la classe SignUp definisce la struttura, e la conseguente visualizazione,
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -654,7 +644,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce quindi la struttura della pagina web per l'iscrizione
  di un nuovo utente al server
@@ -667,14 +657,14 @@ mytalk.client.view.ModifyAccountData
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -688,7 +678,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -698,14 +688,14 @@ mytalk.client.view.Menu
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -719,7 +709,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsection
@@ -729,7 +719,7 @@ Presenter
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 costituisce la parte del sistema che definisce ed implementa la parte del
  sistema che restituisce il risultato delle elaborazioni effettuate dall'utente
@@ -739,23 +729,23 @@ costituisce la parte del sistema che definisce ed implementa la parte del
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:: 
+Relazioni d'uso con altre componenti:: 
 \series default
 il componente è costituito dal package presenter, e andrà a comunicare con
- il package view riportando i risultati dell'elaborazioni dei dati e con
+ il package view riportando i risultati delle elaborazioni dei dati e con
  il package model.
  Inoltre il package presenter si occuperà della comunicazione tra front-end
  e back-end
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.AuthenticationControl
+mytalk.client.presenter.AuthenticationControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe AuthenticationControl si occupa di controllare le credenziali
  che un utente inserisce trasmetterle al back-end e in base alla risposta
@@ -766,7 +756,7 @@ La classe AuthenticationControl si occupa di controllare le credenziali
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 Utilizzando i metodi presenti nella classe Login del package View stabilisce
  una connessione col back-end dal quale riceve una risposta che poi andrà
@@ -779,29 +769,29 @@ Utilizzando i metodi presenti nella classe Login del package View stabilisce
 \series bold
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
-Viene usata dalla classe Login per tenere aggiornato il suostato, inoltre
+Viene usata dalla classe Login per tenere aggiornato il suo stato, inoltre
  se l'esito dovesse essere positivo andrà ad aggiornare la UserList di tutti
- gli utenti connessi indicando la presentza dell'utente
+ gli utenti connessi indicando la presenza dell'utente
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe si occupa quindi della comunicazione tra client e server per quanto
  riguarda l'autenticazione degli utenti
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.UserListControl
+mytalk.client.presenter.UserListControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe UserListControl si occupa di controllare la lista degli utenti
  iscritti al server comunicando con il back-end e restituire il risultato
@@ -812,7 +802,7 @@ La classe UserListControl si occupa di controllare la lista degli utenti
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 La classe si interfaccia con la classe UserList alla quale invia gli utenti
  iscritti al server e se sono connessi o meno una volta fatto accesso al
@@ -833,20 +823,20 @@ a la lista degli utenti iscritti e il loro stato
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe si occupa quindi di restituire la lista di tutti gli utenti iscritti
  al server
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.CallControl
+mytalk.client.presenter.CallControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe CallControl si occupa di avviare la comunicazione tra utenti attravers
 o una comunicazione con il back-end
@@ -856,7 +846,7 @@ o una comunicazione con il back-end
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 La classe si interfaccerà in base al tipo di chiamata alla classe VideoCall
  se si tratta di una chiamata video ed audio, AudioCall se si tratta di
@@ -878,19 +868,19 @@ Le classi VideoCall, AudioCall e IpCall si interfacceranno con questa classe
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe si occupa quindi di avviare una chiamata tra due diversi utenti
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.ChatControl
+mytalk.client.presenter.ChatControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe ChatControl si occupa di controllare se sono in arrivo messaggi
  di testo da parte di altri utenti attraverso una comunicazione con il back-end
@@ -900,7 +890,7 @@ La classe ChatControl si occupa di controllare se sono in arrivo messaggi
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 La classe si interfaccerà con la classe Chat se la comunicazione avviene
  tra due utenti iscritti altrimenti alla classe IpCall se è stata effettuato
@@ -921,30 +911,30 @@ Le classi Chat IpCall si interfacceranno con questa classe in base alle
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe si occupa quindi di avviare una comunicazione testuale tra due
  utenti
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.NotificationControl
+mytalk.client.presenter.NotificationControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe NotificationControl si occupa di inviare la presenza di notifiche
- di chiamata ad un'altro utente
+ di chiamata ad un altro utente
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 La classe NotificationControl si interfaccia con la classe Notification
  e segnala la presenza di una chiamata in arrivo da parte di un altro utente
@@ -964,27 +954,27 @@ La classe verrà utilizzata dalla classe Notification che mostrerà segnali
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe si occupa quindi di avvisare l'utente che è in arrivo una chiamata
  in arrivo.
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.AccountControl
+mytalk.client.presenter.AccountControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -998,17 +988,17 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.StaticsControl
+mytalk.client.presenter.StatisticsControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe si occupa di gestire l'invio delle statistiche delle chiamate
  alla classe CallStatistics ottenuto 
@@ -1018,7 +1008,7 @@ La classe si occupa di gestire l'invio delle statistiche delle chiamate
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 La classe si interfaccia alla classe Statistics dalla quale riceverà le
  informazioni sulla chiamata che poi andranno passate alla classe CallStastistic
@@ -1031,16 +1021,16 @@ s
 \series bold
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
-La classe verrà utilizzata dalla classe Stastics la quale elaborerà le informazi
-oni da inviare e dalla classe CallStastics che riceverà queste informazioni
- che passerranno per questa classe
+La classe verrà utilizzata dalla classe Statistics la quale elaborerà le
+ informazioni da inviare e dalla classe CallStatistics che riceverà queste
+ informazioni che passeranno per questa classe
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe quindi si occupa di avere al suo interno le informazioni sulla
  chiamata in corso che verranno visualizzate all'utente grazie alla classe
@@ -1048,13 +1038,13 @@ La classe quindi si occupa di avere al suo interno le informazioni sulla
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presentation.RecordMessageControl
+mytalk.client.presenter.RecordMessageControl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente: 
+Tipo, obiettivo e funzione del componente: 
 \series default
 La classe si occupa di gestire il gestire il video messaggio salvato inviando
  al back-end il compito di salvarlo nel server
@@ -1064,7 +1054,7 @@ La classe si occupa di gestire il gestire il video messaggio salvato inviando
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti: 
+Relazioni d'uso con altre componenti: 
 \series default
 La classe si interfaccia con la classe Video da cui riceve il video salvato,
  e con la classe RecordMessage che si occupa dell'inizio della registrazione
@@ -1076,7 +1066,7 @@ La classe si interfaccia con la classe Video da cui riceve il video salvato,
 \series bold
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
-La classe verrà utilizzata dalla classe RecordMessagge per comunicarli l'inizio
+La classe verrà utilizzata dalla classe RecordMessage per comunicarli l'inizio
  della registrazione e dalla classe Video che si occuperà della registrazione
  vera e propria del video
 \end_layout
@@ -1085,7 +1075,7 @@ La classe verrà utilizzata dalla classe RecordMessagge per comunicarli l'inizio
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 La classe si occupa quindi di ricevere la richiesta di avvio registrazione
  e di mandare al server il compito di salvarla
@@ -1098,14 +1088,14 @@ Model
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Subsubsection
@@ -1115,14 +1105,14 @@ mytalk.client.model.User
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -1136,7 +1126,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -1146,14 +1136,14 @@ mytalk.client.model.Contact
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -1167,7 +1157,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -1177,14 +1167,14 @@ mytalk.client.model.Video
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -1198,7 +1188,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -1208,14 +1198,14 @@ mytalk.client.model.Statistics
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -1229,7 +1219,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -1239,14 +1229,14 @@ mytalk.client.model.TextMessage
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -1260,7 +1250,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -1270,14 +1260,14 @@ mytalk.client.model.Tutorial
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -1291,7 +1281,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \end_body
