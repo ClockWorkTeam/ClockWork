@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -95,7 +96,7 @@ Front-End
 \end_layout
 
 \begin_layout Subsection
-Viev
+View
 \end_layout
 
 \begin_layout Standard
@@ -114,8 +115,8 @@ costituisce la parte del sistema che definisce ed implementa l'interfaccia
 Relazioni d'uso di altre componenti: 
 \series default
 il componente è costituito dal package view, e andrà a comunicare con il
- package presenter che farà da trammite per la comunicazione tra il lato
- client e il lato server controllandone i dati in trnasito
+ package presenter che farà da tramite per la comunicazione tra il lato
+ client e il lato server controllandone i dati in transito
 \end_layout
 
 \begin_layout Subsubsection
@@ -128,7 +129,7 @@ mytalk.client.view.Login
 Tipo obiettivo e funzione del componente: 
 \series default
 la classe Login definisce la struttura, e la conseguente visualizzazione,
- della pagine web per effettuare l'accesso al sitema
+ della pagine web per effettuare l'accesso al sistema
 \end_layout
 
 \begin_layout Standard
@@ -137,7 +138,7 @@ la classe Login definisce la struttura, e la conseguente visualizzazione,
 \series bold
 Relazioni d'uso di altre componenti: 
 \series default
-la classe Login comunicherà con la classe AuthenticanionControl per poter
+la classe Login comunicherà con la classe AuthenticationControl per poter
  verificare se le credenziale inserite siano corrette o meno e quindi effettuare
  l'accesso al sistema
 \end_layout
@@ -148,7 +149,7 @@ la classe Login comunicherà con la classe AuthenticanionControl per poter
 \series bold
 Interfacce con e relazioni d'uso da altre componenti: 
 \series default
-la classe Login viene utilizzata dalla classe AuthenticanionControl per
+la classe Login viene utilizzata dalla classe AuthenticationControl per
  visualizzare uno o più errori di inserimento dei dati nella fase di autenticazi
 one
 \end_layout
@@ -157,12 +158,12 @@ one
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  di inserire le proprie credenziali per poter essere riconosciuti dal sistema.
  Essa resta in attesa che vengano inseriti i dati necessari per l'autenticazione
- per poi passarli alla classe AuthenticationControl, che svolgera i vari
+ per poi passarli alla classe AuthenticationControl, che svolgerà i vari
  controlli
 \end_layout
 
@@ -177,7 +178,20 @@ Tipo obiettivo e funzione del componente:
 \series default
 la classe Tutorial definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per la visualizzazione dei video tutorial del prodotto
- MyTalk
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PRODOTTO}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -209,7 +223,7 @@ classe Tutorial viene utilizzata dalla classe Tutorial del package Model
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  di visualizzare i vari video tutorial che riguardano il prodotto.
@@ -254,7 +268,7 @@ la classe
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  che hanno fatto accesso al servizio di poter visualizzare gli utenti in
@@ -305,7 +319,7 @@ la classe IpCall verrà utilizzato dalle classi CallControl e ChatControl
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  di effettuare chiamate o di comunicare testualmente con altri utenti inserendo
@@ -321,7 +335,7 @@ mytalk.client.view.AudioCall
 \series bold
 Tipo obiettivo e funzione del componente: 
 \series default
-la classe AudioCall definisce la struttura, e la conseguente visualizazione,
+la classe AudioCall definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare chiamate audio
 \end_layout
 
@@ -349,11 +363,11 @@ la classe AudioCall verrà utilizzata dalla classe CallControl che attraverso
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: : 
+Attività svolte e dati trattati: : 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  di effettuare chiamate audio selezionando l'utente da chiamare dalla lista
- utenti presnete
+ utenti presente
 \end_layout
 
 \begin_layout Subsubsection
@@ -365,7 +379,7 @@ mytalk.client.view.VideoCall
 \series bold
 Tipo obiettivo e funzione del componente: 
 \series default
-la classe VideoCall definisce la struttura, e la conseguente visualizazione,
+la classe VideoCall definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare chiamate video
 \end_layout
 
@@ -386,18 +400,18 @@ la classe VideoCall comunicherà con la classe CallControl che permetterà
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
 la classe VideoCall verrà utilizzata dalla classe CallControl che attraverso
- i suoi metodi permetterà chiamate audio con un altro utente
+ i suoi metodi permetterà chiamate video con un altro utente
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: : 
+Attività svolte e dati trattati: : 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  di effettuare chiamate audio selezionando l'utente da chiamare dalla lista
- utenti presnete
+ utenti presente
 \end_layout
 
 \begin_layout Subsubsection
@@ -432,17 +446,17 @@ Interfacce con e relazioni d'uso da altra componenti:
 \series default
 la classe verrà utilizzata dalla classe NotificationControl che attraverso
  i suoi metodi invierà segnali di arrivo chiamata e dalle classi CallControl
- nel qualcaso venga accettata la chiamata
+ nel qual caso venga accettata la chiamata
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce la struttura della pagina web che consente di capire
- quando sono in arrivo delle chiaamte
+ quando sono in arrivo delle chiamate
 \end_layout
 
 \begin_layout Subsubsection
@@ -454,7 +468,7 @@ mytalk.client.view.Chat
 \series bold
 Tipo obiettivo e funzione del componente: 
 \series default
-la classe Chat definisce la struttura, e la conseguente visualizazione,
+la classe Chat definisce la struttura, e la conseguente visualizzazione,
  delle pagine web per effettuare comunicazioni testuali
 \end_layout
 
@@ -482,7 +496,7 @@ la classe Chat verrà utilizzata dalla classe ChatControl che attraverso
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: : 
+Attività svolte e dati trattati: : 
 \series default
 la classe definisce la struttura della pagina web che consente agli utenti
  di effettuare comunicazioni testuali selezionando l'utente da contattare
@@ -517,7 +531,7 @@ Interfacce con e relazioni d'uso da altra componenti:
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
@@ -529,8 +543,8 @@ mytalk.client.view.RecordMessage
 \series bold
 Tipo obiettivo e funzione del componente: 
 \series default
-la classe RecordMessage definisce la struttura, e la conseguente visualizazione,
- delle pagine web per effettuare regisrazioni audio da inviare
+la classe RecordMessage definisce la struttura, e la conseguente visualizzazione
+, delle pagine web per effettuare registrazioni audio da inviare
 \end_layout
 
 \begin_layout Standard
@@ -550,8 +564,8 @@ la classe RecordMessage comunicherà con la classe RecordMessageControl che
 \series bold
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
-la classe RecordMessage verrà utilizzata dalla classa RecordMessageControl
- che si occuperà della registrazione della videochiamata e della trasmissione
+la classe RecordMessage verrà utilizzata dalla classe RecordMessageControl
+ che si occuperà della registrazione della chiamata video e della trasmissione
  verso un utente
 \end_layout
 
@@ -559,10 +573,10 @@ la classe RecordMessage verrà utilizzata dalla classa RecordMessageControl
 \noindent
 
 \series bold
-Attivita svolte e dati trattati: 
+Attività svolte e dati trattati: 
 \series default
 la classe definisce quindi la struttura della pagina web che consente la
- registrazione di videochiamate da inviare verso utenti registrati
+ registrazione di chiamate video da inviare verso utenti registrati
 \end_layout
 
 \begin_layout Subsubsection
@@ -574,8 +588,8 @@ mytalk.client.view.CallStatistics
 \series bold
 Tipo obiettivo e funzione del componente: 
 \series default
-la classe CallStatistics definisce la struttura, e la conseguente visualizazione
-, delle pagine web per la visualizzazione di statische durante lo svolgimento
+la classe CallStatistics definisce la struttura, e la conseguente visualizzazion
+e, delle pagine web per la visualizzazione di statistiche durante lo svolgimento
  di una chiamata
 \end_layout
 
@@ -585,7 +599,7 @@ la classe CallStatistics definisce la struttura, e la conseguente visualizazione
 \series bold
 Relazioni d'uso di altre componenti: 
 \series default
-la classe CallStatistic comunicherà con la classe CallStatisticsControl
+la classe CallStatistics comunicherà con la classe CallStatisticsControl
  che avrà lo scopo di visualizzare le statistiche della chiamata
 \end_layout
 
@@ -595,7 +609,7 @@ la classe CallStatistic comunicherà con la classe CallStatisticsControl
 \series bold
 Interfacce con e relazioni d'uso da altra componenti: 
 \series default
-la classe CallStatistic verrà utilizzata dalla clssse CallStatisticControl
+la classe CallStatistic verrà utilizzata dalla classe CallStatisticControl
  che le invierà i dati durante la fase di chiaamata
 \end_layout
 
