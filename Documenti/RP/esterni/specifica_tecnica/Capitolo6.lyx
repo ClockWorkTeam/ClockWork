@@ -390,20 +390,13 @@ tale classe si occupa della gestione dei collegamenti ai tutorial
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Tale classe utilizza mytalk.server.data.TutorialData per scrivere e leggere
+tale classe utilizza mytalk.server.data.TutorialData per scrivere e leggere
  i collegamenti ai video tutorial e mytalk.server.transfer.TutorialTransfer per
  per far giungere tali link al client.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
 \end_layout
 
 \begin_layout Standard
@@ -414,7 +407,7 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-Tale classe si occupa di accedere ai collegamenti ai tutorial presenti nella base di dati
+tale classe si occupa di accedere ai collegamenti ai tutorial presenti nella base di dati
 e del loro invio alla classe mytalk.server.transfer.TutorialTransfer
 \end_layout
 
@@ -429,7 +422,7 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe si occupa di stabilire la riuscita o il fallimento di un tentativo
+tale classe si occupa di stabilire la riuscita o il fallimento di un tentativo
  di autenticazione da parte di un utente e riferire il risultato a ....
 \end_layout
 
@@ -437,23 +430,11 @@ Tale classe si occupa di stabilire la riuscita o il fallimento di un tentativo
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-La classe utilizza mytalk.server.data.UserData per verificare la correttezza
- dei dati.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-La classe riceve i dati da mytalk.server.transfer.UserTransfer ( ???? ) 
+la classe utilizza mytalk.server.data.UserData e comunica con mytalk.server.transfer.AuthenticationTransfer
 \end_layout
 
 \begin_layout Standard
@@ -464,9 +445,9 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-Tale classe deve controllare la base di dati mytalk.server.data.UserData 
- per verificare se un tentativo di autenticazione sia riuscito o meno e per
- effettuare il logout. *****
+tale classe deve controllare i dati contenuti nella base di dati in mytalk.server.data.UserData 
+ per verificare se un tentativo di autenticazione sia riuscito o meno, e restituire a mytalk.server.transfer.AuthenticationTransfer 
+ l'opportuna risposta, e per effettuare il logout.
 \end_layout
 
 \begin_layout Subsubsection
@@ -480,7 +461,7 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe si occupa delle operazioni di aggiornamento delle informazioni
+tale classe si occupa delle operazioni di aggiornamento delle informazioni
  sugli utenti, quali nuove registrazioni e modifiche degli account.
 \end_layout
 
@@ -488,22 +469,12 @@ Tale classe si occupa delle operazioni di aggiornamento delle informazioni
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-La classe agisce su mytalk.server.data.UserData.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-Tale classe viene utilizzata da mytalk.server.transfer.AuthenticationTransfer.
+tale classe viene utilizzata da mytalk.server.transfer.UserDataTransfer e agisce su 
+mytalk.server.data.UserData.
 \end_layout
 
 \begin_layout Standard
@@ -514,8 +485,8 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-Tale classe attende istruzioni da ..Transfer, controlla e eventualmente modifica la base di dati
- e ritorna a ...Transfer i risultati.
+Tale classe riceve istruzioni da mytalk.server.transfer.UserDataTransfer, controlla e eventualmente modifica la base di dati
+ e ritorna a mytalk.server.transfer.UserDataTransfer il successo o meno dell'eventuale cambiamento
 \end_layout
 
 \begin_layout Subsection
@@ -529,19 +500,20 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Lo strato Data contiene le informazioni utilizzate dal prodotto MyTalk.
+lo strato Data rappresenta la base di dati su cui vengono salvati i dati di cui si necessita la persistenza.
+Questo include i dati degli utenti registrati, i link ai tutorial video che saranno salvati su un sito esterno e
+ i messaggi registrati
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Lo strato Data viene utilizzato da mytalk.server.userManager e mytalk.server.function
-Manager per salvare e reperire informazioni dalla base di dati.
+lo strato Data verrà utilizzato dai package mytalk.server.usermanager e mytalk.server.functionmanager
 \end_layout
 
 \begin_layout Subsubsection
@@ -555,31 +527,20 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe è un semplice contenitore di informazioni.
+tale classe è un semplice contenitore di informazioni.
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
-\end_layout
-
-\begin_layout Standard
-Essendo un semplice contenitore di informazioni la classe non utilizza altre
- componenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
 Le classi che si interfacciano con tale classe sono quelle contenute nel
- package mytalk.server.userManager.
+ package mytalk.server.usermanager; essendo un semplice contenitore di informazioni la classe non utilizza altre
+ componenti.
 \end_layout
 
 \begin_layout Standard
@@ -590,7 +551,7 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
- Al suo interno vengono preservate le informazioni riguardanti gli utenti, ovvero username,
+ al suo interno vengono preservate le informazioni riguardanti gli utenti, ovvero username,
  password, nome, cognome e indirizzo IP.
 \end_layout
 
@@ -605,41 +566,27 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe è un semplice contenitore di informazioni.
+tale classe è un semplice contenitore di informazioni.
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Essendo un semplice contenitore di informazioni la classe non utilizza altre
- componenti.
+la classe che utilizza tale classe è mytalk.server.functionmanager.RecordMessageManager; 
+ essendo un semplice contenitore di informazioni la classe non utilizza altre componenti.
 \end_layout
-
-\begin_layout Standard
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-La classe che utilizza tale classe è mytalk.serve
-r.functionManager.RecordMessageManager.
-\end_layout
-
-\begin_layout Standard
-\noindent
 
 \series bold
 Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
- Al suo interno vengono salvati i messaggi registrati da mandare in differita.
+ al suo interno vengono salvati i messaggi registrati da mandare in differita.
 \end_layout
 
 \begin_layout Subsubsection
@@ -660,23 +607,12 @@ Tale classe è un semplice contenitore di informazioni.
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Essendo un semplice contenitore di informazioni la classe non utilizza altre
- componenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-La classe è utilizzata da mytalk.server.functionManager.TutorialManager.
+La classe è utilizzata da mytalk.server.functionmanager.TutorialManager; essendo 
+ un semplice contenitore di informazioni la classe non utilizza altre componenti.
 \end_layout
 
 \begin_layout Standard
