@@ -1,0 +1,164 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Design Pattern
+\end_layout
+
+\begin_layout Standard
+Presentiamo qui di seguito i vari design pattern che andremo ad utilizzare
+ per la rappresentazione dell'architettura del sistema
+\end_layout
+
+\begin_layout Subsection
+Multitier
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione Three Tier
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Il design pattern di tipo Multitier verrà implementato nella forma Three
+ Tier
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+tale design pattern permette una disgiunzione fra i vari gruppi di entità
+ che cooperano nell'erogazione del servizio.
+ Un primo livello si occuperà della comunicazione con il client, un secondo
+ invece di elaborare le informazioni prelevandole da un terzo livello inferiore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Motivazione: 
+\series default
+il benificio principale di questo design pattern è la possibilità di aggiornare/
+cambiare un livello senza andare a modificare i livelli adiacenti.
+ Nonostante i vari livelli si occupino di specifiche operazioni è presente
+ una forte comunicazione tra di loro, questo lo rende un ottimo modello
+ per applicazioni client-server, poichè ognu livello non esiste come unità
+ logica a se stante, ma si adegua allo specifico ambiente di rete in cui
+ esegue
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo: 
+\series default
+tale design pattern verrà utilizzato come struttura portante del back-end
+ e sarà suddiviso come segue
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transfer Layer: offrirà un interfaccia di comunicazione con il front-end
+ e i livelli sottostanti del back-end
+\end_layout
+
+\begin_layout Itemize
+Logic Layer: si occuperà di elaborare le informazioni controllando la consistenz
+a dei dati con il database nel livello sottostante
+\end_layout
+
+\begin_layout Itemize
+Data Layer: si occuperà di gestire la base di dati in cui saranno memorizzati
+ i dati persistenti
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
