@@ -70,14 +70,20 @@ Transfer Layer
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
+\end_layout
+
+\begin_layout Standard
+ lo strato Transfer si occupa della comunicazione tra il client e il server
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
+ lo strato Transfer interagisce con i package mytalk.server.functionmanager e mytalk.server.usermanager e con lo strato 
+ mytalk.client.presenter
 \end_layout
 
 \begin_layout Subsubsection
@@ -87,21 +93,22 @@ mytalk.server.transfer.CallTransfer
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
+\end_layout
+
+\begin_layout Standard
+ la classe si occupa di far arrivare i dati all'apparato logico al fine di inizializzare la chiamata
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
+ la classe viene contattata e si rivolge a mytalk.client.presenter..... e mytalk.server.functionmanager.CallManager
 \end_layout
 
 \begin_layout Standard
@@ -109,30 +116,36 @@ Interfacce con e relazioni d'uso da altre componenti:
 
 \series bold
 Attivita svolte e dati trattati:
+\end_layout
+
+\begin_layout Standard
+ la classe gestisce il trasferimento della richiesta di chiamata dal client al server e riferisce al server la situazione
+ della chiamata
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.transfer.ChatTransfer
+mytalk.server.transfer.AuthenticationTransfer
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
+\end_layout
+
+\begin_layout Standard
+tale classe si occupa del trasferimento delle richieste di autenticazione al server
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
+la classe viene utilizzata da mytalk.client.presenter... e mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Standard
@@ -140,61 +153,35 @@ Interfacce con e relazioni d'uso da altre componenti:
 
 \series bold
 Attivita svolte e dati trattati:
+\end_layout
+
+\begin_layout Standard
+la classe riceve da ***client*** richieste di autenticazione e manda i dati a mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.transfer.AccountTransfer
+mytalk.server.transfer.UserDataTransfer
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Relazioni d'uso di altre componenti:
+tale classe si occupa del trasferimento dei dati riguardanti gli utenti al fine di effettuare nuove registrazioni o di visualizzare ed eventualmente modificare i dati persistenti
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Interfacce con e relazioni d'uso da altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Attivita svolte e dati trattati:
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.server.transfer.UserTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Tipo obiettivo e funzione del componente:
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Relazioni d'uso di altre componenti:
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
+tale classe comunica con mytalk.client.presenter.... e mytalk.server.usermanager.UserDataManager
 \end_layout
 
 \begin_layout Standard
@@ -202,6 +189,11 @@ Interfacce con e relazioni d'uso da altre componenti:
 
 \series bold
 Attivita svolte e dati trattati:
+\end_layout
+
+\begin_layout Standard
+la classe riceve da ***client*** richieste di visualizzazione o modifica dei dati presenti nella base di dati
+ e dialoga con mytalk.server.usermanager.UserDataManager per eseguire le operazioni richieste
 \end_layout
 
 \begin_layout Subsubsection
@@ -211,21 +203,22 @@ mytalk.server.transfer.RecordMessageTransfer
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
+\end_layout
+
+\begin_layout Standard
+tale classe si occupa del trasferimento del messaggio registrato dal client al server e del seguente invio al destinatario
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
+la classe comunica con mytalk.server.manager.RecordMessageManager e mytalk.client.presenter....
 \end_layout
 
 \begin_layout Standard
@@ -233,6 +226,12 @@ Interfacce con e relazioni d'uso da altre componenti:
 
 \series bold
 Attivita svolte e dati trattati:
+\end_layout
+
+\begin_layout Standard
+tale classe riceve dal client il messaggio registrato e l'utente a cui mandarlo e passa tali dati
+ a mytalk.server.manager.RecordMessageManager.
+In seguito una volta ricevuto il video da mytalk.server.manager.RecordMessageManager lo manda al destinatario
 \end_layout
 
 \begin_layout Subsubsection
@@ -242,21 +241,23 @@ mytalk.server.transfer.NotificationTransfer
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
+\end_layout
+
+\begin_layout Standard
+tale classe si occupa di avvisare i client di eventuali notifiche dovute ad eventi generati da altri utenti
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
+la classe comunica con mytalk.client.presenter.... e viene chiamata da mytalk.server.functionmanager.RecordMessageManager,
+ mytalk.server.functionmanager.CallManager
 \end_layout
 
 \begin_layout Standard
@@ -264,64 +265,61 @@ Interfacce con e relazioni d'uso da altre componenti:
 
 \series bold
 Attivita svolte e dati trattati:
+\end_layout
+
+\begin_layout Standard
+tale classe manda al client messaggi che riguardano eventi esterni come una chiamata in corso o
+la presenza sul server di un messaggio registrato in attesa
 \end_layout
 
 \begin_layout Subsection
-Logic Layer
+Manager Layer
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Lo strato logico del server si occupa dell' interfacciamento della base
- di dati
+lo strato Manager del server si occupa delle funzionalità logiche del server e della lettura e della modifica della base di dati
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Lo strato logico agisce sullo strato dei dati in modo diretto.
+lo strato Manager agisce sullo strato Data per visualizzare o modificare i dati e comunica in modo bidirezionale con lo strato Transfer
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.funcionManager.CallManager
+mytalk.server.functionmanager.CallManager
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe ha il compito di inizializzare le chiamate tra due utenti.
+tale classe ha il compito di inizializzare la chiamata tra due utenti
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-La classe viene chiamata da mytalk.server.transfer.CallTransfer.
+tale classe viene contattata e comunica con mytalk.server.transfer.CallTransfer e mytalk.server.transfer.NotificationTransfer
 \end_layout
 
 \begin_layout Standard
@@ -331,41 +329,35 @@ La classe viene chiamata da mytalk.server.transfer.CallTransfer.
 Attivita svolte e dati trattati:
 \end_layout
 
+\begin_layout Standard
+tale classe si occuperà di inizializzare la chiamata tramite WebSocket, comunicando a mytalk.server.transfer.CallTransfer la situazione della chiamata che
+ sta venendo effettuata e a mytalk.server.transfer.NotificationTransfer che tipo di operazione sia stata rivolta verso il destinatario e da parte di chi
+\end_layout
+
 \begin_layout Subsubsection
-mytalk.server.funcionManager.RecordMessageManager
+mytalk.server.functionManager.RecordMessageManager
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe ha l'obiettivo di gestire la persistenza dei messaggi da mandare
- in differita.
+tale classe ha l'obiettivo di gestire la persistenza dei messaggi da mandare
+ in differita
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso di altre componenti:
+Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Tale classe utilizza mytalk.server.data.RecordMessageData per salvare i messaggi.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-Tale classe viene utilizzata da mytalk.server.data.RecordMessageTransfer.
+tale classe riceve dati da mytalk.server.transfer.RecordMessageTransfer e salva i messaggi in mytalk.server.data.RecordMessageData 
 \end_layout
 
 \begin_layout Standard
@@ -375,18 +367,23 @@ Tale classe viene utilizzata da mytalk.server.data.RecordMessageTransfer.
 Attivita svolte e dati trattati:
 \end_layout
 
+\begin_layout Standard
+tale classe si occupa del salvataggio, della cancellazione e dell'invio a mytalk.server.transfer.RecordMessageTransfer dei messaggi registrati
+ e del loro invio
+\end_layout
+
 \begin_layout Subsubsection
-mytalk.server.funcionManager.TutorialManager
+mytalk.server.functionManager.TutorialManager
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-Tale classe si occupa della gestione dei collegamenti ai tutorial.
+tale classe si occupa della gestione dei collegamenti ai tutorial
 \end_layout
 
 \begin_layout Standard
@@ -398,7 +395,8 @@ Relazioni d'uso di altre componenti:
 
 \begin_layout Standard
 Tale classe utilizza mytalk.server.data.TutorialData per scrivere e leggere
- i collegamenti ai video tutorial.
+ i collegamenti ai video tutorial e mytalk.server.transfer.TutorialTransfer per
+ per far giungere tali link al client.
 \end_layout
 
 \begin_layout Standard
@@ -415,47 +413,9 @@ Interfacce con e relazioni d'uso da altre componenti:
 Attivita svolte e dati trattati:
 \end_layout
 
-\begin_layout Subsubsection
-mytalk.server.funcionManager.TextMessageManager
-\end_layout
-
 \begin_layout Standard
-
-\series bold
-Tipo obiettivo e funzione del componente:
-\end_layout
-
-\begin_layout Standard
-Tale classe si occupa della gestione dei messaggi scritti inviati tra utenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Relazioni d'uso di altre componenti:
-\end_layout
-
-\begin_layout Standard
-Tale classe non fa utilizzo di altre componenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altre componenti:
-\end_layout
-
-\begin_layout Standard
-Tale classe viene utilizzata da mytalk.server.transfer.TextMessageTransfer.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Attivita svolte e dati trattati:
+Tale classe si occupa di accedere ai collegamenti ai tutorial presenti nella base di dati
+e del loro invio alla classe mytalk.server.transfer.TutorialTransfer
 \end_layout
 
 \begin_layout Subsubsection
@@ -465,7 +425,7 @@ mytalk.server.userManager.AuthenticationManager
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
@@ -493,7 +453,7 @@ Interfacce con e relazioni d'uso da altre componenti:
 \end_layout
 
 \begin_layout Standard
-La classe riceve i dati da mytalk.server.transfer.UserTransfer ( ?? ) 
+La classe riceve i dati da mytalk.server.transfer.UserTransfer ( ???? ) 
 \end_layout
 
 \begin_layout Standard
@@ -503,6 +463,12 @@ La classe riceve i dati da mytalk.server.transfer.UserTransfer ( ?? )
 Attivita svolte e dati trattati:
 \end_layout
 
+\begin_layout Standard
+Tale classe deve controllare la base di dati mytalk.server.data.UserData 
+ per verificare se un tentativo di autenticazione sia riuscito o meno e per
+ effettuare il logout. *****
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.server.userManager.UserDataManager
 \end_layout
@@ -510,7 +476,7 @@ mytalk.server.userManager.UserDataManager
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
@@ -537,7 +503,7 @@ Interfacce con e relazioni d'uso da altre componenti:
 \end_layout
 
 \begin_layout Standard
-Tale classe viene utilizzata da mytalk.server.transfer.AccountTransfer.
+Tale classe viene utilizzata da mytalk.server.transfer.AuthenticationTransfer.
 \end_layout
 
 \begin_layout Standard
@@ -547,6 +513,11 @@ Tale classe viene utilizzata da mytalk.server.transfer.AccountTransfer.
 Attivita svolte e dati trattati:
 \end_layout
 
+\begin_layout Standard
+Tale classe attende istruzioni da ..Transfer, controlla e eventualmente modifica la base di dati
+ e ritorna a ...Transfer i risultati.
+\end_layout
+
 \begin_layout Subsection
 Data Layer
 \end_layout
@@ -554,7 +525,7 @@ Data Layer
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
@@ -569,8 +540,8 @@ Relazioni d'uso di altre componenti:
 \end_layout
 
 \begin_layout Standard
-Lo strato Data viene utilizzato da mytalk.server.userManager e mytalk.server.funcion
-Manager per salvare nella base di dati e reperire informazioni varie.
+Lo strato Data viene utilizzato da mytalk.server.userManager e mytalk.server.function
+Manager per salvare e reperire informazioni dalla base di dati.
 \end_layout
 
 \begin_layout Subsubsection
@@ -580,12 +551,11 @@ mytalk.server.data.UserData
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 Tale classe è un semplice contenitore di informazioni.
- Al suo interno vengono preservate le informazioni riguardanti gli utenti.
 \end_layout
 
 \begin_layout Standard
@@ -619,6 +589,11 @@ Le classi che si interfacciano con tale classe sono quelle contenute nel
 Attivita svolte e dati trattati:
 \end_layout
 
+\begin_layout Standard
+ Al suo interno vengono preservate le informazioni riguardanti gli utenti, ovvero username,
+ password, nome, cognome e indirizzo IP.
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.server.data.RecordMessageData
 \end_layout
@@ -626,12 +601,11 @@ mytalk.server.data.RecordMessageData
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 Tale classe è un semplice contenitore di informazioni.
- Al suo interno vengono salvati i messaggi registrati da mandare in differita.
 \end_layout
 
 \begin_layout Standard
@@ -653,7 +627,7 @@ Interfacce con e relazioni d'uso da altre componenti:
 \end_layout
 
 \begin_layout Standard
-La classi che utilizza tale classe sono quelle contenute nel package mytalk.serve
+La classe che utilizza tale classe è mytalk.serve
 r.functionManager.RecordMessageManager.
 \end_layout
 
@@ -664,6 +638,10 @@ r.functionManager.RecordMessageManager.
 Attivita svolte e dati trattati:
 \end_layout
 
+\begin_layout Standard
+ Al suo interno vengono salvati i messaggi registrati da mandare in differita.
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.server.data.TutorialData
 \end_layout
@@ -671,12 +649,11 @@ mytalk.server.data.TutorialData
 \begin_layout Standard
 
 \series bold
-Tipo obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
 Tale classe è un semplice contenitore di informazioni.
- Al suo interno vengono salvati i collegamenti ai video tutorial
 \end_layout
 
 \begin_layout Standard
@@ -707,6 +684,10 @@ La classe è utilizzata da mytalk.server.functionManager.TutorialManager.
 
 \series bold
 Attivita svolte e dati trattati:
+\end_layout
+
+\begin_layout Standard
+La classe preserva i collegamenti ai tutorial video. 
 \end_layout
 
 \end_body
