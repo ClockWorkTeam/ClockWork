@@ -64,11 +64,11 @@ Architettura Generale
 \end_layout
 
 \begin_layout Standard
-L'applicativo è stato diviso in due sistemi, ovvero il lato 
+L'applicativo è stato diviso in due sistemi, ovvero il lato
 \bar under
 client
 \bar default
- e il lato 
+ e il lato
 \bar under
 server
 \bar default
@@ -122,27 +122,20 @@ name "fig:Architettura-generale"
 
 \end_layout
 
-\begin_layout Standard
-\noindent
-Vista la tipologia di prodotto, non ci sono state sottosuddivioni del front-end
- ai quali potranno accedere tutti i tipi di utenti registrati o meno con
- alcune restrizioni.
-\end_layout
-
 \begin_layout Subsection
-Front-End
+Client
 \end_layout
 
 \begin_layout Standard
-Il front-end si occuperà di gestire l'interfaccia visibile all'utente le
- cui operazioni verranno poi inviate al back-end.
- Il front-end è stato suddiviso nel seguente modo:
+Il client si occuperà di gestire l'interfaccia visibile all'utente le
+ cui operazioni verranno poi inviate al server.
+ Il lato client è stato suddiviso nel seguente modo:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-CCLI 1: 
+CCLI 1:
 \series default
 Autenticazione
 \end_layout
@@ -150,7 +143,7 @@ Autenticazione
 \begin_layout Itemize
 
 \series bold
-CCLI 2: 
+CCLI 2:
 \series default
 Gestione dati
 \end_layout
@@ -158,7 +151,7 @@ Gestione dati
 \begin_layout Itemize
 
 \series bold
-CCLI 3: 
+CCLI 3:
 \series default
 Tutorial
 \end_layout
@@ -166,7 +159,7 @@ Tutorial
 \begin_layout Itemize
 
 \series bold
-CCLI 4: 
+CCLI 4:
 \series default
 Visualizzazione lista utenti
 \end_layout
@@ -174,7 +167,7 @@ Visualizzazione lista utenti
 \begin_layout Itemize
 
 \series bold
-CCLI 5: 
+CCLI 5:
 \series default
 Gestione chiamate in arrivo
 \end_layout
@@ -182,7 +175,7 @@ Gestione chiamate in arrivo
 \begin_layout Itemize
 
 \series bold
-CCLI 6: 
+CCLI 6:
 \series default
 Chiamata
 \end_layout
@@ -198,7 +191,7 @@ CCLI 7:
 \begin_layout Itemize
 
 \series bold
-CCLI 8: 
+CCLI 8:
 \series default
 Chat
 \end_layout
@@ -206,19 +199,19 @@ Chat
 \begin_layout Itemize
 
 \series bold
-CCLI 9: 
+CCLI 9:
 \series default
 Invio file
 \end_layout
 
 \begin_layout Subsection
-Back-End
+Server
 \end_layout
 
 \begin_layout Standard
-Il back-end si occuperà di gestire le richieste fatte al server e di inviare
- una risposta al back-end.
- Il back-end è stato suddiviso
+Il server si occuperà di gestire le richieste fatte e di inviare
+ una risposta al client.
+ Il server è stato suddiviso in
 \end_layout
 
 \begin_layout Itemize
@@ -232,7 +225,7 @@ CSER 1:
 \begin_layout Itemize
 
 \series bold
-CSER 2: 
+CSER 2:
 \series default
 Gestione dati utenti
 \end_layout
@@ -265,7 +258,7 @@ reference "fig:Architettura-generale-dell'intero-sistema"
 
 \end_inset
 
- si può avere quindi una visione dell'architettura e le loro relazioni
+ si può avere quindi una visione dell'architettura e delle relazioni tra gli strati
 \end_layout
 
 \begin_layout Standard
@@ -313,15 +306,15 @@ mytalk
 \begin_layout Itemize
 
 \series bold
-mytalk.client 
+mytalk.client
 \series default
-racchiude al suo interno il front-end
+racchiude al suo interno il lato client di {\PRODOTTO}
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-mytalk.client.view 
+mytalk.client.view
 \series default
 racchiude al suo interno l'interfaccia grafica
 \end_layout
@@ -329,7 +322,7 @@ racchiude al suo interno l'interfaccia grafica
 \begin_layout Itemize
 
 \series bold
-mytalk.client.presenter 
+mytalk.client.presenter
 \series default
 gestisce il collegamento tra client e server
 \end_layout
@@ -337,23 +330,23 @@ gestisce il collegamento tra client e server
 \begin_layout Itemize
 
 \series bold
-mytalk.client.model 
+mytalk.client.model
 \series default
-gestisce dati locali
+contiene dati locali
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-mytalk.server 
+mytalk.server
 \series default
-racchiude al suo interno il back-end
+racchiude al suo interno il lato server di {\PRODOTTO}
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-mytalk.server.trasfer 
+mytalk.server.trasfer
 \series default
 gestisce il collegamento tra server e client
 \end_layout
@@ -361,15 +354,15 @@ gestisce il collegamento tra server e client
 \begin_layout Itemize
 
 \series bold
-mytalk.server.funcionManager 
+mytalk.server.functionmanager
 \series default
-gestisce le operazioni di chiamata 
+gestisce le operazioni di chiamata e di modifica della base di dati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-mytalk.server.userManager 
+mytalk.server.usermanager
 \series default
 gestisce le operazione di autenticazione
 \end_layout
@@ -377,9 +370,9 @@ gestisce le operazione di autenticazione
 \begin_layout Itemize
 
 \series bold
-mytalk.server.data 
+mytalk.server.data
 \series default
-gestisce le informazioni del database
+contiene le informazioni del database
 \end_layout
 
 \end_body
