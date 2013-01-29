@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
@@ -6,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -26,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -125,8 +125,8 @@ Descrizione:
 tale design pattern permette una disgiunzione fra i vari gruppi di entità
  che cooperano nell'erogazione del servizio.
  Un primo livello si occuperà della comunicazione con il client, un secondo
- invece di effettuare le operazioni logiche ed elaborare le informazioni 
- salvandole e prelevandole da un terzo livello inferiore
+  livello invece si occuperà di effettuare le operazioni logiche ed elaborare
+  le informazioni salvandole e prelevandole da un terzo livello inferiore
 \end_layout
 
 \begin_layout Itemize
@@ -134,13 +134,13 @@ tale design pattern permette una disgiunzione fra i vari gruppi di entità
 \series bold
 Motivazione:
 \series default
-il benificio principale di questo design pattern è la possibilità di aggiornare/
+il beneficio principale di questo design pattern è la possibilità di aggiornare/
 cambiare un livello senza andare a modificare i livelli adiacenti.
  Nonostante i vari livelli si occupino di specifiche operazioni è presente
- una forte comunicazione rigidamente strutturata tra di loro, questo lo rende un 
- ottimo modello per applicazioni client-server, poichè ogni livello non esiste
- come unità logica a se stante, ma si adegua allo specifico ambiente di rete in cui
- esegue
+ una forte comunicazione rigidamente strutturata tra di loro, questo lo
+ rende un ottimo modello per applicazioni client-server, poiché ogni livello
+ non esiste come unità logica a se stante, ma si adegua allo specifico ambiente
+ di rete in cui esegue
 \end_layout
 
 \begin_layout Itemize
@@ -154,8 +154,8 @@ tale design pattern verrà utilizzato come struttura portante del server
 
 \begin_deeper
 \begin_layout Itemize
-Transfer Layer: offrirà un'interfaccia di comunicazione con il client
- e i livelli sottostanti del server
+Transfer Layer: offrirà un'interfaccia di comunicazione con il client e
+ i livelli sottostanti del server
 \end_layout
 
 \begin_layout Itemize
@@ -165,8 +165,8 @@ Logic Layer: si occuperà di svolgere le funzionalità di comunicazione e
 \end_layout
 
 \begin_layout Itemize
-Data Layer: sarà un contenitore di informazioni riguardanti gli utenti
- e di messaggi registrati e collegamenti
+Data Layer: sarà un contenitore di informazioni riguardanti gli utenti e
+ di messaggi registrati e collegamenti
 \end_layout
 
 \end_deeper
@@ -261,7 +261,7 @@ Motivazione:
 \series default
 Questo design pattern permette un buon livello di disaccoppiamento tra la
  vista ed il modello.
- L'architettura risulta facilmente mantenibile poichè le modifiche ad uno
+ L'architettura risulta facilmente manutenibile poiché le modifiche ad uno
  dei tre componenti non comporta modifiche ai restanti
 \end_layout
 
@@ -284,7 +284,8 @@ Model:
 ha il compito di astrarre i dati presenti nel database recuperandone le
  informazioni o aggiungendone e disporli in modo tale da essere visibili
  alla view.
- Questo sarà il compito di parte del data layer e parte del manager layer del server
+ Questo sarà il compito di parte del data layer e parte del manager layer
+ del server
 \end_layout
 
 \begin_layout Itemize
@@ -324,10 +325,8 @@ tale design pattern si occupa di gestire i cambiamenti che avvengono in
 \series bold
 Motivazione:
 \series default
-Questo design pattern modifica delle componenti nel caso altre
- componenti ad esse legate vengano modificati
- 
- 
+Questo design pattern modifica delle componenti nel caso altre componenti
+ ad esse legate vengano modificate  
 \end_layout
 
 \begin_layout Itemize
@@ -335,335 +334,9 @@ Questo design pattern modifica delle componenti nel caso altre
 \series bold
 Contesto applicativo:
 \series default
-Si rivela utile per quanto riguarda la mantenibilità della lista utenti
+Si rivela utile per quanto riguarda la manutenibilità della lista utenti
  connessi o meno o nel caso nuovi utenti si registrassero
 \end_layout
 
 \end_body
-=======
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
-\begin_document
-\begin_header
-\textclass article
-\use_default_options true
-\maintain_unincluded_children false
-\language english
-\language_package default
-\inputencoding auto
-\fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_default_family default
-\use_non_tex_fonts false
-\font_sc false
-\font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
-
-\graphics default
-\default_output_format default
-\output_sync 0
-\bibtex_command default
-\index_command default
-\paperfontsize default
-\use_hyperref false
-\papersize default
-\use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine basic
-\use_bibtopic false
-\use_indices false
-\paperorientation portrait
-\suppress_date false
-\use_refstyle 1
-\index Index
-\shortcut idx
-\color #008000
-\end_index
-\secnumdepth 3
-\tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
-\quotes_language english
-\papercolumns 1
-\papersides 1
-\paperpagestyle default
-\tracking_changes false
-\output_changes false
-\html_math_output 0
-\html_css_as_file 0
-\html_be_strict false
-\end_header
-
-\begin_body
-
-\begin_layout Section
-Design Pattern
-\end_layout
-
-\begin_layout Standard
-Presentiamo qui di seguito i vari design pattern che andremo ad utilizzare
- per la rappresentazione dell'architettura del sistema
-\end_layout
-
-\begin_layout Subsection
-Multitier
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Rappresentazione Three Tier
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Rappresentazione-Three-Tier"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Il design pattern di tipo Multitier verrà implementato nella forma Three
- Tier
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-tale design pattern permette una disgiunzione fra i vari gruppi di entità
- che cooperano nell'erogazione del servizio.
- Un primo livello si occuperà della comunicazione con il client, un secondo
- invece di elaborare le informazioni prelevandole da un terzo livello inferiore
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Motivazione: 
-\series default
-il benificio principale di questo design pattern è la possibilità di aggiornare/
-cambiare un livello senza andare a modificare i livelli adiacenti.
- Nonostante i vari livelli si occupino di specifiche operazioni è presente
- una forte comunicazione tra di loro, questo lo rende un ottimo modello
- per applicazioni client-server, poiché ogni livello non esiste come unità
- logica a se stante, ma si adegua allo specifico ambiente di rete in cui
- esegue
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Contesto applicativo: 
-\series default
-tale design pattern verrà utilizzato come struttura portante del back-end
- e sarà suddiviso come segue:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Transfer Layer: offrirà un'interfaccia di comunicazione con il front-end
- e i livelli sottostanti del back-end
-\end_layout
-
-\begin_layout Itemize
-Logic Layer: si occuperà di elaborare le informazioni controllando la consistenz
-a dei dati con il database nel livello sottostante
-\end_layout
-
-\begin_layout Itemize
-Data Layer: si occuperà di gestire la base di dati in cui saranno memorizzati
- i dati persistenti
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-MVP
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Rappresentazione MVP
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Rappresentazione-MVP"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Il design pattern di tipo MVP verrà implementato per rappresentare l'architettur
-a generale e più specificamente il client.
- 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-tale design pattern permette una completa disgiunzioni tra le funzionalità
- che il prodotto deve offrire ed è strutturato in tre livelli
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Model: 
-\series default
-che rappresenta la parte in grado di recuperare le informazioni presenti
- nel sistema
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-View: 
-\series default
-che rappresenta l'interfaccia grafica del sistema con la quale gli utenti
- possono interagire
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Presenter: 
-\series default
-che rappresenta la componente che riceve le richieste dalla view e le traduce
- in operazioni che agiranno sia sui dati che sui modelli
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Motivazione: 
-\series default
-questo design pattern permette un buon livello di disaccoppiamento tra la
- vista ed il modello.
- L'architettura risulta facilmente mantenibile poiché le modifiche ad uno
- dei tre componenti non comporta modifiche ai restanti 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Contesto applicativo: 
-\series default
-il design pattern verrà utilizzato nello sviluppo dell'architettura generale
- e come struttura rappresentante il front-end.
- Sono state individuate tre macro componenti:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Model: 
-\series default
-ha il compito di astrarre i dati presenti nel database recuperandone le
- informazioni o aggiungendone e disporli in modo tale da essere visibili
- alla vista.
- Questo sarà implementato all'interno del data layer del back-end
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-View: 
-\series default
-rappresenta l'interfaccia grafica che consente l'iterazione tra gli utenti
- ed il sistema
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Presenter: 
-\series default
-si occupa di ricevere le richieste dalla view e della comunicazione tra
- il front-end ed il back-end del sistema
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-Observer
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-tale design pattern si occupa di gestire i cambiamenti che avvengono in
- un oggetto riflettendone le conseguenze su tutti gli oggetti ad esso legato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Motivazione: 
-\series default
-questo design pattern permette la gestione di oggetti a causa di modifiche
- su altri
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Contesto applicativo:
-\series default
- si rivela utile per quanto riguarda la mantenibilità della lista utenti
- connessi o meno o nel caso nuovi utenti si andassero a registrare
-\end_layout
-
-\end_body
->>>>>>> corretti errori ortografici cap 1,2,3,4 ST
 \end_document
