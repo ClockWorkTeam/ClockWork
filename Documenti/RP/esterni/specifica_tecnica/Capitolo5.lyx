@@ -114,9 +114,16 @@ costituisce la parte del sistema che definisce ed implementa l'interfaccia
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-il componente è costituito dal package view, e andrà a comunicare con il
- package mytalk.client.presenter che farà da tramite per la comunicazione
- tra il lato client e il lato server controllandone i dati in transito
+il componente è costituito dal package 
+\series bold
+view
+\series default
+, e andrà a comunicare con il package 
+\series bold
+mytalk.client.presenter
+\series default
+ che farà da tramite per la comunicazione tra il lato client e il lato server
+ controllandone i dati in transito
 \end_layout
 
 \begin_layout Subsubsection
@@ -128,8 +135,12 @@ mytalk.client.view.LoginView
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe LoginView definisce la struttura, e la conseguente visualizzazione,
- della pagine web per effettuare l'accesso al sistema
+la classe 
+\series bold
+LoginView
+\series default
+ definisce la struttura, e la conseguente visualizzazione, delle pagine
+ web che consentono di effettuare l'accesso e la disconnessione al sistema
 \end_layout
 
 \begin_layout Standard
@@ -138,10 +149,17 @@ la classe LoginView definisce la struttura, e la conseguente visualizzazione,
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe LoginView comunicherà con la classe mytalk.client.presenter.Authenticatio
-nControl per poter verificare se le credenziale inserite siano corrette
- o meno e quindi effettuare l'accesso al sistema o mostrare i relativi messaggi
- di errore
+la classe 
+\series bold
+LoginView
+\series default
+ comunicherà con la classe 
+\series bold
+mytalk.client.presenter.AuthenticationControl
+\series default
+ per poter verificare se le credenziale inserite siano corrette o meno e
+ quindi effettuare l'accesso al sistema o mostrare i relativi messaggi di
+ errore
 \end_layout
 
 \begin_layout Standard
@@ -150,11 +168,13 @@ nControl per poter verificare se le credenziale inserite siano corrette
 \series bold
 Attività svolte e dati trattati: 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- di inserire le proprie credenziali per poter essere riconosciuti dal sistema.
- Essa resta in attesa che vengano inseriti i dati necessari per l'autenticazione
- per poi passarli alla classe AuthenticationControl, che svolgerà i vari
- controlli
+la classe fa in modo che vengano visualizzati i componenti grafici necessari
+ per le operazioni di autenticazione e terminazione della sessione in modo
+ che possano essere inviati alla classe 
+\series bold
+mytalk.client.presenter.AuthenticationControl
+\series default
+, che svolgerà i vari controlli
 \end_layout
 
 \begin_layout Subsubsection
@@ -166,9 +186,12 @@ mytalk.client.view.TutorialView
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe TutorialView definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per la visualizzazione dei video tutorial del prodotto
- 
+la classe 
+\series bold
+TutorialView
+\series default
+ definisce la struttura, e la conseguente visualizzazione, delle pagine
+ web che consntono la visualizzazione dei video tutorial del prodotto 
 \begin_inset ERT
 status open
 
@@ -190,23 +213,15 @@ PRODOTTO}
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe TutorialView comunicherà con la classe mytalk.client.presenter.Tutorial
- che avrà lo scopo di caricare i dati del video e caricarlo per renderlo
- visibile dall'utente
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+la classe 
 \series bold
-Interfacce con e relazioni d'uso da altre componenti: 
+TutorialView
 \series default
-la
+ comunicherà con la classe 
 \series bold
- 
+mytalk.client.presenter.TutorialControl
 \series default
-classe Tutorial viene utilizzata dalla classe Tutorial del package Model
- per poter decidere quale video di tutorial caricare
+ al fine di visualizzare il video scelto dall'utente
 \end_layout
 
 \begin_layout Standard
@@ -215,10 +230,8 @@ classe Tutorial viene utilizzata dalla classe Tutorial del package Model
 \series bold
 Attività svolte e dati trattati: 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- di visualizzare i vari video tutorial che riguardano il prodotto.
- Una volta scelto il video da guardare quest'ultimo verrà caricato e sarà
- quindi visualizzabile
+la classe fa in modo che vengano visualizzati i componenti grafici necessari
+ alla selezione e visualizzazione di un tutorial video
 \end_layout
 
 \begin_layout Subsubsection
@@ -230,9 +243,12 @@ mytalk.client.view.UserList
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe UserList definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per la visualizzazione della lista utenti iscritti al
- server
+la classe 
+\series bold
+UserList
+\series default
+ definisce la struttura, e la conseguente visualizzazione, delle pagine
+ web che consentono la visualizzazione della lista utenti iscritti al server
 \end_layout
 
 \begin_layout Standard
@@ -241,17 +257,15 @@ la classe UserList definisce la struttura, e la conseguente visualizzazione,
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe UserList comunicherà con la classe UserListControl che restituirà
- gli iscritti al server connessi in quel momento o meno
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altra componenti: 
-\series default
 la classe 
+\series bold
+UserList
+\series default
+ comunicherà con la classe 
+\series bold
+mytalk.client.presenter.UserListControl
+\series default
+ che restituirà gli iscritti al server connessi in quel momento o meno
 \end_layout
 
 \begin_layout Standard
@@ -260,9 +274,10 @@ la classe
 \series bold
 Attività svolte e dati trattati: 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- che hanno fatto accesso al servizio di poter visualizzare gli utenti in
- linea o meno.
+la classe fa in modo che venga visualizzata una lista di utenti registrati
+ presso il server indicando anche quali di essi sono online e quali offline,
+ inoltre, facendo click su un utente della lista lo si seleziona come possibile
+ destinatario di una delle funzionalità messe a disposizione
 \end_layout
 
 \begin_layout Subsubsection
@@ -274,8 +289,12 @@ mytalk.client.view.IpCall
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe IpCall definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per effettuare chiamate inserendo unicamente l'
+la classe 
+\series bold
+IpCall 
+\series default
+definisce la struttura, e la conseguente visualizzazione, delle pagine web
+ che consentono di effettuare chiamate inserendo unicamente l'
 \bar under
 indirizzo IP
 \bar default
@@ -288,21 +307,19 @@ indirizzo IP
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe IpCall comunicherà con la classe CallControl che permetterà una
- comunicazione audio e se possibile anche video tra due utenti.
- La classe IpCall sarà inoltre utilizzabile dalla classe ChatControl che
- permetterà in questo caso la possibilità di comunicare testualmente con
- il destinatario
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+la classe 
 \series bold
-Interfacce con e relazioni d'uso da altra componenti: 
+IpCall
 \series default
-la classe IpCall verrà utilizzato dalle classi CallControl e ChatControl
- che attraverso i loro metodi permetteranno chiamate audio e video o testuali
+ comunicherà con la classi 
+\series bold
+mytalk.client.presenter.CallControl 
+\series default
+e
+\series bold
+ mytalk.client.presenter.ChatControl
+\series default
+ per permettere la comunicazione audio, video e testuale tra due utenti
 \end_layout
 
 \begin_layout Standard
@@ -311,9 +328,9 @@ la classe IpCall verrà utilizzato dalle classi CallControl e ChatControl
 \series bold
 Attività svolte e dati trattati: 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- di effettuare chiamate o di comunicare testualmente con altri utenti inserendo
- unicamente l'indirizzo IP
+la classe fa in modo che vengano visualizzate le componenti grafiche che
+ permettono l'inserimento di un indirizzo IP e la scelta delle funzionalità
+ di comunicazione disponibili
 \end_layout
 
 \begin_layout Subsubsection
@@ -325,8 +342,12 @@ mytalk.client.view.AudioCall
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe AudioCall definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per effettuare chiamate audio
+la classe 
+\series bold
+AudioCall
+\series default
+ definisce la struttura, e la conseguente visualizzazione, delle pagine
+ web che consentono di effettuare chiamate audio
 \end_layout
 
 \begin_layout Standard
@@ -335,18 +356,15 @@ la classe AudioCall definisce la struttura, e la conseguente visualizzazione,
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe AudioCall comunicherà con la classe CallControl che permetterà
- una comunicazione audio tra due utenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+la classe 
 \series bold
-Interfacce con e relazioni d'uso da altra componenti: 
+AudioCall 
 \series default
-la classe AudioCall verrà utilizzata dalla classe CallControl che attraverso
- i suoi metodi permetterà chiamate audio con un altro utente
+comunicherà con la classe 
+\series bold
+mytalk.client.presenter.CallControl
+\series default
+ per permettere la gestione della comunicazione audio tra due o più utenti
 \end_layout
 
 \begin_layout Standard
@@ -355,9 +373,8 @@ la classe AudioCall verrà utilizzata dalla classe CallControl che attraverso
 \series bold
 Attività svolte e dati trattati: : 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- di effettuare chiamate audio selezionando l'utente da chiamare dalla lista
- utenti presente
+la classe fa in modo che vengano visualizzate le componenti grafiche che
+ permettono la gestione delle funzionalità legate alla comunicazione audio
 \end_layout
 
 \begin_layout Subsubsection
@@ -369,8 +386,12 @@ mytalk.client.view.VideoCall
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe VideoCall definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per effettuare chiamate video
+la classe 
+\series bold
+VideoCall
+\series default
+ definisce la struttura, e la conseguente visualizzazione, delle pagine
+ web che consentono di effettuare chiamate video
 \end_layout
 
 \begin_layout Standard
@@ -379,18 +400,15 @@ la classe VideoCall definisce la struttura, e la conseguente visualizzazione,
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe VideoCall comunicherà con la classe CallControl che permetterà
- una comunicazione audio e video tra due utenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+la classe 
 \series bold
-Interfacce con e relazioni d'uso da altra componenti: 
+VideoCall
 \series default
-la classe VideoCall verrà utilizzata dalla classe CallControl che attraverso
- i suoi metodi permetterà chiamate video con un altro utente
+ comunicherà con la classe 
+\series bold
+mytalk.client.presenter.CallControl
+\series default
+ per permettere la gestione della comunicazione audio e video tra due utenti
 \end_layout
 
 \begin_layout Standard
@@ -399,9 +417,9 @@ la classe VideoCall verrà utilizzata dalla classe CallControl che attraverso
 \series bold
 Attività svolte e dati trattati: : 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- di effettuare chiamate video selezionando l'utente da chiamare dalla lista
- utenti presente
+la classe fa in modo che vengano visualizzate le componenti grafiche che
+ permettono la visualizzazione dei video e la gestione delle funzionalità
+ legate alla comunicazione audio/video
 \end_layout
 
 \begin_layout Subsubsection
@@ -413,8 +431,12 @@ mytalk.client.view.Notification
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe Notification definisce la struttura, e la conseguente visualizzazioni,
- delle pagine web per visualizzare notifiche di chiamate in entrata
+la classe 
+\series bold
+Notification
+\series default
+ definisce la struttura, e la conseguente visualizzazioni, delle pagine
+ web che conosentono di visualizzare notifiche di chiamate in entrata
 \end_layout
 
 \begin_layout Standard
@@ -423,20 +445,15 @@ la classe Notification definisce la struttura, e la conseguente visualizzazioni,
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe Notification comunicherà con la classe NotificationControl che
- invierà segnali di chiamata in arrivo da parte di altri.
- 
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+la classe 
 \series bold
-Interfacce con e relazioni d'uso da altra componenti: 
+Notification
 \series default
-la classe verrà utilizzata dalla classe NotificationControl che attraverso
- i suoi metodi invierà segnali di arrivo chiamata e dalle classi CallControl
- nel qual caso venga accettata la chiamata
+ verrà utilizzata dalla classe 
+\series bold
+mytalk.client.presenter.NotificationControl 
+\series default
+che invierà notifiche di richiesta di comunicazione
 \end_layout
 
 \begin_layout Standard
@@ -445,8 +462,8 @@ la classe verrà utilizzata dalla classe NotificationControl che attraverso
 \series bold
 Attività svolte e dati trattati: 
 \series default
-la classe definisce la struttura della pagina web che consente di capire
- quando sono in arrivo delle chiamate
+la classe fa in modo che vengano visualizzate le notifiche relative a richieste
+ in arrivo da parte di altri utenti
 \end_layout
 
 \begin_layout Subsubsection
@@ -458,8 +475,12 @@ mytalk.client.view.Chat
 \series bold
 Tipo, obiettivo e funzione del componente: 
 \series default
-la classe Chat definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per effettuare comunicazioni testuali
+la classe 
+\series bold
+Chat
+\series default
+ definisce la struttura, e la conseguente visualizzazione, delle pagine
+ web che consentono di effettuare comunicazioni testuali
 \end_layout
 
 \begin_layout Standard
@@ -468,18 +489,15 @@ la classe Chat definisce la struttura, e la conseguente visualizzazione,
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe Chat comunicherà con la classe ChatControl che permetterà una
- comunicazione testuale tra due utenti.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+la classe 
 \series bold
-Interfacce con e relazioni d'uso da altra componenti: 
+Chat
 \series default
-la classe Chat verrà utilizzata dalla classe ChatControl che attraverso
- i suoi metodi permetterà comunicazione testuale con un altro utente
+ comunicherà con la classe 
+\series bold
+mytalk.client.presenter.ChatControl
+\series default
+ per permettere la comunicazione testuale tra due utenti
 \end_layout
 
 \begin_layout Standard
@@ -488,9 +506,9 @@ la classe Chat verrà utilizzata dalla classe ChatControl che attraverso
 \series bold
 Attività svolte e dati trattati: : 
 \series default
-la classe definisce la struttura della pagina web che consente agli utenti
- di effettuare comunicazioni testuali selezionando l'utente da contattare
- dalla lista utenti presenti
+la classe fa in modo che vengano visualizzate le componenti grafiche necessarie
+ alla composizione di messaggi di testo e alla visualizzazione dei messaggi
+ finora inviati e ricevuti
 \end_layout
 
 \begin_layout Subsubsection
@@ -500,7 +518,14 @@ mytalk.client.view.ViewAccountData
 \begin_layout Standard
 
 \series bold
-Tipo, obiettivo e funzione del componente:
+Tipo, obiettivo e funzione del componente: 
+\series default
+la classe 
+\series bold
+ViewAccountData 
+\series default
+definisce la struttura, e la conseguente visualizzazione, delle pagine web
+ che consentono di visualizzare i dati dell'account attuale
 \end_layout
 
 \begin_layout Standard
@@ -508,13 +533,6 @@ Tipo, obiettivo e funzione del componente:
 
 \series bold
 Relazioni d'uso con altre componenti:
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Interfacce con e relazioni d'uso da altra componenti:
 \end_layout
 
 \begin_layout Standard
@@ -961,7 +979,7 @@ La classe si occupa quindi di avvisare l'utente che è in arrivo una chiamata
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.presenter.AccountControl
+mytalk.client.presenter.UserDataControl
 \end_layout
 
 \begin_layout Standard
@@ -1079,6 +1097,30 @@ Attività svolte e dati trattati:
 \series default
 La classe si occupa quindi di ricevere la richiesta di avvio registrazione
  e di mandare al server il compito di salvarla
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.client.presenter.TutorialControl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsection
