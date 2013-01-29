@@ -136,12 +136,9 @@ Inoltre
  l’emanazione dei ticket.
  I documenti prodotti devono essere forniti di un diario delle modifiche,
  questo consentirà di agevolare la verifica sugli stessi.
- La conformità alle norme definite nel documento 
-\family typewriter
-Norme_di_Progetto_v2.0.pdf
-\family default
- consentirà di ridurre gli errori dovuti ad incomprensioni che possono nascere
- durante lo sviluppo del progetto.
+ La conformità alle norme definite nel documento Norme di Progetto consentirà
+ di ridurre gli errori dovuti a incomprensioni che possono nascere durante
+ lo sviluppo del progetto.
 \end_layout
 
 \begin_layout Subsection
@@ -225,13 +222,32 @@ Verifica generale dei documenti
 
 \begin_layout Standard
 Indipendentemente dalla fase che si sta svolgendo, la verifica dei documenti
- ha la stessa base, e il Verificatore deve controllare:
+ ha la stessa base, e il Verificatore deve controllare che:
 \end_layout
 
 \begin_layout Itemize
-Conforme alle norme descritte nel documento 
+Siano conformi alle norme descritte nel documento 
 \family typewriter
 Norme_di_Progetto_v2.0.pdf
+\end_layout
+
+\begin_layout Itemize
+I termini ambigui siano sottolineati alla loro prima occorrenza e inseriti
+ nel Glossario
+\end_layout
+
+\begin_layout Itemize
+Un documento sia sintatticamente, semanticamente e ortograficamente corretto
+\end_layout
+
+\begin_layout Itemize
+La struttura e i contenuti devono essere conformi agli standard a cui si
+ fa riferimento
+\end_layout
+
+\begin_layout Itemize
+I riferimenti e le etichette riguardanti figure, tabelle e sezioni siano
+ puntuali e corretti
 \end_layout
 
 \begin_layout Subsubsection
@@ -239,18 +255,33 @@ Fase di Analisi
 \end_layout
 
 \begin_layout Standard
-In questa fase i Verificatori hanno il compito di controllare che i documenti
- soddisfino le norme definite nel documento Norme di Progetto e che rispettino
- le seguenti caratteristiche:
+In questa fase i Verificatori hanno il compito di controllare che il documento
+ riguardante l'Analisi dei Requisiti, oltre a soddisfare le norme definite
+ nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, deve rispettare le seguenti caratteristiche
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Per una più precisa descrizione delle qualità elencate si rimanda a IEEE
+ 830-1998.
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Privi di ambiguità:
+Privo di ambiguità:
 \series default
- il documento non è ambiguo se e solo se ogni requisito individuato ha solo
- una interpretazione.
+ il documento non è ambiguo se e solo se ogni requisito ha solo una interpretazi
+one.
  Il Verificatore per controllare questa qualità dovrà procedere alla lettura
  del singolo requisito, non è un processo automatizzabile
 \end_layout
@@ -258,9 +289,9 @@ Privi di ambiguità:
 \begin_layout Itemize
 
 \series bold
-Correttezza:
+Corretto:
 \series default
- il documento è corretto se e solo se ogni requisito individuato è un requisito
+ il documento è corretto se e solo se un requisito rilevato è un requisito
  che il software deve avere.
  Il Verificatore per controllare questa qualità deve avere una buona conoscenza
  dei documenti forniti dal proponente, inoltre questo controllo sarà agevolato
@@ -270,24 +301,22 @@ Correttezza:
 \begin_layout Itemize
 
 \series bold
-Completezza:
+Completo:
 \series default
  il documento è completo se e solo se include tutti i requisiti fondamentali,
- definisce come deve reagire il software agli input, ed è completo di riferiment
-i e etichette per tutte le figure, tabelle, diagrammi e sezioni .
+ definisce come reagirsce il software agli input.
  Il Verificatore dovrà quindi procedere a una lettura attenta del documento
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Verificabilità:
+Verificabile:
 \series default
  il documento è verificabile se e solo se per ogni suo requisito è definito
- il modo con cui si possa verificare che il software soddisfa tale requisito.
- Il Verificatore in primo luogo deve controllare che ogni requisito individuato
- sia tracciabile e atomico, in quanto requisiti non atomici sono difficilmente
- verificabili.
+ il modo con cui si possa verificare che il software soddisfa tale requisito,
+ ovvero che sia tracciabile e atomico, in quanto i requisiti non atomici
+ sono difficilmente verificabili.
  Questa attività non è automatizzabile, pertanto si richiede una attenta
  lettura
 \end_layout
@@ -295,7 +324,7 @@ Verificabilità:
 \begin_layout Itemize
 
 \series bold
-Consistenza:
+Consistente:
 \series default
  il documento è consistente se non genera contraddizioni al suo interno
  e con documenti di più alto livello.
@@ -305,45 +334,30 @@ Consistenza:
 \begin_layout Itemize
 
 \series bold
-Modificabilità:
+Modificabile:
 \series default
  il documento è modificabile se la sua struttura consenta di effettuare
  delle modifiche facilmente e in modo consistente.
- La conformità delle norme stabilite nelle Norme di Progetto facilità il
- raggiungimento di questa qualità
+ La conformità delle norme facilita il raggiungimento di questa qualità
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Tracciabilità:
+Tracciabile:
 \series default
  il documento è tracciabile se ogni requisito ha una fonte chiara e se il
  documento definisce il modo con cui riferirsi al requisito.
- Il Verificatore dovrà controllare che nella tabella riassuntiva dei requisiti
- per ogni requisito sia stata definita la sua provenienza
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Ordinati per rilevanza:
-\series default
- il documento soddisfa questa qualità se per ogni requisito è definito il
- suo livello di importanza.
- Il Verificatore dovrà controllare nella tabella riassuntiva dei requisiti
- che i requisiti siano ordinati secondo le norme descritte nelle Norme di
- Progetto
+ Il Verificatore, nella tabella riassuntiva dei requisiti, dovrà controllare
+ che per ogni requisito sia stata definita la sua provenienza
 \end_layout
 
 \begin_layout Standard
-Per una descrizione più dettagliata di queste qualità si rimanda a IEEE
- 830-1998.
- Per la verifica del documento principalmente verrà usata la tecnica 
+Per la verifica del documento principalmente sarà usata la tecnica 
 \bar under
 walkthrough
 \bar default
-, inoltre se è possibile verrà utilizzata la tecnica 
+, inoltre, se possibile, verrà utilizzata la tecnica 
 \bar under
 inspection
 \bar default
@@ -357,13 +371,30 @@ reference "sub:Tecniche"
 \end_inset
 
 .
- I Verificatori controlleranno che i diagrammi 
+\end_layout
+
+\begin_layout Standard
+Inoltre i Verificatori rispetto ai diagrammi 
 \bar under
 UML
 \bar default
- dei casi d'uso siano tracciabili, atomici, corretti ortograficamente e
- sintatticamente, in quanto su questi non è possibile fare controllo automatico.
- Ci aspettiamo che una buona progettazione e verifica in questa fase individui
+ dovranno accertare che essi siano:
+\end_layout
+
+\begin_layout Itemize
+Tracciabili
+\end_layout
+
+\begin_layout Itemize
+Atomici
+\end_layout
+
+\begin_layout Itemize
+Corretti ortograficamente e sintatticamente
+\end_layout
+
+\begin_layout Standard
+ Ci si aspetta che una buona progettazione e verifica in questa fase individui
  i requisiti necessari al raggiungimento delle seguenti qualità:
 \end_layout
 
@@ -571,9 +602,15 @@ Fase di Collaudo
 
 \begin_layout Standard
 In questa fase il Verificatore effettuerà dei test di accettazione sui requisiti
- definiti nella sezione ''Pianificazione ed esecuzione del collaudo'', e
- verificherà che non si presentino malfunzionamenti durante l’utilizzo del
- prodotto.
+ definiti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Pianificazione-ed-esecuzione"
+
+\end_inset
+
+, e verificherà che non si presentino malfunzionamenti durante l’utilizzo
+ del prodotto.
  La strategia di verifica adottata è descritta nella sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -586,8 +623,8 @@ reference "sub:Tecniche"
  facilità da parte dell’utente di compiere le operazioni per cui il software
  si è posto il compito.
  Tramite i loro giudizi valuteremo l’usabilità del nostro prodotto.
- Per il soddisfacimento dei requisiti obbligatori di qualità definiti nella
- Analisi dei Requisiti si adotteranno tecniche di walkthrough e inspection.
+ Per il soddisfacimento dei requisiti di qualità definiti nella Analisi
+ dei Requisiti si adotteranno tecniche di walkthrough e inspection.
  Per il soddisfacimento dei vincoli sarà effettuata una prova ad hoc.
  Al termine della fase di 
 \bar under
@@ -609,7 +646,7 @@ Affidabilità:
 \end_layout
 
 \begin_layout Subsection
-Risorse necessarie e risorse disponibili
+Risorse necesmsarie e risorse disponibili
 \end_layout
 
 \begin_layout Standard
@@ -647,8 +684,7 @@ name "sub:Strumenti"
 \begin_layout Standard
 Strumenti software per facilitare e automatizzare l’attività di verifica
  e validazione, come strumenti per l’analisi statica e dinamica, strumenti
- di test, strumenti per il tracciamento dei requisiti, strumenti per la
- misurazione della qualità dei processi.
+ di test, strumenti per la misurazione della qualità dei processi.
  Tali strumenti sono descritti nel docuento 
 \family typewriter
 Norme_di_Progetto_v2.0.pdf
