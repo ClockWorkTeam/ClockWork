@@ -76,15 +76,12 @@ Test di Sistema
 \end_layout
 
 \begin_layout Standard
-Questa sezione viene dedicata alla pianificazione dei test di sistema che
- verranno attuati prima del rilascio del prodotto finito.
+Questa sezione è dedicata alla pianificazione dei test di sistema che verranno
+ attuati prima del rilascio del prodotto finito.
  Tramite questi test si vorrebbe dimostrare che il prodotto soddisferà le
  aspettative del cliente, fornendo esempi di test da attuare per confermare
- che i requisiti obbligatori emersi ed elencati nel documento 
-\family typewriter
-Analisi_dei_Requisiti_v2.0.pdf
-\family default
- sono stati soddisfatti.
+ che i requisiti obbligatori emersi ed elencati nel documento Analisi dei
+ Requisiti sono stati soddisfatti.
 \end_layout
 
 \begin_layout Standard
@@ -478,7 +475,7 @@ TS-RUFO 2.1a
 \begin_inset Text
 
 \begin_layout Plain Layout
-Prova dinamica: viene verificato se a fronte dell’inserimento di un username
+Prova dinamica: viene verificato se a fronte dell’inserimento di uno username
  valido (relativo ad un utente) il sistema risponde in maniera positiva
 \end_layout
 
@@ -517,7 +514,7 @@ TS-RUFO 2.1b
 \begin_inset Text
 
 \begin_layout Plain Layout
-Prova dinamica: viene verificato se a fronte dell’inserimento di un username
+Prova dinamica: viene verificato se a fronte dell’inserimento di uno username
  non valido il sistema risponde in maniera negativa
 \end_layout
 
@@ -1013,7 +1010,301 @@ Test intra-componenti
 \end_layout
 
 \begin_layout Standard
-xxxxxxxxxxxxxx
+I componenti saranno testati e collaudati seguendo una strategia incrementale
+ mediante il principio di bottom-up.
+\end_layout
+
+\begin_layout Standard
+Saranno collaudati inizialmente i componenti con minori dipendenze funzionali,
+ proseguendo successivamente con l'albero delle dipendenze.
+\end_layout
+
+\begin_layout Standard
+Sarà necessario avere funzionanti i database (compresa la loro gestione),
+ successivamente si proseguirà con la parte back-end e front-end.
+\end_layout
+
+\begin_layout Standard
+Ogni componente sosterrà dei test, ai quali ci si potrà aspettare un esito
+ positivo o negativo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Componente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Funzionalità da verificare
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row caption="true">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Funzionalità da verificare per ogni componente
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endlastfoot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1021,7 +1312,10 @@ Test inter-componenti
 \end_layout
 
 \begin_layout Standard
-xxxxxxxxxxxxxx
+Mentre il collaudo prosegue verranno aggiunti test e prove sui componenti
+ in maniera incrementale.
+ Ad ogni collaudo verrà testato il corretto funionamento inter-componenti,
+ tenendoconto delle loro dipendenze.
 \end_layout
 
 \end_body
