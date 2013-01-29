@@ -119,51 +119,53 @@ Il design pattern di tipo Multitier verrà implementato nella forma Three
 \begin_layout Itemize
 
 \series bold
-Descrizione: 
+Descrizione:
 \series default
 tale design pattern permette una disgiunzione fra i vari gruppi di entità
  che cooperano nell'erogazione del servizio.
  Un primo livello si occuperà della comunicazione con il client, un secondo
- invece di elaborare le informazioni prelevandole da un terzo livello inferiore
+ invece di effettuare le operazioni logiche ed elaborare le informazioni 
+ salvandole e prelevandole da un terzo livello inferiore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Motivazione: 
+Motivazione:
 \series default
 il benificio principale di questo design pattern è la possibilità di aggiornare/
 cambiare un livello senza andare a modificare i livelli adiacenti.
  Nonostante i vari livelli si occupino di specifiche operazioni è presente
- una forte comunicazione tra di loro, questo lo rende un ottimo modello
- per applicazioni client-server, poichè ognu livello non esiste come unità
- logica a se stante, ma si adegua allo specifico ambiente di rete in cui
+ una forte comunicazione rigidamente strutturata tra di loro, questo lo rende un 
+ ottimo modello per applicazioni client-server, poichè ogni livello non esiste
+ come unità logica a se stante, ma si adegua allo specifico ambiente di rete in cui
  esegue
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Contesto applicativo: 
+Contesto applicativo:
 \series default
-tale design pattern verrà utilizzato come struttura portante del back-end
+tale design pattern verrà utilizzato come struttura portante del server
  e sarà suddiviso come segue
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Transfer Layer: offrirà un interfaccia di comunicazione con il front-end
- e i livelli sottostanti del back-end
+Transfer Layer: offrirà un'interfaccia di comunicazione con il client
+ e i livelli sottostanti del server
 \end_layout
 
 \begin_layout Itemize
-Logic Layer: si occuperà di elaborare le informazioni controllando la consistenz
-a dei dati con il database nel livello sottostante
+Logic Layer: si occuperà di svolgere le funzionalità di comunicazione e
+ di gestire la visualizzazione e la modifica delle informazioni presenti
+ nello strato Data
 \end_layout
 
 \begin_layout Itemize
-Data Layer: si occuperà di gestire la base di dati in cui saranno memorizzati
- i dati persistenti
+Data Layer: sarà un contenitore di informazioni riguardanti gli utenti
+ e di messaggi registrati e collegamenti
 \end_layout
 
 \end_deeper
@@ -208,16 +210,16 @@ name "fig:Rappresentazione-MVP"
 \begin_layout Standard
 \noindent
 Il design pattern di tipo MVP verrà implementato per rappresentare l'architettur
-a generale e più specificamente nel front-end.
+a generale e più specificamente nel lato client.
  
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Descrizione: 
+Descrizione:
 \series default
-tale design pattern permette una completa disgiunzioni tra le funzionalità
+tale design pattern permette una completa disgiunzione tra le funzionalità
  che il prodotto deve offrire ed è strutturato in tre livelli
 \end_layout
 
@@ -225,7 +227,7 @@ tale design pattern permette una completa disgiunzioni tra le funzionalità
 \begin_layout Itemize
 
 \series bold
-Model: 
+Model:
 \series default
 che rappresenta la parte in grado di recuperare le informazioni presenti
  nel sistema
@@ -234,7 +236,7 @@ che rappresenta la parte in grado di recuperare le informazioni presenti
 \begin_layout Itemize
 
 \series bold
-View: 
+View:
 \series default
 che rappresenta l'interfaccia grafica del sistema con la quale gli utenti
  possono interagire
@@ -243,31 +245,32 @@ che rappresenta l'interfaccia grafica del sistema con la quale gli utenti
 \begin_layout Itemize
 
 \series bold
-Presenter: 
+Presenter:
 \series default
 rappresenta la componente che riceve le richieste dalla view e le traduce
- in operazioni che agiranno sia sui dati che sui modelli
+ in operazioni che agiranno sia sui dati che sui modelli; si occupa inoltre
+ della comunicazione col server
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-Motivazione: 
+Motivazione:
 \series default
 Questo design pattern permette un buon livello di disaccoppiamento tra la
  vista ed il modello.
  L'architettura risulta facilmente mantenibile poichè le modifiche ad uno
- dei tre componenti non comporta modifiche ai restanti 
+ dei tre componenti non comporta modifiche ai restanti
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Contesto applicativo: 
+Contesto applicativo:
 \series default
 il design pattern verrà utilizzato nello sviluppo dell'architettura generale
- e come struttura rappresentante il front-end.
+ e come struttura rappresentante il client.
  Sono state individuate tre macro componenti:
 \end_layout
 
@@ -275,30 +278,30 @@ il design pattern verrà utilizzato nello sviluppo dell'architettura generale
 \begin_layout Itemize
 
 \series bold
-Model: 
+Model:
 \series default
 ha il compito di astrarre i dati presenti nel database recuperandone le
- informazioni o aggiungendone e disportli in modo tale da essere visibili
- alla vista.
- Questo sarà implementato all'interno del data layer del back-end
+ informazioni o aggiungendone e disporli in modo tale da essere visibili
+ alla view.
+ Questo sarà il compito di parte del data layer e parte del manager layer del server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-View: 
+View:
 \series default
-rappresenta l'interfaccia grafica che consente l'iterazione tra gli utenti
+rappresenta l'interfaccia grafica che consente l'interazione tra gli utenti
  ed il sistema
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Presenter: 
+Presenter:
 \series default
 si occupa di ricevere le richieste dalla view e della comunicazione tra
- il front-end ed il back-end del sistema
+ il lato client ed il lato server del sistema
 \end_layout
 
 \end_deeper
@@ -309,7 +312,7 @@ Observer
 \begin_layout Itemize
 
 \series bold
-Descrizione: 
+Descrizione:
 \series default
 tale design pattern si occupa di gestire i cambiamenti che avvengono in
  un oggetto riflettendone le conseguenze su tutti gli oggetti ad esso legato
@@ -318,10 +321,11 @@ tale design pattern si occupa di gestire i cambiamenti che avvengono in
 \begin_layout Itemize
 
 \series bold
-Motivazione: 
+Motivazione:
 \series default
-Questo design pattern permette la gestione di oggetti a causa di modifiche
- su altri.
+Questo design pattern modifica delle componenti nel caso altre
+ componenti ad esse legate vengano modificati
+ 
  
 \end_layout
 
@@ -331,7 +335,7 @@ Questo design pattern permette la gestione di oggetti a causa di modifiche
 Contesto applicativo:
 \series default
 Si rivela utile per quanto riguarda la mantenibilità della lista utenti
- connessi o meno o nel caso nuovi uttenti si andassero a registrare
+ connessi o meno o nel caso nuovi utenti si registrassero
 \end_layout
 
 \end_body
