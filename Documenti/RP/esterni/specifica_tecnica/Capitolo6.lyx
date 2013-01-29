@@ -60,7 +60,7 @@
 \begin_body
 
 \begin_layout Section
-Back-End
+Server
 \end_layout
 
 \begin_layout Subsection
@@ -74,16 +74,19 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
- lo strato Transfer si occupa della comunicazione tra il client e il server
+lo strato Transfer si occupa della comunicazione tra il client e il server
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \series bold
-Relazioni d'uso con altre componenti: lo strato Transfer interagisce con
- i package mytalk.server.functionmanager e mytalk.server.usermanager e con lo
- strato  mytalk.client.presenter
+Relazioni d'uso con altre componenti: 
+\end_layout
+
+\begin_layout Standard
+lo strato Transfer interagisce con i package mytalk.server.functionmanager
+ e mytalk.server.usermanager e con lo strato  mytalk.client.presenter
 \end_layout
 
 \begin_layout Subsubsection
@@ -97,8 +100,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
- la classe si occupa di far arrivare i dati all'apparato logico al fine
- di inizializzare la chiamata
+la classe 
+\family typewriter
+\series bold
+CallTransfer
+\family default
+\series default
+ si occupa di far arrivare i dati all'apparato logico al fine di inizializzare
+ la chiamata
 \end_layout
 
 \begin_layout Standard
@@ -109,8 +118,24 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe viene contattata e si rivolge a mytalk.client.presenter.CallControl
- e mytalk.server.functionmanager.CallManager
+la classe 
+\family typewriter
+\series bold
+CallTransfer
+\family default
+\series default
+ viene contattata e si rivolge a 
+\family typewriter
+\series bold
+mytalk.client.presenter.CallControl
+\family default
+ 
+\series default
+e
+\series bold
+ 
+\family typewriter
+mytalk.server.functionmanager.CallManager
 \end_layout
 
 \begin_layout Standard
@@ -121,8 +146,15 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
- la classe gestisce il trasferimento della richiesta di chiamata dal client
- al server e riferisce al server la situazione della chiamata
+la classe 
+\family typewriter
+\series bold
+CallTransfer
+\family default
+ 
+\series default
+si occupa di gestire il trasferimento della richiesta di chiamata dal client
+ al server e riferisce al chiamante se la comunicazione è stata accetta
 \end_layout
 
 \begin_layout Subsubsection
@@ -136,8 +168,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa del trasferimento delle richieste di autenticazione
- al server
+la classe 
+\family typewriter
+\series bold
+AuthenticationTransfer
+\family default
+ 
+\series default
+si occupa del trasferimento delle richieste di autenticazione al server
 \end_layout
 
 \begin_layout Standard
@@ -148,8 +186,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe viene utilizzata da mytalk.client.presenter.AuthenticationControl
- e mytalk.server.usermanager.AuthenticationManager
+la classe 
+\family typewriter
+\series bold
+AuthenticationTransfer
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.client.presenter.AuthenticationControl
+\family default
+\series default
+ e 
+\family typewriter
+\series bold
+mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Standard
@@ -160,9 +212,26 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-la classe riceve da mytalk.client.presenter.AuthenticationControl richieste
- di autenticazione e manda i dati a mytalk.server.usermanager.AuthenticationManager
-, in seguito informa il client se l'autenticazione sia riuscita o meno
+la classe 
+\family typewriter
+\series bold
+AuthenticationTransfer
+\family default
+\series default
+ ha lo scopo di ricevere da 
+\family typewriter
+\series bold
+mytalk.client.presenter.AuthenticationControl
+\family default
+\series default
+ richieste di autenticazione e manda i dati a 
+\family typewriter
+\series bold
+mytalk.server.usermanager.AuthenticationManager
+\family default
+\series default
+ che si occuperà di verificarli e dare una risposta che verrà quindi inviata
+ al client.
 \end_layout
 
 \begin_layout Subsubsection
@@ -176,9 +245,15 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa del trasferimento dei dati riguardanti gli utenti
- al fine di effettuare nuove registrazioni o di visualizzare ed eventualmente
- modificare i dati persistenti
+la classe 
+\family typewriter
+\series bold
+UserDataTransfer
+\family default
+\series default
+ si occupa del trasferimento dei dati riguardanti gli utenti al fine di
+ effettuare nuove registrazioni o di visualizzare ed eventualmente modificare
+ i dati persistenti
 \end_layout
 
 \begin_layout Standard
@@ -189,8 +264,25 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-tale classe comunica con mytalk.client.presenter.UserDataControl, mytalk.client.prese
-nter.UserListControl e mytalk.server.usermanager.UserDataManager
+la classe 
+\family typewriter
+\series bold
+UserDataTransfer
+\family default
+\series default
+ comunica con 
+\family typewriter
+\series bold
+mytalk.client.presenter.UserDataControl
+\family default
+\series default
+, 
+\family typewriter
+mytalk.client.presenter.UserListControl
+\family default
+ e 
+\family typewriter
+mytalk.server.usermanager.UserDataManager
 \end_layout
 
 \begin_layout Standard
@@ -201,11 +293,27 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-la classe riceve da mytalk.client.presenter.UserDataControl richieste di visualizza
-zione o modifica dei dati presenti nella base di dati e dialoga con mytalk.server.
-usermanager.UserDataManager per eseguire le operazioni richieste; inoltre
- in caso di effettuata autenticazione invia a mytalk.client.presenter.UserListContr
-ol i nomi utente ed eventualmente l'indirizzo IP identificativo degli utenti
+la classe riceve da 
+\family typewriter
+\series bold
+mytalk.client.presenter.UserDataControl
+\family default
+\series default
+ richieste di visualizzazione o modifica dei dati presenti nella base di
+ dati e dialoga con 
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserDataManager
+\family default
+\series default
+ per eseguire le operazioni richieste; inoltre in caso di effettuata autenticazi
+one invia a 
+\family typewriter
+\series bold
+mytalk.client.presenter.UserListControl
+\family default
+\series default
+ i nomi utente ed eventualmente l'indirizzo IP identificativo degli utenti
  connessi
 \end_layout
 
@@ -220,8 +328,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa del passaggio delle richieste di visualizzazione dei
- video tutorial dal client al server
+la classe 
+\family typewriter
+\series bold
+TutorialTransfer
+\family default
+\series default
+ classe si occupa del passaggio delle richieste di visualizzazione dei video
+ tutorial dal client al server
 \end_layout
 
 \begin_layout Standard
@@ -232,8 +346,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-tale classe viene chiamata da mytalk.client.presenter.TutorialControl e contatta
- mytalk.server.functionmanager.TutorialManager
+la classe 
+\family typewriter
+\series bold
+TutorialTransfer
+\family default
+\series default
+ viene chiamata da 
+\family typewriter
+\series bold
+mytalk.client.presenter.TutorialContro
+\family default
+\series default
+l e contatta 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
 \end_layout
 
 \begin_layout Standard
@@ -244,9 +372,20 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe ha una funzione di collegamento, si occupa di far arrivare una
- richiesta a mytalk.server.functionmanager.TutorialManager e in seguito restituire
- a mytalk.client.presenter.TutorialControl il collegamento richiesto
+la classe ha una funzione di collegamento, si occupa di far arrivare una
+ richiesta a 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\family default
+\series default
+ e in seguito restituire a 
+\family typewriter
+\series bold
+mytalk.client.presenter.TutorialControl
+\family default
+\series default
+ il collegamento richiesto
 \end_layout
 
 \begin_layout Subsubsection
@@ -260,8 +399,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa del trasferimento del messaggio registrato dal client
- al server e del seguente invio al destinatario
+la classe 
+\family typewriter
+\series bold
+RecordMessageTransfer
+\family default
+\series default
+ si occupa del trasferimento del messaggio registrato dal client al server
+ e del seguente invio al destinatario
 \end_layout
 
 \begin_layout Standard
@@ -272,8 +417,23 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe comunica con mytalk.server.manager.RecordMessageManager e mytalk.client.pre
-senter.RecordMessageControl
+la classe 
+\family typewriter
+\series bold
+RecordMessageTransfer
+\family default
+\series default
+ comunica con 
+\family typewriter
+\series bold
+mytalk.server.manager.RecordMessageManager
+\family default
+ 
+\series default
+e 
+\family typewriter
+\series bold
+mytalk.client.presenter.RecordMessageControl
 \end_layout
 
 \begin_layout Standard
@@ -284,10 +444,21 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe riceve dal client il messaggio registrato e l'utente a cui mandarlo
- e passa tali dati a mytalk.server.manager.RecordMessageManager.
- In seguito una volta ricevuto il video da mytalk.server.manager.RecordMessageManag
-er lo manda al destinatario
+la classe si occupa quindi di ricevere dal client il messaggio registrato
+ e l'utente a cui mandarlo e passa tali dati a 
+\family typewriter
+\series bold
+mytalk.server.manager.RecordMessageManager
+\family default
+\series default
+.
+ In seguito una volta ricevuto il video da 
+\family typewriter
+\series bold
+mytalk.server.manager.RecordMessageManager
+\family default
+\series default
+ lo manda al destinatario
 \end_layout
 
 \begin_layout Subsubsection
@@ -301,8 +472,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa di avvisare i client di eventuali notifiche dovute
- ad eventi generati da altri utenti
+la classe 
+\family typewriter
+\series bold
+NotificationTransfer
+\family default
+\series default
+ si occupa di avvisare i client di eventuali notifiche dovute ad eventi
+ generati da altri utenti
 \end_layout
 
 \begin_layout Standard
@@ -313,9 +490,28 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe comunica con mytalk.client.presenter.NotificationControl e viene
- chiamata da mytalk.server.functionmanager.RecordMessageManager, mytalk.server.functi
-onmanager.CallManager
+la classe 
+\family typewriter
+\series bold
+NotificationTransfer
+\family default
+\series default
+ comunica con 
+\family typewriter
+\series bold
+mytalk.client.presenter.NotificationControl
+\family default
+\series default
+ e viene chiamata da 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
+\family default
+\series default
+, 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.CallManager
 \end_layout
 
 \begin_layout Standard
@@ -326,9 +522,9 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe manda al client messaggi che riguardano eventi esterni come
- una chiamata in corso o la presenza sul server di un messaggio registrato
- in attesa
+la classe si occupa quindi di mandare al client messaggi che riguardano
+ eventi esterni come una chiamata in corso o la presenza sul server di un
+ messaggio registrato in attesa
 \end_layout
 
 \begin_layout Subsection
@@ -369,7 +565,13 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe ha il compito di inizializzare la chiamata tra due utenti
+la classe 
+\family typewriter
+\series bold
+CallManager
+\family default
+\series default
+ ha il compito di inizializzare la chiamata tra due utenti
 \end_layout
 
 \begin_layout Standard
@@ -380,8 +582,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-tale classe viene contattata e comunica con mytalk.server.transfer.CallTransfer
- e mytalk.server.transfer.NotificationTransfer
+la classe 
+\family typewriter
+\series bold
+CallManager
+\family default
+\series default
+ viene contattata e comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.CallTransfer
+\family default
+\series default
+ e 
+\family typewriter
+\series bold
+mytalk.server.transfer.NotificationTransfer
 \end_layout
 
 \begin_layout Standard
@@ -392,9 +608,19 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe si occuperà di inizializzare la chiamata tramite WebSocket,
- comunicando a mytalk.server.transfer.CallTransfer la situazione della chiamata
- che sta venendo effettuata e a mytalk.server.transfer.NotificationTransfer
+la classe si occuperà quindi di inizializzare la chiamata tramite WebSocket,
+ comunicando a 
+\family typewriter
+\series bold
+mytalk.server.transfer.CallTransfer
+\family default
+\series default
+ la situazione della chiamata che sta venendo effettuata e a 
+\family typewriter
+\series bold
+mytalk.server.transfer.NotificationTransfer
+\family default
+\series default
  che tipo di operazione sia stata rivolta verso il destinatario e da parte
  di quale utente o quale indirizzo IP
 \end_layout
@@ -410,8 +636,13 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe ha l'obiettivo di gestire la persistenza dei messaggi da mandare
- in differita
+la classe 
+\family typewriter
+\series bold
+RecordMessageManager
+\family default
+\series default
+ ha l'obiettivo di gestire la persistenza dei messaggi da mandare in differita
 \end_layout
 
 \begin_layout Standard
@@ -422,8 +653,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-tale classe riceve dati da mytalk.server.transfer.RecordMessageTransfer e salva
- i messaggi in mytalk.server.data.RecordMessageData 
+la classe 
+\family typewriter
+\series bold
+RecordMessageManager
+\family default
+\series default
+ riceve dati da 
+\family typewriter
+\series bold
+mytalk.server.transfer.RecordMessageTransfer
+\family default
+\series default
+ e salva i messaggi in 
+\family typewriter
+\series bold
+mytalk.server.data.RecordMessageData 
 \end_layout
 
 \begin_layout Standard
@@ -434,9 +679,14 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa del salvataggio, della cancellazione e dell'invio
- a mytalk.server.transfer.RecordMessageTransfer dei messaggi registrati e del
- loro invio
+la classe si occuperà quindi del salvataggio, della cancellazione e dell'invio
+ a 
+\family typewriter
+\series bold
+mytalk.server.transfer.RecordMessageTransfer
+\family default
+\series default
+ dei messaggi registrati e del loro invio
 \end_layout
 
 \begin_layout Subsubsection
@@ -450,7 +700,13 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa della gestione dei collegamenti ai tutorial
+la classe 
+\family typewriter
+\series bold
+TutorialManager
+\family default
+\series default
+ si occupa della gestione dei collegamenti ai tutorial
 \end_layout
 
 \begin_layout Standard
@@ -461,9 +717,25 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-tale classe utilizza mytalk.server.data.TutorialData per scrivere e leggere
- i collegamenti ai video tutorial e mytalk.server.transfer.TutorialTransfer
- per per far giungere tali link al client.
+la classe 
+\family typewriter
+\series bold
+TutorialManager
+\family default
+\series default
+ utilizza 
+\family typewriter
+\series bold
+mytalk.server.data.TutorialData
+\family default
+\series default
+ per scrivere e leggere i collegamenti ai video tutorial e 
+\family typewriter
+\series bold
+mytalk.server.transfer.TutorialTransfer
+\family default
+\series default
+ per far giungere tali link al client.
 \end_layout
 
 \begin_layout Standard
@@ -474,8 +746,11 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa di accedere ai collegamenti ai tutorial presenti nella
- base di datie del loro invio alla classe mytalk.server.transfer.TutorialTransfer
+la classe si occuperà quindi di accedere ai collegamenti dei tutorial presenti
+ nella base di dati e del loro invio alla classe 
+\family typewriter
+\series bold
+mytalk.server.transfer.TutorialTransfer
 \end_layout
 
 \begin_layout Subsubsection
@@ -489,8 +764,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa di stabilire la riuscita o il fallimento di un tentativo
- di autenticazione da parte di un utente e riferire il risultato a ....
+la classe 
+\family typewriter
+\series bold
+AuthenticationManager
+\family default
+\series default
+ si occupa di stabilire la riuscita o il fallimento di un tentativo di autentica
+zione da parte di un utente
 \end_layout
 
 \begin_layout Standard
@@ -501,8 +782,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe utilizza mytalk.server.data.UserData e comunica con mytalk.server.transfer.A
-uthenticationTransfer
+la classe 
+\family typewriter
+\series bold
+AuthenticationManager
+\family default
+\series default
+ utilizza 
+\family typewriter
+\series bold
+mytalk.server.data.UserData
+\family default
+\series default
+ e comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer
 \end_layout
 
 \begin_layout Standard
@@ -513,10 +808,21 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-tale classe deve controllare i dati contenuti nella base di dati in mytalk.server.
-data.UserData  per verificare se un tentativo di autenticazione sia riuscito
- o meno, e restituire a mytalk.server.transfer.AuthenticationTransfer  l'opportuna
- risposta, e per effettuare il logout
+la classe si occuperà quindi di dover controllare i dati presenti nel database
+ in 
+\family typewriter
+\series bold
+mytalk.server.data.UserData
+\family default
+\series default
+ per verificare se un tentativo di autenticazione sia riuscito o meno, e
+ restituire a 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer
+\family default
+\series default
+  l'opportuna risposta, e per effettuare il logout
 \end_layout
 
 \begin_layout Subsubsection
@@ -530,8 +836,14 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe si occupa delle operazioni di aggiornamento delle informazioni
- sugli utenti, quali nuove registrazioni e modifiche degli account.
+la classe 
+\family typewriter
+\series bold
+UserDataManager
+\family default
+\series default
+ si occupa delle operazioni di aggiornamento delle informazioni sugli utenti,
+ quali nuove registrazioni e modifiche degli account.
 \end_layout
 
 \begin_layout Standard
@@ -542,8 +854,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-tale classe viene utilizzata da mytalk.server.transfer.UserDataTransfer e agisce
- su mytalk.server.data.UserData.
+la classe 
+\family typewriter
+\series bold
+UserDataManager
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.transfer.UserDataTransfer
+\family default
+\series default
+ e agisce su 
+\family typewriter
+\series bold
+mytalk.server.data.UserData
 \end_layout
 
 \begin_layout Standard
@@ -554,9 +880,20 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-Tale classe riceve istruzioni da mytalk.server.transfer.UserDataTransfer, controlla
- e eventualmente modifica la base di dati e ritorna a mytalk.server.transfer.UserDa
-taTransfer il successo o meno dell'eventuale cambiamento
+la classe si occuperà quindi di ricevere le istruzioni da
+\series bold
+ 
+\family typewriter
+mytalk.server.transfer.UserDataTransfer
+\family default
+\series default
+, controlla ed eventualmente modifica la base di dati e ritorna a 
+\family typewriter
+\series bold
+mytalk.server.transfer.UserDataTransfer
+\family default
+\series default
+ il successo o meno dell'eventuale cambiamento
 \end_layout
 
 \begin_layout Subsection
@@ -570,10 +907,9 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-lo strato Data rappresenta la base di dati su cui vengono salvati i dati
- di cui si necessita la persistenza.Questo include i dati degli utenti registrati
-, i link ai tutorial video che saranno salvati su un sito esterno e i messaggi
- registrati
+lo strato Data rappresenta la base di dati su cui vengono salvati le informazion
+i persistenti.Questo include i dati degli utenti registrati, i link ai tutorial
+ video che saranno salvati su un sito esterno e i messaggi registrati
 \end_layout
 
 \begin_layout Standard
@@ -599,7 +935,13 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe è un semplice contenitore di informazioni.
+la classe 
+\family typewriter
+\series bold
+UserData
+\family default
+\series default
+ è un semplice contenitore di informazioni.
 \end_layout
 
 \begin_layout Standard
@@ -610,9 +952,20 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-Le classi che si interfacciano con tale classe sono quelle contenute nel
- package mytalk.server.usermanager; essendo un semplice contenitore di informazion
-i la classe non utilizza altre componenti.
+la classe 
+\family typewriter
+\series bold
+UserData
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.usermanager
+\family default
+\series default
+; essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti.
 \end_layout
 
 \begin_layout Standard
@@ -638,7 +991,13 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe è un semplice contenitore di informazioni.
+la classe 
+\family typewriter
+\series bold
+RecordMessageData
+\family default
+\series default
+ è un semplice contenitore di informazioni.
 \end_layout
 
 \begin_layout Standard
@@ -649,9 +1008,20 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe che utilizza tale classe è mytalk.server.functionmanager.RecordMessageMan
-ager;  essendo un semplice contenitore di informazioni la classe non utilizza
- altre componenti.
+la classe 
+\family typewriter
+\series bold
+RecordMessageData
+\family default
+\series default
+ viene utilizzata dalla classe 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
+\family default
+\series default
+;  essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti.
 \end_layout
 
 \begin_layout Standard
@@ -676,7 +1046,13 @@ Tipo, obiettivo e funzione del componente:
 \end_layout
 
 \begin_layout Standard
-tale classe è un semplice contenitore di informazioni.
+la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ è un semplice contenitore di informazioni.
 \end_layout
 
 \begin_layout Standard
@@ -687,9 +1063,20 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_layout Standard
-la classe è utilizzata da mytalk.server.functionmanager.TutorialManager; essendo
-  un semplice contenitore di informazioni la classe non utilizza altre component
-i.
+la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ è utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\family default
+\series default
+; essendo  un semplice contenitore di informazioni la classe non utilizza
+ componenti.
 \end_layout
 
 \begin_layout Standard
@@ -700,7 +1087,13 @@ Attivita svolte e dati trattati:
 \end_layout
 
 \begin_layout Standard
-la classe preserva i collegamenti ai tutorial video 
+la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ preserva i collegamenti ai tutorial video 
 \end_layout
 
 \end_body
