@@ -193,7 +193,7 @@ reference "sub:UC2:-Autenticazione"
 \end_layout
 
 \begin_layout Itemize
-L'utente guarda i video tutorial (si veda 
+L'utente autenticato guarda i video tutorial (si veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC4:-Tutorial-video"
@@ -204,7 +204,8 @@ reference "sub:UC4:-Tutorial-video"
 \end_layout
 
 \begin_layout Itemize
-L'utente visualizza gli utenti registrati presso il server (si veda 
+L'utente autenticato visualizza gli utenti registrati presso il server (si
+ veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC5:-Visualizzazione-utenti"
@@ -215,7 +216,7 @@ reference "sub:UC5:-Visualizzazione-utenti"
 \end_layout
 
 \begin_layout Itemize
-L'utente seleziona una funzionalità (si veda 
+L'utente autenticato seleziona una funzionalità (si veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC6:-Selezione-funzionalità"
@@ -226,7 +227,7 @@ reference "sub:UC6:-Selezione-funzionalità"
 \end_layout
 
 \begin_layout Itemize
-L'utente si scollega (si veda 
+L'utente autenticato si scollega (si veda 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "sub:UC8:-Logout"
@@ -664,11 +665,19 @@ Viene mostrata la pagina principale
 
 \series bold
 Scenari alternativi: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 L'utente può annullare la procedura di modifica, in questo caso il sistema
  ritorna alla schermata principale
 \end_layout
 
+\begin_layout Itemize
+Nel caso in cui la password e la conferma della password non corrispondano
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 UC4: Visualizzazione tutorial video
 \begin_inset CommandInset label
@@ -1220,7 +1229,7 @@ utente
 \series bold
 Scopo e descrizione: 
 \series default
-l'utente può selezionare un destinatario dalla lista dei contatti
+l'utente può selezionare uno o più destinatari dalla lista dei contatti
 \end_layout
 
 \begin_layout Itemize
@@ -1379,6 +1388,12 @@ Se il destinatario non accetta la chiamata o la connessione si interrompe
 \end_layout
 
 \begin_layout Itemize
+Se il destinatario non accetta la chiamata entro un minuto o il sistema
+ non riesce ad effettuare la connessione viene mostrato un messaggio di
+ errore
+\end_layout
+
+\begin_layout Itemize
 Se il video è acceso l'utente può disabilitarlo
 \end_layout
 
@@ -1507,7 +1522,7 @@ L'utente può registrare un messaggio con solamente la parte audio
 \end_layout
 
 \begin_layout Itemize
-L'utente termina la funzionalità senza aver registrato alcun messaggio
+L'utente termina la funzionalità senza aver inviato il messaggio
 \end_layout
 
 \end_deeper
@@ -2079,7 +2094,7 @@ Attori principali:
 \series bold
 Scopo e descrizione: 
 \series default
-l'utente può accettare o rifiutare la richiesta di trasfrimento di un file
+l'utente può accettare o rifiutare la richiesta di trasferimento di un file
  da parte di un altro utente
 \end_layout
 
