@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -124,8 +125,8 @@ Descrizione:
 tale design pattern permette una disgiunzione fra i vari gruppi di entità
  che cooperano nell'erogazione del servizio.
  Un primo livello si occuperà della comunicazione con il client, un secondo
-  livello invece si occuperà di effettuare le operazioni logiche ed elaborare 
- le informazioni salvandole e prelevandole da un terzo livello inferiore
+  livello invece si occuperà di effettuare le operazioni logiche ed elaborare
+  le informazioni salvandole e prelevandole da un terzo livello inferiore
 \end_layout
 
 \begin_layout Itemize
@@ -133,13 +134,13 @@ tale design pattern permette una disgiunzione fra i vari gruppi di entità
 \series bold
 Motivazione:
 \series default
-il benificio principale di questo design pattern è la possibilità di aggiornare/
+il beneficio principale di questo design pattern è la possibilità di aggiornare/
 cambiare un livello senza andare a modificare i livelli adiacenti.
  Nonostante i vari livelli si occupino di specifiche operazioni è presente
- una forte comunicazione rigidamente strutturata tra di loro, questo lo rende un
- ottimo modello per applicazioni client-server, poiché ogni livello non esiste
- come unità logica a se stante, ma si adegua allo specifico ambiente di rete in cui
- esegue
+ una forte comunicazione rigidamente strutturata tra di loro, questo lo
+ rende un ottimo modello per applicazioni client-server, poiché ogni livello
+ non esiste come unità logica a se stante, ma si adegua allo specifico ambiente
+ di rete in cui esegue
 \end_layout
 
 \begin_layout Itemize
@@ -153,8 +154,8 @@ tale design pattern verrà utilizzato come struttura portante del server
 
 \begin_deeper
 \begin_layout Itemize
-Transfer Layer: offrirà un'interfaccia di comunicazione con il client
- e i livelli sottostanti del server
+Transfer Layer: offrirà un'interfaccia di comunicazione con il client e
+ i livelli sottostanti del server
 \end_layout
 
 \begin_layout Itemize
@@ -164,8 +165,8 @@ Logic Layer: si occuperà di svolgere le funzionalità di comunicazione e
 \end_layout
 
 \begin_layout Itemize
-Data Layer: sarà un contenitore di informazioni riguardanti gli utenti
- e di messaggi registrati e collegamenti
+Data Layer: sarà un contenitore di informazioni riguardanti gli utenti e
+ di messaggi registrati e collegamenti
 \end_layout
 
 \end_deeper
@@ -283,7 +284,8 @@ Model:
 ha il compito di astrarre i dati presenti nel database recuperandone le
  informazioni o aggiungendone e disporli in modo tale da essere visibili
  alla view.
- Questo sarà il compito di parte del data layer e parte del manager layer del server
+ Questo sarà il compito di parte del data layer e parte del manager layer
+ del server
 \end_layout
 
 \begin_layout Itemize
@@ -323,10 +325,8 @@ tale design pattern si occupa di gestire i cambiamenti che avvengono in
 \series bold
 Motivazione:
 \series default
-Questo design pattern modifica delle componenti nel caso altre
- componenti ad esse legate vengano modificate
- 
- 
+Questo design pattern modifica delle componenti nel caso altre componenti
+ ad esse legate vengano modificate  
 \end_layout
 
 \begin_layout Itemize
