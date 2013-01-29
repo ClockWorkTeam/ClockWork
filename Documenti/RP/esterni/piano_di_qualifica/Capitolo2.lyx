@@ -121,9 +121,8 @@ Responsabile:
 Al fine di garantire un costante riscontro dell’evoluzione del lavoro, ogni
  singolo membro del gruppo è tenuto a cronometrare le proprie ore di lavoro
  dedicate al progetto, per ogni ruolo che sta adempiendo, e renderlo noto
- al Responsabile, in modo tale che possa effettuare un controllo sulle ore
- di lavoro preventivate e di conseguenza agire per la nuova pianificazione
- della 
+ al Responsabile, per effettuare un controllo sulle ore di lavoro preventivate
+ e di conseguenza agire per la pianificazione della 
 \lang italian
 fase
 \lang english
@@ -134,11 +133,27 @@ Inoltre
 \lang english
  tutti i membri del gruppo hanno l’obbligo di controllare quotidianamente
  l’emanazione dei ticket.
- I documenti prodotti devono essere forniti di un diario delle modifiche,
+\end_layout
+
+\begin_layout Standard
+I documenti prodotti devono essere forniti di un diario delle modifiche,
  questo consentirà di agevolare la verifica sugli stessi.
- La conformità alle norme definite nel documento Norme di Progetto consentirà
- di ridurre gli errori dovuti a incomprensioni che possono nascere durante
- lo sviluppo del progetto.
+ La conformità alle norme definite nel documento 
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+ consentirà di ridurre gli errori dovuti a incomprensioni che possono nascere
+ durante lo sviluppo del progetto.
+\end_layout
+
+\begin_layout Standard
+Per evitare la propagazione incontrollata degli errori si utlizzerà il 
+\series bold
+Broken Window Theory
+\series default
+ secondo il quale non appena viene riscontrato un errore, sarà segnalato
+ e corretto il prima possibile.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -218,6 +233,13 @@ ciclo di vita
 
 \begin_layout Subsubsection
 Verifica generale dei documenti
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -256,11 +278,14 @@ Fase di Analisi
 
 \begin_layout Standard
 In questa fase i Verificatori hanno il compito di controllare che il documento
- riguardante l'Analisi dei Requisiti, oltre a soddisfare le norme definite
- nel documento 
-\family typewriter
-Norme_di_Progetto_v2.0.pdf
-\family default
+ riguardante l'Analisi dei Requisiti, oltre a soddisfare gli obiettivi qualitati
+vi descritti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
 , deve rispettare le seguenti caratteristiche
 \begin_inset Foot
 status open
@@ -422,11 +447,27 @@ Fase di Progettazione
 \end_layout
 
 \begin_layout Standard
-In questa fase i Verificatori dovranno accertare che ogni requisito individuato
- nell’Analisi dei Requisiti venga correttamente tradotto nell’architettura
- del sistema software, descritta nella Specifica Tecnica.
- La verifica in questa fase deve accertare che la progettazione effettuata
- rispetti i principi di:
+In questa fase, oltre agli obiettivi qualitativi generali descritti nella
+ sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, si dovrà accertare che ogni requisito scoperto nella fase di Analisi venga
+ correttamente tradotto nell’architettura del sistema software, descritta
+ nella 
+\family typewriter
+Specifica_Tecnica_v1.0.pdf
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In questa fase bisogna accertare che la progettazione effettuata rispetti
+ i principi di:
 \end_layout
 
 \begin_layout Itemize
@@ -480,8 +521,8 @@ Semplicità:
 \end_layout
 
 \begin_layout Standard
-La verifica in questa fase non è automatizzabile, si richiede ai Verificatori
- di porre la massima attenzione in questa fase, in quanto è di fondamentale
+Dato che la verifica in questa fase non è automatizzabile, i Verificatori
+ porranno la massima attenzione in questa fase, in quanto è di fondamentale
  importanza per il successo della fase successiva.
 \end_layout
 
@@ -490,89 +531,149 @@ Fase di Codifica
 \end_layout
 
 \begin_layout Standard
-In questa fase il Verificatore dovrà esaminare le unità di codice prodotte
- per accertarsi che non contengano errori di programmazione, rispettino
- le norme definite nelle Norme di Progetto e le norme di codifica definite
- nel documento 
-\family typewriter
-Norme_di_Progetto_v2.0.pdf
-\family default
-, sez.
- Metriche.
- Deve controllare che ogni requisito sia tradotto in qualche unità di codice
- e che non ci sia codice non associato ad alcun requisito.
- Questo sarà possibile tramite un buon tracciamento dei requisiti.
+In questa fase, oltre al soddisfacimento degli obiettivi qualitativi descritti
+ nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, si dovranno esaminare le unità di codice prodotte per accertarsi che non
+ contengano errori di programmazione.
+ Si deve controllare che ogni requisito sia tradotto in unità di codice
+ e che non ci sia codice non associato ad alcun requisito
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo sarà possibile tramite un buon tracciamento dei requisiti.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Il modello di sviluppo adottato è di tipo incremmentale, come descritto
- nel documento Piano di Progetto.
- Ogni incremento ha lo scopo di sviluppare unità software che verranno successiv
-amente integrate le une con le altre.
- La priorità di sviluppo delle varie unità sarà determinata da una visione
- “bottom-up”, ovvero verranno prima prodotte le unità di codice con un livello
- minore di dipendenza dalle altre, al fine di ridurre la produzione di 
+Poiché il modello di ciclo di vita deciso è quello 
+\emph on
+incrementale
+\emph default
+ (
+\family typewriter
+Piano_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Ciclo di vita), si avranno degli incrementi i quali hanno lo scopo di sviluppar
+e unità software che verranno successivamente integrate tra loro.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+La priorità di sviluppo delle varie unità sarà determinata da una visione
+ “bottom-up”, ovvero si seguirà questa procedura:
+\end_layout
+
+\begin_layout Enumerate
+Prodotte principalmente le unità di codice con livello minore di dipendenza
+ dalle altre, per ridurre la produzione di 
 \bar under
 driver
 \bar default
- per l’attività di test.
+ per l'attività di test
 \end_layout
 
-\begin_layout Standard
-\noindent
-Prima di procedere all’integrazione, ogni unità dovrà compilare correttamente
- senza provocare warning, in seguito deve essere sottoposta ad analisi statica,
- nelle forme descritte nella sezione 
+\begin_layout Enumerate
+Ogni unità dovrà compilare correttamente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Le unità in questione non dovranno provocare warning.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ogni unità deve essere sottoposta ad analisi statica (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tecniche"
 
 \end_inset
 
-, mediante i software di analisi statica descritti nel documento 
+) mediante i software che si è deciso di adottare (
 \family typewriter
 Norme_di_Progetto_v2.0.pdf
 \family default
 , sez.
- Ambiente di verifica e validazione.
- Sulle componenti software dove è richiesta l’esecuzione di una prova, dopo
- la compilazione e l’analisi statica, si effettueranno test funzionali (
+ Ambiente di verifica e validazione)
+\end_layout
+
+\begin_layout Enumerate
+Se richiesta l'esecuzione di prova, si effettueranno i test funzionali (
 \bar under
 black-box
 \bar default
-), e in seguito se richiesto test strutturali (
+) 
+\end_layout
+
+\begin_layout Enumerate
+Se richiesto, si effettueranno test strutturali (
 \bar under
 white-box
 \bar default
-), nelle forme descritte nel documento 
-\family typewriter
-Norme_di_Progetto_v2.0.pdf,
-\family default
- sez.
- Test, questa attività sarà supportata dalla strumentazione descritta nel
- documento 
+) (
 \family typewriter
 Norme_di_Progetto_v2.0.pdf
 \family default
-, sez.
- Ambiente di verifica e validazione.
- Una volta che una unità di codice compila senza provocare warning, è pronta
- per essere integrata nel sistema.
- Nel caso si riscontrino malfunzionamenti dopo una integrazione sarà necessario
- individuare tramite l’uso del compilatore l’unità responsabile del malfunzionam
-ento, ripristinare l’ultima versione stabile del sistema e avvisare immediatamen
-te il Programmatore che ha introdotto il problema, avvisando anche il Responsabi
-le.
- Nel caso che dopo l’integrazione di una nuova unità il compilatore non
- generi errori si effettueranno test di integrazione descritti nella sezione
- Test di interazione.
+, sez Analisi dinamica), supportati dagli strumenti che si è deciso di adottare
+ (
+\family typewriter
+Norme_di_Progetto_v2.0.pdf
+\family default
+, sez Ambiente di verifica e validazione)
 \end_layout
 
 \begin_layout Standard
 \noindent
-Ci aspettiamo che dall’attuazione di una buona codifica, associata a un
- buon metodo di verifica il software raggiunga le seguenti qualità:
+Nel caso si riscontrino malfunzionamenti dopo una integrazione sarà necessario:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Individuare l’unità responsabile del malfunzionamento
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Ripristinare l’ultima versione stabile del sistema, avvisando il Programmatore
+ che ha introdotto il problema e il Responsabile
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Se il compilatore non genera errori dopo l'integrazione di una nuova unità,
+ si effettueranno test di integrazione descritti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Test-di-Integrazione"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ci si aspetta che, dall’attuazione di una buona codifica, associata a un
+ buon metodo di verifica, il software raggiunga le seguenti qualità:
 \end_layout
 
 \begin_layout Itemize
@@ -580,10 +681,10 @@ Ci aspettiamo che dall’attuazione di una buona codifica, associata a un
 \series bold
 Robustezza:
 \series default
- poiché il software è destinato a persone con limitate conoscenze informatiche,
- deve essere capace di sopportare ingressi errati.
- I Verificatori, mediante l’uso dei test, dovranno verificare che il software
- sia stabile anche con input errati
+ poiché il software è destinato anche a persone con limitate conoscenze
+ informatiche, deve essere capace di sopportare ingressi errati.
+ Mediante i test, si dovrà verificare che il software resti stabile anche
+ con input errati
 \end_layout
 
 \begin_layout Itemize
@@ -601,17 +702,28 @@ Fase di Collaudo
 \end_layout
 
 \begin_layout Standard
-In questa fase il Verificatore effettuerà dei test di accettazione sui requisiti
+In questa fase, oltre a dover soffisfare gli obiettivi qualitativi generali
  definiti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, si effettueranno dei test di accettazione sui requisiti definiti nella
+ sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Pianificazione-ed-esecuzione"
 
 \end_inset
 
-, e verificherà che non si presentino malfunzionamenti durante l’utilizzo
+, e ci si assicurerà che non si presentino malfunzionamenti durante l’utilizzo
  del prodotto.
- La strategia di verifica adottata è descritta nella sezione 
+\end_layout
+
+\begin_layout Standard
+La strategia di verifica adottata è descritta nella sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tecniche"
@@ -619,19 +731,61 @@ reference "sub:Tecniche"
 \end_inset
 
 .
- Verrà testato il corretto funzionamento del programma e verrà testata la
- facilità da parte dell’utente di compiere le operazioni per cui il software
- si è posto il compito.
- Tramite i loro giudizi valuteremo l’usabilità del nostro prodotto.
- Per il soddisfacimento dei requisiti di qualità definiti nella Analisi
- dei Requisiti si adotteranno tecniche di walkthrough e inspection.
- Per il soddisfacimento dei vincoli sarà effettuata una prova ad hoc.
+ 
+\end_layout
+
+\begin_layout Standard
+Verranno testati:
+\end_layout
+
+\begin_layout Itemize
+il corretto funzionamento del programma 
+\end_layout
+
+\begin_layout Itemize
+la facilità da parte dell’utente di compiere le operazioni per cui il software
+ si è posto il compito
+\end_layout
+
+\begin_layout Standard
+Tramite i giudizi degli utenti valuteremo l’usabilità del prodotto 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Per il soddisfacimento dei requisiti di qualità definiti nella 
+\family typewriter
+Analisi_dei_Requisiti_v2.0.pdf,
+\family default
+ si adotteranno tecniche di walkthrough e inspection.
+ 
+\end_layout
+
+\begin_layout Standard
+Per il soddisfacimento dei vincoli sarà effettuata una prova ad hoc.
  Al termine della fase di 
 \bar under
 beta-test
 \bar default
  si passerà alla Revisione di Accettazione.
- La buona riuscita di questa fase porterà al raggiungimento della seguente
+ 
+\end_layout
+
+\begin_layout Standard
+La buona riuscita di questa fase porterà al raggiungimento della seguente
  qualità:
 \end_layout
 
@@ -642,11 +796,11 @@ Affidabilità:
 \series default
  i portatori di interesse si aspettano che il software funzioni correttamente.
  I Verificatori valuteranno questa caratteristica eseguendo personalmente
- il codice
+ le funzionalità del prodotto
 \end_layout
 
 \begin_layout Subsection
-Risorse necesmsarie e risorse disponibili
+Risorse necessarie e risorse disponibili
 \end_layout
 
 \begin_layout Standard
@@ -660,8 +814,12 @@ Tali risorse serviranno per la realizzazione del progetto, esse sono distinte
 , sez.
  Ruoli).
  Le risorse tecnologiche che serviranno per lo sviluppo del progetto sono
- i Personal Computer dei singoli componenti del gruppo, dotati della strumentazi
-one software (
+ i 
+\bar under
+pc
+\bar default
+ dei singoli componenti del gruppo, dotati della strumentazione software
+ (
 \family typewriter
 Norme_di_Progetto_v2.0.pdf
 \family default
@@ -682,10 +840,8 @@ name "sub:Strumenti"
 \end_layout
 
 \begin_layout Standard
-Strumenti software per facilitare e automatizzare l’attività di verifica
- e validazione, come strumenti per l’analisi statica e dinamica, strumenti
- di test, strumenti per la misurazione della qualità dei processi.
- Tali strumenti sono descritti nel docuento 
+I software che si utilizzeranno per facilitare e automatizzare l’attività
+ di Verifica e Validazione sono descritti nel documento 
 \family typewriter
 Norme_di_Progetto_v2.0.pdf
 \family default
@@ -709,6 +865,28 @@ I Verificatori dovranno adottare le seguenti tecniche di analisi dove è
  richiesto:
 \end_layout
 
+\begin_layout Itemize
+Analisi statica (vedasi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Analisi-statica"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Analisi dinamica (vedasi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Analisi-dinamica"
+
+\end_inset
+
+)
+\end_layout
+
 \begin_layout Subsubsection
 Analisi statica
 \begin_inset CommandInset label
@@ -721,38 +899,85 @@ name "sub:Analisi-statica"
 \end_layout
 
 \begin_layout Standard
-Analisi che non richiede l’esecuzione del codice e si può applicare ad ogni
- prodotto di processo, non solo al codice.
- Per la verifica di prodotti semplici si può ricorrere ai metodi di lettura
- (desk check), distinti in inspection, ovvero una lettura mirata all’individuazi
-one di un errore presupposto e walkthrough, ovvero una lettura a largo spettro
- per rilevamento di errori non presupposti.
- Per effettuare analisi statica sulle unità di codice si ricorre a metodi
- formali, descritti nel documento 
-\family typewriter
-Norme_di_Progetto_v2.0.pdf
-\family default
-, sez.
- Analisi statica, che dimostrano una certa proprietà del prodotto.
- Nelle prime fasi del progetto i Verificatori adotteranno principalmente
- la tecnica walkthrough.
- Gli errori rilevati più frequentemente forniranno al gruppo una maggiore
- esperienza, che consentirà ai Verificatori di utilizzare una tecnica di
- inspection per l’individuazione di tali errori.
- Inoltre ogni correzione o suggerimento fornito dal Committente fornirà
- anch’essa maggiore esperienza e saranno utilizzate per procedere con la
- tecnica inspection.
-\end_layout
-
-\begin_layout Subsubsection
-Analisi dinamica
+Tipologia di analisi che non richiede l’esecuzione del codice e si può applicare
+ ad ogni prodotto, non solo al codice.
 \end_layout
 
 \begin_layout Standard
-Analisi che richiede l’esecuzione del codice, che può essere un’unità, un
- aggregato o il sistema completo.
- Utilizzata sia nelle fasi di verifica che di validazione.
- Le esecuzioni che applicano analisi dinamica sono denominate test o prove.
+Per la verifica di prodotti semplici si può ricorrere ai metodi di lettura
+ (desk check), distinti in: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inspection
+\series default
+: lettura mirata all’individuazione di un errore presupposto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Walkthrough
+\series default
+: lettura a largo spettro per rilevamento di errori non presupposti
+\end_layout
+
+\begin_layout Standard
+Per effettuare analisi statica sulle unità di codice si ricorre a metodi
+ formali
+\family typewriter
+ (Norme_di_Progetto_v2.0.pdf
+\family default
+, sez.
+ Analisi statica), che dimostrano una certa proprietà del prodotto.
+\end_layout
+
+\begin_layout Standard
+Nelle prime fasi del progetto i si adotterà principalmente la tecnica walkthroug
+h.
+ 
+\end_layout
+
+\begin_layout Standard
+Gli errori rilevati più frequentemente, dai Verificatori e dal committente,
+ forniranno al gruppo esperienza, per consentire successivamente, nelle
+ attività di verifica, di utilizzare una tecnica di inspection per l’individuazi
+one di tali errori.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Analisi dinamica 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Analisi-dinamica"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tipologia di analisi che richiede l’esecuzione del codice, che si distingue
+ in:
+\end_layout
+
+\begin_layout Itemize
+Unità
+\end_layout
+
+\begin_layout Itemize
+Aggregato
+\end_layout
+
+\begin_layout Itemize
+Sistema completo
+\end_layout
+
+\begin_layout Standard
+Le esecuzioni che applicano analisi dinamica sono denominate test o prove.
  I tipi di test che il 
 \begin_inset ERT
 status open
