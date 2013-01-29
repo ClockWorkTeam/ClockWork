@@ -64,11 +64,13 @@ Architettura Generale
 \end_layout
 
 \begin_layout Standard
+
 L'applicativo è stato diviso in due sistemi, ovvero il lato
 \bar under
 client
 \bar default
  e il lato
+
 \bar under
 server
 \bar default
@@ -95,6 +97,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -122,6 +125,7 @@ name "fig:Architettura-generale"
 
 \end_layout
 
+
 \begin_layout Subsection
 Client
 \end_layout
@@ -130,54 +134,67 @@ Client
 Il client si occuperà di gestire l'interfaccia visibile all'utente le cui
  operazioni verranno poi inviate al server.
  Il lato client è stato suddiviso nel seguente modo:
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 1:
 \series default
  Autenticazione
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 2:
 \series default
  Gestione dati
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 3:
 \series default
  Tutorial
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 4:
 \series default
  Visualizzazione lista utenti
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 5:
 \series default
  Gestione notifiche
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 6:
 \series default
  Chiamata
+
 \end_layout
 
 \begin_layout Itemize
@@ -191,14 +208,17 @@ CCLI 7:
 \begin_layout Itemize
 
 \series bold
+
 CCLI 8:
 \series default
  Chat
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 CCLI 9:
 \series default
  Invio file
@@ -212,6 +232,7 @@ Server
 Il server si occuperà di gestire le richieste fatte e di inviare una risposta
  al client.
  Il server è stato suddiviso in
+
 \end_layout
 
 \begin_layout Itemize
@@ -225,9 +246,11 @@ CSER 1:
 \begin_layout Itemize
 
 \series bold
+
 CSER 2:
 \series default
  Gestione dati utenti
+
 \end_layout
 
 \begin_layout Itemize
@@ -258,8 +281,10 @@ reference "fig:Architettura-generale-dell'intero-sistema"
 
 \end_inset
 
+
  si può avere quindi una visione dell'architettura e delle relazioni tra
  gli strati
+
 \end_layout
 
 \begin_layout Standard
@@ -307,15 +332,19 @@ mytalk
 \begin_layout Itemize
 
 \series bold
+
 mytalk.client
 \series default
-racchiude al suo interno il lato client di {
+racchiude al suo interno il lato client di {\PRODOTTO}
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 mytalk.client.view
+
 \series default
 racchiude al suo interno l'interfaccia grafica
 \end_layout
@@ -323,7 +352,9 @@ racchiude al suo interno l'interfaccia grafica
 \begin_layout Itemize
 
 \series bold
+
 mytalk.client.presenter
+
 \series default
 gestisce il collegamento tra client e server
 \end_layout
@@ -331,23 +362,29 @@ gestisce il collegamento tra client e server
 \begin_layout Itemize
 
 \series bold
+
 mytalk.client.model
 \series default
 contiene dati locali
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 mytalk.server
 \series default
-racchiude al suo interno il lato server di {
+racchiude al suo interno il lato server di {\PRODOTTO}
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-mytalk.server.trasfer
+
+mytalk.server.transfer
+
 \series default
 gestisce il collegamento tra server e client
 \end_layout
@@ -355,15 +392,19 @@ gestisce il collegamento tra server e client
 \begin_layout Itemize
 
 \series bold
+
 mytalk.server.functionmanager
 \series default
 gestisce le operazioni di chiamata e di modifica della base di dati
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+
 mytalk.server.usermanager
+
 \series default
 gestisce le operazione di autenticazione
 \end_layout
@@ -371,9 +412,11 @@ gestisce le operazione di autenticazione
 \begin_layout Itemize
 
 \series bold
+
 mytalk.server.data
 \series default
 contiene le informazioni del database
+
 \end_layout
 
 \end_body
