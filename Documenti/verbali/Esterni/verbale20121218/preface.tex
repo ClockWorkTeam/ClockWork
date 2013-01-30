@@ -1,0 +1,63 @@
+%% NON MODIFICARE QUESTE IMPOSTAZIONI
+\date{}
+\usepackage[latin9]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{ucs}
+\usepackage{lastpage}
+\usepackage{longtable}
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\fancypagestyle{frontmatter}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{.4pt}% Header rule
+  \renewcommand{\footrulewidth}{.4pt}% Footer rule
+
+  \lhead{\setlength{\unitlength}{1mm}
+    \begin{picture}(0,0)
+      \put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
+    \end{picture}
+  }
+  \rhead{\PROGETTO}
+  \lfoot{\DOCUMENTO}
+}
+\fancypagestyle{mainmatter}{
+  \clearpage
+  \rfoot{\thepage\ di \pageref{LastPage}}
+  \setcounter{page}{1}
+}
+
+\newcommand{\PROGETTO}{\bf{MyTalk}}
+\newcommand{\NOMEGRUPPO}{gruppo \emph{Clockwork}}
+\newcommand{\PROPONENTIPROG}{Zucchetti SPA }
+\newcommand{\COMMITENTIPROG}{Prof. Tullio Vardanega }
+\newcommand{\SUBTITLE}{Sofware di comunicazione tra utenti senza requisiti di installazione}
+\newcommand{\MAIL}{clockworkTeam7@gmail.com}
+
+
+%%DA QUI IN POI POTETE MODIFICARE
+
+\newcommand{\DOCUMENTO}{Verbale incontro con il Proponente del 2012/12/18 }
+\newcommand{\CREAZIONE}{2012/12/19}	%data di creazione
+\newcommand{\ULTIMAMOD}{2013/01/12}	%data di ultima modifica
+\newcommand{\USODOC}{Esterno}		%Interno, Esterno
+
+
+\newcommand{\REDATTORI}{Gavagnin Jessica \\[0.1cm]}
+\newcommand{\VERIFICATORI}{Ceseracciu Marco}
+\newcommand{\APPROVATORE}{Zohouri Haghian Pardis}
+
+
+
+%%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO
+\newcommand{\LISTADISTRIB}{ \NOMEGRUPPO \\ \COMMITENTIPROG }
+
+%%INSERIRE IL SOMMARIO DEL DOCUMENTO
+\newcommand{\SOMMARIO}{Questo documento riporta il verbale dell'incontro con il proponente svolto il 2012/12/18 {\PROGETTO}.}
