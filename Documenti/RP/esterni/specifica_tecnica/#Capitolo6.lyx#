@@ -126,7 +126,9 @@ mytalk.server.usermanager
 \family default
  e con lo strato  
 \family typewriter
-mytalk.client.presenter
+mytalk.client.presenter 
+\family default
+allo scopo di interfacciare il server col client
 \end_layout
 
 \begin_layout Subsubsection
@@ -178,7 +180,7 @@ mytalk.server.functionmanager.CallManager
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe 
 \family typewriter
@@ -238,7 +240,7 @@ mytalk.server.usermanager.AuthenticationManager
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe 
 \family typewriter
@@ -313,7 +315,7 @@ mytalk.server.usermanager.UserDataManager
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe riceve da 
 \family typewriter
@@ -386,7 +388,7 @@ mytalk.server.functionmanager.TutorialManager
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe ha una funzione di collegamento, si occupa di far arrivare una
  richiesta a 
@@ -452,7 +454,7 @@ mytalk.client.presenter.RecordMessageControl
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe si occupa quindi di ricevere dal client il messaggio registrato
  e l'utente a cui mandarlo e passa tali dati a 
@@ -600,7 +602,7 @@ mytalk.server.transfer.NotificationTransfer
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe si occuperà quindi di inizializzare la chiamata tramite WebSocket,
  comunicando a 
@@ -616,7 +618,7 @@ mytalk.server.transfer.NotificationTransfer
 \family default
 \series default
  che tipo di operazione sia stata rivolta verso il destinatario e da parte
- di quale utente o quale indirizzo IP
+ di quale utente o indirizzo IP
 \end_layout
 
 \begin_layout Subsubsection
@@ -665,7 +667,7 @@ mytalk.server.data.RecordMessageData
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe si occuperà quindi del salvataggio, della cancellazione e dell'invio
  a 
@@ -782,7 +784,7 @@ mytalk.server.transfer.AuthenticationTransfer
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe si occuperà quindi di dover controllare i dati presenti nel database
  in 
@@ -848,7 +850,7 @@ mytalk.server.data.UserData
 \noindent
 
 \series bold
-Attivita svolte e dati trattati:
+Attività svolte e dati trattati:
 \series default
  la classe si occuperà quindi di ricevere le istruzioni da
 \series bold
@@ -876,8 +878,9 @@ Data Layer
 Tipo, obiettivo e funzione del componente:
 \series default
  lo strato Data rappresenta la base di dati su cui vengono salvati le informazio
-ni persistenti.Questo include i dati degli utenti registrati, i link ai tutorial
- video che saranno salvati su un sito esterno e i messaggi registrati
+ni persistenti.
+ Questo include i dati degli utenti registrati, i link ai tutorial video
+ che saranno salvati su un sito esterno e i messaggi registrati
 \end_layout
 
 \begin_layout Itemize
@@ -887,7 +890,11 @@ ni persistenti.Questo include i dati degli utenti registrati, i link ai tutorial
 Relazioni d'uso con altre componenti:
 \series default
  lo strato Data verrà utilizzato da alcune classi all'interno dei package
- mytalk.server.usermanager e mytalk.server.functionmanager
+ 
+\family typewriter
+mytalk.server.usermanager
+\family default
+ e mytalk.server.functionmanager
 \end_layout
 
 \begin_layout Subsubsection
