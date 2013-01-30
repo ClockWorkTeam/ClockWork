@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -122,16 +122,9 @@ Al fine di garantire un costante riscontro dell’evoluzione del lavoro, ogni
  singolo membro del gruppo è tenuto a cronometrare le proprie ore di lavoro
  dedicate al progetto, per ogni ruolo che sta adempiendo, e renderlo noto
  al Responsabile, per effettuare un controllo sulle ore di lavoro preventivate
- e di conseguenza agire per la pianificazione della 
-\lang italian
-fase
-\lang english
- successiva.
+ e di conseguenza agire per la pianificazione della fase successiva.
  
-\lang italian
-Inoltre
-\lang english
- tutti i membri del gruppo hanno l’obbligo di controllare quotidianamente
+Inoltre tutti i membri del gruppo hanno l’obbligo di controllare quotidianamente
  l’emanazione dei ticket.
 \end_layout
 
@@ -320,7 +313,7 @@ Corretto:
  che il software deve avere.
  Il Verificatore per controllare questa qualità deve avere una buona conoscenza
  dei documenti forniti dal proponente, inoltre questo controllo sarà agevolato
- da una corretto tracciamento dei requisiti
+ da un corretto tracciamento dei requisiti
 \end_layout
 
 \begin_layout Itemize
@@ -328,8 +321,8 @@ Corretto:
 \series bold
 Completo:
 \series default
- il documento è completo se e solo se include tutti i requisiti fondamentali,
- definisce come reagirsce il software agli input.
+ il documento è completo se e solo se include tutti i requisiti fondamentali e
+ definisce come reagisce il software agli input.
  Il Verificatore dovrà quindi procedere a una lettura attenta del documento
 \end_layout
 
@@ -339,7 +332,7 @@ Completo:
 Verificabile:
 \series default
  il documento è verificabile se e solo se per ogni suo requisito è definito
- il modo con cui si possa verificare che il software soddisfa tale requisito,
+ il modo con cui si possa verificare che il software soddisfi tale requisito,
  ovvero che sia tracciabile e atomico, in quanto i requisiti non atomici
  sono difficilmente verificabili.
  Questa attività non è automatizzabile, pertanto si richiede una attenta
@@ -361,7 +354,7 @@ Consistente:
 \series bold
 Modificabile:
 \series default
- il documento è modificabile se la sua struttura consenta di effettuare
+ il documento è modificabile se la sua struttura consente di effettuare
  delle modifiche facilmente e in modo consistente.
  La conformità delle norme facilita il raggiungimento di questa qualità
 \end_layout
@@ -935,7 +928,7 @@ Per effettuare analisi statica sulle unità di codice si ricorre a metodi
 \end_layout
 
 \begin_layout Standard
-Nelle prime fasi del progetto i si adotterà principalmente la tecnica walkthroug
+Nelle prime fasi del progetto si adotterà principalmente la tecnica walkthroug
 h.
  
 \end_layout
@@ -1016,6 +1009,128 @@ Norme_di_Progetto_v2.0.pdf
 \family default
 , sez.
  Analisi dinamica 
+\end_layout
+
+\begin_layout Standard
+Si inizierà col effettuare test sulle singole unità del sistema, e, una
+ volta superato tali test, saranno integrate e per svolgere altri test che
+ verificheranno le interazioni tra queste unità.
+ 
+\end_layout
+
+\begin_layout Standard
+Infine, si eseguiranno una serie di test di accettazione per assicurare
+ che il sistema funzioni nella maniera attesa.
+\end_layout
+
+\begin_layout Standard
+Il processo di test del software ha due obiettivi: 
+\end_layout
+
+\begin_layout Itemize
+Dimostrare allo sviluppatore che il software soddisfa i requisiti 
+\end_layout
+
+\begin_layout Itemize
+Scoprire errori e/o difetti nel software
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ovvero dove il comportamento del software è errato, indesiderato o non conforme
+ alle sue specifiche.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Procedure dei test
+\end_layout
+
+\begin_layout Standard
+I passi per effettuare test sono:
+\end_layout
+
+\begin_layout Enumerate
+Definizione del test sul componente 
+\end_layout
+
+\begin_layout Enumerate
+Preparazione del caso di prova
+\end_layout
+
+\begin_layout Enumerate
+Esecuzione del test sul componente
+\end_layout
+
+\begin_layout Enumerate
+Analisi dei risultati ottenuti con quelli attesi 
+\end_layout
+
+\begin_layout Enumerate
+Verifica dei risultati
+\end_layout
+
+\begin_layout Paragraph
+Definizione del test sul componente
+\end_layout
+
+\begin_layout Itemize
+Se è un componente attivo, e non sono state ancora prodotte le componenti
+ passive pilotate da tale componente, il test dovrà definire gli 
+\bar under
+stub
+\bar default
+ necessari
+\end_layout
+
+\begin_layout Itemize
+Se è un componente passivo e non sono state ancora prodotte le componenti
+ attive che pilotano il componente soggetto a test, il test dovrà definire
+ i driver necessari 
+\end_layout
+
+\begin_layout Paragraph
+Preparazione del caso di prova
+\end_layout
+
+\begin_layout Standard
+L’esecuzione del test deve avvenire in un definito ambiente, con dati in
+ ingresso controllati, e devono essere definiti gli output attesi.
+\end_layout
+
+\begin_layout Standard
+I dati in input devono essere distinti in 3 classi di equivalenza:
+\end_layout
+
+\begin_layout Itemize
+Interni al dominio
+\end_layout
+
+\begin_layout Itemize
+Al limite del dominio 
+\end_layout
+
+\begin_layout Itemize
+Al di fuori del dominio
+\end_layout
+
+\begin_layout Paragraph
+Verifica dei risultati
+\end_layout
+
+\begin_layout Itemize
+Se i risultati ottenuti differiscono da quelli attesi, si comunicheranno
+ gli errori tramite i ticket, succesivamente si correggeranno gli errori
+ e si dovrà rieseguire il test
+\end_layout
+
+\begin_layout Itemize
+Se i risultati ottenuti non differiscono da quelli attesi, si procederà
+ con la registrazione dei risultati
 \end_layout
 
 \begin_layout Subsection
