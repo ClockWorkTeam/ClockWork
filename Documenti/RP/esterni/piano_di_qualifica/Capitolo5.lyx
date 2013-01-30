@@ -1025,13 +1025,13 @@ Sarà necessario avere funzionanti i database (compresa la loro gestione),
 \end_layout
 
 \begin_layout Standard
-Ogni componente sosterrà dei test, dai quali ci si potrà aspettare un esito
+Ogni componente sosterrà dei test, ai quali ci si potrà aspettare un esito
  positivo o negativo.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="2">
+<lyxtabular version="3" rows="28" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
@@ -1060,7 +1060,28 @@ Funzionalità da verificare
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CCLI1 (autenticazione)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un utente tenta un'autenticazione i dati devono essere cercati
+ all'interno del server
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1073,14 +1094,15 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Se i dati che l'utente fornisce sono presenti nel database il suo indirizzo
+ IP deve essere memorizzato
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1093,14 +1115,36 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che un utente effettua un logout, l'indirizzo IP legato al suo
+ account deve essere impostato a 0 
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CCLI2 (gestione dati account)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che viene tentata una registrazione deve essere verificato che
+ lo username non sia già utilizzato da un altro account 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1113,14 +1157,15 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che viene effettuata una registrazione e i dati devono essere
+ inseriti nel server
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1133,14 +1178,36 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che un utente modifica i dati del proprio account questi devono
+ essere aggiornati nel server
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CCLI3 (tutorial)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che viene visualizzata la lista dei tutorial i link devono essere
+ reperiti dal server
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1153,14 +1220,15 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che viene visualizzato un tutorial, questo deve essere integrato
+ nella pagina attraverso l'apposito servizio di Youtube
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1173,7 +1241,9 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che viene visualizzato un tutorial i link per passare al video
+ precedente e successivo devono essere generati dinamicamente prendendo
+ i dati presenti nel server
 \end_layout
 
 \end_inset
@@ -1184,7 +1254,7 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+CCLI4 (visualizzazione lista utenti)
 \end_layout
 
 \end_inset
@@ -1193,7 +1263,8 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che l'utente visualizza la lista utenti, tale lista viene creata
+ dinamicamente tramite i dati presenti nel server
 \end_layout
 
 \end_inset
@@ -1204,7 +1275,7 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+CCLI5 (gestione notifiche)
 \end_layout
 
 \end_inset
@@ -1213,7 +1284,8 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che il server segnala una notifica questa deve essere visualizzata
+ nel modo corretto a seconda della tipologia
 \end_layout
 
 \end_inset
@@ -1224,7 +1296,7 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+CICLI6 (chiamata)
 \end_layout
 
 \end_inset
@@ -1233,14 +1305,77 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ogni volta che un utente tenta di iniziare una chiamata, i dati necessari
+ all'inizializzazione della chiamata devono essere inviati al server
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CICLI7 (Messaggio differito)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che l'utente registra un messaggio differito, tale messaggio
+ viene salvato nel server in attesa di essere notificato al destinatario
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CICLI8 (chat)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che viene inviato un messaggio, deve essere notificato al destinatari
+o
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CICLI9 (invio file)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che viene inviato un file, deve essere notificato al destinatario
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1253,7 +1388,218 @@ Funzionalità da verificare
 \begin_inset Text
 
 \begin_layout Plain Layout
+Ogni volta che il destinatario accetta di ricevere un file, deve iniziare
+ il trasferimento
+\end_layout
 
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSER1 (autenticazione)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un utente effettua l'autenticazione, il server deve mandare
+ un messaggio ai client per aggiornare la lista degli utenti
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un utente effettua un logout, il server deve mandare un messaggio
+ ai client per aggiornare la lista degli utenti
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSER2 (gestione dati utenti)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un utente si registra, il server deve mandare  un messaggio
+ al client dell'avvenuta registrazione
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un utente modifica i propri dati, il server deve mandare
+ un messaggio al client dell'avvenuto aggiornamento
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSER3 (inizializzazione chiamata)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un client invia i dati per effettuare una chiamata, deve
+ venire inviato un messaggio alla componente CSER6 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Se il destinatario accetta la chiamata, deve venire tentata la connessione
+ tra gli utenti
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSER4 (salva messaggio in differita)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+La prima volta che il destinatario di un messaggio differito presente nel
+ server si autentica, deve venire inviato un messaggio alla componente CSER6
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Se il destinatario accetta il messaggio differito, tale messaggio differito
+ deve venire visualizzato
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSER5 (tutorial)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSER6 (notification)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ogni volta che un'altra componente del server richiede di inviare una notifica,
+ questa deve essere inoltrata al corretto destinatario
 \end_layout
 
 \end_inset
@@ -1315,7 +1661,7 @@ Test inter-componenti
 Mentre il collaudo prosegue verranno aggiunti test e prove sui componenti
  in maniera incrementale.
  Ad ogni collaudo verrà testato il corretto funionamento inter-componenti,
- tenendo conto delle loro dipendenze.
+ tenendoconto delle loro dipendenze.
 \end_layout
 
 \end_body
