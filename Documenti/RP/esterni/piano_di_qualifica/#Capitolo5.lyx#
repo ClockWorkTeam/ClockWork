@@ -1031,7 +1031,7 @@ Ogni componente sosterrà dei test, ai quali ci si potrà aspettare un esito
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="28" columns="2">
+<lyxtabular version="3" rows="29" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
@@ -1409,8 +1409,8 @@ CSER1 (autenticazione)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ogni volta che un utente effettua l'autenticazione, il server deve mandare
- un messaggio ai client per aggiornare la lista degli utenti
+Ogni volta che un utente effettua l'autenticazione, il server manda un messaggio
+ ai client per aggiornare la lista degli utenti
 \end_layout
 
 \end_inset
@@ -1430,7 +1430,7 @@ Ogni volta che un utente effettua l'autenticazione, il server deve mandare
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ogni volta che un utente effettua un logout, il server deve mandare un messaggio
+Ogni volta che un utente effettua un logout, il server manda un messaggio
  ai client per aggiornare la lista degli utenti
 \end_layout
 
@@ -1451,8 +1451,8 @@ CSER2 (gestione dati utenti)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ogni volta che un utente si registra, il server deve mandare  un messaggio
- al client dell'avvenuta registrazione
+Ogni volta che un utente si registra, il server manda un messaggio al client
+ dell'avvenuta registrazione
 \end_layout
 
 \end_inset
@@ -1472,8 +1472,8 @@ Ogni volta che un utente si registra, il server deve mandare  un messaggio
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ogni volta che un utente modifica i propri dati, il server deve mandare
- un messaggio al client dell'avvenuto aggiornamento
+Ogni volta che un utente modifica i propri dati, il server manda un messaggio
+ al client dell'avvenuto aggiornamento
 \end_layout
 
 \end_inset
@@ -1493,8 +1493,8 @@ CSER3 (inizializzazione chiamata)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ogni volta che un client invia i dati per effettuare una chiamata, deve
- venire inviato un messaggio alla componente CSER6 
+Ogni volta che un client invia i dati per effettuare una chiamata, viene
+ inviato un messaggio alla componente CSER6 
 \end_layout
 
 \end_inset
@@ -1536,8 +1536,7 @@ CSER4 (salva messaggio in differita)
 
 \begin_layout Plain Layout
 La prima volta che il destinatario di un messaggio differito presente nel
- server si autentica, deve venire inviato un messaggio alla componente CSER6
- 
+ server si autentica, viene inviata una notifica
 \end_layout
 
 \end_inset
@@ -1585,7 +1584,7 @@ CSER5 (tutorial)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1594,12 +1593,32 @@ CSER6 (notification)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Ogni volta che un'altra componente del server richiede di inviare una notifica,
- questa deve essere inoltrata al corretto destinatario
+ questa deve essere inoltrata al corretto destinatario,
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
