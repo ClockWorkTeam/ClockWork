@@ -1,0 +1,1055 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Server
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/package-server.pdf
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Server
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Transfer Layer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ lo strato Transfer si occupa della comunicazione tra il client e il server
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti: 
+\series default
+lo strato Transfer interagisce con i package 
+\family typewriter
+mytalk.server.functionmanager
+\family default
+ e 
+\family typewriter
+mytalk.server.usermanager
+\family default
+ e con lo strato  
+\family typewriter
+mytalk.client.presenter 
+\family default
+allo scopo di interfacciare il server col client
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.CallTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+CallTransfer
+\family default
+\series default
+ si occupa di far arrivare i dati all'apparato logico al fine di inizializzare
+ la chiamata
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+CallTransfer
+\family default
+\series default
+ viene contattata e si rivolge a 
+\family typewriter
+\series bold
+mytalk.client.presenter.CallControl
+\family default
+ 
+\series default
+e
+\series bold
+ 
+\family typewriter
+mytalk.server.functionmanager.CallManager
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe 
+\family typewriter
+\series bold
+CallTransfer
+\family default
+ 
+\series default
+si occupa di gestire il trasferimento della richiesta di chiamata dal client
+ al server e riferisce al chiamante se la comunicazione è stata accetta
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.AuthenticationTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+AuthenticationTransfer
+\family default
+ 
+\series default
+si occupa del trasferimento delle richieste di autenticazione al server
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+AuthenticationTransfer
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.client.presenter.AuthenticationControl
+\family default
+\series default
+ e 
+\family typewriter
+\series bold
+mytalk.server.usermanager.AuthenticationManager
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe 
+\family typewriter
+\series bold
+AuthenticationTransfer
+\family default
+\series default
+ ha lo scopo di ricevere da 
+\family typewriter
+\series bold
+mytalk.client.presenter.AuthenticationControl
+\family default
+\series default
+ richieste di autenticazione e manda i dati a 
+\family typewriter
+\series bold
+mytalk.server.usermanager.AuthenticationManager
+\family default
+\series default
+ che si occuperà di verificarli e dare una risposta che verrà quindi inviata
+ al client.
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.UserDataTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserDataTransfer
+\family default
+\series default
+ si occupa del trasferimento dei dati riguardanti gli utenti al fine di
+ effettuare nuove registrazioni o di visualizzare ed eventualmente modificare
+ i dati persistenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserDataTransfer
+\family default
+\series default
+ comunica con 
+\family typewriter
+\series bold
+mytalk.client.presenter.UserDataControl
+\family default
+\series default
+, 
+\family typewriter
+mytalk.client.presenter.UserListControl
+\family default
+ e 
+\family typewriter
+mytalk.server.usermanager.UserDataManager
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe riceve da 
+\family typewriter
+\series bold
+mytalk.client.presenter.UserDataControl
+\family default
+\series default
+ richieste di visualizzazione o modifica dei dati presenti nella base di
+ dati e dialoga con 
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserDataManager
+\family default
+\series default
+ per eseguire le operazioni richieste; inoltre in caso di effettuata autenticazi
+one invia a 
+\family typewriter
+\series bold
+mytalk.client.presenter.UserListControl
+\family default
+\series default
+ i nomi utente ed eventualmente l'indirizzo IP identificativo degli utenti
+ connessi
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.functionManager.TutorialTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialTransfer
+\family default
+\series default
+ classe si occupa del passaggio delle richieste di visualizzazione dei video
+ tutorial dal client al server
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialTransfer
+\family default
+\series default
+ viene chiamata da 
+\family typewriter
+\series bold
+mytalk.client.presenter.TutorialContro
+\family default
+\series default
+l e contatta 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe ha una funzione di collegamento, si occupa di far arrivare una
+ richiesta a 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\family default
+\series default
+ e in seguito restituire a 
+\family typewriter
+\series bold
+mytalk.client.presenter.TutorialControl
+\family default
+\series default
+ il collegamento richiesto
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.RecordMessageTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageTransfer
+\family default
+\series default
+ si occupa del trasferimento del messaggio registrato dal client al server
+ e del seguente invio al destinatario
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageTransfer
+\family default
+\series default
+ comunica con 
+\family typewriter
+\series bold
+mytalk.server.manager.RecordMessageManager
+\family default
+ 
+\series default
+e 
+\family typewriter
+\series bold
+mytalk.client.presenter.RecordMessageControl
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe si occupa quindi di ricevere dal client il messaggio registrato
+ e l'utente a cui mandarlo e passa tali dati a 
+\family typewriter
+\series bold
+mytalk.server.manager.RecordMessageManager
+\family default
+\series default
+.
+ In seguito una volta ricevuto il video da 
+\family typewriter
+\series bold
+mytalk.server.manager.RecordMessageManager
+\family default
+\series default
+ lo manda al destinatario
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.NotificationTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+NotificationTransfer
+\family default
+\series default
+ si occupa di avvisare i client di eventuali notifiche dovute ad eventi
+ generati da altri utenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+NotificationTransfer
+\family default
+\series default
+ comunica con 
+\family typewriter
+\series bold
+mytalk.client.presenter.NotificationControl
+\family default
+\series default
+ e viene chiamata da 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
+\family default
+\series default
+, 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.CallManager
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attivita svolte e dati trattati:
+\series default
+ la classe si occupa quindi di mandare al client messaggi che riguardano
+ eventi esterni come una chiamata in corso o la presenza sul server di un
+ messaggio registrato in attesa
+\end_layout
+
+\begin_layout Subsection
+Manager Layer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ lo strato Manager del server si occupa delle funzionalità logiche del server
+ e della lettura e della modifica della base di dati
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ lo strato Manager agisce sullo strato Data per visualizzare o modificare
+ i dati e comunica in modo bidirezionale con lo strato Transfer
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.functionmanager.CallManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+CallManager
+\family default
+\series default
+ ha il compito di inizializzare la chiamata tra due utenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+CallManager
+\family default
+\series default
+ viene contattata e comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.CallTransfer
+\family default
+\series default
+ e 
+\family typewriter
+\series bold
+mytalk.server.transfer.NotificationTransfer
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe si occuperà quindi di inizializzare la chiamata tramite WebSocket,
+ comunicando a 
+\family typewriter
+\series bold
+mytalk.server.transfer.CallTransfer
+\family default
+\series default
+ la situazione della chiamata che sta venendo effettuata e a 
+\family typewriter
+\series bold
+mytalk.server.transfer.NotificationTransfer
+\family default
+\series default
+ che tipo di operazione sia stata rivolta verso il destinatario e da parte
+ di quale utente o indirizzo IP
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.functionManager.RecordMessageManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageManager
+\family default
+\series default
+ ha l'obiettivo di gestire la persistenza dei messaggi da mandare in differita
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageManager
+\family default
+\series default
+ riceve dati da 
+\family typewriter
+\series bold
+mytalk.server.transfer.RecordMessageTransfer
+\family default
+\series default
+ e salva i messaggi in 
+\family typewriter
+\series bold
+mytalk.server.data.RecordMessageData 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe si occuperà quindi del salvataggio, della cancellazione e dell'invio
+ a 
+\family typewriter
+\series bold
+mytalk.server.transfer.RecordMessageTransfer
+\family default
+\series default
+ dei messaggi registrati e del loro invio
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.functionManager.TutorialManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialManager
+\family default
+\series default
+ si occupa della gestione dei collegamenti ai tutorial
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialManager
+\family default
+\series default
+ utilizza 
+\family typewriter
+\series bold
+mytalk.server.data.TutorialData
+\family default
+\series default
+ per scrivere e leggere i collegamenti ai video tutorial e 
+\family typewriter
+\series bold
+mytalk.server.transfer.TutorialTransfer
+\family default
+\series default
+ per far giungere tali link al client
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attivita svolte e dati trattati:
+\series default
+ la classe si occuperà quindi di accedere ai collegamenti dei tutorial presenti
+ nella base di dati e del loro invio alla classe 
+\family typewriter
+\series bold
+mytalk.server.transfer.TutorialTransfer
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.userManager.AuthenticationManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+AuthenticationManager
+\family default
+\series default
+ si occupa di stabilire la riuscita o il fallimento di un tentativo di autentica
+zione da parte di un utente
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+AuthenticationManager
+\family default
+\series default
+ utilizza 
+\family typewriter
+\series bold
+mytalk.server.data.UserData
+\family default
+\series default
+ e comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe si occuperà quindi di dover controllare i dati presenti nel database
+ in 
+\family typewriter
+\series bold
+mytalk.server.data.UserData
+\family default
+\series default
+ per verificare se un tentativo di autenticazione sia riuscito o meno, e
+ restituire a 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer
+\family default
+\series default
+  l'opportuna risposta, e per effettuare il logout
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.userManager.UserDataManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserDataManager
+\family default
+\series default
+ si occupa delle operazioni di aggiornamento delle informazioni sugli utenti,
+ quali nuove registrazioni e modifiche degli account
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserDataManager
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.transfer.UserDataTransfer
+\family default
+\series default
+ e agisce su 
+\family typewriter
+\series bold
+mytalk.server.data.UserData
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe si occuperà quindi di ricevere le istruzioni da
+\series bold
+ 
+\family typewriter
+mytalk.server.transfer.UserDataTransfer
+\family default
+\series default
+, controlla ed eventualmente modifica la base di dati e ritorna a 
+\family typewriter
+\series bold
+mytalk.server.transfer.UserDataTransfer
+\family default
+\series default
+ il successo o meno dell'eventuale cambiamento
+\end_layout
+
+\begin_layout Subsection
+Data Layer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ lo strato Data rappresenta la base di dati su cui vengono salvati le informazio
+ni persistenti.
+ Questo include i dati degli utenti registrati, i link ai tutorial video
+ che saranno salvati su un sito esterno e i messaggi registrati
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ lo strato Data verrà utilizzato da alcune classi all'interno dei package
+ 
+\family typewriter
+mytalk.server.usermanager
+\family default
+ e mytalk.server.functionmanager
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.UserData
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserData
+\family default
+\series default
+ è un semplice contenitore di informazioni
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserData
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.usermanager
+\family default
+\series default
+; essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attivita svolte e dati trattati:
+\series default
+ la classe preserva le informazioni riguardanti gli utenti, ovvero username,
+ password, nome, cognome e indirizzo IP
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.RecordMessageData
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageData
+\family default
+\series default
+ è un semplice contenitore di informazioni
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageData
+\family default
+\series default
+ viene utilizzata dalla classe 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
+\family default
+\series default
+;  essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attivita svolte e dati trattati:
+\series default
+ la classe preserva i messaggi registrati da mandare in differita
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.TutorialData
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ è un semplice contenitore di informazioni
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ è utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\family default
+\series default
+; essendo  un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attivita svolte e dati trattati:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ preserva i collegamenti ai tutorial video 
+\end_layout
+
+\end_body
+\end_document

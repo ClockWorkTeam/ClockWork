@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\include{preface}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +28,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,68 +63,40 @@
 
 \begin_body
 
-\begin_layout Section*
-T
-\end_layout
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "frontpage.lyx"
 
-\begin_layout Subsection*
-Tag
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Keyword associata ad un contenuto come un post in un blog, un'immmagine,
- un articolo o un video.
- Vengono usati per catalogare i contenuti e facilitare la ricerca.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{mainmatter}
 \end_layout
 
-\begin_layout Subsection*
-TCO
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Total Cost of Ownership, ovvero il costo totale di possesso, indica il costo
- di tutto il ciclo di vita di un' apparecchiatura o un processo.
- Include quindi i costi di acquisto, installazione, gestione e manutenzione.
- 
-\end_layout
 
-\begin_layout Subsection*
-Template
 \end_layout
 
 \begin_layout Standard
-Documento o programma che fornisce un modello standard per altri documenti
- o programmi.
-\end_layout
+\begin_inset CommandInset include
+LatexCommand include
+filename "corpo.lyx"
 
-\begin_layout Subsection*
-Thread
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Parte più piccola di un processo di esecuzione di un programma, che può
- essere eseguita concorrentemente ad altri thread.
-\end_layout
 
-\begin_layout Subsection*
-Ticket
-\end_layout
-
-\begin_layout Standard
-Insieme di informazioni che possono essere usate per definire un'attività,
- permettendo una migliore organizzazione del lavoro.
-\end_layout
-
-\begin_layout Subsection*
-Ticketing
-\end_layout
-
-\begin_layout Standard
-Servizio basato sull'utilizzo di 
-\bar under
-ticket
-\bar default
-.
 \end_layout
 
 \end_body
