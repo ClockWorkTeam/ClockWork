@@ -683,6 +683,8 @@ L'utente può annullare la procedura di modifica, in questo caso il sistema
 
 \begin_layout Itemize
 Nel caso in cui la password e la conferma della password non corrispondano
+ viene visualizzato un messaggio d'errore e viene chiesto all'utente di
+ ripetere l'inserimento di entrambe
 \end_layout
 
 \end_deeper
@@ -929,8 +931,9 @@ utente autenticato
 \series bold
 Scopo e descrizione: 
 \series default
-il sistema presenta la lista degli utenti registrati presso il server, distinti
- in online e offline
+il sistema presenta la lista degli utenti registrati presso il server.
+ Gli utenti vengono elencati attraverso lo username e prima di esso compare
+ un simbolo che indica se quell'utente è online o offline
 \end_layout
 
 \begin_layout Itemize
@@ -1157,7 +1160,8 @@ il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \series bold
 Postcondizioni: 
 \series default
-il sistema mostra la selezione del destinatario
+il sistema ha memorizzato l'indirizzo IP scelto come destinatario e lo visualizz
+a all'utente
 \end_layout
 
 \begin_layout Itemize
@@ -1258,7 +1262,7 @@ il sistema è connesso ad Internet e presenta all'utente una schermata grafica
 \series bold
 Postcondizioni: 
 \series default
-il sistema mostra la selezione del contatto
+il sistema ha memorizzato la selezione del contatto
 \end_layout
 
 \begin_layout Itemize
@@ -1499,7 +1503,15 @@ l'utente può registrare un messaggio che verrà recapitato successivamente
 Precondizioni: 
 \series default
 il sistema è connesso ad internet, l'utente ha scelto un destinatario a
- cui inviare il messaggio
+ cui inviare il messaggio e questo destinatario è segnalato come 
+\begin_inset Quotes eld
+\end_inset
+
+offline
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2197,9 +2209,10 @@ il sistema è connesso ad internet e l'utente è autenticato nella sessione
 \begin_layout Itemize
 
 \series bold
-Postcondizioni: i
+Postcondizioni: 
 \series default
-l sistema ha terminato la sessione dell'utente
+il sistema ha terminato la sessione dell'utente e questo viene segnalato
+ come online
 \end_layout
 
 \begin_layout Itemize
