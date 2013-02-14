@@ -61,10 +61,10 @@
 \begin_body
 
 \begin_layout Section
-Glossario
+Progettazione 
 \begin_inset CommandInset label
 LatexCommand label
-name "Glossario"
+name "Progettazione"
 
 \end_inset
 
@@ -72,57 +72,181 @@ name "Glossario"
 \end_layout
 
 \begin_layout Standard
-Il glossario sarà unico e riassuntivo per tutti i documenti e riporterà
- al suo interno tutte le definizioni, in ordine lessicografico, delle parole
- che possono generare confusione o ambiguità all'interno dei vari documenti,
- che saranno sottolineate alla loro prima occorrenza nel documento.
+Durante la fase di progettazione i progettisti dovranno adeguarsi alle seguenti
+ specifiche:
 \end_layout
 
-\begin_layout Standard
-Questo documento sarà formattato come descritto nella sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Documenti"
+\begin_layout Itemize
 
-\end_inset
-
-.
+\series bold
+Diagrammi
+\series default
+: si andrà ad utilizzare il linguaggio UML per definire:
 \end_layout
 
-\begin_layout Subsection
-Inserimento vocaboli
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Diagrammi delle classi
+\emph default
+: dovrà essere presente all'interno dei documenti l'intera architettura
+ generale e di dettaglio
 \end_layout
 
-\begin_layout Standard
-Data l'universalità del glossario rispetto a tutti i documenti redatti dal
+\begin_layout Itemize
+
+\emph on
+Diagrammi di flusso
+\emph default
+: presente nel caso in cui l'azione di codifica dei programmatori dovesse
+ portare aleatorietà e conseguentemente non garantire il corretto funzionamento
+ dell'applicazione supposta dall'architettura
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Diagrammi di package
+\emph default
+: presenti sia nell'architettura generale che di dettaglio.
+ I vari package saranno definiti in maniera univoca per poterli distribuire
+ a vari codificatori durante la fase di codifica differenti package che
+ interagiscono tra loro
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Design di pattern
+\series default
+: per i vari 
+\bar under
+design pattern
+\bar default
+ andremo a specificare:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Una 
+\emph on
+descrizione generale
+\emph default
+ per presentare brevemente la struttura del design di pattern
+\end_layout
+
+\begin_layout Itemize
+Una 
+\emph on
+motivazione
+\emph default
+ di tale design di pattern
+\end_layout
+
+\begin_layout Itemize
+Il 
+\emph on
+contesto applicativo
+\emph default
+ dove andremo ad utilizzarlo
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Classi di verifica
+\series default
+: da sviluppare quando possibile, soprattutto per le classi generali, delle
+ classi fittizie da utilizzare durante la fase di verifica e come prototipo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stile di progettazione
+\series default
+: per la semplificazione degli schemi e per la prossima fase di progettazione
+ si cercheranno di rispettare le seguenti norme
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Ricorsione: 
+\emph default
+si cercherà di evitare l'utilizzo della ricorsione qualora fosse possibile
+ una soluzione: nel caso si andasse ad utilizzare la tecnica della ricorsione
+ si dovrà stimare l'utilizzo di memoria che si andrà ad occupare ed in caso
+ la memoria occupata fosse eccessiva si andrà ad eliminare la ricorsione
  
-\begin_inset ERT
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Concorrenza: 
+\emph default
+si andranno a fornire i diagrammi di flusso ed una stima delle risorse necessari
+e.
+ Nel caso in cui i benefici ricavati dalla concorrenza non siano equivalenti
+ o superiori alle risorse utilizzate si andrà ad eliminare la concorrenza
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Annidamento di chiamata
+\emph default
+
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-{
-\backslash
-NOMEGRUPPO}
+Indica il numero di livelli di annidamento dei metodi.
 \end_layout
 
 \end_inset
 
-, viene nominato Responsabile del Glossario il Responsabile di Progetto.
- Per poter chiedere l'inserimento di un nuovo vocabolo si dovrà quindi fare
- richiesta al Responsabile di Progetto che si appresterà a decidere se la
- parola presa in esame possa essere fonte di ambiguità e/o confusione.
- Per procedere all'inserimento di una nuova parola il Responsabile di Progetto
- dovrà seguire le seguenti regole:
+: la profondità massima di annidamento tollerata è dieci.
+ Un valore elevato determina alta complessità e riduce il livello di astrazione
+ del codice
 \end_layout
 
 \begin_layout Itemize
-Verificare la presenza della parola presa in esame
+
+\emph on
+Flussi di condizione: 
+\emph default
+per la chiarezza e la semplicità di verifica del codice, qualora vengano
+ utilizzati costrutti condizionali (if-then-else) non ci dovrà essere un
+ annidamento maggiore di cinque
 \end_layout
 
 \begin_layout Itemize
-Inserire il vocabolo nella posizione che gli compete
+
+\emph on
+Numero di parametri
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Indica il numero di parametri formali per metodo.
 \end_layout
 
+\end_inset
+
+
+\emph default
+: il numero massimo di parametri tollerati è dieci.
+ Se il numero di parametri supera questa soglia, deve essere ridotto, tramite
+ la creazione di ulteriori classi che contengano più parametri tra loro
+ correlati, aumentando la manutenibilità e l'astrazione del codice
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
