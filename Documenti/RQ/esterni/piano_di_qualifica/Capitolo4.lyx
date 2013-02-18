@@ -111,7 +111,7 @@ a per valutare la gravità e i costi per risolverla.
 \end_layout
 
 \begin_layout Subsection
-Procedure di controllo di qualità di processo
+Procedure di controllo della qualità di processo
 \end_layout
 
 \begin_layout Standard
@@ -159,8 +159,124 @@ Se non vengono identificati problemi relativi ad un processo, è possibile
  intervenire comunque in modo migliorativo: tale miglioramento consiste
  evidentemente nel ridurre il numero di cicli iterativi, risorse e tempo
  utilizzati, comunque garantendo che l'esecuzione del processo sia fedele
- al piano e soddisfi i requisiti, aumentandone quindi l' efficienza
- e determinando una variazione non negativa nel grado di efficacia.
+ al piano e soddisfi i requisiti, aumentandone quindi l' efficienza e determinan
+do una variazione non negativa nel grado di efficacia.
+\end_layout
+
+\begin_layout Subsection
+Procedure di controllo della qualità di prodotto
+\end_layout
+
+\begin_layout Standard
+Il controllo di qualità del prodotto verrà garantito da:
+\end_layout
+
+\begin_layout Itemize
+QA: acronimo di Quality Assurance; insieme delle attività volte a garantire
+ il raggiungimento degli obbiettivi di qualità descritti successivamente.
+ Prevederà tecniche di analisi statica e analisi dinamica
+\end_layout
+
+\begin_layout Itemize
+V&V: acronimo di Verification & Validation; processi che determinano se
+ il sistema viene costruito nel modo corretto (Verification) e se il sistema
+ è corretto secondo le richieste espresse dal proponente (Validation).
+ La verifica andrà eseguita costantemente durante l’intera durata del progetto
+ e prevede le modalità già descritte in precedenza nel presente documento
+\end_layout
+
+\begin_layout Subsubsection
+Quality Assurance
+\end_layout
+
+\begin_layout Standard
+Questa sezione intende definire le linee guida e i livelli di verifica che
+ verranno adottati durante l’accertamento di qualità.
+ Principalmente sono previste le definizioni di due livelli di verifica:
+\end_layout
+
+\begin_layout Itemize
+Verifica del disegno architetturale
+\end_layout
+
+\begin_layout Itemize
+Verifica del codice
+\end_layout
+
+\begin_layout Standard
+I risultati pervenuti dai test eseguiti permetteranno di rintracciare errori,
+ lacune, nonché errati usi delle risorse a disposizione; la loro individuazione
+ aiuterà a sviluppare il sistema rispettando gli obiettivi definiti nella
+ sezione qualità del prodotto (METTERE RIFERIMENTO).
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Verifica disegno architetturale
+\end_layout
+
+\begin_layout Standard
+Consiste nel verificare se il disegno architetturale, una volta terminato,
+ rispetti i principi di packaging e disaccopiamento.
+ Per quanto riguarda la struttura dei package sarà controllata l’effettiva
+ utilità di ognuno di essi mentre, per quanto riguarda il disaccopiamento
+ si cercherà di ottenere la massima indipendenza tra parte funzionale ed
+ architetturale.
+\end_layout
+
+\begin_layout Subsubsection*
+Verifica del codice
+\end_layout
+
+\begin_layout Standard
+La fase di verifica del codice ha lo scopo di:
+\end_layout
+
+\begin_layout Itemize
+Identificare parti di codice che non rispettano le norme di codifica descritte
+ nel documento Norme di Progetto (METTERE RIFERIMENTO)
+\end_layout
+
+\begin_layout Itemize
+Identificare parti di codice soggette ad errori di programmazione
+\end_layout
+
+\begin_layout Standard
+Ognuno di questi obiettivi è inteso a scoprire lacune nel sistema, le quali,
+ una volta corrette, comportano benefici in termini di flessibiltà, manutenzione
+ e affidabiltà.
+ Lo scopo delle verifiche è di rintracciare errori (di molteplici nature)
+ nella scrittura del codice e di conseguenza correggerli, ma non può in
+ nessun modo dimostrarne l’assenza.
+ Per questo motivo le verifiche saranno studiate in modo da risultare estremamen
+te esaustive e quindi rendere minima la presenza di errori.
+\end_layout
+
+\begin_layout Standard
+Su ogni componente, individuata dal disegno architetturale, verrà effettuata
+ la verifica del codice in due modalità:
+\end_layout
+
+\begin_layout Enumerate
+Verifica funzionale (black-box): tecnica mediante la quale, si accerta il
+ funzionamento di un'unità a 
+\lang english
+
+\begin_inset Quotes eld
+\end_inset
+
+scatola chiusa
+\begin_inset Quotes erd
+\end_inset
+
+, ossia controllando che i risultati in uscita abbiano il valore atteso
+ in tutte le possibili condizioni in cui l'unità possa eseguire 
+\end_layout
+
+\begin_layout Enumerate
+Verifica strutturale (white-box): tecnica mediante la quale viene controllato
+ il codice sorgente di un'unità, richiamando direttamente i suoi metodi
+ al fine di verificarne la correttezza logica ed il funzionamento
 \end_layout
 
 \end_body
