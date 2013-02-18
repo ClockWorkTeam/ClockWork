@@ -350,7 +350,7 @@ mytalk.client.presenter.UserListControl
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.functionManager.TutorialTransfer
+mytalk.server.transfer.TutorialTransfer
 \end_layout
 
 \begin_layout Itemize
@@ -913,6 +913,111 @@ mytalk.server.usermanager
  e 
 \family typewriter
 mytalk.server.functionmanager
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.UserDataDAO
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserDataDAO
+\family default
+\series default
+ rappresenta l'interfaccia 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserDataDAO
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.usermanager
+\family default
+\series default
+; essendo un'interfaccia viene implementata da 
+\family typewriter
+\series bold
+UserDataDaoSQL
+\family default
+\series default
+ che agirà sulla base di dati
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe fornisce i metodi per il salvataggio e la modifica dei dati presenti
+ nella base di dati
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.UserDataDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserData
+\family default
+\series default
+ è un semplice contenitore di informazioni
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+UserData
+\family default
+\series default
+ viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.usermanager
+\family default
+\series default
+; essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe preserva le informazioni riguardanti gli utenti, ovvero username,
+ password, nome, cognome e indirizzo IP
 \end_layout
 
 \begin_layout Subsubsection
