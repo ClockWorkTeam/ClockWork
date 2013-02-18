@@ -81,13 +81,18 @@ Questa sezione è dedicata alla pianificazione dei test di sistema che verranno
  attuati prima del rilascio del prodotto finito.
  Tramite questi test si vorrebbe dimostrare che il prodotto soddisferà le
  aspettative del cliente, fornendo esempi di test da attuare per confermare
- che i requisiti obbligatori emersi ed elencati nel documento Analisi dei
- Requisiti sono stati soddisfatti.
+ che i requisiti emersi ed elencati nel documento Analisi dei Requisiti
+ sono stati soddisfatti.
+\end_layout
+
+\begin_layout Standard
+Di seguito vengono riportate le tabelle che contengono i test che effettueremo
+ sui requisiti obbligatori, facoltativi e desiderabili.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="26" columns="4">
+<lyxtabular version="3" rows="28" columns="4">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="15text%">
 <column alignment="center" valignment="top" width="20text%">
@@ -153,7 +158,7 @@ RUFO 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-TS-RUFO1a
+TS-RUFO 1a
 \end_layout
 
 \end_inset
@@ -166,8 +171,9 @@ TS-RUFO1a
 \series bold
 Prova dinamica:
 \series default
- viene verificato se a fronte dell'inserimento di dati corretti il sistema
- permette all'utente di registrarsi presso un server
+ viene verificato se a fronte dell'inserimento corretto di tutti i dati
+ necessari per la registrazione, il sistema permette all'utente di registrarsi
+ presso un server 
 \end_layout
 
 \end_inset
@@ -187,7 +193,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-RUFO1
+RUFO 1
 \end_layout
 
 \end_inset
@@ -196,12 +202,12 @@ RUFO1
 \begin_inset Text
 
 \begin_layout Plain Layout
-TS-RUFO1b
+TS-RUFO 1b
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="block" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -209,8 +215,9 @@ TS-RUFO1b
 \series bold
 Prova dinamica:
 \series default
- viene verificato se a fronte dell'inserimento di dati errati il sistema
- non permette la registrazione dell'utente presso un server 
+ viene verificato se a fronte dell'inserimento scorretto di almeno uno dei
+ dati necessari per la registazione, il sistema non permette all'utente
+ di registrarsi presso un server 
 \end_layout
 
 \end_inset
@@ -244,7 +251,7 @@ TS-RUFO 1.1a
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="block" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -293,10 +300,10 @@ TS-RUFO 1.1b
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato se a fronte dell'inserimento di una username non valida
- o già utilizzata da altri utenti il sistema risponde in maniera negativa
+ viene verificato se a fronte dell'inserimento di una username non valida
+ e/o già utilizzata da altri utenti il sistema risponde in maniera negativa
 \end_layout
 
 \end_inset
@@ -316,7 +323,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 1.2
+RUFO 1.2
 \end_layout
 
 \end_inset
@@ -336,7 +343,7 @@ TS-RUFO 1.2a
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica: 
 \series default
 viene verificato se a fronte dell'inserimento di una password conforme alle
  richieste il sistema risponde in maniera affermativa
@@ -359,7 +366,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 1.2
+RUFO 1.2
 \end_layout
 
 \end_inset
@@ -379,9 +386,9 @@ TS-RUFO 1.2b
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica:
 \series default
-viene verificato se a fronte dell'inserimento di una password non conforme
+ viene verificato se a fronte dell'inserimento di una password non conforme
  alle richieste il sistema risponde in maniera negativa
 \end_layout
 
@@ -402,7 +409,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 1.3
+RUFO 1.3
 \end_layout
 
 \end_inset
@@ -422,7 +429,7 @@ TS-RUFO 1.3a
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica:
+Prova statica:
 \series default
  viene verificato se a fronte del reinserimento della password conforme
  alla password scelta il sistema risponde in maniera affermativa
@@ -445,7 +452,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 1.3
+RUFO 1.3
 \end_layout
 
 \end_inset
@@ -465,7 +472,7 @@ TS-RUFO 1.3b
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica: 
 \series default
 viene verificato se a fronte del reinserimento della password non conforme
  alla password scelta il sistema risponde in maniera negativa
@@ -488,7 +495,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 1.4
+RUFO 1.4
 \end_layout
 
 \end_inset
@@ -508,9 +515,9 @@ TS-RUFO 1.4
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica:
 \series default
-viene verificato se il sistema effettivamente risponde in maniera positiva
+ viene verificato se il sistema effettivamente risponde in maniera positiva
  all'inserimento del nome da parte dell'utente
 \end_layout
 
@@ -531,7 +538,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 1.5
+RUFO 1.5
 \end_layout
 
 \end_inset
@@ -551,9 +558,9 @@ TS-RUFO 1.5
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica:
 \series default
-viene verificato se il sistema effettivamente risponde in maniera positiva
+ viene verificato se il sistema effettivamente risponde in maniera positiva
  all'inserimento del cognome da parte dell'utente
 \end_layout
 
@@ -574,7 +581,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-RUFO2
+RUFO 2
 \end_layout
 
 \end_inset
@@ -583,7 +590,7 @@ RUFO2
 \begin_inset Text
 
 \begin_layout Plain Layout
-TS-RUFO2a
+TS-RUFO 2a
 \end_layout
 
 \end_inset
@@ -596,8 +603,8 @@ TS-RUFO2a
 \series bold
 Prova dinamica:
 \series default
- viene verificato se il sistema permette all'utente di autenticarsi con
- l'inserimeto dello username e password corretti
+ viene verificato se a fronte dell'inserimento corretto di username e password,
+ il sistema permette all'utente di autenticarsi
 \end_layout
 
 \end_inset
@@ -617,7 +624,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-RUFO2
+RUFO 2
 \end_layout
 
 \end_inset
@@ -626,12 +633,12 @@ RUFO2
 \begin_inset Text
 
 \begin_layout Plain Layout
-TS-RUFO2b
+TS-RUFO 2b
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="block" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -639,8 +646,8 @@ TS-RUFO2b
 \series bold
 Prova dinamica:
 \series default
- viene verificato se il sistema non permette all'utente di autenticarsi
- con l'inserimeto dello username e password errati
+ viene verificato se a fronte dell'inserimento scorretto di username o password,
+ il sistema non permette all'utente di autenticarsi
 \end_layout
 
 \end_inset
@@ -660,7 +667,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 2.1 
+RUFO 2.1 
 \end_layout
 
 \end_inset
@@ -674,13 +681,13 @@ TS-RUFO 2.1a
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="block" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica:
+Prova statica:
 \series default
  viene verificato se a fronte dell'inserimento di uno username valido (relativo
  ad un utente) il sistema risponde in maniera positiva
@@ -703,7 +710,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 2.1
+RUFO 2.1
 \end_layout
 
 \end_inset
@@ -723,10 +730,10 @@ TS-RUFO 2.1b
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica:
 \series default
-viene verificato se a fronte dell'inserimento di uno username non valido
- il sistema risponde in maniera negativa
+ viene verificato se a fronte dell'inserimento di uno username non valido
+ (relativo ad un utente) il sistema risponde in maniera negativa
 \end_layout
 
 \end_inset
@@ -746,7 +753,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 2.2
+RUFO 2.2
 \end_layout
 
 \end_inset
@@ -766,9 +773,9 @@ TS-RUFO 2.2a
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica:
 \series default
-viene verificato se a fronte dell'inserimento di una password valida (relativa
+ viene verificato se a fronte dell'inserimento di una password valida (relativa
  ad un utente) il sistema risponde in maniera positiva
 \end_layout
 
@@ -789,7 +796,7 @@ Pianificata
 \begin_inset Text
 
 \begin_layout Plain Layout
-*RUFO 2.2
+RUFO 2.2
 \end_layout
 
 \end_inset
@@ -809,10 +816,53 @@ TS-RUFO 2.2b
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova statica:
 \series default
-viene verificato se a fronte dell'inserimento di una password non valida
- il sistema risponde in maniera negativa
+ viene verificato se a fronte dell'inserimento di una password non valida
+ (relativa ad utente) il sistema risponde in maniera negativa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFO 5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFO 5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="block" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato che il sistema permetta effettivamente ad un utente di
+ visualizzare la lista utenti registarti presso un server
 \end_layout
 
 \end_inset
@@ -852,10 +902,53 @@ TS-RUFO 5.1
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato che il sistema permetta effettivamente ad un utente di
+ viene verificato che il sistema permetta effettivamente ad un utente di
  visualizzare gli utenti attualmente collegati ad un server
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFO 6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFO 6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="block" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato che il sistema permetta effettivamente ad un utente di
+ comunicare con un altro utente
 \end_layout
 
 \end_inset
@@ -895,9 +988,9 @@ TS-RUFO 6.1
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato che il sistema permetta effettivamente ad un utente di
+ viene verificato che il sistema permetta effettivamente ad un utente di
  selezionare il destinatario conoscendone l'indirizzo IP
 \end_layout
 
@@ -938,9 +1031,9 @@ TS-RUFO 6.2
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato che il sistema permetta effettivamente ad un utente di
+ viene verificato che il sistema permetta effettivamente ad un utente di
  chiamare un utente che si è registrato presso un server
 \end_layout
 
@@ -1024,9 +1117,9 @@ TS-RUFO 6.4
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato che il sistema permetta effettivamente ad un utente di
+ viene verificato che il sistema permetta effettivamente ad un utente di
  effettuare chiamate audio verso un altro utente
 \end_layout
 
@@ -1067,9 +1160,9 @@ TS-RUFO 6.5
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato che il sistema permetta effettivamente ad un utente di
+ viene verificato che il sistema permetta effettivamente ad un utente di
  effettuare chiamate video verso un altro utente
 \end_layout
 
@@ -1110,9 +1203,9 @@ TS-RUFO 6.15
 \begin_layout Plain Layout
 
 \series bold
-Prova dinamica: 
+Prova dinamica:
 \series default
-viene verificato che il sistema permetta effettivamente ad un utente di
+ viene verificato che il sistema permetta effettivamente ad un utente di
  abbandonare la chiamata in qualsiasi momento
 \end_layout
 
@@ -1179,7 +1272,1495 @@ Pianificata
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Mappatura dei requisiti ambito utente ai test di sistema
+Mappatura dei requisiti obbligatori, ambito utente, ai test di sistema
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endlastfoot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="26" columns="4">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top" width="15text%">
+<column alignment="center" valignment="top" width="20text%">
+<column alignment="left" valignment="top" width="35text%">
+<column alignment="center" valignment="top" width="15col%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Codice requisito
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Codice verifica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Modalità di verifica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Stato della verifica
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette di modificare i
+ dati inseriti a tempo di registrazione
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 3.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 3.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di modificare
+ il proprio nome
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 3.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 3.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di modificare
+ il proprio cognome
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 3.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 3.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di modificare
+ la propria password
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 3.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 3.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova statica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di inserire
+ nuovamente la nuova password per conferma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 3.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 3.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova statica:
+\series default
+ viene verificato se effettivamente il sistema non permette all'utente di
+ modificare lo username scelto al momento della registrazione
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di visualizza
+re i video che illustrano le funzionalità del software
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 4.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 4.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di visualizza
+re un elenco dei video tutorial disponibili
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 5.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 5.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di visualizzar
+e gli utenti attualmente collegati ad un server
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 6.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 6.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di effettuare
+ chiamate audio verso più di un utante 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 6.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 6.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di effettuare
+ chiamate audio e video verso più di un utente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 6.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 6.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di inviare
+ un messaggio audio ad un utente non in linea
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 6.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 6.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di inviare
+ un messaggio audio e video ad un utente non in linea
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 6.12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 6.12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di inviare
+ un messaggio di testo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema notifica una richiesta in
+ arrivo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema notifica una chiamata in
+ arrivo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di accettare
+ una chiamata
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di rifiutare
+ una chiamata
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema notifica quando c’è un messaggio
+ audio/video inviato da un altro utente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di riprodurre
+ un messaggio audio/video inviato da un altro utente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di cancellare
+ un messaggio audio/video inviato da un altro utente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di notificare
+ all’utente quando un altro utente vuole inviargli un file
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di accettare
+ il trasferimento di un file
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFF 7.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFF 7.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di rifiutare
+ il trasferimento di un file 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row caption="true">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Mappatura dei requisiti facoltativi, ambito utente, ai test di sistema
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endlastfoot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top" width="15text%">
+<column alignment="center" valignment="top" width="20text%">
+<column alignment="left" valignment="top" width="35text%">
+<column alignment="center" valignment="top" width="15col%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Codice requisito
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Codice verifica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Modalità di verifica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Stato della verifica
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFD 6.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFD 6.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica: 
+\series default
+viene verificato se effettivamente il sistema permette all'utente di registrare
+ la componente audio di una chiamata
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFD 6.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFD 6.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di registrare
+ la componente video di una chiamata
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFD 6.13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFD 6.13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di condivider
+e con un altro utente la schermata del proprio browser
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFD 6.14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFD 6.14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di inviare
+ un file ad un altro utente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RUFD 6.14.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TS-RUFD 6.14.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Prova dinamica:
+\series default
+ viene verificato se effettivamente il sistema permette all'utente di selezionar
+e un file da inviare attraverso la finestra di selezione di default del
+ sistema operativo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pianificata
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row caption="true">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Mappatura dei requisiti desiderabili, ambito utente, ai test di sistema
 \end_layout
 
 \end_inset
