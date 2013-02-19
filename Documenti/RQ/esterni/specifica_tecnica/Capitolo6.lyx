@@ -916,7 +916,7 @@ mytalk.server.functionmanager
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.UserDataDAO
+mytalk.server.data.UserDataDao
 \end_layout
 
 \begin_layout Itemize
@@ -927,7 +927,7 @@ Tipo, obiettivo e funzione del componente:
  la classe 
 \family typewriter
 \series bold
-UserDataDAO
+UserDataDao
 \family default
 \series default
  rappresenta l'interfaccia 
@@ -942,7 +942,7 @@ Relazioni d'uso con altre componenti:
  la classe 
 \family typewriter
 \series bold
-UserDataDAO
+UserDataDao
 \family default
 \series default
  viene utilizzata da 
@@ -982,10 +982,16 @@ Tipo, obiettivo e funzione del componente:
  la classe 
 \family typewriter
 \series bold
-UserData
+UserDataDaoSQL
 \family default
 \series default
- è un semplice contenitore di informazioni
+ è l'implementazione di 
+\family typewriter
+\series bold
+UserDataDao
+\family default
+\series default
+ per la base di dati SQLite
 \end_layout
 
 \begin_layout Itemize
@@ -997,7 +1003,7 @@ Relazioni d'uso con altre componenti:
  la classe 
 \family typewriter
 \series bold
-UserData
+UserDataDaoSQL
 \family default
 \series default
  viene utilizzata da 
@@ -1016,8 +1022,13 @@ mytalk.server.usermanager
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe preserva le informazioni riguardanti gli utenti, ovvero username,
- password, nome, cognome e indirizzo IP
+ La classe 
+\family typewriter
+\series bold
+UserDataDaoSQL
+\family default
+\series default
+ si occupa della lettura e scrittura dei dati presenti nella base di dati
 \end_layout
 
 \begin_layout Subsubsection
@@ -1071,6 +1082,117 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
+mytalk.server.data.RecordMessageDataDao
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageDataDao
+\family default
+\series default
+ rappresenta l'interfaccia
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageDataDao
+\family default
+\series default
+ viene utilizzata dalla classe 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
+\family default
+\series default
+;  essendo un'interfaccia viene implementata da RecordMessageDataDaoSQL
+ che agirà sulla base di dati
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe preserva i messaggi registrati da mandare in differita
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.RecordMessageDataDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageDataDaoSQL
+\family default
+\series default
+ è l'implementazione di 
+\family typewriter
+\series bold
+RecordMessageDataDao
+\family default
+\series default
+ per la base di dati SQLite
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+RecordMessageData
+\family default
+\series default
+ viene utilizzata dalla classe 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
+\family default
+\series default
+;  essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ La classe 
+\family typewriter
+\series bold
+RecordMessageDataDaoSQL
+\family default
+\series default
+ si occupa del salvataggio e del prelievo dei messaggi registrati presenti
+ nella base di dati
+\end_layout
+
+\begin_layout Subsubsection
 mytalk.server.data.RecordMessageData
 \end_layout
 
@@ -1117,6 +1239,116 @@ mytalk.server.functionmanager.RecordMessageManager
 Attività svolte e dati trattati:
 \series default
  la classe preserva i messaggi registrati da mandare in differita
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.TutorialDataDao
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialDataDao
+\family default
+\series default
+ rappresenta l'interfaccia
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialDataDao
+\family default
+\series default
+ è utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\family default
+\series default
+; essendo  un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialData
+\family default
+\series default
+ preserva i collegamenti ai tutorial video 
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.data.TutorialDataDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialDataDaoSQL
+\family default
+\series default
+ è un semplice contenitore di informazioni
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialDataDaoSQL
+\family default
+\series default
+ è utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
+\family default
+\series default
+; essendo  un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe 
+\family typewriter
+\series bold
+TutorialDataDaoSQL
+\family default
+\series default
+ preserva i collegamenti ai tutorial video 
 \end_layout
 
 \begin_layout Subsubsection
