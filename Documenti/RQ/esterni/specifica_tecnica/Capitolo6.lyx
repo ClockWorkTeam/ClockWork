@@ -669,10 +669,13 @@ RecordMessageManager
 mytalk.server.transfer.RecordMessageTransfer
 \family default
 \series default
- e salva i messaggi in 
+ e invia i messaggi a 
 \family typewriter
 \series bold
-mytalk.server.data.RecordMessageData 
+mytalk.server.data.RecordMessageDataDao 
+\family default
+\series default
+affinchè vengano salvati nella base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -724,10 +727,10 @@ TutorialManager
  utilizza 
 \family typewriter
 \series bold
-mytalk.server.data.TutorialData
+mytalk.server.data.TutorialDataDao
 \family default
 \series default
- per scrivere e leggere i collegamenti ai video tutorial e 
+ al fine di scrivere e leggere i collegamenti ai video tutorial e 
 \family typewriter
 \series bold
 mytalk.server.transfer.TutorialTransfer
@@ -742,8 +745,8 @@ mytalk.server.transfer.TutorialTransfer
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occuperà quindi di accedere ai collegamenti dei tutorial presenti
- nella base di dati e del loro invio alla classe 
+ la classe si occuperà quindi di fare richiesta dei dati presenti base di
+ dati e del loro invio alla classe 
 \family typewriter
 \series bold
 mytalk.server.transfer.TutorialTransfer
@@ -783,7 +786,7 @@ AuthenticationManager
  utilizza 
 \family typewriter
 \series bold
-mytalk.server.data.UserData
+mytalk.server.data.UserDataDao
 \family default
 \series default
  e comunica con
@@ -802,15 +805,9 @@ mytalk.server.transfer.AuthenticationTransfer
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occuperà quindi di dover controllare i dati presenti nel database
- in 
-\family typewriter
-\series bold
-mytalk.server.data.UserData
-\family default
-\series default
- per verificare se un tentativo di autenticazione sia riuscito o meno, e
- restituire a 
+ la classe si occuperà quindi di mandare alla base di dati la richiesta
+ di verifica dei dati per verificare se un tentativo di autenticazione sia
+ riuscito o meno, e restituire a 
 \family typewriter
 \series bold
 mytalk.server.transfer.AuthenticationTransfer
@@ -859,7 +856,7 @@ mytalk.server.transfer.UserDataTransfer
  e agisce su 
 \family typewriter
 \series bold
-mytalk.server.data.UserData
+mytalk.server.data.UserDataDao
 \end_layout
 
 \begin_layout Itemize
@@ -930,7 +927,10 @@ Tipo, obiettivo e funzione del componente:
 UserDataDao
 \family default
 \series default
- rappresenta l'interfaccia 
+ rappresenta l'interfaccia con cui comunicherà 
+\family typewriter
+\series bold
+mytalk.server.usermanager
 \end_layout
 
 \begin_layout Itemize
@@ -1006,14 +1006,16 @@ Relazioni d'uso con altre componenti:
 UserDataDaoSQL
 \family default
 \series default
- viene utilizzata da 
+ implementa 
 \family typewriter
 \series bold
-mytalk.server.usermanager
+UserDataDao
 \family default
 \series default
-; essendo un semplice contenitore di informazioni la classe non utilizza
- componenti
+ e agisce su 
+\family typewriter
+\series bold
+UserData
 \end_layout
 
 \begin_layout Itemize
@@ -1028,7 +1030,7 @@ Attività svolte e dati trattati:
 UserDataDaoSQL
 \family default
 \series default
- si occupa della lettura e scrittura dei dati presenti nella base di dati
+ si occupa della lettura e scrittura dei dati nella base di dati
 \end_layout
 
 \begin_layout Subsubsection
@@ -1096,7 +1098,10 @@ Tipo, obiettivo e funzione del componente:
 RecordMessageDataDao
 \family default
 \series default
- rappresenta l'interfaccia
+ rappresenta l'interfaccia con cui comunicherà 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.RecordMessageManager
 \end_layout
 
 \begin_layout Itemize
@@ -1115,15 +1120,6 @@ RecordMessageDataDao
 \family typewriter
 \series bold
 mytalk.server.functionmanager.RecordMessageManager
-\family default
-\series default
-;  essendo un'interfaccia viene implementata da 
-\family typewriter
-\series bold
-RecordMessageDataDaoSQL
-\family default
-\series default
- che agirà sulla base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -1132,7 +1128,8 @@ RecordMessageDataDaoSQL
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe preserva i messaggi registrati da mandare in differita
+ la classe fornisce i metodi per il prelievo e la scrittura dei messaggi
+ registrati
 \end_layout
 
 \begin_layout Subsubsection
@@ -1168,17 +1165,19 @@ Relazioni d'uso con altre componenti:
  la classe 
 \family typewriter
 \series bold
-RecordMessageData
+RecordMessageDataDaoSQL
 \family default
 \series default
- viene utilizzata dalla classe 
+ implementa 
 \family typewriter
 \series bold
-mytalk.server.functionmanager.RecordMessageManager
+RecordMessageDataDao 
 \family default
 \series default
-;  essendo un semplice contenitore di informazioni la classe non utilizza
- componenti
+e agisce su 
+\family typewriter
+\series bold
+RecordMessageData
 \end_layout
 
 \begin_layout Itemize
@@ -1321,7 +1320,13 @@ Tipo, obiettivo e funzione del componente:
 TutorialDataDaoSQL
 \family default
 \series default
- è un semplice contenitore di informazioni
+ è è l'implementazione di 
+\family typewriter
+\series bold
+TutorialDataDao 
+\family default
+\series default
+per la base di dati SQLite
 \end_layout
 
 \begin_layout Itemize
@@ -1336,14 +1341,16 @@ Relazioni d'uso con altre componenti:
 TutorialDataDaoSQL
 \family default
 \series default
- è utilizzata da 
+ implementa 
 \family typewriter
 \series bold
-mytalk.server.functionmanager.TutorialManager
+TutorialDataDao 
 \family default
 \series default
-; essendo  un semplice contenitore di informazioni la classe non utilizza
- componenti
+e agisce su 
+\family typewriter
+\series bold
+TutorialData
 \end_layout
 
 \begin_layout Itemize
@@ -1358,7 +1365,8 @@ Attività svolte e dati trattati:
 TutorialDataDaoSQL
 \family default
 \series default
- preserva i collegamenti ai tutorial video 
+ si occupa della lettura e della scrittura dei collegamenti ai tutorial
+ video
 \end_layout
 
 \begin_layout Subsubsection
