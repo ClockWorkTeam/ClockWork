@@ -1117,7 +1117,12 @@ RecordMessageDataDao
 mytalk.server.functionmanager.RecordMessageManager
 \family default
 \series default
-;  essendo un'interfaccia viene implementata da RecordMessageDataDaoSQL
+;  essendo un'interfaccia viene implementata da 
+\family typewriter
+\series bold
+RecordMessageDataDaoSQL
+\family default
+\series default
  che agirà sulla base di dati
 \end_layout
 
@@ -1256,7 +1261,10 @@ Tipo, obiettivo e funzione del componente:
 TutorialDataDao
 \family default
 \series default
- rappresenta l'interfaccia
+ rappresenta l'interfaccia con cui comunicherà 
+\family typewriter
+\series bold
+mytalk.server.functionmanager.TutorialManager
 \end_layout
 
 \begin_layout Itemize
@@ -1277,8 +1285,10 @@ TutorialDataDao
 mytalk.server.functionmanager.TutorialManager
 \family default
 \series default
-; essendo  un semplice contenitore di informazioni la classe non utilizza
- componenti
+; essendo  un'interfaccia viene implementata da 
+\family typewriter
+\series bold
+TutorialDataDaoSQL
 \end_layout
 
 \begin_layout Itemize
