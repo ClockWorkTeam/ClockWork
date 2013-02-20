@@ -60,7 +60,124 @@
 \begin_body
 
 \begin_layout Section
-Attività di Progettazione
+Attività di Progettazione Architetturale
+\end_layout
+
+\begin_layout Standard
+Al fine di diminuire il livello di rischio dovuto da una progettazione errata
+ e prevenire incongruenze logiche, l'attività di progettazione deve essere
+ effettuata tenendo conto delle seguenti linee guida:
+\end_layout
+
+\begin_layout Itemize
+Decomposizione modulare: una buona progettazione identifica componenti indipende
+nti tra loro riducendo il grado di accoppiamento complessivo del sistema,
+ aumentando così la coesione
+\end_layout
+
+\begin_layout Itemize
+Information hiding: al fine di ridurre la complessità del contratto della
+ classe e aumentare il grado di protezione, bisognerà nascondere i dettagli
+ organizzativi tramite metodi e attributi privati e protetti.
+ Al fine di abbassare il rischio di incorrere in errori logici, si cercherà
+ di isolare al singolo componente la gestione del proprio funzionamento
+\end_layout
+
+\begin_layout Itemize
+Componenti terminali: per evitare di esporre esternamente dettagli implementativ
+i, che causerebbero eccessivo accoppiamento, e abbattere costi e tempi già
+ dalle prime fasi, bisogna riconoscere subito i componenti che non necessitano
+ di ulteriori scomposizioni
+\end_layout
+
+\begin_layout Itemize
+Accoppiamento e coesione dei componenti: al fine di attenuare la probabilità
+ del rischio legato alla introduzione di complessità inutile, aumentare
+ la manutenibilità del sistema e abbassare i costi per l'aggiunta di componente
+ future, bisognerà mantenere un indicatore dei parametri di questi paramentri
+ in corso d'opera
+\end_layout
+
+\begin_layout Itemize
+Grado elevato di coesione e basso di accoppiamento: al fine di garantire
+ una corretta separazione logica e una buona caraterizzazione dei componenti
+\end_layout
+
+\begin_layout Itemize
+Principio di astrazione: al fine di definire la radice della gerarchia delle
+ classi, bisognerà individuare le caratteristiche comuni tra le componenti.
+ Quello che si differenzia dall'insieme di funzionalità iniziale andrà definito
+ tramite specializzazione
+\end_layout
+
+\begin_layout Itemize
+Astrazione e concretizzazioni: ogni astrazione corrisponde ad una o più
+ concretizzazioni come ad esempio nel caso dei template, o delle classi
+ derivate
+\end_layout
+
+\begin_layout Itemize
+Componenti astratte: dovranno rispettare tali vincoli:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sufficienza: il livello di astrazione è sufficiente a caratterizzare l'entità
+ desiderata
+\end_layout
+
+\begin_layout Itemize
+Completezza: l'astrazione fornita comprende tutte le caratteristiche di
+ interesse del suo utente
+\end_layout
+
+\begin_layout Itemize
+Atomicità: l'utilità dell'astrazione non migliora se scomposta ulteriormente
+ in astrazioni più elementari
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Integrità concettuale: adoperare uno stile uniforme per la modellazione
+ delle componenti, da applicare in ogni parte del sistema
+\end_layout
+
+\begin_layout Itemize
+Complessità delle componenti e delle iterazioni: bisogna cercare di trovare
+ un compromesso per non complicare il modo in cui una classe comunica col
+ resto del sistema, ed avere una semplice modellazione di tale classe
+\end_layout
+
+\begin_layout Itemize
+Design Patterns: individuare i casi in cui si dovranno utilizzare, ed applicarli
+ di conseguenza
+\end_layout
+
+\begin_layout Itemize
+Enforce intention: rendere non ambiguo il confine dei moduli e non lasciare
+ spazio nella fase si codifica:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rendere immuabile tutto ciò che non è destinato a subire variazioni nel
+ tempo
+\end_layout
+
+\begin_layout Itemize
+Usare l'information hiding ogni volta sia possibile impostando la visibilità
+ di metodi e attributi privati e protetti
+\end_layout
+
+\begin_layout Itemize
+Per le classi che richiedono unasingola istanza si utilizzerà il design
+ pattern Singleton
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Raggiungere un livello di dettaglio tale da permettere una parallelizzazione
+ della codifica
 \end_layout
 
 \end_body
