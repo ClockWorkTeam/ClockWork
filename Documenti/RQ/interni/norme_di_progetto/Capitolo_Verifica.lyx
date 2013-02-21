@@ -294,9 +294,12 @@ Gravità e priorità degli errori
 \end_layout
 
 \begin_layout Itemize
-Errori ortografici e formattazione dei documenti: viene riscontrato un errore
- ortografico, grammaticale o di formattazione in un documento a seguito
- dell'attività di verifica nella sezione 
+
+\series bold
+Errori ortografici e formattazione dei documenti:
+\series default
+ viene riscontrato un errore ortografico, grammaticale o di formattazione
+ in un documento a seguito dell'attività di verifica nella sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Verifica-dei-documenti"
@@ -309,8 +312,12 @@ reference "sub:Verifica-dei-documenti"
 \end_layout
 
 \begin_layout Itemize
-Errore di codifica: viene riscontrato un errore nel codice sorgente come
- descritto nella seione 
+
+\series bold
+Errore di codifica:
+\series default
+ viene riscontrato un errore nel codice sorgente come descritto nella seione
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Verifica-del-codice"
@@ -324,15 +331,22 @@ reference "sub:Verifica-del-codice"
 \end_layout
 
 \begin_layout Itemize
-Errori nella stesura di documenti: se è rilevata una incongruenza, un'ambiguità
- o un errore logico nel documento è necessario intervenire tempestivamente
- in quanto l'errore potrebbe comportare un rischio molto forte per i processi
- che si riferiscono a tale documento come normativo o informativo
+
+\series bold
+Errori nella stesura di documenti: 
+\series default
+se è rilevata una incongruenza, un'ambiguità o un errore logico nel documento
+ è necessario intervenire tempestivamente in quanto l'errore potrebbe comportare
+ un rischio molto forte per i processi che si riferiscono a tale documento
+ come normativo o informativo
 \end_layout
 
 \begin_layout Itemize
-Errore di progettazione: è riscontrato un errore nella progettazione dell'archit
-ettura del sistema.
+
+\series bold
+Errore di progettazione: 
+\series default
+è riscontrato un errore nella progettazione dell'architettura del sistema.
  Il livello di tale errore è molto grave, e compromette l'intera attività
  del gruppo e può portare a malfunzionamenti tali da rendere il sistema
  non utilizzabile, o di non rispettare le caratteristiche di qualità definite.
@@ -351,13 +365,142 @@ name "sub:Verifica-dei-documenti"
 
 \end_layout
 
-\begin_layout Standard
-Quando il redattore avanza la richiesta di verifica, il verificatore provvederà
- ad esaminarlo seguendo i seguenti passi:
+\begin_layout Subsection
+
+\lang italian
+Procedura di verifica dei documenti
 \end_layout
 
-\begin_layout Enumerate
-Eseguire la correzione ortografica
+\begin_layout Standard
+
+\lang italian
+PREMESSA: in questa sottosezione si elencherà solamente la procedura che
+ verrà utilizzata per verificare i documenti.
+ Per maggiori dettagli si faccia riferimento al 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+.
+ I verificatori, una volta presi in consegna i documenti che hanno raggiunto
+ una versione candidata al rilascio, dovranno applicare la seguente procedura:
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Controllo ortografico:
+\series default
+ il verificatore procederà al controllo ortografico del documento tramite
+ Hunspell o Enchant, andando su Strumenti->Correttore Ortografico.
+ Prima però dovrà controllare che la lingua del documento
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang italian
+Poiché i documenti saranno formati da un file per ogni capitolo, il verificatore
+ dovrà effettuare questa procedura per ogni singolo file.
+\end_layout
+
+\end_inset
+
+ sia correttamente impostata in italiano.
+ Per fare ciò, dovrà andare su Documento->Impostazioni...
+ e, nel menù laterale, selezionare la voce Lingua.
+ Una volta selezionata la voce, dovrà guardare la lingua impostata e, nel
+ caso, correggerla in “italiano” 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Controllo lessicale:
+\series default
+ il verificatore procederà ad un'attenta lettura dell'intero documento alla
+ ricerca di errori lessicali 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Diagrammi UML:
+\series default
+ nel caso siano presenti dei diagrammi 
+\bar under
+UML
+\bar default
+, il verificatore dovrà controllare che tali diagrammi rispettino le norme
+ descritte in sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Grafici-UML"
+
+\end_inset
+
+ procedendo tramite attenta osservazione di essi
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Indipendentemente dal metodo di controllo utilizzato, il Verificatore dovrà
+ accertare:
+\end_layout
+
+\begin_layout Itemize
+
+\lang italian
+L'assenza di errori di ortografia, compreso il corretto uso della punteggiatura,
+ degli accenti e degli apostrofi
+\end_layout
+
+\begin_layout Itemize
+
+\lang italian
+L'assenza di errori grammatiali, logici e sintattici nei periodi
+\end_layout
+
+\begin_layout Itemize
+
+\lang italian
+La coerenza del documento con le norme descritte nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Documenti"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il Verificatore dovrà, inoltre, prendere nota degli errori rilevati, suddivisi
+ ed ordinati per sezione, e aprirà un ticket destinato al redattore del
+ documento in esame affinchè corregga gli errori riscontrati
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Gli errori di ortografia, possono essere corretti direttamente dal Verificatore.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -369,6 +512,38 @@ name "sub:Verifica-del-codice"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+La verifica del codice vera effettuata inizialmente in fase di sviluppoda
+ ogni composnente così da correggere errori banali segnalati in fase di
+ compilazione.
+ Lo sviluppatore deve assicurare che la propria componente software compili
+ senza warning prima di inserirla nel repository.
+\end_layout
+
+\begin_layout Standard
+Il Verificatore dovrà attenersi alle attività descritte nel documento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+, sez.
+ Pianificazione strategica e temporale.
+ 
+\end_layout
+
+\begin_layout Standard
+Inoltre dovrà aprire un ticket destinato allo sviluppatore indicando gli
+ errori rievati.
 \end_layout
 
 \end_body
