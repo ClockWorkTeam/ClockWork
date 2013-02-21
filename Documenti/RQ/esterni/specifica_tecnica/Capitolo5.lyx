@@ -120,7 +120,10 @@ Relazioni d'uso con altre componenti:
 \series default
  il componente è costituito dal package
 \series bold
- view
+ 
+\family typewriter
+view
+\family default
 \series default
 , e andrà a comunicare con il package
 \series bold
@@ -129,8 +132,16 @@ Relazioni d'uso con altre componenti:
 mytalk.client.presenter
 \family default
 \series default
- che farà da tramite per la comunicazione tra il lato client e il lato server
- e controllerà i dati in transito
+ che sarà da tramite tra il package 
+\family typewriter
+\series bold
+view
+\family default
+\series default
+ ed il package 
+\family typewriter
+\series bold
+mytalk.client.communication
 \end_layout
 
 \begin_layout Subsubsection
@@ -146,11 +157,11 @@ Tipo, obiettivo e funzione del componente:
 \series bold
  
 \family typewriter
-LoginView
+AuthenticationView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web che consentono di effettuare l'accesso e la disconnessione al sistema
+ definisce la struttura, e la conseguente visualizzazione, della pagine
+ web che consente di effettuare l'accesso e la disconnessione al sistema
 \end_layout
 
 \begin_layout Itemize
@@ -163,7 +174,7 @@ Relazioni d'uso con altre componenti:
 \series bold
  
 \family typewriter
-LoginView
+AuthenticationView
 \family default
 \series default
  comunicherà con la classe
@@ -302,7 +313,22 @@ UserListView
 mytalk.client.presenter.UserListPresenter
 \family default
 \series default
- che restituirà gli iscritti al server connessi in quel momento o meno
+ che restituirà gli iscritti al server connessi in quel momento o meno,
+ e con le classi 
+\family typewriter
+\series bold
+mytalk.client.presenter.CallPresenter
+\series default
+ 
+\family default
+e
+\series bold
+ 
+\family typewriter
+mytalk.client.presenter.ChatPresenter
+\family default
+\series default
+ per permettere la comunicazione audio, video e testuale tra due utenti
 \end_layout
 
 \begin_layout Itemize
@@ -318,7 +344,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.IpCallView
+mytalk.client.view.IpSelectionView
 \end_layout
 
 \begin_layout Itemize
@@ -330,10 +356,9 @@ Tipo, obiettivo e funzione del componente:
 \series bold
  
 \family typewriter
-IpCall
-\series default
-View
+IpSelectionView
 \family default
+\series default
  definisce la struttura, e la conseguente visualizzazione, delle pagine
  web che consentono di effettuare chiamate inserendo unicamente l'indirizzo
  IP da chiamare
@@ -349,10 +374,9 @@ Relazioni d'uso con altre componenti:
 \series bold
  
 \family typewriter
-IpCall
-\series default
-View
+IpSelectionView
 \family default
+\series default
  comunicherà con le classi
 \series bold
  
@@ -702,7 +726,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.CallStatisticsView
+mytalk.client.view.StatisticsView
 \end_layout
 
 \begin_layout Itemize
