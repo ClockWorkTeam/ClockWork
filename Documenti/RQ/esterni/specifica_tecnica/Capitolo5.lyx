@@ -996,9 +996,22 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- il componente è costituito dal package presenter, e andrà a comunicare
- con il package view riportando i risultati delle elaborazioni dei dati
- ottenuti dalla comunicazione con il communication e con il package model
+ il componente è costituito dal package 
+\family typewriter
+presenter
+\family default
+, e andrà a comunicare con il package
+\family typewriter
+ mytalk.client.view
+\family default
+ riportando i risultati delle elaborazioni dei dati ottenuti dalla comunicazione
+ con il package 
+\family typewriter
+mytalk.client.communication
+\family default
+ e con il package 
+\family typewriter
+mytalk.client.model
 \end_layout
 
 \begin_layout Subsubsection
@@ -1038,7 +1051,7 @@ AuthenticationPresenter
  riceve dalla classe 
 \family typewriter
 \series bold
-mytalk.client.communication.AuthenticationView
+mytalk.client.view.AuthenticationView
 \family default
 \series default
  i dati per effettuare l'accesso ed utilizzando i metodi presenti nella
@@ -1048,7 +1061,12 @@ mytalk.client.communication.AuthenticationView
  mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
- riceve una risposta dal server che poi andrà trasmessa al livello view
+ riceve una risposta dal server che poi andrà trasmessa al livello 
+\family typewriter
+\series bold
+mytalk.client.view
+\family default
+\series default
  che aggiornerà la pagina di conseguenza, ed in caso di risposta affermativa
  ci sarà un collegamento a
 \family typewriter
@@ -1181,7 +1199,7 @@ mytalk.client.view.VideoCallView
  La comunicazione avverrà grazie all'utilizzo dei metodi presenti in 
 \family typewriter
 \series bold
-mytalk.client.communication.CallPresenter
+mytalk.client.communication.CallCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -1509,7 +1527,7 @@ mytalk.client.model.Tutorial
  per la modellazione dei tutorial sfruttando i metodi della classe
 \family typewriter
 \series bold
- mytalk.client.communicat.TutorialCommunication
+ mytalk.client.communication.TutorialCommunication
 \family default
  
 \series default
@@ -1611,9 +1629,15 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- il componente è costituito dal package communication, ed andrà a comunicare
- con il package presenter restituendo i dati richiesti presenti all'interno
- del server
+ il componente è costituito dal package 
+\family typewriter
+communication
+\family default
+, ed andrà a comunicare con il package 
+\family typewriter
+mytalk.client.presenter
+\family default
+ restituendo i dati richiesti presenti all'interno del server
 \end_layout
 
 \begin_layout Subsubsection
@@ -1642,17 +1666,15 @@ Relazioni d'uso con altre componenti:
 la classe riceverà i dati inseriti da
 \family typewriter
 \series bold
- mytalk.client.presenter.
-\series default
-AuthenticationPresenter
+ mytalk.client.presenter.AuthenticationPresenter
 \family default
- fornirà i metodi, per stabilire una connessione col server dal quale riceverà
+ 
+\series default
+fornirà i metodi, per stabilire una connessione col server dal quale riceverà
  una risposta che andrà ritrasmessa sempre alla classe 
 \family typewriter
 \series bold
-mytalk.client.presenter.
-\series default
-AuthenticationPresenter
+mytalk.client.presenter.AuthenticationPresenter
 \end_layout
 
 \begin_layout Itemize
@@ -1695,7 +1717,7 @@ Relazioni d'uso con altre componenti:
 UserListCommunication
 \family default
 \series default
- fornirà i medoti, per l' invio degli utenti iscritti al server e se sono
+ fornirà i metodi, per l' invio degli utenti iscritti al server e se sono
  connessi o meno una volta fatto accesso al server, alla classe
 \family typewriter
 \series bold
@@ -1790,7 +1812,7 @@ Relazioni d'uso con altre componenti:
  NotificationCommunication
 \family default
 \series default
- fornirà i medoti, per segnalare la presenza di una chiamata in arrivo da
+ fornirà i metodi, per segnalare la presenza di una chiamata in arrivo da
  parte di un altro utente oppure la presenza di file o videomessaggi registrati
  all'interno del server, alla classe
 \family typewriter
@@ -1839,7 +1861,7 @@ Relazioni d'uso con altre componenti:
  UserDataCommunication
 \family default
 \series default
- fornirà i medoti, per la modifica di dati o il segnale per la registrazione
+ fornirà i metodi, per la modifica di dati o il segnale per la registrazione
  di nuovi utenti, alla classe
 \family typewriter
 \series bold
@@ -1886,7 +1908,7 @@ Relazioni d'uso con altre componenti:
  RecordMessageCommunication
 \family default
 \series default
- fornirà i medoti, per l'invio di un videomessaggio al server, alla classe
+ fornirà i metodi, per l'invio di un videomessaggio al server, alla classe
 \family typewriter
 \series bold
  mytalk.client.presenter.RecordMessageCommunication
