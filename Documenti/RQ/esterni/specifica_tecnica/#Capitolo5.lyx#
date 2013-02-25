@@ -801,8 +801,8 @@ Relazioni d'uso con altre componenti:
  mytalk.client.communication.UserDataCommunication
 \family default
 \series default
- che avrà lo scopo di inviare i dati per effettuare la registrazione al
- server tenendo in considerazione l'univocità dell'username
+ che avrà lo scopo di effettuare la registrazione al server tenendo in considera
+zione l'univocità dell'username
 \end_layout
 
 \begin_layout Itemize
@@ -850,10 +850,10 @@ Relazioni d'uso con altre componenti:
  comunicherà con la classe
 \family typewriter
 \series bold
- mytalk.client.communication.UserDataCommunication
+ mytalk.client.presenter.UserDataPresenter
 \family default
 \series default
- che avrà lo scopo di inviare le modifiche dei dati dell'utente
+ che avrà lo scopo di effettuare le modifiche dei dati dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -942,10 +942,10 @@ SendFileView
  comunicherà con la classe
 \family typewriter
 \series bold
- mytalk.client.communication.SendFileCommunication
+ mytalk.client.presenter.SendFilePresenter
 \family default
 \series default
- che si occuperà dell'invio dei file al server
+ per comunicare il file e il destinatario selezionato
 \end_layout
 
 \begin_layout Itemize
@@ -955,8 +955,14 @@ SendFileView
 Attività svolte e dati trattati:
 \series default
  la classe fa in modo che vengano visualizzati i componenti grafici necessari
- per le operazioni di selezione di un file salvato in locale e di scelta
- del destinatario
+ per le operazioni selezione di un file salvato in locale e di scelta del
+ destinatario ed invia tali dati a 
+\family typewriter
+\series bold
+mytalk.client.presenter.SendFilePresenter
+\family default
+\series default
+, che svolgerà le operazioni di invio del file
 \end_layout
 
 \begin_layout Subsection
