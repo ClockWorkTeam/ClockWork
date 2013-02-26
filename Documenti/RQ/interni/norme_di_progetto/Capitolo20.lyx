@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -65,7 +66,7 @@ Attività di Verifica
 
 \begin_layout Standard
 La verifica, attività svolta dal verificatore, ha il fine di accertare che
- i prodotti, di qualsiasi tipo siano, ottenuti dal 
+ i prodotti sviluppati dal 
 \begin_inset ERT
 status open
 
@@ -78,10 +79,11 @@ NOMEGRUPPO}
 
 \end_inset
 
- siano conformi alle norme e convenzioni riportate in questo documento.
- Inoltre, dovrà assicurare, sotto la propria responsabilità, che i prodotti
- in questione soddisfino o requisiti di qualità descritti nel documento
- 
+ siano conformi alle norme e convenzioni riportate in questo documento,
+ indipendentemente dalla loro tipologia.
+ Il verificatore, dovrà assicurare, sotto la propria responsabilità, che
+ i prodotti in questione soddisfino i requisiti di qualità descritti nel
+ documento 
 \begin_inset ERT
 status open
 
@@ -109,6 +111,8 @@ PdQ}
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Tipologia errore
 \end_layout
 
@@ -118,6 +122,8 @@ Tipologia errore
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Gravità
 \end_layout
 
@@ -127,6 +133,8 @@ Gravità
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Priorità dell'intervento
 \end_layout
 
@@ -230,7 +238,7 @@ Progettazione
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -258,6 +266,19 @@ Urgentissimo
 
 \begin_layout Plain Layout
 Gravità e priorità degli errori
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endlastfoot
 \end_layout
 
 \end_inset
@@ -307,7 +328,7 @@ reference "sub:Verifica-dei-documenti"
 \end_inset
 
 .
- Non incide nello svolgimento dell'attività, dunque a tali tipologia di
+ Non incide nello svolgimento dell'attività, dunque a tali tipologie di
  errori è associata una bassa gravità ed è possibile rinviare la correzione
 \end_layout
 
@@ -326,7 +347,7 @@ reference "sub:Verifica-del-codice"
 
 .
  Tali errori rallentano l'attività di codifica quindi è necessario apportare
- le dovute correzione in un lasso di tempo breve.
+ le dovute correzioni in un lasso di tempo breve.
  Il livello di gravità associato è medio
 \end_layout
 
@@ -349,7 +370,7 @@ Errore di progettazione:
 è riscontrato un errore nella progettazione dell'architettura del sistema.
  Il livello di tale errore è molto grave, e compromette l'intera attività
  del gruppo e può portare a malfunzionamenti tali da rendere il sistema
- non utilizzabile, o di non rispettare le caratteristiche di qualità definite.
+ non utilizzabile, o da non rispettare le caratteristiche di qualità definite.
  Ciò implica la massima urgenza per la correzione, da effettuare dunque
  immediatamente
 \end_layout
@@ -366,8 +387,6 @@ name "sub:Verifica-dei-documenti"
 \end_layout
 
 \begin_layout Standard
-
-\lang italian
 PREMESSA: in questa sottosezione si elencherà solamente la procedura che
  verrà utilizzata per verificare i documenti.
  Per maggiori dettagli si faccia riferimento al 
@@ -392,7 +411,6 @@ PdQ}
 \begin_layout Itemize
 
 \series bold
-\lang italian
 Controllo ortografico:
 \series default
  il verificatore procederà al controllo ortografico del documento tramite
@@ -402,8 +420,6 @@ Controllo ortografico:
 status open
 
 \begin_layout Plain Layout
-
-\lang italian
 Poiché i documenti saranno formati da un file per ogni capitolo, il verificatore
  dovrà effettuare questa procedura per ogni singolo file.
 \end_layout
@@ -420,7 +436,6 @@ Poiché i documenti saranno formati da un file per ogni capitolo, il verificator
 \begin_layout Itemize
 
 \series bold
-\lang italian
 Controllo lessicale:
 \series default
  il verificatore procederà ad un'attenta lettura dell'intero documento alla
@@ -430,7 +445,6 @@ Controllo lessicale:
 \begin_layout Itemize
 
 \series bold
-\lang italian
 Diagrammi UML:
 \series default
  nel caso siano presenti dei diagrammi 
@@ -449,28 +463,20 @@ reference "sub:Grafici-UML"
 \end_layout
 
 \begin_layout Standard
-
-\lang italian
 Indipendentemente dal metodo di controllo utilizzato, il Verificatore dovrà
  accertare:
 \end_layout
 
 \begin_layout Itemize
-
-\lang italian
 L'assenza di errori di ortografia, compreso il corretto uso della punteggiatura,
  degli accenti e degli apostrofi
 \end_layout
 
 \begin_layout Itemize
-
-\lang italian
 L'assenza di errori grammaticali, logici e sintattici nei periodi
 \end_layout
 
 \begin_layout Itemize
-
-\lang italian
 La coerenza del documento con le norme descritte nella sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
