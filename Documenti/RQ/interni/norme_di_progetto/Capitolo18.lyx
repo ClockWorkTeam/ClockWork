@@ -1108,7 +1108,7 @@ Numero di parametri:
  vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Progettazione"
+reference "sec:Specifica-Tecnica"
 
 \end_inset
 
@@ -1144,7 +1144,7 @@ Numero di livelli di annidamento:
  vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Progettazione"
+reference "sec:Specifica-Tecnica"
 
 \end_inset
 
@@ -1202,58 +1202,6 @@ Indica il numero di classi interne al package che dipendono da classi esterne
 \series default
 va sempre minimizzato, aumentando le funzionalità proprie di un package,
  senza la necessità di affidarsi al servizio offerto da altre classi esterne
-\begin_inset Index idx
-status open
-
-\begin_layout Plain Layout
-Complessità ciclomatica: rappresenta la complessità di un metodo, basata
- sulla misurazione del numero di cammini linearmente indipendenti che attraversa
-no il grafo di flusso di controllo, dove: Nodi: rappresentano gruppi indivisibil
-i di istruzioni Archi: connettono due nodi se le istruzioni di un nodo possono
- essere eseguite immediatamente dopo le istruzioni dell'altro nodo Un valore
- elevato di complessità riduce la manutenibilità e le possibilità di riuso
- del metodo: se dovesse risultare tale, parte delle sue funzionalità deve
- essere demandando ad altri metodi da richiamare.
- Particolare attenzione va posta sulla stima di questo valore: il costrutto
- switch, ad esempio, moltiplica i cammini linearmente indipendenti e quindi
- può comportare una misurazione di complessità ciclomatica molto elevata
- (e oltre i limiti imposti).
- Tuttavia potrebbe verificarsi l'eventualità che, al fine di garantire una
- velocità di esecuzione maggiore per un certo metodo, si decida di assumere
- limiti di complessità ciclomatica più laschi.
- I valori di complessità ciclomatica misurati verranno trattati, dunque,
- con le dovute considerazioni.
- Il valore ideale di complessità ciclomatica massima posto come obiettivo
- è dieci Peso delle classi: è la somma totale della complessità ciclomatica
- di tutti i metodi appartenenti ad una determinata classe.
- Il valore deve essere ragionevole, e dove venisse ritenuto troppo alto,
- si procederà ad aumentare il numero di metodi della classe in considerazione,
- oppure verrà affidata parte dei compiti ad una o più nuove classi coese
- Numero di parametri: vedasi sezione [Progettazione] Numero di campi dati
- per classe: un numero elevato di attributi interni ad una classe potrebbe
- palesare la necessità di incapsulamento di parte di essi in nuove classi
- coese, che forniscano inoltre metodi utili al loro utilizzo Numero di variabili
- locali: denota il numero di variabili locali interne a ciascun metodo.
- Come per il numero di campi dati per classe, potrebbe essere necessario
- incapsulare alcune di queste variabili in nuove classi coese qualora il
- numero sia troppo elevato Numero di livelli di annidamento: vedasi sezione
- [Progettazione] Grado di accoppiamento: Indice di utilità indica il numero
- di classi esterne al package che dipendono da classi interno ad esso.: se
- troppo basso indicherà che il package non fornisce molte funzionalità al
- suo esterno, potrebbe essere scarsamente utile; se troppo alto indicherà
- che altre classi sono strettamente dipendenti dal package in questione,
- e quindi potrebbe accadere che eventuali modifiche ad esso comportino costi
- elevati di adattamento delle classi che vi dipendono, qualora non fosse
- stato progettato adeguatamente il sistema di interfacce Indice di dipendenzaInd
-ica il numero di classi interne al package che dipendono da classi esterne
- ad esso.: va sempre minimizzato, aumentando le funzionalità proprie di un
- package, senza la necessità di affidarsi al servizio offerto da altre classi
- esterne
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -1346,7 +1294,7 @@ Verifica formale del codice:
 Analisi dinamica
 \begin_inset CommandInset label
 LatexCommand label
-name "Test"
+name "sub:Analisi-dinamica"
 
 \end_inset
 
