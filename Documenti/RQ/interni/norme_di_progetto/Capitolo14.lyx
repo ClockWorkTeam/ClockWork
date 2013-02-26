@@ -61,33 +61,10 @@
 \begin_body
 
 \begin_layout Section
-Definizione di Prodotto
-\end_layout
-
-\begin_layout Standard
-Tale documento deve contenere i risultati della progettazione di dettaglio
- (vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Attività-di-Progettazione"
-
-\end_inset
-
-), effettuata sulla base dettata dal documento Specifica Tecnica.
-\end_layout
-
-\begin_layout Standard
-Lo scopo della Definizione di Prodotto deve definire l'architettura di dettaglio
-, individuando i moduli del sistema affinché raggiungano una dimensione,
- complessità, accoppiamento e coesione adeguati allo sviluppo del singolo
- Programmatore.
-\end_layout
-
-\begin_layout Subsection
-Tracciamento relazione package - componenti - classi 
+Studio di fattibilità 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Tracciamento-relazione-package"
+name "Studio-di-fattibilità"
 
 \end_inset
 
@@ -95,149 +72,242 @@ name "sub:Tracciamento-relazione-package"
 \end_layout
 
 \begin_layout Standard
-Il tracciamento consiste nell'associare ogni package definito nel nostro
- sistema coi rispettivi componenti di sistema (vedasi 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-ST}
+In questo documento si richiede lo studio di ogni capitolato analizzando
+ i seguenti punti:
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-, sez.
- Architettura Generale).
- Ad ogni componente deve essere associato l'elenco delle classi che realizzano
- tale componente.
+\series bold
+Fattibilità tecnica
+\series default
+: comprende la valutazione dei rischi legati alle tecnologie richieste per
+ soddisfare i requisiti e alla difficoltà stimata da parte del gruppo di
+ apprendere l'utilizzo delle stesse
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fattibilità socioeconomica
+\series default
+: comprende la valutazione dei rischi legati agli aspetti socioeconomici
+ del progetto come, ad esempio, i costi da affrontare e la concorrenza di
+ altri fornitori
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fattibilità implementativa
+\series default
+: comprende la valutazione dei rischi legati alla soddisfacibilità dei requisiti
+ del capitolato e quindi la stima della capacità del gruppo di completare
+ le richieste obbligatorie, desiderabili e opzionali
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Altro
+\series default
+: qualsiasi altro fattore di rischio stimato dagli analisti non compreso
+ nei casi precedenti
 \end_layout
 
 \begin_layout Subsection
-Struttura del documento
+Rischi
 \end_layout
 
 \begin_layout Standard
-Il documento Definizione di prodotto dovrà seguire questo schema
+Per ogni fattore enunciato precedentemente dovranno essere catalogati i
+ rischi come viene descritto nel seguente protocollo:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Nome del rischio
+\series default
+: sintetizza il rischio individuato con un nome significativo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione del rischio
+\series default
+: descrive brevemente il rischio individuato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stima di probabilità
+\series default
+: l'analista indica la probabilità che si verifichi la situazione di rischio
+ in esame con un parametro compreso nell'insieme {
+\emph on
+Certa, Alta, Media, Bassa, Nulla
+\emph default
+}
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stima di incidenza
+\series default
+: l'analista indica quanto ritiene grave il verificarsi della situazione
+ di rischio in esame con un parametro compreso nell'insieme {
+\emph on
+Catastrofica, Alta, Media, Bassa, Trascurabile
+\emph default
+}
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Giustificazione della stima
+\series default
+: l'analista spiega le motivazioni dell'assegnamento alle stime di probabilità
+ e di incidenza assegnate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analista
+\series default
+: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
+ dal Verificatore per conto del Responsabile di Progetto) nel caso in cui
+ le valutazioni appaiano inesatte o poco giustificate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Riferimenti
+\series default
+
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Sarà da tenere in considerazione anche delle norme descritte nella sezione
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Documenti"
-
-\end_inset
-
-.
+Questo punto è facoltativo.
 \end_layout
 
 \end_inset
 
-:
+: elenco puntato di tutte le fonti utilizzate, per consentire una futura
+ verifica delle fonti 
+\end_layout
+
+\begin_layout Subsection
+Vantaggi
+\end_layout
+
+\begin_layout Standard
+Per ogni fattore enunciato precedentemente dovranno essere catalogati i
+ vantaggi come viene descritto nel seguente protocollo:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Server: 
+Nome del vantaggio
 \series default
-sarà suddiviso in:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Package data: 
-\series default
-in questa sezione verranno descritte le unità relative al package data
+: sintetizza il vantaggio individuato con un nome significativo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Package logic: 
+Descrizione del vantaggio
 \series default
-in questa sezione verranno descritte le unità relative al package logic
+: descrive brevemente il vantaggio individuato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Package transfer: 
+Stima di incidenza
 \series default
-in questa sezione verranno descritte le unità relative al package transfer
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Client:
-\series default
- sarà suddiviso in:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Package communication:
-\series default
- in questa sezione verranno descritte le unità relative al package communication
+: indica quanto l'analista ritiene incidente nella valutazione del vantaggio
+ complessivo il vantaggio in esame con un parametro compreso nell'insieme
+ {
+\emph on
+Ottimale, Alta, Media, Bassa, Trascurabile
+\emph default
+}
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Package model:
+Giustificazione della stima
 \series default
- in questa sezione verranno descritte le unità relative al package model
+: l'analista spiega le motivazioni dell'assegnamento alla stima di incidenza
+ assegnata
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Package view: 
+Analista
 \series default
-in questa sezione verranno descritte le unità relative al package view
+: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
+ dal Verificatore per conto del Responsabile) nel caso in cui le valutazioni
+ appaiano inesatte o poco giustificate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Package presenter: 
+Riferimenti
 \series default
-in questa sezione verranno descritte le unità relative al package presenter
-\end_layout
 
-\end_deeper
-\begin_layout Itemize
-Diagrammi di sequenza: in questa sezione andranno inseriti i diagrammi di
- sequenza nello standard UML per descrivere particolari interazioni del
- sistema
-\end_layout
+\begin_inset Foot
+status open
 
-\begin_layout Itemize
-Codice sorgente: in questa sezione verrà reso disponibile il codice sorgente
- prodotto
+\begin_layout Plain Layout
+Questo punto è facoltativo.
 \end_layout
-
-\begin_layout Itemize
-Tracciamenti: in questa sezione verrà presentato il tracciamento requisiti
- descritto nella sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Tracciamento-relazione-package"
 
 \end_inset
 
+: elenco puntato di tutte le fonti utilizzate, per consentire una futura
+ verifica delle fonti
+\end_layout
 
+\begin_layout Standard
+Una volta terminato lo studio di fattibilità di tutti i capitolati, l'analista
+ redattore del documento finale dovrà inserire una conclusione in cui si
+ esporrà:
+\end_layout
+
+\begin_layout Itemize
+Una 
+\series bold
+valutazione complessiva 
+\series default
+dei rischi e dei vantaggi di ciascun capitolato
+\end_layout
+
+\begin_layout Itemize
+Il 
+\series bold
+capitolato scelto
+\end_layout
+
+\begin_layout Itemize
+Un'
+\series bold
+analisi sintetica
+\series default
+ di vantaggi e rischi di ciascun capitolato
 \end_layout
 
 \end_body
