@@ -61,253 +61,124 @@
 \begin_body
 
 \begin_layout Section
-Studio di fattibilità 
-\begin_inset CommandInset label
-LatexCommand label
-name "Studio-di-fattibilità"
-
-\end_inset
-
-
+Attività di Progettazione Architetturale
 \end_layout
 
 \begin_layout Standard
-In questo documento si richiede lo studio di ogni capitolato analizzando
- i seguenti punti:
+Al fine di diminuire il livello di rischio dovuto da una progettazione errata
+ e prevenire incongruenze logiche, l'attività di progettazione deve essere
+ effettuata tenendo conto delle seguenti linee guida:
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Fattibilità tecnica
-\series default
-: comprende la valutazione dei rischi legati alle tecnologie richieste per
- soddisfare i requisiti e alla difficoltà stimata da parte del gruppo di
- apprendere l'utilizzo delle stesse
+Decomposizione modulare: una buona progettazione identifica componenti indipende
+nti tra loro riducendo il grado di accoppiamento complessivo del sistema,
+ aumentando così la coesione
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Fattibilità socioeconomica
-\series default
-: comprende la valutazione dei rischi legati agli aspetti socioeconomici
- del progetto come, ad esempio, i costi da affrontare e la concorrenza di
- altri fornitori
+Information hiding: al fine di ridurre la complessità del contratto della
+ classe e aumentare il grado di protezione, bisognerà nascondere i dettagli
+ organizzativi tramite metodi e attributi privati e protetti.
+ Al fine di abbassare il rischio di incorrere in errori logici, si cercherà
+ di isolare al singolo componente la gestione del proprio funzionamento
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Fattibilità implementativa
-\series default
-: comprende la valutazione dei rischi legati alla soddisfacibilità dei requisiti
- del capitolato e quindi la stima della capacità del gruppo di completare
- le richieste obbligatorie, desiderabili e opzionali
+Componenti terminali: per evitare di esporre esternamente dettagli implementativ
+i, che causerebbero eccessivo accoppiamento, e abbattere costi e tempi già
+ dalle prime fasi, bisogna riconoscere subito i componenti che non necessitano
+ di ulteriori scomposizioni
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Altro
-\series default
-: qualsiasi altro fattore di rischio stimato dagli analisti non compreso
- nei casi precedenti
-\end_layout
-
-\begin_layout Subsection
-Rischi
-\end_layout
-
-\begin_layout Standard
-Per ogni fattore enunciato precedentemente dovranno essere catalogati i
- rischi come viene descritto nel seguente protocollo:
+Accoppiamento e coesione dei componenti: al fine di attenuare la probabilità
+ del rischio legato alla introduzione di complessità inutile, aumentare
+ la manutenibilità del sistema e abbassare i costi per l'aggiunta di componenti
+ future, bisognerà mantenere un indicatore dei parametri di questi parametri
+ in corso d'opera
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Nome del rischio
-\series default
-: sintetizza il rischio individuato con un nome significativo
+Grado elevato di coesione e basso di accoppiamento: al fine di garantire
+ una corretta separazione logica e una buona caratterizzazione dei componenti
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Descrizione del rischio
-\series default
-: descrive brevemente il rischio individuato
+Principio di astrazione: al fine di definire la radice della gerarchia delle
+ classi, bisognerà individuare le caratteristiche comuni tra le componenti.
+ Quello che si differenzia dall'insieme di funzionalità iniziale andrà definito
+ tramite specializzazione
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Stima di probabilità
-\series default
-: l'analista indica la probabilità che si verifichi la situazione di rischio
- in esame con un parametro compreso nell'insieme {
-\emph on
-Certa, Alta, Media, Bassa, Nulla
-\emph default
-}
+Astrazione e concretizzazioni: ogni astrazione corrisponde ad una o più
+ concretizzazioni come ad esempio nel caso dei template, o delle classi
+ derivate
 \end_layout
 
 \begin_layout Itemize
+Componenti astratte: dovranno rispettare tali vincoli:
+\end_layout
 
-\series bold
-Stima di incidenza
-\series default
-: l'analista indica quanto ritiene grave il verificarsi della situazione
- di rischio in esame con un parametro compreso nell'insieme {
-\emph on
-Catastrofica, Alta, Media, Bassa, Trascurabile
-\emph default
-}
+\begin_deeper
+\begin_layout Itemize
+Sufficienza: il livello di astrazione è sufficiente a caratterizzare l'entità
+ desiderata
 \end_layout
 
 \begin_layout Itemize
-\noindent
-
-\series bold
-Giustificazione della stima
-\series default
-: l'analista spiega le motivazioni dell'assegnamento alle stime di probabilità
- e di incidenza assegnate
+Completezza: l'astrazione fornita comprende tutte le caratteristiche di
+ interesse del suo utente
 \end_layout
 
 \begin_layout Itemize
+Atomicità: l'utilità dell'astrazione non migliora se scomposta ulteriormente
+ in astrazioni più elementari
+\end_layout
 
-\series bold
-Analista
-\series default
-: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
- dal Verificatore per conto del Responsabile di Progetto) nel caso in cui
- le valutazioni appaiano inesatte o poco giustificate
+\end_deeper
+\begin_layout Itemize
+Integrità concettuale: adoperare uno stile uniforme per la modellazione
+ delle componenti, da applicare in ogni parte del sistema
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Riferimenti
-\series default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Questo punto è facoltativo.
-\end_layout
-
-\end_inset
-
-: elenco puntato di tutte le fonti utilizzate, per consentire una futura
- verifica delle fonti 
-\end_layout
-
-\begin_layout Subsection
-Vantaggi
-\end_layout
-
-\begin_layout Standard
-Per ogni fattore enunciato precedentemente dovranno essere catalogati i
- vantaggi come viene descritto nel seguente protocollo:
+Complessità delle componenti e delle iterazioni: bisogna cercare di trovare
+ un compromesso per non complicare il modo in cui una classe comunica col
+ resto del sistema, ed avere una semplice modellazione di tale classe
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Nome del vantaggio
-\series default
-: sintetizza il vantaggio individuato con un nome significativo
+Design Patterns: individuare i casi in cui si dovranno utilizzare, ed applicarli
+ di conseguenza
 \end_layout
 
 \begin_layout Itemize
+Enforce intention: rendere non ambiguo il confine dei moduli e non lasciare
+ spazio nella fase si codifica:
+\end_layout
 
-\series bold
-Descrizione del vantaggio
-\series default
-: descrive brevemente il vantaggio individuato
+\begin_deeper
+\begin_layout Itemize
+Rendere immutabile tutto ciò che non è destinato a subire variazioni nel
+ tempo
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Stima di incidenza
-\series default
-: indica quanto l'analista ritiene incidente nella valutazione del vantaggio
- complessivo il vantaggio in esame con un parametro compreso nell'insieme
- {
-\emph on
-Ottimale, Alta, Media, Bassa, Trascurabile
-\emph default
-}
+Usare l'information hiding ogni volta sia possibile impostando la visibilità
+ di metodi e attributi privati e protetti
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Giustificazione della stima
-\series default
-: l'analista spiega le motivazioni dell'assegnamento alla stima di incidenza
- assegnata
+Per le classi che richiedono una singola istanza si utilizzerà il design
+ pattern Singleton
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-
-\series bold
-Analista
-\series default
-: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
- dal Verificatore per conto del Responsabile) nel caso in cui le valutazioni
- appaiano inesatte o poco giustificate
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Riferimenti
-\series default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Questo punto è facoltativo.
-\end_layout
-
-\end_inset
-
-: elenco puntato di tutte le fonti utilizzate, per consentire una futura
- verifica delle fonti
-\end_layout
-
-\begin_layout Standard
-Una volta terminato lo studio di fattibilità di tutti i capitolati, l'analista
- redattore del documento finale dovrà inserire una conclusione in cui si
- esporrà:
-\end_layout
-
-\begin_layout Itemize
-Una 
-\series bold
-valutazione complessiva 
-\series default
-dei rischi e dei vantaggi di ciascun capitolato
-\end_layout
-
-\begin_layout Itemize
-Il 
-\series bold
-capitolato scelto
-\end_layout
-
-\begin_layout Itemize
-Un'
-\series bold
-analisi sintetica
-\series default
- di vantaggi e rischi di ciascun capitolato
+Raggiungere un livello di dettaglio tale da permettere una parallelizzazione
+ della codifica
 \end_layout
 
 \end_body

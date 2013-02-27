@@ -80,7 +80,20 @@ anomalia
  Il Verificatore, per ogni nuova anomalia riscontrata dovrà aprire un nuovo
  ticket (
 \family typewriter
-Norme_di_Progetto_v2.0.pdf, 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, 
 \family default
 sez.
  Gestione delle attività).
@@ -207,8 +220,14 @@ Verifica del codice
 I risultati pervenuti dai test eseguiti permetteranno di rintracciare errori,
  lacune, nonché errati usi delle risorse a disposizione; la loro individuazione
  aiuterà a sviluppare il sistema rispettando gli obiettivi definiti nella
- sezione qualità del prodotto (METTERE RIFERIMENTO).
- 
+ sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Qualità-del-prodotto"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -217,7 +236,7 @@ Verifica disegno architetturale
 
 \begin_layout Standard
 Consiste nel verificare se il disegno architetturale, una volta terminato,
- rispetti i principi di packaging e disaccopiamento.
+ rispetti i principi di packaging e disaccoppiamento.
  Per quanto riguarda la struttura dei package sarà controllata l’effettiva
  utilità di ognuno di essi mentre, per quanto riguarda il disaccopiamento
  si cercherà di ottenere la massima indipendenza tra parte funzionale ed
@@ -234,7 +253,7 @@ La fase di verifica del codice ha lo scopo di:
 
 \begin_layout Itemize
 Identificare parti di codice che non rispettano le norme di codifica descritte
- nel documento Norme di Progetto (METTERE RIFERIMENTO)
+ nel documento Norme di Progetto
 \end_layout
 
 \begin_layout Itemize
@@ -243,8 +262,8 @@ Identificare parti di codice soggette ad errori di programmazione
 
 \begin_layout Standard
 Ognuno di questi obiettivi è inteso a scoprire lacune nel sistema, le quali,
- una volta corrette, comportano benefici in termini di flessibiltà, manutenzione
- e affidabiltà.
+ una volta corrette, comportano benefici in termini di flessibilità, manutenzion
+e e affidabilità.
  Lo scopo delle verifiche è di rintracciare errori (di molteplici nature)
  nella scrittura del codice e di conseguenza correggerli, ma non può in
  nessun modo dimostrarne l’assenza.
@@ -269,8 +288,12 @@ scatola chiusa
 \begin_inset Quotes erd
 \end_inset
 
-, ossia controllando che i risultati in uscita abbiano il valore atteso
- in tutte le possibili condizioni in cui l'unità possa eseguire 
+, ossia controllando che i risultati in 
+\lang italian
+uscita
+\lang english
+ abbiano il valore atteso in tutte le possibili condizioni in cui l'unità
+ possa eseguire 
 \end_layout
 
 \begin_layout Enumerate
