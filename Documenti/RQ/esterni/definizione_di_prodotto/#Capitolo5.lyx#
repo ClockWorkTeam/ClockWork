@@ -444,10 +444,6 @@ user.UserDataDao.setIP(IP)
 \end_layout
 
 \begin_layout Standard
-check_message(user) //metodo userDataDAO
-\end_layout
-
-\begin_layout Standard
 }
 \end_layout
 
@@ -457,15 +453,6 @@ logout(user){
 
 \begin_layout Standard
 user.UserDataDao.set
-\end_layout
-
-\begin_layout Standard
-}
-\end_layout
-
-\begin_layout Standard
-check_message(user)->applica query per sapere se esistono messaggi differiti
- con destinatario=user
 \end_layout
 
 \begin_layout Subsubsection
@@ -515,48 +502,13 @@ Record_set(RecordMessage obj) -> chiama il RecordMessageDato per salvare
 \end_layout
 
 \begin_layout Standard
-CreateNotification(mittente, destinatario) ->notification_record_message()
- //metodo in NotificationTransfer
+CreateNotification(mittente, destinatario) ->chiama il metodo in NotificationTra
+nsfer
 \end_layout
 
 \begin_layout Standard
-gestore_invio_oggetto(mittente,destinatario) {
-\end_layout
-
-\begin_layout Enumerate
-sapere qual è l'id del messaggio tramite metodo know_message_id
-\end_layout
-
-\begin_layout Enumerate
-riceve l'id e prende tale oggetto da shared
-\end_layout
-
-\begin_layout Enumerate
-preleva_message(id) //metodo di shared 
-\end_layout
-
-\begin_layout Enumerate
-send_message(id)
-\end_layout
-
-\begin_layout Standard
-}
-\end_layout
-
-\begin_layout Standard
-know_message_id(mittente,destinatario) ->chiede a dao l'id del messaggio
-\end_layout
-
-\begin_layout Standard
-send_message(id)->invia a transfer il messaggio che 
-\begin_inset Quotes eld
-\end_inset
-
-crea il canale ?
-\begin_inset Quotes erd
-\end_inset
-
-
+invio_oggetto(mittente,destinatario) -> accede al dao per conoscere qual
+ è il messaggio da inviare tramite metodo know_id
 \end_layout
 
 \begin_layout Subsection
@@ -579,7 +531,11 @@ notification_call
 \end_layout
 
 \begin_layout Standard
-notification_recordmessage
+notification_videomessage
+\end_layout
+
+\begin_layout Standard
+notification_message
 \end_layout
 
 \end_body
