@@ -27,12 +27,15 @@ import org.server.shared.*;
 
 public class AuthenticationManager{
   private LoginDao access;
-  
+  private UserDataDao infoUser;
+  private RecordMessageDao mexUser; 
+
   /* Costruttore con parametri della classe AuthenticationManager
    * @param access riferimento alla classe che implementa l'interfaccia DAOLogin
    */
-  public AuthenticationManager(DAOLogin access){
+  public AuthenticationManager(DAOLogin access, UserDataDao infoUser){
 		this.access = access;
+		this.infoUser = infoUser;
   }
    
   /* Metodo per il login, se effettua i login setta anche i valori del User
@@ -42,12 +45,15 @@ public class AuthenticationManager{
   public boolean login(User user){
 	  boolean result = access.login(login);
 	  if(result){	   
-	  	user.getInfo();
+	  	infoUser.getInfo(user);
 	  	checkMessages(user);
 	  }
 	  return result; 
   }
    
+  public void checkMessages(User user){
+  	infoUser.getMessages(user, mexUser.getMessages(user));
+  }
   /* Metodo per segnalare al sistema il logout di un dipendente
    * @param user user del dipendente che ha effettuato il logout
    */

@@ -66,9 +66,7 @@ public class User {
 	public String getIP()const{
 		return this.IP;
 	}
-	public vector<RecordMessage> getMessages(){
-	 return messages;
-	}
+
 //metodi set	
 	public void setPassword(String password){
 		this.password=password;
@@ -82,10 +80,15 @@ public class User {
 	public void setIP(String IP){
 		this.IP=IP;
 	}
+
+//metodi dei messaggi
+	public vector<RecordMessage> getMessages(){
+	 return messages;
+}
 	public void setMessages(vector<RecordMessage> messages){
 		this.messages=messages;
 	}
-	public void getMessage(RecordMessage message){
+	public void setMessage(RecordMessage message){
 		this.messages.add(message);
 	}
 	public void removeMessage(RecordMessage message){

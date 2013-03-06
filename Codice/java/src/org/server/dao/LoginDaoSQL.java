@@ -73,7 +73,7 @@ public class LoginDaoSQL implements LoginDao{
     	connection.executeUpdate("UPDATE UserDataSQL SET IP='0' WHERE username='"+username+"' AND (password='"+password+"');");
     	user.setIP(0);
     }catch(SQLException e){return false;}
-    return true;
+    eturn true;
   }
 
 }
