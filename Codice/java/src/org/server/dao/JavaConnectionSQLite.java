@@ -17,38 +17,63 @@
 */
 
 
-package org.server;
+package org.server.dao;
 import java.sql.*;
 
 
-public class ConnessioneJavaSQLite {
-   private Connection conn;
-   private Statement connettore;
+public class JavaConnectionSQLite {
+   private Connection connection;
+   private Statement stetement;
 
 /*Costruzione connessione al database
  * @parametro database: URI del database di riferimento
  */
-   public ConnessioneJavaSQLite (String database){
+   public JavaConnectionSQLite (String database){
       try{
          final String driver="org.sqlite.JDBC";
          Class.forName(driver);
-         conn= DriverManager.getConnection("jdbc:sqlite:mytalk.sqlite");
-         connettore = conn.createStatement();
+         connection= DriverManager.getConnection("jdbc:sqlite:myTalk.sqlite");
+         statement = connection.createStatement();
       }
       catch(SQLException e){System.out.println("Impossibile creare la connessione al database: "+database);}
       catch(ClassNotFoundException e){System.out.println("Impossibile creare la connessione al database: "+database);}
    }
 
-/*Distruzione della classe ConnessioneJavaSQLite
+/*Distruzione della classe JavaConnectionSQLite
  *cerca di rilasciare la connessione al database quando l'oggetto viene distrutto,
  *nel caso non ci riuscisse, lancia un errore.
  */
 public void finalize(){
    try {
-     connettore.close();
-     conn.close();
+     statement.close();
+     connection.close();
    }
    catch(SQLException e){System.out.println("Errore nella chiusura del database");}
  }  
+
+  /**
+   * Metodo che ritorna una tupla
+   * 
+   * @param tabella tabella da esaminare
+   * @param colonne le colonne di cui interessano i valori (indicate con col1, col2...)
+   * @param controlli criteri su cui effettuare la visita
+   * @param extra contiene tutte le clausole aggiuntive per una query
+   * @return rs insieme delle righe ottenute dal risultato della query, null se non esistono risultati
+   * 
+   */  
+
+  public ResultSet select(String table, String column, String condition, String extra){
+    String where="";
+    ResultSet rs=null;
+    if (condition!=""){
+      where=" WHERE " +condition;
+    }
+    try{
+    	rs = statement.executeQuery("SELECT "+ colonne+" FROM "+ tabella + where +" "+ extra+";");
+    	rs.next();
+    }
+    catch(SQLException e){return null;}    
+    return rs;
+  }
 
 }
