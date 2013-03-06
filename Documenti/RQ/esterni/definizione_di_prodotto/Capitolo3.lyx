@@ -218,8 +218,84 @@ name "sub:Package-Dao"
 UserDataDaoSQL
 \end_layout
 
+\begin_layout Paragraph*
+Funzione
+\end_layout
+
+\begin_layout Standard
+La classeUserDataDaoSQL è l’implementazione di UserDataDao per la base di
+ dati SQLite; si occupa della lettura e scrittura dei dati nella base di
+ dati
+\end_layout
+
 \begin_layout Standard
 metodi get e set per ogni campo del DB
+\end_layout
+
+\begin_layout Paragraph
+Relazione d’uso con altri moduli o Relazioni
+\end_layout
+
+\begin_layout Itemize
+UserDataDaoSQL
+\end_layout
+
+\begin_layout Itemize
+UserDataDao
+\end_layout
+
+\begin_layout Itemize
+UserData
+\end_layout
+
+\begin_layout Paragraph
+Attributi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+private JavaConnectionSQLite connection
+\end_layout
+
+\begin_layout Paragraph
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public UserDataDaoSQL (JavaConnectionSQLite connection)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Costruttore che dovrà impostare il valore dell'attributio secondo il valore
+ del parametro passato
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public User getInfo (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+
+\series medium
+Riceve come unico parametro un oggetto di tipo User usato per effettuare
+ il login (username e password), dal quale prende le informazioni.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public void getMessages (User user, vector<RecordMessage> messages)
 \end_layout
 
 \begin_layout Subsubsection
