@@ -1,5 +1,5 @@
 /*
-* Nome: RecordMessage
+* Nome: RecordMessageTest
 * Package: org.server.shared
 * Autore: Gavagnin Jessica
 * Data: 2013/03/04
@@ -18,20 +18,23 @@
 
 
 package mytalk.server.shared;
-import java.util.Date;
+import java.until.Date;
 
-public class RecordMessage{
-	private User sender;
-	private User addressee;
-	private String path;
-	private Date dateCreation;
+import org.junit.*;
+import static org.junit.Assert.*;
 
-	public RecordMessage(User sender, User addressee, String path, Date dateCreation){
-		this.sender=sender;
-		this.addressee= addressee;
-		this.path=path;
-		this.dateCreation=dateCreation;
+public class RecordMessageTest{
+	RecordMessage record_message;
+
+	private void  initializationAllParameters(){
+		User sender=sender;
+		User addressee= addressee;
+		String path=path;
+		Date dateCreation=dateCreation;
+		record_message=new RecordMessage(sender,addressee,path,dateCreation);
 	}
+
+
 
 	public User getSender()const{
 		return sender;
