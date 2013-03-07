@@ -18,20 +18,27 @@
 
 
 package mytalk.server.shared;
+import java.util.Date;
 
 public class RecordMessage{
 	private User sender;
+	private User addressee;
 	private String path;
-	private String dateCreation;
+	private Date dateCreation;
 	
-	public RecordMessage(User sender, String path, String dateCreation){
+	public RecordMessage(User sender, User addressee, String path, Date dateCreation){
 		this.sender=sender;
+		this.addressee= addressee;
 		this.path=path;
 		this.dateCreation=dateCreation;
 	}
 	
 	public User getSender()const{
 		return sender;
+	}
+
+	public User getAddressee()const{
+		return addressee;
 	}
 	
 	public String getPath()const{

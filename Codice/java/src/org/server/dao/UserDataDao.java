@@ -28,6 +28,12 @@ public interface UserDataDao{
    */     
 	public User getInfo(User user);
 
+	/*Metodo che prende i messaggi di un User dal database 
+   * @param user Oggetto User usato per Login (quindi solo con i campi username e password) da cui si prendono le informazioni
+   * @return l'oggetto User istanziato se presente nel db, altrimenti null
+   */     
+	public boolean getMessages(User user);
+
   /*Metodo che setta i campi di un User nel DB
    * @param user Oggetto User da cui si prendono le informazioni
    * @param password la stringa della nuova password del User

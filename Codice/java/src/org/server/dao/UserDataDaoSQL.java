@@ -45,6 +45,14 @@ public UserDataDaoSQL implements UserDataDao{
 		return user;
 	}
 
+	/*Metodo che prende i messaggi di un User dal database 
+   * @param user Oggetto User usato per Login (quindi solo con i campi username e password) da cui si prendono le informazioni
+   * @return l'oggetto User istanziato se presente nel db, altrimenti null
+   */     
+	public void getMessages(User user, vector<RecordMessage> messages){
+		user.setMessages(messages);
+	}
+
   /*Metodo che setta i campi di un User nel DB
    * @param user Oggetto User da cui si prendono le informazioni
    * @param password la stringa della nuova password del User
@@ -58,6 +66,9 @@ public UserDataDaoSQL implements UserDataDao{
 		String oldpassword=user.getPassword();
 		try{
     	connection.executeUpdate("UPDATE UserDataSQL SET password='"+password+"', name='"+name+"', surname='"+surname+"' WHERE username='"+username+"' AND (password='"+oldpassword+"');");
+    	user.setPassword(password);
+    	user.setName(name);
+    	user.setSurname(surname);
     }catch(SQLException e){return false;}
 		return true;	
 	}
@@ -72,6 +83,7 @@ public UserDataDaoSQL implements UserDataDao{
 		String oldpassword=user.getPassword();
 		try{
     	connection.executeUpdate("UPDATE UserDataSQL SET password='"+password+"' WHERE username='"+username+"' AND (password='"+oldpassword+"');");
+    	user.setPassword(password);
     }catch(SQLException e){return false;}
 		return true;
 	}
@@ -86,6 +98,7 @@ public UserDataDaoSQL implements UserDataDao{
 		String password=user.getPassword();
 		try{
     	connection.executeUpdate("UPDATE UserDataSQL SET name='"+name+"'' WHERE username='"+username+"' AND (password='"+password+"');");
+    	user.setName(name);
     }catch(SQLException e){return false;}
 		return true;	
 	}
@@ -100,6 +113,7 @@ public UserDataDaoSQL implements UserDataDao{
 		String password=user.getPassword();
 		try{
     	connection.executeUpdate("UPDATE UserDataSQL SET surname='"+surname+"' WHERE username='"+username+"' AND (password='"+password+"');");
+    	user.setSurname(surname);
     }catch(SQLException e){return false;}
 		return true;	
 	}
