@@ -1,5 +1,5 @@
 /*
- * Nome:untitled.js
+ * Nome:ContactView.js
  * Package: 
  * Autore:
  * Data:
@@ -25,19 +25,42 @@ define([
     template: _.template(ContactTemplate),
     
     events:{
-		"click li.contact" : "view"
+		"click li.contact": "view"
 	},
-	var this.TextMessageModel=new TextMessageModel();
-//Per ora rendo sempre visibili dei contatti:
+	
+	functions_view: '',
+	
+	chat_view: '',
+	
+	initialize:function(){
+		_.bindAll(this, 'render', 'view'); 
+	},
+	
+  //rendo visibili i contatti:
   render: function(){
     this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username}));   
 	return this;
   },
-// Su temp
+  
+    // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
 	view : function(){
-		var fview= new FunctionsView({model: this.model});
+		alert(this.functions_view);
 		
-		var chat=new ChatView({model: this.TextMessageModel});
+		if(this.functions_view == '')
+		{
+			this.functions_view = new FunctionsView({model: this.model});
+		} else {
+			this.functions_view.render();
+		};
+		
+		alert(this.chat_view);
+		
+		if(this.chat_view == '')
+		{
+			this.chat_view = new ChatView({model: TextMessageModel});
+		} else {
+			this.chat_view.render();
+		}
 	}
 
 }); 
