@@ -1,4 +1,16 @@
-//FILE TEMPORANEO PER PROVA!!!!
+/*
+ * Nome:ConactsView.js
+ * Package: 
+ * Autore:
+ * Data:
+ * Versione:
+ * 
+ * Modifiche:
+ * +------+---------------+-----------+
+ * | Data | Programmatore | Modifiche |
+ * +------+---------------+-----------+
+ * |      |               | Scrittura codice          |
+ */
 
 define([
  'jquery',
@@ -6,9 +18,10 @@ define([
  'backbone',
  'view/ContactView',
  'view/FunctionsView',
+ 'view/ChatView',
  'text!templates/ContactsTemplate.html',
  'collection/ContactsCollection'
-], function($, _, Backbone, ContactView, FunctionsView, ContactsTemplate, ContactsCollection){
+], function($, _, Backbone, ContactView, FunctionsView, ChatView, ContactsTemplate, ContactsCollection){
   var ContactsView = Backbone.View.extend({
 	  
     el: $("#sidebar"),
@@ -23,14 +36,15 @@ define([
 	},
 	
     initialize:function(){
-		_.bindAll(this, 'render', 'unrender');
+		_.bindAll(this, 'render', 'unrender', 'viewContact');
 		
 		//this.listenTo(this.collection, 'add', this.viewContacts);
 		//this.listenTo(this.collection, 'change', this.viewContacts);
         //this.listenTo(this.collection, 'reset', this.viewContacts);
-		this.listenTo(this.collection, 'all', this.render);
+		//this.listenTo(this.collection, 'all', this.render);
 		
 		this.$el.html(this.template({logged: false}));
+
 	},
 
 	render: function (){
@@ -40,45 +54,39 @@ define([
 	
 	unrender: function (){
 		$(this.el).html(this.template({logged: false}));
-		var fview= new FunctionsView({From: ''});
 		this.destroyContacts();
 	},
 	
 	viewContact: function(ContactModel){
-
-			var c = new ContactView({dom : "sidebar", model: ContactModel});
-			this.$("#contacts").append(c.render().el);
+			var contact_view = new ContactView({dom : "sidebar", model: ContactModel });
+			this.$("#contacts").append(contact_view.render().el);
 	},
 		
-	viewContacts: function(){
-		
-		this.collection.each(this.viewContact);
-		
+	viewContacts: function(){	
+		this.collection.each(this.viewContact);	
 	},
 	
 	destroyContacts: function(){
+		var functions_view = new FunctionsView({From: ''});
+		functions_view.remove();
+		var chat_view = new ChatView();
+		chat_view.remove();
 		_.each(this.collection.record(), function(contact){contact.clear();});
 	},
 	
-	/*destroyContact: function(ContactModel){
-			var c = {model: ContactModel};
-			c.model.destroy();
-			
-	},*/
-	
 	callIP:function(){
-		var fview= new FunctionsView({From: "IP"});
+		var functions_view = new FunctionsView({From: 'IP'});
 	},
 	
     StartConference: function(){
-		var fview= new FunctionsView({From: "Conf"});
+		var functions_view = new FunctionsView({From: 'Conf'});
 		this.collection.fetch();
 		this.collection.each(this.listContacts);
 	},
 	
 	listContacts: function(ContactModel){
-		var c =new ContactView({dom : "", model: ContactModel});
-		this.$("#optionContacts").append(c.render().el);
+		var contact_view = new ContactView({dom : '', model: ContactModel});
+		this.$("#optionContacts").append(contact_view.render().el);
 	}
     
   });

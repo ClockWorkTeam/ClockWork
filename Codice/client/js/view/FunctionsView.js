@@ -28,7 +28,9 @@ define([
 		'click button#video':'video',	
 		'click input#record' : 'record'
 	},
-	el : $("body"),
+	
+	el : $('#content'),
+	
 //indica in quale parte del DOM gestirà 
     template: _.template(FunctionTemplate),
     
@@ -37,19 +39,24 @@ define([
     _.bindAll(this, 'render'); 
     this.render();
   },
+  
 //funzione che effettua la scrittura della struttura della pagina
   render: function(){
     if(typeof this.model == "undefined"){
-		$("#content").html(this.template({From: this.options.From}));
+		$('#content').html(this.template({From: this.options.From}));
 	}else{
-		$("#content").html(this.template(this.model.toJSON()));
+		$('#content').html(this.template(this.model.toJSON()));
 	}
   },
     
   startChat: function(){},
+  
   sendVideoText:function(){},
+  
   call:function(){},
+  
   video:function(){},
+  
   record:function(){}
 });
 return FunctionView;

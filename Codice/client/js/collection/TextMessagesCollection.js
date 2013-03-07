@@ -23,7 +23,7 @@ define([
     model: TextMessageModel,
  //PER ORA LO METTO NEL LOCAL STORAGE SOTTO IL NAMESPACE MyTalk
 //	sessionStorage: new Store("MyTalk")
-  localStorage: new Store("MyTalk", "session"),  
+  localStorage: new Store("MyTalk"),  
 	
  });
   return new TextMessagesCollection();
