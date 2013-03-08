@@ -11,9 +11,9 @@
  * +------+---------------+-----------+
  * |      |               |           |
  */
-
+//classe che comunica con il server per i dati che riguardano il login
 define(function(){
-	//classe che comunica con il server per i dati che riguardano il login
+	
 	var AuthenticationCommunication = function(){};
 	
 	//metodo per controllare la correttezza delle credenziali inserite	
@@ -22,7 +22,7 @@ define(function(){
 	  if ((!(user == ''))&&(!(pass == ''))) //se i campi username e password sono entrambi pieni
 	    return {ans:true, nome: "pino", cognome:"gino"};						//restituisce vero
 	};
-	
+	//si occupa di gestire la registrazione
 	AuthenticationCommunication.signup = function(user, pass, name, surname) {
 	 return true			   
 	};
