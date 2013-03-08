@@ -128,6 +128,44 @@ mytalk.client.view.AuthenticationView
 \end_layout
 
 \begin_layout Standard
+La classe AuthenticationView denisce la struttura, e la conseguente visualizzazi
+one, della pagina web che consente di effettuare la registrazione, l'accesso
+ e la disconnessione al sistema
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 Attributi
@@ -136,17 +174,28 @@ Attributi
 \end_layout
 
 \begin_layout Itemize
-el: utilizzato per indicare quale parte del DOM gestirà
+
+\series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
 \end_layout
 
 \begin_layout Itemize
-contacts_view: utilizzato per legare la lista dei contatti, i bottoni di
- chiamata IP e teleconferenza a questa vista
+
+\series bold
+contacts_view:
+\series default
+ utilizzato per legare la lista dei contatti, i bottoni di chiamata IP e
+ teleconferenza a questa vista
 \end_layout
 
 \begin_layout Itemize
-authenticationTemplate: utilizzato per tenere il template per il rendering
- di questa vista 
+
+\series bold
+authenticationTemplate: 
+\series default
+utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
 
 \begin_layout Standard
@@ -156,27 +205,57 @@ Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
-render(): 
+
+\series bold
+render():
+\series default
+ funzione che effettua la scrittura nella pagina del template 
+\emph on
+authenticationTemplate
 \end_layout
 
 \begin_layout Itemize
-connect(): 
+
+\series bold
+connect():
+\series default
+ funzione che effettua il login dell'utente e aggiorna il template se i
+ dati inseriti dall'utente sono corretti
 \end_layout
 
 \begin_layout Itemize
-disconnect(): 
+
+\series bold
+disconnect():
+\series default
+ funzione che si occupa di chiudere la sessione con il server
 \end_layout
 
 \begin_layout Itemize
-view_signup(): 
+
+\series bold
+view_signup():
+\series default
+ funzione che visualizza il form di registrazione
 \end_layout
 
 \begin_layout Itemize
-signup(): 
+
+\series bold
+signup():
+\series default
+ funzione che effettuala registrazione dell'utente e aggiorna il template
+ se tutti i campi dato sono stati inseriti e se l'account non risulta già
+ inserito nel server
 \end_layout
 
 \begin_layout Itemize
-deny(): 
+
+\series bold
+deny():
+\series default
+ funzione per annullare la compilazione della registrazione e tornare allo
+ stato precedente alla registrazione
 \end_layout
 
 \begin_layout Subsubsection
