@@ -1090,9 +1090,8 @@ shared.RecordMessage
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Funzione
+Questa classe fungerà da contenitore per i dati riguardanti i Badge che
+ sono stati inseriti all’interno del database aziendale
 \end_layout
 
 \begin_layout Standard
@@ -1100,11 +1099,41 @@ Funzione
 \align left
 
 \series bold
-Relazioni d'uso con altri moduli
+Attributi privati
 \end_layout
 
-\begin_layout Standard
-xxxxxxxxx
+\begin_layout Itemize
+
+\series bold
+String sender: 
+\series default
+mittente, colui che crea il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String addressee: 
+\series default
+destinatario, colui che riceve il messaggio
+\series bold
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String path: 
+\series default
+indirizzo dove si trova il messaggio differito all'interno del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Date dateCreation: 
+\series default
+data di creazione del messaggio
 \end_layout
 
 \begin_layout Standard
@@ -1112,58 +1141,48 @@ xxxxxxxxx
 \align left
 
 \series bold
-Attributi
-\end_layout
-
-\begin_layout Itemize
-private User sender
-\end_layout
-
-\begin_layout Itemize
-private String path
-\end_layout
-
-\begin_layout Itemize
-private Date dateCreation
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-Metodi
+Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public RecordMessage (User sender, String path, Date dateCreation)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Costruttore che dovrà impostare i valori degli attributi secondo i valori
+RecordMessage (String sender, String addressee, String path, Date dateCreation):
+\series default
+ costruttore che dovrà impostare i valori degli attributi secondo i valori
  dei parametri passati
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public User getSender()
+String getSender(): 
+\series default
+ritorna il mittente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public String getPath()
+String getAddressee(): 
+\series default
+ritorna il destinatario
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public Date getDate()
+String getPath():
+\series default
+ ritorna l'indirizzo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Date getDate(): 
+\series default
+ritorna la data
 \end_layout
 
 \begin_layout Subsubsection
