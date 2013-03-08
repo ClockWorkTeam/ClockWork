@@ -136,11 +136,19 @@ one, della pagina web che consente di effettuare la registrazione, l'accesso
 \begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/AuthenticationView.pdf
+	scale 90
+
+\end_inset
+
 
 \end_layout
 
@@ -148,7 +156,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
+Classe AuthenticationView
 \end_layout
 
 \end_inset
@@ -168,9 +176,7 @@ status open
 \begin_layout Standard
 
 \series bold
-Attributi
-\series default
-:
+Attributi pubblici:
 \end_layout
 
 \begin_layout Itemize
@@ -383,19 +389,102 @@ mytalk.client.view.ChatView
 \end_layout
 
 \begin_layout Standard
-Attributi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ChatView
 \end_layout
 
-\begin_layout Itemize
-bla
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Metodi:
+
+\series bold
+Attributi pubblici:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ChatTemplate:
+\series default
+ utilizzato per tenere il template per il rendering di questa vista 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+collection:
+\series default
+ utilizzato per tenere la collezione che genera la chat
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initialize():
+\series default
+ funzione di inizializzazione dell'oggetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+render():
+\series default
+ funzione che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+putMessages(): 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+putMessages(TextMessageModel): 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+send(): 
 \end_layout
 
 \begin_layout Subsubsection
