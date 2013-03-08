@@ -11,9 +11,9 @@
  * +------+---------------+-----------+
  * |      |               |           |
  */
-
+//classe che comunica con il server per i dati che riguardano il login
 define(function(){
-	//classe che comunica con il server per i dati che riguardano il login
+	
 	var AuthenticationCommunication = function(){};
 	
 	//metodo per controllare la correttezza delle credenziali inserite	
@@ -23,6 +23,7 @@ define(function(){
 	    return {ans:true, nome: "pino", cognome:"gino"};						//restituisce vero
 	};
 	
+	//si occupa di gestire la registrazione
 	AuthenticationCommunication.prototype.signup = function(user, pass, name, surname) {
 	 return true			   
 	};

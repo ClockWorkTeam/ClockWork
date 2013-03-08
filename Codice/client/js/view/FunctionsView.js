@@ -53,9 +53,9 @@ define([
   
   sendVideoText:function(){},
   
-  call:function(){},
+  audiocall:function(){},
   
-  video:function(){},
+  videocall:function(){},
   
   record:function(){}
 });
