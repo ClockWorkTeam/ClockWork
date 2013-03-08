@@ -14,7 +14,7 @@
 //classe che comunica con il server per i dati che riguardano il ricavare la lista dei contatti
 define(function(){
 	
-	var ContactCommunication = function(collection){};
+	var ContactCommunication = function(collection){
 	
 	//metodo per ricevere i contatti
 	ContactCommunication.prototype.fetchContacts = function() {
@@ -34,6 +34,6 @@ define(function(){
 		IP:'0.0.0.3'});
 	};
 	
-  }
+  };
   return ContactCommunication;
 });

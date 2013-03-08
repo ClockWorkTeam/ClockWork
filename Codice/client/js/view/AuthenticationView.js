@@ -22,7 +22,7 @@ define([
   'communication/ContactCommunication',
   'model/UserModel',
   'view/ContactsView',
-], function($, _, Backbone, authenticationTemplate, AuthenticationCommuncation, ContactsCommunication, UserModel, ContactsView){
+], function($, _, Backbone, authenticationTemplate, AuthenticationCommunication, ContactsCommunication, UserModel, ContactsView){
   var AuthenticationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
 	  events: {
