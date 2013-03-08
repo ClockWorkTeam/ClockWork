@@ -139,6 +139,48 @@ data.UserDataSQL
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+n
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+-----------------------
+\end_layout
+
+\begin_layout Standard
 I campi che contiene questa tabella sono i seguenti:
 \end_layout
 
@@ -168,6 +210,44 @@ data.RecordMassageDataSQL
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+---------------------------
+\end_layout
+
+\begin_layout Standard
 I campi che contiene questa tabella sono i seguenti:
 \end_layout
 
@@ -189,6 +269,44 @@ messaggio: in mediastream (da verificare)
 
 \begin_layout Subsubsection
 data.TutorialDataSQL
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+---------------------------------
 \end_layout
 
 \begin_layout Standard
@@ -223,13 +341,10 @@ Funzione
 \end_layout
 
 \begin_layout Standard
-La classeUserDataDaoSQL è l’implementazione di UserDataDao per la base di
- dati SQLite; si occupa della lettura e scrittura dei dati nella base di
- dati
-\end_layout
-
-\begin_layout Standard
-metodi get e set per ogni campo del DB
+\noindent
+La classe UserDataDaoSQL è l’implementazione di UserDataDao per la base
+ di dati SQLite; si occupa della lettura e scrittura dei dati nella base
+ di dati
 \end_layout
 
 \begin_layout Paragraph
@@ -253,8 +368,6 @@ Attributi
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 private JavaConnectionSQLite connection
 \end_layout
 
@@ -270,7 +383,7 @@ public UserDataDaoSQL (JavaConnectionSQLite connection)
 
 \begin_deeper
 \begin_layout Standard
-Costruttore che dovrà impostare il valore dell'attributio secondo il valore
+Costruttore che dovrà impostare il valore dell'attributo secondo il valore
  del parametro passato
 \end_layout
 
@@ -298,8 +411,214 @@ Riceve come unico parametro un oggetto di tipo User usato per effettuare
 public void getMessages (User user, vector<RecordMessage> messages)
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+public boolean setInfo (User user, String password, String name, String
+ surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta i campi dati (password, name e surname) secondo i valori dei parametri
+ passati.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setPassword (User user, String password)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo password con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setName (User user, String name)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo name con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setSurname (User user, String surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo surname con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+LoginDaoSQL
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+Classe che gestisce i login, implementa i metodi pubblici dell'interfaccia
+ LoginDao
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Itemize
+private JavaConnectionSQLite connection
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public LoginDaoSQLite (JvaConnectionSQLite server)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Costruttore che dovrà impostare il valore dell'attributo secondo il valore
+ del parametro passato
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean login (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Metodo che prova il login.
+ Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Ritorna un valore booleano che indica se il login è avvenuto con successo
+ o no
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+boolean logout (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Metotodo che effetua il logout.
+ Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Ritorna un valore booleano che indica se il logout è avvenuto con successo
+ o no
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 RecordMessageDaoSQL
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+Classe che definisce dei metodi per getire i recordmessages nel database
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Itemize
+private JavaConnectionSQLite connection
+\end_layout
+
+\begin_layout Itemize
+private UserDatadao userData
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
 \end_layout
 
 \begin_layout Standard
@@ -311,6 +630,40 @@ TutorialDataDaoSQL
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
 metodi get e set per ogni campo del DB
 \end_layout
 
@@ -319,11 +672,176 @@ UserDataDao
 \end_layout
 
 \begin_layout Standard
-è una interfaccia ha solo metodi, da dao a sql
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+La classe UserDataDao rappresenta un'interfaccia, viene implementata da
+ UserDataDaoSQL che agirà sulla base di dati.
+ Fornisce i metodi per il salvataggio e la modifica dei dati presenti nel
+ database
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.usermanager
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+Nessuno
 \end_layout
 
 \begin_layout Paragraph
 Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public User getInfo (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+
+\series medium
+Riceve come unico parametro un oggetto di tipo User usato per effettuare
+ il login (username e password), dal quale prende le informazioni.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public User getContactInfo (String username???)
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+
+\series medium
+Riceve come unico parametro un oggetto di tipo Username???, dal quale prende
+ le informazioni.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public void getMessages (User user, Vector<RecordMessage> messages)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User 
+\series medium
+usato per effettuare il login (username e password), dal quale prende i
+ messaggi.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setUser (User user)
+\end_layout
+
+\begin_layout Itemize
+Crea un oggetto di tipo User nel database.
+ Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public boolean setInfo (User user, String password, String name, string
+ surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta i campi dati (password, name e surname) secondo i valori dei parametri
+ passati.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setPassword (User user, String password)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo password con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setName (User user, String name)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo name con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean setSurname (User user, String surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo surname con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ buon fine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+---------------------------------------------
 \end_layout
 
 \begin_layout Standard
@@ -359,11 +877,205 @@ user.UserDataShared.setIP(IP);
 \end_layout
 
 \begin_layout Subsubsection
+LoginDao
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+Interfaccia che contiene i prototipi dei metodi per gestire il login
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+Nessuno
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public boolean login (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Metodo che prova il login.
+ Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Ritorna un valore booleano che indica se il login è avvenuto con successo
+ o no
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+boolean logout (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Metotodo che effetua il logout.
+ Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Ritorna un valore booleano che indica se il logout è avvenuto con successo
+ o no
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
 RecordMessageDao 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+Interfaccia che contiene i protoipi dei metodi per gestire i recordmessages
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+Nessuno
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public Vector<RecordMessage> getMessages (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Riceve come unico parametro un oggetto di tipo User, dal quale prende i
+ messaggi che ha ricevuto.
+ Ritorna un vettore dei messaggi inviati all'user
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean createMessage (RecordMessage message, User address)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Inserisce l'oggetto di tipo RecordMessage e ritorna un un valore booleano
+ che indica se l'operazione ha avuto successo o meno
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public boolean removeMessage (RecordMessage message, User address)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Elimina l'oggetto di tipo RecordMessage e ritorna un un valore booleano
+ che indica se l'operazione ha avuto successo o meno
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 TutorialDataDao
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
 \end_layout
 
 \begin_layout Subsection
@@ -382,6 +1094,44 @@ shared.UserData
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+---------------------------
+\end_layout
+
+\begin_layout Standard
 Crea gli oggetti UserData
 \end_layout
 
@@ -390,11 +1140,87 @@ shared.RecordMessageData
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+--------------------------------
+\end_layout
+
+\begin_layout Standard
 Crea gli oggetti RecordMessageData
 \end_layout
 
 \begin_layout Subsubsection
 shared.TutorialData
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+----------------------------------
 \end_layout
 
 \begin_layout Standard
@@ -414,6 +1240,44 @@ name "sub:Package-Manager"
 
 \begin_layout Subsubsection
 UserDataManager
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+------------------------------------
 \end_layout
 
 \begin_layout Standard
@@ -493,6 +1357,44 @@ AuthenticationManager
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+-----------------------------------
+\end_layout
+
+\begin_layout Standard
 serve per effettuare login/logout
 \end_layout
 
@@ -550,6 +1452,44 @@ CallManager
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+----------------------------------------
+\end_layout
+
+\begin_layout Standard
 campi dati:nessuno
 \end_layout
 
@@ -576,6 +1516,44 @@ Teleconferenza -> ?
 
 \begin_layout Subsubsection
 RecordMessageManager
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+--------------------------------
 \end_layout
 
 \begin_layout Standard
@@ -649,6 +1627,44 @@ name "sub:Package-Transfer"
 
 \begin_layout Subsubsection
 NotificationTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Standard
+---------------------------------------
 \end_layout
 
 \begin_layout Standard
