@@ -12,7 +12,7 @@
  * |      |               | Scrittura codice          |
  */
  
- //definizione delle dipendenze
+//definizione delle dipendenze
 define([
  'jquery',
  'underscore',  
@@ -20,18 +20,20 @@ define([
  'text!templates/ChatTemplate.html',
  'collection/TextMessagesCollection'
 ], function($, _, Backbone, ChatTemplate, TextMessagesCollection){
- var ChatView = Backbone.View.extend({
-//si occupa di legare gli eventi ad oggetti del DOM
- events:{
-		'click button#Send':'send'
+  var ChatView = Backbone.View.extend({
+    //si occupa di legare gli eventi ad oggetti del DOM
+    events:{
+	  'click button#Send':'send'
 	},
 	
-//indica in quale parte del DOM gestirà 
-  el : $("#chat"),
+    //indica in quale parte del DOM gestirà 
+    el : $("#chat"),
+
+    //indico il template da utilizzare
+    ChatTemplate: _.template(ChatTemplate),
   
-  ChatTemplate: _.template(ChatTemplate),
-  
-  collection: TextMessagesCollection,
+    //imposto la collezione per generare la chat
+    collection: TextMessagesCollection,
   
 //funzione di inizializzazione dell'oggetto
   initialize: function(){
