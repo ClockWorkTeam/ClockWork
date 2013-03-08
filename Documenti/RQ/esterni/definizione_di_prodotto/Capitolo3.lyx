@@ -617,10 +617,6 @@ private UserDatadao userData
 Metodi
 \end_layout
 
-\begin_layout Itemize
-
-\end_layout
-
 \begin_layout Standard
 metodi get e set per ogni campo del DB
 \end_layout
@@ -1087,6 +1083,208 @@ name "sub:Package-Shared"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+shared.RecordMessage
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Itemize
+private User sender
+\end_layout
+
+\begin_layout Itemize
+private String path
+\end_layout
+
+\begin_layout Itemize
+private Date dateCreation
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public RecordMessage (User sender, String path, Date dateCreation)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Costruttore che dovrà impostare i valori degli attributi secondo i valori
+ dei parametri passati
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+public User getSender()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public String getPath()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public Date getDate()
+\end_layout
+
+\begin_layout Subsubsection
+shared.User
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+private String username
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stringa dell'username 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+private String password
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stringa della password
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+private String name
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stringa del nome
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+private String surname
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stringa del cognome
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+private String IP
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stringa dell'IP
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+private Vector<RecordMessage> messages
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Vettore di messaggi
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+public User (String username, String password, String IP)
+\end_layout
+
+\begin_layout Itemize
+Costruttore di User per effettuare il login, imposta i parametri con la
+ stinga dell'username
 \end_layout
 
 \begin_layout Subsubsection
