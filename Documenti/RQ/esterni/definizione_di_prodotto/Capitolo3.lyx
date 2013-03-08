@@ -1090,8 +1090,8 @@ shared.RecordMessage
 \end_layout
 
 \begin_layout Standard
-Questa classe fungerà da contenitore per i dati riguardanti i Badge che
- sono stati inseriti all’interno del database aziendale
+Questa classe fungerà da contenitore per i dati riguardanti i messaggi differiti
+, inseriti all’interno del server
 \end_layout
 
 \begin_layout Standard
@@ -1174,7 +1174,8 @@ ritorna il destinatario
 \series bold
 String getPath():
 \series default
- ritorna l'indirizzo
+ ritorna l'indirizzo dove si trova il messaggio differito all'interno del
+ server
 \end_layout
 
 \begin_layout Itemize
@@ -1182,7 +1183,7 @@ String getPath():
 \series bold
 Date getDate(): 
 \series default
-ritorna la data
+ritorna la data di creazione del messaggio
 \end_layout
 
 \begin_layout Subsubsection
@@ -1190,9 +1191,8 @@ shared.User
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Funzione
+Questa classe fungerà da contenitore per i dati riguardanti gli utenti registrat
+i
 \end_layout
 
 \begin_layout Standard
@@ -1200,16 +1200,225 @@ Funzione
 \align left
 
 \series bold
-Relazioni d'uso con altri moduli
+Attributi privati
 \end_layout
 
-\begin_layout Standard
-xxxxxxxxx
+\begin_layout Itemize
+
+\series bold
+String username:
+\series default
+ username dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String password:
+\series default
+ password legata allo username
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String name:
+\series default
+ nome dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo campo è facoltativo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String surname:
+\series default
+ cognome dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo campo è facoltativo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String IP:
+\series default
+ IP dello username
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se l'utente non è connesso risulterà 0, altrimenti corrisponderà all'indirizzo
+ IP dell'utente in quella precisa sessione.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> messages:
+\series default
+ vettore di messaggi
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align left
+
+\series bold
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User (String username, String password, String IP):
+\series default
+ costruttore di User per effettuare il login, imposta i parametri con le
+ stinghe dell'username e della password dati al login e con la stringa dell'IP
+ del client che sta effettuando il login
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User (String username, String password, String name, String surname, String
+ IP):
+\series default
+ costruttore di User che dovrà impostare i valori degli attributi secondo
+ i valori dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getUsername ():
+\series default
+ restituisce l'username
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getPassword():
+\series default
+ restituisce la password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getName():
+\series default
+ restituisce il nome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getSurname():
+\series default
+ restituisce il cognome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getIP():
+\series default
+ restituisce l'IP
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setPassword (String password):
+\series default
+ imposta la password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setName (String name):
+\series default
+ imposta la password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setSurname (String surname):
+\series default
+ imposta la password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setIP (String IP):
+\series default
+ imposta la password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages():
+\series default
+ ritorna il vettore di messaggi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setMessages (Vector<RecordMessage> messages):
+\series default
+ imposta i messaggi ricevuti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setMessage (RecordMessage message):
+\series default
+ aggiunge un messaggio ai messaggi ricevuti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void removeMesssage (RecordMessage message):
+\series default
+ elimina un messaggio dai messaggi ricevuti
+\end_layout
+
+\begin_layout Subsubsection
+shared.UserTest
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 Attributi
@@ -1218,267 +1427,69 @@ Attributi
 \begin_layout Itemize
 
 \series bold
-private String username
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa dell'username 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String password
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa della password
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String name
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa del nome
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String surname
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa del cognome
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String IP
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa dell'IP
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private Vector<RecordMessage> messages
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Vettore di messaggi
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-Metodi
+User user: 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public User (String username, String password, String IP)
+RecordMessage rm:
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
-Costruttore di User per effettuare il login, imposta i parametri con le
- stinghe dell'username e della password dati al login e con la stringa dell'IP
- del client che sta effettuando il login
+
+\series bold
+Metodi privati
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public User (String username, String password, String name, String surname,
- String IP)
+void initLogin():
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Costruttore di User che dovrà impostare i valori degli attributi secondo
- i valori dei parametri passati
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public String getUsername ()
+void initTot():
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Restituisce l'username
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public String getPassword()
+void init():
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
-Restituisce la password
+
+\series bold
+Metodi pubblici
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public String getName()
+void testCostuttoreLogin():
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Restituisce il nome
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public String getSurname()
+void testCostruttoreTot():
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Restituisce il cognome
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public String getIP()
+void testMessage():
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Restituisce l'IP
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public void setPassword (String password)
+void testMessages():
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Imposta la password
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public void setName (String name)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Imposta la password
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public void setSurname (String surname)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Imposta la password
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public void setIP (String IP)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Imposta la password
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public Vector<RecordMessage> getMessages()
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Ritorna il vettore di messaggi
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public void setMessages (Vector<RecordMessage> messages)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Imposta i messaggi ricevuti
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public void setMessage (RecordMessage message)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Aggiunge un messaggio ai messaggi ricevuti
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-public void removeMesssage (RecordMessage message)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Elimina un messaggio dai messaggi ricevuti
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
 shared.UserData
 \end_layout
