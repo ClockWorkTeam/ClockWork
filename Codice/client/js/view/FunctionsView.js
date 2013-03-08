@@ -43,9 +43,9 @@ define([
 //funzione che effettua la scrittura della struttura della pagina
   render: function(){
     if(typeof this.model == "undefined"){
-		$('#content').html(this.template({From: this.options.From}));
+		$(this.el).html(this.template({From: this.options.From}));
 	}else{
-		$('#content').html(this.template(this.model.toJSON()));
+		$(this.el).html(this.template(this.model.toJSON()));
 	}
   },
     

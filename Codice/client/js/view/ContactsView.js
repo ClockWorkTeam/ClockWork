@@ -90,7 +90,7 @@ define([
 	}
     
   });
-  
+
   return ContactsView;
   
 });

@@ -21,8 +21,8 @@ define([
   'communication/AuthenticationCommunication',
   'communication/ContactCommunication',
   'model/UserModel',
-  'view/ContactsView',
-], function($, _, Backbone, authenticationTemplate, AuthenticationCommuncation, ContactsCommunication, UserModel, ContactsView){
+  'view/ContactsView'
+], function($, _, Backbone, authenticationTemplate, AuthenticationCommunication, ContactsCommunication, UserModel, ContactsView){
   var AuthenticationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
 	  events: {
@@ -37,15 +37,15 @@ define([
     el: $("#authentication"),
 
     //lega la lista dei contatti e i bottoni di chiamata IP e teleconferenza a questa vista  
-    contacts_view: "",
+    contacts_view: '',
  
     //template per il rendering di questa vista 
     authenticationTemplate: _.template(authenticationTemplate),
   
     //funzione di inizializzazione della vista
     initialize: function(){
-	    //rendo visibile l'oggetto di invocazione alla funzione render
-      _.bindAll(this, 'render');
+	    //rendo visibile l'oggetto di invocazione alla funzione render e connect
+      _.bindAll(this, 'render', 'connect', 'disconnect');
       //genero la struttura della pagina
       this.render();
       //creo la vista dei contatti
@@ -83,7 +83,7 @@ define([
 				//recupero i contatti dal local storage e li metto nella collection
 				this.collection.fetch();
 				// visione dei contatti	
-				contacts_view.render();
+				this.contacts_view.render();
 			}
 			  //dobbiamo aggiungere la parte di interfacciamento con il server
     },
@@ -91,9 +91,9 @@ define([
     //funzione che si occupa di chiudere la sessione con il server
     disconnect: function(){
       //aggiorno il template
-      $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}))
+      $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}));
       //cancello la lista dei contatti
-      contacts_view.unrender();
+      this.contacts_view.unrender();
     },
     
     //visualizzo il form di registrazione

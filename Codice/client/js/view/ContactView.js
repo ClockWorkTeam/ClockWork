@@ -44,7 +44,6 @@ define([
   
     // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
 	view : function(){
-		alert(this.functions_view);
 		
 		if(this.functions_view == '')
 		{
@@ -52,8 +51,6 @@ define([
 		} else {
 			this.functions_view.render();
 		};
-		
-		alert(this.chat_view);
 		
 		if(this.chat_view == '')
 		{

@@ -37,33 +37,41 @@ define([
   
 //funzione di inizializzazione dell'oggetto
   initialize: function(){
-    _.bindAll(this, 'render', 'putMessages', 'putMessage'); 
+	//lega l'oggetto di invocazione alle funzioni render, putMessages e putMessage
+    _.bindAll(this, 'render', 'putMessages', 'putMessage');
+    //visualizza la struttura della chat
     this.render();
   },
   
-//funzione che effettua la scrittura della struttura della pagina
+//funzione che effettua la scrittura della struttura della pagina - da cambiare
   render: function() {
+	 //recupera la collection dal local storage
 	 this.collection.fetch();
-	  this.putMessages();
-    $(this.el).html(this.ChatTemplate({end: true}))
+	 //visualizza i messaggi
+	 this.putMessages();
+	 //aggiorna il template
+     $(this.el).html(this.ChatTemplate({messages: ''}))
     
   },
   
-  putMessages:function(){
-		this.collection.each(this.putMessage);
+  //visualizza i messaggi - da cambiare
+  putMessages:function(){  
+	this.collection.each(this.putMessage);
+	//$(this.el).html(this.ChatTemplate({messages: this.collection.chat_session(this.model.get('recipient'))}))
   },
   
+  //visualizza il singolo messaggio - da cambiare
   putMessage:function(TextMessageModel){
 	  //if(TextMessageModel.toJSON().recipient == this.model.toJSON().username)
 	  //alert(TextMessageModel.toJSON().messages);
 	  //$(this.el).append(this.ChatTemplate({end: false, messages:TextMessageModel.toJSON().messages}));
   },
-  send:function(){
-	  //this.collection.add({recipient:this.model.toJSON().username, messages:this.$("#message").val()})
-	  //this.render();
-  }
-//funzione che si occupa della connessione col server
   
+  //invia un messaggio
+  send:function(){
+	  this.collection.add({recipient:this.model.toJSON().username, messages:this.$("#message").val()})
+	  this.render();
+  }
   
  });
 
