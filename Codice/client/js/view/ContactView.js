@@ -44,8 +44,17 @@ define([
   
     // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
 	view : function(){
+		functions_view = new FunctionsView({model: this.model});
+    if(this.currentView){
+      this.currentView.close();
+		}
 		
-		if(this.functions_view == '')
+    this.currentView = functions_view;
+    this.currentView.render();
+     
+    $('#main').append(this.currentView.el);
+    
+		/*if(this.functions_view == '')
 		{
 			this.functions_view = new FunctionsView({model: this.model});
 		} else {
@@ -57,7 +66,7 @@ define([
 			this.chat_view = new ChatView({model: TextMessageModel});
 		} else {
 			this.chat_view.render();
-		}
+		}*/
 	}
 
 }); 

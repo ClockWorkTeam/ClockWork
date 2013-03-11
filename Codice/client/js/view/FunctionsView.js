@@ -24,8 +24,8 @@ define([
     events:{
 		'click button#startChat':'startChat',
 		'click button#sendVideoText':'sendVideoText',
-		'click button#call':'call',
-		'click button#video':'video',	
+		'click button#call':'audiocall',
+		'click button#video':'videocall',	
 		'click input#record' : 'record'
 	},
 	
@@ -59,5 +59,12 @@ define([
   
   record:function(){}
 });
+
+  FunctionView.prototype.close = function(){
+    this.remove();
+    this.unbind();
+  };
+
 return FunctionView;
+
 });
