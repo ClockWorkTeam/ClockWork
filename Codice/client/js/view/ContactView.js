@@ -33,7 +33,7 @@ define([
 	chat_view: '',
 	
 	initialize:function(){
-		_.bindAll(this, 'render', 'view'); 
+		_.bindAll(this, 'render', 'view' , 'remove'); 
 	},
 	
   //rendo visibili i contatti:
@@ -56,10 +56,11 @@ define([
     
 		/*if(this.functions_view == '')
 		{
+			
 			this.functions_view = new FunctionsView({model: this.model});
 		} else {
 			this.functions_view.render();
-		};
+		}
 		
 		if(this.chat_view == '')
 		{
@@ -67,8 +68,17 @@ define([
 		} else {
 			this.chat_view.render();
 		}*/
-	}
 
+  },
+	
+	cancella: function(){
+		if(this.functions_view!='')
+		{
+			this.functions_view.cancella();
+			}
+
+	}
+	
 }); 
   return ContactView;
 });

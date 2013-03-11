@@ -333,11 +333,7 @@ name "sub:Package-Dao"
 \end_layout
 
 \begin_layout Subsubsection
-UserDataDaoSQL
-\end_layout
-
-\begin_layout Paragraph*
-Funzione
+mytalk.server.data.UserDataDaoSQL
 \end_layout
 
 \begin_layout Standard
@@ -347,16 +343,35 @@ La classe UserDataDaoSQL è l’implementazione di UserDataDao per la base
  di dati
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserDataDaoSQL 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
-Relazione d’uso con altri moduli o Relazioni
+Relazione d’uso con altri moduli 
 \end_layout
 
-\begin_layout Itemize
-UserDataDaoSQL
-\end_layout
-
-\begin_layout Itemize
-UserDataDao
+\begin_layout Standard
+Questa classe utilizzerà le seguenti classi:
 \end_layout
 
 \begin_layout Itemize
@@ -364,127 +379,96 @@ UserData
 \end_layout
 
 \begin_layout Paragraph
-Attributi
-\end_layout
-
-\begin_layout Itemize
-private JavaConnectionSQLite connection
-\end_layout
-
-\begin_layout Paragraph
-Metodi
+Attributi privati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public UserDataDaoSQL (JavaConnectionSQLite connection)
+JavaConnectionSQLite connection:
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Costruttore che dovrà impostare il valore dell'attributo secondo il valore
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserDataDaoSQL (JavaConnectionSQLite connection):
+\series default
+ costruttore che dovrà impostare il valore dell'attributo secondo il valore
  del parametro passato
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public User getInfo (User user)
-\end_layout
-
-\begin_deeper
-\begin_layout Paragraph
-
+User getInfo (User user):
 \series medium
-Riceve come unico parametro un oggetto di tipo User usato per effettuare
- il login (username e password), dal quale prende le informazioni.
+ riceve come parametro un oggetto di tipo User usato per effettuare il login
+ (username e password), dal quale prende le informazioni.
  Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
  ritorna null
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public void getMessages (User user, vector<RecordMessage> messages)
+void getMessages (User user, vector<RecordMessage> messages):
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public boolean setInfo (User user, String password, String name, String
- surname)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
-i.
+boolean setInfo (User user, String password, String name, String surname):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
  Setta i campi dati (password, name e surname) secondo i valori dei parametri
  passati.
  Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public boolean setPassword (User user, String password)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
-i.
+boolean setPassword (User user, String password):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
  Setta il campo password con la stringa passatagli come secondo parametro.
  Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public boolean setName (User user, String name)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
-i.
+boolean setName (User user, String name):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
  Setta il campo name con la stringa passatagli come secondo parametro.
- Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public boolean setSurname (User user, String surname)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
-i.
+boolean setSurname (User user, String surname):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
  Setta il campo surname con la stringa passatagli come secondo parametro.
- Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 LoginDaoSQL
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Funzione
 \end_layout
 
 \begin_layout Standard
@@ -509,76 +493,60 @@ xxxxxxxxxx
 \align left
 
 \series bold
-Attributi
-\end_layout
-
-\begin_layout Itemize
-private JavaConnectionSQLite connection
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Metodi
+Attributi privati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public LoginDaoSQLite (JvaConnectionSQLite server)
+JavaConnectionSQLite connection:
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
-Costruttore che dovrà impostare il valore dell'attributo secondo il valore
+
+\series bold
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LoginDaoSQLite (JavaConnectionSQLite server):
+\series default
+ costruttore che dovrà impostare il valore dell'attributo secondo il valore
  del parametro passato
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public boolean login (User user)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Metodo che prova il login.
+boolean login (User user):
+\series default
+ metodo che prova il login.
  Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
 ni.
  Ritorna un valore booleano che indica se il login è avvenuto con successo
  o no
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-boolean logout (User user)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Metotodo che effetua il logout.
+boolean logout (User user):
+\series default
+ metodo che effettua il logout.
  Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
 ni.
  Ritorna un valore booleano che indica se il logout è avvenuto con successo
  o no
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 RecordMessageDaoSQL
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Funzione
-\end_layout
-
-\begin_layout Standard
-Classe che definisce dei metodi per getire i recordmessages nel database
+Classe che definisce dei metodi per gestire i recordmessages nel database
 \end_layout
 
 \begin_layout Standard
@@ -598,15 +566,19 @@ xxxxxxxxx
 \align left
 
 \series bold
-Attributi
+Attributi privati
 \end_layout
 
 \begin_layout Itemize
-private JavaConnectionSQLite connection
+
+\series bold
+JavaConnectionSQLite connection:
 \end_layout
 
 \begin_layout Itemize
-private UserDatadao userData
+
+\series bold
+User Datadao userData:
 \end_layout
 
 \begin_layout Standard
@@ -614,7 +586,7 @@ private UserDatadao userData
 \align left
 
 \series bold
-Metodi
+Metodi pubblici
 \end_layout
 
 \begin_layout Standard
@@ -766,7 +738,7 @@ public boolean setUser (User user)
 
 \begin_layout Itemize
 Crea un oggetto di tipo User nel database.
- Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
@@ -815,7 +787,7 @@ public boolean setName (User user, String name)
 Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
 i.
  Setta il campo name con la stringa passatagli come secondo parametro.
- Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
@@ -831,7 +803,7 @@ public boolean setSurname (User user, String surname)
 Riceve come primo parametro un oggetto di tipo User da cui prende le informazion
 i.
  Setta il campo surname con la stringa passatagli come secondo parametro.
- Ritorna un valore booleano che indica se l'operzione è andata o meno a
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
  buon fine
 \end_layout
 
@@ -877,25 +849,7 @@ LoginDao
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Funzione
-\end_layout
-
-\begin_layout Standard
-Interfaccia che contiene i prototipi dei metodi per gestire il login
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-Relazioni d'uso con altri moduli
-\end_layout
-
-\begin_layout Standard
-xxxxxxxxx
+Interfaccia che contiene i prototipi dei metodi per gestire l'autenticazione
 \end_layout
 
 \begin_layout Standard
@@ -915,22 +869,22 @@ Nessuno
 \align left
 
 \series bold
-Metodi
+Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public boolean login (User user)
+boolean login (User user)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Metodo che prova il login.
- Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
-ni.
- Ritorna un valore booleano che indica se il login è avvenuto con successo
- o no
+Metodo che prova ad effettuare la login.
+ Riceve come parametro un oggetto di tipo User da cui prende le informazioni
+ per cercare di effettuare la login.
+ Ritorna un valore booleano che indica se l'autenticazione è avvenuta con
+ successo o meno
 \end_layout
 
 \end_deeper
@@ -942,9 +896,8 @@ boolean logout (User user)
 
 \begin_deeper
 \begin_layout Standard
-Metotodo che effetua il logout.
- Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
-ni.
+Metodo che effettua il logout.
+ Riceve come parametro un oggetto di tipo User da cui prende le informazioni.
  Ritorna un valore booleano che indica se il logout è avvenuto con successo
  o no
 \end_layout
@@ -961,7 +914,7 @@ Funzione
 \end_layout
 
 \begin_layout Standard
-Interfaccia che contiene i protoipi dei metodi per gestire i recordmessages
+Interfaccia che contiene i prototipi dei metodi per gestire i recordmessages
 \end_layout
 
 \begin_layout Standard
@@ -1090,9 +1043,8 @@ shared.RecordMessage
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Funzione
+Questa classe fungerà da contenitore per i dati riguardanti i messaggi differiti
+, inseriti all’interno del server
 \end_layout
 
 \begin_layout Standard
@@ -1100,11 +1052,42 @@ Funzione
 \align left
 
 \series bold
-Relazioni d'uso con altri moduli
+Attributi privati
 \end_layout
 
-\begin_layout Standard
-xxxxxxxxx
+\begin_layout Itemize
+
+\series bold
+String sender: 
+\series default
+rappresenta il mittente, colui che crea il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String addressee: 
+\series default
+rappresenta il destinatario, colui che riceve il messaggio
+\series bold
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String path: 
+\series default
+rappresenta l'indirizzo dove si trova il messaggio differito all'interno
+ del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Date dateCreation: 
+\series default
+rappresenta la data di creazione del messaggio
 \end_layout
 
 \begin_layout Standard
@@ -1112,58 +1095,49 @@ xxxxxxxxx
 \align left
 
 \series bold
-Attributi
-\end_layout
-
-\begin_layout Itemize
-private User sender
-\end_layout
-
-\begin_layout Itemize
-private String path
-\end_layout
-
-\begin_layout Itemize
-private Date dateCreation
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-Metodi
+Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public RecordMessage (User sender, String path, Date dateCreation)
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Costruttore che dovrà impostare i valori degli attributi secondo i valori
+RecordMessage (String sender, String addressee, String path, Date dateCreation):
+\series default
+ costruttore che dovrà impostare i valori degli attributi secondo i valori
  dei parametri passati
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
-public User getSender()
+String getSender(): 
+\series default
+ritorna il mittente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public String getPath()
+String getAddressee(): 
+\series default
+ritorna il destinatario
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public Date getDate()
+String getPath():
+\series default
+ ritorna l'indirizzo dove si trova il messaggio differito all'interno del
+ server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Date getDate(): 
+\series default
+ritorna la data di creazione del messaggio
 \end_layout
 
 \begin_layout Subsubsection
@@ -1171,9 +1145,8 @@ shared.User
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Funzione
+Questa classe fungerà da contenitore per i dati riguardanti gli utenti registrat
+i
 \end_layout
 
 \begin_layout Standard
@@ -1181,120 +1154,96 @@ Funzione
 \align left
 
 \series bold
-Relazioni d'uso con altri moduli
-\end_layout
-
-\begin_layout Standard
-xxxxxxxxx
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-Attributi
+Attributi privati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-private String username
+String username:
+\series default
+ username dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È diverso per ogni utente.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Stringa dell'username 
-\end_layout
+\end_inset
 
-\end_deeper
-\begin_layout Itemize
 
-\series bold
-private String password
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa della password
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String name
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa del nome
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String surname
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa del cognome
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private String IP
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Stringa dell'IP
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-private Vector<RecordMessage> messages
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Vettore di messaggi
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-Metodi
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-public User (String username, String password, String IP)
+String password:
+\series default
+ password legata allo username
 \end_layout
 
 \begin_layout Itemize
-Costruttore di User per effettuare il login, imposta i parametri con la
- stinga dell'username
-\end_layout
-
-\begin_layout Subsubsection
-shared.UserData
-\end_layout
-
-\begin_layout Standard
 
 \series bold
-Funzione
+String name:
+\series default
+ nome dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo campo è facoltativo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String surname:
+\series default
+ cognome dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo campo è facoltativo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String IP:
+\series default
+ IP dello username
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se l'utente non è connesso risulterà 0, altrimenti corrisponderà all'indirizzo
+ IP dell'utente in quella precisa sessione.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> messages:
+\series default
+ raccolta dei messaggi differiti inviati all'utente mentre questo è offline
 \end_layout
 
 \begin_layout Standard
@@ -1302,127 +1251,133 @@ Funzione
 \align left
 
 \series bold
-Relazioni d'uso con altri moduli
+Metodi pubblici
 \end_layout
 
-\begin_layout Standard
-xxxxxxxxx
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Attributi
+User (String username, String password, String IP):
+\series default
+ costruttore di User per effettuare l'autenticazione.
+ Imposta i parametri username, password, IP con i dati dell'utente.
+ Inoltre si assegna all'utente il vettore dei messaggi differiti ricevuti
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Metodi
+User (String username, String password, String name, String surname, String
+ IP):
+\series default
+ costruttore di User per effettuare l'autenticazione.
+ Imposta i parametri username, password, nome, cognome e IP con i dati dell'uten
+te.
+ Inoltre si assegna all'utente il vettore dei messaggi differiti ricevuti
 \end_layout
 
-\begin_layout Standard
----------------------------
-\end_layout
-
-\begin_layout Standard
-Crea gli oggetti UserData
-\end_layout
-
-\begin_layout Subsubsection
-shared.RecordMessageData
-\end_layout
-
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
-Funzione
+String getUsername ():
+\series default
+ restituisce l'username dell'utente
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Relazioni d'uso con altri moduli
+String getPassword():
+\series default
+ restituisce la password dell'utente
 \end_layout
 
-\begin_layout Standard
-xxxxxxxxx
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Attributi
+String getName():
+\series default
+ restituisce il nome dell'utente
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Metodi
+String getSurname():
+\series default
+ restituisce il cognome dell'utente
 \end_layout
 
-\begin_layout Standard
---------------------------------
-\end_layout
-
-\begin_layout Standard
-Crea gli oggetti RecordMessageData
-\end_layout
-
-\begin_layout Subsubsection
-shared.TutorialData
-\end_layout
-
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
-Funzione
+String getIP():
+\series default
+ restituisce l'IP dell'utente
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Relazioni d'uso con altri moduli
+Vector<RecordMessage> getMessages():
+\series default
+ ritorna il vettore di messaggi differiti
 \end_layout
 
-\begin_layout Standard
-xxxxxxxxx
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Attributi
+void setPassword (String password):
+\series default
+ imposta la password con il nuovo valore
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align left
+\begin_layout Itemize
 
 \series bold
-Metodi
+void setName (String name):
+\series default
+ imposta il nome dell'utente con il nuovo valore
 \end_layout
 
-\begin_layout Standard
-----------------------------------
+\begin_layout Itemize
+
+\series bold
+void setSurname (String surname):
+\series default
+ imposta il cognome dell'utente con il nuovo valore
 \end_layout
 
-\begin_layout Standard
-Crea gli oggetti TutorialData
+\begin_layout Itemize
+
+\series bold
+void setIP (String IP):
+\series default
+ imposta l'indirizzo IP con il nuovo valore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setMessages (Vector<RecordMessage> messages):
+\series default
+ vtyvcgtc?????
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setMessage (RecordMessage message):
+\series default
+ aggiunge un messaggio ai messaggi ricevuti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void removeMesssage (RecordMessage message):
+\series default
+ elimina un messaggio dai messaggi ricevuti
 \end_layout
 
 \begin_layout Subsection
