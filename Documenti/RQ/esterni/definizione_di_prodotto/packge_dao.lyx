@@ -73,14 +73,18 @@ il package contiene tutte le classi che si occupano di eseguire le operazioni
 \end_layout
 
 \begin_layout Itemize
-Relazioni d'uso di altre componenti: utilizza il package server.shared per
- trasmettere le informazioni trovate all'interno dei database
+
+\series bold
+Relazioni d'uso di altre componenti:
+\series default
+ utilizza il package server.shared per trasmettere le informazioni trovate
+ all'interno dei database
 \end_layout
 
 \begin_layout Itemize
-Interfaccia
+
 \series bold
- con le relazioni d'uso da altre componenti: 
+Interfaccia con le relazioni d'uso da altre componenti: 
 \series default
 viene utilizzato da tutte le classi del package cnaskcaqe
 \end_layout
@@ -92,12 +96,12 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.LoginDaoSQL
+server.dao.UserDaoSQL
 \end_layout
 
 \begin_layout Standard
-Questa classe è l'implementazione di LoginDao per la base di dati SQLite;
- si occupa di effettuare l'autenticazione degli utenti
+Questa classe è l'implementazione di UserDao per la base di dati SQLite;
+ si occupa della gestione dei dati dell'utenti
 \end_layout
 
 \begin_layout Paragraph
@@ -115,6 +119,152 @@ Questa classe utilizzerà le seguenti classi:
 \begin_deeper
 \begin_layout Itemize
 server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+i al server 
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+UserDaoSQL(JavaConnectionSQLite connection): costruttore della classe UserDaoSQL
+\end_layout
+
+\begin_layout Itemize
+User getInfo(User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che prende le informazioni di un utente dal database
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+User getContactInfo(String username)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che prende le informazioni di un utente dal database
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+void getMessages(User user, Vector<RecordMessage> messages)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che ritora i messaggi di un utente dal database
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean setUser(User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che crea un utente nel database
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean setAllInfo(User user, String password, String name, String surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che modifica tutti i campi
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Escluso lo username.
+\end_layout
+
+\end_inset
+
+ di un utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean setPassword(User user, String password)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che imposta la password di un utente con il nuovo valore
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean setName(User user, String name)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che imposta il nome di un utente con il nuovo valore
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean setSurname(User user, String surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che imposta il cognome di un utente con il nuovo valore
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+server.dao.LoginDaoSQL
+\end_layout
+
+\begin_layout Standard
+Questa classe è l'implementazione di LoginDao per la base di dati SQLite;
+ si occupa della gestione dell'autenticazione degli utenti
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+Questa classe verrà utilizzata dalle seguenti classi:
+\end_layout
+
+\begin_layout Itemize
+Questa classe utilizzerà le seguenti classi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+server.shared.UserList
 \end_layout
 
 \end_deeper
@@ -146,7 +296,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-LoginDaoSQL: 
+LoginDaoSQL(JavaConnectionSQLite connection): 
 \series default
 costruttore della classe LoginDaoSQL
 \end_layout
@@ -155,6 +305,16 @@ costruttore della classe LoginDaoSQL
 
 \series bold
 User login(String username, String password, String IP): 
+\series default
+metodo che effettua il login dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user): 
+\series default
+metodo che effettua il logout dell'utente
 \end_layout
 
 \end_body
