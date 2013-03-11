@@ -1,0 +1,568 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Package server.shared
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ il package contiene le classi contenenti le informazioni condivise fra
+ i vati strati del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Relazioni d'uso di altre componenti:
+\series default
+ non utilizzam nessuna componente del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Interfaccia con le relazioni d'uso da altre componenti: 
+\series default
+viene utilizzato da tutte le classi del package dao per trasmettere informazioni
+ complesse
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Attività svolte e dati trattati: 
+\series default
+serve a trasfeire le informazioni condivise fra i vari package che componengono
+ il server.
+ In particolare conterrà le informazioni riguardanti:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+User
+\end_layout
+
+\begin_layout Itemize
+UserList
+\end_layout
+
+\begin_layout Itemize
+RecordMessage
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+server.shared.RecordMessage
+\end_layout
+
+\begin_layout Standard
+Questa classe rappresenterà da contenitore per i dati riguardanti i messaggi
+ differiti inseriti all'interno del database.
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+Questa classe verrà utilizzata dalle seguenti classi:
+\end_layout
+
+\begin_layout Itemize
+RecordMessageDaoSQL
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String sender: 
+\series default
+mittente, colui che crea il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String addressee: 
+\series default
+destinatario, colui che riceve il messaggio
+\series bold
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String path: 
+\series default
+indirizzo dove si trova il messaggio differito all'interno del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Date dateCreation: 
+\series default
+data di creazione del messaggio
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+RecordMessage(String sender, String addressee, String path, Date dateCreation):
+\series default
+ costruttore che dovrà impostare i valori degli attributi secondo i valori
+ dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String getSender(): 
+\series default
+ritorna il mittente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String getAddressee(): 
+\series default
+ritorna il destinatario
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String getPath():
+\series default
+ ritorna l'indirizzo dove si trova il messaggio differito all'interno del
+ server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Date getDate(): 
+\series default
+ritorna la data di creazione del messaggio
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+server.shared.User
+\end_layout
+
+\begin_layout Standard
+Questa classe rappresenterà da contenitore per i dati riguardanti gli utenti
+ presenti all'interno del database.
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+Questa classe verrà utilizzata dalle seguenti classi:
+\end_layout
+
+\begin_layout Itemize
+UserDataDaoSQL
+\end_layout
+
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String username:
+\series default
+ rappresenta lo username dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String name: 
+\series default
+rappresenta il nome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String surname:
+\series default
+ rappresenta il cognome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String IP:
+\series default
+ rappresenta l'indirizzo IP dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se la stringa è uguale a 0 significa che l'utente in questione non è in
+ linea, se è diverso l'utente è in linea.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> messages:
+\series default
+ rappresentano tutti i RecordMessage inviati all'utente in questione mentre
+ questo non è in linea
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User(String username, String name, String surname, String IP)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Costruttore che dovrà impostare il balore degli attributi secondo ill valore
+ dei parametri passati
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+String getUsername()
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che ritorna lo username dell'utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+String getName()
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che ritorna il nome dell'utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+String getSurname()
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che ritornail cognome dell'utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+String getIP()
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che ritorna l'indirizzoIP dell'utente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages()
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che ritorna il vettore contente i messaggi differiti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+void setName(String name)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che imposta il nome dell'utente con il nuovo valore
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+void setSurname(String surname)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che imposta il cognome dell'utente con il nuovo valore
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+void setIP(String IP)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che imposta l'indirizzo IP dell'utente con il nuovo valore
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+void setMessages(RecordMessage message)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che cambia la lista dei messaggi differiti inviati all'utente in
+ questione
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+boolean isUserMessage(RecordMessage message)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che verifica se un messaggio è di un certo utente o meno
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+setMessage(RecordMessage message)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che aggiunge un messaggio differito nel vettore messages
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+removeMessage(RecordMessage message)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che rimuove un messaggio differito dal vettore messages
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+server.shared.UserList
+\end_layout
+
+\begin_layout Standard
+Questa classe rappresenterà la lista degli utenti registrati al server.
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+Questa classe verrà utilizzata dalle seguenti classi:
+\end_layout
+
+\begin_layout Standard
+kedwqaocwa
+\end_layout
+
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<User> users:
+\series default
+ rappresenta la lista degli utenti
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+UserList()
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che inizializza il vettore
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean addUser(User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+metodo che inserisce un nuovo utente nella lista degli utenti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+User getUser()
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che restituisce l'utente correispondente ad un dato username
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vector<User> getAllUsers()
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che restituisce tutta la lista di utenti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+boolean removeUser(String username)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+metodo che elimina un utente dal vettore di utenti
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
