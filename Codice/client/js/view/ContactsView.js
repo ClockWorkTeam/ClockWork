@@ -30,6 +30,8 @@ define([
     
     collection: ContactsCollection,
     
+    contact_view : [],
+    
     events:{
 		'click button#callIP' : 'callIP',
 		'click button#conference' : 'StartConference'
@@ -57,21 +59,25 @@ define([
 		this.destroyContacts();
 	},
 	
-	viewContact: function(ContactModel){
-			var contact_view = new ContactView({dom : "sidebar", model: ContactModel });
-			this.$("#contacts").append(contact_view.render().el);
+	viewContact: function(ContactModel,conta){
+			this.contact_view.push(new ContactView({dom : "sidebar", model: ContactModel }));
+			this.$("#contacts").append(this.contact_view[conta].render().el);
+			conta++;
 	},
 		
-	viewContacts: function(){	
-		this.collection.each(this.viewContact);	
+	viewContacts: function(){
+		var conta=0;	
+		this.collection.each(this.viewContact,conta);	
 	},
 	
 	destroyContacts: function(){
 		var functions_view = new FunctionsView({From: ''});
-		functions_view.remove();
-		var chat_view = new ChatView();
-		chat_view.remove();
 		_.each(this.collection.record(), function(contact){contact.clear();});
+		for(i=0;i<this.contact_view.length;i++)
+		{
+			this.contact_view[i].cancella();
+			}
+		this.contact_view=[];
 	},
 	
 	callIP:function(){

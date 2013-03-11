@@ -31,7 +31,7 @@ define(function(){
 		collection.create({username: nome, 
 		name: 'Giacomo', 
 		surname: 'Bain', 
-		IP:'0.0.0.3'});
+		IP:nome});
 	};
 	
   };

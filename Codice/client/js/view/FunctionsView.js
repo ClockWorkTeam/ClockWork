@@ -24,8 +24,8 @@ define([
     events:{
 		'click button#startChat':'startChat',
 		'click button#sendVideoText':'sendVideoText',
-		'click button#call':'call',
-		'click button#video':'video',	
+		'click button#call':'audiocall',
+		'click button#video':'videocall',	
 		'click input#record' : 'record'
 	},
 	
@@ -36,15 +36,17 @@ define([
     
 //funzione di inizializzazione dell'oggetto
   initialize: function(){
-    _.bindAll(this, 'render'); 
+    _.bindAll(this, 'render','cancella');
     this.render();
   },
-  
+  current_user:'',
 //funzione che effettua la scrittura della struttura della pagina
   render: function(){
+	 
     if(typeof this.model == "undefined"){
 		$(this.el).html(this.template({From: this.options.From}));
 	}else{
+		current_user=this.model.toJSON().username;
 		$(this.el).html(this.template(this.model.toJSON()));
 	}
   },
@@ -55,9 +57,25 @@ define([
   
   audiocall:function(){},
   
-  videocall:function(){},
+  videocall:function(){
+	alert(current_user+'username');
+//	if((!(this.model))&&(!(typeof this.model == "undefined"))  )
+//	alert(this.model.toJSON().username+'model');
+	if((!(typeof this.model == "undefined")) && current_user==this.model.toJSON().username)
+	{
+		alert(this.model.toJSON().IP);
+	}
+  },
   
-  record:function(){}
+  record : function(){},
+  
+  cancella : function(){
+	  current_user='';
+	  this.model.toJSON().username='';
+	  this.videocall();
+	  
+	//  this.unbind();
+	  }
 });
 return FunctionView;
 });
