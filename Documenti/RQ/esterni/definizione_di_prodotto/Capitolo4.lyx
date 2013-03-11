@@ -176,6 +176,28 @@ Classe AuthenticationView
 \begin_layout Standard
 
 \series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza: 
+\series default
+mytalk.client.communication.AuthenticationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe deriva da
+\series default
+: mytalk.client.Backbone.view
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 Attributi pubblici:
 \end_layout
 
@@ -745,6 +767,11 @@ mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
 \begin_layout Standard
+La classe AuthenticationCommunication si occupa di inviare le credenziali
+ inserite al server, e, inviare la risposta ricevuta al view
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -786,6 +813,28 @@ Classe AuthenticationCommunication
 \begin_layout Standard
 
 \series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\series default
+ mytalk.client.view.AuthenticationView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 Metodi pubblici:
 \end_layout
 
@@ -800,7 +849,11 @@ AuthenticationCommunication():
 \begin_layout Itemize
 
 \series bold
-AuthenticationCommunication.prototype.checkCredentials(user, pass):
+AuthenticationCommunication.prototype.checkCredentials(string,
+\series default
+ 
+\series bold
+string):
 \series default
  funzione che controlla la correttezza delle credenziali inserite
 \end_layout
@@ -808,7 +861,8 @@ AuthenticationCommunication.prototype.checkCredentials(user, pass):
 \begin_layout Itemize
 
 \series bold
-AuthenticationCommunication.prototype.signup(user, pass, name, surname): 
+AuthenticationCommunication.prototype.signup(string, string, string, string):
+ 
 \series default
 funzione che gestisce la registrazione delle credenziali
 \end_layout
@@ -838,39 +892,205 @@ mytalk.client.communication.CallCommunication
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe CallCommunication si occupa di avviare la comunicazione tra utenti
+ attraverso una comunicazione con il server
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/CallCommunication.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe CallCommunication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da:
+\series default
+ mytalk.client.view.CallView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallCommunication(): 
+\series default
+funzione che permette il prototyping di una classe
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallCommunication.prototype.sendcall(string):
+\series default
+ funzione che si occupa di mandare l'ip da chiamare al server e restituire
+ se accettata o meno
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallCommunication.prototype.sendanswer(string): 
+\series default
+funzione che si occupa di inviare una risposta all'utente che ha efettuato
+ la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallCommunication.prototype.startcall(string): 
+\series default
+funzione che si occupa di inizializzare la chiamata
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.communication.ContactsCommunication
+mytalk.client.communication.ContactCommunication
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe ContactCommunication si occupa di ricevere la lista degli utenti
+ presenti nel server
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ContactCommunication.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactCommunication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da:
+\series default
+ mytalk.client.view.ContactsView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ContactCommunication():
+\series default
+ funzione che permette il prototyping di una classe
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ContactCommunication.prototype.fetchContacts():
+\series default
+ funzione per ottenere la lista dei contatti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ContactCommunication.prototype.dummyContacts(string):
+\series default
+ funzione per inserire nella collezzione il contatto
 \end_layout
 
 \begin_layout Subsubsection
@@ -918,19 +1138,106 @@ mytalk.client.communication.NotificationCommunication
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe NotificationCommunication si occupa di comunicare con il server
+ per quanto riguarda le notiche
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/NotificationCommunication.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe NotificationCommunication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da:
+\series default
+ mytalk.client.view.NotificationView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NotificationCommunication():
+\series default
+ funzione che permette il prototyping di una classe
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NotificationCommunication.prototype.receivecall(string):
+\series default
+ funzione che si occupa di segnalare la presenza di chiamate in arrivo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NotificationCommunication.prototype.receivecfile():
+\series default
+ funzione che si occupa di segnalare la presenza di file ricevuti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NotificationCommunication.prototype.receiverecordmessage():
+\series default
+ funzione che si occupa di segnalare la presenza di videomessaggi
 \end_layout
 
 \begin_layout Subsubsection
