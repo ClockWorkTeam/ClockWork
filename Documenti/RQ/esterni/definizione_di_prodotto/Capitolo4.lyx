@@ -331,19 +331,166 @@ mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Standard
-Attributi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Itemize
-bla
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe FunctionsView
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Metodi:
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication.ContactsCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.view
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+template: 
+\series default
+utilizzato per tenere il template per il rendering di questa vista
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+current_user:
+\series default
+ ds
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initialize(): 
+\series default
+funzione di inizializzazione della vista
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+render():
+\series default
+ funzione che rende visibili i contatti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+startChat():
+\series default
+ funzione che crea la vista per la chat
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+sendVideoText():
+\series default
+ funzione che crea la vista per l'invio di messaggi video
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+audiocall():
+\series default
+ funzione che crea la vista per l'audio chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+videocall():
+\series default
+ funzione che crea la vista per la video chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+record(): 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+cancella(): 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+FunctionView.prototype.close(): 
+\series default
+funzione che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -494,7 +641,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che rende visibili i contatti:
+ funzione che rende visibili i contatti
 \end_layout
 
 \begin_layout Itemize
