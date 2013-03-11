@@ -367,23 +367,327 @@ bla
 \end_layout
 
 \begin_layout Subsubsection
+mytalk.client.view.ContactView
+\end_layout
+
+\begin_layout Standard
+La classe ContactView consente la visualizzazione delle funzioni e di chat
+ quando seleziono su un contatto
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ContactView.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactView
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication.ContactsCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.CallCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.view
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+template:
+\series default
+ utilizzato per tenere il template per il rendering di questa vista 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+functions_view:
+\series default
+ lega i bottoni di chiamata di un contatto a questa vista 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+chat_view:
+\series default
+ lega la chat a questa vista 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initialize():
+\series default
+ funzione di inizializzazione della vista
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+render():
+\series default
+ funzione che rende visibili i contatti:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+view():
+\series default
+ funzione che crea le viste di funzioni e di chat quando seleziono su un
+ contatto
+\end_layout
+
+\begin_layout Subsubsection
 mytalk.client.view.ContactsView
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe ContactsView denisce la struttura, e la conseguente visualizzazione,
+ delle pagine web che consentono la visualizzazione della lista utenti iscritti
+ al server
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ContactsView.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactsView
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication.ContactsCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da: 
+\series default
+mytalk.client.Backbone.view
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+template: 
+\series default
+utilizzato per tenere il template per il rendering di questa vista 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+collection:
+\series default
+ utilizzato per tenere la collezione che genera i contatti
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initialize():
+\series default
+ funzione di inizializzazione della vista
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+render():
+\series default
+ funzione che rende visibili i contatti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+unrender():
+\series default
+ funzione che nasconde i contatti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+viewContact():
+\series default
+ funzione che crea ed inserisce un contatto alla lista degli utenti connessi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+viewContacts():
+\series default
+ funzione che chiama viewContact() per ogni elemento di collection
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+destroyContacts():
+\series default
+ funzione che distrugge tutti i contatti creati e le relative FunctionsView
+ e ChatView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+callIP():
+\series default
+ funzione che crea una FunctionsView per effettuare una chiamata IP
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+StartConference():
+\series default
+ funzione che crea una FunctionsView per effettuare la teleconferenza
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+listContacts(Object):
+\series default
+ funzione che aggiunge un contatto alla lista dei contatti selezionati per
+ la teleconferenza
 \end_layout
 
 \begin_layout Subsubsection
@@ -411,12 +715,28 @@ mytalk.client.view.ChatView
 \end_layout
 
 \begin_layout Standard
+La classe ChatView definisce la struttura, e la conseguente visualizzazione,
+ delle pagine web che consentono di effettuare comunicazioni testuali
+\end_layout
+
+\begin_layout Standard
 \align center
 \begin_inset Float figure
 placement H
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ChatView.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -437,6 +757,28 @@ Classe ChatView
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\series default
+ mytalk.client.communication.ChatCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe deriva da
+\series default
+: mytalk.client.Backbone.view
 \end_layout
 
 \begin_layout Standard
@@ -495,18 +837,24 @@ render():
 
 \series bold
 putMessages(): 
+\series default
+funzione che visualizza i messaggi
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-putMessages(TextMessageModel): 
+putMessages(Object): 
+\series default
+funzione che visualizza il singolo messaggio
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 send(): 
+\series default
+funzione che invia un messaggio
 \end_layout
 
 \begin_layout Subsubsection
@@ -1088,7 +1436,7 @@ ContactCommunication.prototype.fetchContacts():
 \begin_layout Itemize
 
 \series bold
-ContactCommunication.prototype.dummyContacts(string):
+ContactCommunication.prototype.dummyContacts(Object):
 \series default
  funzione per inserire nella collezzione il contatto
 \end_layout
