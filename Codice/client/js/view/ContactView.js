@@ -21,64 +21,49 @@ define([
  'view/ChatView',
  'model/TextMessageModel'
 ], function($, _, Backbone, ContactTemplate, FunctionsView, ChatView, TextMessageModel){
- var ContactView = Backbone.View.extend({
+  var ContactView = Backbone.View.extend({
     template: _.template(ContactTemplate),
     
-    events:{
-		"click li.contact": "view"
-	},
+    events: {
+		'click li.contact': 'view'
+    },
+
+    initialize: function(){
+      _.bindAll(this, 'render', 'view' , 'remove');
+      this.currentFunctions = new FunctionsView({model: this.model});
+    },
 	
-	functions_view: '',
-	
-	chat_view: '',
-	
-	initialize:function(){
-		_.bindAll(this, 'render', 'view' , 'remove'); 
-	},
-	
-  //rendo visibili i contatti:
-  render: function(){
-    this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username}));   
-	return this;
-  },
+    //rendo visibili i contatti:
+    render: function(){
+      this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username}));   
+    return this;
+    },
   
     // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
-	view : function(){
-		functions_view = new FunctionsView({model: this.model});
-    if(this.currentView){
-      this.currentView.close();
-		}
-		
-    this.currentView = functions_view;
-    this.currentView.render();
-     
-    $('#main').append(this.currentView.el);
-    
-		/*if(this.functions_view == '')
-		{
-			
-			this.functions_view = new FunctionsView({model: this.model});
-		} else {
-			this.functions_view.render();
-		}
-		
-		if(this.chat_view == '')
-		{
-			this.chat_view = new ChatView({model: TextMessageModel});
-		} else {
-			this.chat_view.render();
-		}*/
-
-  },
+    view : function(){
+      if(this.currentFunctions){
+        this.currentFunctions.close();
+      }
+      this.currentFunctions = new FunctionsView({model: this.model});
+      this.currentFunctions.render();
+      $('#main').append(this.currentFunctions.el);
+      
+      if(this.currentChat){
+        this.currentChat.close();
+      }
+      this.currentChat = new ChatView({model: TextMessageModel});
+      this.currentChat.render();
+      $('#main').append(this.currentChat.el);
+    }
 	
-	cancella: function(){
-		if(this.functions_view!='')
-		{
-			this.functions_view.cancella();
-			}
+  }); 
 
-	}
-	
-}); 
+  ContactView.prototype.close = function(){
+    if(this.currentFunctions)
+      this.currentFunctions.close();
+    if(this.currentChat)
+      this.currentChat.close();
+  };
+
   return ContactView;
 });

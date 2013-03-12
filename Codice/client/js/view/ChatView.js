@@ -74,6 +74,12 @@ define([
   }
   
  });
+ 
+   ChatView.prototype.close = function(){
+    this.remove();
+    this.unbind();
+  };
+
 
  return ChatView;
 });

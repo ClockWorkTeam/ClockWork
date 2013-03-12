@@ -30,8 +30,6 @@ define([
     
     collection: ContactsCollection,
     
-    contact_view : [],
-    
     events:{
 		'click button#callIP' : 'callIP',
 		'click button#conference' : 'StartConference'
@@ -44,6 +42,8 @@ define([
 		//this.listenTo(this.collection, 'change', this.viewContacts);
         //this.listenTo(this.collection, 'reset', this.viewContacts);
 		//this.listenTo(this.collection, 'all', this.render);
+		
+		this.childViews = [];
 		
 		this.$el.html(this.template({logged: false}));
 
@@ -59,35 +59,52 @@ define([
 		this.destroyContacts();
 	},
 	
-	viewContact: function(ContactModel,conta){
-			this.contact_view.push(new ContactView({dom : "sidebar", model: ContactModel }));
-			this.$("#contacts").append(this.contact_view[conta].render().el);
-			conta++;
+	viewContact: function(ContactModel){
+			var contact_view = new ContactView({dom : "sidebar", model: ContactModel });
+			this.$("#contacts").append(contact_view.render().el);
+			this.childViews.push(contact_view);
 	},
 		
-	viewContacts: function(){
-		var conta=0;	
-		this.collection.each(this.viewContact,conta);	
+	viewContacts: function(){	
+		this.collection.each(this.viewContact);	
 	},
 	
 	destroyContacts: function(){
-		var functions_view = new FunctionsView({From: ''});
+		
+		/*
+		var functions_view = new FunctionsView();		
+		functions_view.close();
+		$('#main').append(this.functions_view.el);
+		var chat_view = new ChatView();
+		chat_view.close();
+		$('#main').append(this.chat_view.el);
+		*/
+		
+		_.each(this.childViews, function(view){view.close();});
+
 		_.each(this.collection.record(), function(contact){contact.clear();});
-		for(i=0;i<this.contact_view.length;i++)
-		{
-			this.contact_view[i].cancella();
-			}
-		this.contact_view=[];
 	},
 	
 	callIP:function(){
-		var functions_view = new FunctionsView({From: 'IP'});
+      _.each(this.childViews, function(view){view.close();});
+	  if(this.currentFunctions){
+        this.currentFunctions.close();
+      }
+      this.currentFunctions = new FunctionsView({From: 'IP'});
+      this.currentFunctions.render();
+      $('#main').append(this.currentFunctions.el);
 	},
 	
     StartConference: function(){
-		var functions_view = new FunctionsView({From: 'Conf'});
-		this.collection.fetch();
-		this.collection.each(this.listContacts);
+	  _.each(this.childViews, function(view){view.close();});
+	  if(this.currentFunctions){
+        this.currentFunctions.close();
+      }
+	  this.currentFunctions = new FunctionsView({From: 'Conf'});
+	  this.currentFunctions.render();
+	  $('#main').append(this.currentFunctions.el);
+	  this.collection.fetch();
+	  this.collection.each(this.listContacts);
 	},
 	
 	listContacts: function(ContactModel){
