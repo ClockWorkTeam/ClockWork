@@ -47,16 +47,20 @@ define([
 				$(this.el).html(this.template({video:'video'}));
 				navigator.webkitGetUserMedia({video:true, audio:true},
 				function(stream) {
+					video = document.getElementById("live_video");
 				video.src = window.webkitURL.createObjectURL(stream);
 				});
 				}
 			if(this.options.type=='audio')
 			{
+				$(this.el).html(this.template({video:'audio'}));
 				navigator.webkitGetUserMedia({video:false, audio:true},
 				function(stream) {
+					video = document.getElementById("live_video");
 				video.src = window.webkitURL.createObjectURL(stream);
 				});
-				$(this.el).html(this.template({video:'audio'}));
+				
+				
 				}
 			}
 		else
