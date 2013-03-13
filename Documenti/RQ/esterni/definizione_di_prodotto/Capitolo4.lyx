@@ -123,6 +123,75 @@ name "sub:Package-View"
 
 \end_layout
 
+\begin_layout Standard
+Il package View costituisce la parte del sistema che denisce ed implementa
+ l'interfaccia web usufruibile dagli utenti mediante pagine web
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+La classe utilizza: mytalk.client.communication
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cosituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.AuthenticationView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.NotificationView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.SendFileView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.FunctionsView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.StaticsView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.ContactView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.ContactsView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.UserDataView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.ChatView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.TutorialView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.RecordMessageView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.CallView
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.client.view.AuthenticationView
 \end_layout
@@ -161,10 +230,6 @@ Classe AuthenticationView
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -331,6 +396,11 @@ mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Standard
+La classe FunctionsView denisce la struttura, e la conseguente visualizzazione,
+ delle funzionalità offerte dopo aver selezionato un contatto
+\end_layout
+
+\begin_layout Standard
 \align center
 \begin_inset Float figure
 placement H
@@ -339,6 +409,13 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/FunctionsView.pdf
+	scale 90
+
+\end_inset
+
 
 \end_layout
 
@@ -416,7 +493,7 @@ utilizzato per tenere il template per il rendering di questa vista
 \series bold
 current_user:
 \series default
- ds
+ utilizzato per tenere traccia dell'utente corrente
 \end_layout
 
 \begin_layout Standard
@@ -477,18 +554,14 @@ videocall():
 
 \series bold
 record(): 
+\series default
+funzione che attiva la registrazione della chiamata
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-cancella(): 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-FunctionView.prototype.close(): 
+FunctionsView.prototype.close(): 
 \series default
 funzione che chiude l'istanza creata
 \end_layout
@@ -1075,44 +1148,279 @@ name "sub:Package-Model"
 
 \end_layout
 
+\begin_layout Standard
+Il package Collection contiene tutte le entità derivate da Backbone.Model
+ e che racchiudono le informazioni logiche di un record
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cosituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.model.UserModel
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.model.ContactModel
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.model.StatisticsModel
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.model.TextMessageModel
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.model.TutorialModel
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.client.model.UserModel
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe UserModel rappresenta la struttura dei dati dell'utente
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UserModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da:
+\series default
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.AuthenticationView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.AuthenticationCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.model
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ contiene i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello sono:
+\end_layout
+
+\begin_layout Itemize
+username
+\end_layout
+
+\begin_layout Itemize
+password
+\end_layout
+
+\begin_layout Itemize
+name
+\end_layout
+
+\begin_layout Itemize
+surname
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
-mytalk.client.model.ContactsModel
+mytalk.client.model.ContactModel
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe ContactModel rappresenta la struttura dei dati dei contatti
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ContactModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.ContactsView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.ContactsCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.collection.ContactsCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.model
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ contiene i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello sono:
+\end_layout
+
+\begin_layout Itemize
+username
+\end_layout
+
+\begin_layout Itemize
+name
+\end_layout
+
+\begin_layout Itemize
+surname
+\end_layout
+
+\begin_layout Itemize
+IP
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+clear(): 
+\series default
+funzione che distrugge il model creato
 \end_layout
 
 \begin_layout Subsubsection
@@ -1120,61 +1428,313 @@ mytalk.client.model.StatisticsModel
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe StatisticsModel rappresenta la struttura dei dati delle statistiche
+ di una chiamata
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/StatisticsModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe StatisticsModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.CallView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.model
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults: 
+\series default
+contiene i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello sono:
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 mytalk.client.model.TextMessageModel
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe TextMessageModel rappresenta la struttura dei dati dei messaggi
+ di testo
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/TextMessageModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TextMessageModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.ChatView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.collection.TextMessagesCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.model
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ contiene i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello sono:
+\end_layout
+
+\begin_layout Itemize
+recipient
+\end_layout
+
+\begin_layout Itemize
+messages
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 mytalk.client.model.TutorialModel
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe TutorialModel rappresenta la struttura dei dati dei tutorial
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/TutorialModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TutorialModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe è utilizzata da: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.TutorialView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.TutorialCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.collection.TutorialsCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.model
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ contiene i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello sono:
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Package Collection
 \begin_inset CommandInset label
@@ -1186,24 +1746,152 @@ name "sub:Package-Collection"
 
 \end_layout
 
+\begin_layout Standard
+Nel package Collection sono presenti le classi che modellano la logica di
+ persistenza dei dati nel browser
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+La classe utilizza: mytalk.client.model
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cosituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.collection.ContactsCollection
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.collection.TextMessagesCollection
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.collection.TutorialsCollection
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.client.collection.ContactsCollection
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe ContactsCollection rappresenta la collezione dei contatti
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ContactsCollection.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactsCollection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.model.ContactModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.AuthenticationView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view.ContactsView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.ContactsCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.collection
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+model: specifica quale classe di modello contiene la collezione
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+record(): funzione che restituisce un array contenente i modelli di tutta
+ la collezione
 \end_layout
 
 \begin_layout Subsubsection
@@ -1211,19 +1899,109 @@ mytalk.client.collection.TextMessagesCollection
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe TextMessagesCollection rappresenta la collezione dei messaggi
+ di testo
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/TextMessagesCollection.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TextMessagesCollection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.model.TextMessageModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.ChatView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.collection
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+model: specifica quale classe di modello contiene la collezione
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+chat_session(string): funzione che restituisce i messaggi di chat della
+ persona indicata come parametro in ingresso
 \end_layout
 
 \begin_layout Subsubsection
@@ -1231,19 +2009,109 @@ mytalk.client.collection.TutorialsCollection
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe ContactsCollection rappresenta la collezione dei tutorial
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/TutorialsCollection.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TutorialsCollection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.model.TutorialModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.TutorialView
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.TutorialCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ mytalk.client.Backbone.collection
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+model: specifica quale classe di modello contiene la collezione
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+xxx
 \end_layout
 
 \begin_layout Subsection
@@ -1255,6 +2123,59 @@ name "sub:Package-Communication"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Nel package Communication sono presenti le classi che effettuano la comunicazion
+e con il server.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Relazione d'uso con altri moduli:
+\end_layout
+
+\begin_layout Itemize
+La classe utilizza: mytalk.server.transfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cosituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.AuthenticationCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.TutorialCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.CallCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.ContactCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.RecerdMessageCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.SendFileCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.NotificationCommunication
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.communication.UserDataCommunication
 \end_layout
 
 \begin_layout Subsubsection
