@@ -17,9 +17,9 @@ define([
  'jquery',
  'underscore',  
  'backbone',
- 'text!templates/FunctionTemplate.html',
-], function($, _, Backbone, FunctionTemplate){
-  var FunctionView = Backbone.View.extend({
+ 'text!templates/FunctionsTemplate.html',
+], function($, _, Backbone, FunctionsTemplate){
+  var FunctionsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
 		'click button#startChat':'startChat',
@@ -32,7 +32,7 @@ define([
     el : $('#content'),
 	
     //indica in quale parte del DOM gestirà 
-    template: _.template(FunctionTemplate),
+    template: _.template(FunctionsTemplate),
     
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
@@ -71,11 +71,11 @@ define([
     record : function(){}
   });
 
-  FunctionView.prototype.close = function(){
+  FunctionsView.prototype.close = function(){
     this.remove();
     this.unbind();
   };
 
-  return FunctionView;
+  return FunctionsView;
 
 });

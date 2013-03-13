@@ -17,9 +17,7 @@ require.config({
     jquery: 'libs/jquery/jquery-min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone',
-    text: 'libs/require/text',
-//TEMPORALE FINCHE NON TROVO COME SALVARLO IN LOCALE
-    storage: 'libs/backbone/backbone.localStorage'
+    text: 'libs/require/text'
   },
   
   shim: {

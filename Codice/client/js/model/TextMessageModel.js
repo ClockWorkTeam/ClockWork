@@ -16,7 +16,8 @@ define([
   'underscore',
   'backbone'
   ], function(_, Backbone){
-    var TextMessageModel = Backbone.Model.extend({		
+    var TextMessageModel = Backbone.Model.extend({
+	
 	  defaults: {
 		  recipient: '',
 		  messages: new Array()

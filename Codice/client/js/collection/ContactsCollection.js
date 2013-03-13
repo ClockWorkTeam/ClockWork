@@ -14,16 +14,14 @@
 
 define([
  'underscore',  
- 'backbone',
- 'storage', 
+ 'backbone', 
  'model/ContactModel'
-], function( _, Backbone, Store, ContactModel){
+], function( _, Backbone, ContactModel){
   var ContactsCollection = Backbone.Collection.extend({
 
     model: ContactModel,
- //PER ORA LO METTO NEL LOCAL STORAGE SOTTO IL NAMESPACE MyTalk
-//	sessionStorage: new Store("MyTalk")
-  localStorage: new Store("MyTalk", "session"), 
+
+	url: '/contacts',
   
   record: function() {
       return this.filter(function(contact){ return contact.has('username'); });

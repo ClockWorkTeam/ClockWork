@@ -70,16 +70,6 @@ define([
 	},
 	
 	destroyContacts: function(){
-		
-		/*
-		var functions_view = new FunctionsView();		
-		functions_view.close();
-		$('#main').append(this.functions_view.el);
-		var chat_view = new ChatView();
-		chat_view.close();
-		$('#main').append(this.chat_view.el);
-		*/
-		
 		_.each(this.childViews, function(view){view.close();});
 
 		_.each(this.collection.record(), function(contact){contact.clear();});
@@ -103,7 +93,6 @@ define([
 	  this.currentFunctions = new FunctionsView({From: 'Conf'});
 	  this.currentFunctions.render();
 	  $('#main').append(this.currentFunctions.el);
-	  this.collection.fetch();
 	  this.collection.each(this.listContacts);
 	},
 	

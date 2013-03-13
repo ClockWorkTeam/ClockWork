@@ -1,5 +1,5 @@
 /*
- * Nome:AuthenticationCommunication.js
+ * Nome: ContactsCommunication.js
  * Package: 
  * Autore:
  * Data:

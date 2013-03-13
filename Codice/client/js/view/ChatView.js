@@ -45,8 +45,6 @@ define([
   
 //funzione che effettua la scrittura della struttura della pagina - da cambiare
   render: function() {
-	 //recupera la collection dal local storage
-	 this.collection.fetch();
 	 //visualizza i messaggi
 	 this.putMessages();
 	 //aggiorna il template

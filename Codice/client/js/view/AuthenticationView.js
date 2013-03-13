@@ -19,7 +19,7 @@ define([
   'backbone',
   'text!templates/AuthenticationTemplate.html',
   'communication/AuthenticationCommunication',
-  'communication/ContactCommunication',
+  'communication/ContactsCommunication',
   'model/UserModel',
   'view/ContactsView'
 ], function($, _, Backbone, authenticationTemplate, AuthenticationCommunication, ContactsCommunication, UserModel, ContactsView){
@@ -80,8 +80,6 @@ define([
 				//recupero la lista contatti dal server e li metto nel local storage
 				var contacts_communication = new ContactsCommunication(this.collection);
 				contacts_communication.fetchContacts();
-				//recupero i contatti dal local storage e li metto nella collection
-				this.collection.fetch();
 				// visione dei contatti	
 				this.contacts_view.render();
 			}
@@ -129,8 +127,6 @@ define([
             //recupero la lista contatti dal server e la salvo nel local storage
             var contacts_communication = new ContactsCommunication(this.collection);
             contacts_communication.fetchContacts();
-            //genero la collezione dal local storage
-            this.collection.fetch();
             //visualizzo i contatti	
             contacts_view.render();
           }

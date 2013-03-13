@@ -15,7 +15,8 @@ define([
   'underscore',
   'backbone'
   ], function(_, Backbone){
-    var ContactModel = Backbone.Model.extend({		
+    var ContactModel = Backbone.Model.extend({
+	  
 	  defaults: {
 		  username: '',
 		  name: '',
