@@ -17,8 +17,9 @@ define([
  'jquery',
  'underscore',  
  'backbone',
- 'text!templates/FunctionsTemplate.html',
-], function($, _, Backbone, FunctionsTemplate){
+ 'view/CallView',
+ 'text!templates/FunctionsTemplate.html'
+], function($, _, Backbone, CallView, FunctionsTemplate){
   var FunctionsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -32,7 +33,9 @@ define([
     el : $('#content'),
 	
     //indica in quale parte del DOM gestirà 
-    template: _.template(FunctionsTemplate),
+    template : _.template(FunctionsTemplate),
+    
+    callView : '',
     
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
@@ -47,7 +50,7 @@ define([
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));
       } else {
-        current_user=this.model.toJSON().username;
+        currentuser=this.model.toJSON().username;
         $(this.el).html(this.template(this.model.toJSON()));
       }
     },
@@ -57,15 +60,25 @@ define([
     sendVideoText:function(){},
     
     audiocall:function(){
-      //if(current_user==this.model.toJSON().username){
-        alert(this.model.toJSON().IP);
-      //}  
+		if(this.callView)
+		{	
+			this.callView.close;
+			}
+			alert('audio');
+		this.callView=new CallView({type:'audio'});
+		this.callView.render();
+		$('#main').append(this.callView.el);
     },
     
     videocall:function(){
-      if(current_user==this.model.toJSON().username){
-        alert(this.model.toJSON().IP);
-      }
+		if(this.callView)
+		{	
+			this.callView.close;
+			}
+		alert('video');
+		this.callView=new CallView({type:'video'});
+		this.callView.render();
+		$('#main').append(this.callView.el);
     },
     
     record : function(){}
