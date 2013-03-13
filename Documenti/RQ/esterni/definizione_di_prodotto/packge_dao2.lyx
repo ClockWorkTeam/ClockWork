@@ -1,0 +1,864 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+
+\lang italian
+Package Dao 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Package-Dao"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+mytalk.server.data.UserDataDaoSQL
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang italian
+La classe UserDataDaoSQL è l’implementazione di UserDataDao per la base
+ di dati SQLite; si occupa della lettura e scrittura dei dati nella base
+ di dati
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang italian
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang italian
+Classe UserDataDaoSQL 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\lang italian
+Relazione d’uso con altri moduli 
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Questa classe utilizzerà le seguenti classi:
+\end_layout
+
+\begin_layout Itemize
+
+\lang italian
+UserData
+\end_layout
+
+\begin_layout Paragraph
+
+\lang italian
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+JavaConnectionSQLite connection:
+\end_layout
+
+\begin_layout Paragraph
+
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+UserDataDaoSQL (JavaConnectionSQLite connection):
+\series default
+ costruttore che dovrà impostare il valore dell'attributo secondo il valore
+ del parametro passato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+User getInfo (User user):
+\series medium
+ riceve come parametro un oggetto di tipo User usato per effettuare il login
+ (username e password), dal quale prende le informazioni.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+void getMessages (User user, vector<RecordMessage> messages):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setInfo (User user, String password, String name, String surname):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta i campi dati (password, name e surname) secondo i valori dei parametri
+ passati.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setPassword (User user, String password):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta il campo password con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setName (User user, String name):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta il campo name con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setSurname (User user, String surname):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta il campo surname con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+LoginDaoSQL
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Classe che gestisce i login, implementa i metodi pubblici dell'interfaccia
+ LoginDao
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+xxxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+JavaConnectionSQLite connection:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+LoginDaoSQLite (JavaConnectionSQLite server):
+\series default
+ costruttore che dovrà impostare il valore dell'attributo secondo il valore
+ del parametro passato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean login (User user):
+\series default
+ metodo che prova il login.
+ Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Ritorna un valore booleano che indica se il login è avvenuto con successo
+ o no
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean logout (User user):
+\series default
+ metodo che effettua il logout.
+ Riceve come unico parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Ritorna un valore booleano che indica se il logout è avvenuto con successo
+ o no
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+RecordMessageDaoSQL
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Classe che definisce dei metodi per gestire i recordmessages nel database
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+JavaConnectionSQLite connection:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+User Datadao userData:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+metodi get e set per ogni campo del DB
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+TutorialDataDaoSQL
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang italian
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+metodi get e set per ogni campo del DB
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+UserDataDao 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang italian
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang italian
+La classe UserDataDao rappresenta un'interfaccia, viene implementata da
+ UserDataDaoSQL che agirà sulla base di dati.
+ Fornisce i metodi per il salvataggio e la modifica dei dati presenti nel
+ database
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\lang italian
+mytalk.server.usermanager
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang italian
+Attributi
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Nessuno
+\end_layout
+
+\begin_layout Paragraph
+
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+User getInfo (User user): 
+\series medium
+riceve come unico parametro un oggetto di tipo User usato per effettuare
+ il login (username e password), dal quale prende le informazioni.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+User getContactInfo (String username???): 
+\series medium
+riceve come unico parametro un oggetto di tipo Username???, dal quale prende
+ le informazioni.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+void getMessages (User user, Vector<RecordMessage> messages):
+\series default
+ riceve come primo parametro un oggetto di tipo User 
+\series medium
+usato per effettuare il login (username e password), dal quale prende i
+ messaggi.
+ Ritorna l'oggetto User istanziato se presente nel data base, altrimenti
+ ritorna null
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setUser (User user):
+\series default
+ crea un oggetto di tipo User nel database.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setInfo (User user, String password, String name, string surname):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta i campi dati (password, name e surname) secondo i valori dei parametri
+ passati.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setPassword (User user, String password):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta il campo password con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setName (User user, String name): 
+\series default
+riceve come primo parametro un oggetto di tipo User da cui prende le informazion
+i.
+ Setta il campo name con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean setSurname (User user, String surname):
+\series default
+ riceve come primo parametro un oggetto di tipo User da cui prende le informazio
+ni.
+ Setta il campo surname con la stringa passatagli come secondo parametro.
+ Ritorna un valore booleano che indica se l'operazione è andata o meno a
+ buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\lang italian
+---------------------------------------------
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Login (user,IP){
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+user.setIP(IP);
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+user.UserDataShared.setIP(IP);
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+}
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Logout (user,IP){
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+user.setIP(IP);
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+user.UserDataShared.setIP(IP);
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+}
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+LoginDao
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Interfaccia che contiene i prototipi dei metodi per gestire l'autenticazione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Nessuno
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean login (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang italian
+Metodo che prova ad effettuare la login.
+ Riceve come parametro un oggetto di tipo User da cui prende le informazioni
+ per cercare di effettuare la login.
+ Ritorna un valore booleano che indica se l'autenticazione è avvenuta con
+ successo o meno
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean logout (User user)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang italian
+Metodo che effettua il logout.
+ Riceve come parametro un oggetto di tipo User da cui prende le informazioni.
+ Ritorna un valore booleano che indica se il logout è avvenuto con successo
+ o no
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\lang italian
+RecordMessageDao 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang italian
+Funzione
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Interfaccia che contiene i prototipi dei metodi per gestire i recordmessages
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Nessuno
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Vector<RecordMessage> getMessages (User user):
+\series default
+ riceve come unico parametro un oggetto di tipo User, dal quale prende i
+ messaggi che ha ricevuto.
+ Ritorna un vettore dei messaggi inviati all'user
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean createMessage (RecordMessage message, User address):
+\series default
+ inserisce l'oggetto di tipo RecordMessage e ritorna un un valore booleano
+ che indica se l'operazione ha avuto successo o meno
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+boolean removeMessage (RecordMessage message, User address):
+\series default
+ elimina l'oggetto di tipo RecordMessage e ritorna un un valore booleano
+ che indica se l'operazione ha avuto successo o meno
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang italian
+TutorialDataDao
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang italian
+Funzione
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+xxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi
+\end_layout
+
+\end_body
+\end_document
