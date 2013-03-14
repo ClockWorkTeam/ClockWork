@@ -428,6 +428,7 @@ name "sub:server.dao.LoginDaoSQL"
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
  di autenticazione all'interno del sistema.
+ È l'imprementazione di server.dao.LoginDao
 \end_layout
 
 \begin_layout Standard
@@ -641,6 +642,7 @@ name "sub:server.dao.RecordMessageDaoSQL"
 
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
+ È l'imprementazione di server.dao.RecordMessageDao
 \end_layout
 
 \begin_layout Standard
@@ -798,6 +800,28 @@ name "sub:server.dao.UserDao"
 
 \end_layout
 
+\begin_layout Standard
+Questa classe gestisce tutti i dati che riguardano gli utenti.
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
+ dovranno offrire tale servizio.
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
@@ -806,31 +830,53 @@ Metodi pubblici
 
 \series bold
 User createUser(String username, String password, String name, String surname,
- String IP)
+ String IP): 
+\series default
+metodo che crea un utente nel database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username)
+boolean removeUser(String username): 
+\series default
+metodo che elimina un utente dal database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String username, String password)
+boolean setPassword(String username, String password): 
+\series default
+metodo che imposta la password all'utente corrispondente ad 
+\emph on
+username
+\emph default
+ con il nuovo valore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setName(String username, String name)
+boolean setName(String username, String name): 
+\series default
+metodo che imposta il nome dell'utente corrispondente ad 
+\emph on
+username
+\emph default
+ con il nuovo valore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setSurname(String username, String surname)
+boolean setSurname(String username, String surname): 
+\series default
+metodo che imposta il cognome dell'utente corrispondente ad 
+\emph on
+username
+\emph default
+ con il nuovo valore
 \end_layout
 
 \begin_layout Subsubsection
@@ -845,8 +891,8 @@ name "sub:server.dao.UserDaoSQL"
 \end_layout
 
 \begin_layout Standard
-Questa classe è l'implementazione di UserDao per la base di dati SQLite;
- si occupa della gestione dei dati dell'utenti.
+Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
+ È l'imprementazione di server.dao.UserDao.
 \end_layout
 
 \begin_layout Standard
@@ -885,11 +931,9 @@ Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-Questa classe verrà utilizzata dalle seguenti classi:
-\end_layout
 
-\begin_layout Itemize
-Questa classe utilizzerà le seguenti classi:
+\series bold
+La classe utilizzerà:
 \end_layout
 
 \begin_deeper
@@ -912,7 +956,15 @@ Attributi privati
 JavaConnectionSQLite connection:
 \series default
  riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
-i al server 
+i al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users: 
+\series default
+riferimento alla lista degli utenti registrati nel database
 \end_layout
 
 \begin_layout Paragraph
@@ -920,55 +972,56 @@ Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-UserDaoSQL(JavaConnectionSQLite connection): costruttore della classe UserDaoSQL
+
+\series bold
+UserDaoSQL(JavaConnectionSQLite connection): 
+\series default
+costruttore della classe che dovrà impostare il valore degli attributi secondo
+ il valore dei parametri passati
 \end_layout
 
 \begin_layout Itemize
-User getInfo(User user)
+
+\series bold
+User getInfo(User user): 
+\series default
+metodo che prende le informazioni dell'utente corrispondente a 
+\emph on
+user
+\emph default
+ dal database
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-metodo che prende le informazioni di un utente dal database
+
+\series bold
+User getContactInfo(String username): 
+\series default
+metodo che prende le informazioni dell'utente dal database
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-User getContactInfo(String username)
+
+\series bold
+void getMessages(User user, Vector<RecordMessage> messages): 
+\series default
+metodo che ritora i messaggi dell'utente dal database
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-metodo che prende le informazioni di un utente dal database
-\end_layout
 
-\end_deeper
-\begin_layout Itemize
-void getMessages(User user, Vector<RecordMessage> messages)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-metodo che ritora i messaggi di un utente dal database
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-boolean setUser(User user)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
+\series bold
+boolean setUser(User user): 
+\series default
 metodo che crea un utente nel database
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-boolean setAllInfo(User user, String password, String name, String surname)
-\end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\series bold
+boolean setAllInfo(User user, String password, String name, String surname):
+ 
+\series default
 metodo che modifica tutti i campi
 \begin_inset Foot
 status open
@@ -979,39 +1032,44 @@ Escluso lo username.
 
 \end_inset
 
- di un utente
+ dell'utente corrispondente a 
+\emph on
+user
+\emph default
+ 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-boolean setPassword(User user, String password)
+
+\series bold
+boolean setPassword(User user, String password): 
+\series default
+metodo che imposta la password dell'utente corrispondente a 
+\emph on
+user
+\emph default
+ con il nuovo valore
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-metodo che imposta la password di un utente con il nuovo valore
+
+\series bold
+boolean setName(User user, String name): 
+\series default
+metodo che imposta il nome dell'utente con il nuovo valore
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-boolean setName(User user, String name)
+
+\series bold
+boolean setSurname(User user, String surname): 
+\series default
+metodo che imposta il cognome dell'utente corrispondente a 
+\emph on
+user
+\emph default
+ con il nuovo valore
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-metodo che imposta il nome di un utente con il nuovo valore
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-boolean setSurname(User user, String surname)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-metodo che imposta il cognome di un utente con il nuovo valore
-\end_layout
-
-\end_deeper
 \end_body
 \end_document
