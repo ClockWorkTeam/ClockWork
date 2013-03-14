@@ -534,28 +534,18 @@ User login(String username, String password, String IP):
 \series default
 metodo che effettua il login dell'utente.
  Deve controllare la correttezza dei dati inseriti.
- Effettuerà quindi una query per verificare se effettivamente esiste un
- utente con lo username passato come parametro e che la password associata
- a tale utente sia uguale a quella passata.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
- effettuerà, tramite il metodo 
+ Crea quindi una query per verificare se esiste un utente con lo 
 \emph on
-connection.executeUpdate
+username
 \emph default
-, l'aggiornamento dell'indirizzo IP dell'utente che vuole effettuare la
- connessione al sistema.
+ ricevuto e che la password associata a tale utente sia uguale a quella
+ ricevuta.
+ Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
+ creerà una query per effettuare l'aggiornamento dell'indirizzo IP dell'utente
+ che vuole effettuare la connessione, successivamente viene aggiornata anche
+ l'istanza dell'utente nel package server.shared.User
 \end_layout
 
-\begin_layout Standard
-Una volta aggiornato l'utente nel database, aggionerà anche l'istanza dell'utent
-e nel package server.shared
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -564,19 +554,10 @@ boolean logout(User user):
 metodo che effettua il logout dell'utente.
  Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
  nel package server.shared.
+ Successivamente si effettuerà l'aggiornamento dell'utente presente nel
+ database impostanto il suo indirizzo IP a 0
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Successivamente questo metodo effettuerà l'aggiornamento dell'utente presente
- nel database, tramite il metodo 
-\emph on
-connection.executeUpdate
-\emph default
-, impostanto il suo indirizzo IP a 0
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
 Intefaccia server.dao.RecordMessageDao 
 \begin_inset CommandInset label
@@ -659,6 +640,10 @@ name "sub:server.dao.RecordMessageDaoSQL"
 \end_layout
 
 \begin_layout Standard
+Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -687,6 +672,119 @@ Classe RecordMessageDaoSQLite
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+server.shared.RecordMessage
+\end_layout
+
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+i al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users: 
+\series default
+riferimento alla lista degli utenti registrati nel database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users):
+\series default
+ costruttore della classe che dovrà impostare il valore degli attributi
+ secondo il valore dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages(String username): 
+\series default
+metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ ad un utente.
+ Il metodo deve verificare che esiste realmente un utente associato allo
+ 
+\emph on
+username
+\emph default
+ ricevuto, se esiste si crea la query da effettuare per trovare tutti i
+ messaggi che come destinatario hanno username.
+ Se la query restituisce almeno un messaggio differito, lo inserisce nel
+ vettore dell'utente.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage createMessage(String sender, String addressee, String path,
+ Date date): 
+\series default
+metodo che crea un messaggio differito nel database.
+ Deve verificare che l'utente destinatario esista nel database.
+ Successivamente deve creare la query per aggiungere nel database il messaggio.
+ Se l'aggiunta avviene con successo, viene aggiornata anche l'istanza dell'utent
+e nel package server.shared.User.
+ Il metodo ritorna il messaggio creato, che sarà 
+\emph on
+null
+\emph default
+ nel caso in cui la creazione non andrà a buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message): 
+\series default
+metodo che elimina un messaggio differito dal database.
+ Il metodo deve creare la query per la cancellazione del messaggio differito
+ nel database.
+ Successivamente viene aggiornata anche l'istanza dell'utente nel package
+ server.shared.User.
+ Nel caso l'eliminazione avviene con successo il metodo ritorna 
+\emph on
+true
+\emph default
+, in caso contrario ritorna 
+\emph on
+false
 \end_layout
 
 \begin_layout Subsubsection

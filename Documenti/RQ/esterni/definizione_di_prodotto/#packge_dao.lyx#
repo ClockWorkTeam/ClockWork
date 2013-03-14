@@ -180,7 +180,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.JavaConnectionSQLite.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.JavaConnectionSQLite.pdf
 	scale 90
 
 \end_inset
@@ -439,7 +439,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.LoginDaoSQL.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.LoginDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -534,28 +534,18 @@ User login(String username, String password, String IP):
 \series default
 metodo che effettua il login dell'utente.
  Deve controllare la correttezza dei dati inseriti.
- Effettuerà quindi una query per verificare se effettivamente esiste un
- utente con lo username passato come parametro e che la password associata
- a tale utente sia uguale a quella passata.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
- effettuerà, tramite il metodo 
+ Crea quindi una query per verificare se esiste un utente con lo 
 \emph on
-connection.executeUpdate
+username
 \emph default
-, l'aggiornamento dell'indirizzo IP dell'utente che vuole effettuare la
- connessione al sistema.
+ ricevuto e che la password associata a tale utente sia uguale a quella
+ ricevuta.
+ Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
+ creerà una query per effettuare l'aggiornamento dell'indirizzo IP dell'utente
+ che vuole effettuare la connessione, successivamente viene aggiornata anche
+ l'istanza dell'utente nel package server.shared.User
 \end_layout
 
-\begin_layout Standard
-Una volta aggiornato l'utente nel database, aggionerà anche l'istanza dell'utent
-e nel package server.shared
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -564,19 +554,10 @@ boolean logout(User user):
 metodo che effettua il logout dell'utente.
  Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
  nel package server.shared.
+ Successivamente si effettuerà l'aggiornamento dell'utente presente nel
+ database impostanto il suo indirizzo IP a 0
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Successivamente questo metodo effettuerà l'aggiornamento dell'utente presente
- nel database, tramite il metodo 
-\emph on
-connection.executeUpdate
-\emph default
-, impostanto il suo indirizzo IP a 0
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
 Intefaccia server.dao.RecordMessageDao 
 \begin_inset CommandInset label
@@ -626,20 +607,25 @@ Metodi pubblici
 \series bold
 Vector<RecordMessage> getMessages(String username):
 \series default
- metodo che ritorna il vettore dei messaggi 
+ metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ ad un utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 RecordMessage createMessage(String sender, String addressee, String path,
- Date date)
+ Date date): 
+\series default
+metodo che crea un messaggio differito nel database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message)
+boolean removeMessage(RecordMessage message): 
+\series default
+metodo che elimina un messaggio differito dal database
 \end_layout
 
 \begin_layout Subsubsection
@@ -654,6 +640,10 @@ name "sub:server.dao.RecordMessageDaoSQL"
 \end_layout
 
 \begin_layout Standard
+Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -662,7 +652,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.RecordMessageDaoSQL.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.RecordMessageDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -684,6 +674,94 @@ Classe RecordMessageDaoSQLite
 
 \end_layout
 
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+server.shared.RecordMessage
+\end_layout
+
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+i al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users: 
+\series default
+riferimento alla lista degli utenti registrati nel database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users):
+\series default
+ costruttore della classe che dovrà impostare il valore degli attributi
+ secondo il valore dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages(String username): 
+\series default
+metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ ad un utente.
+ Il metodo deve verificare che esiste realmente un utente associato allo
+ 
+\emph on
+username
+\emph default
+ ricevuto, se esiste si crea la query da effettuare per trovare tutti i
+ messaggi che come destinatario hanno username.
+ Se esiste 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage createMessage(String sender, String addressee, String path,
+ Date date):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message):
+\end_layout
+
 \begin_layout Subsubsection
 Intefaccia server.dao.UserDao
 \begin_inset CommandInset label
@@ -693,6 +771,41 @@ name "sub:server.dao.UserDao"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User createUser(String username, String password, String name, String surname,
+ String IP)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeUser(String username)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setPassword(String username, String password)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setName(String username, String name)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setSurname(String username, String surname)
 \end_layout
 
 \begin_layout Subsubsection
@@ -720,7 +833,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.UserDaoSQL.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.UserDaoSQL.pdf
 	scale 90
 
 \end_inset
