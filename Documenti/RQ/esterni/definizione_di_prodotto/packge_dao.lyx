@@ -370,6 +370,8 @@ Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 La classe utilizzerà:
 \end_layout
 
@@ -380,6 +382,8 @@ server.shared.User
 
 \end_deeper
 \begin_layout Itemize
+
+\series bold
 La classe verrà utilizzata da:
 \end_layout
 
@@ -589,6 +593,45 @@ Questa classe gestisce tutti i dati che riguardano i messaggi differiti
  inviati ai vari utenti.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio.
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.shared.RecordMessage
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe viene utilizzata da:
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+Vector<RecordMessage> getMessages(String username)
+\end_layout
+
+\begin_layout Itemize
+RecordMessage createMessage(String sender, String addressee, String path,
+ Date date)
+\end_layout
+
+\begin_layout Itemize
+boolean removeMessage(RecordMessage message)
 \end_layout
 
 \begin_layout Subsubsection
