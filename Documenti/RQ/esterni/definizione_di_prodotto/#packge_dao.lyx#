@@ -358,6 +358,13 @@ name "sub:server.dao.LoginDao"
 
 \end_layout
 
+\begin_layout Standard
+Questa classi gestisce tutti i dati che riguardano i tentativi di connessione
+ e disconnessione al sistema.
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivare che
+ dovranno offrire tale servizio.
+\end_layout
+
 \begin_layout Paragraph
 Relazioni d'uso con altri moduli
 \end_layout
@@ -378,7 +385,7 @@ La classe verrà utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-mlm
+mlmo
 \end_layout
 
 \end_deeper
@@ -416,7 +423,7 @@ name "sub:server.dao.LoginDaoSQL"
 
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
- di autenticazione all'interno del sistema
+ di autenticazione all'interno del sistema.
 \end_layout
 
 \begin_layout Standard
@@ -455,10 +462,20 @@ Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 Questa classe verrà utilizzata dalle seguenti classi:
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
+csakcnwa
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
 Questa classe utilizzerà le seguenti classi:
 \end_layout
 
@@ -502,7 +519,8 @@ Metodi pubblici
 \series bold
 LoginDaoSQL(JavaConnectionSQLite connection): 
 \series default
-costruttore della classe LoginDaoSQL
+costruttore della classe che dovrà impostare il valore degli attributi secondo
+ il valore dei parametri passati
 \end_layout
 
 \begin_layout Itemize
@@ -510,7 +528,13 @@ costruttore della classe LoginDaoSQL
 \series bold
 User login(String username, String password, String IP): 
 \series default
-metodo che effettua il login dell'utente
+metodo che effettua il login dell'utente.
+ Deve controllare la correttezza dei dati inseriti.
+ Effettuerà quindi una query per verificare se effettivamente esiste un
+ utente con lo username passato come parametro e che la password associata
+ a tale utente sia uguale a quella passata.
+ Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
+ effettuerà l'aggiornamento dell'indirizzo IP del 
 \end_layout
 
 \begin_layout Itemize
