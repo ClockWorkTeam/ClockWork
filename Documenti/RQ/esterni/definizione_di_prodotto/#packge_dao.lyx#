@@ -173,6 +173,7 @@ name "sub:server.dao.JavaConnectionSQLite"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -247,7 +248,7 @@ Connection connection:
 \series bold
 Statement statement: 
 \series default
-Riferimento alla risorsa impiegata per eseguire query sul database
+riferimento alla risorsa impiegata per eseguire query sul database
 \end_layout
 
 \begin_layout Paragraph
@@ -269,7 +270,7 @@ costruttore che crea la connessione al database.
 \series bold
 void finalize():
 \series default
- Distruttore della classe JavaConnectionSQLite.
+ distruttore della classe JavaConnectionSQLite.
  Prima di distruggere una istanza, la connessione al database deve essere
  chiusa.
  Se la chiusura della connessione lancia eccezioni, dovrà stamperà a video
@@ -283,7 +284,7 @@ ResultSet select(String table, String column, String condition, String extra):
 \series default
  metodo che ritorna una tupla di valori, della tabella indicata, che rispettano
  i parametri di controllo indicati.
- Quindi crea la query da eseguire sul database utilizzando:
+ Quindi eseguirà la query da eseguire sul database utilizzando i parametri:
 \end_layout
 
 \begin_deeper
@@ -321,7 +322,13 @@ extra:
 
 \begin_layout Standard
 Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
- m
+ metodo ritornerà un 
+\emph on
+ResultSet 
+\emph default
+denominato
+\emph on
+ rs
 \end_layout
 
 \end_deeper
@@ -341,7 +348,7 @@ false
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.LoginDao 
+Intefaccia server.dao.LoginDao 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.LoginDao"
@@ -349,6 +356,51 @@ name "sub:server.dao.LoginDao"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La classe verrà utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mlm
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User LoginDao(String username, String password, String IP):
+\series default
+ metodo che controllerà la correttezza dei dati inseriti da un utente per
+ connettersi al sistema.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user):
+\series default
+ metodo che effettuerà la disconnessione dal sistema
 \end_layout
 
 \begin_layout Subsubsection
@@ -363,12 +415,13 @@ name "sub:server.dao.LoginDaoSQL"
 \end_layout
 
 \begin_layout Standard
-Questa classe è l'implementazione di LoginDao per la base di dati SQLite;
- si occupa della gestione dell'autenticazione degli utenti
+Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
+ di autenticazione all'interno del sistema
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -469,7 +522,7 @@ metodo che effettua il logout dell'utente
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.RecordMessageDao 
+Intefaccia server.dao.RecordMessageDao 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.RecordMessageDao"
@@ -492,6 +545,7 @@ name "sub:server.dao.RecordMessageDaoSQL"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -521,7 +575,7 @@ Classe RecordMessageDaoSQLite
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.UserDao
+Intefaccia server.dao.UserDao
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.UserDao"
@@ -549,6 +603,7 @@ Questa classe è l'implementazione di UserDao per la base di dati SQLite;
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open

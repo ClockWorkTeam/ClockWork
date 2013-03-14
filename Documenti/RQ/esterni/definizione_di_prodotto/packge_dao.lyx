@@ -173,6 +173,7 @@ name "sub:server.dao.JavaConnectionSQLite"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -357,6 +358,51 @@ name "sub:server.dao.LoginDao"
 
 \end_layout
 
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La classe verrà utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mlm
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User LoginDao(String username, String password, String IP):
+\series default
+ metodo che controllerà la correttezza dei dati inseriti da un utente per
+ connettersi al sistema.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user):
+\series default
+ metodo che effettuerà la disconnessione dal sistema
+\end_layout
+
 \begin_layout Subsubsection
 server.dao.LoginDaoSQL
 \begin_inset CommandInset label
@@ -369,12 +415,13 @@ name "sub:server.dao.LoginDaoSQL"
 \end_layout
 
 \begin_layout Standard
-Questa classe è l'implementazione di LoginDao per la base di dati SQLite;
- si occupa della gestione dell'autenticazione degli utenti
+Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
+ di autenticazione all'interno del sistema
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -498,6 +545,7 @@ name "sub:server.dao.RecordMessageDaoSQL"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -555,6 +603,7 @@ Questa classe è l'implementazione di UserDao per la base di dati SQLite;
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
