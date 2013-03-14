@@ -1156,19 +1156,148 @@ mytalk.client.view.CallView
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe CallView definisce la struttura, e la conseguente visualizzazione,
+ della pagina di chiamata
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/CallView.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe CallView
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication.CallCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.FunctionsView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+template:
+\series default
+ utilizzato per tenere il template per il rendering di questa vista 
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initialize():
+\series default
+ funzione di inizializzazione dell'oggetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+render():
+\series default
+ funzione che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+starcall():
+\series default
+ funzione che avvia la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallView.prototype.close():
+\series default
+ funzione che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsection
