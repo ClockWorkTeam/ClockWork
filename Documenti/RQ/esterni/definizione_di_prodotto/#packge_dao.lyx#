@@ -359,9 +359,9 @@ name "sub:server.dao.LoginDao"
 \end_layout
 
 \begin_layout Standard
-Questa classi gestisce tutti i dati che riguardano i tentativi di connessione
+Questa classe gestisce tutti i dati che riguardano i tentativi di connessione
  e disconnessione al sistema.
- Fornisce l'interfaccia minima necessaria a tutte le classi derivare che
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio.
 \end_layout
 
@@ -370,6 +370,8 @@ Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 La classe utilizzerà:
 \end_layout
 
@@ -380,6 +382,8 @@ server.shared.User
 
 \end_deeper
 \begin_layout Itemize
+
+\series bold
 La classe verrà utilizzata da:
 \end_layout
 
@@ -533,18 +537,46 @@ metodo che effettua il login dell'utente.
  Effettuerà quindi una query per verificare se effettivamente esiste un
  utente con lo username passato come parametro e che la password associata
  a tale utente sia uguale a quella passata.
- Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
- effettuerà l'aggiornamento dell'indirizzo IP del 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
+ effettuerà, tramite il metodo 
+\emph on
+connection.executeUpdate
+\emph default
+, l'aggiornamento dell'indirizzo IP dell'utente che vuole effettuare la
+ connessione al sistema.
+\end_layout
+
+\begin_layout Standard
+Una volta aggiornato l'utente nel database, aggionerà anche l'istanza dell'utent
+e nel package server.shared
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 boolean logout(User user): 
 \series default
-metodo che effettua il logout dell'utente
+metodo che effettua il logout dell'utente.
+ Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
+ nel package server.shared.
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Successivamente questo metodo effettuerà l'aggiornamento dell'utente presente
+ nel database, tramite il metodo 
+\emph on
+connection.executeUpdate
+\emph default
+, impostanto il suo indirizzo IP a 0
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 Intefaccia server.dao.RecordMessageDao 
 \begin_inset CommandInset label
@@ -554,6 +586,60 @@ name "sub:server.dao.RecordMessageDao"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Questa classe gestisce tutti i dati che riguardano i messaggi differiti
+ inviati ai vari utenti.
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
+ dovranno offrire tale servizio.
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizzerà:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.shared.RecordMessage
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe viene utilizzata da:
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages(String username):
+\series default
+ metodo che ritorna il vettore dei messaggi 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage createMessage(String sender, String addressee, String path,
+ Date date)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message)
 \end_layout
 
 \begin_layout Subsubsection
