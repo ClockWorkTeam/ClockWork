@@ -128,17 +128,17 @@ Il package View costituisce la parte del sistema che denisce ed implementa
  l'interfaccia web usufruibile dagli utenti mediante pagine web
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Relazione d'uso con altri moduli:
 \end_layout
 
 \begin_layout Itemize
-La classe utilizza: mytalk.client.communication
+Il package utilizza: mytalk.client.communication
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Cosituito dalle classi:
@@ -238,29 +238,39 @@ Classe AuthenticationView
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 La classe utilizza: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 La classe deriva da
 \series default
-: mytalk.client.Backbone.view
+: 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -291,7 +301,7 @@ authenticationTemplate:
 utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -440,10 +450,10 @@ Classe FunctionsView
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -463,10 +473,16 @@ mytalk.client.communication.ContactsCommunication
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.view
+ 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -496,7 +512,7 @@ current_user:
  utilizzato per tenere traccia dell'utente corrente
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -631,10 +647,10 @@ Classe ContactView
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -661,11 +677,15 @@ mytalk.client.communication.ChatCommunication
 
 \series bold
 La classe deriva da:
-\series default
- mytalk.client.Backbone.view
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -695,7 +715,7 @@ chat_view:
  lega la chat a questa vista 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -772,10 +792,10 @@ Classe ContactsView
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -796,11 +816,15 @@ mytalk.client.communication.ContactsCommunication
 
 \series bold
 La classe deriva da: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 mytalk.client.Backbone.view
 \end_layout
 
-\begin_layout Standard
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -830,7 +854,7 @@ collection:
  utilizzato per tenere la collezione che genera i contatti
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -979,29 +1003,39 @@ Classe ChatView
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 La classe utilizza:
-\series default
- mytalk.client.communication.ChatCommunication
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 La classe deriva da
 \series default
-: mytalk.client.Backbone.view
+:
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1031,7 +1065,7 @@ collection:
  utilizzato per tenere la collezione che genera la chat
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -1122,19 +1156,148 @@ mytalk.client.view.CallView
 \end_layout
 
 \begin_layout Standard
-Attributi:
-\end_layout
-
-\begin_layout Itemize
-bla
+La classe CallView definisce la struttura, e la conseguente visualizzazione,
+ della pagina di chiamata
 \end_layout
 
 \begin_layout Standard
-Metodi:
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/CallView.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe CallView
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-bla
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication.CallCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.FunctionsView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+template:
+\series default
+ utilizzato per tenere il template per il rendering di questa vista 
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initialize():
+\series default
+ funzione di inizializzazione dell'oggetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+render():
+\series default
+ funzione che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+starcall():
+\series default
+ funzione che avvia la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallView.prototype.close():
+\series default
+ funzione che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsection
@@ -1153,7 +1316,41 @@ Il package Collection contiene tutte le entità derivate da Backbone.Model
  e che racchiudono le informazioni logiche di un record
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package utilizza: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.communication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package viene utilizzato da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.collection
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Cosituito dalle classi:
@@ -1223,10 +1420,10 @@ Classe UserModel
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1251,11 +1448,15 @@ mytalk.client.communication.AuthenticationCommunication
 
 \series bold
 La classe deriva da:
-\series default
- mytalk.client.Backbone.model
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.Backbone.model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1339,10 +1540,10 @@ Classe ContactModel
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1373,7 +1574,7 @@ La classe deriva da:
  mytalk.client.Backbone.model
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1409,7 +1610,7 @@ IP
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -1463,19 +1664,15 @@ Classe StatisticsModel
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1498,7 +1695,7 @@ La classe deriva da:
  mytalk.client.Backbone.model
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1571,10 +1768,10 @@ Classe TextMessageModel
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1601,7 +1798,7 @@ La classe deriva da:
  mytalk.client.Backbone.model
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1677,10 +1874,10 @@ Classe TutorialModel
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1711,7 +1908,7 @@ La classe deriva da:
  mytalk.client.Backbone.model
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1751,17 +1948,45 @@ Nel package Collection sono presenti le classi che modellano la logica di
  persistenza dei dati nel browser
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-La classe utilizza: mytalk.client.model
+
+\series bold
+La classe utilizza:
+\series default
+ 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.model
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view
+\end_layout
+
+\begin_layout Itemize
+mytalk.client.model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Cosituito dalle classi:
@@ -1827,10 +2052,10 @@ Classe ContactsCollection
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1873,7 +2098,7 @@ La classe deriva da:
  mytalk.client.Backbone.collection
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1883,7 +2108,7 @@ Attributi pubblici:
 model: specifica quale classe di modello contiene la collezione
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -1943,10 +2168,10 @@ Classe TextMessagesCollection
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -1983,7 +2208,7 @@ La classe deriva da:
  mytalk.client.Backbone.collection
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -1993,7 +2218,7 @@ Attributi pubblici:
 model: specifica quale classe di modello contiene la collezione
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -2052,10 +2277,10 @@ Classe TutorialsCollection
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -2094,7 +2319,7 @@ La classe deriva da:
  mytalk.client.Backbone.collection
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Attributi pubblici:
@@ -2104,7 +2329,7 @@ Attributi pubblici:
 model: specifica quale classe di modello contiene la collezione
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -2130,17 +2355,37 @@ Nel package Communication sono presenti le classi che effettuano la comunicazion
 e con il server.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-La classe utilizza: mytalk.server.transfer
+
+\series bold
+La classe utilizza: 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.transfer
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Cosituito dalle classi:
@@ -2226,10 +2471,10 @@ Classe AuthenticationCommunication
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -2237,9 +2482,15 @@ Relazione d'uso con altri moduli:
 \series bold
 La classe è utilizzata da:
 \series default
- mytalk.client.view.AuthenticationView
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.AuthenticationView
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -2248,7 +2499,13 @@ La classe utilizza:
  
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -2352,10 +2609,10 @@ Classe CallCommunication
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -2363,9 +2620,15 @@ Relazione d'uso con altri moduli:
 \series bold
 La classe è utilizzata da:
 \series default
- mytalk.client.view.CallView
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.CallView
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -2374,7 +2637,13 @@ La classe utilizza:
  
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -2459,10 +2728,10 @@ Classe ContactCommunication
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -2470,16 +2739,28 @@ Relazione d'uso con altri moduli:
 \series bold
 La classe è utilizzata da:
 \series default
- mytalk.client.view.ContactsView
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.ContactsView
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 La classe utilizza: 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
@@ -2598,10 +2879,10 @@ Classe NotificationCommunication
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli:
+Relazione d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -2609,16 +2890,28 @@ Relazione d'uso con altri moduli:
 \series bold
 La classe è utilizzata da:
 \series default
- mytalk.client.view.NotificationView
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+mytalk.client.view.NotificationView
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 La classe utilizza: 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
 
 \series bold
 Metodi pubblici:
