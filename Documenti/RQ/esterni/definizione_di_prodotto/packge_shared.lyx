@@ -103,171 +103,6 @@ server.shared.RecordMessage
 \end_layout
 
 \begin_layout Subsubsection
-server.shared.RecordMessage
-\end_layout
-
-\begin_layout Standard
-Questa classe rappresenterà da contenitore per i dati riguardanti i messaggi
- differiti inseriti all'interno del database.
-\end_layout
-
-\begin_layout Standard
-
-\lang italian
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\lang italian
-\begin_inset Graphics
-	filename img/shared.RecordMessage.pdf
-	scale 90
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\lang italian
-Classe RecordMessage
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Relazioni d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-server.dao.RecordMessageDaoSQL
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-\lang italian
-Attributi privati:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-String sender: 
-\series default
-rappresenta il mittente, colui che crea il messaggio
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-String addressee: 
-\series default
-rappresenta il destinatario, colui che riceve il messaggio
-\series bold
- 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-String path:
-\series default
- rappresenta l'indirizzo dove si trova il messaggio differito all'interno
- del server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-Date dateCreation:
-\series default
- rappresenta la data di creazione del messaggio
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-\lang italian
-Metodi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-RecordMessage(String sender, String addressee, String path, Date dateCreation):
-\series default
- costruttore che imposta i valori degli attributi secondo i valori dei parametri
- passati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-String getSender(): 
-\series default
-ritorna il mittente del messaggio
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-String getAddressee(): 
-\series default
-ritorna il destinatario del messaggio
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-String getPath():
-\series default
- ritorna l'indirizzo dove si trova il messaggio differito all'interno del
- server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\lang italian
-Date getDate(): 
-\series default
-ritorna la data di creazione del messaggio
-\end_layout
-
-\begin_layout Subsubsection
 
 \lang italian
 server.shared.User
@@ -285,10 +120,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename img/shared.User.pdf
 	scale 90
@@ -304,10 +135,6 @@ Classe User
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -511,10 +338,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename img/shared.UserList.pdf
 	scale 90
@@ -533,10 +356,6 @@ Classe UserList
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -546,14 +365,16 @@ Classe UserList
 Relazioni d'uso con altri moduli
 \end_layout
 
-\begin_layout Standard
-Questa classe verrà utilizzata dalle seguenti classi:
+\begin_layout Itemize
+La classe viene utilizzata da:
 \end_layout
 
-\begin_layout Standard
-kedwqaocwa
+\begin_deeper
+\begin_layout Itemize
+fjeodcwa
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 Attributi privati
 \end_layout
@@ -610,6 +431,171 @@ metodo che restituisce tutta la lista di utenti
 boolean removeUser(String username): 
 \series default
 metodo che elimina un utente dal vettore di utenti
+\end_layout
+
+\begin_layout Subsubsection
+server.shared.RecordMessage
+\end_layout
+
+\begin_layout Standard
+Questa classe rappresenterà da contenitore per i dati riguardanti i messaggi
+ differiti inseriti all'interno del database.
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang italian
+\begin_inset Graphics
+	filename img/shared.RecordMessage.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang italian
+Classe RecordMessage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.dao.RecordMessageDaoSQL
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Attributi privati:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String sender: 
+\series default
+rappresenta il mittente, colui che crea il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String addressee: 
+\series default
+rappresenta il destinatario, colui che riceve il messaggio
+\series bold
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String path:
+\series default
+ rappresenta l'indirizzo dove si trova il messaggio differito all'interno
+ del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Date dateCreation:
+\series default
+ rappresenta la data di creazione del messaggio
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\lang italian
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+RecordMessage(String sender, String addressee, String path, Date dateCreation):
+\series default
+ costruttore che imposta i valori degli attributi secondo i valori dei parametri
+ passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String getSender(): 
+\series default
+ritorna il mittente del messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String getAddressee(): 
+\series default
+ritorna il destinatario del messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+String getPath():
+\series default
+ ritorna l'indirizzo dove si trova il messaggio differito all'interno del
+ server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang italian
+Date getDate(): 
+\series default
+ritorna la data di creazione del messaggio
 \end_layout
 
 \end_body

@@ -63,40 +63,411 @@
 server.dao
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente: 
-\series default
-il package contiene tutte le classi che si occupano di eseguire le operazioni
+\begin_layout Standard
+Il package contiene tutte le classi che si occupano di eseguire le operazioni
  eseguite sul database
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
 
 \series bold
-Relazioni d'uso di altre componenti:
-\series default
- utilizza il package server.shared per trasmettere le informazioni trovate
- all'interno dei database
+Relazioni d'uso di altre componenti
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Interfaccia con le relazioni d'uso da altre componenti: 
-\series default
-viene utilizzato da tutte le classi del package cnaskcaqe
+Il package utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.shared
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package viene utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+cnaskcaqe
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Costituito da:
+\end_layout
+
+\begin_layout Itemize
+server.dao.JavaConnectionSQLite
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:server.dao.JavaConnectionSQLite"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+server.dao.LoginDao
+\end_layout
+
+\begin_layout Itemize
+server.dao.LoginDaoSQL
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:server.dao.LoginDaoSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+server.dao.RecordMessageDao
+\end_layout
+
+\begin_layout Itemize
+server.dao.RecordMessageDaoSQL
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:server.RecordMessageDaoSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+server.dao.UserDao
+\end_layout
+
+\begin_layout Itemize
+server.dao.UserDaoSQL
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:server.dao.UserDaoSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+server.dao.JavaConnectionSQLite
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.JavaConnectionSQLite"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/dao.JavaConnectionSQLite.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe JaveConnectionSQLite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questa classe contiene tutti i metodi per l'esecuzione di query all'interno
+ del database.
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+Questa classe verrà utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.dao.UserDaoSQL
+\end_layout
+
+\begin_layout Itemize
+serverr.dao.LoginDaoSQL
+\end_layout
+
+\begin_layout Itemize
+server.dao.RecordMessageDaoSQL
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+Connection connection: riferimento alla connessione al database
+\end_layout
+
+\begin_layout Itemize
+Statement statement: Riferimento alla risorsa impiegata per eseguire query
+ sul database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+JavaConnectionSQLite(): costruttore che crea la connessione al database
+\end_layout
+
+\begin_layout Itemize
+void finalize(): Distruttore della classe JavaConnectionSQLite.
+ Prima di distruggere una istanza, la connessione al database deve essere
+ chiusa.
+ Se la chiusura della connessione lancia eccezioni, dovrà stamperà a video
+ l'errore riscontrato
+\end_layout
+
+\begin_layout Itemize
+ResultSet select(String table, String column, String condition, String extra):
+ metodo che ritorna una tupla di elementi che rispettano i parametri passati,
+ presenti nel database
+\end_layout
+
+\begin_layout Itemize
+boolean executeUpdate(String query): metodo che esegue la query passata
+ nel database, aggiornandolo
+\end_layout
+
+\begin_layout Subsubsection
+server.dao.LoginDao 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.LoginDao"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+server.dao.LoginDaoSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.LoginDaoSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questa classe è l'implementazione di LoginDao per la base di dati SQLite;
+ si occupa della gestione dell'autenticazione degli utenti
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/dao.LoginDaoSQL.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe LoginDaoSQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+Questa classe verrà utilizzata dalle seguenti classi:
+\end_layout
+
+\begin_layout Itemize
+Questa classe utilizzerà le seguenti classi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+server.shared.UserList
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Attività svolte e dati trattati: 
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+i al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users: 
+\series default
+riferimento alla lista degli utenti registrati nel database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LoginDaoSQL(JavaConnectionSQLite connection): 
+\series default
+costruttore della classe LoginDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User login(String username, String password, String IP): 
+\series default
+metodo che effettua il login dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user): 
+\series default
+metodo che effettua il logout dell'utente
+\end_layout
+
+\begin_layout Subsubsection
+server.dao.RecordMessageDao 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.RecordMessageDao"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+server.dao.RecordMessageDaoSQL 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.RecordMessageDaoSQL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/dao.RecordMessageDaoSQL.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessageDaoSQLite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+server.dao.UserDao
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.UserDao"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 server.dao.UserDaoSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:server.dao.UserDaoSQL"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -109,10 +480,6 @@ Questa classe è l'implementazione di UserDao per la base di dati SQLite;
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -130,10 +497,6 @@ Classe UserDaoSQL
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -275,207 +638,5 @@ metodo che imposta il cognome di un utente con il nuovo valore
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection
-server.dao.LoginDaoSQL
-\end_layout
-
-\begin_layout Standard
-Questa classe è l'implementazione di LoginDao per la base di dati SQLite;
- si occupa della gestione dell'autenticazione degli utenti
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/dao.LoginDaoSQL.pdf
-	scale 90
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe LoginDaoSQL
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Relazioni d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-Questa classe verrà utilizzata dalle seguenti classi:
-\end_layout
-
-\begin_layout Itemize
-Questa classe utilizzerà le seguenti classi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-server.dao.JavaConnectionSQLite
-\end_layout
-
-\begin_layout Itemize
-server.shared.UserList
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-JavaConnectionSQLite connection:
-\series default
- riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
-i al server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-UserList users: 
-\series default
-riferimento alla lista degli utenti registrati nel database
-\end_layout
-
-\begin_layout Paragraph
-Metodi pubblici
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-LoginDaoSQL(JavaConnectionSQLite connection): 
-\series default
-costruttore della classe LoginDaoSQL
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-User login(String username, String password, String IP): 
-\series default
-metodo che effettua il login dell'utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-boolean logout(User user): 
-\series default
-metodo che effettua il logout dell'utente
-\end_layout
-
-\begin_layout Subsubsection
-server.JavaConnectionSQLite
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/dao.JavaConnectionSQLite.pdf
-	scale 90
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe JaveConnectionSQLite
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-server.RecordMessageDaoSQL
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/dao.RecordMessageDaoSQL.pdf
-	scale 90
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe RecordMessageDaoSQLite
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_body
 \end_document
