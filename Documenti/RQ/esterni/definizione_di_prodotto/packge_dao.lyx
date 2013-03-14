@@ -180,7 +180,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.JavaConnectionSQLite.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.JavaConnectionSQLite.pdf
 	scale 90
 
 \end_inset
@@ -439,7 +439,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.LoginDaoSQL.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.LoginDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -626,20 +626,25 @@ Metodi pubblici
 \series bold
 Vector<RecordMessage> getMessages(String username):
 \series default
- metodo che ritorna il vettore dei messaggi 
+ metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ ad un utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 RecordMessage createMessage(String sender, String addressee, String path,
- Date date)
+ Date date): 
+\series default
+metodo che crea un messaggio differito nel database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message)
+boolean removeMessage(RecordMessage message): 
+\series default
+metodo che elimina un messaggio differito dal database
 \end_layout
 
 \begin_layout Subsubsection
@@ -662,7 +667,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.RecordMessageDaoSQL.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.RecordMessageDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -700,23 +705,33 @@ Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 User createUser(String username, String password, String name, String surname,
  String IP)
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 boolean removeUser(String username)
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 boolean setPassword(String username, String password)
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 boolean setName(String username, String name)
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 boolean setSurname(String username, String surname)
 \end_layout
 
@@ -745,7 +760,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/dao.UserDaoSQL.pdf
+	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.UserDaoSQL.pdf
 	scale 90
 
 \end_inset
