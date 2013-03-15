@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -172,6 +173,11 @@ name "sub:server.dao.JavaConnectionSQLite"
 \end_layout
 
 \begin_layout Standard
+Questa classe contiene tutti i metodi per l'esecuzione di query all'interno
+ del database.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -179,8 +185,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.JavaConnectionSQLite.pdf
+	filename img/dao.JavaConnectionSQLite.pdf
 	scale 90
 
 \end_inset
@@ -202,11 +210,6 @@ Classe JaveConnectionSQLite
 
 \end_layout
 
-\begin_layout Standard
-Questa classe contiene tutti i metodi per l'esecuzione di query all'interno
- del database.
-\end_layout
-
 \begin_layout Paragraph
 Relazioni d'uso con altri moduli
 \end_layout
@@ -223,7 +226,7 @@ server.dao.UserDaoSQL
 \end_layout
 
 \begin_layout Itemize
-serverr.dao.LoginDaoSQL
+server.dao.LoginDaoSQL
 \end_layout
 
 \begin_layout Itemize
@@ -348,7 +351,7 @@ false
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia server.dao.LoginDao 
+Interfaccia server.dao.LoginDao 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.LoginDao"
@@ -363,6 +366,47 @@ Questa classe gestisce tutti i dati che riguardano i tentativi di connessione
  e disconnessione al sistema.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/dao.LoginDao.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interfaccia LoginDao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -403,7 +447,7 @@ Metodi pubblici
 User LoginDao(String username, String password, String IP):
 \series default
  metodo che controllerà la correttezza dei dati inseriti da un utente per
- connettersi al sistema.
+ connettersi al sistema
 \end_layout
 
 \begin_layout Itemize
@@ -428,7 +472,7 @@ name "sub:server.dao.LoginDaoSQL"
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
  di autenticazione all'interno del sistema.
- È l'imprementazione di server.dao.LoginDao
+ È l'implementazione di server.dao.LoginDao.
 \end_layout
 
 \begin_layout Standard
@@ -439,8 +483,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.LoginDaoSQL.pdf
+	filename img/dao.LoginDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -556,11 +602,11 @@ metodo che effettua il logout dell'utente.
  Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
  nel package server.shared.
  Successivamente si effettuerà l'aggiornamento dell'utente presente nel
- database impostanto il suo indirizzo IP a 0
+ database impostando il suo indirizzo IP a 0
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia server.dao.RecordMessageDao 
+Interfaccia server.dao.RecordMessageDao 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.RecordMessageDao"
@@ -575,6 +621,43 @@ Questa classe gestisce tutti i dati che riguardano i messaggi differiti
  inviati ai vari utenti.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/dao.RecordMessageDao.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interfaccia RecordMessageDao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -642,7 +725,7 @@ name "sub:server.dao.RecordMessageDaoSQL"
 
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
- È l'imprementazione di server.dao.RecordMessageDao
+ È l'implementazione di server.dao.RecordMessageDao.
 \end_layout
 
 \begin_layout Standard
@@ -653,8 +736,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.RecordMessageDaoSQL.pdf
+	filename img/dao.RecordMessageDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -790,7 +875,7 @@ false
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia server.dao.UserDao
+Interfaccia server.dao.UserDao
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.UserDao"
@@ -804,6 +889,47 @@ name "sub:server.dao.UserDao"
 Questa classe gestisce tutti i dati che riguardano gli utenti.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/dao.UserDao.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+UserDao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -892,7 +1018,7 @@ name "sub:server.dao.UserDaoSQL"
 
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
- È l'imprementazione di server.dao.UserDao.
+ È l'implementazione di server.dao.UserDao.
 \end_layout
 
 \begin_layout Standard
@@ -903,8 +1029,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
-	filename ../../../../../../../../Desktop/definizione_di_prodotto/img/dao.UserDaoSQL.pdf
+	filename img/dao.UserDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -1005,7 +1133,7 @@ metodo che prende le informazioni dell'utente dal database
 \series bold
 void getMessages(User user, Vector<RecordMessage> messages): 
 \series default
-metodo che ritora i messaggi dell'utente dal database
+metodo che ritorna i messaggi dell'utente dal database
 \end_layout
 
 \begin_layout Itemize
