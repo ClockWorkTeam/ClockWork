@@ -60,7 +60,7 @@
 \begin_body
 
 \begin_layout Subsection
-server.usermanager
+Package Usermanager
 \end_layout
 
 \begin_layout Standard
@@ -88,7 +88,7 @@ xxxxxxxxxx
 \begin_layout Itemize
 
 \series bold
-Il package viene utilizzato da:
+Il package è utilizzato da:
 \end_layout
 
 \begin_deeper
@@ -100,7 +100,7 @@ xxxxxxxxx
 \begin_layout Paragraph
 
 \series bold
-Costituito da:
+Costituito da: 
 \end_layout
 
 \begin_layout Itemize
@@ -108,7 +108,7 @@ xxxxxxxxx
 \end_layout
 
 \begin_layout Subsubsection
-server.usermanager.AuthenticationManager
+mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Standard
@@ -151,7 +151,13 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-Questa classe verrà utilizzata da:
+La classe utilizza:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
@@ -217,6 +223,130 @@ User createUser(String username, String password, String name):
 
 \series bold
 boolean removeUser(String username):
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/usermanager.UserManager.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+UseManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxxxxxxxxxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserDao userDao:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageDao messageDao:
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserManager(UserDao userDao, RecordMessageDao messageDao):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setPassword(User user, String password):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setName(User user, String name):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setSurname(User user, String surname):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean createMessage(String sender, String adressee, String path, Date
+ date):
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message):
 \end_layout
 
 \end_body
