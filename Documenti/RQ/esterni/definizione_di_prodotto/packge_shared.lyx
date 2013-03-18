@@ -61,18 +61,18 @@
 \begin_body
 
 \begin_layout Subsection
-Package server.shared
+Package Shared
 \end_layout
 
 \begin_layout Standard
-Il package contiene le classi contenenti le informazioni condivise fra i
- vari strati del server.
+Il package Shared contiene le classi contenenti le informazioni condivise
+ fra i vari strati del server
 \end_layout
 
 \begin_layout Paragraph
 
 \series bold
-Relazioni d'uso di altre componenti
+Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -83,7 +83,7 @@ Il package è utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao
+mytalk.server.dao
 \end_layout
 
 \end_deeper
@@ -92,24 +92,24 @@ Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \begin_layout Itemize
-server.shared.UserList
+mytalk.server.shared.UserList
 \end_layout
 
 \begin_layout Itemize
-server.shared.RecordMessage
+mytalk.server.shared.RecordMessage
 \end_layout
 
 \begin_layout Subsubsection
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \begin_layout Standard
-Questa classe rappresenterà da contenitore per i dati riguardanti gli utenti
- presenti all'interno del database.
+Questa classe farà da contenitore per i dati riguardanti gli utenti presenti
+ all'interno del database
 \end_layout
 
 \begin_layout Standard
@@ -150,12 +150,14 @@ Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-La classe verrà utilizzata da:
+
+\series bold
+La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.UserDaoSQL
+mytalk.server.dao.UserDaoSQL
 \end_layout
 
 \end_deeper
@@ -211,7 +213,7 @@ Se la stringa è uguale a 0 significa che l'utente in questione non è in
 \series bold
 Vector<RecordMessage> messages:
 \series default
- rappresentano tutti i RecordMessage inviati all'utente in questione mentre
+ rappresenta tutti i RecordMessage inviati all'utente in questione mentre
  questo non è in linea
 \end_layout
 
@@ -326,11 +328,11 @@ removeMessage(RecordMessage message)
 \end_layout
 
 \begin_layout Subsubsection
-server.shared.UserList
+mytalk.server.shared.UserList
 \end_layout
 
 \begin_layout Standard
-Questa classe rappresenterà la lista degli utenti registrati al server.
+Questa classe rappresenterà la lista degli utenti registrati al server
 \end_layout
 
 \begin_layout Standard
@@ -371,7 +373,9 @@ Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-La classe viene utilizzata da:
+
+\series bold
+La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
@@ -439,12 +443,12 @@ metodo che elimina un utente dal vettore di utenti
 \end_layout
 
 \begin_layout Subsubsection
-server.shared.RecordMessage
+mytalk.server.shared.RecordMessage
 \end_layout
 
 \begin_layout Standard
-Questa classe rappresenterà da contenitore per i dati riguardanti i messaggi
- differiti inseriti all'interno del database.
+Questa classe farà da contenitore per i dati riguardanti i messaggi differiti
+ inseriti all'interno del database
 \end_layout
 
 \begin_layout Standard
@@ -492,7 +496,7 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.RecordMessageDaoSQL
+mytalk.server.dao.RecordMessageDaoSQL
 \end_layout
 
 \end_deeper
