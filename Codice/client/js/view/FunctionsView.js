@@ -18,8 +18,9 @@ define([
  'underscore',  
  'backbone',
  'view/CallView',
+ 'view/RecordMessageView',
  'text!templates/FunctionsTemplate.html'
-], function($, _, Backbone, CallView, FunctionsTemplate){
+], function($, _, Backbone, CallView, RecordMessageView, FunctionsTemplate){
   var FunctionsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -36,6 +37,8 @@ define([
     template : _.template(FunctionsTemplate),
     
     callView : '',
+    
+    recordMessageView : '',
     
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
@@ -57,17 +60,27 @@ define([
       
     startChat: function(){},
     
-    sendVideoText:function(){},
+    sendVideoText:function(){
+		if(this.recordMessageView)
+		{	
+			
+			this.recordMessageView.close;
+			}
+		this.close;
+		this.recordMessageView=new RecordMessageView({model : this.model});
+		this.recordMessageView.render();
+		$('#main').prepend(this.recordMessageView.el);
+		},
     
     audiocall:function(){
 		if(this.callView)
 		{	
 			this.callView.close;
 			}
-			alert('audio');
+		this.close;
 		this.callView=new CallView({type:'audio'});
 		this.callView.render();
-		$('#main').append(this.callView.el);
+		$('#main').prepend(this.callView.el);
     },
     
     videocall:function(){
@@ -75,13 +88,16 @@ define([
 		{	
 			this.callView.close;
 			}
-		alert('video');
+		this.close;
 		this.callView=new CallView({type:'video'});
 		this.callView.render();
-		$('#main').append(this.callView.el);
+		
+		$('#main').prepend(this.callView.el);
     },
     
-    record : function(){}
+    record : function(){
+		
+		}
   });
 
   FunctionsView.prototype.close = function(){

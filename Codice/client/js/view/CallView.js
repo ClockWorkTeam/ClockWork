@@ -24,7 +24,7 @@ define([
     events:{
     },
 	
-    el : $('#call'),
+    el : $('#content'),
 	
     //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
@@ -43,8 +43,8 @@ define([
 		{
 			if(this.options.type=='video')
 			{	
-				//alert('prova');
-				$(this.el).html(this.template({video:'video'}));
+				
+				$(this.el).html(this.template());
 				navigator.webkitGetUserMedia({video:true, audio:true},
 				function(stream) {
 					video = document.getElementById("live_video");
@@ -53,10 +53,10 @@ define([
 				}
 			if(this.options.type=='audio')
 			{
-				$(this.el).html(this.template({video:'audio'}));
+				$(this.el).html(this.template());
 				navigator.webkitGetUserMedia({video:false, audio:true},
 				function(stream) {
-					video = document.getElementById("live_video");
+				video = document.getElementById("live_video");
 				video.src = window.webkitURL.createObjectURL(stream);
 				});
 				
