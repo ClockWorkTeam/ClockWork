@@ -21,16 +21,19 @@ define(function(){
 	  var connection = new WebSocket('ws://127.0.0.1:8787');
     
     //messaggio di conferma di connessione sulla console
-    connection.onopen = function(){
+    connection.onopen = function(user, pass){
       console.log('Connection open!');
-    }
-    
+
 	  var credentials = {
       username: user,
       password: pass
     };
 
 	  connection.send(JSON.stringify(credentials));
+
+    }
+    
+
     
     var response = null;
     connection.onmessage = function(str){
