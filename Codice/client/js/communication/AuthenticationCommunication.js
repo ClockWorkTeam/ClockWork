@@ -13,35 +13,39 @@
  */
 //classe che comunica con il server per i dati che riguardano il login
 define(function(){
-	
+  
 	var AuthenticationCommunication = function(){};
 	
 	//metodo per controllare la correttezza delle credenziali inserite	
-	AuthenticationCommunication.prototype.checkCredentials = function(user, pass) {
-	  var connection = new WebSocket('ws://127.0.0.1:8787');
+	AuthenticationCommunication.prototype.checkCredentials = function(user, pass, callBacks, view) {
     
+    alert(view);
+    
+    if(!callBacks){alert('attenzione!')};
+    
+    var connection = new WebSocket('ws://127.0.0.1:8787');
+  
     //messaggio di conferma di connessione sulla console
-    connection.onopen = function(user, pass){
+    connection.onopen = function(){
       console.log('Connection open!');
 
-	  var credentials = {
-      username: user,
-      password: pass
+      var credentials = {
+        username: user,
+        password: pass
+      };
+
+      connection.send(JSON.stringify(credentials));
+    
     };
-
-	  connection.send(JSON.stringify(credentials));
-
-    }
     
-
-    
-    var response = null;
     connection.onmessage = function(str){
       var response = JSON.parse(str.data);
+      if(response.risposta == 'true')
+        callBacks.doLogin(user, pass, response, view);
     }
 	  //funzione dummy - da implementare la connessione con il server
 	  //if ((!(user == ''))&&(!(pass == ''))) //se i campi username e password sono entrambi pieni
-	  return {ans: true, nome: 'pippo', cognome: 'baudo'};
+	  //return {ans: response.answer, nome: respone.name, cognome: response.surname};
 	};
   
   /*

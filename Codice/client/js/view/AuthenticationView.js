@@ -57,7 +57,29 @@ define([
 	    //applico il template all'elemento base (el)
       $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}))  
     },
-  
+
+    callBacks: function(){
+      return {
+        doLogin: function(user, pass, answer, view){
+alert('callBacks.doLogin()');
+          //se i dati inseriti sono corretti li inserisco nel modello
+          view.UserModel = new UserModel({
+            username: user,
+            password: pass,
+            name: answer.name,
+            surname: answer.surname
+          });
+          //aggiorno il template
+          $(view.el).html(view.authenticationTemplate({authenticated: true, name: view.UserModel.toJSON().username}));
+          //recupero la lista contatti dal server e li metto nel local storage
+          var contacts_communication = new ContactsCommunication(view.collection);
+          contacts_communication.fetchContacts();
+          // visione dei contatti	
+          view.contacts_view.render();
+        }
+      };
+    },
+
     //funzione che tenta il login
     connect: function(){
 	    //recupero lo username inserito
@@ -66,24 +88,7 @@ define([
 	    var pass = this.$("#password").val();
 	    //chiamo il metodo di comunicazione col server
 	    var authentication_communication = new AuthenticationCommunication();
-	    var answer = authentication_communication.checkCredentials(user, pass);
-	    //se i dati inseriti sono corretti li inserisco nel modello
-			if(answer.ans){
-				this.UserModel = new UserModel({
-					username: user,
-					password: pass,
-					name: answer.name,
-					surname: answer.surname
-				});
-				//aggiorno il template
-				$(this.el).html(this.authenticationTemplate({authenticated: true, name: this.UserModel.toJSON().username}));
-				//recupero la lista contatti dal server e li metto nel local storage
-				var contacts_communication = new ContactsCommunication(this.collection);
-				contacts_communication.fetchContacts();
-				// visione dei contatti	
-				this.contacts_view.render();
-			}
-			  //dobbiamo aggiungere la parte di interfacciamento con il server
+	    authentication_communication.checkCredentials(user, pass, this.callBacks(), this);
     },
 	
     //funzione che si occupa di chiudere la sessione con il server
