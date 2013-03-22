@@ -19,9 +19,7 @@ define(function(){
 	//metodo per controllare la correttezza delle credenziali inserite	
 	AuthenticationCommunication.prototype.checkCredentials = function(user, pass, callBacks, view) {
     
-    alert(view);
-    
-    if(!callBacks){alert('attenzione!')};
+    alert('checkCredentials');
     
     var connection = new WebSocket('ws://127.0.0.1:8787');
   

@@ -62,6 +62,7 @@ define([
       return {
         doLogin: function(user, pass, answer, view){
 alert('callBacks.doLogin()');
+alert(user);
           //se i dati inseriti sono corretti li inserisco nel modello
           view.UserModel = new UserModel({
             username: user,
@@ -82,13 +83,14 @@ alert('callBacks.doLogin()');
 
     //funzione che tenta il login
     connect: function(){
+      var aView = this;
 	    //recupero lo username inserito
 	    var user = this.$("#user").val();
 	    //recupero la password inserita
 	    var pass = this.$("#password").val();
 	    //chiamo il metodo di comunicazione col server
 	    var authentication_communication = new AuthenticationCommunication();
-	    authentication_communication.checkCredentials(user, pass, this.callBacks(), this);
+	    authentication_communication.checkCredentials(user, pass, aView.callBacks(), this);
     },
 	
     //funzione che si occupa di chiudere la sessione con il server
