@@ -81,7 +81,11 @@ Il package utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-xxxxxxxxxx
+server.shared
+\end_layout
+
+\begin_layout Itemize
+server.dao
 \end_layout
 
 \end_deeper
@@ -93,7 +97,7 @@ Il package è utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
-xxxxxxxxx
+cjsaop
 \end_layout
 
 \end_deeper
@@ -104,7 +108,11 @@ Costituito da:
 \end_layout
 
 \begin_layout Itemize
-xxxxxxxxx
+server.usermanager.AuthenticationManager
+\end_layout
+
+\begin_layout Itemize
+server.usermanager.UserManager
 \end_layout
 
 \begin_layout Subsubsection
@@ -154,6 +162,24 @@ Relazioni d'uso con altri moduli
 La classe utilizza:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+server.dao.RecordMessageDao
+\end_layout
+
+\begin_layout Itemize
+server.dao.LoginDao
+\end_layout
+
+\begin_layout Itemize
+server.dao.UserDao
+\end_layout
+
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -162,7 +188,7 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-xxxxxxxxxxxxxxxxx
+cjsapc
 \end_layout
 
 \end_deeper
@@ -175,19 +201,27 @@ Attributi privati
 \series bold
 RecordMessageDao messages:
 \series default
+ riferimento alla lista dei messaggi dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LoginDao loginDao: 
+\series default
+riferimento alla istanza della classe server.dao.LoginDao contenente i dati
+ per effettuare l'autenticazione
+\series bold
  
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-LoginDao loginDao:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-UserDao userDao:
+UserDao userDao: 
+\series default
+riferimento alla istanza della classe server.dao.UserDao contenente i dati
+ dell'utente
 \end_layout
 
 \begin_layout Paragraph
@@ -198,13 +232,19 @@ Metodi pubblici
 
 \series bold
 AuthenticationManager(RecordMessageDao messages, LoginDao loginDao, UserDao
- userDao):
+ userDao): 
+\series default
+costruttore della classe che dovrà impostare il valore degli attributi secondo
+ il valore dei parametri passati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP):
+User login(String username, String password, String IP): 
+\series default
+metodo che passa i dati al package server.dao per poter effettuare la login.
+ se la login avviene con successo, 
 \end_layout
 
 \begin_layout Itemize
@@ -237,10 +277,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
@@ -258,10 +294,6 @@ UseManager
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 

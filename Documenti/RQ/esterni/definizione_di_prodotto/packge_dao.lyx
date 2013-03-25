@@ -94,7 +94,7 @@ Il package viene utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
-cnaskcaqe
+server.usermanager
 \end_layout
 
 \end_deeper
@@ -474,7 +474,7 @@ Questa classe verrà utilizzata dalle seguenti classi:
 
 \begin_deeper
 \begin_layout Itemize
-csakcnwa
+server.usermanager.AuthenticationManager
 \end_layout
 
 \end_deeper
@@ -945,6 +945,10 @@ server.dao.JavaConnectionSQLite
 server.shared.UserList
 \end_layout
 
+\begin_layout Itemize
+server.shared.User
+\end_layout
+
 \end_deeper
 \begin_layout Paragraph
 Attributi privati
@@ -997,13 +1001,13 @@ L'esistenza di un utente con lo username uguale a quello passato come parametro,
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-User boolean removeUser(String username): 
+boolean removeUser(String username): 
 \series default
 metodo che elimina un utente dal database.
  Se l'eliminazione è andata a buon fine ritorna 
@@ -1018,72 +1022,51 @@ false
 \begin_layout Itemize
 
 \series bold
-void getMessages(User user, Vector<RecordMessage> messages): 
+boolean setPassword(String username, String password): 
 \series default
-metodo che ritora i messaggi dell'utente dal database
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-boolean setUser(User user): 
-\series default
-metodo che crea un utente nel database
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-boolean setAllInfo(User user, String password, String name, String surname):
- 
-\series default
-metodo che modifica tutti i campi
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Escluso lo username.
-\end_layout
-
-\end_inset
-
- dell'utente corrispondente a 
+metodo che imposta la password dell'utente con il nuovo valore passato nel
+ database.
+ Se il cambiamento è andato a buon fine, il metodo ritorna 
 \emph on
-user
+true
 \emph default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-boolean setPassword(User user, String password): 
-\series default
-metodo che imposta la password dell'utente corrispondente a 
+, altrimenti ritorna 
 \emph on
-user
-\emph default
- con il nuovo valore
+false
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setName(User user, String name): 
+boolean setName(String username, String name):
 \series default
-metodo che imposta il nome dell'utente con il nuovo valore
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-boolean setSurname(User user, String surname): 
-\series default
-metodo che imposta il cognome dell'utente corrispondente a 
+ metodo che imposta il nome dell'utente con il nuovo valore passato nel
+ database.
+ Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
+ presente in server.shared.User ed il metodo ritorna 
 \emph on
-user
+true
 \emph default
- con il nuovo valore
+, altrimenti ritorna 
+\emph on
+false
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setSurname(String username, String surname):
+\series default
+ metodo che imposta il cognome dell'utente con il nuovo valore passato nel
+ database.
+ Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
+ presente in server.shared.User ed il metodo ritorna 
+\emph on
+true
+\emph default
+, altrimenti ritorna 
+\emph on
+false
 \end_layout
 
 \end_body
