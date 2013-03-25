@@ -986,33 +986,15 @@ costruttore della classe che dovrà impostare il valore degli attributi secondo
 User createUser(String username, String password, String name, String surname,
  String IP): 
 \series default
-metodo che crea un utente con i parametri passati
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-L'esistenza di un utente con lo username uguale a quello passato come parametro,
- verrà accertata nella classe server.dao.shared.UserList.
-\end_layout
-
-\end_inset
-
-.
+metodo c
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-User boolean removeUser(String username): 
+User getContactInfo(String username): 
 \series default
-metodo che elimina un utente dal database.
- Se l'eliminazione è andata a buon fine ritorna 
-\emph on
-true
-\emph default
-, altrimenti ritorna 
-\emph on
-false
+metodo che prende le informazioni dell'utente dal database
 \end_layout
 
 \begin_layout Itemize
