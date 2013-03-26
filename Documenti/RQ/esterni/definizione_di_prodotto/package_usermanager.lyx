@@ -60,11 +60,7 @@
 \begin_body
 
 \begin_layout Subsection
-Package Usermanager
-\end_layout
-
-\begin_layout Standard
-xxxxxxxxxxxxxxxx
+Package mytalk.server.usermanager
 \end_layout
 
 \begin_layout Paragraph
@@ -81,11 +77,11 @@ Il package utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-server.shared
+mytalk.server.shared
 \end_layout
 
 \begin_layout Itemize
-server.dao
+mytalk.server.dao
 \end_layout
 
 \end_deeper
@@ -108,11 +104,11 @@ Costituito da:
 \end_layout
 
 \begin_layout Itemize
-server.usermanager.AuthenticationManager
+mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Itemize
-server.usermanager.UserManager
+mytalk.server.usermanager.UserManager
 \end_layout
 
 \begin_layout Subsubsection
@@ -164,19 +160,19 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.RecordMessageDao
+mytalk.server.dao.RecordMessageDao
 \end_layout
 
 \begin_layout Itemize
-server.dao.LoginDao
+mytalk.server.dao.LoginDao
 \end_layout
 
 \begin_layout Itemize
-server.dao.UserDao
+mytalk.server.dao.UserDao
 \end_layout
 
 \begin_layout Itemize
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \end_deeper
@@ -209,8 +205,8 @@ RecordMessageDao messages:
 \series bold
 LoginDao loginDao: 
 \series default
-riferimento alla istanza della classe server.dao.LoginDao contenente i dati
- per effettuare l'autenticazione
+riferimento alla istanza della classe mytalk.server.dao.LoginDao contenente
+ i dati per effettuare l'autenticazione
 \series bold
  
 \end_layout
@@ -220,8 +216,8 @@ riferimento alla istanza della classe server.dao.LoginDao contenente i dati
 \series bold
 UserDao userDao: 
 \series default
-riferimento alla istanza della classe server.dao.UserDao contenente i dati
- dell'utente
+riferimento alla istanza della classe mytalk.server.dao.UserDao contenente
+ i dati dell'utente
 \end_layout
 
 \begin_layout Paragraph
@@ -243,7 +239,8 @@ costruttore della classe che dovrà impostare il valore degli attributi secondo
 \series bold
 User login(String username, String password, String IP): 
 \series default
-metodo che passa i dati al package server.dao per poter effettuare la login.
+metodo che passa i dati al package mytalk.server.dao per poter effettuare
+ la login.
  se la login avviene con successo, 
 \end_layout
 
