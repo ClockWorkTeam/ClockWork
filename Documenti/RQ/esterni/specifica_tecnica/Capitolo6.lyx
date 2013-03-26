@@ -74,8 +74,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-filename img/package-server.pdf
-scale 60
+	filename img/package-server.pdf
+	scale 60
 
 \end_inset
 
@@ -108,7 +108,10 @@ Transfer Layer
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- lo strato Transfer si occupa della comunicazione tra il client e il server
+ lo strato Transfer si occupa della comunicazione tra il client e il server.
+ La struttura a classi non si addice a quella che è la struttura di un prodotto
+ web-based, quindi le classe qui rappresentate vanno considerate come enti
+ concettuali
 \end_layout
 
 \begin_layout Itemize
@@ -119,17 +122,26 @@ Relazioni d'uso con altre componenti:
 \series default
 lo strato Transfer interagisce con i package
 \family typewriter
+ 
+\series bold
 mytalk.server.functionmanager
 \family default
+\series default
  e
 \family typewriter
+ 
+\series bold
 mytalk.server.usermanager
 \family default
+\series default
  e con lo strato
 \family typewriter
+ 
+\series bold
 mytalk.client.communication
 \family default
-allo scopo di interfacciare il server col client
+\series default
+ allo scopo di interfacciare il server col client
 \end_layout
 
 \begin_layout Subsubsection
@@ -144,7 +156,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-CallTransfer
+ CallTransfer
 \family default
 \series default
  si occupa di far arrivare i dati all'apparato logico al fine di inizializzare
@@ -166,7 +178,7 @@ CallTransfer
  viene contattata e si rivolge a
 \family typewriter
 \series bold
-mytalk.client.communication.CallCommunication
+ mytalk.client.communication.CallCommunication
 \family default
  
 \series default
@@ -189,7 +201,7 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
-CallTransfer
+ CallTransfer
 \family default
  
 \series default
@@ -209,7 +221,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-AuthenticationTransfer
+ AuthenticationTransfer
 \family default
  
 \series default
@@ -225,19 +237,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-AuthenticationTransfer
+ AuthenticationTransfer
 \family default
 \series default
  viene utilizzata da
 \family typewriter
 \series bold
-mytalk.client.communication.AuthenticationCommunication
+ mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  e
 \family typewriter
 \series bold
-mytalk.server.usermanager.AuthenticationManager
+ mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Itemize
@@ -249,19 +261,19 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
-AuthenticationTransfer
+ AuthenticationTransfer
 \family default
 \series default
  ha lo scopo di ricevere da
 \family typewriter
 \series bold
-mytalk.client.communication.AuthenticationCommunication
+ mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  richieste di autenticazione e manda i dati a
 \family typewriter
 \series bold
-mytalk.server.usermanager.AuthenticationManager
+ mytalk.server.usermanager.AuthenticationManager
 \family default
 \series default
  che si occuperà di verificarli e dare una risposta che verrà quindi inviata
@@ -280,7 +292,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-UserDataTransfer
+ UserDataTransfer
 \family default
 \series default
  si occupa del trasferimento dei dati riguardanti gli utenti al fine di
@@ -297,25 +309,31 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-UserDataTransfer
+ UserDataTransfer
 \family default
 \series default
  comunica con
 \family typewriter
 \series bold
-mytalk.client.communication.UserDataCommunication
+ mytalk.client.communication.UserDataCommunication
 \family default
 \series default
 ,
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
  
 \family typewriter
 mytalk.client.communication.UserListCommunication
 \family default
- e
+ 
+\series default
+e
 \family typewriter
+ 
+\series bold
 mytalk.server.usermanager.UserDataManager
 \end_layout
 
@@ -328,21 +346,21 @@ Attività svolte e dati trattati:
  la classe riceve da
 \family typewriter
 \series bold
-mytalk.client.communication.UserDataCommunication
+ mytalk.client.communication.UserDataCommunication
 \family default
 \series default
  richieste di visualizzazione o modifica dei dati presenti nella base di
  dati e dialoga con
 \family typewriter
 \series bold
-mytalk.server.usermanager.UserDataManager
+ mytalk.server.usermanager.UserDataManager
 \family default
 \series default
  per eseguire le operazioni richieste; inoltre in caso di effettuata autenticazi
 one invia a
 \family typewriter
 \series bold
-mytalk.client.communication.UserListCommunication
+ mytalk.client.communication.UserListCommunication
 \family default
 \series default
  i nomi utente ed eventualmente l'indirizzo IP identificativo degli utenti
@@ -361,7 +379,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-TutorialTransfer
+ TutorialTransfer
 \family default
 \series default
  classe si occupa del passaggio delle richieste di visualizzazione dei video
@@ -377,19 +395,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-TutorialTransfer
+ TutorialTransfer
 \family default
 \series default
  viene chiamata da
 \family typewriter
 \series bold
-mytalk.client.communication.TutorialCommunication
+ mytalk.client.communication.TutorialCommunication
 \family default
 \series default
 e contatta
 \family typewriter
 \series bold
-mytalk.server.functionmanager.TutorialManager
+ mytalk.server.functionmanager.TutorialManager
 \end_layout
 
 \begin_layout Itemize
@@ -408,7 +426,7 @@ mytalk.server.functionmanager.TutorialManager
  e in seguito restituire a
 \family typewriter
 \series bold
-mytalk.client.communication.TutorialCommunication
+ mytalk.client.communication.TutorialCommunication
 \family default
 \series default
  il collegamento richiesto
@@ -426,7 +444,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-RecordMessageTransfer
+ RecordMessageTransfer
 \family default
 \series default
  si occupa del trasferimento del messaggio registrato dal client al server
@@ -442,13 +460,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-RecordMessageTransfer
+ RecordMessageTransfer
 \family default
 \series default
  comunica con
 \family typewriter
 \series bold
-mytalk.server.manager.RecordMessageManager
+ mytalk.server.manager.RecordMessageManager
 \family default
  
 \series default
@@ -472,14 +490,14 @@ Attività svolte e dati trattati:
  e l'utente a cui mandarlo e passa tali dati a
 \family typewriter
 \series bold
-mytalk.server.manager.RecordMessageManager
+ mytalk.server.manager.RecordMessageManager
 \family default
 \series default
 .
  In seguito una volta ricevuto il video da
 \family typewriter
 \series bold
-mytalk.server.manager.RecordMessageManager
+ mytalk.server.manager.RecordMessageManager
 \family default
 \series default
  lo manda al destinatario
@@ -497,7 +515,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-NotificationTransfer
+ NotificationTransfer
 \family default
 \series default
  si occupa di avvisare i client di eventuali notifiche dovute ad eventi
@@ -519,13 +537,13 @@ NotificationTransfer
  comunica con
 \family typewriter
 \series bold
-mytalk.client.communication.NotificationCommunication
+ mytalk.client.communication.NotificationCommunication
 \family default
 \series default
  e viene chiamata da
 \family typewriter
 \series bold
-mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.functionmanager.RecordMessageManager
 \family default
 \series default
 ,
@@ -555,7 +573,6 @@ Manager Layer
 Tipo, obiettivo e funzione del componente:
 \series default
  lo strato Manager del server si occupa delle funzionalità logiche del server
- e della lettura e della modifica della base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -564,8 +581,8 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- lo strato Manager agisce sullo strato Data per visualizzare o modificare
- i dati e comunica in modo bidirezionale con lo strato Transfer
+ lo strato Manager comunica con lo strato Transfer e invia allo strato Data
+ richieste riguardanti i dati contenuti nella base di dati
 \end_layout
 
 \begin_layout Subsubsection
@@ -580,7 +597,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-CallManager
+ CallManager
 \family default
 \series default
  ha il compito di inizializzare la chiamata tra due utenti
@@ -595,19 +612,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-CallManager
+ CallManager
 \family default
 \series default
  viene contattata e comunica con
 \family typewriter
 \series bold
-mytalk.server.transfer.CallTransfer
+ mytalk.server.transfer.CallTransfer
 \family default
 \series default
  e
 \family typewriter
 \series bold
-mytalk.server.transfer.NotificationTransfer
+ mytalk.server.transfer.NotificationTransfer
 \end_layout
 
 \begin_layout Itemize
@@ -620,13 +637,13 @@ Attività svolte e dati trattati:
  comunicando a
 \family typewriter
 \series bold
-mytalk.server.transfer.CallTransfer
+ mytalk.server.transfer.CallTransfer
 \family default
 \series default
  la situazione della chiamata che sta venendo effettuata e a
 \family typewriter
 \series bold
-mytalk.server.transfer.NotificationTransfer
+ mytalk.server.transfer.NotificationTransfer
 \family default
 \series default
  che tipo di operazione sia stata rivolta verso il destinatario e da parte
@@ -645,7 +662,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-RecordMessageManager
+ RecordMessageManager
 \family default
 \series default
  ha l'obiettivo di gestire la persistenza dei messaggi da mandare in differita
@@ -660,22 +677,22 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-RecordMessageManager
+ RecordMessageManager
 \family default
 \series default
  riceve dati da
 \family typewriter
 \series bold
-mytalk.server.transfer.RecordMessageTransfer
+ mytalk.server.transfer.RecordMessageTransfer
 \family default
 \series default
  e invia i messaggi a
 \family typewriter
 \series bold
-mytalk.server.data.RecordMessageDataDao
+ mytalk.server.data.RecordMessageDataDao
 \family default
 \series default
-affinché vengano salvati nella base di dati
+ affinché vengano salvati nella base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -688,7 +705,7 @@ Attività svolte e dati trattati:
  a
 \family typewriter
 \series bold
-mytalk.server.transfer.RecordMessageTransfer
+ mytalk.server.transfer.RecordMessageTransfer
 \family default
 \series default
  dei messaggi registrati e del loro invio
@@ -706,7 +723,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-TutorialManager
+ TutorialManager
 \family default
 \series default
  si occupa della gestione dei collegamenti ai tutorial
@@ -721,19 +738,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-TutorialManager
+ TutorialManager
 \family default
 \series default
  utilizza
 \family typewriter
 \series bold
-mytalk.server.data.TutorialDataDao
+ mytalk.server.data.TutorialDataDao
 \family default
 \series default
  al fine di scrivere e leggere i collegamenti ai video tutorial e
 \family typewriter
 \series bold
-mytalk.server.transfer.TutorialTransfer
+ mytalk.server.transfer.TutorialTransfer
 \family default
 \series default
  per far giungere tali link al client
@@ -764,7 +781,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-AuthenticationManager
+ AuthenticationManager
 \family default
 \series default
  si occupa di stabilire la riuscita o il fallimento di un tentativo di autentica
@@ -780,13 +797,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-AuthenticationManager
+ AuthenticationManager
 \family default
 \series default
  utilizza
 \family typewriter
 \series bold
-mytalk.server.data.UserDataDao
+ mytalk.server.data.UserDataDao
 \family default
 \series default
  e comunica con
@@ -810,7 +827,7 @@ Attività svolte e dati trattati:
  riuscito o meno, e restituire a
 \family typewriter
 \series bold
-mytalk.server.transfer.AuthenticationTransfer
+ mytalk.server.transfer.AuthenticationTransfer
 \family default
 \series default
   l'opportuna risposta, e per effettuare il logout
@@ -828,7 +845,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-UserDataManager
+ UserDataManager
 \family default
 \series default
  si occupa delle operazioni di aggiornamento delle informazioni sugli utenti,
@@ -844,19 +861,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-UserDataManager
+ UserDataManager
 \family default
 \series default
  viene utilizzata da
 \family typewriter
 \series bold
-mytalk.server.transfer.UserDataTransfer
+ mytalk.server.transfer.UserDataTransfer
 \family default
 \series default
  e agisce su
 \family typewriter
 \series bold
-mytalk.server.data.UserDataDao
+ mytalk.server.data.UserDataDao
 \end_layout
 
 \begin_layout Itemize
@@ -875,7 +892,7 @@ mytalk.server.transfer.UserDataTransfer
 , controlla ed eventualmente modifica la base di dati e ritorna a
 \family typewriter
 \series bold
-mytalk.server.transfer.UserDataTransfer
+ mytalk.server.transfer.UserDataTransfer
 \family default
 \series default
  il successo o meno dell'eventuale cambiamento
@@ -905,10 +922,14 @@ Relazioni d'uso con altre componenti:
  lo strato Data verrà utilizzato da alcune classi all'interno dei package
  
 \family typewriter
+\series bold
 mytalk.server.usermanager
 \family default
+\series default
  e
 \family typewriter
+ 
+\series bold
 mytalk.server.functionmanager
 \end_layout
 
@@ -924,13 +945,13 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-UserDataDao
+ UserDataDao
 \family default
 \series default
  rappresenta l'interfaccia con cui comunicherà
 \family typewriter
 \series bold
-mytalk.server.usermanager
+ mytalk.server.usermanager
 \end_layout
 
 \begin_layout Itemize
@@ -942,19 +963,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-UserDataDao
+ UserDataDao
 \family default
 \series default
  viene utilizzata da
 \family typewriter
 \series bold
-mytalk.server.usermanager
+ mytalk.server.usermanager
 \family default
 \series default
 ; essendo un'interfaccia viene implementata da
 \family typewriter
 \series bold
-UserDataDaoSQL
+ UserDataDaoSQL
 \family default
 \series default
  che agirà sulla base di dati
@@ -982,13 +1003,13 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-UserDataDaoSQL
+ UserDataDaoSQL
 \family default
 \series default
  è l'implementazione di
 \family typewriter
 \series bold
-UserDataDao
+ UserDataDao
 \family default
 \series default
  per la base di dati SQLite
@@ -1003,19 +1024,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-UserDataDaoSQL
+ UserDataDaoSQL
 \family default
 \series default
  implementa
 \family typewriter
 \series bold
-UserDataDao
+ UserDataDao
 \family default
 \series default
  e agisce su
 \family typewriter
 \series bold
-UserData
+ UserData
 \end_layout
 
 \begin_layout Itemize
@@ -1027,7 +1048,7 @@ Attività svolte e dati trattati:
  La classe
 \family typewriter
 \series bold
-UserDataDaoSQL
+ UserDataDaoSQL
 \family default
 \series default
  si occupa della lettura e scrittura dei dati nella base di dati
@@ -1045,7 +1066,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-UserData
+ UserData
 \family default
 \series default
  è un semplice contenitore di informazioni
@@ -1060,13 +1081,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-UserData
+ UserData
 \family default
 \series default
  viene utilizzata da
 \family typewriter
 \series bold
-mytalk.server.usermanager
+ mytalk.server.usermanager
 \family default
 \series default
 ; essendo un semplice contenitore di informazioni la classe non utilizza
@@ -1095,13 +1116,13 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-RecordMessageDataDao
+ RecordMessageDataDao
 \family default
 \series default
  rappresenta l'interfaccia con cui comunicherà
 \family typewriter
 \series bold
-mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.functionmanager.RecordMessageManager
 \end_layout
 
 \begin_layout Itemize
@@ -1113,13 +1134,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-RecordMessageDataDao
+ RecordMessageDataDao
 \family default
 \series default
  viene utilizzata dalla classe
 \family typewriter
 \series bold
-mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.functionmanager.RecordMessageManager
 \end_layout
 
 \begin_layout Itemize
@@ -1144,13 +1165,13 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-RecordMessageDataDaoSQL
+ RecordMessageDataDaoSQL
 \family default
 \series default
  è l'implementazione di
 \family typewriter
 \series bold
-RecordMessageDataDao
+ RecordMessageDataDao
 \family default
 \series default
  per la base di dati SQLite
@@ -1165,19 +1186,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-RecordMessageDataDaoSQL
+ RecordMessageDataDaoSQL
 \family default
 \series default
  implementa
 \family typewriter
 \series bold
-RecordMessageDataDao
+ RecordMessageDataDao
 \family default
 \series default
-e agisce su
+ e agisce su
 \family typewriter
 \series bold
-RecordMessageData
+ RecordMessageData
 \end_layout
 
 \begin_layout Itemize
@@ -1189,7 +1210,7 @@ Attività svolte e dati trattati:
  La classe
 \family typewriter
 \series bold
-RecordMessageDataDaoSQL
+ RecordMessageDataDaoSQL
 \family default
 \series default
  si occupa del salvataggio e del prelievo dei messaggi registrati presenti
@@ -1208,7 +1229,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-RecordMessageData
+ RecordMessageData
 \family default
 \series default
  è un semplice contenitore di informazioni
@@ -1223,13 +1244,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-RecordMessageData
+ RecordMessageData
 \family default
 \series default
  viene utilizzata dalla classe
 \family typewriter
 \series bold
-mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.functionmanager.RecordMessageManager
 \family default
 \series default
 ; essendo un semplice contenitore di informazioni la classe non utilizza
@@ -1257,13 +1278,13 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-TutorialDataDao
+ TutorialDataDao
 \family default
 \series default
  rappresenta l'interfaccia con cui comunicherà
 \family typewriter
 \series bold
-mytalk.server.functionmanager.TutorialManager
+ mytalk.server.functionmanager.TutorialManager
 \end_layout
 
 \begin_layout Itemize
@@ -1275,19 +1296,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-TutorialDataDao
+ TutorialDataDao
 \family default
 \series default
  è utilizzata da
 \family typewriter
 \series bold
-mytalk.server.functionmanager.TutorialManager
+ mytalk.server.functionmanager.TutorialManager
 \family default
 \series default
 ; essendo un'interfaccia viene implementata da
 \family typewriter
 \series bold
-TutorialDataDaoSQL
+ TutorialDataDaoSQL
 \end_layout
 
 \begin_layout Itemize
@@ -1299,7 +1320,7 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
-TutorialData
+ TutorialData
 \family default
 \series default
  preserva i collegamenti ai tutorial video
@@ -1317,13 +1338,13 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-TutorialDataDaoSQL
+ TutorialDataDaoSQL
 \family default
 \series default
  è è l'implementazione di
 \family typewriter
 \series bold
-TutorialDataDao
+ TutorialDataDao
 \family default
 \series default
 per la base di dati SQLite
@@ -1338,19 +1359,19 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-TutorialDataDaoSQL
+ TutorialDataDaoSQL
 \family default
 \series default
  implementa
 \family typewriter
 \series bold
-TutorialDataDao
+ TutorialDataDao
 \family default
 \series default
 e agisce su
 \family typewriter
 \series bold
-TutorialData
+ TutorialData
 \end_layout
 
 \begin_layout Itemize
@@ -1362,7 +1383,7 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
-TutorialDataDaoSQL
+ TutorialDataDaoSQL
 \family default
 \series default
  si occupa della lettura e della scrittura dei collegamenti ai tutorial
@@ -1381,7 +1402,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
-TutorialData
+ TutorialData
 \family default
 \series default
  è un semplice contenitore di informazioni
@@ -1396,13 +1417,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
-TutorialData
+ TutorialData
 \family default
 \series default
  è utilizzata da
 \family typewriter
 \series bold
-mytalk.server.functionmanager.TutorialManager
+ mytalk.server.functionmanager.TutorialManager
 \family default
 \series default
 ; essendo un semplice contenitore di informazioni la classe non utilizza
@@ -1418,7 +1439,7 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
-TutorialData
+ TutorialData
 \family default
 \series default
  preserva i collegamenti ai tutorial video
