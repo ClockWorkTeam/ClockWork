@@ -60,7 +60,7 @@
 \begin_body
 
 \begin_layout Subsection
-server.dao
+mytalk.server.dao
 \end_layout
 
 \begin_layout Standard
@@ -82,7 +82,7 @@ Il package utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-server.shared
+mytalk.server.shared
 \end_layout
 
 \end_deeper
@@ -94,7 +94,7 @@ Il package viene utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
-server.usermanager
+mytalk.server.usermanager
 \end_layout
 
 \end_deeper
@@ -105,7 +105,7 @@ Costituito da:
 \end_layout
 
 \begin_layout Itemize
-server.dao.JavaConnectionSQLite
+mytalk.server.dao.JavaConnectionSQLite
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:server.dao.JavaConnectionSQLite"
@@ -116,11 +116,11 @@ reference "sub:server.dao.JavaConnectionSQLite"
 \end_layout
 
 \begin_layout Itemize
-server.dao.LoginDao
+mytalk.server.dao.LoginDao
 \end_layout
 
 \begin_layout Itemize
-server.dao.LoginDaoSQL
+mytalk.server.dao.LoginDaoSQL
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:server.dao.LoginDaoSQL"
@@ -131,11 +131,11 @@ reference "sub:server.dao.LoginDaoSQL"
 \end_layout
 
 \begin_layout Itemize
-server.dao.RecordMessageDao
+mytalk.server.dao.RecordMessageDao
 \end_layout
 
 \begin_layout Itemize
-server.dao.RecordMessageDaoSQL
+mytalk.server.dao.RecordMessageDaoSQL
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:server.dao.RecordMessageDaoSQL"
@@ -146,11 +146,11 @@ reference "sub:server.dao.RecordMessageDaoSQL"
 \end_layout
 
 \begin_layout Itemize
-server.dao.UserDao
+mytalk.server.dao.UserDao
 \end_layout
 
 \begin_layout Itemize
-server.dao.UserDaoSQL
+mytalk.server.dao.UserDaoSQL
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:server.dao.UserDaoSQL"
@@ -161,7 +161,7 @@ reference "sub:server.dao.UserDaoSQL"
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.JavaConnectionSQLite
+mytalk.server.dao.JavaConnectionSQLite
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.JavaConnectionSQLite"
@@ -219,15 +219,15 @@ Questa classe verrà utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.UserDaoSQL
+mytalk.server.dao.UserDaoSQL
 \end_layout
 
 \begin_layout Itemize
-serverr.dao.LoginDaoSQL
+mytalk.server.dao.LoginDaoSQL
 \end_layout
 
 \begin_layout Itemize
-server.dao.RecordMessageDaoSQL
+mytalk.server.dao.RecordMessageDaoSQL
 \end_layout
 
 \end_deeper
@@ -348,7 +348,7 @@ false
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia server.dao.LoginDao 
+Intefaccia mytalk.server.dao.LoginDao 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.LoginDao"
@@ -377,7 +377,7 @@ La classe utilizzerà:
 
 \begin_deeper
 \begin_layout Itemize
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \end_deeper
@@ -415,7 +415,7 @@ boolean logout(User user):
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.LoginDaoSQL
+mytalk.server.dao.LoginDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.LoginDaoSQL"
@@ -428,7 +428,7 @@ name "sub:server.dao.LoginDaoSQL"
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
  di autenticazione all'interno del sistema.
- È l'imprementazione di server.dao.LoginDao
+ È l'imprementazione di mytalk.server.dao.LoginDao
 \end_layout
 
 \begin_layout Standard
@@ -474,7 +474,7 @@ Questa classe verrà utilizzata dalle seguenti classi:
 
 \begin_deeper
 \begin_layout Itemize
-server.usermanager.AuthenticationManager
+mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \end_deeper
@@ -486,11 +486,11 @@ Questa classe utilizzerà le seguenti classi:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.JavaConnectionSQLite
+mytalk.server.dao.JavaConnectionSQLite
 \end_layout
 
 \begin_layout Itemize
-server.shared.UserList
+mytalk.server.shared.UserList
 \end_layout
 
 \end_deeper
@@ -544,7 +544,7 @@ username
  Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
  creerà una query per effettuare l'aggiornamento dell'indirizzo IP dell'utente
  che vuole effettuare la connessione, successivamente viene aggiornata anche
- l'istanza dell'utente nel package server.shared.User
+ l'istanza dell'utente nel package mytalk.server.shared.User
 \end_layout
 
 \begin_layout Itemize
@@ -554,13 +554,13 @@ boolean logout(User user):
 \series default
 metodo che effettua il logout dell'utente.
  Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
- nel package server.shared.
+ nel package mytalk.server.shared.
  Successivamente si effettuerà l'aggiornamento dell'utente presente nel
  database impostanto il suo indirizzo IP a 0
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia server.dao.RecordMessageDao 
+Intefaccia mytalk.server.dao.RecordMessageDao 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.RecordMessageDao"
@@ -589,7 +589,7 @@ La classe utilizzerà:
 
 \begin_deeper
 \begin_layout Itemize
-server.shared.RecordMessage
+mytalk.server.shared.RecordMessage
 \end_layout
 
 \end_deeper
@@ -630,7 +630,7 @@ metodo che elimina un messaggio differito dal database
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.RecordMessageDaoSQL 
+mytalk.server.dao.RecordMessageDaoSQL 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.RecordMessageDaoSQL"
@@ -642,7 +642,7 @@ name "sub:server.dao.RecordMessageDaoSQL"
 
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
- È l'imprementazione di server.dao.RecordMessageDao
+ È l'imprementazione di mytalk.server.dao.RecordMessageDao
 \end_layout
 
 \begin_layout Standard
@@ -688,15 +688,15 @@ La classe utilizzerà:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.JavaConnectionSQLite
+mytalk.server.dao.JavaConnectionSQLite
 \end_layout
 
 \begin_layout Itemize
-server.shared.RecordMessage
+mytalk.server.shared.RecordMessage
 \end_layout
 
 \begin_layout Itemize
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \end_deeper
@@ -762,7 +762,7 @@ metodo che crea un messaggio differito nel database.
  Deve verificare che l'utente destinatario esista nel database.
  Successivamente deve creare la query per aggiungere nel database il messaggio.
  Se l'aggiunta avviene con successo, viene aggiornata anche l'istanza dell'utent
-e nel package server.shared.User.
+e nel package mytalk.server.shared.User.
  Il metodo ritorna il messaggio creato, che sarà 
 \emph on
 null
@@ -779,7 +779,7 @@ metodo che elimina un messaggio differito dal database.
  Il metodo deve creare la query per la cancellazione del messaggio differito
  nel database.
  Successivamente viene aggiornata anche l'istanza dell'utente nel package
- server.shared.User.
+ mytalk.server.shared.User.
  Nel caso l'eliminazione avviene con successo il metodo ritorna 
 \emph on
 true
@@ -790,7 +790,7 @@ false
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia server.dao.UserDao
+Intefaccia mytalk.server.dao.UserDao
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.UserDao"
@@ -818,7 +818,7 @@ La classe utilizzerà:
 
 \begin_deeper
 \begin_layout Itemize
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \end_deeper
@@ -880,7 +880,7 @@ username
 \end_layout
 
 \begin_layout Subsubsection
-server.dao.UserDaoSQL
+mytalk.server.dao.UserDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:server.dao.UserDaoSQL"
@@ -892,7 +892,7 @@ name "sub:server.dao.UserDaoSQL"
 
 \begin_layout Standard
 Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
- È l'imprementazione di server.dao.UserDao.
+ È l'imprementazione di mytalk.server.dao.UserDao.
 \end_layout
 
 \begin_layout Standard
@@ -938,15 +938,15 @@ La classe utilizzerà:
 
 \begin_deeper
 \begin_layout Itemize
-server.dao.JavaConnectionSQLite
+mytalk.server.dao.JavaConnectionSQLite
 \end_layout
 
 \begin_layout Itemize
-server.shared.UserList
+mytalk.server.shared.UserList
 \end_layout
 
 \begin_layout Itemize
-server.shared.User
+mytalk.server.shared.User
 \end_layout
 
 \end_deeper
@@ -996,7 +996,7 @@ status open
 
 \begin_layout Plain Layout
 L'esistenza di un utente con lo username uguale a quello passato come parametro,
- verrà accertata nella classe server.dao.shared.UserList.
+ verrà accertata nella classe mytalk.server.dao.shared.UserList.
 \end_layout
 
 \end_inset
@@ -1043,7 +1043,7 @@ boolean setName(String username, String name):
  metodo che imposta il nome dell'utente con il nuovo valore passato nel
  database.
  Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
- presente in server.shared.User ed il metodo ritorna 
+ presente in mytalk.server.shared.User ed il metodo ritorna 
 \emph on
 true
 \emph default
@@ -1060,7 +1060,7 @@ boolean setSurname(String username, String surname):
  metodo che imposta il cognome dell'utente con il nuovo valore passato nel
  database.
  Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
- presente in server.shared.User ed il metodo ritorna 
+ presente in mytalk.server.shared.User ed il metodo ritorna 
 \emph on
 true
 \emph default
