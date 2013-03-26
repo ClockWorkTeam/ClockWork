@@ -17,8 +17,9 @@ define([
  'jquery',
  'underscore',  
  'backbone',
- 'text!templates/CallTemplate.html',
-], function($, _, Backbone, CallTemplate){
+ 'communication/CallCommunication',
+ 'text!templates/CallTemplate.html'
+], function($, _, Backbone, CallCommunication, CallTemplate){
   var CallView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -29,6 +30,7 @@ define([
     //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
     
+    call_communication : CallCommunication,
     
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
@@ -41,27 +43,9 @@ define([
     render: function(){
 		if(this.startcall())
 		{
-			if(this.options.type=='video')
-			{	
-				
-				$(this.el).html(this.template());
-				navigator.webkitGetUserMedia({video:true, audio:true},
-				function(stream) {
-					video = document.getElementById("live_video");
-				video.src = window.webkitURL.createObjectURL(stream);
-				});
-				}
-			if(this.options.type=='audio')
-			{
-				$(this.el).html(this.template());
-				navigator.webkitGetUserMedia({video:false, audio:true},
-				function(stream) {
-				video = document.getElementById("live_video");
-				video.src = window.webkitURL.createObjectURL(stream);
-				});
-				
-				
-				}
+			var prova=new CallCommunication();
+			$(this.el).html(this.template());
+			prova.sendAnswer('192.168.0.1');
 			}
 		else
 		{
