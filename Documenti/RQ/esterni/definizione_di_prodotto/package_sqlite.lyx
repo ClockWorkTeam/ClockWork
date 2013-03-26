@@ -63,20 +63,180 @@
 mytalk.server.sqlite
 \end_layout
 
+\begin_layout Standard
+Rappresenta il database di 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.server.sqlite.RecordMessageDataSQL
 \end_layout
 
 \begin_layout Standard
+Tabella che rappresenta i messaggi differiti inviati agli utenti
+\end_layout
 
+\begin_layout Paragraph
+Attributi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+sender:
+\series default
+ rappresenta lo username del mittente del messaggio differito
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+addressee: 
+\series default
+rappresenta lo username del destinatario del messaggio differito
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+record_message:
+\series default
+ 
+\lang italian
+indirizzo dove si trova il messaggio differito all'interno del server 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È unico in tutto il database.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+creation:
+\series default
+ data di creazione del messaggio
 \end_layout
 
 \begin_layout Subsubsection
 mytalk.server.sqlite.TutorialDataSQL
 \end_layout
 
+\begin_layout Standard
+Tabella che rappresenta i tutorial video di 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Attributi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+url: 
+\series default
+url di destinazione dove si trova il tutorial video
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È unico in tutto il database.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+title:
+\series default
+ titolo del tutorial video
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.server.sqlite.UserDataSQL
+\end_layout
+
+\begin_layout Standard
+Tabella che rappresenta gli utenti.
+\end_layout
+
+\begin_layout Paragraph
+Attributi
+\end_layout
+
+\begin_layout Itemize
+username: username dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È unico in tutta la tabella.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+password: password dell'utente
+\end_layout
+
+\begin_layout Itemize
+name: nome dell'utente
+\end_layout
+
+\begin_layout Itemize
+surname: cognome dell'utente
+\end_layout
+
+\begin_layout Itemize
+IP: indirizzo IP dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se uguale a 0 rappresenta un utente non connesso.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
