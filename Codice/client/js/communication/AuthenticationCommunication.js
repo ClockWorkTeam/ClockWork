@@ -24,19 +24,39 @@ define(['connection'], function(Connection){
         password: pass
       };
 
-      Connection.send(JSON.stringify(credentials));
+      Connection.send("Login"+JSON.stringify(credentials));
       
-      Connection.onmessage = function(str){
-        var response = JSON.parse(str.data);
-        if(response.risposta == 'true')
-          callBacks.doLogin(user, pass, response, view);
-      }
-    },
-    
-    //si occupa di gestire la registrazione
+		Connection.onmessage = function(str){
+			var response = JSON.parse(str.data);
+			if(response.risposta == "true"){
+				callBacks.doLogin(user, pass, response, view);
+			}else if(response.risposta == "false"){
+				alert("Login e username errate");
+			}
+
+		}
+	},
     signup: function(user, pass, name, surname) {
-     return true			   
-    }
+		var credentials = {
+				username: user,
+				password: pass,
+				name: name,
+				surname: surname
+		};
+			  
+		Connection.send("SignUp"+JSON.stringify(credentials));
+		Connection.onmessage = function(str){
+			var response = JSON.parse(str.data);
+			if(response.risposta == "true"){
+				response.name=name;
+				response.surname=surname;
+				callBacks.doLogin(user, pass, response, view);
+			}else if(response.risposta == "false"){ 
+				alert("Username non disponibile");
+			}
+		}
+
+	}
 	
-  };
+ };
 });
