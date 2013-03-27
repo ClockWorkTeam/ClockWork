@@ -125,7 +125,10 @@ name "sub:Package-View"
 
 \begin_layout Standard
 Il package View costituisce la parte del sistema che definisce ed implementa
- l'interfaccia web usufruibile dagli utenti mediante pagine web
+ l'interfaccia web usufruibile dagli utenti mediante pagine web.
+ Diversamente da uno schema di tipo MVC il package view contiene non solo
+ le parti di interfaccia ma anche parti logiche, come previsto dal framework
+ Backbone.js, che prevede uno schema di tipo MV*
 \end_layout
 
 \begin_layout Paragraph
@@ -522,7 +525,8 @@ mytalk.client.view.SendFileView
 
 \begin_layout Standard
 La classe SendFileView definisce la struttura, e la conseguente visualizzazione,
- della pagina per l'invio del file
+ delle pagine web che consentono di selezionare un le salvato in locale
+ per mandarlo all'utente autenticato selezionato
 \end_layout
 
 \begin_layout Standard
@@ -833,7 +837,8 @@ mytalk.client.view.StaticsView
 
 \begin_layout Standard
 La classe StaticsView definisce la struttura, e la conseguente visualizzazione,
- della pagina per le statistiche di una chiamata
+ delle pagine web per la visualizzazione di statistiche durante lo svolgimento
+ di una chiamata
 \end_layout
 
 \begin_layout Standard
@@ -1570,7 +1575,21 @@ mytalk.client.view.TutorialView
 
 \begin_layout Standard
 La classe TutorialView definisce la struttura, e la conseguente visualizzazione,
- della pagina per i tutorial
+ delle pagine web che consentono la visualizzazione dei video tutorial del
+ prodotto 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1680,7 +1699,8 @@ mytalk.client.view.RecordMessageView
 
 \begin_layout Standard
 La classe RecordMessageView definisce la struttura, e la conseguente visualizzaz
-ione, della pagina per la registrazione del messaggio
+ione, delle pagine web per eettuare registrazioni audio o audio/video da
+ inviare ad un utente registrato
 \end_layout
 
 \begin_layout Standard
@@ -3125,7 +3145,8 @@ mytalk.client.communication.AuthenticationCommunication
 
 \begin_layout Standard
 La classe AuthenticationCommunication si occupa di inviare le credenziali
- inserite al server, e, inviare la risposta ricevuta al view
+ inserite al server, e, inviare la risposta ricevuta a mytalk.client.view.Authentic
+ationView
 \end_layout
 
 \begin_layout Standard
@@ -3201,6 +3222,20 @@ xxx
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+credentials:
+\series default
+ contiene i dati dell'utente chiamante
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -3222,7 +3257,7 @@ AuthenticationCommunication.prototype.checkCredentials(string,
 \series default
  
 \series bold
-string):
+string, object, object):
 \series default
  funzione che controlla la correttezza delle credenziali inserite
 \end_layout
@@ -3234,6 +3269,14 @@ AuthenticationCommunication.prototype.signup(string, string, string, string):
  
 \series default
 funzione che gestisce la registrazione delle credenziali
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Connection.onmessage(string): 
+\series default
+funzione del socket che permette di ricevere messaggi
 \end_layout
 
 \begin_layout Subsubsection
@@ -3318,7 +3361,7 @@ mytalk.client.communication.CallCommunication
 
 \begin_layout Standard
 La classe CallCommunication si occupa di avviare la comunicazione tra utenti
- attraverso una comunicazione con il server
+ con il server
 \end_layout
 
 \begin_layout Standard
@@ -3547,8 +3590,8 @@ mytalk.client.communication.RecordMessageCommunication
 \end_layout
 
 \begin_layout Standard
-La classe RecordMessageCommunication si occupa di comunicare con il server
- per quanto riguarda la registrazione dei messaggi
+La classe RecordMessageCommunication si occupa di inviare e ricevere i messaggi
+ registrati
 \end_layout
 
 \begin_layout Standard
@@ -3623,8 +3666,7 @@ mytalk.client.communication.SendFileCommunication
 \end_layout
 
 \begin_layout Standard
-La classe SendFileCommunication si occupa di comunicare con il server per
- quanto riguarda l'invio dei file
+La classe SendFileCommunication si occupa di gestire l'invio di le al server
 \end_layout
 
 \begin_layout Standard
