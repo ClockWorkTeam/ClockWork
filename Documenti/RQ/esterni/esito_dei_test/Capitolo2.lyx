@@ -84,7 +84,7 @@ NdP}
 \end_inset
 
  , sez.
- Metriche e calcolate utilizzanto Metrics Plugin for Eclipse.
+ Metriche, e calcolate utilizzando Eclipse Metrics Plugin.
  Si evidenzieranno in rosso quei valori che non rispettano le massime misure
  consentite.
 \end_layout
@@ -360,6 +360,362 @@ endlastfoot
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Descrizione dei Test effettuati
+\end_layout
+
+\begin_layout Standard
+I test descritti e implementati che verificano singolarmente il comportamento
+ delle funzioni della componente specifica alla quale il test fa riferimento.
+ I test descritti di seguito verificano le componenti del server.
+\end_layout
+
+\begin_layout Subsubsection
+Test Package mytalk.server.shared
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.shared.RecordMessageTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata:
+\series default
+ RecordMessage
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test è in grado di creare correttamente
+ un oggetto di tipo 
+\emph on
+RecordMessage
+\emph default
+.
+ Nel dettaglio viene creato se è possibile ottenere un oggetto 
+\emph on
+RecordMessage
+\emph default
+ corretto.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito: 
+\series default
+nessun errore riscontrato
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.shared.UserTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata:
+\series default
+ User
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test è in grado di creare correttamente
+ un oggetto di tipo 
+\emph on
+User
+\emph default
+.
+ Nel dettaglio viene creato se è possibile ottenere un oggetto 
+\emph on
+User
+\emph default
+ corretto.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito: 
+\series default
+nessun errore riscontrato
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.shared.UserListTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata:
+\series default
+ UserList
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test è in grado di creare correttamente
+ un oggetto di tipo 
+\emph on
+User
+\emph default
+List
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ovvero una lista di oggetti 
+\emph on
+User.
+\end_layout
+
+\end_inset
+
+.
+ Nel dettaglio viene creato se è possibile ottenere un oggetto 
+\emph on
+UserList
+\emph default
+, e di conseguenza 
+\emph on
+User
+\emph default
+, corretto.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito:
+\series default
+ nessun errore riscontrato
+\end_layout
+
+\begin_layout Subsubsection
+Test Package mytalk.server.dao
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.dao.JavaConnectionSQLiteTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata:
+\series default
+ JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test interagisce correttamente con
+ il database SQLite.
+ Nel dettaglio viene verificato la creazione e l'eliminazione di un utente
+ nella tabella UserDataSQL e l'inserimento e la cancellazione di un 
+\emph on
+record 
+\emph default
+nella tabella RecordMessageDataSQL.
+ Tali operazioni sono state effettuate definendo un input fittizio e verificando
+ne l'output
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito: 
+\series default
+nessun errore riscontrato
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.dao.LoginDaoSQLTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata:
+\series default
+ LoginDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test è in grado di interagire correttame
+nte col database SQLite.
+ Nel dettaglio viene verificato se è possibile effettuare le operazioni
+ di login e logout di un utente.
+ Tali operazioni sono state effettuate definendo un input fittizio e verificando
+ne l'output
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito: 
+\series default
+nessun errore riscontrato
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.dao.RecordMessageDaoSQLTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata:
+\series default
+ RecordMessageDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test è in grado di interagire correttame
+nte col database SQLite.
+ Nel dettaglio viene verificato se è possibile creare un nuovo messaggio
+ nel database assegnandogli i rispettivi mittente e destinatario.
+ Viene inoltre testato l'eliminazione di un messaggio differito.
+ Tali operazioni sono state effettuate definendo un input fittizio e verificando
+ne l'output
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito: 
+\series default
+nessun errore riscontrato
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.dao.UserDaoSQLTest
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata: 
+\series default
+UserDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+questa classe controlla se la classe in test è in grado di interagire correttame
+nte col database SQLite.
+ Nel dettaglio viene verificato se è possibile creare un nuovo utente nel
+ database.Inoltre viene verificato se, una volta richiesti i dati, come nome,
+ cognome, password, i dati restituiti sono corretti.
+ Tali operazioni sono state effettuate definendo un input fittizio e verificando
+ne l'output
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito: 
+\series default
+nessun errore riscontrato
+\end_layout
+
+\begin_layout Subsubsection
+Test Package mytalk.server.usermanager
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.usermanager.AuthenticationManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito:
+\end_layout
+
+\begin_layout Paragraph
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito:
+\end_layout
+
+\begin_layout Subsubsection
+Test Package mytalk.server.transfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classe verificata: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Esito:
 \end_layout
 
 \end_body

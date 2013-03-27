@@ -361,15 +361,8 @@ PROGETTO}
 \series bold
 mytalk.client.view
 \series default
- racchiude al suo interno l'interfaccia grafica
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-mytalk.client.presenter
-\series default
- gestisce il collegamento tra client e server
+ racchiude al suo interno l'interfaccia grafica e la parte logica. 
+ Questo strato viene definito dal framework Backbone
 \end_layout
 
 \begin_layout Itemize
@@ -378,6 +371,14 @@ mytalk.client.presenter
 mytalk.client.model
 \series default
  contiene dati locali
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+mytalk.client.communication
+\series default
+ si occupa della gestione delle comunicazioni tra client e server 
 \end_layout
 
 \begin_layout Itemize
@@ -414,7 +415,7 @@ mytalk.server.transfer
 \series bold
 mytalk.server.functionmanager
 \series default
- gestisce le operazioni di chiamata e di modifica della base di dati
+ gestisce le operazioni di chiamata e dialoga con lo strato Data
 \end_layout
 
 \begin_layout Itemize
@@ -422,7 +423,7 @@ mytalk.server.functionmanager
 \series bold
 mytalk.server.usermanager
 \series default
- gestisce le operazione di autenticazione
+ gestisce le richieste da far arrivare alla base di dati e trasmette l'esito dei controlli al richiedente
 \end_layout
 
 \begin_layout Itemize
@@ -430,7 +431,7 @@ mytalk.server.usermanager
 \series bold
 mytalk.server.data
 \series default
- contiene le informazioni del database
+ gestisce la base di dati, ovvero l'inserimento, la modifica e la rimozione dei dati e la loro permanenza
 \end_layout
 
 \end_body

@@ -326,11 +326,28 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
+initialize():
+\series default
+ funzione di inizializzazione dell'oggetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 render():
 \series default
  funzione che effettua la scrittura nella pagina del template 
 \emph on
 authenticationTemplate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+callBacks():
+\series default
+ funzione che permette ad altre classi di usufruire di funzionalità della
+ classe corrente
 \end_layout
 
 \begin_layout Itemize
@@ -732,6 +749,14 @@ current_user:
  utilizzato per tenere traccia dell'utente corrente
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+recordMessageView:
+\series default
+ utilizzato per tenere traccia della vista per la registrazione di un messaggio
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -1054,6 +1079,14 @@ view():
 \series default
  funzione che crea le viste di funzioni e di chat quando seleziono su un
  contatto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ContactView.prototype.close():
+\series default
+ funzione che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1523,6 +1556,14 @@ send():
 funzione che invia un messaggio
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+ChatView.prototype.close(): 
+\series default
+funzione che chiude l'istanza creata
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.client.view.TutorialView
 \end_layout
@@ -1651,6 +1692,17 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/RecordMessageView.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1733,6 +1785,14 @@ template:
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+localstream:
+\series default
+ utilizzato per tenere traccia del flusso corrente
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -1753,6 +1813,30 @@ initialize():
 render():
 \series default
  funzione che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+startrecord():
+\series default
+ funzione che avvia la registrazione della chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+sendrecord():
+\series default
+ funzione che ferma ed invia la registrazione della chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageView.prototype.close():
+\series default
+ funzione che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection

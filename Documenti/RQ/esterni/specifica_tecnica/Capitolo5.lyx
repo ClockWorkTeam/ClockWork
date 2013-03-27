@@ -109,7 +109,15 @@ View
 Tipo, obiettivo e funzione del componente:
 \series default
  costituisce la parte del sistema che definisce ed implementa l'interfaccia
- web usufruibile dagli utenti mediante pagine web
+ web usufruibile dagli utenti mediante pagine web.
+ Diversamente da uno schema di tipo MVC il package 
+\family typewriter
+\series bold
+view 
+\family default
+\series default
+contiene non solo le parti di interfaccia ma anche parti logiche, come previsto
+ dal framework bakbone, che prevede uno schema di tipo MV*
 \end_layout
 
 \begin_layout Itemize
@@ -132,7 +140,7 @@ view
 mytalk.client.communication
 \family default
 \series default
- che sarà da trammite tra il client ed il server
+ che farà da trammite tra il client ed il server
 \end_layout
 
 \begin_layout Subsubsection
@@ -974,7 +982,8 @@ Communication
 Tipo, obiettivo e funzione del componente:
 \series default
  definisce ed implementa la parte del sistema che si occupa della comunicazione
- tra client e server
+ tra client e server.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -985,13 +994,29 @@ Relazioni d'uso con altre componenti:
 \series default
  il componente è costituito dal package 
 \family typewriter
+\series bold
 communication
 \family default
-, ed andrà a comunicare con il package 
+\series default
+, riceverà richieste dal package 
 \family typewriter
+\series bold
 mytalk.client.view
 \family default
- restituendo i dati richiesti presenti all'interno del server
+\series default
+ ed andrà a comunicare con il package 
+\family typewriter
+\series bold
+mytalk.server.transfer
+\family default
+\series default
+ per ottenere da esso ed eventualmente restituire al package 
+\family typewriter
+\series bold
+mytalk.client.view
+\family default
+\series default
+ i dati richiesti presenti all'interno del server
 \end_layout
 
 \begin_layout Subsubsection
@@ -1005,8 +1030,10 @@ Tipo, obiettivo e funzione del componente:
 \series default
  la classe 
 \family typewriter
+\series bold
 AuthenticationCommunication
 \family default
+\series default
  si occupa di inviare le credenziali inserite al server, e, inviare la risposta
  ricevuta al 
 \family typewriter
