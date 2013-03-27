@@ -253,7 +253,8 @@ boolean logout(User user):
 \begin_layout Itemize
 
 \series bold
-User createUser(String username, String password, String name):
+User createUser(String username, String password, String name, String surname,
+ String IP):
 \end_layout
 
 \begin_layout Itemize
@@ -286,7 +287,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-UseManager
+classe UserManager
 \end_layout
 
 \end_inset
@@ -368,8 +369,8 @@ boolean setSurname(User user, String surname):
 \begin_layout Itemize
 
 \series bold
-boolean createMessage(String sender, String adressee, String path, Date
- date):
+RecordMessage createMessage(String sender, String adressee, String path,
+ Date date):
 \end_layout
 
 \begin_layout Itemize
