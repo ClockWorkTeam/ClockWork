@@ -65,7 +65,7 @@ Design Pattern
 \end_layout
 
 \begin_layout Standard
-Presentiamo qui di seguito i vari design pattern che andremo ad utilizzare
+Presentiamo qui di seguito i design pattern che andremo ad utilizzare
  per la rappresentazione dell'architettura del sistema.
 \end_layout
 
@@ -126,10 +126,10 @@ Il design pattern di tipo Multitier verrà implementato nella forma Three
 Descrizione:
 \series default
  tale design pattern permette una disgiunzione fra i vari gruppi di entità
- che cooperano nell'erogazione del servizio.
+ che cooperano per l'erogazione del servizio.
  Un primo livello si occuperà della comunicazione con il client, un secondo
-  livello invece si occuperà di effettuare le operazioni logiche ed elaborare
-  le informazioni salvandole e prelevandole da un terzo livello inferiore
+ livello invece si occuperà di effettuare le operazioni logiche e di comunicare
+ con il terzo strato che si occuperà di modificare la base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -274,46 +274,6 @@ Motivazione:
  dei tre componenti non comporta modifiche ai restanti
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Contesto applicativo:
-\series default
- il design pattern verrà utilizzato nello sviluppo dell'architettura generale
- Sono state individuate tre macro componenti:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Model:
-\series default
- ha il compito di astrarre i dati presenti nel database recuperandone o
- aggiornandone le informazioni e disporli in modo tale da essere visibili
- alla view.
- Questo sarà il compito di parte del data layer e parte del manager layer
- del server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-View:
-\series default
- rappresenta l'interfaccia grafica che consente l'interazione tra gli utenti
- ed il sistema
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Presenter:
-\series default
- si occupa di ricevere le richieste dalla view e della comunicazione tra
- il lato client ed il lato server del sistema
-\end_layout
-
 \end_deeper
 \begin_layout Subsection
 MV*
@@ -363,7 +323,7 @@ sono frammenti di codice HTML che rappresentano il layout della view
 \begin_layout Itemize
 
 \series bold
-Motivazioni: 
+Motivazione: 
 \series default
 utilizzeremo questo pattern in quanto è quello utilizzato da Backbone.js
  che è il framework che andremo ad utilizzare per la realizzazione della
@@ -399,7 +359,7 @@ Motivazione:
 Contesto applicativo:
 \series default
  si rivela utile per quanto riguarda la manutenibilità della lista utenti
- connessi o meno o nel caso nuovi utenti si registrassero
+ connessi o meno o nel caso nuovi utenti si registrino
 \end_layout
 
 \end_body

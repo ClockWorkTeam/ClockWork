@@ -33,7 +33,15 @@ require.config({
 
 });
 
-require(['view/AuthenticationView', 'collection/ContactsCollection'], function(AuthenticationView, ContactsCollection){
-  var aview = new AuthenticationView({collection: ContactsCollection});
+require(['connection', 'view/AuthenticationView', 'collection/ContactsCollection'], function(Connection, AuthenticationView, ContactsCollection){
+  
+  //var connection = new WebSocket('ws://127.0.0.1:8787');
+  
+  //messaggio di conferma di connessione sulla console
+  Connection.onopen = function(){
+    console.log('Connection open!');
+  };
+  
+  var authentication_view = new AuthenticationView({collection: ContactsCollection});
 });
 

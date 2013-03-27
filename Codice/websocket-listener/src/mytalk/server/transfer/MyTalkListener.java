@@ -82,31 +82,5 @@ public class MyTalkListener implements WebSocketServerTokenListener {
 
         MyTalkListener jc = new MyTalkListener();
         jc.init(aArgs);
-        /*for (int i = 0; i < 30; i++) {
-            try {
-                Thread.sleep(3000);
-                Object c = jc.getTokenServer().getAllConnectors();
-                System.out.println(c);
-
-                Map lConnectorMap = jc.getTokenServer().getAllConnectors();
-                List<Map> lResultList = new ArrayList<Map>();
-                Collection<WebSocketConnector> lConnectors = lConnectorMap.values();
-                for (WebSocketConnector lConnector : lConnectors) {
-                    Map lResultItem = new HashMap<String, Object>();
-                    lResultItem.put("port", lConnector.getRemotePort());
-                    lResultItem.put("unid", lConnector.getNodeId());
-                    lResultItem.put("username", lConnector.getUsername());
-                    lResultItem.put("isToken", lConnector.getBoolean(TokenServer.VAR_IS_TOKENSERVER));
-                    lResultList.add(lResultItem);
-                }
-                for (Map m : lResultList) {
-                    System.out.println(m);
-                }
-
-                jc.sendPacket(i % 5 + 1);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MyTalkListener.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
     }
 }
