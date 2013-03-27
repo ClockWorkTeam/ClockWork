@@ -20,11 +20,12 @@ define(['connection'], function(Connection){
     checkCredentials: function(user, pass, callBacks, view) {
 
       var credentials = {
+		 type: "Login",
         username: user,
         password: pass
       };
 
-      Connection.send("Login"+JSON.stringify(credentials));
+      Connection.send(JSON.stringify(credentials));
       
 		Connection.onmessage = function(str){
 			var response = JSON.parse(str.data);
@@ -38,13 +39,14 @@ define(['connection'], function(Connection){
 	},
     signup: function(user, pass, name, surname, callBacks, view) {
 		var credentials = {
+				type: "SignUp",
 				username: user,
 				password: pass,
 				name: name,
 				surname: surname
 		};
 			  
-		Connection.send("SignUp"+JSON.stringify(credentials));
+		Connection.send(JSON.stringify(credentials));
 		Connection.onmessage = function(str){
 			var response = JSON.parse(str.data);
 			if(response.risposta == "true"){
