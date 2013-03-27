@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -71,7 +72,7 @@ Il package contiene tutte le classi che si occupano di eseguire le operazioni
 \begin_layout Paragraph
 
 \series bold
-Relazioni d'uso di altre componenti
+Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -105,66 +106,87 @@ Costituito da:
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.JavaConnectionSQLite
+mytalk.server.dao.JavaConnectionSQLite (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:server.dao.JavaConnectionSQLite"
+reference "sub:mytalk.server.dao.JavaConnection"
 
 \end_inset
 
-
+ )
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.LoginDao
-\end_layout
-
-\begin_layout Itemize
-mytalk.server.dao.LoginDaoSQL
+mytalk.server.dao.LoginDao (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:server.dao.LoginDaoSQL"
+reference "sub:mytalk.server.dao.LoginDao"
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.RecordMessageDao
-\end_layout
-
-\begin_layout Itemize
-mytalk.server.dao.RecordMessageDaoSQL
+mytalk.server.dao.LoginDaoSQL (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:server.dao.RecordMessageDaoSQL"
+reference "sub:mytalk.server.dao.LoginDaoSQL"
 
 \end_inset
 
-
+ )
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.UserDao
-\end_layout
-
-\begin_layout Itemize
-mytalk.server.dao.UserDaoSQL
+mytalk.server.dao.RecordMessageDao (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:server.dao.UserDaoSQL"
+reference "sub:mytalk.server.dao.RecordMessageD-1"
 
 \end_inset
 
+)
+\end_layout
 
+\begin_layout Itemize
+mytalk.server.dao.RecordMessageDaoSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.RecordMessageD"
+
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.UserDao (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.UserDao"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.UserDaoSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.UserDaoSQL"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 mytalk.server.dao.JavaConnectionSQLite
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.JavaConnectionSQLite"
+name "sub:mytalk.server.dao.JavaConnection"
 
 \end_inset
 
@@ -172,8 +194,8 @@ name "sub:server.dao.JavaConnectionSQLite"
 \end_layout
 
 \begin_layout Standard
-Questa classe contiene tutti i metodi per l'esecuzione di query all'interno
- del database
+La classe JavaConnectionSQLite contiene tutti i metodi per l'esecuzione
+ di query all'interno del database
 \end_layout
 
 \begin_layout Standard
@@ -215,7 +237,7 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-Questa classe verrà utilizzata da:
+La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
@@ -274,8 +296,8 @@ void finalize():
  distruttore della classe JavaConnectionSQLite.
  Prima di distruggere una istanza, la connessione al database deve essere
  chiusa.
- Se la chiusura della connessione lancia eccezioni, dovrà stamperà a video
- l'errore riscontrato
+ Se la chiusura della connessione lancia eccezioni, stamperà a video l'errore
+ riscontrato
 \end_layout
 
 \begin_layout Itemize
@@ -349,10 +371,10 @@ true
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia mytalk.server.dao.LoginDao 
+mytalk.server.dao.LoginDao 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.LoginDao"
+name "sub:mytalk.server.dao.LoginDao"
 
 \end_inset
 
@@ -360,8 +382,8 @@ name "sub:server.dao.LoginDao"
 \end_layout
 
 \begin_layout Standard
-Questa classe gestisce tutti i dati che riguardano i tentativi di connessione
- e disconnessione al sistema.
+L'nterfaccia LoginDao gestisce tutti i dati che riguardano i tentativi di
+ connessione e disconnessione al sistema.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio
 \end_layout
@@ -410,7 +432,7 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizzerà:
+La classe utilizza:
 \end_layout
 
 \begin_deeper
@@ -422,7 +444,7 @@ mytalk.server.shared.User
 \begin_layout Itemize
 
 \series bold
-La classe verrà utilizzata da:
+La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
@@ -441,7 +463,7 @@ Metodi pubblici
 User LoginDao(String username, String password, String IP):
 \series default
  metodo che controllerà la correttezza dei dati inseriti da un utente per
- connettersi al sistema.
+ connettersi al sistema
 \end_layout
 
 \begin_layout Itemize
@@ -456,7 +478,7 @@ boolean logout(User user):
 mytalk.server.dao.LoginDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.LoginDaoSQL"
+name "sub:mytalk.server.dao.LoginDaoSQL"
 
 \end_inset
 
@@ -464,9 +486,9 @@ name "sub:server.dao.LoginDaoSQL"
 \end_layout
 
 \begin_layout Standard
-Questa classe si occupa di gestire tutti i dati riguardanti i tentativi
+La classe LoginDaoSQL si occupa di gestire tutti i dati riguardanti i tentativi
  di autenticazione all'interno del sistema.
- È l'imprementazione di mytalk.server.dao.LoginDao
+ È l'implementazione di mytalk.server.dao.LoginDao
 \end_layout
 
 \begin_layout Standard
@@ -508,19 +530,7 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-Questa classe verrà utilizzata dalle seguenti classi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-mytalk.server.usermanager.AuthenticationManager
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Questa classe utilizzerà le seguenti classi:
+La classe utilizza:
 \end_layout
 
 \begin_deeper
@@ -530,6 +540,18 @@ mytalk.server.dao.JavaConnectionSQLite
 
 \begin_layout Itemize
 mytalk.server.shared.UserList
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \end_deeper
@@ -599,10 +621,10 @@ metodo che effettua il logout dell'utente.
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia mytalk.server.dao.RecordMessageDao 
+mytalk.server.dao.RecordMessageDao 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.RecordMessageDao"
+name "sub:mytalk.server.dao.RecordMessageD-1"
 
 \end_inset
 
@@ -610,8 +632,8 @@ name "sub:server.dao.RecordMessageDao"
 \end_layout
 
 \begin_layout Standard
-Questa classe gestisce tutti i dati che riguardano i messaggi differiti
- inviati ai vari utenti.
+L'interfaccia RecordMessageDao gestisce tutti i dati che riguardano i messaggi
+ differiti inviati ai vari utenti.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio
 \end_layout
@@ -665,7 +687,7 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizzerà:
+La classe utilizza:
 \end_layout
 
 \begin_deeper
@@ -677,9 +699,15 @@ mytalk.server.shared.RecordMessage
 \begin_layout Itemize
 
 \series bold
-La classe viene utilizzata da:
+La classe è utilizzata da:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+xxxxxx
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
@@ -714,7 +742,7 @@ metodo che elimina un messaggio differito dal database
 mytalk.server.dao.RecordMessageDaoSQL 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.RecordMessageDaoSQL"
+name "sub:mytalk.server.dao.RecordMessageD"
 
 \end_inset
 
@@ -722,8 +750,9 @@ name "sub:server.dao.RecordMessageDaoSQL"
 \end_layout
 
 \begin_layout Standard
-Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
- È l'imprementazione di mytalk.server.dao.RecordMessageDao
+La classe RecordMessageDaoSQL si occupa di gestire tutti i dati riguardanti
+ i messaggi differiti.
+ È l'implementazione di mytalk.server.dao.RecordMessageDao
 \end_layout
 
 \begin_layout Standard
@@ -765,7 +794,7 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizzerà:
+La classe utilizza:
 \end_layout
 
 \begin_deeper
@@ -872,10 +901,10 @@ false
 \end_layout
 
 \begin_layout Subsubsection
-Intefaccia mytalk.server.dao.UserDao
+mytalk.server.dao.UserDao
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.UserDao"
+name "sub:mytalk.server.dao.UserDao"
 
 \end_inset
 
@@ -883,7 +912,7 @@ name "sub:server.dao.UserDao"
 \end_layout
 
 \begin_layout Standard
-Questa classe gestisce tutti i dati che riguardano gli utenti.
+L'interfaccia UserDao gestisce tutti i dati che riguardano gli utenti.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio
 \end_layout
@@ -894,10 +923,6 @@ placement H
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \noindent
@@ -936,7 +961,7 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizzerà:
+La classe utilizza:
 \end_layout
 
 \begin_deeper
@@ -1006,7 +1031,7 @@ username
 mytalk.server.dao.UserDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:server.dao.UserDaoSQL"
+name "sub:mytalk.server.dao.UserDaoSQL"
 
 \end_inset
 
@@ -1014,8 +1039,9 @@ name "sub:server.dao.UserDaoSQL"
 \end_layout
 
 \begin_layout Standard
-Questa classe si occupa di gestire tutti i dati riguardanti i messaggi differiti.
- È l'imprementazione di mytalk.server.dao.UserDao
+La classe UserDaoSQL si occupa di gestire tutti i dati riguardanti i messaggi
+ differiti.
+ È l'implementazione di mytalk.server.dao.UserDao
 \end_layout
 
 \begin_layout Standard
@@ -1057,7 +1083,7 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizzerà:
+La classe utilizza:
 \end_layout
 
 \begin_deeper
