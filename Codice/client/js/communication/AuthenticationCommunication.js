@@ -36,7 +36,7 @@ define(['connection'], function(Connection){
 
 		}
 	},
-    signup: function(user, pass, name, surname) {
+    signup: function(user, pass, name, surname, callBacks, view) {
 		var credentials = {
 				username: user,
 				password: pass,
