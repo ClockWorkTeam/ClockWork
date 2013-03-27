@@ -38,7 +38,6 @@ define([
 
     //lega la lista dei contatti e i bottoni di chiamata IP e teleconferenza a questa vista  
     contacts_view: '',
- 
     //template per il rendering di questa vista 
     authenticationTemplate: _.template(authenticationTemplate),
   
@@ -71,7 +70,7 @@ define([
           //aggiorno il template
           $(view.el).html(view.authenticationTemplate({authenticated: true, name: view.UserModel.toJSON().username}));
           //recupero la lista contatti dal server e li metto nel local storage
-          var contacts_communication = new ContactsCommunication(view.collection);
+          var contacts_communication = new ContactsCommunication(view);
           contacts_communication.fetchContacts();
           // visione dei contatti	
           view.contacts_view.render();
@@ -87,7 +86,6 @@ define([
 	    //recupero la password inserita
 	    var pass = this.$("#password").val();
 	    //chiamo il metodo di comunicazione col server
-	    //var authentication_communication = new AuthenticationCommunication();
 	    AuthenticationCommunication.checkCredentials(user, pass, aView.callBacks(), this);
     },
 	
@@ -117,29 +115,9 @@ define([
         //controllo se la password e la sua conferma corrispondono
         if(pass == pass2){
           //invio la richiesta di registrazione al server
-          var authentication_communication = new AuthenticationCommunication();
+//          var authentication_communication = new AuthenticationCommunication();
           //se lo username non è già presente nel sistema procedo all'autenticazione
-          if(authentication_communication.signup(user, pass, name, surname)){
-            //inserisco i dati nel modell
-            this.UserModel=new UserModel({
-              username: user,
-              password: pass,
-              name: name,
-              surname: surname
-            });
-            //aggiorno il template
-            $(this.el).html(this.authenticationTemplate({authenticated: true, signup: false, name:user}));
-            //recupero la lista contatti dal server e la salvo nel local storage
-            var contacts_communication = new ContactsCommunication(this.collection);
-            contacts_communication.fetchContacts();
-            //visualizzo i contatti	
-            contacts_view.render();
-          }
-          else
-          {
-            //errore nel caso lo username inserito sia già presente nel sistema
-            alert('Username non disponibile');
-          }
+          AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
         }
         else{
           //errore nel caso la password e la sua conferma non corrispondano
