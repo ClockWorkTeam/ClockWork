@@ -78,8 +78,8 @@ define([
 			this.callView.close;
 			}
 		this.close;
-		this.callView=new CallView({type:'audio'});
-		this.callView.render();
+		this.callView=new CallView();
+		this.callView.render(true,'audio',this.model.toJSON().IP);
 		$('#main').prepend(this.callView.el);
     },
     
@@ -89,8 +89,8 @@ define([
 			this.callView.close;
 			}
 		this.close;
-		this.callView=new CallView({type:'video'});
-		this.callView.render();
+		this.callView=new CallView();
+		this.callView.render(true,'video',this.model.toJSON().IP);
 		
 		$('#main').prepend(this.callView.el);
     },
