@@ -25,12 +25,18 @@ define(['connection'], function(Connection){
 			Connection.onmessage = function(str){
 				var response = JSON.parse(str.data);
 				for(var i=0; i<response.size; i++){
-					view.collection.create(
-						{username: response['username'+i], 
-							name: response['name'+i], 
-							surname: response['surname'+i],  
-						IP: response['IP'+i]}
-					);
+          var existing = view.collection.find(function(contact){return contact.get('username') === response['username'+i];});
+          if(!existing){
+            view.collection.create(
+              {username: response['username'+i], 
+                name: response['name'+i], 
+                surname: response['surname'+i],  
+              IP: response['IP'+i]}
+            );
+          } else {
+            existing.set('IP', response['IP'+i]);
+            alert('IP: '+response['IP'+i]);
+          }
 				}
 				          view.contacts_view.render();
 			}	  					   
