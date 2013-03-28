@@ -583,56 +583,6 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.ViewAccountDataView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente:
-\series default
- la classe
-\series bold
- 
-\family typewriter
-ViewAccountDataView
-\family default
-\series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web che consentono di visualizzare i dati dell'account selezionato
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- la classe
-\family typewriter
-\series bold
- ViewAccountDataView
-\family default
-\series default
- comunicherà con la classe
-\family typewriter
-\series bold
- mytalk.client.model.Contact
-\family default
-\series default
- per poter visualizzare i dati relativi al proprio account
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Attività svolte e dati trattati:
-\series default
- la classe fa in modo che vengano visualizzati i dati personali dell'utente
-\end_layout
-
-\begin_layout Subsubsection
 mytalk.client.view.RecordMessageView
 \end_layout
 
@@ -803,7 +753,7 @@ Tipo, obiettivo e funzione del componente:
  
 \series default
 definisce la struttura, e la conseguente visualizzazione, delle pagine web
- per la modifica dei dati del proprio account
+ per la visualizzazione e la modifica dei dati del proprio account
 \end_layout
 
 \begin_layout Itemize
@@ -821,10 +771,17 @@ Relazioni d'uso con altre componenti:
  comunicherà con la classe
 \family typewriter
 \series bold
+ mytalk.client.model.Contact
+\family default
+\series default
+per visualizzare i dati del proprio account e con la classe
+\family typewriter
+\series bold
  mytalk.client.communication.UserDataCommunication
 \family default
 \series default
- che avrà lo scopo di inviare le modifiche dei dati dell'utente
+ che avrà lo scopo di inviare al server le modifiche dei dati dell'utente.
+Tramite il design pattern Observer si aggiornerà il database locale.
 \end_layout
 
 \begin_layout Itemize
@@ -1162,7 +1119,7 @@ Relazioni d'uso con altre componenti:
  di nuovi utenti, alla classe
 \family typewriter
 \series bold
- mytalk.client.view.UserDataView
+ mytalk.client.view.ModifyAccountDataView
 \end_layout
 
 \begin_layout Itemize
@@ -1171,7 +1128,7 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occupa quindi della ricezione di richieste riguardanti i dettagli
+ la classe si occupa della ricezione di richieste riguardanti la modifca dei dettagli
  di account degli utenti e trasmetterle al server
 \end_layout
 
