@@ -35,7 +35,7 @@ define([
 	
     //rendo visibili i contatti:
     render: function(){
-      this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, online: this.model.toJSON().IP != '0.0.0.0'}));   
+      this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP}));   
     return this;
     },
   
