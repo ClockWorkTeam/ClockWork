@@ -1,16 +1,9 @@
 package mytalk.server.transfer;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
-import org.jwebsocket.api.WebSocketServerListener;
 import org.jwebsocket.config.JWebSocketConfig;
 import org.jwebsocket.factory.JWebSocketFactory;
 import org.jwebsocket.kit.RawPacket;
@@ -64,7 +57,7 @@ public class MyTalkListener implements WebSocketServerTokenListener {
     }
 
     public void sendPacket() {
-        Map lConnectorMap = getTokenServer().getAllConnectors();
+        Map<String, WebSocketConnector> lConnectorMap = getTokenServer().getAllConnectors();
 
         Collection<WebSocketConnector> lConnectors = lConnectorMap.values();
         for (WebSocketConnector wsc : lConnectors) {
