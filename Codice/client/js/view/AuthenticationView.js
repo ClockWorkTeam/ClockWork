@@ -90,6 +90,7 @@ define([
 	
     //funzione che si occupa di chiudere la sessione con il server
     disconnect: function(){
+      AuthenticationCommunication.logout(this.UserModel.toJSON().username);
       //aggiorno il template
       $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}));
       //cancello la lista dei contatti
