@@ -12,7 +12,7 @@
    |      |               |           |
 -->
 <% if(dom=="sidebar"){%>
-<li class="contact"><%= username %></li>
+<li class="contact"><%= if(online){online: }else{offline: } %><%= username %></li>
 <%}else{%>
 <li><input type="checkbox" name=<%=username %> id=<%=username %> > <%=username %></li>
 <%}%>

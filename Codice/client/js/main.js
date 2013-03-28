@@ -17,7 +17,8 @@ require.config({
     jquery: 'libs/jquery/jquery-min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone',
-    text: 'libs/require/text'
+    text: 'libs/require/text',
+    storage: 'libs/backbone/backbone.noStorage'
   },
   
   shim: {
