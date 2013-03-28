@@ -94,15 +94,61 @@ PROGETTO}
 \end_layout
 
 \begin_layout Itemize
-Servizi di comunicazione
-\end_layout
-
-\begin_layout Itemize
 Database
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Servizi di comunicazione
+\end_layout
 
+\begin_layout Subsection
+Server
+\end_layout
+
+\begin_layout Standard
+Quando il progetto 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+ è iniziato, era richiesto un database leggero, di conseguenza è stato utilizzat
+o SQLite.
+\end_layout
+
+\begin_layout Standard
+Si è deciso dunque di implementare nel package mytalk.server.dao la classe
+ JavaConnectionSQLite, in maniera da accedere al database solamente da una
+ classe.
+\end_layout
+
+\begin_layout Standard
+Infatti in caso di un futuro cambiamento del database, dovuto a nuove necessità,
+ basterà adattare la classe JavaConnectionSQLite per connettersi al nuovo
+ database.
+\end_layout
+
+\begin_layout Subsubsection
+Gestione dati
+\end_layout
+
+\begin_layout Standard
+La gestione dei dati presenti nel database è effettuata dalle classi presenti
+ nel package mytalk.server.dao.
+\end_layout
+
+\begin_layout Standard
+In caso di necessità di apportare dei cambiamenti alla gestione dei dati
+ non servirà modificare gli strati superiori, in quanto è stata realizzata
+ una interfaccia per ogni classe, così da evitare di dover riadattare tutti
+ i moduli con cui il dao interagisce.
 \end_layout
 
 \end_body

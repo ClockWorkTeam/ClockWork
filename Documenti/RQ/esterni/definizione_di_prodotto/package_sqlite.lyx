@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -60,11 +61,11 @@
 \begin_body
 
 \begin_layout Subsection
-mytalk.server.sqlite
+Package Sqlite
 \end_layout
 
 \begin_layout Standard
-Rappresenta il database di 
+Il package Sqlite rappresenta il database di 
 \begin_inset ERT
 status open
 
@@ -77,11 +78,87 @@ PROGETTO}
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Costituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.sqlite.RecordMessageDataSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.sqlite.RecordMessa"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.sqlite.TutorialDataSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.sqlite.TutorialDat"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.sqlite.UserDataSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.sqlite.UserDataSQL"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 mytalk.server.sqlite.RecordMessageDataSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.sqlite.RecordMessa"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -129,7 +206,7 @@ Tabella che rappresenta i messaggi differiti inviati agli utenti
 \end_layout
 
 \begin_layout Paragraph
-Attributi
+Attributi pubblici
 \end_layout
 
 \begin_layout Itemize
@@ -153,9 +230,7 @@ rappresenta lo username del destinatario del messaggio differito
 \series bold
 record_message:
 \series default
- 
-\lang italian
-indirizzo dove si trova il messaggio differito all'interno del server 
+ indirizzo dove si trova il messaggio differito all'interno del server 
 \begin_inset Foot
 status open
 
@@ -178,6 +253,13 @@ creation:
 
 \begin_layout Subsubsection
 mytalk.server.sqlite.TutorialDataSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.sqlite.TutorialDat"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -234,11 +316,11 @@ PROGETTO}
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Paragraph
-Attributi
+Attributi pubblici
 \end_layout
 
 \begin_layout Itemize
@@ -269,6 +351,13 @@ title:
 
 \begin_layout Subsubsection
 mytalk.server.sqlite.UserDataSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.sqlite.UserDataSQL"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -312,15 +401,19 @@ Classe UserDataSQL
 \end_layout
 
 \begin_layout Standard
-Tabella che rappresenta gli utenti.
+Tabella che rappresenta gli utenti
 \end_layout
 
 \begin_layout Paragraph
-Attributi
+Attributi pubblici
 \end_layout
 
 \begin_layout Itemize
-username: username dell'utente
+
+\series bold
+username:
+\series default
+ username dell'utente
 \begin_inset Foot
 status open
 
@@ -334,19 +427,35 @@ status open
 \end_layout
 
 \begin_layout Itemize
-password: password dell'utente
+
+\series bold
+password:
+\series default
+ password dell'utente
 \end_layout
 
 \begin_layout Itemize
-name: nome dell'utente
+
+\series bold
+name:
+\series default
+ nome dell'utente
 \end_layout
 
 \begin_layout Itemize
-surname: cognome dell'utente
+
+\series bold
+surname
+\series default
+: cognome dell'utente
 \end_layout
 
 \begin_layout Itemize
-IP: indirizzo IP dell'utente
+
+\series bold
+IP:
+\series default
+ indirizzo IP dell'utente
 \begin_inset Foot
 status open
 

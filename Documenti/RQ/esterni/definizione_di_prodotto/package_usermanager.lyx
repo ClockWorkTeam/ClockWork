@@ -60,13 +60,13 @@
 \begin_body
 
 \begin_layout Subsection
-Package mytalk.server.usermanager
+Package Usermanager
 \end_layout
 
 \begin_layout Paragraph
 
 \series bold
-Relazioni d'uso di altre componenti
+Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
@@ -100,19 +100,40 @@ cjsaop
 \begin_layout Paragraph
 
 \series bold
-Costituito da: 
+Costituito dalle classi: 
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.usermanager.AuthenticationManager
+mytalk.server.usermanager.AuthenticationManager (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.usermanager.Authen"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.usermanager.UserManager
+mytalk.server.usermanager.UserManager (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.usermanager.UserMa"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 mytalk.server.usermanager.AuthenticationManager
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.usermanager.Authen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -253,7 +274,8 @@ boolean logout(User user):
 \begin_layout Itemize
 
 \series bold
-User createUser(String username, String password, String name):
+User createUser(String username, String password, String name, String surname,
+ String IP):
 \end_layout
 
 \begin_layout Itemize
@@ -264,6 +286,13 @@ boolean removeUser(String username):
 
 \begin_layout Subsubsection
 mytalk.server.usermanager.UserManager
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.usermanager.UserMa"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -286,7 +315,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-UseManager
+classe UserManager
 \end_layout
 
 \end_inset
@@ -309,6 +338,12 @@ Relazioni d'uso con altri moduli
 La classe utilizza:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+xxxxxxx
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -368,8 +403,8 @@ boolean setSurname(User user, String surname):
 \begin_layout Itemize
 
 \series bold
-boolean createMessage(String sender, String adressee, String path, Date
- date):
+RecordMessage createMessage(String sender, String adressee, String path,
+ Date date):
 \end_layout
 
 \begin_layout Itemize

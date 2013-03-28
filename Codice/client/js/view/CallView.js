@@ -29,34 +29,26 @@ define([
 	
     //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
-    
-    call_communication : CallCommunication,
-    
+        
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
 	
       _.bindAll(this, 'render');
-		
     },
     
     //funzione che effettua la scrittura della struttura della pagina
-    render: function(){
-		if(this.startcall())
-		{
-			var prova=new CallCommunication();
-			$(this.el).html(this.template());
-			prova.sendAnswer('192.168.0.1');
+    render: function(isCaller,type, iptoCall){
+		if(isCaller===false){
+			var callcommunication=new CallCommunication();
+			callcommunication.sendAnswer(type);
 			}
-		else
-		{
-			return false;
+		else{
+			var callcommunication=new CallCommunication();
+			callcommunication.sendCall(iptoCall,type);
 			}
+		
     },
     
-    startcall : function()
-    {
-		return true;
-		}
   });
 
   CallView.prototype.close = function(){
