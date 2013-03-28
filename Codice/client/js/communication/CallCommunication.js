@@ -21,7 +21,7 @@ define(['connection'], function(Connection){
 	CallCommunication.prototype.sendCall = function (iptocall, typecall)
 	{
 		//messaggio di conferma di connessione sulla console
-		var credentials = { ip: iptocall , type:typecall};
+		var credentials = { ip: iptocall , type:'call', calltype:typecall};
 		Connection.send(JSON.stringify(credentials));
     this.receiveAnswer(typecall);
 	};
