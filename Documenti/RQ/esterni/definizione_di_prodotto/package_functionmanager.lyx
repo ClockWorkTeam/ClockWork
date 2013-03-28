@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,122 +60,144 @@
 
 \begin_body
 
-\begin_layout Section
-Introduzione
-\end_layout
-
 \begin_layout Subsection
-Scopo del documento
+Package Functionmanager
 \end_layout
 
 \begin_layout Standard
-Lo scopo di questo documento è quello di fornire, agli utenti che vogliono
- partecipare al suo sviluppo, linee guida per l'utilizzo del prodotto 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-PROGETTO}
+xxxxxxxxxxxxxxxxxxxx
 \end_layout
 
-\end_inset
+\begin_layout Paragraph
 
-.
-\end_layout
-
-\begin_layout Subsection
-Descrizione generale
-\end_layout
-
-\begin_layout Standard
-Il prodotto 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-PROGETTO}
-\end_layout
-
-\end_inset
-
- è uno strumento che permette la comunicazione di tipo 
-\bar under
-VoIP
-\bar default
- (Voice over IP) tra due o più utenti in tempo reale tramite Internet, senza
- l'installazione di programmi od estensioni
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ad eccezione del 
-\bar under
-plugin
-\bar default
- WebRTC4All.
-\end_layout
-
-\end_inset
-
-, così da non comportare costi per l'installazione di strumenti che permettono
- le stesse funzionalità che le aziende di grandi dimensioni sosterrebbero.
-\end_layout
-
-\begin_layout Subsection
-Glossario
-\end_layout
-
-\begin_layout Standard
-
-\lang italian
-Per la spiegazione dei termini tecnici, abbreviazioni ed acronimi presenti
- all'interno dei documenti, si faccia riferimento al documento esterno 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-Gl}
-\end_layout
-
-\end_inset
-
-, dato in allegato.
- Come specificato nel documento 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-NdP}
-\end_layout
-
-\end_inset
-
-, verrà sottolineata in ogni documento la prima occorrenza del termine da
- specificare.
-\end_layout
-
-\begin_layout Subsection
-Come leggere il manuale
+\series bold
+Relazioni d'uso con altri moduli
 \end_layout
 
 \begin_layout Itemize
-Server
+
+\series bold
+Il package utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
-Client
+mytalk.server.functionmanager.ContactsManager (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.functionmanager.Co"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.functionmanager.ContactsManager
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.functionmanager.Co"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+xxxxxxxxxxxxxxxxxxxx
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/functionmanager.ContactsManager.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactsManager 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+xxxxxxxxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getAllContacts(Vector<User> users):
 \end_layout
 
 \end_body
