@@ -18,27 +18,23 @@ define([
     //indica in quale parte del DOM gestirà 
     template : _.template(NotificationTemplate),
     
-    CallerIp : '',
     
-    typeCall : '',
     
     //funzione di inizializzazione dell'oggetto
-    initialize: function(ipCaller, typecall){
+    initialize: function(){
       _.bindAll(this, 'render');    
-      CallerIp=ipCaller;
-      typeCall=typecall;
+  
       this.render();
     },
      
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
- 
-        $(this.el).html(this.template({Ip : CallerIp}));
+        $(this.el).html(this.template({Ip : this.options.CallerIp}));
     },
       
     accept : function(){
-		var call= new CallView({ isCaller : false, ip: CallerIp , type : typecall});	
-		call.render();
+		var call= new CallView();	
+		call.render(false, this.options.typeCall,this.options.CallerIp);
 		},
     
     refuse : function(){
