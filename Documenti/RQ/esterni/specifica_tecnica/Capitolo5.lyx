@@ -160,7 +160,8 @@ AuthenticationView
 \family default
 \series default
  definisce la struttura, e la conseguente visualizzazione, della pagina
- web che consente di effettuare l'accesso al e la disconnessione dal sistema
+ web che consente di effettuare l'accesso al e la disconnessione dal sistema e la
+ registrazione di un utente al server
 \end_layout
 
 \begin_layout Itemize
@@ -177,15 +178,25 @@ AuthenticationView
 \family default
 \series default
  comunicherà con la classe
+
 \series bold
- 
 \family typewriter
 mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  per poter verificare se le credenziali inserite siano corrette o meno e
  quindi effettuare l'accesso al sistema o mostrare i relativi messaggi di
- errore
+ errore e con 
+
+\series bold
+\family typewriter
+mytalk.client.communication.UserDataCommunication
+\family default
+\series default
+
+che avrà lo scopo di inviare i dati per effettuare la registrazione  dell'utente al
+ server tenendo in considerazione l'univocità dello username
+
 \end_layout
 
 \begin_layout Itemize
@@ -195,14 +206,20 @@ mytalk.client.communication.AuthenticationCommunication
 Attività svolte e dati trattati:
 \series default
  la classe fa in modo che vengano gestiti gli eventi per l'autenticazione
- dell'utente al server sfruttando la classe
+ dell'utente al server tramite la classe
+
 \series bold
- 
 \family typewriter
 mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
- che svolgerà i vari controlli
+ e per la registrazione al server di un nuovo utente, avente uno username non già registrato,
+ tramite 
+\series bold
+\family typewriter
+mytalk.client.communication.UserDataCommunication
+\family default
+\series default
 \end_layout
 
 \begin_layout Subsubsection
@@ -683,57 +700,6 @@ Attività svolte e dati trattati:
 \series default
  la classe definisce la struttura della pagina web che visualizza i dati
  della chiamata che viene effettuata
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.client.view.SignUpView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente:
-\series default
- la classe
-\family typewriter
-\series bold
- SignUpView
-\family default
-\series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web per la registrazione di un nuovo utente al server
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- la classe
-\family typewriter
-\series bold
- SignUpView
-\family default
-\series default
- comunicherà con la classe
-\family typewriter
-\series bold
- mytalk.client.communication.UserDataCommunication
-\family default
-\series default
- che avrà lo scopo di inviare i dati per effettuare la registrazione al
- server tenendo in considerazione l'univocità dello username
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Attività svolte e dati trattati:
-\series default
- la classe definisce la struttura della pagina web per la registrazione
- di un nuovo utente presso il server
 \end_layout
 
 \begin_layout Subsubsection
@@ -1338,8 +1304,7 @@ Tipo, obiettivo e funzione del componente:
  User
 \family default
 \series default
- si occuperà di tenere aggiornate localmente le informazioni del proprio
- account
+ si occuperà di tenere aggiornate localmente le informazioni dell' account attuale
 \end_layout
 
 \begin_layout Itemize
@@ -1358,7 +1323,7 @@ Relazioni d'uso con altre componenti:
 \series bold
  
 \family typewriter
-mytalk.client.view.AuthenticationView
+mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  le informazioni riguardanti l'account dell'utente autenticato
@@ -1412,15 +1377,7 @@ Relazioni d'uso con altre componenti:
 \family default
 \series default
 la lista degli utenti che sono presenti nella lista e il loro stato attuale
- una volta effettuato l'accesso mentre da
-\family typewriter
-\series bold
- mytalk.client.view.AuthenticationView
-\family default
- 
-\series default
-aggiornamenti sullo stato degli utenti una volta autenticatisi
-\end_layout
+ una volta effettuato l'accesso 
 
 \begin_layout Itemize
 \noindent
@@ -1429,7 +1386,12 @@ aggiornamenti sullo stato degli utenti una volta autenticatisi
 Attività svolte e dati trattati:
 \series default
  la classe si occupa di ricevere la lista utenti registrati, che include
- se siano connessi o meno, e di restituirla all'utente
+ se siano connessi o meno, e l' Observer provvederà ad aggiornare la 
+\family typewriter
+\series bold
+view
+\family default
+\series default
 \end_layout
 
 \begin_layout Subsubsection
@@ -1478,8 +1440,7 @@ per l'aggiornamento delle statistiche della chiamata
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occupa di gestire le informazioni sulla chiamata restituendo
-  le statistiche
+ la classe si occupa di conservare le informazioni sulla chiamata 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1515,10 +1476,10 @@ Relazioni d'uso con altre componenti:
  riceverà da
 \family typewriter
 \series bold
- mytalk.client.view.ChatView
+ mytalk.client.communication.ChatCommunication
 \family default
 \series default
- le richieste per la comunicazione testuale tra due utenti
+ i messaggi di testo inviati da e verso altri utenti e li gestirà
 \end_layout
 
 \begin_layout Itemize
@@ -1527,7 +1488,7 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occuperà di gestire le comunicazioni testuali tra utenti
+ la classe si occuperà di conservare per un tempo limitato le comunicazioni testuali tra utenti
 \end_layout
 
 \begin_layout Subsubsection

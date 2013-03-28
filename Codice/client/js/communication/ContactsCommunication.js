@@ -35,7 +35,6 @@ define(['connection'], function(Connection){
             );
           } else {
             existing.set('IP', response['IP'+i]);
-            alert('IP: '+response['IP'+i]);
           }
 				}
 				          view.contacts_view.render();

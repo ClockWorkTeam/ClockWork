@@ -23,32 +23,35 @@ define(['connection'], function(Connection){
 		//messaggio di conferma di connessione sulla console
 		var credentials = { ip: iptocall , type:'call', calltype:typecall};
 		Connection.send(JSON.stringify(credentials));
-    this.receiveAnswer(typecall);
+    this.receiveAnswer(typecall, iptocall, this);
 	};
 	
 	//funzione che si occupa di inviare una risposta all'utente che ha efettuato la chiamata
-	CallCommunication.prototype.sendAnswer = function (typecall)
+	CallCommunication.prototype.sendAnswer = function (typecall, iptoCall)
 	{
-		var credentials = { response: true};
+		var credentials = { response: true, ip:iptoCall, type:'answeredcall' };
 		Connection.send(JSON.stringify(credentials));
-    this.startCall(false, typecall);
+		alert(typecall);
+		this.startCall(iptoCall, false, typecall);
 	};
   
-  CallCommunication.prototype.receiveAnswer = function (typecall)
+  CallCommunication.prototype.receiveAnswer = function (typecall, iptocall, call)
 	{
+		
     Connection.addEventListener("message", onAnswer, false);
-    alert("bau");
     function onAnswer(evt){
       var answer = JSON.parse(evt.data);
-      var isCaller=true;
-      if(answer.response===true){
-        this.startCall(isCaller,typecall)
-        }
-      }
+      if(answer.type==='answeredCall'){
+		  var isCaller=true;
+		  if(answer.response==='true'){
+			call.startCall(iptocall, isCaller,typecall)
+			}
+		  }
+		}
 	};
 	
 	//funzione che si occupa di inizializzare la chiamata
-	CallCommunication.prototype.startCall = function (isCaller, typecall)
+	CallCommunication.prototype.startCall = function (iptocall, isCaller, typecall)
 	{
     var sourcevid = document.getElementById('sourcevid');
     var remotevid = document.getElementById('remotevid');
@@ -92,13 +95,15 @@ define(['connection'], function(Connection){
 
     // start the connection upon user request
     function connect() {
-    if (!started && localStream) {
+    if (!started && localStream ) {
+      
       createPeerConnection();
+      if( isCaller){
       logg('Adding local stream...');
-      peerConn.addStream(localStream);
       started = true;
       peerConn.createOffer(gotDescription);
       isCaller=true;
+		}
     } else {
       alert("Local stream not running yet.");
     }
@@ -109,6 +114,7 @@ define(['connection'], function(Connection){
     function onMessage(evt) {
     var msg = JSON.parse(evt.data);
     logg("RECEIVED: "+evt.data);
+    alert(msg.type);
     if (msg.type==='offer' && !isCaller)
     {
       createPeerConnection();
@@ -138,8 +144,11 @@ define(['connection'], function(Connection){
     }
     
     function gotDescription(desc) {
+		
         peerConn.setLocalDescription(desc);
-        Connection.send(JSON.stringify(desc));
+        alert(iptocall);
+        var credentials={description: desc, ip:iptocall, type:'offer'};
+        Connection.send(JSON.stringify(credentials));
       }
     
     function onIceCandidate(event) {
@@ -159,25 +168,31 @@ define(['connection'], function(Connection){
     Connection.send(msgString);
     }
 		
-		if(this.options.type=='video')
+		if(typecall=='video')
 		{			
 			
 			navigator.webkitGetUserMedia({video:true, audio:true},
 			function(stream) {
 				sourcevid.src = window.webkitURL.createObjectURL(stream);
-				perConn.addStream(stream);
-        localStream=stream;
+				localStream=stream;
+				connect();
+				peerConn.addStream(stream);
+        
 				});
+			
 			}
 			
-		if(this.options.type=='audio')
+		if(typecall=='audio')
 		{
 			navigator.webkitGetUserMedia({video:false, audio:true},
 			function(stream) {
 				sourcevid.src = window.webkitURL.createObjectURL(stream);
-				perConn.addStream(stream);
-        localStream=stream;
+				localStream=stream;
+				connect();
+				peerConn.addStream(stream);
+        
 				});
+				
 			}
 	};
 return CallCommunication;	

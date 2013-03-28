@@ -18,7 +18,7 @@ define([
   ], function(_, Backbone){
     var UserModel = Backbone.Model.extend({
 		
-	  urlRoot: '/user',
+	  //urlRoot: '/user',
 		
 	  defaults:{
 		  username: '',

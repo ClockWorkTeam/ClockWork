@@ -14,14 +14,16 @@
 
 define([
   'underscore',
-  'backbone', 
+  'backbone',
+  'storage',
   'model/TextMessageModel'
-  ], function(_, Backbone, TextMessageModel){
+  ], function(_, Backbone, Storage, TextMessageModel){
     var TextMessagesCollection = Backbone.Collection.extend({
 
 		model: TextMessageModel,
 
-    url: '/textmessages',
+    //url: '/textmessages',
+    	localStorage: new Storage('textmessages'),
 	  
 		chat_session: function(recipient) {
 		  return this.filter(function(contact){ return contact.where({username: recipient}); });

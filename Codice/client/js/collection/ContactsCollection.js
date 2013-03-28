@@ -15,13 +15,15 @@
 define([
  'underscore',  
  'backbone', 
+ 'storage',
  'model/ContactModel'
-], function( _, Backbone, ContactModel){
+], function( _, Backbone, Storage, ContactModel){
   var ContactsCollection = Backbone.Collection.extend({
 
     model: ContactModel,
 
-	url: '/contacts',
+	//url: '/contacts',
+	localStorage: new Storage('contacts'),
   
   record: function() {
       return this.filter(function(contact){ return contact.has('username'); });

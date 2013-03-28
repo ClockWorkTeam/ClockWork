@@ -38,9 +38,10 @@ define([
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, iptoCall){
+		$(this.el).html(this.template());
 		if(isCaller===false){
 			var callcommunication=new CallCommunication();
-			callcommunication.sendAnswer(type);
+			callcommunication.sendAnswer(type, iptoCall);
 			}
 		else{
 			var callcommunication=new CallCommunication();
