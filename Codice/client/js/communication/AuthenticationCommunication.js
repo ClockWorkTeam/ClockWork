@@ -20,7 +20,7 @@ define(['connection'], function(Connection){
     checkCredentials: function(user, pass, callBacks, view) {
 
       var credentials = {
-		 type: "Login",
+		 type: 'Login',
         username: user,
         password: pass
       };
@@ -29,9 +29,9 @@ define(['connection'], function(Connection){
       
 		Connection.onmessage = function(str){
 			var response = JSON.parse(str.data);
-			if(response.risposta == "true"){
+			if(response.risposta === 'true'){
 				callBacks.doLogin(user, pass, response, view);
-			}else if(response.risposta == "false"){
+			}else if(response.risposta === 'false'){
 				alert("Login e username errate");
 			}
 
@@ -39,7 +39,7 @@ define(['connection'], function(Connection){
 	},
     signup: function(user, pass, name, surname, callBacks, view) {
 		var credentials = {
-				type: "SignUp",
+				type: 'SignUp',
 				username: user,
 				password: pass,
 				name: name,
@@ -49,11 +49,11 @@ define(['connection'], function(Connection){
 		Connection.send(JSON.stringify(credentials));
 		Connection.onmessage = function(str){
 			var response = JSON.parse(str.data);
-			if(response.risposta == "true"){
+			if(response.risposta ==='true'){
 				response.name=name;
 				response.surname=surname;
 				callBacks.doLogin(user, pass, response, view);
-			}else if(response.risposta == "false"){ 
+			}else if(response.risposta === 'false'){ 
 				alert("Username non disponibile");
 			}
 		}
