@@ -70,10 +70,9 @@ define([
           //aggiorno il template
           $(view.el).html(view.authenticationTemplate({authenticated: true, name: view.UserModel.toJSON().username}));
           //recupero la lista contatti dal server e li metto nel local storage
-          var contacts_communication = new ContactsCommunication(view);
-          contacts_communication.fetchContacts();
+          ContactsCommunication.fetchContacts(view);
           // visione dei contatti	
-          view.contacts_view.render();
+
         }
       };
     },
