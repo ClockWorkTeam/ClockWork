@@ -180,7 +180,7 @@ mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Itemize
-mytalk.client.view.StaticsView
+mytalk.client.view.StatisticsView
 \end_layout
 
 \begin_layout Itemize
@@ -192,7 +192,7 @@ mytalk.client.view.ContactsView
 \end_layout
 
 \begin_layout Itemize
-mytalk.client.view.UserDataView
+mytalk.client.view.ModifyAccountDataView
 \end_layout
 
 \begin_layout Itemize
@@ -216,9 +216,9 @@ mytalk.client.view.AuthenticationView
 \end_layout
 
 \begin_layout Standard
-La classe AuthenticationView denisce la struttura, e la conseguente visualizzazi
-one, della pagina web che consente di effettuare la registrazione, l'accesso
- e la disconnessione al sistema
+La classe AuthenticationView definisce la struttura, e la conseguente visualizza
+zione, della pagina web che consente di effettuare la registrazione, l'accesso
+ e la disconnessione dal sistema
 \end_layout
 
 \begin_layout Standard
@@ -383,9 +383,9 @@ view_signup():
 \series bold
 signup():
 \series default
- funzione che effettuala registrazione dell'utente e aggiorna il template
- se tutti i campi dato sono stati inseriti e se l'account non risulta già
- inserito nel server
+ funzione che effettua la registrazione dell'utente e aggiorna il template
+ se tutti i campi dati sono stati inseriti e se lo username non risulta
+ già presente nel server
 \end_layout
 
 \begin_layout Itemize
@@ -525,7 +525,7 @@ mytalk.client.view.SendFileView
 
 \begin_layout Standard
 La classe SendFileView definisce la struttura, e la conseguente visualizzazione,
- delle pagine web che consentono di selezionare un le salvato in locale
+ delle pagine web che consentono di selezionare un file salvato in locale
  per mandarlo all'utente autenticato selezionato
 \end_layout
 
@@ -647,8 +647,8 @@ mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Standard
-La classe FunctionsView denisce la struttura, e la conseguente visualizzazione,
- delle funzionalità offerte dopo aver selezionato un contatto
+La classe FunctionsView definisce la struttura, e la conseguente visualizzazione
+, delle funzionalità offerte dopo aver selezionato un contatto
 \end_layout
 
 \begin_layout Standard
@@ -832,13 +832,13 @@ funzione che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.StaticsView
+mytalk.client.view.StatisticsView
 \end_layout
 
 \begin_layout Standard
-La classe StaticsView definisce la struttura, e la conseguente visualizzazione,
- delle pagine web per la visualizzazione di statistiche durante lo svolgimento
- di una chiamata
+La classe StatisticsView definisce la struttura, e la conseguente visualizzazion
+e, delle pagine web per la visualizzazione di statistiche riguardanti la
+ chiamata
 \end_layout
 
 \begin_layout Standard
@@ -853,7 +853,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe StaticsView
+Classe StatisticsView
 \end_layout
 
 \end_inset
@@ -948,7 +948,7 @@ mytalk.client.view.ContactView
 
 \begin_layout Standard
 La classe ContactView consente la visualizzazione delle funzioni e di chat
- quando seleziono su un contatto
+ quando si seleziona un contatto
 \end_layout
 
 \begin_layout Standard
@@ -1237,7 +1237,7 @@ unrender():
 \series bold
 viewContact():
 \series default
- funzione che crea ed inserisce un contatto alla lista degli utenti connessi
+ funzione che crea ed inserisce un contatto nella lista degli utenti connessi
 \end_layout
 
 \begin_layout Itemize
@@ -1283,12 +1283,13 @@ listContacts(Object):
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.UserDataView
+mytalk.client.view.ModifyAccountDataView
 \end_layout
 
 \begin_layout Standard
-La classe UserDataView definisce la struttura, e la conseguente visualizzazione,
- della pagina per i dati utente
+La classe ModifyAccountDataView definisce la struttura, e la conseguente
+ visualizzazione, della pagina contente i dati dell'utente autenticato e
+ il collegamento ai metodi per la modifica di tali dati
 \end_layout
 
 \begin_layout Standard
@@ -1303,7 +1304,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe UserDataView
+Classe ModifyAccountDataView
 \end_layout
 
 \end_inset
@@ -1699,8 +1700,8 @@ mytalk.client.view.RecordMessageView
 
 \begin_layout Standard
 La classe RecordMessageView definisce la struttura, e la conseguente visualizzaz
-ione, delle pagine web per eettuare registrazioni audio o audio/video da
- inviare ad un utente registrato
+ione, delle pagine web per effettuare registrazioni audio o audio/video
+ da inviare ad un utente registrato
 \end_layout
 
 \begin_layout Standard
@@ -3466,7 +3467,7 @@ CallCommunication.prototype.sendcall(string):
 \series bold
 CallCommunication.prototype.sendanswer(string): 
 \series default
-funzione che si occupa di inviare una risposta all'utente che ha efettuato
+funzione che si occupa di inviare una risposta all'utente che ha effettuato
  la chiamata
 \end_layout
 
@@ -3582,7 +3583,7 @@ ContactCommunication.prototype.fetchContacts():
 \series bold
 ContactCommunication.prototype.dummyContacts(Object):
 \series default
- funzione per inserire nella collezzione il contatto
+ funzione per inserire nella collezione il contatto
 \end_layout
 
 \begin_layout Subsubsection
@@ -3842,9 +3843,9 @@ NotificationCommunication.prototype.receivecall(string):
 \begin_layout Itemize
 
 \series bold
-NotificationCommunication.prototype.receivecfile():
+NotificationCommunication.prototype.receivefile():
 \series default
- funzione che si occupa di segnalare la presenza di file ricevuti
+ funzione che si occupa di segnalare la presenza di file inviati
 \end_layout
 
 \begin_layout Itemize
@@ -3905,7 +3906,7 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.view.UserDataView
+mytalk.client.view.ModifyAccountDataView
 \end_layout
 
 \end_deeper
