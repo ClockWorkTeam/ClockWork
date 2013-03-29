@@ -783,6 +783,17 @@ render():
  metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+submit():
+\series default
+ metodo che invia il file al server, attraverso l'utilizzo di 
+\family typewriter
+\series bold
+SendFileCommunication
+\end_layout
+
 \begin_layout Subsubsection
 mytalk.client.view.FunctionsView
 \end_layout
@@ -1117,6 +1128,14 @@ initialize():
 render():
 \series default
  metodo che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+close():
+\series default
+ metodo che chiude la vista attuale
 \end_layout
 
 \begin_layout Subsubsection
@@ -1551,7 +1570,7 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.communication.UserDataCommunication
+mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
 \end_deeper
@@ -1623,6 +1642,31 @@ initialize():
 render():
 \series default
  metodo che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+reset(): 
+\series default
+metodo che azzera i campi del form
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+submit(): 
+\series default
+metodo che raccoglie i dati inseriti nel form e li invia al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+callBacks():
+\series default
+ metodo che permette ad altre classi di usufruire di funzionalità della
+ classe corrente
 \end_layout
 
 \begin_layout Subsubsection
@@ -1914,6 +1958,14 @@ template:
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+currentTutorial:
+\series default
+ utilizzato per tenere traccia del tutorial corrente
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -1934,6 +1986,22 @@ initialize():
 render():
 \series default
  metodo che effettua la scrittura della struttura della pagina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+next():
+\series default
+ metodo per passare al video successivo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+prev(): 
+\series default
+metodo per passare al video precedente
 \end_layout
 
 \begin_layout Subsubsection
@@ -2348,7 +2416,7 @@ mytalk.client.view
 \begin_layout Paragraph
 
 \series bold
-Cosituito dalle classi:
+Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
@@ -3068,7 +3136,7 @@ mytalk.client.model
 \begin_layout Paragraph
 
 \series bold
-Cosituito dalle classi:
+Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
@@ -3555,7 +3623,7 @@ mytalk.client.collection
 \begin_layout Paragraph
 
 \series bold
-Cosituito dalle classi:
+Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
@@ -3584,10 +3652,6 @@ mytalk.client.communication.SendFileCommunication
 
 \begin_layout Itemize
 mytalk.client.communication.NotificationCommunication
-\end_layout
-
-\begin_layout Itemize
-mytalk.client.communication.UserDataCommunication
 \end_layout
 
 \begin_layout Subsubsection
@@ -3780,14 +3844,6 @@ Metodi pubblici:
 getTutorials():
 \series default
  metodo che restituisce un array contenente tutti i tutorial nel server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-loadTutorial(object): 
-\series default
-metodo che carica un tutorial sul server
 \end_layout
 
 \begin_layout Subsubsection
@@ -4095,6 +4151,17 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/RecordMessageCommunication.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4138,7 +4205,27 @@ Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+startRecording(string): 
+\series default
+metodo che si occupa di inizializzare la registrazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+onMessage(object): 
+\series default
+metodo che sta in ascolto di messaggi in arrivo dal server e li gestisce
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+sendMessage(string): 
+\series default
+metodo che invia i messaggi al server
 \end_layout
 
 \begin_layout Subsubsection
@@ -4162,6 +4249,17 @@ placement H
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SendFileCommunication.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -4207,7 +4305,11 @@ Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+sendFile(object):
+\series default
+ metodo che invia il file al server
 \end_layout
 
 \begin_layout Subsubsection
@@ -4304,75 +4406,6 @@ onNotification(string):
 refuse(): 
 \series default
 metodo che di occupa di gestire il rifiuto di una notifica
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.client.communication.UserDataCommunication
-\end_layout
-
-\begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-UserDataCommunication
-\family default
-\series default
- si occupa di comunicare con il server per quanto riguarda i dati utente
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe UserDataCommunication
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-mytalk.client.view.ModifyAccountDataView
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Metodi pubblici:
-\end_layout
-
-\begin_layout Itemize
-xxx
 \end_layout
 
 \end_body
