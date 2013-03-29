@@ -156,7 +156,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe
+ la classe 
 \family typewriter
 \series bold
 CallTransfer
@@ -211,7 +211,7 @@ si occupa del trasferimento delle richieste di autenticazione e registrazione al
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe
+ la classe 
 \family typewriter
 \series bold
  AuthenticationTransfer
@@ -460,7 +460,7 @@ Relazioni d'uso con altre componenti:
  utilizza
 \family typewriter
 \series bold
- mytalk.server.data.UserDataDao
+ mytalk.server.dao.UserDataDao
 \family default
 \series default
  e comunica con
@@ -530,7 +530,7 @@ Relazioni d'uso con altre componenti:
  e agisce su
 \family typewriter
 \series bold
- mytalk.server.data.UserDataDao
+ mytalk.server.dao.UserDataDao
 \family default
 \series default
 .
@@ -543,7 +543,7 @@ Inoltre interagisce con
  e
 \family typewriter
 \series bold
- mytalk.server.data.RecordMessageDAO
+ mytalk.server.dao.RecordMessageDao
 \family default
 \series default
 
@@ -613,7 +613,7 @@ mytalk.server.usermanager.AuthenticationManager
 \series default
 
 \begin_layout Subsubsection
-mytalk.server.data.UserDataDao
+mytalk.server.dao.UserDataDao
 \end_layout
 
 \begin_layout Itemize
@@ -627,7 +627,7 @@ Tipo, obiettivo e funzione del componente:
  UserDataDao
 \family default
 \series default
- rappresenta l'interfaccia con cui comunicherà
+ rappresenta l'interfaccia con cui comunicherà il package
 \family typewriter
 \series bold
  mytalk.server.usermanager
@@ -671,7 +671,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.UserDataDaoSQL
+mytalk.server.dao.UserDataDaoSQL
 \end_layout
 
 \begin_layout Itemize
@@ -734,7 +734,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.UserData
+mytalk.server.sqlite.UserData
 \end_layout
 
 \begin_layout Itemize
@@ -766,7 +766,7 @@ Relazioni d'uso con altre componenti:
  viene utilizzata da
 \family typewriter
 \series bold
- mytalk.server.usermanager
+ mytalk.server.dao.UserDataDaoSQL
 \family default
 \series default
 ; essendo un semplice contenitore di informazioni la classe non utilizza
@@ -784,7 +784,118 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.RecordMessageDataDao
+mytalk.server.shared.User
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe
+\family typewriter
+\series bold
+ User
+\family default
+\series default
+ è la copia nel package 
+\family typewriter
+\series bold
+ shared
+\family default
+\series default
+delle informazioni su un utente contenute nel database
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe
+\family typewriter
+\series bold
+ User
+\family default
+\series default
+ viene scritta da 
+\family typewriter
+\series bold
+ mytalk.server.dao.UserDataDaoSQL
+\family default
+\series default
+; essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe preserva le informazioni riguardanti gli utenti, ovvero username,
+ password, nome, cognome e indirizzo IP
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.UserList
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe
+\family typewriter
+\series bold
+ UserList
+\family default
+\series default
+ è un vector contenente la lista degli utenti registrati sul server e il loro IP
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe
+\family typewriter
+\series bold
+ UserList
+\family default
+\series default
+ viene scritta da 
+\family typewriter
+\series bold
+ mytalk.server.dao.UserDataDaoSQL
+\family default
+\series default
+ e acceduta da 
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager
+\family default
+\series default
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe preserva una lista con tutti gli utenti registrati, per evitare
+ situazioni di incoerenza nei dati salvati nei singoli client; tale lista
+viene infatti mandata in broadcast ad ogni modifica
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.RecordMessageDataDao
 \end_layout
 
 \begin_layout Itemize
@@ -801,7 +912,7 @@ Tipo, obiettivo e funzione del componente:
  rappresenta l'interfaccia con cui comunicherà
 \family typewriter
 \series bold
- mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.usermanager.UserManager
 \end_layout
 
 \begin_layout Itemize
@@ -819,7 +930,7 @@ Relazioni d'uso con altre componenti:
  viene utilizzata dalla classe
 \family typewriter
 \series bold
- mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.usermanager.UserManager
 \end_layout
 
 \begin_layout Itemize
@@ -833,7 +944,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.RecordMessageDataDaoSQL
+mytalk.server.dao.RecordMessageDataDaoSQL
 \end_layout
 
 \begin_layout Itemize
@@ -897,7 +1008,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.RecordMessageData
+mytalk.server.sqlite.RecordMessageData
 \end_layout
 
 \begin_layout Itemize
@@ -920,16 +1031,16 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe
+ la classe 
 \family typewriter
 \series bold
  RecordMessageData
 \family default
 \series default
- viene utilizzata dalla classe
+ viene utilizzata dalla classe 
 \family typewriter
 \series bold
- mytalk.server.functionmanager.RecordMessageManager
+ mytalk.server.dao.RecordMessageDaoSQL
 \family default
 \series default
 ; essendo un semplice contenitore di informazioni la classe non utilizza
@@ -946,7 +1057,62 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.TutorialDataDao
+mytalk.server.shared.RecordMessage
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe
+\family typewriter
+\series bold
+ RecordMessageData
+\family default
+\series default
+ è un vector di messaggi registrati
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe 
+\family typewriter
+\series bold
+ RecordMessage
+\family default
+\series default
+ viene utilizzata dalla classe 
+\family typewriter
+\series bold
+ mytalk.server.dao.RecordMessageDaoSQL
+\family default
+\series default
+ che vi salva i messaggi registrati e da 
+\family typewriter
+\series bold
+ mytalk.server.usermanager.UserManager 
+\family default
+\series default
+che preleva la lista di messaggi registrati.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe contiene una lista con l'associazione tra un user e i messaggi a lui indirizzati
+\end_layout
+
+
+\begin_layout Subsubsection
+mytalk.server.dao.TutorialDataDao
 \end_layout
 
 \begin_layout Itemize
@@ -960,11 +1126,8 @@ Tipo, obiettivo e funzione del componente:
  TutorialDataDao
 \family default
 \series default
- rappresenta l'interfaccia con cui comunicherà
-\family typewriter
-\series bold
- mytalk.server.functionmanager.TutorialManager
-\end_layout
+ rappresenta l'interfaccia per agire sulla lista dei tutorial
+
 
 \begin_layout Itemize
 \noindent
@@ -978,16 +1141,12 @@ Relazioni d'uso con altre componenti:
  TutorialDataDao
 \family default
 \series default
- è utilizzata da
-\family typewriter
-\series bold
- mytalk.server.functionmanager.TutorialManager
-\family default
-\series default
-; essendo un'interfaccia viene implementata da
+viene implementata da
 \family typewriter
 \series bold
  TutorialDataDaoSQL
+\family default
+\series default
 \end_layout
 
 \begin_layout Itemize
@@ -999,14 +1158,14 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
- TutorialData
+ TutorialDataDao 
 \family default
 \series default
- preserva i collegamenti ai tutorial video
+ è l'interfaccia che verrà implementata per agire sulla base di dati
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.TutorialDataDaoSQL
+mytalk.server.dao.TutorialDataDaoSQL
 \end_layout
 
 \begin_layout Itemize
@@ -1051,6 +1210,14 @@ e agisce su
 \family typewriter
 \series bold
  TutorialData
+\family default
+\series default
+e
+\family typewriter
+\series bold
+ TutorialList
+\family default
+\series default
 \end_layout
 
 \begin_layout Itemize
@@ -1065,12 +1232,18 @@ Attività svolte e dati trattati:
  TutorialDataDaoSQL
 \family default
 \series default
- si occupa della lettura e della scrittura dei collegamenti ai tutorial
- video
+ si occupa della scrittura dei collegamenti ai tutorial video e
+ della preparazione della lista di video tutorial da inserire in
+\family typewriter
+\series bold
+ mytalk.server.shared.TutorialList
+\family default
+\series default
+
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.data.TutorialData
+mytalk.server.sqlite.TutorialData
 \end_layout
 
 \begin_layout Itemize
@@ -1102,7 +1275,7 @@ Relazioni d'uso con altre componenti:
  è utilizzata da
 \family typewriter
 \series bold
- mytalk.server.functionmanager.TutorialManager
+ mytalk.server.dao.TutorialDaoSQL
 \family default
 \series default
 ; essendo un semplice contenitore di informazioni la classe non utilizza
@@ -1124,5 +1297,73 @@ Attività svolte e dati trattati:
  preserva i collegamenti ai tutorial video
 \end_layout
 
+\begin_layout Subsubsection
+mytalk.server.shared.TutorialList
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe
+\family typewriter
+\series bold
+ TutorialList
+\family default
+\series default
+ è un contenitore di informazioni accessibile da 
+\family typewriter
+\series bold
+ mytalk.server.transfer.TutorialTransfer
+\family default
+\series default
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ la classe
+\family typewriter
+\series bold
+ TutorialList
+\family default
+\series default
+ viene costruita da
+\family typewriter
+\series bold
+ mytalk.server.dao.TutorialDaoSQL
+\family default
+\series default
+e acceduta da 
+\family typewriter
+\series bold
+ mytalk.server.transfer.TutorialTransfer
+\family default
+\series default
+; essendo un semplice contenitore di informazioni la classe non utilizza
+ componenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe
+\family typewriter
+\series bold
+ TutorialList
+\family default
+\series default
+ preserva la lista di collegamenti ai tutorial video
+\end_layout
+
 \end_body
 \end_document
+
