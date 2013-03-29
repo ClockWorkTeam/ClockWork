@@ -78,8 +78,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/package.usermanager.pdf
-	scale 90
+filename img/package.usermanager.pdf
+scale 90
 
 \end_inset
 
@@ -144,11 +144,11 @@ cjsaop
 \begin_layout Paragraph
 
 \series bold
-Costituito dalle classi: 
+Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.usermanager.AuthenticationManager (vedasi sezione 
+mytalk.server.usermanager.AuthenticationManager (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.Authen"
@@ -159,7 +159,7 @@ reference "sub:mytalk.server.usermanager.Authen"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.usermanager.UserManager (vedasi sezione 
+mytalk.server.usermanager.UserManager (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.UserMa"
@@ -191,8 +191,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/usermanager.AuthenticationManager.pdf
-	scale 80
+filename img/usermanager.AuthenticationManager.pdf
+scale 80
 
 \end_inset
 
@@ -268,7 +268,7 @@ RecordMessageDao messages:
 \begin_layout Itemize
 
 \series bold
-LoginDao loginDao: 
+LoginDao loginDao:
 \series default
 riferimento alla istanza della classe mytalk.server.dao.LoginDao contenente
  i dati per effettuare l'autenticazione
@@ -279,7 +279,7 @@ riferimento alla istanza della classe mytalk.server.dao.LoginDao contenente
 \begin_layout Itemize
 
 \series bold
-UserDao userDao: 
+UserDao userDao:
 \series default
 riferimento alla istanza della classe mytalk.server.dao.UserDao contenente
  i dati dell'utente
@@ -293,7 +293,7 @@ Metodi pubblici
 
 \series bold
 AuthenticationManager(RecordMessageDao messages, LoginDao loginDao, UserDao
- userDao): 
+ userDao):
 \series default
 costruttore della classe che dovrà impostare il valore degli attributi secondo
  il valore dei parametri passati
@@ -302,11 +302,17 @@ costruttore della classe che dovrà impostare il valore degli attributi secondo
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP): 
+User login(String username, String password, String IP):
 \series default
-metodo che passa i dati al package mytalk.server.dao per poter effettuare
+metodo che passa i dati al package 
+\series bold
+\family typewriter
+mytalk.server.dao 
+\series default
+\family default
+per poter effettuare
  la login.
- se la login avviene con successo, 
+ se la login avviene con successo,
 \end_layout
 
 \begin_layout Itemize
@@ -350,8 +356,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/usermanager.UserManager.pdf
-	scale 90
+filename img/usermanager.UserManager.pdf
+scale 90
 
 \end_inset
 
@@ -384,7 +390,11 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-xxxxxxx
+\series bold
+\family typewriter
+mytalk.server.dao.UserDao
+\series default
+\family default
 \end_layout
 
 \end_deeper
@@ -396,7 +406,11 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-xxxxxxxxxxxxxxxxx
+\series bold
+\family typewriter
+mytalk.server.transfer.AuthenticationTransfer
+\series default
+\family default
 \end_layout
 
 \end_deeper
