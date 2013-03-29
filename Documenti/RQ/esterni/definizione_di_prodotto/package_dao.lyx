@@ -66,7 +66,7 @@ Package Dao
 
 \begin_layout Standard
 Il package Dao contiene tutte le classi che si occupano di eseguire le operazion
-i eseguite sul database
+i sul database
 \end_layout
 
 \begin_layout Standard
@@ -80,8 +80,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/package.dao.pdf
-	scale 90
+filename img/package.dao.pdf
+scale 90
 
 \end_inset
 
@@ -146,7 +146,7 @@ Costituito da:
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.JavaConnectionSQLite (vedasi sezione 
+mytalk.server.dao.JavaConnectionSQLite (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.JavaConnection"
@@ -157,7 +157,7 @@ reference "sub:mytalk.server.dao.JavaConnection"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.LoginDao (vedasi sezione 
+mytalk.server.dao.LoginDao (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.LoginDao"
@@ -168,7 +168,7 @@ reference "sub:mytalk.server.dao.LoginDao"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.LoginDaoSQL (vedasi sezione 
+mytalk.server.dao.LoginDaoSQL (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.LoginDaoSQL"
@@ -179,7 +179,7 @@ reference "sub:mytalk.server.dao.LoginDaoSQL"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.RecordMessageDao (vedasi sezione 
+mytalk.server.dao.RecordMessageDao (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.RecordMessageD-1"
@@ -190,7 +190,7 @@ reference "sub:mytalk.server.dao.RecordMessageD-1"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.RecordMessageDaoSQL (vedasi sezione 
+mytalk.server.dao.RecordMessageDaoSQL (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.RecordMessageD"
@@ -201,7 +201,7 @@ reference "sub:mytalk.server.dao.RecordMessageD"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.UserDao (vedasi sezione 
+mytalk.server.dao.UserDao (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.UserDao"
@@ -212,7 +212,7 @@ reference "sub:mytalk.server.dao.UserDao"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.dao.UserDaoSQL (vedasi sezione 
+mytalk.server.dao.UserDaoSQL (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.UserDaoSQL"
@@ -248,8 +248,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/dao.JavaConnectionSQLite.pdf
-	scale 90
+filename img/dao.JavaConnectionSQLite.pdf
+scale 90
 
 \end_inset
 
@@ -309,7 +309,7 @@ Connection connection:
 \begin_layout Itemize
 
 \series bold
-Statement statement: 
+Statement statement:
 \series default
 riferimento alla risorsa impiegata per eseguire query sul database
 \end_layout
@@ -321,10 +321,10 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-JavaConnectionSQLite(): 
+JavaConnectionSQLite():
 \series default
 costruttore che crea la connessione al database.
- Se la connessione non va buon fine, vengono lanciate delle eccezioni, che
+ Se la connessione non va a buon fine, vengono lanciate delle eccezioni, che
  stamperanno a video l'errore riscontrato
 \end_layout
 
@@ -370,7 +370,7 @@ column:
 \begin_layout Itemize
 
 \emph on
-condition: 
+condition:
 \emph default
 condizione principale applicata per effettuare la selezione
 \end_layout
@@ -385,9 +385,9 @@ extra:
 
 \begin_layout Standard
 Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
- metodo ritornerà un 
+ metodo ritornerà un
 \emph on
-ResultSet 
+ResultSet
 \emph default
 denominato
 \emph on
@@ -398,10 +398,10 @@ denominato
 \begin_layout Itemize
 
 \series bold
-boolean executeUpdate(String query): 
+boolean executeUpdate(String query):
 \series default
 metodo che esegue la query passata nel database, aggiornandolo.
- Se la query viene conclusa con successo il metodo ritornerà 
+ Se la query viene conclusa con successo il metodo ritornerà
 \emph on
 true
 \emph default
@@ -411,7 +411,7 @@ true
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.dao.LoginDao 
+mytalk.server.dao.LoginDao
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.dao.LoginDao"
@@ -422,7 +422,7 @@ name "sub:mytalk.server.dao.LoginDao"
 \end_layout
 
 \begin_layout Standard
-L'nterfaccia LoginDao gestisce tutti i dati che riguardano i tentativi di
+L'interfaccia LoginDao gestisce tutti i dati che riguardano i tentativi di
  connessione e disconnessione al sistema.
  Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
  dovranno offrire tale servizio
@@ -443,8 +443,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/dao.LoginDao.pdf
-	scale 90
+filename img/dao.LoginDao.pdf
+scale 90
 
 \end_inset
 
@@ -489,7 +489,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-mlmo
+\series bold
+\family typewriter
+mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \end_deeper
@@ -541,8 +543,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/dao.LoginDaoSQL.pdf
-	scale 90
+filename img/dao.LoginDaoSQL.pdf
+scale 90
 
 \end_inset
 
@@ -604,14 +606,14 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i riferiment
 i al server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-UserList users: 
+UserList users:
 \series default
 riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -623,7 +625,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-LoginDaoSQL(JavaConnectionSQLite connection): 
+LoginDaoSQL(JavaConnectionSQLite connection):
 \series default
 costruttore della classe che dovrà impostare il valore degli attributi secondo
  il valore dei parametri passati
@@ -632,11 +634,11 @@ costruttore della classe che dovrà impostare il valore degli attributi secondo
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP): 
+User login(String username, String password, String IP):
 \series default
 metodo che effettua il login dell'utente.
  Deve controllare la correttezza dei dati inseriti.
- Crea quindi una query per verificare se esiste un utente con lo 
+ Crea quindi una query per verificare se esiste un utente con lo
 \emph on
 username
 \emph default
@@ -651,7 +653,7 @@ username
 \begin_layout Itemize
 
 \series bold
-boolean logout(User user): 
+boolean logout(User user):
 \series default
 metodo che effettua il logout dell'utente.
  Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
@@ -661,7 +663,7 @@ metodo che effettua il logout dell'utente.
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.dao.RecordMessageDao 
+mytalk.server.dao.RecordMessageDao
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.dao.RecordMessageD-1"
@@ -689,8 +691,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/dao.RecordMessageDao.pdf
-	scale 80
+filename img/dao.RecordMessageDao.pdf
+scale 80
 
 \end_inset
 
@@ -740,11 +742,16 @@ mytalk.server.shared.RecordMessage
 
 \series bold
 La classe è utilizzata da:
+\series default
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-xxxxxx
+\series bold
+\family typewriter
+mytalk.server.usermanager.UserManager
+\series default
+\family default
 \end_layout
 
 \end_deeper
@@ -765,7 +772,7 @@ Vector<RecordMessage> getMessages(String username):
 
 \series bold
 RecordMessage createMessage(String sender, String addressee, String path,
- Date date): 
+ Date date):
 \series default
 metodo che crea un messaggio differito nel database
 \end_layout
@@ -773,13 +780,13 @@ metodo che crea un messaggio differito nel database
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message): 
+boolean removeMessage(RecordMessage message):
 \series default
 metodo che elimina un messaggio differito dal database
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.dao.RecordMessageDaoSQL 
+mytalk.server.dao.RecordMessageDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.dao.RecordMessageD"
@@ -792,7 +799,12 @@ name "sub:mytalk.server.dao.RecordMessageD"
 \begin_layout Standard
 La classe RecordMessageDaoSQL si occupa di gestire tutti i dati riguardanti
  i messaggi differiti.
- È l'implementazione di mytalk.server.dao.RecordMessageDao
+ È l'implementazione di 
+\series bold
+\family typewriter
+mytalk.server.dao.RecordMessageDao
+\series default
+\family default
 \end_layout
 
 \begin_layout Standard
@@ -805,8 +817,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/dao.RecordMessageDaoSQL.pdf
-	scale 80
+filename img/dao.RecordMessageDaoSQL.pdf
+scale 80
 
 \end_inset
 
@@ -860,14 +872,14 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i riferiment
 i al server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-UserList users: 
+UserList users:
 \series default
 riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -888,17 +900,16 @@ RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users):
 \begin_layout Itemize
 
 \series bold
-Vector<RecordMessage> getMessages(String username): 
+Vector<RecordMessage> getMessages(String username):
 \series default
 metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
  ad un utente.
- Il metodo deve verificare che esiste realmente un utente associato allo
- 
+ Il metodo deve verificare che esista realmente un utente associato allo 
 \emph on
 username
 \emph default
  ricevuto, se esiste si crea la query da effettuare per trovare tutti i
- messaggi che come destinatario hanno username.
+ messaggi che come destinatario hanno tale username.
  Se la query restituisce almeno un messaggio differito, lo inserisce nel
  vettore dell'utente.
 \end_layout
@@ -907,35 +918,44 @@ username
 
 \series bold
 RecordMessage createMessage(String sender, String addressee, String path,
- Date date): 
+ Date date):
 \series default
 metodo che crea un messaggio differito nel database.
  Deve verificare che l'utente destinatario esista nel database.
  Successivamente deve creare la query per aggiungere nel database il messaggio.
  Se l'aggiunta avviene con successo, viene aggiornata anche l'istanza dell'utent
-e nel package mytalk.server.shared.User.
- Il metodo ritorna il messaggio creato, che sarà 
+e nel package 
+\series bold
+\family typewriter
+mytalk.server.shared.User.
+\series default
+\family default
+ Il metodo ritorna il messaggio creato, che sarà
 \emph on
 null
 \emph default
- nel caso in cui la creazione non andrà a buon fine
+ nel caso in cui la creazione non sia andata a buon fine
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message): 
+boolean removeMessage(RecordMessage message):
 \series default
 metodo che elimina un messaggio differito dal database.
  Il metodo deve creare la query per la cancellazione del messaggio differito
  nel database.
  Successivamente viene aggiornata anche l'istanza dell'utente nel package
+\series bold
+\family typewriter
  mytalk.server.shared.User.
- Nel caso l'eliminazione avviene con successo il metodo ritorna 
+\series default
+\family default
+ Nel caso l'eliminazione avvenga con successo il metodo ritorna
 \emph on
 true
 \emph default
-, in caso contrario ritorna 
+, in caso contrario ritorna
 \emph on
 false
 \end_layout
@@ -968,8 +988,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/dao.UserDao.pdf
-	scale 70
+filename img/dao.UserDao.pdf
+scale 70
 
 \end_inset
 
@@ -1006,7 +1026,11 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+\series bold
+\family typewriter
 mytalk.server.shared.User
+\series default
+\family default
 \end_layout
 
 \end_deeper
@@ -1018,7 +1042,7 @@ Metodi pubblici
 
 \series bold
 User createUser(String username, String password, String name, String surname,
- String IP): 
+ String IP):
 \series default
 metodo che crea un utente nel database
 \end_layout
@@ -1026,7 +1050,7 @@ metodo che crea un utente nel database
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username): 
+boolean removeUser(String username):
 \series default
 metodo che elimina un utente dal database
 \end_layout
@@ -1034,9 +1058,9 @@ metodo che elimina un utente dal database
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String username, String password): 
+boolean setPassword(String username, String password):
 \series default
-metodo che imposta la password all'utente corrispondente ad 
+metodo che imposta la password all'utente corrispondente ad
 \emph on
 username
 \emph default
@@ -1046,7 +1070,7 @@ username
 \begin_layout Itemize
 
 \series bold
-boolean setName(String username, String name): 
+boolean setName(String username, String name):
 \series default
 metodo che imposta il nome dell'utente corrispondente ad 
 \emph on
@@ -1058,7 +1082,7 @@ username
 \begin_layout Itemize
 
 \series bold
-boolean setSurname(String username, String surname): 
+boolean setSurname(String username, String surname):
 \series default
 metodo che imposta il cognome dell'utente corrispondente ad 
 \emph on
@@ -1094,8 +1118,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/dao.UserDaoSQL.pdf
-	scale 80
+filename img/dao.UserDaoSQL.pdf
+scale 80
 
 \end_inset
 
@@ -1156,7 +1180,7 @@ i al server
 \begin_layout Itemize
 
 \series bold
-UserList users: 
+UserList users:
 \series default
 riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -1168,7 +1192,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-UserDaoSQL(JavaConnectionSQLite connection): 
+UserDaoSQL(JavaConnectionSQLite connection):
 \series default
 costruttore della classe che dovrà impostare il valore degli attributi secondo
  il valore dei parametri passati
@@ -1178,7 +1202,7 @@ costruttore della classe che dovrà impostare il valore degli attributi secondo
 
 \series bold
 User createUser(String username, String password, String name, String surname,
- String IP): 
+ String IP):
 \series default
 metodo che crea un utente con i parametri passati
 \begin_inset Foot
@@ -1197,14 +1221,14 @@ L'esistenza di un utente con lo username uguale a quello passato come parametro,
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username): 
+boolean removeUser(String username):
 \series default
 metodo che elimina un utente dal database.
- Se l'eliminazione è andata a buon fine ritorna 
+ Se l'eliminazione è andata a buon fine ritorna
 \emph on
 true
 \emph default
-, altrimenti ritorna 
+, altrimenti ritorna
 \emph on
 false
 \end_layout
@@ -1212,15 +1236,15 @@ false
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String username, String password): 
+boolean setPassword(String username, String password):
 \series default
 metodo che imposta la password dell'utente con il nuovo valore passato nel
  database.
- Se il cambiamento è andato a buon fine, il metodo ritorna 
+ Se il cambiamento è andato a buon fine, il metodo ritorna
 \emph on
 true
 \emph default
-, altrimenti ritorna 
+, altrimenti ritorna
 \emph on
 false
 \end_layout
@@ -1233,11 +1257,11 @@ boolean setName(String username, String name):
  metodo che imposta il nome dell'utente con il nuovo valore passato nel
  database.
  Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
- presente in mytalk.server.shared.User ed il metodo ritorna 
+ presente in mytalk.server.shared.User ed il metodo ritorna
 \emph on
 true
 \emph default
-, altrimenti ritorna 
+, altrimenti ritorna
 \emph on
 false
 \end_layout
@@ -1247,14 +1271,13 @@ false
 \series bold
 boolean setSurname(String username, String surname):
 \series default
- metodo che imposta il cognome dell'utente con il nuovo valore passato nel
- database.
+ metodo che imposta il cognome dell'utente con il nuovo valore.
  Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
- presente in mytalk.server.shared.User ed il metodo ritorna 
+ presente in mytalk.server.shared.User ed il metodo ritorna
 \emph on
 true
 \emph default
-, altrimenti ritorna 
+, altrimenti ritorna
 \emph on
 false
 \end_layout
