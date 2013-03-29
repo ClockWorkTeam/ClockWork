@@ -75,7 +75,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/package-client.pdf
-	scale 55
+	scale 43
 
 \end_inset
 
@@ -160,8 +160,8 @@ AuthenticationView
 \family default
 \series default
  definisce la struttura, e la conseguente visualizzazione, della pagina
- web che consente di effettuare l'accesso al e la disconnessione dal sistema e la
- registrazione di un utente al server
+ web che consente di effettuare l'accesso al e la disconnessione dal sistema
+ e la registrazione di un utente al server
 \end_layout
 
 \begin_layout Itemize
@@ -178,19 +178,17 @@ AuthenticationView
 \family default
 \series default
  comunicherà con la classe
-
-\series bold
 \family typewriter
-mytalk.client.communication.AuthenticationCommunication
+\series bold
+ mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  per poter verificare se le credenziali inserite siano corrette o meno e
  quindi effettuare l'accesso al sistema o mostrare i relativi messaggi di
- errore, e per inviare i dati per effettuare la registrazione dell'utente al
- server tenendo in considerazione l'univocità dello username. 
- Infine gestirà il passaggio delle credenziali volte a modificare i dati dell'utente
- autenticato
-
+ errore, e per inviare i dati per effettuare la registrazione dell'utente
+ al server tenendo in considerazione l'univocità dello username.
+  Infine gestirà il passaggio delle credenziali volte a modificare i dati
+ dell'utente autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -200,13 +198,11 @@ mytalk.client.communication.AuthenticationCommunication
 Attività svolte e dati trattati:
 \series default
  la classe fa in modo che vengano gestiti gli eventi per l'autenticazione
- dell'utente al server, per la registrazione e per la modifica dei dati tramite la classe
-
-\series bold
+ dell'utente al server, per la registrazione e per la modifica dei dati
+ tramite la classe
 \family typewriter
-mytalk.client.communication.AuthenticationCommunication
-\family default
-\series default
+\series bold
+ mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
 \begin_layout Subsubsection
@@ -285,20 +281,17 @@ mytalk.client.view.ContactsView
 Tipo, obiettivo e funzione del componente:
 \series default
  la classe
-
-\series bold
 \family typewriter
-ContactsView
+\series bold
+ ContactsView
 \family default
 \series default
  definisce la struttura, e la conseguente visualizzazione, delle pagine
  web che consentono la visualizzazione della lista utenti iscritti al server.
  È composta da più
-\series bold
 \family typewriter
-ContactView
-\family default
-\series default
+\series bold
+ ContactView
 \end_layout
 
 \begin_layout Itemize
@@ -321,8 +314,8 @@ mytalk.client.communication.ContactsCommunication
 \series default
  che restituirà gli iscritti al server connessi in quel momento o meno
 \end_layout
-\end_deeper
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
@@ -343,14 +336,13 @@ mytalk.client.view.ContactView
 Tipo, obiettivo e funzione del componente:
 \series default
  la classe
-
-\series bold
 \family typewriter
-ContactsView
+\series bold
+ ContactsView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, di un singolo utente 
- iscritto al server; più ContactView insieme compongono ContactsView
+ definisce la struttura, e la conseguente visualizzazione, di un singolo
+ utente  iscritto al server; più ContactView insieme compongono ContactsView
 \end_layout
 
 \begin_layout Itemize
@@ -361,25 +353,30 @@ Relazioni d'uso con altre componenti:
 \series default
  la classe comunicherà con:
 \end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \noindent
-\series bold
+
 \family typewriter
- mytalk.client.view.FunctionsView
+\series bold
+mytalk.client.view.FunctionsView
 \family default
 \series default
- poiché premendo sul singolo contatto verrà mostrata l'interfaccia per
-effettuare le operazioni di comunicazione
+ poiché premendo sul singolo contatto verrà mostrata l'interfaccia per effettuar
+e le operazioni di comunicazione
+\end_layout
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe rappresenta un singolo utente registrato sul server e fornisce all'utente 
- le operazioni che, una volta che lo si ha selezionato, mostrano le funzionalità di 
- comunicazione disponibili
+ la classe rappresenta un singolo utente registrato sul server e fornisce
+ all'utente  le operazioni che, una volta che lo si ha selezionato, mostrano
+ le funzionalità di  comunicazione disponibili
 \end_layout
 
 \begin_layout Subsubsection
@@ -758,14 +755,14 @@ Relazioni d'uso con altre componenti:
  mytalk.client.model.Contact
 \family default
 \series default
-per visualizzare i dati del proprio account e con la classe
+ per visualizzare i dati del proprio account e con la classe
 \family typewriter
 \series bold
  mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  che avrà lo scopo di inviare al server le modifiche dei dati dell'utente.
-Tramite il design pattern Observer si aggiornerà il database locale
+ Tramite il design pattern Observer si aggiornerà il database locale
 \end_layout
 
 \begin_layout Itemize
@@ -774,8 +771,8 @@ Tramite il design pattern Observer si aggiornerà il database locale
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe definisce la struttura della pagina web per la modifica
- dei dati personali dell'utente
+ la classe definisce la struttura della pagina web per la modifica dei dati
+ personali dell'utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -842,8 +839,7 @@ Communication
 Tipo, obiettivo e funzione del componente:
 \series default
  definisce ed implementa la parte del sistema che si occupa della comunicazione
- tra client e server.
- 
+ tra client e server
 \end_layout
 
 \begin_layout Itemize
@@ -895,19 +891,18 @@ AuthenticationCommunication
 \family default
 \series default
  si occupa di inviare le credenziali inserite al server e inviare la risposta
- ricevuta a 
+ ricevuta a
 \family typewriter
 \series bold
  mytalk.client.view.AuthenticationView.
+
 \family default
 \series default
-Inoltre gestisce le operazioni di registrazione di un nuovo utente e di modifica dei dati,
- comunicando con 
+ Inoltre gestisce le operazioni di registrazione di un nuovo utente e di
+ modifica dei dati, comunicando con
 \family typewriter
 \series bold
- mytalk.client.view.ModifyAccountDataView.
-\family default
-\series default
+ mytalk.client.view.ModifyAccountDataView
 \end_layout
 
 \begin_layout Itemize
@@ -924,10 +919,10 @@ la classe riceverà i dati inseriti da
  
 \series default
  e fornirà i metodi per stabilire una connessione col server dal quale riceverà
- una risposta che andrà trasmessa alla classe 
+ una risposta che andrà trasmessa alla classe
 \family typewriter
 \series bold
-mytalk.client.view.AuthenticationView
+ mytalk.client.view.AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -936,8 +931,8 @@ mytalk.client.view.AuthenticationView
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occupa della comunicazione tra client e server per
- quanto riguarda qualsiasi controllo o modifica dei dati dell'utente
+ la classe si occupa della comunicazione tra client e server per quanto
+ riguarda qualsiasi controllo o modifica dei dati dell'utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -1113,7 +1108,7 @@ Relazioni d'uso con altre componenti:
  mytalk.client.view.RecordMessageView
 \family default
 \series default
-i metodi per l'invio e la ricezione di messaggi registrati
+ i metodi per l'invio e la ricezione di messaggi registrati
 \end_layout
 
 \begin_layout Itemize
@@ -1174,10 +1169,10 @@ fornirà i metodi a
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe fornirà quindi a 
+ la classe fornirà quindi a
 \family typewriter
 \series bold
-mytalk.client.view.TutorialView
+ mytalk.client.view.TutorialView
 \family default
 \series default
  il videotutorial richiesto
@@ -1215,7 +1210,7 @@ Relazioni d'uso con altre componenti:
 \family default
  
 \series default
-fornire i metodi alla classe 
+fornisce i metodi alla classe 
 \family typewriter
 \series bold
 mytalk.client.view.SendFileView 
@@ -1262,7 +1257,7 @@ view
  e
 \family typewriter
 \series bold
-communication
+ communication
 \family default
 \series default
  che invieranno le richieste di gestione dei dati
@@ -1283,7 +1278,8 @@ Tipo, obiettivo e funzione del componente:
  User
 \family default
 \series default
- si occuperà di tenere aggiornate localmente le informazioni dell' account attuale
+ si occuperà di tenere aggiornate localmente le informazioni dell'account
+ attuale
 \end_layout
 
 \begin_layout Itemize
@@ -1355,8 +1351,9 @@ Relazioni d'uso con altre componenti:
  mytalk.client.view.ContactsView
 \family default
 \series default
-la lista degli utenti che sono presenti nella lista e il loro stato attuale
+ la lista degli utenti che sono presenti nella lista e il loro stato attuale
  una volta effettuato l'accesso 
+\end_layout
 
 \begin_layout Itemize
 \noindent
@@ -1365,12 +1362,10 @@ la lista degli utenti che sono presenti nella lista e il loro stato attuale
 Attività svolte e dati trattati:
 \series default
  la classe si occupa di ricevere la lista utenti registrati, che include
- se siano connessi o meno, e l' Observer provvederà ad aggiornare la 
+ se siano connessi o meno, e l'Observer provvederà ad aggiornare la 
 \family typewriter
 \series bold
 view
-\family default
-\series default
 \end_layout
 
 \begin_layout Subsubsection
@@ -1467,7 +1462,8 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occuperà di conservare per un tempo limitato le comunicazioni testuali tra utenti
+ la classe si occuperà di conservare per un tempo limitato le comunicazioni
+ testuali tra utenti
 \end_layout
 
 \begin_layout Subsubsection
@@ -1507,7 +1503,7 @@ Relazioni d'uso con altre componenti:
 \family default
 \series default
  per il caricamento di un video tutorial riguardante le funzionalità del
- prodotto
+ prodotto 
 \begin_inset ERT
 status open
 
