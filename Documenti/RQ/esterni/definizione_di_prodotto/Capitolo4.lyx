@@ -3686,35 +3686,64 @@ onRemoteStreamRemoved(object):
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 createPeerConnection(): 
+\series default
+metodo che crea una connessione peer to peer
 \end_layout
 
 \begin_layout Itemize
-connect(): 
+
+\series bold
+connect():
+\series default
+ metodo che avvia la connessione su richiesta dell'utente
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 onMessage(object): 
+\series default
+metodo che sta in ascolto di messaggi in arrivo dal server e li gestisce
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 gotDescription(string): 
+\series default
+metodo che ottiene la descrizione del protocollo di comunicazione per la
+ sessione corrente
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 onIceCandidate(object): 
+\series default
+metodo che invia i possibili candidati per la configurazione della comunicazione
+, attraverso l'utilizzo di 
+\family typewriter
+\series bold
+sendMessage(string)
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 sendMessage(string): 
+\series default
+metodo che invia i messaggi al server
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.communication.ContactCommunication
+mytalk.client.communication.ContactsCommunication
 \end_layout
 
 \begin_layout Standard
-La classe ContactCommunication si occupa di ricevere la lista degli utenti
+La classe ContactsCommunication si occupa di ricevere la lista degli utenti
  presenti nel server
 \end_layout
 
@@ -3729,7 +3758,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ContactCommunication.pdf
+	filename img/ContactsCommunication.pdf
 	scale 90
 
 \end_inset
@@ -3741,7 +3770,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe ContactCommunication
+Classe ContactsCommunication
 \end_layout
 
 \end_inset
@@ -3774,18 +3803,6 @@ mytalk.client.view.ContactsView
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3795,25 +3812,9 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-ContactCommunication():
-\series default
- metodo che permette il prototyping di una classe
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-ContactCommunication.prototype.fetchContacts():
+fetchContacts(object):
 \series default
  funzione per ottenere la lista dei contatti
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-ContactCommunication.prototype.dummyContacts(Object):
-\series default
- funzione per inserire nella collezione il contatto
 \end_layout
 
 \begin_layout Subsubsection
@@ -3867,18 +3868,6 @@ La classe è utilizzata da:
 \begin_deeper
 \begin_layout Itemize
 mytalk.client.view.RecordMessageView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
 \end_layout
 
 \end_deeper
@@ -3945,18 +3934,6 @@ mytalk.client.view.SendFileView
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3973,7 +3950,7 @@ mytalk.client.communication.NotificationCommunication
 
 \begin_layout Standard
 La classe NotificationCommunication si occupa di comunicare con il server
- per quanto riguarda le notiche
+ per quanto riguarda le notifiche
 \end_layout
 
 \begin_layout Standard
@@ -4036,18 +4013,6 @@ mytalk.client.view.NotificationView
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -4057,15 +4022,7 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-NotificationCommunication():
-\series default
- metodo che permette il prototyping di una classe
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-NotificationCommunication.prototype.receivecall(string):
+onNotification(string):
 \series default
  metodo che si occupa di segnalare la presenza di chiamate in arrivo
 \end_layout
@@ -4073,17 +4030,9 @@ NotificationCommunication.prototype.receivecall(string):
 \begin_layout Itemize
 
 \series bold
-NotificationCommunication.prototype.receivefile():
+refuse(): 
 \series default
- metodo che si occupa di segnalare la presenza di file inviati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-NotificationCommunication.prototype.receiverecordmessage():
-\series default
- metodo che si occupa di segnalare la presenza di videomessaggi
+metodo che di occupa di gestire il rifiuto di una notifica
 \end_layout
 
 \begin_layout Subsubsection
@@ -4137,18 +4086,6 @@ La classe è utilizzata da:
 \begin_deeper
 \begin_layout Itemize
 mytalk.client.view.ModifyAccountDataView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
 \end_layout
 
 \end_deeper
