@@ -78,8 +78,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-filename img/package.transfer.pdf
-scale 90
+	filename img/package.transfer.pdf
+	scale 90
 
 \end_inset
 
@@ -121,11 +121,10 @@ Il package utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.server.usermanager.UserManager
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -137,11 +136,10 @@ Il package viene utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.client.communication
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -161,6 +159,7 @@ reference "sub:mytalk.server.transfer.Authentic"
 
 )
 \end_layout
+
 \begin_layout Itemize
 mytalk.server.transfer.CallTransfer (vedasi sezione
 \begin_inset CommandInset ref
@@ -184,7 +183,8 @@ name "sub:mytalk.server.transfer.Authentic"
 \end_layout
 
 \begin_layout Standard
-xxxxxxxxxxxxxxxxxxxx
+La classe AuthenticationTransfer si occupa della registrazione e autenticazione
+ degli utenti
 \end_layout
 
 \begin_layout Standard
@@ -197,12 +197,16 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-filename img/transfer.AuthenticationListener.pdf
-scale 80
+	filename img/transfer.AuthenticationTransfer.pdf
+	scale 90
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -231,23 +235,22 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.server.usermanager.AuthenticationManager 
-\series default
 \family default
+\series default
 ,
-\series bold
 \family typewriter
+\series bold
 mytalk.server.usermanager.UserManager 
-\series default
 \family default
+\series default
 e
-\series bold
 \family typewriter
+\series bold
 mytalk.server.functionmanager.ContactsManager 
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -259,11 +262,10 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.client.AuthenticationCommunication.AuthenticationCommunication 
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -276,7 +278,8 @@ Attributi privati
 \series bold
 AuthenticationManager authenticationManager:
 \series default
- 
+ è il riferimento alla singola istanza della classe AuthenticationManager
+ inizializzata nel Launcher
 \end_layout
 
 \begin_layout Itemize
@@ -284,7 +287,8 @@ AuthenticationManager authenticationManager:
 \series bold
 UserManager userManager:
 \series default
- 
+ è il riferimento alla singola istanza della classe UserManager inizializzata
+ nel Launcher
 \end_layout
 
 \begin_layout Itemize
@@ -292,7 +296,8 @@ UserManager userManager:
 \series bold
 Collection<WebSocketConnector> mClients:
 \series default
- 
+ è una collezione di tutti gli utenti che sono correntemente collegati al
+ server
 \end_layout
 
 \begin_layout Paragraph
@@ -303,7 +308,9 @@ Metodi pubblici
 
 \series bold
 AuthenticationTransfer(AuthenticationManager authenticationManager, UserManager
- userManager):
+ userManager): 
+\series default
+metodo che inizializza la classe
 \end_layout
 
 \begin_layout Itemize
@@ -311,51 +318,66 @@ AuthenticationTransfer(AuthenticationManager authenticationManager, UserManager
 \series bold
 void setTokenServer(ServerMyTalk server):
 \series default
- 
+ metodo che restituisce il TokenServer inizializzato nel server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 void processToken(WebSocketServerTokenEvent event, Token token):
+\series default
+ metodo che si occupa della gestione dei Token in arrivo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void processClosed(WebSocketServerEvent arg0):
+void processClosed(WebSocketServerEvent arg0): 
+\series default
+metodo che si occupa della chiusura di un processo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void processOpened(WebSocketServerEvent event):
+void processOpened(WebSocketServerEvent event): 
+\series default
+metodo che si occupa della creazione di un processo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void sendPacket(WebSocketPacket packet, WebSocketServerEvent event):
+void sendPacket(WebSocketPacket packet, WebSocketServerEvent event): 
+\series default
+metodo che si occupa dell'invio di uno specifico pacchetto
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
+ 
+\series default
+metodo che si occupa della gestione di un pacchetto
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void broadcastToAll(WebSocketPacket packet):
+void broadcastToAll(WebSocketPacket packet): 
+\series default
+metodo che si occupa di inviare un pacchetto a tutti gli utenti connessi
+ al server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Collection<WebSocketConnector> getClients():
+Collection<WebSocketConnector> getClients(): 
+\series default
+metodo che restituisce la lista degli utenti connessi al server
 \end_layout
-
 
 \begin_layout Subsubsection
 mytalk.server.transfer.CallTransfer
@@ -369,7 +391,8 @@ name "sub:mytalk.server.transfer.CallTrans"
 \end_layout
 
 \begin_layout Standard
-xxxxxxxxxxxxxxxxxxxx
+La classe CaalTransfer si occupa di gestire il traffico di pacchetti per
+ effettuare l'inizializzazione di una comunicazione audio/video
 \end_layout
 
 \begin_layout Standard
@@ -382,12 +405,16 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-filename img/transfer.CallTransfer.pdf
-scale 80
+	filename img/transfer.CallTransfer.pdf
+	scale 90
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -416,19 +443,17 @@ La classe utilizza ed è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.client.communication.CallCommunication 
-\series default
 \family default
+\series default
 e utilizza
-\series bold
 \family typewriter
+\series bold
 mytalk.server.transfer.AuthenticationTransfer 
-\series default
-\family default
 \end_layout
-\end_deeper
 
 \end_deeper
 \begin_layout Paragraph
@@ -451,6 +476,8 @@ Metodi pubblici
 
 \series bold
 CallTransfer(AuthenticationTransfer authentication):
+\series default
+ metodo che inizializza l'instanza
 \end_layout
 
 \begin_layout Itemize
@@ -458,37 +485,48 @@ CallTransfer(AuthenticationTransfer authentication):
 \series bold
 void setTokenServer(ServerMyTalk server):
 \series default
- 
+ metodo che restituisce il TokenServer inizializzato nel server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 void processToken(WebSocketServerTokenEvent event, Token token):
+\series default
+ metodo che si occupa della gestione dei Token in arrivo 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 void processClosed(WebSocketServerEvent arg0):
+\series default
+ metodo che si occupa della chiusura di un processo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 void processOpened(WebSocketServerEvent event):
+\series default
+ metodo che si occupa della creazione di un processo
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void sendPacket(WebSocketPacket packet, WebSocketConnector connector):
+void sendPacket(WebSocketPacket packet, WebSocketConnector connector): 
+\series default
+metodo che si occupa della gestione di un pacchetto
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
+ 
+\series default
+metodo che si occupa della gestione di un pacchetto
 \end_layout
 
 \end_body

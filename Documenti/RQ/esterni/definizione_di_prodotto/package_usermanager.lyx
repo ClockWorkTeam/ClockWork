@@ -78,8 +78,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-filename img/package.usermanager.pdf
-scale 90
+	filename img/package.usermanager.pdf
+	scale 90
 
 \end_inset
 
@@ -137,7 +137,7 @@ Il package è utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
-cjsaop
+mytalk.server.transfer
 \end_layout
 
 \end_deeper
@@ -181,6 +181,11 @@ name "sub:mytalk.server.usermanager.Authen"
 \end_layout
 
 \begin_layout Standard
+La classe AuthenticationManager si occupa di passare al database i dati
+ necessari per la verifica dell'autenticazione
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -191,8 +196,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-filename img/usermanager.AuthenticationManager.pdf
-scale 80
+	filename img/usermanager.AuthenticationManager.pdf
+	scale 80
 
 \end_inset
 
@@ -249,7 +254,7 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-cjsapc
+mytalk.server.transfer.AuthenticationTransfer
 \end_layout
 
 \end_deeper
@@ -305,13 +310,12 @@ costruttore della classe che dovrà impostare il valore degli attributi secondo
 User login(String username, String password, String IP):
 \series default
 metodo che passa i dati al package 
-\series bold
 \family typewriter
+\series bold
 mytalk.server.dao 
-\series default
 \family default
-per poter effettuare
- la login.
+\series default
+per poter effettuare la login.
  se la login avviene con successo,
 \end_layout
 
@@ -319,6 +323,8 @@ per poter effettuare
 
 \series bold
 boolean logout(User user):
+\series default
+ metodo che effettua il logout dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -326,12 +332,17 @@ boolean logout(User user):
 \series bold
 User createUser(String username, String password, String name, String surname,
  String IP):
+\series default
+ metodo che crea un nuovo utente nella base di dati, purché lo username
+ non sia già utilizzato 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 boolean removeUser(String username):
+\series default
+ metodo che elimina un utente registrato dal database
 \end_layout
 
 \begin_layout Subsubsection
@@ -346,6 +357,11 @@ name "sub:mytalk.server.usermanager.UserMa"
 \end_layout
 
 \begin_layout Standard
+La classe UserManager si occupa di gestire la modifica dei dati degli utenti
+ e l'invio ai client della lista di utenti registrati al server
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -356,8 +372,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-filename img/usermanager.UserManager.pdf
-scale 90
+	filename img/usermanager.UserManager.pdf
+	scale 90
 
 \end_inset
 
@@ -390,11 +406,10 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.server.dao.UserDao
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -406,11 +421,10 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.server.transfer.AuthenticationTransfer
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -421,13 +435,17 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-UserDao userDao:
+UserDao userDao: 
+\series default
+si riferisce all'utente corrente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 RecordMessageDao messageDao:
+\series default
+ è la lista di messaggi registrati destinati all'utente 
 \end_layout
 
 \begin_layout Paragraph
@@ -437,38 +455,50 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-UserManager(UserDao userDao, RecordMessageDao messageDao):
+UserManager(UserDao userDao, RecordMessageDao messageDao): 
+\series default
+metodo che inizializza la classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(User user, String password):
+boolean setPassword(User user, String password): 
+\series default
+metodo che imposta la password
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setName(User user, String name):
+boolean setName(User user, String name): 
+\series default
+metodo che imposta il nome
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setSurname(User user, String surname):
+boolean setSurname(User user, String surname): 
+\series default
+metodo che imposta il cognome
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 RecordMessage createMessage(String sender, String adressee, String path,
- Date date):
+ Date date): 
+\series default
+metodo che aggiunge un messaggio registrato destinato all'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message):
+boolean removeMessage(RecordMessage message): 
+\series default
+metodo che rimuove un messaggio registrato
 \end_layout
 
 \end_body

@@ -61,11 +61,51 @@
 \begin_body
 
 \begin_layout Subsection
-Package Functionmanager
+Package FunctionManager
 \end_layout
 
 \begin_layout Standard
-xxxxxxxxxxxxxxxxxxxx
+Il package FunctionManager contiene tutte le classi che si occupano di convetire
+ le strutture dati più complesse in stringhe per lo strato transfer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/package.functionmanager.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Package FunctionManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -76,19 +116,16 @@ Relazioni d'uso con altri moduli
 
 \begin_layout Itemize
 
-\begin_layout Itemize
-
 \series bold
 Il package è utilizzato da:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\series bold
+
 \family typewriter
+\series bold
 mytalk.server.usermanager
-\series default
-\family default
 \end_layout
 
 \end_deeper
@@ -121,7 +158,8 @@ name "sub:mytalk.server.functionmanager.Co"
 \end_layout
 
 \begin_layout Standard
-xxxxxxxxxxxxxxxxxxxx
+La classe ContactsManager restituisce in forma di stringa il vettore di
+ utenti passato per argomento
 \end_layout
 
 \begin_layout Standard
@@ -134,8 +172,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-filename img/functionmanager.ContactsManager.pdf
-scale 90
+	filename img/functionmanager.ContactsManager.pdf
+	scale 90
 
 \end_inset
 
@@ -174,6 +212,9 @@ Metodi pubblici
 
 \series bold
 String getAllContacts(Vector<User> users):
+\series default
+ metodo che converte in forma di stringa il vettore di utenti passato per
+ argomento
 \end_layout
 
 \end_body
