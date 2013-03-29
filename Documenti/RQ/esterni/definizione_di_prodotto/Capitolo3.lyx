@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language italian
@@ -76,7 +79,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/package-server.pdf
-	scale 90
+	width 100text%
 
 \end_inset
 
@@ -132,10 +135,112 @@ functionmanager (vedasi sezione)
 transfer (vedasi sezione )
 \end_layout
 
+\begin_layout Subsection
+Package Sqlite
+\end_layout
+
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "package_sqlite.lyx"
+Il package Sqlite rappresenta il database
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/packagesqlite.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Package SQLite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Costituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.sqlite.RecordMessageDataSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.sqlite.RecordMessa-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.sqlite.TutorialDataSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.sqlite.TutorialDat-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.sqlite.UserDataSQL (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.sqlite.UserDataSQL-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.sqlite.RecordMessageDataSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.sqlite.RecordMessa-1"
 
 \end_inset
 
@@ -143,41 +248,3165 @@ filename "package_sqlite.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "package_dao.lyx"
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sqliteRecordMessageDataSQL.pdf
+	scale 90
 
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand include
-filename "package_shared.lyx"
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessageDataSQL
+\end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand include
-filename "package_usermanager.lyx"
+\end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand include
-filename "package_functionmanager.lyx"
+\end_layout
+
+\begin_layout Standard
+Tabella che rappresenta i messaggi differiti inviati agli utenti
+\end_layout
+
+\begin_layout Paragraph
+Attributi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+sender:
+\series default
+ rappresenta lo username del mittente del messaggio differito
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+addressee: 
+\series default
+rappresenta lo username del destinatario del messaggio differito
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+record_message:
+\series default
+ indirizzo dove si trova il messaggio differito all'interno del server 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È unico in tutto il database.
+\end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand include
-filename "package_transfer.lyx"
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+creation:
+\series default
+ data di creazione del messaggio
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.sqlite.TutorialDataSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.sqlite.TutorialDat-1"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sqliteTutorialDataSQL.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TutorialDataSQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Attributi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+url: 
+\series default
+url di destinazione dove si trova il tutorial video
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È unico in tutto il database.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+title:
+\series default
+ titolo del tutorial video
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.sqlite.UserDataSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.sqlite.UserDataSQL-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sqliteUserDataSQL.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserDataSQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabella che rappresenta gli utenti
+\end_layout
+
+\begin_layout Paragraph
+Attributi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+username:
+\series default
+ username dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+È unico in tutta la tabella.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+password:
+\series default
+ password dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+name:
+\series default
+ nome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+surname
+\series default
+: cognome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IP:
+\series default
+ indirizzo IP dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se uguale a 0 rappresenta un utente non connesso.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Package Dao
+\end_layout
+
+\begin_layout Standard
+Il package Dao contiene tutte le classi che si occupano di eseguire le operazion
+i sul database
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/packageDao.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Package Dao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.shared
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.usermanager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Costituito da:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.JavaConnectionSQLite (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.JavaConnection-1"
+
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.LoginDao (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.LoginDao-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.LoginDaoSQL (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.LoginDaoSQL-1"
+
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.RecordMessageDao (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.RecordMessageD-1-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.RecordMessageDaoSQL (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.RecordMessageD-2"
+
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.UserDao (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.UserDao-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.UserDaoSQL (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.dao.UserDaoSQL-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.JavaConnectionSQLite
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.JavaConnection-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe JavaConnectionSQLite contiene tutti i metodi per l'esecuzione
+ di query all'interno del database
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/daoJavaConnectionSQLite.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe JavaConnectionSQLite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.UserDaoSQL
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.LoginDaoSQL
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.RecordMessageDaoSQL
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Connection connection:
+\series default
+ riferimento alla connessione al database di riferimento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Statement statement:
+\series default
+riferimento alla risorsa impiegata per eseguire query sul database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite():
+\series default
+costruttore che crea la connessione al database.
+ Se la connessione non va a buon fine, vengono lanciate delle eccezioni,
+ che stamperanno a video l'errore riscontrato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void finalize():
+\series default
+ distruttore della classe JavaConnectionSQLite.
+ Prima di distruggere una istanza, la connessione al database deve essere
+ chiusa.
+ Se la chiusura della connessione lancia eccezioni, stamperà a video l'errore
+ riscontrato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ResultSet select(String table, String column, String condition, String extra):
+\series default
+ metodo che ritorna una tupla di valori, della tabella indicata, che rispettano
+ i parametri di controllo indicati.
+ Quindi eseguirà la query da eseguire sul database utilizzando i parametri:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+table:
+\emph default
+ rappresenta il nome della tabella su cui eseguire la query
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+column:
+\emph default
+ rappresenta le colonne che saranno selezionate
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+condition:
+\emph default
+condizione principale applicata per effettuare la selezione
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+extra:
+\emph default
+ condizioni extra
+\end_layout
+
+\begin_layout Standard
+Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
+ metodo ritornerà un
+\emph on
+ResultSet
+\emph default
+denominato
+\emph on
+ rs
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+boolean executeUpdate(String query):
+\series default
+metodo che esegue la query passata nel database, aggiornandolo.
+ Se la query viene conclusa con successo il metodo ritornerà
+\emph on
+true
+\emph default
+, altrimenti ritornerà
+\emph on
+ false
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.LoginDao
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.LoginDao-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'interfaccia LoginDao gestisce tutti i dati che riguardano i tentativi
+ di connessione e disconnessione al sistema.
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
+ dovranno offrire tale servizio
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/daoLoginDao.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interfaccia LoginDao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager.AuthenticationManager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User LoginDao(String username, String password, String IP):
+\series default
+ metodo che controllerà la correttezza dei dati inseriti da un utente per
+ connettersi al sistema
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user):
+\series default
+ metodo che effettuerà la disconnessione dal sistema
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.LoginDaoSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.LoginDaoSQL-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe LoginDaoSQL si occupa di gestire tutti i dati riguardanti i tentativi
+ di autenticazione all'interno del sistema.
+ È l'implementazione di mytalk.server.dao.LoginDao
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/daoLoginDaoSQL.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe LoginDaoSQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.UserList
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.usermanager.AuthenticationManager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i
+ riferimenti al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users:
+\series default
+riferimento alla lista degli utenti registrati nel database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LoginDaoSQL(JavaConnectionSQLite connection):
+\series default
+costruttore della classe che dovrà impostare il valore degli attributi secondo
+ il valore dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User login(String username, String password, String IP):
+\series default
+metodo che effettua il login dell'utente.
+ Deve controllare la correttezza dei dati inseriti.
+ Crea quindi una query per verificare se esiste un utente con lo
+\emph on
+username
+\emph default
+ ricevuto e che la password associata a tale utente sia uguale a quella
+ ricevuta.
+ Se non dovesse esistere tale parametro lancerà una eccezione, in caso contrario
+ creerà una query per effettuare l'aggiornamento dell'indirizzo IP dell'utente
+ che vuole effettuare la connessione, successivamente viene aggiornata anche
+ l'istanza dell'utente nel package mytalk.server.shared.User
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user):
+\series default
+metodo che effettua il logout dell'utente.
+ Aggiornerà l'indirizzo IP, impostandolo a 0, nell'istanza dell'utente contenuta
+ nel package mytalk.server.shared.
+ Successivamente si effettuerà l'aggiornamento dell'utente presente nel
+ database impostanto il suo indirizzo IP a 0
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.RecordMessageDao
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.RecordMessageD-1-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'interfaccia RecordMessageDao gestisce tutti i dati che riguardano i messaggi
+ differiti inviati ai vari utenti.
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
+ dovranno offrire tale servizio
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/daoRecordMessageDao.pdf
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interfaccia RecordMessageDao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.shared.RecordMessage
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages(String username):
+\series default
+ metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ ad un utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage createMessage(String sender, String addressee, String path,
+ Date date):
+\series default
+metodo che crea un messaggio differito nel database
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message):
+\series default
+metodo che elimina un messaggio differito dal database
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.RecordMessageDaoSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.RecordMessageD-2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe RecordMessageDaoSQL si occupa di gestire tutti i dati riguardanti
+ i messaggi differiti.
+ È l'implementazione di 
+\family typewriter
+\series bold
+mytalk.server.dao.RecordMessageDao
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/daoRecordMessageDaoSQL.pdf
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessageDaoSQLite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.RecordMessage
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i
+ riferimenti al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users:
+\series default
+riferimento alla lista degli utenti registrati nel database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users):
+\series default
+ costruttore della classe che dovrà impostare il valore degli attributi
+ secondo il valore dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages(String username):
+\series default
+metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ ad un utente.
+ Il metodo deve verificare che esista realmente un utente associato allo
+ 
+\emph on
+username
+\emph default
+ ricevuto, se esiste si crea la query da effettuare per trovare tutti i
+ messaggi che come destinatario hanno tale username.
+ Se la query restituisce almeno un messaggio differito, lo inserisce nel
+ vettore dell'utente.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage createMessage(String sender, String addressee, String path,
+ Date date):
+\series default
+metodo che crea un messaggio differito nel database.
+ Deve verificare che l'utente destinatario esista nel database.
+ Successivamente deve creare la query per aggiungere nel database il messaggio.
+ Se l'aggiunta avviene con successo, viene aggiornata anche l'istanza dell'utent
+e nel package 
+\family typewriter
+\series bold
+mytalk.server.shared.User.
+
+\family default
+\series default
+ Il metodo ritorna il messaggio creato, che sarà
+\emph on
+null
+\emph default
+ nel caso in cui la creazione non sia andata a buon fine
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message):
+\series default
+metodo che elimina un messaggio differito dal database.
+ Il metodo deve creare la query per la cancellazione del messaggio differito
+ nel database.
+ Successivamente viene aggiornata anche l'istanza dell'utente nel package
+\family typewriter
+\series bold
+ mytalk.server.shared.User.
+
+\family default
+\series default
+ Nel caso l'eliminazione avvenga con successo il metodo ritorna
+\emph on
+true
+\emph default
+, in caso contrario ritorna
+\emph on
+false
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.UserDao
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.UserDao-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'interfaccia UserDao gestisce tutti i dati che riguardano gli utenti.
+ Fornisce l'interfaccia minima necessaria a tutte le classi derivate che
+ dovranno offrire tale servizio
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/daoUserDao.pdf
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interfaccia UserDao
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User createUser(String username, String password, String name, String surname,
+ String IP):
+\series default
+metodo che crea un utente nel database
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeUser(String username):
+\series default
+metodo che elimina un utente dal database
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setPassword(String username, String password):
+\series default
+metodo che imposta la password all'utente corrispondente ad
+\emph on
+username
+\emph default
+ con il nuovo valore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setName(String username, String name):
+\series default
+metodo che imposta il nome dell'utente corrispondente ad 
+\emph on
+username
+\emph default
+ con il nuovo valore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setSurname(String username, String surname):
+\series default
+metodo che imposta il cognome dell'utente corrispondente ad 
+\emph on
+username
+\emph default
+ con il nuovo valore
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.dao.UserDaoSQL
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.dao.UserDaoSQL-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe UserDaoSQL si occupa di gestire tutti i dati riguardanti i messaggi
+ differiti.
+ È l'implementazione di mytalk.server.dao.UserDao
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/daoUserDaoSQL.pdf
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserDaoSQL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.JavaConnectionSQLite
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.UserList
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+JavaConnectionSQLite connection:
+\series default
+ riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+i al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList users:
+\series default
+riferimento alla lista degli utenti registrati nel database
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserDaoSQL(JavaConnectionSQLite connection):
+\series default
+costruttore della classe che dovrà impostare il valore degli attributi secondo
+ il valore dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User createUser(String username, String password, String name, String surname,
+ String IP):
+\series default
+metodo che crea un utente con i parametri passati
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+L'esistenza di un utente con lo username uguale a quello passato come parametro,
+ verrà accertata nella classe mytalk.server.dao.shared.UserList.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeUser(String username):
+\series default
+metodo che elimina un utente dal database.
+ Se l'eliminazione è andata a buon fine ritorna
+\emph on
+true
+\emph default
+, altrimenti ritorna
+\emph on
+false
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setPassword(String username, String password):
+\series default
+metodo che imposta la password dell'utente con il nuovo valore passato nel
+ database.
+ Se il cambiamento è andato a buon fine, il metodo ritorna
+\emph on
+true
+\emph default
+, altrimenti ritorna
+\emph on
+false
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setName(String username, String name):
+\series default
+ metodo che imposta il nome dell'utente con il nuovo valore passato nel
+ database.
+ Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
+ presente in mytalk.server.shared.User ed il metodo ritorna
+\emph on
+true
+\emph default
+, altrimenti ritorna
+\emph on
+false
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setSurname(String username, String surname):
+\series default
+ metodo che imposta il cognome dell'utente con il nuovo valore.
+ Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
+ presente in mytalk.server.shared.User ed il metodo ritorna
+\emph on
+true
+\emph default
+, altrimenti ritorna
+\emph on
+false
+\end_layout
+
+\begin_layout Subsection
+Package Shared
+\end_layout
+
+\begin_layout Standard
+Il package Shared contiene le classi contenenti le informazioni condivise
+ fra i vari strati del server
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/packageshared.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Package Shared
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.usermanager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Costituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.User (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.shared.User-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.UserList (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.shared.UserList-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.RecordMessage (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.shared.RecordMessa-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.User
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.shared.User-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe User farà da contenitore per i dati riguardanti gli utenti presenti
+ all'interno del database
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/sharedUser.pdf
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe User
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.UserDaoSQL
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String username:
+\series default
+ rappresenta lo username dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String name: 
+\series default
+rappresenta il nome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String surname:
+\series default
+ rappresenta il cognome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String IP:
+\series default
+ rappresenta l'indirizzo IP dell'utente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se la stringa è uguale a 0 significa che l'utente in questione non è in
+ linea, se è diverso l'utente è in linea.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> messages:
+\series default
+ rappresenta tutti i RecordMessage inviati all'utente in questione mentre
+ questo non è in linea
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User(String username, String name, String surname, String IP):
+\series default
+ costruttore che imposta i valori degli attributi secondo il valore dei
+ parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getUsername()
+\series default
+: metodo che ritorna lo username dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getName()
+\series default
+: metodo che ritorna il nome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getSurname()
+\series default
+: metodo che ritorna il cognome dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getIP()
+\series default
+: metodo che ritorna l'indirizzo IP dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<RecordMessage> getMessages()
+\series default
+: metodo che ritorna il vettore contente i messaggi differiti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setName(String name)
+\series default
+: metodo che imposta il nome dell'utente con il nuovo valore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setSurname(String surname)
+\series default
+: metodo che imposta il cognome dell'utente con il nuovo valore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setIP(String IP)
+\series default
+: metodo che imposta l'indirizzo IP dell'utente con il nuovo valore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setMessages(RecordMessage message)
+\series default
+: metodo che cambia la lista dei messaggi differiti inviati all'utente in
+ questione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+setMessage(RecordMessage message)
+\series default
+: metodo che aggiunge un messaggio differito nel vettore messages
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean isUserMessage(RecordMessage message)
+\series default
+: metodo che verifica se un messaggio è di un certo utente o meno
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+removeMessage(RecordMessage message)
+\series default
+: metodo che rimuove un messaggio differito dal vettore messages
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.UserList
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.shared.UserList-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe UserList rappresenterà la lista degli utenti registrati al server
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/sharedUserList.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserList
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<User> users:
+\series default
+ rappresenta la lista degli utenti
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserList():
+\series default
+ costruttore della classe che inizializza il vettore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean addUser(User user): 
+\series default
+metodo che inserisce un nuovo utente nella lista degli utenti.
+ L'utente viene inserito nel vettore solo nel caso in cui non esistono altri
+ utenti che hanno lo username uguale a quello scelto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User getUser(): 
+\series default
+metodo che restituisce l'utente corrispondente ad un dato username
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vector<User> getAllUsers(): 
+\series default
+metodo che restituisce tutta la lista di utenti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeUser(String username): 
+\series default
+metodo che elimina un utente dal vettore di utenti
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.RecordMessage
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.shared.RecordMessa-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe RecordMessage farà da contenitore per i dati riguardanti i messaggi
+ differiti inseriti all'interno del database
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/sharedRecordMessage.pdf
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.RecordMessageDaoSQL
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Attributi privati:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String sender: 
+\series default
+rappresenta il mittente, colui che crea il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String addressee: 
+\series default
+rappresenta il destinatario, colui che riceve il messaggio
+\series bold
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String path:
+\series default
+ rappresenta l'indirizzo dove si trova il messaggio differito all'interno
+ del server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Date dateCreation:
+\series default
+ rappresenta la data di creazione del messaggio
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage(String sender, String addressee, String path, Date dateCreation):
+\series default
+ costruttore che imposta i valori degli attributi secondo i valori dei parametri
+ passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getSender(): 
+\series default
+ritorna il mittente del messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getAddressee(): 
+\series default
+ritorna il destinatario del messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getPath():
+\series default
+ ritorna l'indirizzo dove si trova il messaggio differito all'interno del
+ server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Date getDate(): 
+\series default
+ritorna la data di creazione del messaggio
+\end_layout
+
+\begin_layout Subsection
+Package Usermanager
+\end_layout
+
+\begin_layout Standard
+Lo strato Manager del server si occupa delle funzionalità logiche del server
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/packageusermanager.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Package UserManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.shared
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.transfer
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Costituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.usermanager.AuthenticationManager (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.usermanager.Authen-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.usermanager.UserManager (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.usermanager.UserMa-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.usermanager.AuthenticationManager
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.usermanager.Authen-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe AuthenticationManager si occupa di passare al database i dati
+ necessari per la verifica dell'autenticazione
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/usermanagerAuthenticationManager.pdf
+	scale 80
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Classe AuthenticationManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.dao.RecordMessageDao
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.LoginDao
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.dao.UserDao
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.shared.User
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mytalk.server.transfer.AuthenticationTransfer
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageDao messages:
+\series default
+ riferimento alla lista dei messaggi dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LoginDao loginDao:
+\series default
+riferimento alla istanza della classe mytalk.server.dao.LoginDao contenente
+ i dati per effettuare l'autenticazione
+\series bold
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserDao userDao:
+\series default
+riferimento alla istanza della classe mytalk.server.dao.UserDao contenente
+ i dati dell'utente
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AuthenticationManager(RecordMessageDao messages, LoginDao loginDao, UserDao
+ userDao):
+\series default
+costruttore della classe che dovrà impostare il valore degli attributi secondo
+ il valore dei parametri passati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User login(String username, String password, String IP):
+\series default
+metodo che passa i dati al package 
+\family typewriter
+\series bold
+mytalk.server.dao 
+\family default
+\series default
+per poter effettuare la login.
+ se la login avviene con successo,
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean logout(User user):
+\series default
+ metodo che effettua il logout dell'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+User createUser(String username, String password, String name, String surname,
+ String IP):
+\series default
+ metodo che crea un nuovo utente nella base di dati, purché lo username
+ non sia già utilizzato 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeUser(String username):
+\series default
+ metodo che elimina un utente registrato dal database
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.usermanager.UserManager
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.usermanager.UserMa-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe UserManager si occupa di gestire la modifica dei dati degli utenti
+ e l'invio ai client della lista di utenti registrati al server
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/usermanagerUserManager.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+classe UserManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.dao.UserDao
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserDao userDao: 
+\series default
+si riferisce all'utente corrente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessageDao messageDao:
+\series default
+ è la lista di messaggi registrati destinati all'utente 
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserManager(UserDao userDao, RecordMessageDao messageDao): 
+\series default
+metodo che inizializza la classe
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setPassword(User user, String password): 
+\series default
+metodo che imposta la password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setName(User user, String name): 
+\series default
+metodo che imposta il nome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean setSurname(User user, String surname): 
+\series default
+metodo che imposta il cognome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+RecordMessage createMessage(String sender, String adressee, String path,
+ Date date): 
+\series default
+metodo che aggiunge un messaggio registrato destinato all'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+boolean removeMessage(RecordMessage message): 
+\series default
+metodo che rimuove un messaggio registrato
+\end_layout
+
+\begin_layout Subsection
+Package FunctionManager
+\end_layout
+
+\begin_layout Standard
+Il package FunctionManager contiene tutte le classi che si occupano di convetire
+ le strutture dati più complesse in stringhe per lo strato transfer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/packagefunctionmanager.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Package FunctionManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package è utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Costituito dalla classe:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.functionmanager.ContactsManager (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.functionmanager.Co-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.functionmanager.ContactsManager
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.functionmanager.Co-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe ContactsManager restituisce in forma di stringa il vettore di
+ utenti passato per argomento
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/functionmanagerContactsManager.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactsManager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe non utilizza né è utilizzata da altri moduli
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+String getAllContacts(Vector<User> users):
+\series default
+ metodo che converte in forma di stringa il vettore di utenti passato per
+ argomento
+\end_layout
+
+\begin_layout Subsection
+Package Transfer
+\end_layout
+
+\begin_layout Standard
+Lo strato Transfer si occupa della comunicazione tra il client e il server.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/packagetransfer.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Package Transfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il package utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Il package viene utilizzato da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.communication
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Costituito dalle classi:
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.transfer.AuthenticationTransfer (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.transfer.Authentic-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.transfer.CallTransfer (vedasi sezione
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.transfer.CallTrans-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.AuthenticationTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.Authentic-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe AuthenticationTransfer si occupa della registrazione e autenticazione
+ degli utenti
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/transferAuthenticationTransfer.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Classe AuthenticationTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager.AuthenticationManager 
+\family default
+\series default
+,
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager 
+\family default
+\series default
+e
+\family typewriter
+\series bold
+mytalk.server.functionmanager.ContactsManager 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.AuthenticationCommunication.AuthenticationCommunication 
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AuthenticationManager authenticationManager:
+\series default
+ è il riferimento alla singola istanza della classe AuthenticationManager
+ inizializzata nel Launcher
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+UserManager userManager:
+\series default
+ è il riferimento alla singola istanza della classe UserManager inizializzata
+ nel Launcher
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Collection<WebSocketConnector> mClients:
+\series default
+ è una collezione di tutti gli utenti che sono correntemente collegati al
+ server
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AuthenticationTransfer(AuthenticationManager authenticationManager, UserManager
+ userManager): 
+\series default
+metodo che inizializza la classe
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setTokenServer(ServerMyTalk server):
+\series default
+ metodo che restituisce il TokenServer inizializzato nel server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processToken(WebSocketServerTokenEvent event, Token token):
+\series default
+ metodo che si occupa della gestione dei Token in arrivo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processClosed(WebSocketServerEvent arg0): 
+\series default
+metodo che si occupa della chiusura di un processo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processOpened(WebSocketServerEvent event): 
+\series default
+metodo che si occupa della creazione di un processo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void sendPacket(WebSocketPacket packet, WebSocketServerEvent event): 
+\series default
+metodo che si occupa dell'invio di uno specifico pacchetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
+ 
+\series default
+metodo che si occupa della gestione di un pacchetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void broadcastToAll(WebSocketPacket packet): 
+\series default
+metodo che si occupa di inviare un pacchetto a tutti gli utenti connessi
+ al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Collection<WebSocketConnector> getClients(): 
+\series default
+metodo che restituisce la lista degli utenti connessi al server
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.CallTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.CallTrans-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe CaalTransfer si occupa di gestire il traffico di pacchetti per
+ effettuare l'inizializzazione di una comunicazione audio/video
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/transferCallTransfer.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+Classe CallTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza ed è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.communication.CallCommunication 
+\family default
+\series default
+e utilizza
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer 
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AuthenticationTransfer authentication:
+\series default
+ 
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallTransfer(AuthenticationTransfer authentication):
+\series default
+ metodo che inizializza l'instanza
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void setTokenServer(ServerMyTalk server):
+\series default
+ metodo che restituisce il TokenServer inizializzato nel server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processToken(WebSocketServerTokenEvent event, Token token):
+\series default
+ metodo che si occupa della gestione dei Token in arrivo 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processClosed(WebSocketServerEvent arg0):
+\series default
+ metodo che si occupa della chiusura di un processo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processOpened(WebSocketServerEvent event):
+\series default
+ metodo che si occupa della creazione di un processo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void sendPacket(WebSocketPacket packet, WebSocketConnector connector): 
+\series default
+metodo che si occupa della gestione di un pacchetto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
+ 
+\series default
+metodo che si occupa della gestione di un pacchetto
 \end_layout
 
 \end_body
