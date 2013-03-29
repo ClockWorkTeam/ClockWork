@@ -419,7 +419,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura nella pagina del template 
+ metodo che effettua la scrittura nella pagina del template 
 \emph on
 authenticationTemplate
 \end_layout
@@ -429,7 +429,7 @@ authenticationTemplate
 \series bold
 callBacks():
 \series default
- funzione che permette ad altre classi di usufruire di funzionalità della
+ metodo che permette ad altre classi di usufruire di funzionalità della
  classe corrente
 \end_layout
 
@@ -438,8 +438,8 @@ callBacks():
 \series bold
 connect():
 \series default
- funzione che effettua il login dell'utente e aggiorna il template se i
- dati inseriti dall'utente sono corretti
+ metodo che effettua il login dell'utente e aggiorna il template se i dati
+ inseriti dall'utente sono corretti
 \end_layout
 
 \begin_layout Itemize
@@ -447,7 +447,7 @@ connect():
 \series bold
 disconnect():
 \series default
- funzione che si occupa di chiudere la sessione con il server
+ metodo che si occupa di chiudere la sessione con il server
 \end_layout
 
 \begin_layout Itemize
@@ -455,7 +455,7 @@ disconnect():
 \series bold
 view_signup():
 \series default
- funzione che visualizza il form di registrazione
+ metodo che visualizza il form di registrazione
 \end_layout
 
 \begin_layout Itemize
@@ -463,7 +463,7 @@ view_signup():
 \series bold
 signup():
 \series default
- funzione che effettua la registrazione dell'utente e aggiorna il template
+ metodo che effettua la registrazione dell'utente e aggiorna il template
  se tutti i campi dati sono stati inseriti e se lo username non risulta
  già presente nel server
 \end_layout
@@ -607,7 +607,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Itemize
@@ -615,7 +615,7 @@ render():
 \series bold
 accept():
 \series default
- funzione che accetta una chiamata e crea la vista per la chiamata
+ metodo che accetta una chiamata e crea la vista per la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -623,7 +623,7 @@ accept():
 \series bold
 refuse(): 
 \series default
-funzione che rifiuta la chiamata e lo segnala a NotificationCommunication
+metodo che rifiuta la chiamata e lo segnala a NotificationCommunication
 \end_layout
 
 \begin_layout Subsubsection
@@ -746,7 +746,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Subsubsection
@@ -901,7 +901,7 @@ funzione di inizializzazione della vista
 \series bold
 render():
 \series default
- funzione che rende visibili i contatti
+ metodo che rende visibili i contatti
 \end_layout
 
 \begin_layout Itemize
@@ -909,7 +909,7 @@ render():
 \series bold
 startChat():
 \series default
- funzione che crea la vista per la chat
+ metodo che crea la vista per la chat
 \end_layout
 
 \begin_layout Itemize
@@ -917,7 +917,7 @@ startChat():
 \series bold
 sendVideoText():
 \series default
- funzione che crea la vista per l'invio di messaggi video
+ metodo che crea la vista per l'invio di messaggi video
 \end_layout
 
 \begin_layout Itemize
@@ -925,7 +925,7 @@ sendVideoText():
 \series bold
 audiocall():
 \series default
- funzione che crea la vista per l'audio chiamata
+ metodo che crea la vista per l'audio chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -933,7 +933,7 @@ audiocall():
 \series bold
 videocall():
 \series default
- funzione che crea la vista per la video chiamata
+ metodo che crea la vista per la video chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -941,7 +941,7 @@ videocall():
 \series bold
 record(): 
 \series default
-funzione che attiva la registrazione della chiamata
+metodo che attiva la registrazione della chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -949,7 +949,7 @@ funzione che attiva la registrazione della chiamata
 \series bold
 FunctionsView.prototype.close(): 
 \series default
-funzione che chiude l'istanza creata
+metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1060,7 +1060,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Subsubsection
@@ -1155,25 +1155,17 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
+el:
+\series default
+ utilizzato per indicare quale parte del DOM gestirà
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-functions_view:
-\series default
- lega i bottoni di chiamata di un contatto a questa vista 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-chat_view:
-\series default
- lega la chat a questa vista 
 \end_layout
 
 \begin_layout Paragraph
@@ -1195,7 +1187,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che rende visibili i contatti
+ metodo che rende visibili i contatti
 \end_layout
 
 \begin_layout Itemize
@@ -1203,8 +1195,7 @@ render():
 \series bold
 view():
 \series default
- funzione che crea le viste di funzioni e di chat quando seleziono su un
- contatto
+ metodo che crea le viste di funzioni e di chat quando seleziono su un contatto
 \end_layout
 
 \begin_layout Itemize
@@ -1212,7 +1203,7 @@ view():
 \series bold
 ContactView.prototype.close():
 \series default
- funzione che chiude l'istanza creata
+ metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1351,7 +1342,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che rende visibili i contatti
+ metodo che rende visibili i contatti
 \end_layout
 
 \begin_layout Itemize
@@ -1359,7 +1350,7 @@ render():
 \series bold
 unrender():
 \series default
- funzione che nasconde i contatti
+ metodo che nasconde i contatti
 \end_layout
 
 \begin_layout Itemize
@@ -1367,7 +1358,7 @@ unrender():
 \series bold
 viewContact():
 \series default
- funzione che crea ed inserisce un contatto nella lista degli utenti connessi
+ metodo che crea ed inserisce un contatto nella lista degli utenti connessi
 \end_layout
 
 \begin_layout Itemize
@@ -1375,7 +1366,7 @@ viewContact():
 \series bold
 viewContacts():
 \series default
- funzione che chiama viewContact() per ogni elemento di collection
+ metodo che chiama viewContact() per ogni elemento di collection
 \end_layout
 
 \begin_layout Itemize
@@ -1383,7 +1374,7 @@ viewContacts():
 \series bold
 destroyContacts():
 \series default
- funzione che distrugge tutti i contatti creati e le relative FunctionsView
+ metodo che distrugge tutti i contatti creati e le relative FunctionsView
  e ChatView
 \end_layout
 
@@ -1392,7 +1383,7 @@ destroyContacts():
 \series bold
 callIP():
 \series default
- funzione che crea una FunctionsView per effettuare una chiamata IP
+ metodo che crea una FunctionsView per effettuare una chiamata IP
 \end_layout
 
 \begin_layout Itemize
@@ -1400,7 +1391,7 @@ callIP():
 \series bold
 StartConference():
 \series default
- funzione che crea una FunctionsView per effettuare la teleconferenza
+ metodo che crea una FunctionsView per effettuare la teleconferenza
 \end_layout
 
 \begin_layout Itemize
@@ -1408,7 +1399,7 @@ StartConference():
 \series bold
 listContacts(Object):
 \series default
- funzione che aggiunge un contatto alla lista dei contatti selezionati per
+ metodo che aggiunge un contatto alla lista dei contatti selezionati per
  la teleconferenza
 \end_layout
 
@@ -1532,7 +1523,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Subsubsection
@@ -1665,7 +1656,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Itemize
@@ -1673,7 +1664,7 @@ render():
 \series bold
 putMessages(): 
 \series default
-funzione che visualizza i messaggi
+metodo che visualizza i messaggi
 \end_layout
 
 \begin_layout Itemize
@@ -1681,7 +1672,7 @@ funzione che visualizza i messaggi
 \series bold
 putMessages(Object): 
 \series default
-funzione che visualizza il singolo messaggio
+metodo che visualizza il singolo messaggio
 \end_layout
 
 \begin_layout Itemize
@@ -1689,7 +1680,7 @@ funzione che visualizza il singolo messaggio
 \series bold
 send(): 
 \series default
-funzione che invia un messaggio
+metodo che invia un messaggio
 \end_layout
 
 \begin_layout Itemize
@@ -1697,7 +1688,7 @@ funzione che invia un messaggio
 \series bold
 ChatView.prototype.close(): 
 \series default
-funzione che chiude l'istanza creata
+metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1821,7 +1812,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Subsubsection
@@ -1963,7 +1954,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Itemize
@@ -1971,7 +1962,7 @@ render():
 \series bold
 startrecord():
 \series default
- funzione che avvia la registrazione della chiamata
+ metodo che avvia la registrazione della chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1979,7 +1970,7 @@ startrecord():
 \series bold
 sendrecord():
 \series default
- funzione che ferma ed invia la registrazione della chiamata
+ metodo che ferma ed invia la registrazione della chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1987,7 +1978,7 @@ sendrecord():
 \series bold
 RecordMessageView.prototype.close():
 \series default
- funzione che chiude l'istanza creata
+ metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -2120,15 +2111,7 @@ initialize():
 \series bold
 render():
 \series default
- funzione che effettua la scrittura della struttura della pagina
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-starcall():
-\series default
- funzione che avvia la chiamata
+ metodo che effettua la scrittura della struttura della pagina
 \end_layout
 
 \begin_layout Itemize
@@ -2136,7 +2119,7 @@ starcall():
 \series bold
 CallView.prototype.close():
 \series default
- funzione che chiude l'istanza creata
+ metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsection
@@ -2500,7 +2483,7 @@ Metodi pubblici:
 \series bold
 clear(): 
 \series default
-funzione che distrugge il model creato
+metodo che distrugge il model creato
 \end_layout
 
 \begin_layout Subsubsection
@@ -3034,7 +3017,7 @@ Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
-record(): funzione che restituisce un array contenente i modelli di tutta
+record(): metodo che restituisce un array contenente i modelli di tutta
  la collezione
 \end_layout
 
@@ -3144,8 +3127,8 @@ Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
-chat_session(string): funzione che restituisce i messaggi di chat della
- persona indicata come parametro in ingresso
+chat_session(string): metodo che restituisce i messaggi di chat della persona
+ indicata come parametro in ingresso
 \end_layout
 
 \begin_layout Subsubsection
@@ -3459,34 +3442,6 @@ mytalk.client.view.AuthenticationView
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Attributi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-credentials:
-\series default
- contiene i dati dell'utente chiamante
-\end_layout
-
 \begin_layout Paragraph
 
 \series bold
@@ -3496,38 +3451,29 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-AuthenticationCommunication():
-\series default
- funzione che permette il prototyping di una classe
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-AuthenticationCommunication.prototype.checkCredentials(string,
+checkCredentials(string,
 \series default
  
 \series bold
 string, object, object):
 \series default
- funzione che controlla la correttezza delle credenziali inserite
+ metodo che controlla la correttezza delle credenziali inserite
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-AuthenticationCommunication.prototype.signup(string, string, string, string):
- 
+signup(string, string, string, string, object, object): 
 \series default
-funzione che gestisce la registrazione delle credenziali
+metodo che gestisce la registrazione delle credenziali
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Connection.onmessage(string): 
+logout(string): 
 \series default
-funzione del socket che permette di ricevere messaggi
+metodo che gestisce la deautenticazione dell'utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -3581,18 +3527,6 @@ La classe è utilizzata da:
 \begin_deeper
 \begin_layout Itemize
 mytalk.client.view.TutorialView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
 \end_layout
 
 \end_deeper
@@ -3675,20 +3609,6 @@ mytalk.client.view.CallView
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-xxx
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3700,25 +3620,34 @@ Metodi pubblici:
 \series bold
 CallCommunication(): 
 \series default
-funzione che permette il prototyping di una classe
+metodo che permette il prototyping di una classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-CallCommunication.prototype.sendcall(string):
+CallCommunication.prototype.sendCall(string, string):
 \series default
- funzione che si occupa di mandare l'ip da chiamare al server e restituire
+ metodo che si occupa di mandare l'ip da chiamare al server e restituire
  se accettata o meno
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-CallCommunication.prototype.sendanswer(string): 
+CallCommunication.prototype.sendAnswer(string, string): 
 \series default
-funzione che si occupa di inviare una risposta all'utente che ha effettuato
+metodo che si occupa di inviare una risposta all'utente che ha effettuato
  la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CallCommunication.prototype.receiveAnswer(string, string, object): 
+\series default
+metodo che si occupa di ricevere la risposta di una richiesta di chiamata
+ e se positiva ne avvia la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -3726,7 +3655,58 @@ funzione che si occupa di inviare una risposta all'utente che ha effettuato
 \series bold
 CallCommunication.prototype.startcall(string): 
 \series default
-funzione che si occupa di inizializzare la chiamata
+metodo che si occupa di inizializzare la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+onSignal(string): 
+\series default
+metodo che quando una PeerConn è creata, manda i dati di configurazione
+ via WebSocket
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+onRemoteStreamAdded(object):
+\series default
+ metodo che quando si aggiunge un flusso remoto, lo consegna ad un elemento
+ video locale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+onRemoteStreamRemoved(object):
+\series default
+ metodo che quando si rimuove un flusso remoto, lo rimuove dall'elemento
+ video locale
+\end_layout
+
+\begin_layout Itemize
+createPeerConnection(): 
+\end_layout
+
+\begin_layout Itemize
+connect(): 
+\end_layout
+
+\begin_layout Itemize
+onMessage(object): 
+\end_layout
+
+\begin_layout Itemize
+gotDescription(string): 
+\end_layout
+
+\begin_layout Itemize
+onIceCandidate(object): 
+\end_layout
+
+\begin_layout Itemize
+sendMessage(string): 
 \end_layout
 
 \begin_layout Subsubsection
@@ -3817,7 +3797,7 @@ Metodi pubblici:
 \series bold
 ContactCommunication():
 \series default
- funzione che permette il prototyping di una classe
+ metodo che permette il prototyping di una classe
 \end_layout
 
 \begin_layout Itemize
@@ -4079,7 +4059,7 @@ Metodi pubblici:
 \series bold
 NotificationCommunication():
 \series default
- funzione che permette il prototyping di una classe
+ metodo che permette il prototyping di una classe
 \end_layout
 
 \begin_layout Itemize
@@ -4087,7 +4067,7 @@ NotificationCommunication():
 \series bold
 NotificationCommunication.prototype.receivecall(string):
 \series default
- funzione che si occupa di segnalare la presenza di chiamate in arrivo
+ metodo che si occupa di segnalare la presenza di chiamate in arrivo
 \end_layout
 
 \begin_layout Itemize
@@ -4095,7 +4075,7 @@ NotificationCommunication.prototype.receivecall(string):
 \series bold
 NotificationCommunication.prototype.receivefile():
 \series default
- funzione che si occupa di segnalare la presenza di file inviati
+ metodo che si occupa di segnalare la presenza di file inviati
 \end_layout
 
 \begin_layout Itemize
@@ -4103,7 +4083,7 @@ NotificationCommunication.prototype.receivefile():
 \series bold
 NotificationCommunication.prototype.receiverecordmessage():
 \series default
- funzione che si occupa di segnalare la presenza di videomessaggi
+ metodo che si occupa di segnalare la presenza di videomessaggi
 \end_layout
 
 \begin_layout Subsubsection
