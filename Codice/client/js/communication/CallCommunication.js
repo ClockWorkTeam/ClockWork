@@ -14,28 +14,25 @@
  
 //classe che si occupa di gestire l'avvio della comunicazione tra due utenti
 define(['connection'], function(Connection){
-	
-	var CallCommunication = function(){};
+
+  return {
 	
 	//funzione che si occupa di mandare l'ip da chiamare al server e restituire se accettata o meno
-	CallCommunication.prototype.sendCall = function (iptocall, typecall)
-	{
+	sendCall: function (iptocall, typecall){
 		//messaggio di conferma di connessione sulla console
 		var credentials = { ip: iptocall , type:'call', calltype:typecall};
 		Connection.send(JSON.stringify(credentials));
 		this.receiveAnswer(typecall, iptocall, this);
-	};
+	},
 	
 	//funzione che si occupa di inviare una risposta all'utente che ha efettuato la chiamata
-	CallCommunication.prototype.sendAnswer = function (typecall, iptoCall)
-	{
+	sendAnswer: function (typecall, iptoCall){
 		var credentials = { response: true, ip:iptoCall, type:'answeredcall' };
 		Connection.send(JSON.stringify(credentials));
 		this.startCall(iptoCall, false, typecall);
-	};
+	},
   
-	CallCommunication.prototype.receiveAnswer = function (typecall, iptocall, call)
-	{
+	receiveAnswer: function (typecall, iptocall, call){
 		Connection.addEventListener("message", onAnswer, false);
 		function onAnswer(evt){
 			var answer = JSON.parse(evt.data);
@@ -46,11 +43,10 @@ define(['connection'], function(Connection){
 				}
 			}
 		}
-	};
+	},
 	
 	//funzione che si occupa di inizializzare la chiamata
-	CallCommunication.prototype.startCall = function (iptocall, isCaller, typecall)
-	{
+	startCall: function (iptocall, isCaller, typecall){
 		var sourcevid = document.getElementById('sourcevid');
 		var remotevid = document.getElementById('remotevid');
 		var localStream = null;
@@ -172,17 +168,19 @@ define(['connection'], function(Connection){
 		}
     
 		function onIceCandidate(event) {
-			if (event.candidate) {
-			  var candidate=JSON.stringify({type : 'candidate',
-			  label: event.candidate.sdpMLineIndex,
-			  id: event.candidate.sdpMid,
-			  candidate: event.candidate.candidate});
-			  var credentials={cand : candidate, ip: iptocall, type : 'candidate'};
-					sendMessage(credentials);
+			setTimeout(function(){
+				if (event.candidate) {
+				  var candidate=JSON.stringify({type : 'candidate',
+				  label: event.candidate.sdpMLineIndex,
+				  id: event.candidate.sdpMid,
+				  candidate: event.candidate.candidate});
+				  var credentials={cand : candidate, ip: iptocall, type : 'candidate'};
+						sendMessage(credentials);
 
-			} else {
-			  console.log("End of candidates.");
-			}
+				} else {
+				  console.log("End of candidates.");
+				}
+			}, 5000);
 		}
     
 		function sendMessage(message) {
@@ -214,6 +212,12 @@ define(['connection'], function(Connection){
 			});
 				
 		}
-	};
-	return CallCommunication;	
+	},
+	
+	endCall: function() {
+    alert('fine');
+	}
+  
+  };
+	
 });
