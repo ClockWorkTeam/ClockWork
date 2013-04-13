@@ -16,8 +16,10 @@
 */ 
 
 package server.dao;
+import server.dao.String;
 import server.shared.*;
 
+import java.util.Vector;
 
 public interface UserDao{
 
@@ -57,5 +59,15 @@ public interface UserDao{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */   
 	public boolean setSurname(String username, String surname);
-
+	
+	/**Metodo che restituisce l'Utente associato al dato username
+	 * @param username Username dell'utente che si cerca
+	 * @return User corrispondente o null se non esiste l'utente
+	 */
+	public User getUser(String username);
+	
+	/**Metodo che restituisce tutti i contatti presenti nel db
+	 * @return vector<User>
+	 */
+	public Vector<User> getAllUsers();
 }
