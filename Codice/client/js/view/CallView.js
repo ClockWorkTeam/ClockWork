@@ -23,6 +23,7 @@ define([
   var CallView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
+		'click button#endCall':'endCall',
     },
 	
     el : $('#content'),
@@ -40,16 +41,18 @@ define([
     render: function(isCaller,type, iptoCall){
 		$(this.el).html(this.template());
 		if(isCaller===false){
-			var callcommunication=new CallCommunication();
-			callcommunication.sendAnswer(type, iptoCall);
+			CallCommunication.sendAnswer(type, iptoCall);
 			}
 		else{
-			var callcommunication=new CallCommunication();
-			callcommunication.sendCall(iptoCall,type);
+			CallCommunication.sendCall(iptoCall,type);
 			}
 		
     },
-    
+  
+    endCall:function(){
+	  CallCommunication.endCall();
+	}
+  
   });
 
   CallView.prototype.close = function(){

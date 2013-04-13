@@ -11,6 +11,7 @@
  * +------+---------------+-----------+
  * |      |               |           |
  */
+ 
 //classe che comunica con il server per i dati che riguardano il login
 define(['connection'], function(Connection){
   
