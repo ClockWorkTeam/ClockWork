@@ -39,7 +39,7 @@ public class AuthenticationManager{
    * @param loginDao riferimento alla classe che implementa l'interfaccia LoginDao
    * @param userDaoriferimento alla classe che implementa l'interfaccia UserDao
    */
-  public AuthenticationManager(RecordMessageDao messages, LoginDao loginDao, UserDao userDao){
+  public void init(RecordMessageDao messages, LoginDao loginDao, UserDao userDao){
 	  this.messages=messages;
 	  this.loginDao=loginDao;
 	  this.userDao=userDao;

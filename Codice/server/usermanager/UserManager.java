@@ -17,6 +17,7 @@
 
 package server.usermanager;
 import java.util.Date;
+import java.util.Vector;
 
 import server.dao.*;
 import server.shared.*;
@@ -33,7 +34,7 @@ public class UserManager{
   /** Costruttore con parametri della classe UserDataManager
    * @param access riferimento alla classe che implementa l'interfaccia DAOLogin
    */
-  public UserManager(UserDao userDao, RecordMessageDao messageDao){
+  public void init(UserDao userDao, RecordMessageDao messageDao){
 		this.userDao = userDao;
 		this.messageDao=messageDao;
   }
@@ -73,4 +74,12 @@ public class UserManager{
 	return messageDao.removeMessage(message);
   }
   
+  public User getUser(String username){
+	  return userDao.getUser(username);
+  }
+  public Vector<User> getAllContacts(User user){
+	  Vector<User> contacts = new Vector<User>(userDao.getAllUsers());
+	  contacts.remove(user);
+	  return contacts;
+  }
 }
