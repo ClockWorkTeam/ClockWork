@@ -24,7 +24,6 @@ define([
   var FunctionsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
-		'click button#startChat':'startChat',
 		'click button#sendVideoText':'sendVideoText',
 		'click button#call':'audiocall',
 		'click button#video':'videocall',	
@@ -56,9 +55,7 @@ define([
         currentuser=this.model.toJSON().username;
         $(this.el).html(this.template(this.model.toJSON()));
       }
-    },
-      
-    startChat: function(){},
+    },   
     
     sendVideoText:function(){
 		if(this.recordMessageView)

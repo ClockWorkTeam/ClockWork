@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\include{preface}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language italian
@@ -70,6 +73,109 @@ Presentiamo qui di seguito i design pattern che andremo ad utilizzare per
 \end_layout
 
 \begin_layout Subsection
+Architettura generale
+\end_layout
+
+\begin_layout Subsubsection
+MVP
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mvp.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione MVP
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-MVP"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\series default
+ tale design pattern permette una completa disgiunzione tra le funzionalità
+ che il prodotto deve offrire ed è strutturato in tre livelli
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Model:
+\series default
+ rappresenta la parte in grado di recuperare le informazioni presenti nel
+ sistema
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+View:
+\series default
+ rappresenta l'interfaccia grafica del sistema con la quale gli utenti possono
+ interagire
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Presenter:
+\series default
+ rappresenta la componente che riceve le richieste dalla view e le traduce
+ in operazioni che agiranno sia sui dati che sui modelli; si occupa inoltre
+ della comunicazione col server
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Motivazione:
+\series default
+ questo design pattern permette un buon livello di disaccoppiamento tra
+ la vista ed il modello.
+ L'architettura risulta facilmente manutenibile poiché le modifiche ad uno
+ dei tre componenti non comporta modifiche ai restanti
+\end_layout
+
+\begin_layout Subsection
+Architettura server
+\end_layout
+
+\begin_layout Subsubsection
 Multitier
 \end_layout
 
@@ -138,12 +244,11 @@ Descrizione:
 Motivazione:
 \series default
  il beneficio principale di questo design pattern è la possibilità di aggiornare
-/cambiare un livello senza andare a modificare i livelli adiacenti.
- Nonostante i vari livelli si occupino di specifiche operazioni è presente
- una forte comunicazione rigidamente strutturata tra di loro, questo lo
- rende un ottimo modello per applicazioni client-server, poiché ogni livello
- non esiste come unità logica a se stante, ma si adegua allo specifico ambiente
- di rete in cui esegue
+/cambiare un livello senza modificare i livelli adiacenti.
+ La forte comunicazione rigidamente strutturata tra gli strati, che favorisce
+ il disaccoppiamento, rende tale design pattern un ottimo modello per applicazio
+ni client-server, poiché ogni livello non esiste come unità logica a se
+ stante, ma si adegua allo specifico ambiente di rete in cui esegue
 \end_layout
 
 \begin_layout Itemize
@@ -162,8 +267,8 @@ Transfer Layer: offrirà un'interfaccia di comunicazione con il client e
 \end_layout
 
 \begin_layout Itemize
-Logic Layer: si occuperà di svolgere le funzionalità di comunicazione e
- di gestire la visualizzazione e la modifica delle informazioni presenti
+Manager Layer: si occuperà di svolgere le funzionalità di comunicazione
+ e di gestire la visualizzazione e la modifica delle informazioni presenti
  nello strato Data
 \end_layout
 
@@ -173,55 +278,8 @@ Data Layer: sarà un contenitore di informazioni riguardanti gli utenti e
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
-MVP
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/mvp.pdf
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Rappresentazione MVP
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Rappresentazione-MVP"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Il design pattern di tipo MVP verrà implementato per rappresentare l'architettur
-a generale
+\begin_layout Subsubsection
+Singleton
 \end_layout
 
 \begin_layout Itemize
@@ -229,58 +287,35 @@ a generale
 \series bold
 Descrizione:
 \series default
- tale design pattern permette una completa disgiunzione tra le funzionalità
- che il prodotto deve offrire ed è strutturato in tre livelli
+ tale design pattern assicura la presenza di unica istanza della classe
+ e fornisce un punto d'accesso globale a tale istanza, tramite costruttore
+ privato e puntatore alla classe stessa
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Model:
-\series default
- rappresenta la parte in grado di recuperare le informazioni presenti nel
- sistema
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-View:
-\series default
- rappresenta l'interfaccia grafica del sistema con la quale gli utenti possono
- interagire
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Presenter:
-\series default
- rappresenta la componente che riceve le richieste dalla view e le traduce
- in operazioni che agiranno sia sui dati che sui modelli; si occupa inoltre
- della comunicazione col server
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
 Motivazione:
 \series default
- questo design pattern permette un buon livello di disaccoppiamento tra
- la vista ed il modello.
- L'architettura risulta facilmente manutenibile poiché le modifiche ad uno
- dei tre componenti non comporta modifiche ai restanti
+ utilizzeremo tale design pattern al fine di impedire la proliferazione
+ di copie di parti del server, e quindi interferenze
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+ verrà utilizzato all'avvio del server, per inizializzare corettamente le
+ classi del nostro server
 \end_layout
 
 \begin_layout Subsection
-MV*
+Architettura client
 \end_layout
 
-\begin_layout Standard
-Il design pattern di tipo MV* verrà implementato per rappresentare l'architettur
-a del lato client
+\begin_layout Subsubsection
+MV*
 \end_layout
 
 \begin_layout Itemize
@@ -330,7 +365,7 @@ utilizzeremo questo pattern in quanto è quello utilizzato da Backbone.js
  strutturate e modulari
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Observer
 \end_layout
 
