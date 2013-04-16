@@ -191,9 +191,6 @@ AuthenticationView
 \family default
 \series default
  comunicherà con
-\family typewriter
-\series bold
-:
 \end_layout
 
 \begin_deeper
@@ -216,7 +213,7 @@ mytalk.client.communication.AuthenticationCommunication
 
 \family typewriter
 \series bold
-mytalk.client.view.ContactsView
+mytalk.client.view.SideView
 \family default
 \series default
  generandola una volta fatto l'accesso e distruggendola una volta volta
@@ -317,7 +314,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.view.ContactsView
+mytalk.client.view.SideView
 \end_layout
 
 \begin_layout Itemize
@@ -328,7 +325,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
- ContactsView
+ SideView
 \family default
 \series default
  definisce la struttura, e la conseguente visualizzazione, della parte di
@@ -349,7 +346,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -361,8 +358,8 @@ Relazioni d'uso con altre componenti:
 mytalk.client.communication.ContactsCommunication
 \family default
 \series default
- che restituirà gli iscritti al server connessi in quel momento o meno e
- che verrà aggiornata dinamicamente in base all'accesso fatta dagli utenti
+ per usufruire dei metodi di comunicazione col server e recuperare i contatti
+ ed il loro stato
 \end_layout
 
 \begin_layout Itemize
@@ -372,8 +369,8 @@ mytalk.client.communication.ContactsCommunication
 mytalk.client.view.ContactView
 \family default
 \series default
- la quale si occuperà di avere le informazioni di ogni singolo contatto
- della lista
+ per la generazione di una voce specifica per ogni utente della lista di
+ contatti
 \end_layout
 
 \begin_layout Itemize
@@ -383,8 +380,8 @@ mytalk.client.view.ContactView
 mytalk.client.view.FunctionsView
 \family default
 \series default
- la quale si occuperà di generare i comandi per la chiamata inserendo l'indirizz
-o ip
+ per visualizzare le opzioni relative alla chiamata ad un indirizzo IP e
+ alla teleconferenza
 \end_layout
 
 \begin_layout Itemize
@@ -394,7 +391,7 @@ o ip
 mytalk.client.collection.ContactsCollection
 \family default
 \series default
- dal quale preleverà la lista dei contatti prelevati dal server
+ dalla quale preleverà la lista dei contatti da visualizzare
 \end_layout
 
 \end_deeper
@@ -405,7 +402,10 @@ mytalk.client.collection.ContactsCollection
 Attività svolte e dati trattati:
 \series default
  la classe fa in modo che venga visualizzata una lista di utenti registrati
- presso il server
+ presso il server ed il loro stato attuale (online/offline), inoltre presenterà
+ i pulsanti relativi alla chiamata verso un indirizzo IP e alla chiamata
+ verso più di un utente che, se premuti, dovranno visualizzare le opzioni
+ corrette
 \end_layout
 
 \begin_layout Subsubsection
@@ -436,7 +436,7 @@ ContactView
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -448,8 +448,7 @@ Relazioni d'uso con altre componenti:
 mytalk.client.view.FunctionsView
 \family default
 \series default
- poiché premendo sul singolo contatto verrà mostrata l'interfaccia per effettuar
-e le operazioni di comunicazione
+ per visualizzare le operazioni di comunicazione con quello specifico utente
 \end_layout
 
 \begin_layout Itemize
@@ -460,18 +459,7 @@ e le operazioni di comunicazione
 mytalk.client.view.ChatView
 \family default
 \series default
- la quale si occuperà di gestire la communicazione testuale
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.model.TextMessageModel
-\family default
-\series default
- che si occuperà di tenere traccia delle conversazioni testuali con i vari
- utenti
+ per visualizzare le opzioni di communicazione testuale con quell'utente
 \end_layout
 
 \end_deeper
@@ -481,9 +469,9 @@ mytalk.client.model.TextMessageModel
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe rappresenta un singolo utente registrato sul server e fornisce
- all'utente  le operazioni che, una volta che lo si ha selezionato, mostrano
- le funzionalità di  comunicazione disponibili
+ la classe visualizza lo username di un singolo utente registrato sul server
+ e, se lo si seleziona, mostra le funzionalità di  comunicazione disponibili
+ per quello specifico utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -504,8 +492,8 @@ FunctionsView
 \series default
  definisce la struttura, e la conseguente visualizzazione, della parte di
  pagina web che consente la selezione delle operazioni da effettuare, quali
- inizializzazione di una chiamata, invio di messaggio di testo, invio del
- file o attivazione della funzionalità di registrazione chiamata
+ inizializzazione di una chiamata, invio di un messaggio di testo, invio
+ di un file o attivazione della funzionalità di registrazione della chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -514,7 +502,7 @@ FunctionsView
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con :
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -591,7 +579,8 @@ Relazioni d'uso con altre componenti:
 mytalk.client.communication.CallCommunication
 \family default
 \series default
- per permettere la gestione della comunicazione tra due o più utenti
+ per usufruire dei metodi di gestione della comunicazione tra due o più
+ utenti
 \end_layout
 
 \begin_layout Itemize
@@ -612,8 +601,9 @@ mytalk.client.model.StatisticsView
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe è costituita dalle componenti grafiche e i metodi che permettono
- la gestione delle funzionalità legate alla comunicazione audio/video
+ la classe fa in modo che vengano visualizzate le corrette componenti grafiche
+ e rende disponibili all'utente i metodi che permettono la gestione delle
+ funzionalità legate alla comunicazione audio/video
 \end_layout
 
 \begin_layout Subsubsection
@@ -633,8 +623,8 @@ NotificationView
 \family default
 \series default
  definisce la struttura, e la conseguente visualizzazione, della parte di
- pagina web che consente di visualizzare notifiche di chiamata in arrivo,
- di file in arrivo o videomessaggi registrati da altri utenti
+ pagina web che consente di visualizzare le notifiche di chiamata, di file
+ o di videomessaggi in arrivo
 \end_layout
 
 \begin_layout Itemize
@@ -643,7 +633,7 @@ NotificationView
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -676,8 +666,9 @@ mytalk.client.view.CallView
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe è costituita dalla componenti grafiche per la visualizzazione
- delle notifiche e dai metodi per la gestione di quest'ultime
+ la classe fa in modo ch vengano visualizzate le corrette componenti grafiche
+ per la visualizzazione delle notifiche e rende disponibili all'utente i
+ metodi per la gestione di quest'ultime
 \end_layout
 
 \begin_layout Subsubsection
@@ -706,7 +697,7 @@ ChatView
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -718,7 +709,7 @@ Relazioni d'uso con altre componenti:
 mytalk.client.communication.ChatCommunication
 \family default
 \series default
- per permettere la comunicazione testuale tra due utenti
+ per usufuire dei metodi di comunicazione testuale tra due utenti
 \end_layout
 
 \begin_layout Itemize
@@ -738,8 +729,8 @@ mytalk.client.model.TextMessageModel
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe è costituita dalle componenti grafiche per la visualizzazione
- e dai metodi per la gestione della chat testuale
+ la classe fa in modo che vengano visualizzate le corrette componenti grafiche
+ e rende disponibili all'utente i metodi per la gestione della chat testuale
 \end_layout
 
 \begin_layout Subsubsection
@@ -768,7 +759,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -780,8 +771,7 @@ Relazioni d'uso con altre componenti:
 mytalk.client.communication.RecordMessageCommunication
 \family default
 \series default
- che con i suoi metodi permetterà la registrazione di un video da inviare
- ad un utente registrato
+ per usufruire dei metodi di registrazione e di comunicazione con il server
 \end_layout
 
 \end_deeper
@@ -791,8 +781,9 @@ mytalk.client.communication.RecordMessageCommunication
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe definisce la struttura della pagina web che consente la registrazione
- di chiamate video da inviare verso utenti registrati
+ la classe fa in modo che vengano visualizzate le corrette componenti grafiche
+ e rende disponibili all'utente i metodi per la registrazione di messaggi
+ video
 \end_layout
 
 \begin_layout Subsubsection
@@ -820,7 +811,7 @@ e di statistiche durante e dopo lo svolgimento di una chiamata
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -829,10 +820,10 @@ Relazioni d'uso con altre componenti:
 
 \family typewriter
 \series bold
-mytalk.client.model.Statistics
+mytalk.client.model.StatisticsModel
 \family default
 \series default
- che avrà lo scopo di visualizzare le statistiche della chiamata
+ per recuperare le statistiche della chiamata
 \end_layout
 
 \end_deeper
@@ -842,8 +833,8 @@ mytalk.client.model.Statistics
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe definisce la struttura della pagina web che visualizza i dati
- della chiamata che viene effettuata
+ la classe fa in modo che vengano visualizzate le statistiche relative della
+ chiamata effettuata
 \end_layout
 
 \begin_layout Subsubsection
@@ -873,7 +864,7 @@ definisce la struttura, e la conseguente visualizzazione, della parte di
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -896,7 +887,7 @@ mytalk.client.model.UserModel
 mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
- che avrà lo scopo di inviare al server le modifiche dei dati dell'utente
+ per inviare al server le modifiche dei dati dell'utente
 \end_layout
 
 \end_deeper
@@ -906,8 +897,8 @@ mytalk.client.communication.AuthenticationCommunication
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe definisce la struttura della pagina web per la modifica dei dati
- personali dell'utente
+ la classe fa in modo che vengano visualizzati i dati dell'account dell'utente
+ e rende disponibili i metodi per la modifica dei dati personali
 \end_layout
 
 \begin_layout Subsubsection
@@ -937,7 +928,7 @@ SendFileView
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -949,7 +940,7 @@ Relazioni d'uso con altre componenti:
 mytalk.client.communication.SendFileCommunication
 \family default
 \series default
- che si occuperà dell'invio dei file al server
+ per usufruire dei metodi per l'invio dei file al destinatario
 \end_layout
 
 \end_deeper
@@ -1033,8 +1024,8 @@ AuthenticationCommunication
 
 \family default
 \series default
- Gestisce inoltre le operazioni di registrazione di un nuovo utente.
- di modifica dei dati e della uscita dal sistema
+ Gestisce inoltre le operazioni di registrazione di un nuovo utente, di
+ modifica dei dati e di disconnessione dal sistema
 \end_layout
 
 \begin_layout Itemize
@@ -1043,7 +1034,7 @@ AuthenticationCommunication
 \series bold
 Relazioni d'uso con altre componenti: 
 \series default
-la classe comunicherà con:
+la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1065,7 +1056,7 @@ mytalk.client.view.AuthenticationView
 
 \family typewriter
 \series bold
-mytalk.client.view.ModifyAccountDataView 
+mytalk.client.view.UserDataView 
 \family default
 \series default
 a cui fornirà i metodi per modificare i dati del proprio account
@@ -1106,7 +1097,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1115,7 +1106,7 @@ Relazioni d'uso con altre componenti:
 
 \family typewriter
 \series bold
-mytalk.client.view.ContactsView
+mytalk.client.view.SideView
 \family default
 \series default
  a cui fornirà i metodi per aggiornare i dati degli altri utenti registrati
@@ -1157,7 +1148,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1207,7 +1198,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con::
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1259,7 +1250,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1311,7 +1302,7 @@ si occupa di ricevere la locazione web dei videotutorial da caricare
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1369,7 +1360,7 @@ si occupa di gestire l'invio di file al server
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe comunicherà con:
+ la classe comunicherà con
 \end_layout
 
 \begin_deeper
@@ -1431,7 +1422,7 @@ view
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.model.User
+mytalk.client.model.UserModel
 \end_layout
 
 \begin_layout Itemize
@@ -1442,7 +1433,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
- User
+ UserModel
 \family default
 \series default
  si occuperà di tenere aggiornate localmente le informazioni dell'account
@@ -1458,7 +1449,7 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
- User
+ UserModel
 \family default
 \series default
  riceverà da
@@ -1482,7 +1473,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.model.Contact
+mytalk.client.model.ContactModel
 \end_layout
 
 \begin_layout Itemize
@@ -1493,7 +1484,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
- Contact
+ ContactModel
 \family default
  
 \series default
@@ -1509,13 +1500,13 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
- Contact
+ ContactModel
 \family default
 \series default
  riceverà da
 \family typewriter
 \series bold
- mytalk.client.view.ContactsView
+ mytalk.client.view.SideView
 \family default
 \series default
  la lista degli utenti che sono presenti nella lista e il loro stato attuale
@@ -1536,7 +1527,7 @@ view
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.model.Statistics
+mytalk.client.model.StatisticsModel
 \end_layout
 
 \begin_layout Itemize
@@ -1547,7 +1538,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
- Statistics
+ StatisticsModel
 \family default
 \series default
  si occuperà di gestire le statistiche di chiamata
@@ -1562,7 +1553,7 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
- Statistics
+ StatisticsModel
 \family default
 \series default
  riceverà la richiesta da
@@ -1585,7 +1576,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.model.TextMessage
+mytalk.client.model.TextMessageModel
 \end_layout
 
 \begin_layout Itemize
@@ -1596,7 +1587,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
- TextMessage
+ TextMessageModel
 \family default
 \series default
  si occupa della comunicazione testuale
@@ -1611,7 +1602,7 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
- TextMessage
+ TextMessageModel
 \family default
 \series default
  riceverà da
@@ -1634,7 +1625,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.client.model.Tutorial
+mytalk.client.model.TutorialModel
 \end_layout
 
 \begin_layout Itemize
@@ -1645,7 +1636,7 @@ Tipo, obiettivo e funzione del componente:
  la classe
 \family typewriter
 \series bold
- Tutorial
+ TutorialModel
 \family default
 \series default
  si occuperà di conservare i collegamenti ai tutorial
@@ -1660,7 +1651,7 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
- Tutorial
+ TutorialModel
 \family default
 \series default
  riceverà richieste da parte di
@@ -1694,6 +1685,121 @@ Attività svolte e dati trattati:
 \series default
  la classe si occuperà di conservare i collegamenti da dove prelevare i
  video tutorial
+\end_layout
+
+\begin_layout Subsection
+Collection
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.client.collection.ContactsCollection
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ 
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.client.collection.TextMessagesCollection
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ 
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.client.collection.TutorialsCollection
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body
