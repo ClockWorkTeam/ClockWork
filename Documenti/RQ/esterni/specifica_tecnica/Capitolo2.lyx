@@ -408,15 +408,25 @@ PROGETTO}
 \series bold
 mytalk.server.transfer
 \series default
- gestisce il collegamento tra server e client
+ gestisce il collegamento tra server e client e le operazioni di comunicazione
+ tra peers
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+mytalk.server.manager
+\series default
+ racchiude al suo interno:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
 mytalk.server.functionmanager
 \series default
- gestisce le operazioni di chiamata e dialoga con lo strato Data
+ gestisce le operazioni di conversione dati per lo strato transfer
 \end_layout
 
 \begin_layout Itemize
@@ -424,18 +434,38 @@ mytalk.server.functionmanager
 \series bold
 mytalk.server.usermanager
 \series default
- gestisce le richieste da far arrivare alla base di dati e trasmette l'esito
- dei controlli al richiedente
+ gestisce le operazioni di comunicazione tra lo strato transfer e lo strato
+ data
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+mytalk.server.data 
+\series default
+racchiude al suo interno:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+mytalk.server.dao 
+\series default
+gestisce la base di dati, ovvero l'inserimento, la modifica e la rimozione
+ dei dati e la loro permanenza
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-mytalk.server.data
+mytalk.server.shared
 \series default
- gestisce la base di dati, ovvero l'inserimento, la modifica e la rimozione
- dei dati e la loro permanenza
+ contiene al suo interno una copia del database in modo da ridurre al minimo
+ gli accessi a quest'ultimo
 \end_layout
 
+\end_deeper
 \end_body
 \end_document
