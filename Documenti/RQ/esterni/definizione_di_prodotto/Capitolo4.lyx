@@ -164,8 +164,14 @@ name "sub:Package-View"
 \end_layout
 
 \begin_layout Standard
-Il package View costituisce la parte del sistema che definisce ed implementa
- l'interfaccia web usufruibile dagli utenti mediante pagine web.
+Il package 
+\family typewriter
+\series bold
+View
+\family default
+\series default
+ costituisce la parte del sistema che definisce ed implementa l'interfaccia
+ web usufruibile dagli utenti mediante pagine web.
  Diversamente da uno schema di tipo MVC il package view contiene non solo
  le parti di interfaccia ma anche parti logiche, come previsto dal framework
  Backbone.js, che prevede uno schema di tipo MV*
@@ -225,14 +231,23 @@ Il package utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection
 \end_layout
 
@@ -244,54 +259,92 @@ Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.AuthenticationView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.NotificationView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.SendFileView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.StatisticsView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ContactView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ContactsView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ModifyAccountDataView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ChatView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.TutorialView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.RecordMessageView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.CallView
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.AuthenticationView
 \end_layout
 
@@ -303,9 +356,9 @@ La classe
 AuthenticationView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, della pagina
- web che consente di effettuare la registrazione, l'accesso e la disconnessione
- dal sistema
+ definisce la struttura, e la conseguente visualizzazione, della parte della
+ pagina web che consente di effettuare la registrazione, l'accesso e la
+ disconnessione dal sistema
 \end_layout
 
 \begin_layout Standard
@@ -358,7 +411,24 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.AuthenticationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.model.UserModel
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactsView
 \end_layout
 
 \end_deeper
@@ -372,6 +442,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -385,7 +458,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+authenticationEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -486,6 +559,8 @@ deny():
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.NotificationView
 \end_layout
 
@@ -550,7 +625,17 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.NotificationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.CallView
 \end_layout
 
 \end_deeper
@@ -562,7 +647,10 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.view.FunctionsView
+
+\family typewriter
+\series bold
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
 \end_deeper
@@ -576,6 +664,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -589,7 +680,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+notificationEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -597,7 +688,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+notificationTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -644,6 +735,8 @@ NotificationCommunication
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.SendFileView
 \end_layout
 
@@ -709,6 +802,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.SendFileCommunication
 \end_layout
 
@@ -721,6 +817,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
@@ -735,6 +834,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -748,7 +850,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+sendfileEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -756,7 +858,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+sendfileTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -795,6 +897,8 @@ SendFileCommunication
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.FunctionsView
 \end_layout
 
@@ -863,7 +967,39 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.communication.ContactsCommunication
+
+\family typewriter
+\series bold
+mytalk.client.view.CallView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.RecordMessageView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactsView
 \end_layout
 
 \end_deeper
@@ -877,6 +1013,9 @@ La classe deriva da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -890,7 +1029,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+functionEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -898,7 +1037,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template: 
+functionsTemplate: 
 \series default
 utilizzato per tenere il template per il rendering di questa vista
 \end_layout
@@ -958,14 +1097,6 @@ render():
 \begin_layout Itemize
 
 \series bold
-startChat():
-\series default
- metodo che crea la vista per la chat
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 sendVideoText():
 \series default
  metodo che crea la vista per l'invio di messaggi video
@@ -1004,6 +1135,8 @@ metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.StatisticsView
 \end_layout
 
@@ -1063,12 +1196,30 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.model.StatisticsModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
 La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.view.FunctionsView
+
+\family typewriter
+\series bold
+mytalk.client.view.CallView
 \end_layout
 
 \end_deeper
@@ -1082,6 +1233,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -1095,7 +1249,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+statisticsEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1103,7 +1257,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+statisticsTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1139,6 +1293,8 @@ close():
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.ContactView
 \end_layout
 
@@ -1203,15 +1359,32 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.communication.ContactsCommunication
+
+\family typewriter
+\series bold
+mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Itemize
-mytalk.client.communication.CallCommunication
+
+\family typewriter
+\series bold
+mytalk.client.view.ChatView
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-mytalk.client.communication.ChatCommunication
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactsView
 \end_layout
 
 \end_deeper
@@ -1223,6 +1396,9 @@ La classe deriva da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -1236,7 +1412,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+contactEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1244,7 +1420,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+contactTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1288,6 +1464,8 @@ ContactView.prototype.close():
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.ContactsView
 \end_layout
 
@@ -1358,7 +1536,46 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
-mytalk.client.communication.ContactsCommunication
+
+\family typewriter
+\series bold
+mytalk.client.view.FunctionsView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ChatView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.model.ContactModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.AuthenticationView
 \end_layout
 
 \end_deeper
@@ -1370,6 +1587,9 @@ La classe deriva da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -1383,7 +1603,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+contactsEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1391,7 +1611,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template: 
+contactsTemplate: 
 \series default
 utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1505,6 +1725,8 @@ listContacts(Object):
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.ModifyAccountDataView
 \end_layout
 
@@ -1570,6 +1792,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
@@ -1582,6 +1807,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.AuthenticationView
 \end_layout
 
@@ -1596,6 +1824,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -1609,7 +1840,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+modifyAccountDataEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1617,7 +1848,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+modifyAccountDataTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1670,6 +1901,8 @@ callBacks():
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.ChatView
 \end_layout
 
@@ -1738,6 +1971,38 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ContactsView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.ChatCommunication
 \end_layout
 
@@ -1752,6 +2017,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -1765,7 +2033,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+chatEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1773,7 +2041,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-ChatTemplate:
+chatTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1784,6 +2052,15 @@ ChatTemplate:
 collection:
 \series default
  utilizzato per tenere la collezione che genera la chat
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+callBacks():
+\series default
+ metodo che permette ad altre classi di usufruire di funzionalità della
+ classe corrente
 \end_layout
 
 \begin_layout Paragraph
@@ -1811,22 +2088,6 @@ render():
 \begin_layout Itemize
 
 \series bold
-putMessages(): 
-\series default
-metodo che visualizza i messaggi
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-putMessages(Object): 
-\series default
-metodo che visualizza il singolo messaggio
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 send(): 
 \series default
 metodo che invia un messaggio
@@ -1841,6 +2102,8 @@ metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.TutorialView
 \end_layout
 
@@ -1918,7 +2181,25 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.TutorialCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.AuthenticationView
 \end_layout
 
 \end_deeper
@@ -1932,6 +2213,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -1945,7 +2229,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+tutorialEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1953,7 +2237,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+tutorialTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -2005,6 +2289,8 @@ metodo per passare al video precedente
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.RecordMessageView
 \end_layout
 
@@ -2070,6 +2356,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.RecordMessageCommunication
 \end_layout
 
@@ -2082,6 +2371,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
@@ -2096,6 +2388,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -2109,7 +2404,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+recordMessageEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -2117,17 +2412,9 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+recordMessageTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-localstream:
-\series default
- utilizzato per tenere traccia del flusso corrente
 \end_layout
 
 \begin_layout Paragraph
@@ -2177,6 +2464,8 @@ RecordMessageView.prototype.close():
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.view.CallView
 \end_layout
 
@@ -2241,6 +2530,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.CallCommunication
 \end_layout
 
@@ -2253,7 +2545,17 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.FunctionsView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.NotificationView
 \end_layout
 
 \end_deeper
@@ -2267,6 +2569,9 @@ La classe deriva da
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.view
 \end_layout
 
@@ -2280,7 +2585,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+callEl:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -2288,7 +2593,7 @@ el:
 \begin_layout Itemize
 
 \series bold
-template:
+callTemplate:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -2318,6 +2623,14 @@ render():
 \begin_layout Itemize
 
 \series bold
+endcall(): 
+\series default
+metodo che chiude la chiamata in corso
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 CallView.prototype.close():
 \series default
  metodo che chiude l'istanza creata
@@ -2335,8 +2648,13 @@ name "sub:Package-Model"
 \end_layout
 
 \begin_layout Standard
-Il package Collection contiene tutte le entità derivate da Backbone.Model
- e che racchiudono le informazioni logiche di un record
+Il package 
+\family typewriter
+\series bold
+Model
+\family default
+\series default
+ racchiude le informazioni logiche di un record
 \end_layout
 
 \begin_layout Standard
@@ -2393,6 +2711,9 @@ Il package utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication
 \end_layout
 
@@ -2405,10 +2726,16 @@ Il package viene utilizzato da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view
 \end_layout
 
@@ -2420,26 +2747,43 @@ Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.UserModel
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.ContactModel
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.StatisticsModel
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.TextMessageModel
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.TutorialModel
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.model.UserModel
 \end_layout
 
@@ -2505,10 +2849,16 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.AuthenticationView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
@@ -2521,6 +2871,9 @@ La classe deriva da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.Backbone.model
 \end_layout
 
@@ -2562,6 +2915,8 @@ surname
 
 \end_deeper
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.model.ContactModel
 \end_layout
 
@@ -2629,14 +2984,23 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ContactsView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.ContactsCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection.ContactsCollection
 \end_layout
 
@@ -2645,10 +3009,17 @@ mytalk.client.collection.ContactsCollection
 
 \series bold
 La classe deriva da:
-\series default
- mytalk.client.Backbone.model
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.model
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -2700,6 +3071,8 @@ metodo che distrugge il model creato
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.model.StatisticsModel
 \end_layout
 
@@ -2763,6 +3136,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.CallView
 \end_layout
 
@@ -2772,9 +3148,18 @@ mytalk.client.view.CallView
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.model
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.model
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -2812,6 +3197,8 @@ velocitaComunicazione
 
 \end_deeper
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.model.TextMessageModel
 \end_layout
 
@@ -2879,10 +3266,16 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ChatView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection.TextMessagesCollection
 \end_layout
 
@@ -2892,9 +3285,18 @@ mytalk.client.collection.TextMessagesCollection
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.model
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.model
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -2924,6 +3326,8 @@ messages
 
 \end_deeper
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.model.TutorialModel
 \end_layout
 
@@ -2991,14 +3395,23 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.TutorialView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.TutorialCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection.TutorialsCollection
 \end_layout
 
@@ -3008,9 +3421,18 @@ mytalk.client.collection.TutorialsCollection
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.model
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.model
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3051,8 +3473,14 @@ name "sub:Package-Collection"
 \end_layout
 
 \begin_layout Standard
-Nel package Collection sono presenti le classi che modellano la logica di
- persistenza dei dati nel browser
+Nel package 
+\family typewriter
+\series bold
+Collection
+\family default
+\series default
+ sono presenti le classi che modellano la logica di persistenza dei dati
+ nel browser
 \end_layout
 
 \begin_layout Standard
@@ -3111,6 +3539,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model
 \end_layout
 
@@ -3125,10 +3556,16 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model
 \end_layout
 
@@ -3140,18 +3577,29 @@ Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection.ContactsCollection
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection.TextMessagesCollection
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection.TutorialsCollection
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.collection.ContactsCollection
 \end_layout
 
@@ -3219,6 +3667,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.ContactModel
 \end_layout
 
@@ -3231,14 +3682,23 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.AuthenticationView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ContactsView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.ContactsCommunication
 \end_layout
 
@@ -3248,9 +3708,18 @@ mytalk.client.communication.ContactsCommunication
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.collection
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.collection
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3280,6 +3749,8 @@ metodo che restituisce un array contenente i modelli di tutta la collezione
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.collection.TextMessagesCollection
 \end_layout
 
@@ -3347,6 +3818,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.TextMessageModel
 \end_layout
 
@@ -3361,6 +3835,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ChatView
 \end_layout
 
@@ -3370,9 +3847,18 @@ mytalk.client.view.ChatView
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.collection
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.collection
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3403,6 +3889,8 @@ metodo che restituisce i messaggi di chat della persona indicata come parametro
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.collection.TutorialsCollection
 \end_layout
 
@@ -3470,6 +3958,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model.TutorialModel
 \end_layout
 
@@ -3482,10 +3973,16 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.TutorialView
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.TutorialCommunication
 \end_layout
 
@@ -3495,9 +3992,18 @@ mytalk.client.communication.TutorialCommunication
 \series bold
 La classe deriva da:
 \series default
- mytalk.client.Backbone.collection
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.Backbone.collection
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -3538,8 +4044,13 @@ name "sub:Package-Communication"
 \end_layout
 
 \begin_layout Standard
-Nel package Communication sono presenti le classi che effettuano la comunicazion
-e con il server.
+Nel package 
+\family typewriter
+\series bold
+Communication
+\family default
+\series default
+ sono presenti le classi che effettuano la comunicazione con il server.
 \end_layout
 
 \begin_layout Standard
@@ -3596,6 +4107,9 @@ La classe utilizza:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.server.transfer
 \end_layout
 
@@ -3608,14 +4122,23 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.model
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.collection
 \end_layout
 
@@ -3627,34 +4150,57 @@ Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.TutorialCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.CallCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.ContactCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.RecerdMessageCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.SendFileCommunication
 \end_layout
 
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.communication.NotificationCommunication
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
@@ -3724,6 +4270,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.AuthenticationView
 \end_layout
 
@@ -3763,6 +4312,8 @@ metodo che gestisce la deautenticazione dell'utente
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.TutorialCommunication
 \end_layout
 
@@ -3828,6 +4379,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.TutorialView
 \end_layout
 
@@ -3847,6 +4401,8 @@ getTutorials():
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.CallCommunication
 \end_layout
 
@@ -3916,6 +4472,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.CallView
 \end_layout
 
@@ -4050,6 +4609,8 @@ metodo che invia i messaggi al server
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.ContactsCommunication
 \end_layout
 
@@ -4115,6 +4676,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.ContactsView
 \end_layout
 
@@ -4134,12 +4698,19 @@ fetchContacts(object):
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.RecordMessageCommunication
 \end_layout
 
 \begin_layout Standard
-La classe RecordMessageCommunication si occupa di inviare e ricevere i messaggi
- registrati
+La classe 
+\family typewriter
+\series bold
+RecordMessageCommunication
+\family default
+\series default
+ si occupa di inviare e ricevere i messaggi registrati
 \end_layout
 
 \begin_layout Standard
@@ -4194,6 +4765,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.RecordMessageView
 \end_layout
 
@@ -4229,6 +4803,8 @@ metodo che invia i messaggi al server
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.SendFileCommunication
 \end_layout
 
@@ -4294,6 +4870,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.SendFileView
 \end_layout
 
@@ -4313,6 +4892,8 @@ sendFile(object):
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.client.communication.NotificationCommunication
 \end_layout
 
@@ -4382,6 +4963,9 @@ La classe è utilizzata da:
 
 \begin_deeper
 \begin_layout Itemize
+
+\family typewriter
+\series bold
 mytalk.client.view.NotificationView
 \end_layout
 
