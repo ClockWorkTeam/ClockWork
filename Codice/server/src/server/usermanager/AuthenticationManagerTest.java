@@ -17,9 +17,8 @@ public class AuthenticationManagerTest {
 		users = new UserList();
 		LoginDao loginDao= new LoginDaoSQL(connection, users);
 		UserDao userDao =new UserDaoSQL(connection,users);
-		RecordMessageDao messages =new RecordMessageDaoSQL(connection, users);
 		am=new AuthenticationManager();
-		am.init(messages, loginDao, userDao);
+		am.init(loginDao, userDao);
 	}
 
 	@Test

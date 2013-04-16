@@ -70,6 +70,9 @@ public class UserManager{
 		return messageDao.createMessage(sender, addressee, path, date);
 	}
   
+	public Vector<RecordMessage> getMessages(String username){
+		return messageDao.getMessages(username);
+	}
   public boolean removeMessage(RecordMessage message){
 	return messageDao.removeMessage(message);
   }

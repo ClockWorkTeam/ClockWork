@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import server.shared.User;
 
-public class ContactsManager {
+public class Converter{
 	/**genera la stringa dei contatti seguendo questo schema:
 	*  { size: N,
 	*    contact1: { username: x, name: y, surname: w, IP: N.N.N.N },

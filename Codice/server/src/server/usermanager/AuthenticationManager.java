@@ -27,7 +27,6 @@ import server.shared.User;
  */
 
 public class AuthenticationManager{
-  private RecordMessageDao messages;
   private LoginDao loginDao;
   private UserDao userDao;
 
@@ -39,8 +38,7 @@ public class AuthenticationManager{
    * @param loginDao riferimento alla classe che implementa l'interfaccia LoginDao
    * @param userDaoriferimento alla classe che implementa l'interfaccia UserDao
    */
-  public void init(RecordMessageDao messages, LoginDao loginDao, UserDao userDao){
-	  this.messages=messages;
+  public void init(LoginDao loginDao, UserDao userDao){
 	  this.loginDao=loginDao;
 	  this.userDao=userDao;
   }
@@ -53,9 +51,6 @@ public class AuthenticationManager{
    */
   public User login(String username, String password, String IP){
 	  User user = loginDao.login(username, password, IP);
-	  if(user!=null){	   
-	  	messages.getMessages(user.getUsername());
-	  }
 	  return user; 
   }
    

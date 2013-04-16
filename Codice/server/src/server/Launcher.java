@@ -41,7 +41,7 @@ public class Launcher {
 		this.loginDao=new LoginDaoSQL(javaconnectionSQLite, userList);
 		this.userDao=new UserDaoSQL(javaconnectionSQLite, userList);
 		this.recordMessageDao= new RecordMessageDaoSQL(javaconnectionSQLite, userList);
-		authenticationManager.init(recordMessageDao, loginDao, userDao);
+		authenticationManager.init(loginDao, userDao);
 		userManager.init(userDao, recordMessageDao);
 	}
 	

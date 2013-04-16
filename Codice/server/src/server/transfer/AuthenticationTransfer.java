@@ -15,7 +15,7 @@ import org.jwebsocket.token.Token;
 
 import server.ServerMyTalk;
 import server.usermanager.*;
-import server.functionmanager.ContactsManager;
+import server.functionmanager.Converter;
 import server.shared.User;
 
 public class AuthenticationTransfer implements WebSocketServerTokenListener {
@@ -61,7 +61,7 @@ public class AuthenticationTransfer implements WebSocketServerTokenListener {
    		}
    		else if(type.equals("getContacts")){
    	    	mClients.add(event.getConnector());
-   			ContactsManager contacts= new ContactsManager();
+   	    	Converter contacts= new Converter();
    			wspacket = new RawPacket(contacts.getAllContacts(userManager.getAllContacts(userManager.getUser(token.getString("username")))));
    	  		sendPacket(wspacket, event);
    		}
