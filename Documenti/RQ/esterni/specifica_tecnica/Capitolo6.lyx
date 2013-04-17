@@ -574,7 +574,24 @@ ione e di registrazione
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- utilizza
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+viene utilizzata da 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer
+\family default
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+utilizza
 \family typewriter
 \series bold
  mytalk.server.dao.UserDao
@@ -584,14 +601,9 @@ Relazioni d'uso con altre componenti:
 \family typewriter
 \series bold
 mytalk.server.dao.LoginDao
-\family default
-\series default
- e comunica con 
-\family typewriter
-\series bold
-mytalk.server.transfer.AuthenticationTransfer
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
@@ -601,11 +613,11 @@ Attività svolte e dati trattati:
  comunica con la classe
 \family typewriter
 \series bold
- mytalk.server.transfer.AuthenticationTransfer
+ AuthenticationTransfer
 \family default
 \series default
- e lo strato data per la gestione degli utenti, quindi per la registrazione
- e le operazioni di login e logout
+ e lo strato data per la gestione della registrazione e delle operazioni
+ di login e logout degli utenti
 \end_layout
 
 \begin_layout Subsubsection
@@ -628,19 +640,33 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- viene utilizzata da
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+viene utilizzata da
 \family typewriter
 \series bold
  mytalk.server.transfer.AuthenticationTransfer
+\family default
+\series default
+, 
+\family typewriter
+\series bold
+mytalk.server.transfer.UserTransfer
 \family default
 \series default
  e 
 \family typewriter
 \series bold
 mytalk.server.transfer.RecordMessageTransfer
-\family default
-\series default
- inoltre agisce su
+\end_layout
+
+\begin_layout Itemize
+\noindent
+utilizza
 \family typewriter
 \series bold
  mytalk.server.dao.UserDataDao 
@@ -652,6 +678,7 @@ e
  mytalk.server.dao.RecordMessageDao
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
