@@ -16,7 +16,7 @@
 */ 
 
 package server.dao;
-import server.shared.*;
+import server.shared.User;
 import java.util.Vector;
 
 public interface UserDao{

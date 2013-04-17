@@ -16,7 +16,7 @@
 */ 
 
 package server.dao;
-import server.shared.*;
+import server.shared.User;
 /**
  * Interfaccia che contiene i prototipi dei metodi per gestire il login
  * 

@@ -16,7 +16,7 @@
 */ 
 
 package server.dao;
-import server.shared.*;
+import server.shared.RecordMessage;
 import java.util.Vector;
 import java.util.Date;
 /**
