@@ -6,6 +6,9 @@ import org.jwebsocket.server.TokenServer;
 
 import server.transfer.AuthenticationTransfer;
 import server.transfer.CallTransfer;
+import server.transfer.RecordMessageTransfer;
+import server.transfer.TutorialTransfer;
+import server.transfer.UserTransfer;
 public class ServerMyTalk {
     private TokenServer tokenServer;
     
@@ -24,15 +27,19 @@ public class ServerMyTalk {
             if (tokenServer != null) {
             	Launcher.getServer();
                 System.out.println("server was found");
-                AuthenticationTransfer authentication;
-                CallTransfer call;
-                                
-                authentication =new AuthenticationTransfer(Launcher.getAuthenticationManager(), Launcher.getUserMenager());
-                call=new CallTransfer(authentication);
+                AuthenticationTransfer authentication =new AuthenticationTransfer(Launcher.getAuthenticationManager(), Launcher.getUserMenager());
+                UserTransfer user= new UserTransfer(Launcher.getUserMenager());
+                CallTransfer call =new CallTransfer();
+                RecordMessageTransfer recordMessage= new RecordMessageTransfer(Launcher.getUserMenager());
+                TutorialTransfer tutorial=new TutorialTransfer();
+                
                 tokenServer.addListener(authentication);
+                tokenServer.addListener(user);
+                tokenServer.addListener(recordMessage);
                 tokenServer.addListener(call);
+                tokenServer.addListener(tutorial);
+                
                 authentication.setTokenServer(this);
-                call.setTokenServer(this);
             } else {
                 System.out.println("server was NOT found");
             }
