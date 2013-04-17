@@ -311,7 +311,7 @@ mytalk.client.view.SideView
 
 \family typewriter
 \series bold
-mytalk.client.view.ModifyAccountDataView
+mytalk.client.view.UserDataView
 \end_layout
 
 \begin_layout Itemize
@@ -429,21 +429,6 @@ mytalk.client.model.UserModel
 \family typewriter
 \series bold
 mytalk.client.view.SideView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilzzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
 \end_deeper
@@ -586,8 +571,8 @@ La classe
 NotificationView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, della pagina
- per le notifiche
+ definisce la struttura, e la conseguente visualizzazione, della parte della
+ pagina per la segnalazione di notifiche
 \end_layout
 
 \begin_layout Standard
@@ -653,6 +638,13 @@ mytalk.client.communication.NotificationCommunication
 mytalk.client.view.CallView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.RecordMessageView
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -695,7 +687,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-notificationEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -703,7 +695,7 @@ notificationEl:
 \begin_layout Itemize
 
 \series bold
-notificationTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -741,12 +733,28 @@ accept():
 \begin_layout Itemize
 
 \series bold
+showvideomessage():
+\series default
+ metodo che si occupa di aprire un videomessaggio arrivato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 refuse(): 
 \series default
 metodo che rifiuta la chiamata e lo segnala a 
 \family typewriter
 \series bold
 NotificationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NotificationView.prototype.close(): 
+\series default
+metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -762,8 +770,8 @@ La classe
 SendFileView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web che consentono di selezionare un file salvato in locale per mandarlo
+ definisce la struttura, e la conseguente visualizzazione, della parte della
+ pagina web che consente di selezionare un file salvato in locale per mandarlo
  all'utente autenticato selezionato
 \end_layout
 
@@ -865,7 +873,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-sendfileEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -873,7 +881,7 @@ sendfileEl:
 \begin_layout Itemize
 
 \series bold
-sendfileTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -909,6 +917,14 @@ submit():
 \family typewriter
 \series bold
 SendFileCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+SendiFileView.prototype.close(): 
+\series default
+metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -995,6 +1011,13 @@ mytalk.client.view.CallView
 mytalk.client.view.RecordMessageView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ChatView
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -1044,7 +1067,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-functionEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1052,7 +1075,7 @@ functionEl:
 \begin_layout Itemize
 
 \series bold
-functionsTemplate: 
+template: 
 \series default
 utilizzato per tenere il template per il rendering di questa vista
 \end_layout
@@ -1264,7 +1287,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-statisticsEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1272,7 +1295,7 @@ statisticsEl:
 \begin_layout Itemize
 
 \series bold
-statisticsTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1305,6 +1328,14 @@ render():
 close():
 \series default
  metodo che chiude la vista attuale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+StatisticsView.prototype.close(): 
+\series default
+metodo che chiude l'istanza creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1380,13 +1411,6 @@ La classe utilizza:
 mytalk.client.view.FunctionsView
 \end_layout
 
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.view.ChatView
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 
@@ -1427,7 +1451,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-contactEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1435,7 +1459,7 @@ contactEl:
 \begin_layout Itemize
 
 \series bold
-contactTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1561,13 +1585,6 @@ mytalk.client.view.FunctionsView
 
 \family typewriter
 \series bold
-mytalk.client.view.ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
 mytalk.client.view.ContactView
 \end_layout
 
@@ -1618,7 +1635,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-contactsEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1626,7 +1643,7 @@ contactsEl:
 \begin_layout Itemize
 
 \series bold
-contactsTemplate: 
+template: 
 \series default
 utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1707,7 +1724,7 @@ ChatView
 \series bold
 callIP():
 \series default
- metodo che crea una 
+ metodo che tenta di creare una 
 \family typewriter
 \series bold
 FunctionsView
@@ -1739,22 +1756,30 @@ listContacts(Object):
  la teleconferenza
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+SideView.prototype.close(): 
+\series default
+metodo che chiude l'istanza creata
+\end_layout
+
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.view.ModifyAccountDataView
+mytalk.client.view.UserDataView
 \end_layout
 
 \begin_layout Standard
 La classe 
 \family typewriter
 \series bold
-ModifyAccountDataView
+UserDataView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, della pagina
- contente i dati dell'utente autenticato e il collegamento ai metodi per
- la modifica di tali dati
+ definisce la struttura, e la conseguente visualizzazione, della parte di
+ pagina contente i dati dell'utente autenticato e il collegamento ai metodi
+ per la modifica di tali dati
 \end_layout
 
 \begin_layout Standard
@@ -1780,7 +1805,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe ModifyAccountDataView
+Classe UserDataView
 \end_layout
 
 \end_inset
@@ -1811,6 +1836,13 @@ La classe utilizza:
 \family typewriter
 \series bold
 mytalk.client.communication.AuthenticationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.model.UserModel
 \end_layout
 
 \end_deeper
@@ -1855,7 +1887,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-modifyAccountDataEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -1863,7 +1895,7 @@ modifyAccountDataEl:
 \begin_layout Itemize
 
 \series bold
-modifyAccountDataTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -1915,6 +1947,14 @@ callBacks():
  classe corrente
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+UserDataView.prototype.close(): 
+\series default
+metodo che chiude l'istanza creata
+\end_layout
+
 \begin_layout Subsubsection
 
 \family typewriter
@@ -1928,8 +1968,8 @@ La classe
 ChatView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web che consentono di effettuare comunicazioni testuali
+ definisce la struttura, e la conseguente visualizzazione, della parte della
+ pagina web che consente di effettuare comunicazioni testuali
 \end_layout
 
 \begin_layout Standard
@@ -2004,21 +2044,7 @@ La classe è utilizzata da:
 
 \family typewriter
 \series bold
-mytalk.client.view.ContactView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.view.SideView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.communication.ChatCommunication
+mytalk.client.view.FunctionView
 \end_layout
 
 \end_deeper
@@ -2048,7 +2074,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-chatEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -2056,7 +2082,7 @@ chatEl:
 \begin_layout Itemize
 
 \series bold
-chatTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -2067,15 +2093,6 @@ chatTemplate:
 collection:
 \series default
  utilizzato per tenere la collezione che genera la chat
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-callBacks():
-\series default
- metodo che permette ad altre classi di usufruire di funzionalità della
- classe corrente
 \end_layout
 
 \begin_layout Paragraph
@@ -2129,8 +2146,9 @@ La classe
 TutorialView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web che consentono la visualizzazione dei video tutorial del prodotto 
+ definisce la struttura, e la conseguente visualizzazione, della parte della
+ pagina web che consente la visualizzazione dei video tutorial del prodotto
+ 
 \begin_inset ERT
 status open
 
@@ -2229,7 +2247,7 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-tutorialEl:
+el:
 \series default
  utilizzato per indicare quale parte del DOM gestirà
 \end_layout
@@ -2237,7 +2255,7 @@ tutorialEl:
 \begin_layout Itemize
 
 \series bold
-tutorialTemplate:
+template:
 \series default
  utilizzato per tenere il template per il rendering di questa vista 
 \end_layout
@@ -2288,6 +2306,14 @@ prev():
 metodo per passare al video precedente
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+TutorialView.prototype.close(): 
+\series default
+metodo che chiude l'istanza creata
+\end_layout
+
 \begin_layout Subsubsection
 
 \family typewriter
@@ -2301,9 +2327,9 @@ La classe
 RecordMessageView
 \family default
 \series default
- definisce la struttura, e la conseguente visualizzazione, delle pagine
- web per effettuare registrazioni audio o audio/video da inviare ad un utente
- registrato
+ definisce la struttura, e la conseguente visualizzazione, della parte della
+ pagina web per effettuare registrazioni audio o audio/video da inviare
+ ad un utente registrato
 \end_layout
 
 \begin_layout Standard
