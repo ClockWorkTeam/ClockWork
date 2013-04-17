@@ -28,14 +28,14 @@ import java.sql.SQLException;
 
 public class LoginDaoSQL implements LoginDao{
   private JavaConnectionSQLite connection;
-  private UserList users;
+  private UserList userList;
   /**
    * Costruttore della classe LoginDaoSQL
    * @param azienda indirizzo del server aziendale
    */
   public LoginDaoSQL(JavaConnectionSQLite server, UserList users){
     connection=server;
-    this.users=users;
+    this.userList=users;
   }
 
   /**
@@ -46,14 +46,25 @@ public class LoginDaoSQL implements LoginDao{
    * @return User che rappresenta l'utente corrispondente nel DB,se la login ha avuto successo, o null se i dati sono sbagliati
    */
   public User login(String username, String password, String IP){
-	 User user =users.getUser(username);
-	 if(user!=null){
+	 User user =userList.getUser(username);
+	 ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
+	 if(user!=null){ //salvato nella lista
 		try{
-			ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
 			rs.getString("username");
-		}catch(SQLException e){return null;}
+		}catch(SQLException e){//nn presente nel db
+			userList.removeUser(username);
+			return null;
+		}
 		connection.executeUpdate("UPDATE UserDataSQL SET IP='"+IP+"' WHERE username='"+username+"' AND (password='"+password+"');");
 		user.setIP(IP);
+	 }else{//nn salvato nella lista
+		 String name, surname;
+		try{
+			name= rs.getString("name");
+			surname= rs.getString("surname");
+		}catch(SQLException e){return null; }
+			user=new User(username, name, surname, IP);
+			userList.addUser(user);
 	 }
      return user;
   }

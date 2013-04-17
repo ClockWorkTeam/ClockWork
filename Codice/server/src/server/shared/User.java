@@ -27,7 +27,6 @@ public class User {
 	
   /**Costruttore di User con tutti i parametri (tranne messaggi)
    * @param username
-   * @param password
    * @param name
    * @param surname
    * @param IP
