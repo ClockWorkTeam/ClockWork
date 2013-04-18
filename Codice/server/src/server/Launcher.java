@@ -29,7 +29,7 @@ public class Launcher {
 	private RecordMessageDao recordMessageDao;
 	private static AuthenticationManager authenticationManager=new AuthenticationManager();
 	private static UserManager userManager= new UserManager();
-	
+
 	private static Launcher launcher=null;
 	
 	/**costruttore della classe

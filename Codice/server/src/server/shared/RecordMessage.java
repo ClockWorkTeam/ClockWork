@@ -17,13 +17,23 @@
 
 package server.shared;
 import java.util.Date;
-
+/**
+ * classe che rappresenta la struttura dati RecordMessage del server
+ *
+ */
 public class RecordMessage{
 	private String sender;
 	private String addressee;
 	private String path;
 	private Date dateCreation;
 	
+	/**
+	 * Costruttore dell'oggetto RecordMessage
+	 * @param sender, persona che ha inviato il messaggio
+	 * @param addressee, persona che riceve il messaggio
+	 * @param path, indirizzo in cui è salvato il messaggio
+	 * @param dateCreation, data di creazione del messaggio
+	 */
 	public RecordMessage(String sender, String addressee, String path, Date dateCreation){
 		this.sender=sender;
 		this.addressee=addressee;

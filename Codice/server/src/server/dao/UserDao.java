@@ -64,8 +64,9 @@ public interface UserDao{
 	 */
 	public User getUser(String username);
 	
-	/**Metodo che restituisce tutti i contatti presenti nel db
+	/**Metodo che restituisce tutti i contatti
 	 * @return vector<User>
 	 */
 	public Vector<User> getAllUsers();
+	
 }

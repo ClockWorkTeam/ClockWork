@@ -24,11 +24,12 @@ import java.util.Vector;
 
 public class UserDaoSQL implements UserDao{
 	private JavaConnectionSQLite connection;
-	private UserList users;
+	private UserList userList;
 	
 	public UserDaoSQL(JavaConnectionSQLite connection, UserList users){
 		this.connection=connection;
-		this.users=users;
+		this.userList=users;
+		getUsersFromDB();
 	}
 
 	/**Metodo che registra un'utente nel DB 
@@ -40,32 +41,23 @@ public class UserDaoSQL implements UserDao{
 	 * @return l'oggetto User se l'operazione ha buon fine, altrimenti null
 	 */     
 	public User createUser(String username, String password, String name, String surname, String IP){
-		 User user = new User(username, name, surname, IP);
-		 ResultSet rs =connection.select("UserDataSQL", "*", "username='"+username+"'", "");
-		 try{
-			 System.out.println(rs.getString("name"));
-			 rs.getString("name"); //presente nel DB
-			 if(users.getUser(username)==null){ //ma non nella lista
-				 users.addUser(new User(rs.getString("username"), rs.getString("name"),rs.getString("surname"), rs.getString("IP")));
-			 }
-			 user=null;
-		 }catch(SQLException e){//non presente nel db
-			 User user2=users.getUser(username);
-			 if(user2==null){//non presente nella lista
-				 connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('"+username+"','"+password+"','"+name+"','"+surname+"','"+IP+"');");
-			 }
-		 }
-	     return user;
+		User user=null;
+		if(userList.getUser(username)==null){
+			 user = new User(username, name, surname, IP);
+			 userList.addUser(user);
+			 connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('"+username+"','"+password+"','"+name+"','"+surname+"','"+IP+"');");
+		}
+		return user;
 	}
-	    
+	
 	/**Metodo che elimina un'utente nel DB 
 	 * @param username
 	 * @return l'oggetto User se l'operazione ha buon fine, altrimenti null
 	 */     
 	public boolean removeUser(String username){
-		boolean done = connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='"+username+"';");
+		boolean done = userList.removeUser(username);
 		 if(done){
-			 done= users.removeUser(username);
+			 done= connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='"+username+"';");
 		 }
 		 return done;
 	}
@@ -76,9 +68,13 @@ public class UserDaoSQL implements UserDao{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */   
 	public boolean setPassword(String username, String password){
-		User user=users.getUser(username);
-		if(user==null){return false;}
-		boolean done = connection.executeUpdate("UPDATE UserDataSQL SET password='"+password+"' WHERE username='"+username+"';");
+		User user=userList.getUser(username);
+		boolean done;
+		if(user==null){
+			done=false;
+		}else{
+			done = connection.executeUpdate("UPDATE UserDataSQL SET password='"+password+"' WHERE username='"+username+"';");
+		}
 		return done;
 	}
 
@@ -88,10 +84,16 @@ public class UserDaoSQL implements UserDao{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */   
 	public boolean setName(String username, String name){
-		User user=users.getUser(username);
-		if(user==null){return false;}
-		boolean done = connection.executeUpdate("UPDATE UserDataSQL SET name='"+name+"' WHERE username='"+username+"';");
-    	if(done){ user.setName(name); }
+		User user=userList.getUser(username);
+		boolean done;
+		if(user==null){
+			done=false;
+		}else{
+			done = connection.executeUpdate("UPDATE UserDataSQL SET name='"+name+"' WHERE username='"+username+"';");
+	    	if(done){ 
+	    		user.setName(name); 
+	    	}
+		}
 		return done;	
 	}
 
@@ -101,12 +103,16 @@ public class UserDaoSQL implements UserDao{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */   
 	public boolean setSurname(String username, String surname){
-		User user=users.getUser(username);
-		if(user==null){return false;}
-		boolean done = connection.executeUpdate("UPDATE UserDataSQL SET surname='"+surname+"' WHERE username='"+username+"';");
-    	if(done){
-    		user.setSurname(surname);
-    	}
+		User user=userList.getUser(username);
+		boolean done;
+		if(user==null){
+			done=false;
+		}else{
+			done = connection.executeUpdate("UPDATE UserDataSQL SET surname='"+surname+"' WHERE username='"+username+"';");
+	    	if(done){
+	    		user.setSurname(surname);
+	    	}
+		}
 		return done;
 	}
 
@@ -115,12 +121,31 @@ public class UserDaoSQL implements UserDao{
 	 * @return User corrispondente o null se non esiste l'utente
 	 */
 	public User getUser(String username){
-		return users.getUser(username);
+		return userList.getUser(username);
 	}
 	/**Metodo che restituisce tutti i contatti presenti nel db
 	 * @return vector<User>
 	 */
 	public Vector<User> getAllUsers(){
-		return users.getAllUsers();
+		return userList.getAllUsers();
+	}
+	
+	/**Metodo che restituisce tutti i contatti
+	 * @return vector<User>
+	 */
+	private void getUsersFromDB(){
+		ResultSet rs =connection.select("UserDataSQL", "*", "", "");		 
+		if(rs!=null){
+			  String username, name, surname, IP;
+			  try{
+				while(rs.next()){
+					username = rs.getString("username");
+					name = rs.getString("name");
+					surname = rs.getString("surname");
+					IP = rs.getString("IP");
+			        userList.addUser(new User(username, name, surname, IP));
+				}
+			}catch(SQLException e){}
+		}  
 	}
 }

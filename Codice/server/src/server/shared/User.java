@@ -17,6 +17,11 @@
 
 package server.shared;
 import java.util.Vector;
+
+/**
+ * classe che rappresenta la struttura dati User del server
+ *
+ */
 public class User {
   private String username;
   private String name;
@@ -25,7 +30,7 @@ public class User {
   private Vector<RecordMessage> messages;
 
 	
-  /**Costruttore di User con tutti i parametri (tranne messaggi)
+  /**Costruttore di User con tutti i parametri (tranne password e messaggi)
    * @param username
    * @param name
    * @param surname
@@ -38,77 +43,47 @@ public class User {
 	this.IP=IP;
 	this.messages= new Vector<RecordMessage>();
   }
-	
-  /**Metodo che restituisce l'username
-   * @return
-   */
+//metodi get
   public String getUsername(){
     return this.username;
   }
-  
-
   public String getName(){
-		return this.name;
-	}
-	public String getSurname(){
-		return this.surname;
-	}
-	public String getIP(){
-		return this.IP;
-	}
+	return this.name;
+  }
+  public String getSurname(){
+	  return this.surname;
+  }
+  public String getIP(){
+	  return this.IP;
+  }
 
 //metodi set	
-	
-	/**
-	 * @param name
-	 */
-	public void setName(String name){
-		this.name=name;
-	}
-	
-	/**
-	 * @param surname
-	 */
-	public void setSurname(String surname){
-		this.surname=surname;
-	}
-	public void setIP(String IP){
-		this.IP=IP;
-	}
+  public void setName(String name){
+	this.name=name;
+  }
+  public void setSurname(String surname){
+	this.surname=surname;
+  }
+  public void setIP(String IP){
+	  this.IP=IP;
+  }
 
 //metodi dei messaggi
-	/**
-	 * @return
-	 */
-	public Vector<RecordMessage> getMessages(){
-	 return messages;
-	}
-	/**
-	 * @param messages
-	 */
-	public void setMessages(Vector<RecordMessage> messages){
-		this.messages=messages;
-	}
+  public Vector<RecordMessage> getMessages(){
+	  return messages;
+  }
+  public void setMessages(Vector<RecordMessage> messages){
+	  this.messages=messages;
+  }
+  public void setMessage(RecordMessage message){
+	 int i=0;
+	 for(; i<messages.size() && (messages.get(i).getPath()).equals(message.getPath()); i++){}
+	 if( i==messages.size()){
+		 this.messages.add(message);
+  	}
+  }
 	
-	/**
-	 * @param message
-	 */
-	public boolean isUserMessage(RecordMessage message){
-		int pos =this.messages.indexOf(message);
-		return (pos!=-1);
-	}
-
-	/**
-	 * @param message
-	 */
-	public void setMessage(RecordMessage message){
-		this.messages.add(message);
-	}
-	
-	/**
-	 * @param message
-	 */
-	public void removeMessage(RecordMessage message){
-		this.messages.remove(message);
-	}
+  public void removeMessage(RecordMessage message){
+	  this.messages.remove(message);
+  }
 }

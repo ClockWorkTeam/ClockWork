@@ -27,11 +27,11 @@ import java.util.Vector;
 
 public class RecordMessageDaoSQL implements RecordMessageDao{
 	private JavaConnectionSQLite connection;
-	private UserList users;
+	private UserList userList;
 	
 	public RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users){
 		this.connection=connection;
-		this.users=users;
+		this.userList=users;
 	}
 
  /**
@@ -40,21 +40,19 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
    * @return vettore dei messaggi inviati all'user
    */    
   public Vector<RecordMessage> getMessages(String username){
-	  User user= users.getUser(username);
+	  User user= userList.getUser(username);
 	  if(user==null){return null;}
 	  ResultSet rs = connection.select("RecordMessageDataSQL","*", "adressee='"+username+"')","");
 	  if(rs!=null){
 		  String path, sender, addressee;
 		  Date date;
-		  boolean trovato = false;
 		  try{
-			while(!trovato){
+			while( rs.next()){
 				sender = rs.getString("sender");
 				addressee = rs.getString("addressee");
 				path = rs.getString("record_message");
 		        date = rs.getDate("creation");
 		        user.setMessage(new RecordMessage(sender, addressee, path, date));
-		        rs.next();
 			}
 		}catch(SQLException e){return null;}
 	}
@@ -69,7 +67,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
     * @return RecordMessage creato, o null se l'operazione non ha avuto buon esito
    */    
   public RecordMessage createMessage(String sender, String addressee, String path, Date date){
-	  User user= users.getUser(addressee);
+	  User user= userList.getUser(addressee);
 	  if(user==null){return null;}
 	  boolean done= connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('"+sender+"','"+addressee+"','"+path+"','"+date+"');");
 	  RecordMessage message=null;
@@ -88,7 +86,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
   public boolean removeMessage(RecordMessage message){
 		boolean done = connection.executeUpdate("DELETE FROM RecordMessageDataSQL WHERE (sender='"+message.getSender()+"' AND addressee='"+message.getAddressee()+"' AND record_message = '"+message.getPath()+"' AND creation='"+message.getDate()+"');");
 		if(done){
-			(users.getUser(message.getAddressee())).removeMessage(message);
+			(userList.getUser(message.getAddressee())).removeMessage(message);
 		}
       	return done;  	
   } 

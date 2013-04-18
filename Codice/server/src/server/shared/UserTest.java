@@ -62,24 +62,5 @@ public class UserTest {
 		rms.add(rm2);		
 	}
 
-	@Test
-	public void testMessage(){
-		initTot(); //inizializzo user
-		initOne(); //inizializzo messaggio
-		user.setMessage(rm);
-		assertTrue("Il messaggio non è stato inserito", user.isUserMessage(rm));
-		initOne();
-		assertFalse("Il messaggio non dovrebbe essere dell'utente", user.isUserMessage(rm));
-	}
-	
-	@Test
-	public void testMessages(){
-		initTot();
-		initMore();
-		user.setMessages(rms);
-		assertTrue("Il messaggio non è stato inserito", user.isUserMessage(rm));
-		user.removeMessage(rm);
-		assertFalse("Il messaggio non è stato eliminato", user.isUserMessage(rm));
-	}
 	
 }

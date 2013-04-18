@@ -46,27 +46,13 @@ public class LoginDaoSQL implements LoginDao{
    * @return User che rappresenta l'utente corrispondente nel DB,se la login ha avuto successo, o null se i dati sono sbagliati
    */
   public User login(String username, String password, String IP){
-	 User user =userList.getUser(username);
-	 ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
-	 if(user!=null){ //salvato nella lista
-		try{
-			rs.getString("username");
-		}catch(SQLException e){//nn presente nel db
-			userList.removeUser(username);
-			return null;
-		}
-		connection.executeUpdate("UPDATE UserDataSQL SET IP='"+IP+"' WHERE username='"+username+"' AND (password='"+password+"');");
-		user.setIP(IP);
-	 }else{//nn salvato nella lista
-		 String name, surname;
-		try{
-			name= rs.getString("name");
-			surname= rs.getString("surname");
-		}catch(SQLException e){return null; }
-			user=new User(username, name, surname, IP);
-			userList.addUser(user);
-	 }
-     return user;
+	  ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
+	  try{
+		  rs.getString("username");
+	  }catch(SQLException e){return null;}
+	  User user =userList.getUser(username);
+	  user.setIP(IP);
+	  return user;
   }
 
   /** Metodo che effettua il logout
@@ -75,9 +61,8 @@ public class LoginDaoSQL implements LoginDao{
    * @return un boolean che indica se il logout e` avvenuto con successo o no
    */
   public boolean logout(User user){
-    String username = user.getUsername();
     user.setIP("0");
-    return 	connection.executeUpdate("UPDATE UserDataSQL SET IP='0' WHERE username='"+username+"';");
+    return 	connection.executeUpdate("UPDATE UserDataSQL SET IP='0' WHERE username='"+user.getUsername()+"';");
  }
 
 }
