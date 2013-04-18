@@ -6,16 +6,17 @@ import org.jwebsocket.kit.WebSocketServerEvent;
 import org.jwebsocket.listener.WebSocketServerTokenEvent;
 import org.jwebsocket.token.Token;
 import server.usermanager.*;
-import server.functionmanager.Converter;
+import server.shared.Tutorials;
 import server.shared.User;
 
 public class AuthenticationTransfer extends ListenerTransfer{
 	private AuthenticationManager authenticationManager;
 	private UserManager userManager;
 	
-	public AuthenticationTransfer(AuthenticationManager authenticationManager, UserManager userManager){
+	public AuthenticationTransfer(AuthenticationManager authenticationManager, UserManager userManager, Tutorials tutorials){
 		this.authenticationManager=authenticationManager;
 		this.userManager=userManager;
+		setTutorials(tutorials);
 	}
 	
 
@@ -45,8 +46,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	  		sendPacket(wspacket, event);
    		}
    		else if(type.equals("getContacts")){
-   	    	Converter contacts= new Converter();
-   			wspacket = new RawPacket(contacts.getAllContacts(userManager.getAllContacts(userManager.getUser(token.getString("username")))));
+   			wspacket = new RawPacket(converter.getAllContacts(userManager.getAllContacts(userManager.getUser(token.getString("username")))));
    	  		sendPacket(wspacket, event);
    		}
    		else if(type.equals("Logout")){

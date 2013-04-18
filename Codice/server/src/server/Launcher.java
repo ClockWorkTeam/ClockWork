@@ -27,9 +27,10 @@ public class Launcher {
 	private LoginDao loginDao;
 	private UserDao userDao;
 	private RecordMessageDao recordMessageDao;
+	private TutorialsDaoSQL tutorialsDao;
 	private static AuthenticationManager authenticationManager=new AuthenticationManager();
 	private static UserManager userManager= new UserManager();
-
+	private static Tutorials tutorials;
 	private static Launcher launcher=null;
 	
 	/**costruttore della classe
@@ -41,6 +42,8 @@ public class Launcher {
 		this.loginDao=new LoginDaoSQL(javaconnectionSQLite, userList);
 		this.userDao=new UserDaoSQL(javaconnectionSQLite, userList);
 		this.recordMessageDao= new RecordMessageDaoSQL(javaconnectionSQLite, userList);
+		this.tutorialsDao=new TutorialsDaoSQL(javaconnectionSQLite);
+		tutorials= tutorialsDao.getTutorials();
 		authenticationManager.init(loginDao, userDao);
 		userManager.init(userDao, recordMessageDao);
 	}
@@ -51,7 +54,9 @@ public class Launcher {
 	public static AuthenticationManager getAuthenticationManager(){
 		return authenticationManager;
 	}
-	
+	public static Tutorials getTutorials(){
+		return tutorials;
+	}
 	public static void getServer(){
 		if(launcher==null){
 			launcher=new Launcher();

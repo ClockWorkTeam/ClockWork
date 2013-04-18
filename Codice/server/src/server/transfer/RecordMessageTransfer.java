@@ -2,14 +2,13 @@ package server.transfer;
 
 import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
+import org.jwebsocket.kit.RawPacket;
 import org.jwebsocket.kit.WebSocketServerEvent;
 import org.jwebsocket.listener.WebSocketServerTokenEvent;
-import org.jwebsocket.listener.WebSocketServerTokenListener;
 import org.jwebsocket.token.Token;
-
 import server.usermanager.UserManager;
 
-public class RecordMessageTransfer implements WebSocketServerTokenListener{
+public class RecordMessageTransfer extends ListenerTransfer{
 	private UserManager userManager;
 	
 	public RecordMessageTransfer(UserManager userManager){
@@ -17,27 +16,21 @@ public class RecordMessageTransfer implements WebSocketServerTokenListener{
 	}
 	
 	@Override
-	public void processToken(WebSocketServerTokenEvent arg0, Token arg1) {
-		// TODO Auto-generated method stub
-		
+    public void processToken(WebSocketServerTokenEvent event, Token token) {
+   		String type= token.getString("type");
+   		WebSocketPacket wspacket=null;	
+   		if(type.equals("getMessages")){
+   			wspacket = new RawPacket(converter.getMessages(userManager.getMessages(token.getString("username"))));
+   	  		sendPacket(wspacket, event.getConnector());
+   		}
 	}
+
+    public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){
+    	tokenServer.sendPacket(connector, packet); 
+    }
 
 	@Override
 	public void processPacket(WebSocketServerEvent arg0, WebSocketPacket arg1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-    public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){}
-
-	@Override
-	public void processClosed(WebSocketServerEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void processOpened(WebSocketServerEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

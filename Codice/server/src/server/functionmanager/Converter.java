@@ -1,7 +1,10 @@
 package server.functionmanager;
 
+import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
+import server.shared.RecordMessage;
 import server.shared.User;
 
 public class Converter{
@@ -23,5 +26,25 @@ public class Converter{
 		contacts+="}";
 		return contacts;
 	}
-	// \"contact"+i+"\": \"{
+	
+	public String getMessages(Vector<RecordMessage> mex){
+		String messages="{\"size\": \""+mex.size()+"\"";
+		for(int i=0; i<mex.size(); i++){
+			messages+=", \"sender"+i+"\": \""+mex.get(i).getSender() +
+				"\", \"path"+i+"\": \""+mex.get(i).getPath()+
+				"\", \"date"+i+"\": \""+mex.get(i).getDate()+"\"";
+		}
+		messages+="}";
+		return messages;	
+	}
+	public String getTutorials(Map<String, String> tutorials){
+		String risp="{\"size\": \""+tutorials.size()+"\"";
+		Set<String> keySet = tutorials.keySet();
+		int i=0;
+		for(String key:keySet){
+			risp+=", \"title"+i+"\": \""+key+"\", \"path"+i+"\": \""+tutorials.get(key)+"\"";
+		}
+		risp+="}";
+		return risp;
+	}
 }
