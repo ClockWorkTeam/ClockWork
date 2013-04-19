@@ -14,7 +14,7 @@ public class TutorialsDaoSQL {
 		 try {
 			this.tutorials=new Tutorials(rs.getInt("COUNT(*)"));
 		} catch (SQLException e) {
-			this.tutorials=new Tutorials(4);
+			this.tutorials=new Tutorials(10);
 		}
 		 getTutorialsFromDB();
 	 }

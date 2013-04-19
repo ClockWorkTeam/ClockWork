@@ -16,7 +16,8 @@
 */
 
 package server.dao;
-import server.shared.*;
+import server.shared.UserList;
+import server.shared.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

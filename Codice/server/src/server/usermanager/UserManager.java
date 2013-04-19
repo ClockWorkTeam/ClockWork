@@ -20,7 +20,8 @@ import java.util.Date;
 import java.util.Vector;
 
 import server.dao.*;
-import server.shared.*;
+import server.shared.User;
+import server.shared.RecordMessage;
 
 /**
  * Classe che si occupa di gestire le operazioni dell'utente
