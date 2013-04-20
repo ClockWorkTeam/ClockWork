@@ -39,7 +39,6 @@ public class LoginDaoSQLTest {
 
 		assertTrue("IP non modificato",((userList.getUser("ClockWork7")).getIP())== "0.1");
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
-	    System.out.println(rs.getString("IP"));
 	    assertTrue("IP database non modificato", (rs.getString("IP")).equals("0.1"));
 	    
 	    connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork7';");
