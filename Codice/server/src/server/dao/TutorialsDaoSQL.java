@@ -27,7 +27,7 @@ public class TutorialsDaoSQL {
 					while(rs.next()){
 						url = rs.getString("url");
 						title = rs.getString("title");
-				        tutorials.insert(url, title);
+				        tutorials.insert(title, url);
 					}
 				}catch(SQLException e){}
 			}  
