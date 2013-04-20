@@ -75,11 +75,11 @@ La classe
 mytalk.server.Laucher
 \family default
 \series default
- ha il solo scopo di inizializzare le classi degli stati manager e data,
+ ha il solo scopo di inizializzare le classi degli strati manager e data,
  in modo da non creare copie che comporterebbero interferenza e malfunzionamento
  del server.
- Proprio per la sua funzione di inizializatore, si trova all'esterno degli
- strati ed verrà modellato come Singleton
+ Proprio per la sua funzione di inizializzatore, si trova all'esterno degli
+ strati e verrà modellato come Singleton
 \end_layout
 
 \begin_layout Itemize
@@ -127,7 +127,7 @@ mytalk.server.dao.JavaConnectionSQLite.
 
 \begin_layout Itemize
 I dati vengono salvati sia nel package shared, sopra indicato, sia nella
- base di dati per ridurre l'accesso e la modifica su quest'ultima.
+ base di dati per ridurre l'accesso e le modifiche su quest'ultima.
  Anche se concettualmente considereremo la base di dati interna allo strato
  data, per motivi tecnici essa non sarà posizionata in nessun package
 \end_layout
@@ -404,13 +404,7 @@ mytalk.server.transfer.UserTransfer
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe
-\family typewriter
-\series bold
- 
-\family default
-\series default
-si occupa della gestione dei dati dell'utente
+ la classe si occupa della gestione dei dati dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -464,14 +458,8 @@ mytalk.server.transfer.CallTransfer
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe
-\family typewriter
-\series bold
- 
-\family default
-\series default
-si occupa di trasferire i pacchetti tra i client che desiderano iniziare
- una comunicazione
+ la classe si occupa di trasferire i pacchetti tra i client che desiderano
+ iniziare una comunicazione
 \end_layout
 
 \begin_layout Itemize
@@ -561,7 +549,7 @@ Attività svolte e dati trattati:
 \family default
 \series default
  per la gestione dei messaggi registrati, in particolare per le richieste
- da parte del client della registrazione e della cancellazione di un messaggio
+ da parte del client di registrazione e di cancellazione di un messaggio
  nel database e per l'invio dei messaggi all'utente.
 \end_layout
 
@@ -801,7 +789,7 @@ Tipo, obiettivo e funzione del componente:
 mytalk.server.dao
 \family default
 \series default
- che è l'unico package ad operare effettivamente modifiche sui dati
+ che è l'unico package ad operare modifiche sui dati
 \end_layout
 
 \begin_layout Itemize
@@ -841,7 +829,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Per evitare rindondanze nelle classi 
+Per evitare ridondanze nelle classi 
 \family typewriter
 \series bold
 dao.*SQL
@@ -855,7 +843,7 @@ dao.*SQL
 
 \family default
 \series default
-per permettere le modifiche sulla base di dati
+per permettere le modifiche della base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -1273,7 +1261,7 @@ mytalk.server.dao.RecordMessageDaoSQL
  mytalk.server.dao.UserDaoSQL
 \family default
 \series default
- per la ricerca di un dato utente,inoltre la classe 
+ per la ricerca di un dato utente, inoltre la classe 
 \family typewriter
 \series bold
 UserDaoSQL
@@ -1303,7 +1291,7 @@ Tipo, obiettivo e funzione del componente:
 \series default
  la classe contiene le informazioni su un utente contenute nel database,
  ad eccezione della password, che per motivi di sicurezza si è deciso di
- mantenerla solo nella base di dati
+ mantenere solo nella base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -1336,7 +1324,7 @@ mytalk.server.dao.RecordMessageDaoSQL
  mytalk.server.dao.UserDaoSQL
 \family default
 \series default
- che crea ed elimina utenti ed modifica i dati degli utenti già presenti
+ che crea ed elimina utenti e modifica i dati degli utenti già presenti
 \end_layout
 
 \begin_layout Itemize
@@ -1396,7 +1384,7 @@ mytalk.server.shared.RecordMessage
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe ontiene le informazioni su un messaggio registrato contenute
+ la classe contiene le informazioni su un messaggio registrato contenute
  nel database
 \end_layout
 
