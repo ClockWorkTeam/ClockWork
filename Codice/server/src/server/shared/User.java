@@ -72,8 +72,8 @@ public class User {
   public Vector<RecordMessage> getMessages(){
 	  return messages;
   }
-  public void setMessages(Vector<RecordMessage> messages){
-	  this.messages=messages;
+  public void setMessages(Vector<RecordMessage> messagesNew){
+	  this.messages=messagesNew;
   }
   public void setMessage(RecordMessage message){
 	 int i=0;
