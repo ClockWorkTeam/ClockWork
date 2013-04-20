@@ -24,7 +24,7 @@ public class RecordMessageTest {
 	RecordMessage recordMessage;
 	
 	public void init() {
-		recordMessage= new RecordMessage("ClockWork","password","prova", "2013-01-01 10:03:02");
+		recordMessage= new RecordMessage("ClockWork","ClockWork7","prova", "2013-01-01 10:03:02");
 	}
 
 	@Test
@@ -37,8 +37,8 @@ public class RecordMessageTest {
 	@Test
 	public void testGetAddressee() {
 		init();
-		assertTrue("Password non è quella attesa", recordMessage.getAddressee() == "password");
-		assertFalse("Password non è quella attesa", recordMessage.getAddressee() == "sbagliata");
+		assertTrue("Password non è quella attesa", recordMessage.getAddressee() == "ClockWork7");
+		assertFalse("Password non è quella attesa", recordMessage.getAddressee() == "ClockWork");
 	}
 
 	@Test
