@@ -51,6 +51,7 @@ public class LoginDaoSQL implements LoginDao{
 		  rs.getString("username");
 	  }catch(SQLException e){return null;}
 	  User user =userList.getUser(username);
+	  connection.executeUpdate("UPDATE UserDataSQL SET IP='"+IP+"' WHERE username='"+username+"';");
 	  user.setIP(IP);
 	  return user;
   }

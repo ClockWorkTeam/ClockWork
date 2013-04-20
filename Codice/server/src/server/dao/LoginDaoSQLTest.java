@@ -9,57 +9,54 @@ import server.shared.*;
 
 public class LoginDaoSQLTest {
 	private JavaConnectionSQLite connection;
-	private UserList users;
-	private LoginDaoSQL login;
+	private UserList userList;
+	private LoginDaoSQL loginDaoSQL;
 	
 	private void init(){
 		connection=new JavaConnectionSQLite();
-		users=new UserList();
-		login= new LoginDaoSQL(connection, users);
+		userList=new UserList();
+		loginDaoSQL= new LoginDaoSQL(connection, userList);
 	}
 
 	private void initConDB(){
 		init();
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('Leo','par2409','','','0');");
-		User user=new User("Leo","","","0.0.10.0");
-		assertTrue("Utente non aggiunto",users.addUser(user));
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team', '0');");
+		userList.addUser(new User("ClockWork7","Clock Work","Team", "0"));
 	}
 		
 	@Test
-	public void testEmptyUserDB(){
+	public void testUserEmptyDB(){
 		init();
-		assertTrue("Login effettuata erroneamente", login.login("Liquid","ciao","0.0.10.0")==null);
+		assertTrue("Login effettuata erroneamente", loginDaoSQL.login("ClockWork7","password","0.0.10.0")==null);
 	}
 
 	@Test
-	public void testUserDBLogin(){
+	public void testUserDBLogin() throws SQLException{
 		initConDB();
-		assertTrue("Login non effettuata", login.login("Liquid","","0.1")==null);
-		assertTrue("Login non effettuata", login.login("Leo","","0.1")==null);
-		assertTrue("Login effettuata", login.login("Leo","par2409","0.1")!=null);
-//Test IP
-		assertTrue("IP modificato correttamente",((users.getUser("Leo")).getIP())== "0.1");
+		assertTrue("Login non effettuata", loginDaoSQL.login("ClockWork","password","0.1")==null);
+		assertTrue("Login non effettuata", loginDaoSQL.login("ClockWork7","","0.1")==null);
+		assertTrue("Login effettuata", loginDaoSQL.login("ClockWork7","password","0.1")!=null);
+
+		assertTrue("IP non modificato",((userList.getUser("ClockWork7")).getIP())== "0.1");
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
-	    try{
-	    	assertTrue("IP database non modificato", (rs.getString("IP")).equals("0.1"));
-	    }catch(SQLException e){System.out.println("empty");};
-	    connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='Leo';");
+	    System.out.println(rs.getString("IP"));
+	    assertTrue("IP database non modificato", (rs.getString("IP")).equals("0.1"));
+	    
+	    connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork7';");
 	}
 
 	@Test
-	public void testUserDBLogout(){
+	public void testUserDBLogout() throws SQLException{
 		initConDB();
-		User user=login.login("Leo","par2409","0.1");
+		User user=loginDaoSQL.login("ClockWork7","password","0.1");
 		assertTrue("Login non effettuata", user!=null);
-		assertTrue("Logout non effettuata", login.logout(user));
-		//Test IP
-		assertTrue("IP modificato correttamente",((users.getUser("Leo")).getIP())== "0");
+		assertTrue("Logout non effettuata", loginDaoSQL.logout(user));
+
+		assertTrue("IP modificato correttamente",((userList.getUser("ClockWork7")).getIP())== "0");
 		ResultSet rs = connection.select("UserDataSQL","*","","");
-		try{
-			assertTrue("IP database non modificato", (rs.getString("IP")).equals("0"));
-		}catch(SQLException e){System.out.println("empty");};
+		assertTrue("IP database non modificato", (rs.getString("IP")).equals("0"));
 		
-	    connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='Leo';");
+	    connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork7';");
 	}
 
 }
