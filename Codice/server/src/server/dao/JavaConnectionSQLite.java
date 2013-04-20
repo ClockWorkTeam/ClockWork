@@ -33,11 +33,10 @@ public class JavaConnectionSQLite {
          connection= DriverManager.getConnection("jdbc:sqlite:sqlite/myTalk.sqlite");
          statement = connection.createStatement();
       }
-      catch(SQLException e){System.out.println("Impossibile creare la connessione al database ");}
-      catch(ClassNotFoundException e){System.out.println("Impossibile creare la connessione al database");}
+      catch(Exception e){System.out.println("Impossibile creare la connessione al database ");}
    }
 
-/*Distruzione della classe JavaConnectionSQLite
+/**Distruzione della classe JavaConnectionSQLite
  *cerca di rilasciare la connessione al database quando l'oggetto viene distrutto,
  *nel caso non ci riuscisse, lancia un errore.
  */
