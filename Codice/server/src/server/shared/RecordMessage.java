@@ -16,7 +16,6 @@
 */ 
 
 package server.shared;
-import java.util.Date;
 /**
  * classe che rappresenta la struttura dati RecordMessage del server
  *
@@ -25,7 +24,7 @@ public class RecordMessage{
 	private String sender;
 	private String addressee;
 	private String path;
-	private Date dateCreation;
+	private String dateCreation;
 	
 	/**
 	 * Costruttore dell'oggetto RecordMessage
@@ -34,7 +33,7 @@ public class RecordMessage{
 	 * @param path, indirizzo in cui è salvato il messaggio
 	 * @param dateCreation, data di creazione del messaggio
 	 */
-	public RecordMessage(String sender, String addressee, String path, Date dateCreation){
+	public RecordMessage(String sender, String addressee, String path, String dateCreation){
 		this.sender=sender;
 		this.addressee=addressee;
 		this.path=path;
@@ -53,7 +52,7 @@ public class RecordMessage{
 		return path;
 	}
 
-	public Date getDate(){
+	public String getDate(){
 		return dateCreation;
 	}
 }

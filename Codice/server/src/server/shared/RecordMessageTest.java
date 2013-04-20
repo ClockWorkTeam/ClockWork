@@ -1,40 +1,58 @@
 /**
-* Nome: RecordMessage
+* Nome: RecordMessageTest
 * Package: server.shared
 * Autore: Zohouri Haghian Pardis
-* Data: 2013/03/07
+* Data: 2013/03/05
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130307 |     ZHP       | + creazione documento	   |
-* |         |               |    TEST DI UNITA'        |
+* |  130305 |     ZHP       | + creazione documento	   |
+* |         |               |                          |
 * +---------+---------------+--------------------------+
 *
 */ 
-
 package server.shared;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import java.util.Date;
 
 public class RecordMessageTest {
-	RecordMessage recMex;
+	RecordMessage recordMessage;
 	
-	private void init(){
-		recMex= new RecordMessage("Liquid90","Pardis","ciao", new Date(2013-01-01));	
+	public void init() {
+		recordMessage= new RecordMessage("ClockWork","password","prova", "2013-01-01 10:03:02");
 	}
 
 	@Test
-	public void test() {
+	public void testGetSender() {
 		init();
-		assertTrue("Sender non Ã¨ quello atteso", recMex.getSender() == "Liquid90");
-		assertTrue("Password non Ã¨ quello atteso", recMex.getAddressee() == "Pardis");
-		assertTrue("IP non Ã¨ quello atteso", recMex.getPath() == "ciao");
-		assertTrue("IP non Ã¨ quello atteso", (recMex.getDate()).equals(new Date(2013-01-01)));
+		assertTrue("Sender non è quello atteso", recordMessage.getSender() == "ClockWork");
+		assertFalse("Sender non è quello atteso", recordMessage.getSender() == "Clock Work");
+	}
+
+	@Test
+	public void testGetAddressee() {
+		init();
+		assertTrue("Password non è quella attesa", recordMessage.getAddressee() == "password");
+		assertFalse("Password non è quella attesa", recordMessage.getAddressee() == "sbagliata");
+	}
+
+	@Test
+	public void testGetPath() {
+		init();
+		assertTrue("Path non è quello atteso", recordMessage.getPath() == "prova");
+		assertFalse("Path non è quello atteso", recordMessage.getPath() == "sbagliato");
+	}
+
+	@Test
+	public void testGetDate() {
+		init();
+		assertTrue("Data non è quella attesa", recordMessage.getDate() == "2013-01-01 10:03:02");
+		assertFalse("Data non è quella attesa", recordMessage.getDate() == "2013-01-01");
 	}
 
 }
