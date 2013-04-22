@@ -21,7 +21,6 @@ import server.shared.UserList;
 import server.shared.User;
 import java.sql.ResultSet ;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Vector;
 /**
  * Classe che definisce dei metodi per gestire i recordmessages nel DB
@@ -41,19 +40,18 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
    * @param user Oggetto User ricevente dei messagi
    * @return vettore dei messaggi inviati all'user
    */    
-  public Vector<RecordMessage> getMessages(String username){
+  public Vector<RecordMessage> getAllMessages(String username){
 	  User user= userList.getUser(username);
 	  if(user==null){return null;}
-	  ResultSet rs = connection.select("RecordMessageDataSQL","*", "adressee='"+username+"')","");
+	  ResultSet rs = connection.select("RecordMessageDataSQL","*", "adressee='"+username+"'","");
 	  if(rs!=null){
-		  String path, sender, addressee;
-		  Date date;
+		  String path, sender, addressee, date;
 		  try{
 			while( rs.next()){
 				sender = rs.getString("sender");
 				addressee = rs.getString("addressee");
 				path = rs.getString("record_message");
-		        date = rs.getDate("creation");
+		        date = rs.getString("creation");
 		        user.setMessage(new RecordMessage(sender, addressee, path, date));
 			}
 		}catch(SQLException e){return null;}
@@ -61,6 +59,28 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
 	return user.getMessages();  
   }
 
+  /** Metodo che resituisce un dato messaggio
+   * @param sender
+   * @param addressee
+   * @param path
+   * @param date
+   * @return RecordMessage trovato, o null se l'operazione non ha avuto buon esito
+   */    
+  public RecordMessage getMessage(String sender, String addressee, String path, String date){
+	  Vector<RecordMessage> myMessage = getAllMessages(addressee);
+	  boolean trovato =false;
+	  int i=0;
+	  for(; i<myMessage.size() && !trovato; i++){
+		  if(myMessage.get(i).getDate().equals(date)){
+			  if(myMessage.get(i).getSender().equals(sender) && myMessage.get(i).getPath().equals(path)){
+				  trovato=true;
+			  }
+		  }
+	  }
+	  if(trovato)
+		  return myMessage.get(i-1);
+	  return null;
+  }
   /** Metodo che inserisce un dato messaggio
    * @param sender
    * @param addressee
@@ -68,9 +88,10 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
    * @param date
     * @return RecordMessage creato, o null se l'operazione non ha avuto buon esito
    */    
-  public RecordMessage createMessage(String sender, String addressee, String path, Date date){
+  public RecordMessage createMessage(String sender, String addressee, String path, String date){
 	  User user= userList.getUser(addressee);
 	  if(user==null){return null;}
+	  if(getMessage(sender, addressee,path,date)!=null){ return null;}
 	  boolean done= connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('"+sender+"','"+addressee+"','"+path+"','"+date+"');");
 	  RecordMessage message=null;
 		if(done){

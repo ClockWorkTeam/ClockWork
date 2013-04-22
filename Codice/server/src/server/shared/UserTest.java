@@ -97,7 +97,6 @@ public class UserTest {
 		int num_mex=(user.getMessages()).size();
 		user.setMessage(new RecordMessage("ClockWork","ClockWork7","prova", "2013-01-01 10:03:02"));
 		assertTrue("Il messaggio non è stato aggiunto", user.getMessages().size()==(num_mex+1));
-		assertFalse("Il messaggio non è stato aggiunto", user.getMessages().size()==num_mex);
 	}
 
 	@Test

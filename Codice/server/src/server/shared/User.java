@@ -76,11 +76,7 @@ public class User {
 	  this.messages=messagesNew;
   }
   public void setMessage(RecordMessage message){
-	 int i=0;
-	 for(; i<messages.size() && (messages.get(i).getPath()).equals(message.getPath()); i++){}
-	 if( i==messages.size()){
 		 this.messages.add(message);
-  	}
   }
 	
   public void removeMessage(RecordMessage message){

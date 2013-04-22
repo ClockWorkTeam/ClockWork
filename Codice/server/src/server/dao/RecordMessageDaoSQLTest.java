@@ -1,57 +1,96 @@
+/**
+* Nome: RecordMessageDaoSQLTest
+* Package: server.dao
+* Autore: Zohouri Haghian Pardis
+* Data: 2013/03/06
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+--------------------------+
+* | Data    | Programmatore |         Modifiche        |
+* +---------+---------------+--------------------------+
+* |  130306 |     ZHP       | + creazione documento	   |
+* |         |               |                          |
+* +---------+---------------+--------------------------+
+*
+*/ 
+
 package server.dao;
 
 import static org.junit.Assert.*;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.junit.Test;
-import server.shared.*;
-import java.util.Date;
-import java.util.Vector;
+
+import server.shared.RecordMessage;
+import server.shared.UserList;
 
 public class RecordMessageDaoSQLTest {
-	private JavaConnectionSQLite connection;
-	private UserList usersList;
-	private RecordMessageDaoSQL rec;
-	private UserDaoSQL users;
-
-	private void init(){
+	private JavaConnectionSQLite connection;;
+	private UserDaoSQL userDaoSQL;
+	private RecordMessageDaoSQL recordMessageDaoSQL;
+	
+	public void init() {
 		connection =new JavaConnectionSQLite();
-		usersList= new UserList();
+		UserList userList= new UserList();
+		userDaoSQL= new UserDaoSQL(connection, userList);
+		recordMessageDaoSQL=new RecordMessageDaoSQL(connection,userList);
+	}
+	
+	@Test
+	public void testCreateMessage_and_RemoveMessage_and_GetMessage() throws SQLException{
+		init();
+		userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
+		java.util.Date dt = new java.util.Date();
+		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		assertTrue("Destinatario non presente", recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt))==null);
 
-		rec=new RecordMessageDaoSQL(connection,usersList);
-		users= new UserDaoSQL(connection,usersList);
+		userDaoSQL.createUser("ClockWork", "password", "Clock Work", "Team", "7");
+		assertTrue("Destinatario presente", recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt))!=null);
+		
+		assertTrue("Messaggio gi� presente", recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt))==null);
+		assertTrue("Messaggio inserito tra i messaggi del destinatario",recordMessageDaoSQL.getAllMessages("ClockWork").size()==1);
+		assertTrue("Messaggio inserito erroneamente nella lista del mittente",recordMessageDaoSQL.getAllMessages("ClockWork7").size()==0);
+
+		RecordMessage messaggioSalvato=recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt));
+		assertTrue("Messaggio inserito erroneamente", messaggioSalvato!=null);
+		ResultSet rs = connection.select("RecordMessageDataSQL","*","","");		
+		assertTrue("Messaggio inserito nel database", !rs.isAfterLast());
+	
+		assertTrue("Mittente inserito erroneamente nel database", messaggioSalvato.getSender().equals(rs.getString("sender")));
+		assertTrue("Destinatario inserito erroneamente nel database", messaggioSalvato.getAddressee().equals(rs.getString("addressee")));
+		assertTrue("Path inserito erroneamente nel database", messaggioSalvato.getPath().equals(rs.getString("record_message")));
+		assertTrue("Data creazione inserita erroneamente nel database", messaggioSalvato.getDate().equals(rs.getString("creation")));
+		
+		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt)));
+		
+		userDaoSQL.removeUser("ClockWork7");
+		userDaoSQL.removeUser("ClockWork");
 	}
 
 	@Test
-	public void testCreate() {
+	public void testGetAllMessages() {
 		init();
-		User user1 =users.createUser("Liquid90", "ciao", "Giacomo", "Bain", "0.0.0.2");
-		User user2=users.createUser("Leo", "ciaociao", "Pardis", "ZH", "0.0.1.2");
-
-		RecordMessage mex = rec.createMessage(user1.getUsername(), user2.getUsername(), "ciao", new Date(2013-3-12));
-
-		Vector<RecordMessage> messages = user1.getMessages();
-		assertTrue("numero errato di messaggi presenti", messages.size()==0);
-		messages = user2.getMessages();
-		assertTrue("numero errato di messaggi presenti", messages.size()==1);
-		assertTrue("Il messaggio non è presente", messages.contains(mex));
+		userDaoSQL.createUser("ClockWork", "password", "Clock Work", "Team", "7");
+		java.util.Date dt = new java.util.Date();
+		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==0);
+		recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt));
+		assertTrue("Messaggio inserito tra i messaggi del destinatario",recordMessageDaoSQL.getAllMessages("ClockWork").size()==1);
+		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt)));
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==0);
+		
+		recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt));
+		recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "ciao", sdf.format(dt));
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==2);
+		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt)));
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==1);
+		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "ciao", sdf.format(dt)));
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==0);		
+		userDaoSQL.removeUser("ClockWork");
 	}
 
-	@Test
-	public void testGetMex() {
-		init();
-		User user1 =users.createUser("Liquid90", "ciao", "Giacomo", "Bain", "0.0.0.2");
-		User user2=users.createUser("Leo", "ciaociao", "Pardis", "ZH", "0.0.1.2");
 
-		rec.createMessage(user1.getUsername(), user2.getUsername(), "ciao", new Date(2013-3-12));
-
-		Vector<RecordMessage> messages = user2.getMessages();
-		assertTrue("Il messaggio non è stato assegnato correttamente", messages==rec.getMessages(user2.getUsername()));
-	}
-
-	@Test
-	public void testRM(){
-		init();
-		users.createUser("Liquid90", "ciao", "Giacomo", "Bain", "0.0.0.2");
-		RecordMessage mex = rec.createMessage("Je", "Liquid90", "ciao", new Date(2013-3-12));
-		assertTrue("errore nella cancellazione", rec.removeMessage(mex));
-	}
 }
