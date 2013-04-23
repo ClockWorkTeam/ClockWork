@@ -16,9 +16,7 @@
 */ 
 
 package server.usermanager;
-import java.util.Date;
 import java.util.Vector;
-
 import server.dao.*;
 import server.shared.User;
 import server.shared.RecordMessage;
@@ -67,15 +65,15 @@ public class UserManager{
 		return userDao.setSurname(user.getSurname(), surname);
 	}
 
-	public RecordMessage createMessage(String sender, String addressee, String path, Date date){
+	public RecordMessage createMessage(String sender, String addressee, String path, String date){
 		return messageDao.createMessage(sender, addressee, path, date);
 	}
   
 	public Vector<RecordMessage> getMessages(String username){
-		return messageDao.getMessages(username);
+		return messageDao.getAllMessages(username);
 	}
-  public boolean removeMessage(RecordMessage message){
-	return messageDao.removeMessage(message);
+  public boolean removeMessage(String sender, String addressee, String path, String date){
+	return messageDao.removeMessage(messageDao.getMessage(sender, addressee, path, date));
   }
   
   public User getUser(String username){
