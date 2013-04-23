@@ -139,13 +139,13 @@ public class UserDaoSQL implements UserDao{
 		if(rs!=null){
 			  String username, name, surname, IP;
 			  try{
-				while(rs.next()){
+				do{
 					username = rs.getString("username");
 					name = rs.getString("name");
 					surname = rs.getString("surname");
 					IP = rs.getString("IP");
 			        userList.addUser(new User(username, name, surname, IP));
-				}
+				}while(rs.next());
 			}catch(SQLException e){}
 		}  
 	}

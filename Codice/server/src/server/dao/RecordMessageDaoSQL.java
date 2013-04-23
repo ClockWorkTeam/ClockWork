@@ -47,13 +47,13 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
 	  if(rs!=null){
 		  String path, sender, addressee, date;
 		  try{
-			while( rs.next()){
+			do{
 				sender = rs.getString("sender");
 				addressee = rs.getString("addressee");
 				path = rs.getString("record_message");
 		        date = rs.getString("creation");
 		        user.setMessage(new RecordMessage(sender, addressee, path, date));
-			}
+			}while( rs.next());
 		}catch(SQLException e){return null;}
 	}
 	return user.getMessages();  
