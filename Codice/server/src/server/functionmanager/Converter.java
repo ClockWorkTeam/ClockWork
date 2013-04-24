@@ -1,3 +1,19 @@
+/**
+* Nome: Converter
+* Package: server.functionmanager
+* Autore: Zohouri Haghian Pardis
+* Data: 2013/03/06
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+--------------------------+
+* | Data    | Programmatore |         Modifiche        |
+* +---------+---------------+--------------------------+
+* |  130306 |     ZHP       | + creazione documento	   |
+* |         |               |                          |
+* +---------+---------------+--------------------------+
+*
+*/
 package server.functionmanager;
 
 import java.util.Map;
@@ -10,9 +26,9 @@ import server.shared.User;
 public class Converter{
 	/**genera la stringa dei contatti seguendo questo schema:
 	*  { size: N,
-	*    contact1: { username: x, name: y, surname: w, IP: N.N.N.N },
-	*    contact2: { ... },
-	*    contact3: { ... }
+	*    username1: x, name1: y, surname1: w, IP1: N.N.N.N,
+	*    username2: x, name2: y, surname2: w, IP2: N.N.N.N,
+	*   ........
 	*  } 
 	*/
 	public String getAllContacts(Vector<User> users){
