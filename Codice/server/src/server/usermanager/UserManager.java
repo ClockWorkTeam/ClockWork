@@ -62,7 +62,7 @@ public class UserManager{
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */   
 	public boolean setSurname(User user, String surname){
-		return userDao.setSurname(user.getSurname(), surname);
+		return userDao.setSurname(user.getUsername(), surname);
 	}
 
 	public RecordMessage createMessage(String sender, String addressee, String path, String date){
@@ -72,9 +72,13 @@ public class UserManager{
 	public Vector<RecordMessage> getMessages(String username){
 		return messageDao.getAllMessages(username);
 	}
-  public boolean removeMessage(String sender, String addressee, String path, String date){
-	return messageDao.removeMessage(messageDao.getMessage(sender, addressee, path, date));
-  }
+	
+	public RecordMessage getMessage(String sender, String addressee, String path, String date){
+		return messageDao.getMessage(sender, addressee, path, date);
+	}
+	public boolean removeMessage(String sender, String addressee, String path, String date){
+		return messageDao.removeMessage(messageDao.getMessage(sender, addressee, path, date));
+	}
   
   public User getUser(String username){
 	  return userDao.getUser(username);
