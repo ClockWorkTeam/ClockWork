@@ -31,8 +31,8 @@ public class Converter{
 	*   ........
 	*  } 
 	*/
-	public String getAllContacts(Vector<User> users){
-		String contacts="{\"size\": \""+users.size()+"\"";
+	public String convertUsers(Vector<User> users, String type){
+		String contacts="{"+type+" \"size\": \""+users.size()+"\"";
 		for(int i=0; i<users.size(); i++){
 			contacts+=", \"username"+i+"\": \""+users.get(i).getUsername()+
 				"\", \"name"+i+"\": \""+users.get(i).getName()+
@@ -43,8 +43,8 @@ public class Converter{
 		return contacts;
 	}
 	
-	public String getMessages(Vector<RecordMessage> mex){
-		String messages="{\"size\": \""+mex.size()+"\"";
+	public String convertMessages(Vector<RecordMessage> mex, String type){
+		String messages="{"+type+" \"size\": \""+mex.size()+"\"";
 		for(int i=0; i<mex.size(); i++){
 			messages+=", \"sender"+i+"\": \""+mex.get(i).getSender() +
 				"\", \"path"+i+"\": \""+mex.get(i).getPath()+
@@ -53,8 +53,8 @@ public class Converter{
 		messages+="}";
 		return messages;	
 	}
-	public String getTutorials(Map<String, String> tutorials){
-		String risp="{\"size\": \""+tutorials.size()+"\"";
+	public String convertTutorials(Map<String, String> tutorials, String type){
+		String risp="{"+type+" \"size\": \""+tutorials.size()+"\"";
 		Set<String> keySet = tutorials.keySet();
 		int i=0;
 		for(String key:keySet){
