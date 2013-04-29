@@ -84,7 +84,7 @@ define([
 		if(this.callView)
 		{	
 			this.callView.close;
-			}
+		}
 		this.close;
 		this.callView=new CallView();
 		this.callView.render(true,'video',this.model.toJSON().IP);
