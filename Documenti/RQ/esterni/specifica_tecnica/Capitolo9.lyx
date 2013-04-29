@@ -83,7 +83,7 @@ PROGETTO}
 \end_layout
 
 \begin_layout Subsection
-Diagramma generale
+Diagramma delle attività di un utente non autenticato
 \end_layout
 
 \begin_layout Standard
@@ -97,8 +97,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma generale.pdf
-	scale 50
+	filename img/diagramma_attivita_utente_non_autenticato.pdf
+	scale 60
 
 \end_inset
 
@@ -109,10 +109,10 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma della attività generale 
+Diagramma delle attività di un utente non autenticato 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Diagramma-della-attività-generale"
+name "fig:Diagramma-della-attività-utente-non-autenticato"
 
 \end_inset
 
@@ -134,12 +134,12 @@ name "fig:Diagramma-della-attività-generale"
 Il diagramma rappresentato in figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Diagramma-della-attività-generale"
+reference "fig:Diagramma-della-attività-utente-non-autenticato"
 
 \end_inset
 
- spiega le operazioni che un utente potrà svolgere per interagire con il
- sistema.
+ spiega le operazioni che un utente non autenticato potrà svolgere per interagir
+e con il sistema.
  Una volta aperta la pagina web del programma 
 \begin_inset ERT
 status open
@@ -157,9 +157,22 @@ PROGETTO}
 to del programma, contattare direttamente un utente se è a conoscenza del
  suo indirizzo IP, iscriversi al sito e, nel caso caso in cui la registrazione
  sia già stata effettuata, effettuare l'accesso con le proprie credenziali.
- Una volta effettuato l'accesso all'applicazione, l'utente avrà la possibilità
- di modificare le proprie credenziali e di selezionare uno dei servizi offerti
- per gli utenti autenticati.
+ Una volta effettuata l'autenticazione, l'utente avrà a disposizione le
+ funzionalità offerte per l'utente autenticato (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramma-della-attività-utente-non-autenticato"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\noindent
+******Una volta effettuato l'accesso all'applicazione, l'utente avrà la
+ possibilità di modificare le proprie credenziali e di selezionare uno dei
+ servizi offerti per gli utenti autenticati.
 \end_layout
 
 \begin_layout Subsection
@@ -177,7 +190,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma registrazione.pdf
+	filename img/diagramma_registrazione.pdf
 	scale 50
 
 \end_inset
@@ -224,8 +237,10 @@ reference "fig:Diagramma-delle-attività-registrazione"
  e di una password, ripetuta due volte per controllare che la password inserita
  sia corretta.
  L'utente potrà inoltre, se lo desidera, inserire il proprio nome e cognome.
- Una volta inseriti tutti campi obbligatori più quelli opzionali, l'utente
- sarà registrato presso il server e autenticato automaticamente.
+ Una volta inseriti tutti campi obbligatori ed eventuali opzionali, se l'account
+ non risulta in uso, l'utente sarà registrato presso il server e autenticato
+ automaticamente, altrimenti verrà richiesto di reinserire almeno i campi
+ obbligatori.
 \end_layout
 
 \begin_layout Subsection
@@ -243,7 +258,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma autenticazione.pdf
+	filename img/diagramma_autenticazione.pdf
 	scale 50
 
 \end_inset
@@ -313,7 +328,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma modifica dati.pdf
+	filename img/diagramma_modifica_dati.pdf
 	scale 50
 
 \end_inset
@@ -362,7 +377,28 @@ reference "fig:Diagramma-delle-attività-modifica-dati"
  ha deciso di modificare le proprie credenziali.
  Il modulo di modifica dati prevede la possibilità di inserire un nuovo
  nome, cognome o password.
- Una volta inseriti uno o più campi, saranno salvati i nuovi dati nel server.
+ Prima di effettuare eventuali modifiche ai dati, verrà fatto un controllo
+ dell'attuale password per questioni di sicurezza.
+ In caso di esito negativo verrà richiesto di reinserire i dati, in caso
+ contrario saranno inviati al server, che aggiornerà i campi richiesti.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Una volta inseriti uno o più campi, saranno salvati i nuovi dati nel server.
+\end_layout
+
+\begin_layout Paragraph*
+Prima di effettuare eventuali modifiche ai dati, per motivi di sicurezza,
+ verrà richiesto di inserire la password corrente.
+ In caso la password inserita sia errata viene richiesto nuovamente di inserirla.
+In caso contrario, vengono passati al server i dati da cambiare.
+ A questo punto si cerca di modificare i campi presenti nel server coi dati
+ passati e, nel caso in cui le modifiche non vengono effettuate a causa
+ di un errore (come per esempio un campo dato non valido), viene segnalato
+ un errore e viene richiesto l'inserimento dei dati.
+ Se le modifiche avvengono con successo, il server invia un messaggio che
+ attesta la riuscita della modifica dei dati.
 \end_layout
 
 \begin_layout Subsection
@@ -380,7 +416,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma chiamata IP.pdf
+	filename img/diagramma_chiamata IP.pdf
 	scale 70
 
 \end_inset
@@ -444,7 +480,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma chiamata contatto.pdf
+	filename img/diagramma_chiamata contatto.pdf
 	scale 45
 
 \end_inset
@@ -521,7 +557,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma gestione notifiche.pdf
+	filename img/diagramma_gestione_notifiche.pdf
 	scale 70
 
 \end_inset
