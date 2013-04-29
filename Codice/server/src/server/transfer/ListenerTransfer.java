@@ -4,27 +4,20 @@ import java.util.Collection;
 import javolution.util.FastList;
 import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
-import org.jwebsocket.kit.RawPacket;
 import org.jwebsocket.kit.WebSocketServerEvent;
 import org.jwebsocket.listener.WebSocketServerTokenListener;
 import org.jwebsocket.server.TokenServer;
 import server.ServerMyTalk;
 import server.functionmanager.Converter;
-import server.shared.Tutorials;
 
 abstract class ListenerTransfer implements WebSocketServerTokenListener{
-	protected TokenServer tokenServer;
-	protected Collection<WebSocketConnector> connectedClients=new FastList<WebSocketConnector>().shared();
-	private Tutorials tutorials;
+	static protected TokenServer tokenServer;
+	static protected Collection<WebSocketConnector> connectedClients=new FastList<WebSocketConnector>().shared();
 	protected Converter converter =new Converter();
 	
 	public void setTokenServer(ServerMyTalk server) {
         tokenServer=server.getTokenServer();
     }
-	
-	protected void setTutorials(Tutorials tutorials){
-		this.tutorials=tutorials;
-	}
 	
     public void broadcastToAll(WebSocketPacket packet) {
     	for (WebSocketConnector lConnector : connectedClients) {
@@ -33,24 +26,20 @@ abstract class ListenerTransfer implements WebSocketServerTokenListener{
     }
     
     public WebSocketConnector getConnector(String IP){
-    	for (WebSocketConnector connector : connectedClients) {
-	    		if(connector.getRemoteHost().toString().equals(IP))
-	    			return connector;
+    	WebSocketConnector connector = null;
+    	for (WebSocketConnector lConnector : connectedClients) {
+	    		if(lConnector.getRemoteHost().toString().equals(IP))
+	    			connector= lConnector;
     	}
-    	return null;
+    	return connector;
     }
         
     public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){
     	tokenServer.sendPacket(connector, packet); 
     }
     
-    public void processOpened(WebSocketServerEvent event) {
-    	connectedClients.add(event.getConnector());
-    	WebSocketPacket wspacket = new RawPacket(converter.convertTutorials(tutorials.getTutorials(), "\"type\":\"tutorials\","));
-    	event.sendPacket(wspacket);
-    }
-    
-    public void processClosed(WebSocketServerEvent event) {
-    	connectedClients.remove(event.getConnector());
-    }
+    public void processOpened(WebSocketServerEvent event) {}    
+    public void processClosed(WebSocketServerEvent event) {}
+    public void processPacket(WebSocketServerEvent event, WebSocketPacket packet){}
+
 }

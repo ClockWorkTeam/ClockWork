@@ -3,7 +3,6 @@ package server.transfer;
 import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
 import org.jwebsocket.kit.RawPacket;
-import org.jwebsocket.kit.WebSocketServerEvent;
 import org.jwebsocket.listener.WebSocketServerTokenEvent;
 import org.jwebsocket.token.Token;
 import server.shared.RecordMessage;
@@ -51,6 +50,4 @@ public class RecordMessageTransfer extends ListenerTransfer{
    		}
 	}
 
-
-	public void processPacket(WebSocketServerEvent arg0, WebSocketPacket arg1) {}
 }

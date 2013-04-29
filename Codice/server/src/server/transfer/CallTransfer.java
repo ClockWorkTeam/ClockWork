@@ -3,7 +3,6 @@ package server.transfer;
 import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
 import org.jwebsocket.kit.RawPacket;
-import org.jwebsocket.kit.WebSocketServerEvent;
 import org.jwebsocket.listener.WebSocketServerTokenEvent;
 import org.jwebsocket.token.Token;
 
@@ -21,7 +20,7 @@ public class CallTransfer extends ListenerTransfer {
    		}else if(type.equals("answeredCall")){
   		  	WebSocketConnector connector = getConnector(token.getString("ip"));
    	    	if(connector!= null){
-   	    		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"response\":\"true\"}");
+   	    		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"true\"}");
    	    		sendPacket(wspacket,connector);
    	    	}   			
    		}else if(type.equals("offer")){
@@ -39,7 +38,4 @@ public class CallTransfer extends ListenerTransfer {
    		}	
     }
 
-
-    public void processPacket(WebSocketServerEvent event, WebSocketPacket packet) {    
-    }
 }
