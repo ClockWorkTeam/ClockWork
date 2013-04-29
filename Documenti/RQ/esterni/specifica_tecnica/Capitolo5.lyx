@@ -183,8 +183,7 @@ AuthenticationView
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
-<<<<<<< HEAD
- la classe
+La classe
 \series bold
  
 \family typewriter
@@ -192,14 +191,6 @@ AuthenticationView
 \family default
 \series default
  comunicherà con
-=======
- la classe comunicherà con
-\family typewriter
-\series bold
-:
->>>>>>> b3cb9e114c518af413176fbef7567cb7b57f49e9
-\end_layout
-
 \begin_deeper
 \begin_layout Itemize
 \noindent
@@ -210,9 +201,9 @@ mytalk.client.communication.AuthenticationCommunication
 \family default
 \series default
  per poter verificare se le credenziali inserite siano corrette o meno e
- quindi effettuare l'accesso al sistema o mostrare i relativi messaggi di
- errore e per inviare i dati per effettuare la registrazione dell'utente
- presso server
+ quindi effettuare l'accesso al sistema, o mostrare i relativi messaggi di
+ errore, e per inviare i dati per effettuare la registrazione dell'utente
+ presso il server
 \end_layout
 
 \begin_layout Itemize
@@ -223,7 +214,7 @@ mytalk.client.communication.AuthenticationCommunication
 mytalk.client.view.SideView
 \family default
 \series default
- generandola una volta fatto l'accesso e distruggendola una volta volta
+ generandola una volta fatto l'accesso e distruggendola una volta
  chiusa la sessione
 \end_layout
 
@@ -234,8 +225,8 @@ mytalk.client.view.SideView
 mytalk.client.model.UserModel
 \family default
 \series default
- per la conservazione delle credenziali dell'utente una volta effettuato
- l'accesso al servizio
+ per la conservazione delle credenziali dell'utente una volta effettuata
+ l''autenticazione
 \end_layout
 
 \end_deeper
@@ -245,8 +236,8 @@ mytalk.client.model.UserModel
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe rende disponibile all'utente una form per inserire i propri dati
- ed i pulsanti per scegliere l'operazione desiderata, fa in modo che vengano
+ la classe rende disponibile all'utente un form per inserire i propri dati
+ ed i pulsanti per scegliere l'operazione desiderata; fa in modo che vengano
  gestiti gli eventi per l'autenticazione, la registrazione e la modifica
  dei dati dell'utente e, in caso di corretta autenticazione, visualizza
  la lista dei contatti e si modifica per rispecchiare il fatto che ora l'utente
@@ -410,7 +401,7 @@ Attività svolte e dati trattati:
  la classe fa in modo che venga visualizzata una lista di utenti registrati
  presso il server ed il loro stato attuale (online/offline), inoltre presenterà
  i pulsanti relativi alla chiamata verso un indirizzo IP e alla chiamata
- verso più di un utente che, se premuti, dovranno visualizzare le opzioni
+ verso più di un utente che, se premuti, dovranno mostrare le opzioni
  corrette
 \end_layout
 
@@ -475,9 +466,9 @@ mytalk.client.view.ChatView
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe visualizza lo username di un singolo utente registrato sul server
- e, se lo si seleziona, mostra le funzionalità di  comunicazione disponibili
- per quello specifico utente
+ la classe mostra lo username di un singolo utente registrato sul server
+ e, se lo si seleziona, mostra le funzionalità di comunicazione disponibili
+ con quello specifico utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -533,7 +524,8 @@ per generare la vista che consentirà la comunicazione audio e video tra
 mytalk.client.view.RecordMessageView
 \family default
 \series default
- per generare la vista che consentirà di registrare un videomessaggio
+ per generare la vista che consentirà di registrare un messaggio differito,
+ che sarà solo audio o sia audio che video
 \end_layout
 
 \end_deeper
