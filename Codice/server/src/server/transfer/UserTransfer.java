@@ -1,3 +1,4 @@
+
 package server.transfer;
 
 import org.jwebsocket.api.WebSocketConnector;
@@ -15,17 +16,15 @@ public class UserTransfer extends ListenerTransfer{
 		this.userManager=userManager;
 	}
 	
-	@Override
 	public void processToken(WebSocketServerTokenEvent arg0, Token arg1) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+
 	public void processPacket(WebSocketServerEvent arg0, WebSocketPacket arg1) {
 		// TODO Auto-generated method stub
 		
 	}
 
-    public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){}
 }
