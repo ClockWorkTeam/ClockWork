@@ -12,7 +12,7 @@
    |      |               |           |
 -->
 <% if(dom=="sidebar"){%>
-<li class="contact"><%= username %><% if(ip == "/0.0.0.0"){ %> (offline) <% } else { %> (online) <% } %></li>
+<li class="contact <% if(ip == "0"){ %> offline <% } else { %> online <% } %>"><%= username %></li>
 <%}else{%>
 <li><input type="checkbox" name=<%=username %> id=<%=username %> > <%=username %></li>
 <%}%>
