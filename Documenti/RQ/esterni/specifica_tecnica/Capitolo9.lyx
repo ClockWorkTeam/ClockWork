@@ -83,7 +83,7 @@ PROGETTO}
 \end_layout
 
 \begin_layout Subsection
-Diagramma delle attività di un utente non autenticato
+Utente non autenticato
 \end_layout
 
 \begin_layout Standard
@@ -176,7 +176,7 @@ reference "fig:Diagramma-della-attività-utente-non-autenticato"
 \end_layout
 
 \begin_layout Subsection
-Sottoattività di Registrazione
+Registrazione
 \end_layout
 
 \begin_layout Standard
@@ -244,7 +244,7 @@ reference "fig:Diagramma-delle-attività-registrazione"
 \end_layout
 
 \begin_layout Subsection
-Sottoattività di Autenticazione
+Autenticazione
 \end_layout
 
 \begin_layout Standard
@@ -285,10 +285,6 @@ name "fig:Diagramma-delle-attività-autenticazione"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -314,7 +310,51 @@ reference "fig:Diagramma-delle-attività-autenticazione"
 \end_layout
 
 \begin_layout Subsection
-Sottoattività di Modifica dati account
+Utente autenticato
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagramma_attività_utente_autenticato.pdf
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Diagramma delle attività che mostra le operazioni a disposizione di un utente
+ autenticato
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modifica dati account
 \end_layout
 
 \begin_layout Standard
@@ -374,35 +414,26 @@ reference "fig:Diagramma-delle-attività-modifica-dati"
 \end_inset
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
- ha deciso di modificare le proprie credenziali.
- Il modulo di modifica dati prevede la possibilità di inserire un nuovo
- nome, cognome o password.
- Prima di effettuare eventuali modifiche ai dati, verrà fatto un controllo
- dell'attuale password per questioni di sicurezza.
- In caso di esito negativo verrà richiesto di reinserire i dati, in caso
- contrario saranno inviati al server, che aggiornerà i campi richiesti.
+ ha deciso di modificare le proprie credenziali (i dati che si potranno
+ cambiare saranno il nome, il cognome e/o la password).
+ 
 \end_layout
 
 \begin_layout Standard
-\noindent
-Una volta inseriti uno o più campi, saranno salvati i nuovi dati nel server.
-\end_layout
-
-\begin_layout Paragraph*
 Prima di effettuare eventuali modifiche ai dati, per motivi di sicurezza,
  verrà richiesto di inserire la password corrente.
- In caso la password inserita sia errata viene richiesto nuovamente di inserirla.
-In caso contrario, vengono passati al server i dati da cambiare.
- A questo punto si cerca di modificare i campi presenti nel server coi dati
- passati e, nel caso in cui le modifiche non vengono effettuate a causa
- di un errore (come per esempio un campo dato non valido), viene segnalato
- un errore e viene richiesto l'inserimento dei dati.
- Se le modifiche avvengono con successo, il server invia un messaggio che
- attesta la riuscita della modifica dei dati.
+ In caso la password inserita sia errata verrà richiesto nuovamente di inserirla.
+ In caso contrario, vengono passati al server i dati da cambiare.
+ A questo punto si cercherà di modificare i campi presenti nel server coi
+ dati passati e, nel caso in cui le modifiche non avvengano a causa di un
+ errore (come per esempio un campo dato non valido), verrà segnalato un
+ errore e verrà richiesto l'inserimento dei dati.
+ Se invece le modifiche avverranno con successo, il server invia un messaggio
+ che attesta la riuscita della modifica dei dati.
 \end_layout
 
 \begin_layout Subsection
-Sottoattività di Chiamata IP
+Contattare un indirizzo IP
 \end_layout
 
 \begin_layout Standard
@@ -428,7 +459,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma delle attività di una chiamata IP 
+Diagramma delle attività per comunicare con un indirizzo IP 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Diagramma-delle-attività-chiamata-IP"
@@ -458,16 +489,29 @@ reference "fig:Diagramma-delle-attività-chiamata-IP"
 \end_inset
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
- ha deciso di effettuare una chiamata IP.
- Una volta selezionato un indirizzo IP, l'utente avrà la possibilità di
- mandare messaggi di chat con la persona desiderata e contemporaneamente
- effettuare una chiamata audio o video.
- Durante la chiamata sarà possibile cambiare modalità, ovvero passare da
- chiamata audio a video e viceversa, o terminare la chiamata in corso.
+ ha deciso di effettuare una chiamata tramite l'inserimento dell'indirizzo
+ IP.
+ Una volta inserito l'IP, quest'ultimo verrà mandato al server che controllerà
+ la sua validità.
+ Se l'indirizzo non è valido, verrà mostrato un messaggio d'errore e sarà
+ richiesto di inserire nuovamente l'IP.
+ Nel caso contrario, verrà mandata la notifica di richiesta di chiamata
+ al destinatario e, una volta che accetta la richiesta, viene aperto il
+ canale di comunicazione tra i soggetti.
+ L'utente avrà la possibilità di mandare messaggi di chat con la persona
+ desiderata e contemporaneamente effettuare una chiamata.
+ Per guardare le funzionalità che comporta la chiamata vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Chiamata"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
-Sottoattività di Servizi contatto
+Contattare un utente
 \end_layout
 
 \begin_layout Standard
@@ -526,24 +570,147 @@ reference "fig:Diagramma-delle-attività-servizi-contatto"
 \end_inset
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
- ha deciso di selezionare uno dei servizi offerti per gli utenti autenticati.
- Una volta selezionato un contatto dalla lista, l'utente avrà la possibilità
- di mandare messaggi di chat con la persona desiderata e contemporaneamente
- effettuare una chiamata audio o video, condividere lo schermo o mandare
- un messaggio differito.
- Come per la chiamata attraverso indirizzo IP, sarà possibile cambiare modalità
- o terminare la chiamata in corso, ed in più sarà possibile condividere
- lo schermo con la persona chiamata e registrare la chiamata.
- Qualora l'utente abbia scelto di condividere lo schermo e necessitasse
- anche di poter parlare con l'utente desiderato avrà la possibilità di attivare
- la chiamata audio o video mentre condivide lo schermo.
- Se l'utente infine decide di mandare un messaggio differito al contatto
- selezionato, avrà la possibilità di registrare un messaggio e, nel caso
- il messaggio vada bene, di inviarlo.
+ ha deciso di selezionare un contatto.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Se l'utente selezionato risultasse offline l'unico servizio messo a disposizione
+ è quello di registrare un messaggio e inviarglielo (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Registrazione-messaggio"
+
+\end_inset
+
+).
+ Nel caso in cui risultasse online, le operazioni messe a disposizione sono
+ l'invio di messaggi testuali (sempre attivo), la registrazione di messaggi
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Registrazione-messaggio"
+
+\end_inset
+
+) o la chiamata (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Chiamata"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
-Diagramma di Gestione delle notifiche
+Chiamata 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Chiamata"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagramma_chiamata.pdf
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Diagramma delle attività della chiamata
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Registrazione messaggio
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Registrazione-messaggio"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagramma_registrazione_messaggio.pdf
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Diagramma delle attività della registrazione di un messaggio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gestione delle notifiche
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Gestione-delle-notifiche"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
