@@ -19,17 +19,19 @@
 		<button id="call">Chiama</button>
 		<button id="video">Videochiama</button>
 		<input type="checkbox" name="record" id="record" >Registra la chiamata
+
 	<% }else if (From == "Conf") { %>
-		<ul id="optionContacts">
-	
-		</ul>
+		<ul id="optionContacts"></ul>
 	<% } else {%>
-	  <div id="empty"></div>
+				<div id="empty"></div>
 	<% } %>
+	
 <% } else { %>
 		<h2><%= username %></h2>
 		<button id= "sendVideoText">Invia un videomessaggio</button> 
-		<button id="call">Chiama</button>
-		<button id="video">Videochiama</button>
-		<input type="checkbox" name="record" id="record" >Registra la chiamata
+		<% if(IP != "0"){ %> 
+			<button id="call">Chiama</button>
+			<button id="video">Videochiama</button>
+			<input type="checkbox" name="record" id="record" >Registra la chiamata
+		<% } %>
 <% } %>
