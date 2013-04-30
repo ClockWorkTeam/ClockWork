@@ -21,9 +21,8 @@ define(['connection',
 	Connection.addEventListener("message", onNotification, false);
 	function onNotification(str){
 		var response = JSON.parse(str.data);
-		alert('è arrivato un messaggio' + response);
 		if (response.type === 'call'){
-			var notificationView= new NotificationView(response.ip, response.typecall);
+			var notificationView= new NotificationView({CallerIp: response.ip, typeCall: response.typecall});
 		}
 	};
 
