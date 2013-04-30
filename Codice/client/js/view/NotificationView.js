@@ -3,9 +3,10 @@ define([
  'underscore',  
  'backbone',
  'view/CallView',
+ 'view/ChatView',
  'communication/NotificationCommunication',
  'text!templates/NotificationTemplate.html'
-], function($, _, Backbone, CallView, NotificationCommunication, NotificationTemplate){
+], function($, _, Backbone, CallView, ChatView, NotificationCommunication, NotificationTemplate){
   var NotificationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -34,6 +35,7 @@ define([
       
     accept : function(){
 		var call= new CallView();	
+		var chat = new ChatView({ip:this.options.CallerIp});
 		call.render(false, this.options.typeCall,this.options.CallerIp);
 		},
     
