@@ -48,7 +48,7 @@ define([
 	 //visualizza i messaggi
 	 this.putMessages();
 	 //aggiorna il template
-     $(this.el).html(this.ChatTemplate({messages: ''}))
+     $(this.el).html(this.ChatTemplate({messages: '', ip: this.options.ip}))
     
   },
   
