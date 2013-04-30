@@ -44,13 +44,14 @@ define(['connection'], function(Connection){
 			}
 		}
 	},
-	
+	var localStream;
+	var peerConn;
 	//funzione che si occupa di inizializzare la chiamata
 	startCall: function (iptocall, isCaller, typecall){
 		var sourcevid = document.getElementById('sourcevid');
 		var remotevid = document.getElementById('remotevid');
-		var localStream = null;
-		var peerConn = null;
+		localStream = null;
+		peerConn = null;
 		var started = false;
 		var description=null;
 		var logg = function(s) { console.log(s); };
