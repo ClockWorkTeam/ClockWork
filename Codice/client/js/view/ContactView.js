@@ -51,7 +51,7 @@ define([
       if(this.currentChat){
         this.currentChat.close();
       }
-      this.currentChat = new ChatView({model: TextMessageModel});
+      this.currentChat = new ChatView({model: TextMessageModel, ip: this.model.toJSON().IP});
       this.currentChat.render();
       $('#main').append(this.currentChat.el);
     }
