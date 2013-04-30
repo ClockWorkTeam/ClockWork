@@ -36,26 +36,54 @@ html, body{
  padding:1em;
  border-right:  0.1em solid #000000;
 }
-ul{
- list-style:none inside;
- padding:0.1em;
+
+ ul {
+  list-style: none;
+  padding:0;
+  margin:0;
 }
+
+li { 
+  padding-left: 1em; 
+  text-indent: -.7em;
+}
+
+.offline:before {
+  content: "■ ";
+  color: #DC143C; 
+}
+
+.online:before {
+  content: "■ ";
+  color: #00FF00; 
+}
+
+
 .contact{
  padding: 0 1em 0 1em;
  margin:0.5em;
  color:#0011dd;
 }
-#content{
+#main{
  padding:1em;
  float:right;
  width:78%;
+}
+
+#main #chat{
+ clear:both;
 }
 #content #ip{
  display:block;
  margin:1em;
 }
- #live_video{
-  top: 0px;
-        width: 20%;
-        left: 0px;
-      }
+
+#remotevid{
+ 
+	width:55%;
+}
+
+#sourcevid{
+	
+	width: 20%;
+}
