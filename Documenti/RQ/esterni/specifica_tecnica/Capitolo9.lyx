@@ -140,43 +140,52 @@ reference "fig:Diagramma-della-attività-utente-non-autenticato"
 
  spiega le operazioni che un utente non autenticato potrà svolgere per interagir
 e con il sistema.
- Una volta aperta la pagina web del programma 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-PROGETTO}
-\end_layout
+ Una volta aperta la pagina web l'utente potrà decidere di guardare i video
+ tutorial, contattare direttamente un utente tramite l'inserimento dell'indirizz
+o IP (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Contattare-un-indirizzo"
 
 \end_inset
 
- l'utente potrà decidere di guardare i video tutorial riguardante il funzionamen
-to del programma, contattare direttamente un utente se è a conoscenza del
- suo indirizzo IP, iscriversi al sito e, nel caso caso in cui la registrazione
- sia già stata effettuata, effettuare l'accesso con le proprie credenziali.
- Una volta effettuata l'autenticazione, l'utente avrà a disposizione le
- funzionalità offerte per l'utente autenticato (vedasi sezione 
+), iscriversi al sito (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Diagramma-della-attività-utente-non-autenticato"
+reference "sub:Registrazione"
+
+\end_inset
+
+) ed effettuare l'accesso con le proprie credenziali (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Autenticazione"
 
 \end_inset
 
 ).
-\end_layout
+ Una volta effettuata l'autenticazione, l'utente avrà a disposizione le
+ funzionalità offerte per l'utente autenticato (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Utente-autenticato"
 
-\begin_layout Standard
-\noindent
-******Una volta effettuato l'accesso all'applicazione, l'utente avrà la
- possibilità di modificare le proprie credenziali e di selezionare uno dei
- servizi offerti per gli utenti autenticati.
+\end_inset
+
+).
+ Si fa presente che una volta che una registrazione va a buon fine, viene
+ in automatico effettuata l'autenticazione.
 \end_layout
 
 \begin_layout Subsection
 Registrazione
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Registrazione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -233,18 +242,38 @@ reference "fig:Diagramma-delle-attività-registrazione"
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
  ha deciso di iscriversi al prodotto.
- Il modulo di registrazione prevede l'immissione obbligatoria di un'username
- e di una password, ripetuta due volte per controllare che la password inserita
- sia corretta.
- L'utente potrà inoltre, se lo desidera, inserire il proprio nome e cognome.
- Una volta inseriti tutti campi obbligatori ed eventuali opzionali, se l'account
- non risulta in uso, l'utente sarà registrato presso il server e autenticato
+ Il modulo di registrazione prevede l'inserimento di una username, di una
+ password, del nome e del cognome dell'utente.
+ L'inserimento della username e della password sono obbligatori, mentre
+ l'nserimento del nome e del cognome sono facoltativi.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Il modulo di registrazione richiede di ripetere due volte la password per
+ verificare che quella inserita sia corretta.
+ In caso le due password non fossero uguali il sistema visualizzerà l'errore
+ e richiederà nuovamente l'inserimento dei dati.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Una volta inseriti tutti campi obbligatori ed eventuali opzionali, se l'account
+ non risulta già in uso, l'utente sarà registrato presso il server e autenticato
  automaticamente, altrimenti verrà richiesto di reinserire almeno i campi
  obbligatori.
 \end_layout
 
 \begin_layout Subsection
 Autenticazione
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Autenticazione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -310,7 +339,14 @@ reference "fig:Diagramma-delle-attività-autenticazione"
 \end_layout
 
 \begin_layout Subsection
-Utente autenticato
+Utente autenticato 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Utente-autenticato"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -323,7 +359,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma_attività_utente_autenticato.pdf
+	filename img/diagramma_attività_utente_autenticato.pdf
 	scale 60
 
 \end_inset
@@ -344,10 +380,6 @@ Diagramma delle attività che mostra le operazioni a disposizione di un utente
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -355,6 +387,13 @@ Diagramma delle attività che mostra le operazioni a disposizione di un utente
 
 \begin_layout Subsection
 Modifica dati account
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Modifica-dati-account"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -395,10 +434,6 @@ name "fig:Diagramma-delle-attività-modifica-dati"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -424,16 +459,23 @@ Prima di effettuare eventuali modifiche ai dati, per motivi di sicurezza,
  verrà richiesto di inserire la password corrente.
  In caso la password inserita sia errata verrà richiesto nuovamente di inserirla.
  In caso contrario, vengono passati al server i dati da cambiare.
- A questo punto si cercherà di modificare i campi presenti nel server coi
- dati passati e, nel caso in cui le modifiche non avvengano a causa di un
- errore (come per esempio un campo dato non valido), verrà segnalato un
- errore e verrà richiesto l'inserimento dei dati.
- Se invece le modifiche avverranno con successo, il server invia un messaggio
- che attesta la riuscita della modifica dei dati.
+ A questo punto il server cercherà di modificare i campi presenti coi dati
+ passati e, nel caso in cui le modifiche non avverranno a causa di un errore
+ (come per esempio un campo dato non valido), il sistema esporrà un errore
+ e richiederà nuovamente l'inserimento dei dati.
+ Se invece le modifiche avverranno con successo, il server invierà un messaggio
+ che attesterà la riuscita della modifica dei dati.
 \end_layout
 
 \begin_layout Subsection
-Contattare un indirizzo IP
+Contattare un indirizzo IP 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Contattare-un-indirizzo"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -490,11 +532,21 @@ reference "fig:Diagramma-delle-attività-chiamata-IP"
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
  ha deciso di effettuare una chiamata tramite l'inserimento dell'indirizzo
- IP.
- Una volta inserito l'IP, quest'ultimo verrà mandato al server che controllerà
- la sua validità.
- Se l'indirizzo non è valido, verrà mostrato un messaggio d'errore e sarà
- richiesto di inserire nuovamente l'IP.
+ IP
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Chiamata che si potrà effettuare sia da autenticati che da non autenticati.
+\end_layout
+
+\end_inset
+
+.
+ Una volta inserito l'IP, quest'ultimo verrà mandato al server che ne controller
+à la validità.
+ Se l'indirizzo non sarà valido, verrà mostrato un messaggio d'errore e
+ sarà richiesto di inserire nuovamente l'IP.
  Nel caso contrario, verrà mandata la notifica di richiesta di chiamata
  al destinatario e, una volta che accetta la richiesta, viene aperto il
  canale di comunicazione tra i soggetti.
@@ -512,6 +564,13 @@ reference "sub:Chiamata"
 
 \begin_layout Subsection
 Contattare un utente
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Contattare-un-utente"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -551,10 +610,6 @@ name "fig:Diagramma-delle-attività-servizi-contatto"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -570,14 +625,14 @@ reference "fig:Diagramma-delle-attività-servizi-contatto"
 \end_inset
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
- ha deciso di selezionare un contatto.
+ ha deciso di contattare un utente registrato presso il server.
  
 \end_layout
 
 \begin_layout Standard
 \noindent
 Se l'utente selezionato risultasse offline l'unico servizio messo a disposizione
- è quello di registrare un messaggio e inviarglielo (vedasi sezione 
+ sarà quello di registrare un messaggio e inviarglielo (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Registrazione-messaggio"
@@ -585,9 +640,8 @@ reference "sub:Registrazione-messaggio"
 \end_inset
 
 ).
- Nel caso in cui risultasse online, le operazioni messe a disposizione sono
- l'invio di messaggi testuali (sempre attivo), la registrazione di messaggi
- (vedasi sezione 
+ Nel caso in cui risultasse online, le operazioni messe a disposizione saranno
+ la registrazione di messaggi (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Registrazione-messaggio"
@@ -602,6 +656,8 @@ reference "sub:Chiamata"
 \end_inset
 
 ).
+ Inoltre, contemporaneamente alle opzioni elencate prima, si potranno inviare
+ dei messaggi testuali.
 \end_layout
 
 \begin_layout Subsection
@@ -634,7 +690,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma delle attività della chiamata
+Diagramma delle attività della chiamata 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagramma-delle-attività-chiamata"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -642,13 +705,35 @@ Diagramma delle attività della chiamata
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Il diagramma rappresentato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramma-delle-attività-chiamata"
+
+\end_inset
+
+ spiega le operazioni che un utente potrà svolgere quando deciderà di attivare
+ una chiamata.
+\end_layout
+
+\begin_layout Standard
+Questo potrà scegliere se avviare una chiama audio o video.
+\end_layout
+
+\begin_layout Standard
+L'utente potrà, una volta avviata una chiamata, cambiare la tipologia (da
+ audio a video e viceversa) senza interrompere la chiamata.
+\end_layout
+
+\begin_layout Standard
+Inoltre l'utente potrà terminare la chiamata quando vuole (il termine della
+ chiamata non implica che non si potranno scrivere messaggi testuali).
 \end_layout
 
 \begin_layout Subsection
@@ -670,10 +755,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename img/diagramma_registrazione_messaggio.pdf
@@ -685,7 +766,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Diagramma delle attività della registrazione di un messaggio
+Diagramma delle attività della registrazione di un messaggio 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagramma-delle-attività-registrazione-messaggio"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -693,13 +781,33 @@ Diagramma delle attività della registrazione di un messaggio
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Il diagramma rappresentato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramma-delle-attività-registrazione-messaggio"
+
+\end_inset
+
+ spiega le operazioni che un utente può effettuare quando decide di registrare
+ un messaggio e inviarlo ad un utente registrato presso il server (non sarà
+ possibile inviare un messaggio di questa tipologia ad un utente che non
+ è registrato).
+\end_layout
+
+\begin_layout Standard
+Il mittente registrerà il messaggio e, successivamente, potrà confermare
+ o annullare il messaggio.
+\end_layout
+
+\begin_layout Standard
+Se il messaggio verrà annullato, sarà eliminato, contrariamente, se verrà
+ confermato, verrà inviato al destinatario.
 \end_layout
 
 \begin_layout Subsection
@@ -751,10 +859,6 @@ name "fig:Diagramma-delle-attività-gestione-notifiche"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -771,11 +875,16 @@ reference "fig:Diagramma-delle-attività-gestione-notifiche"
 
  spiega le operazioni che un utente potrà svolgere una volta che quest'ultimo
  riceve una notifica dal server.
- Se la notifica riguarda una chiamata in arrivo, l'utente potrà scegliere
- se accettare e avviare la chiamata o rifiutarla.
- Se la notifica riguarda un file in arrivo l'utente potrà scegliere se accettare
- e scaricare il file o rifiutarlo.
- Infine se la notifica riguarda un messaggio differito in arrivo, l'utente
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Se la notifica riguarderà una chiamata in arrivo, l'utente potrà scegliere
+ se accettare (e quindi avviare la chiamata) o rifiutarla.
+ Se la notifica riguarderà un file in arrivo l'utente potrà scegliere se
+ accettare (e quindi scaricare) il file o rifiutarlo.
+ Infine, se la notifica riguarda un messaggio differito in arrivo, l'utente
  potrà scegliere se visualizzare il messaggio o di rifiutarlo.
 \end_layout
 
