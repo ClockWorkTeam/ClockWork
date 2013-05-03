@@ -13,8 +13,10 @@
 -->
 <% if(typeof From !="undefined"){ %>
 	<% if(From =="IP"){ %>
+	<div class="function">
 		<label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
 		<input type="text" name="ip" id="ip" />
+	</div>
 		<button id= "startChat">Inizia chat</button>  
 		<button id="call">Chiama</button>
 		<button id="video">Videochiama</button>
@@ -27,7 +29,10 @@
 	<% } %>
 	
 <% } else { %>
+	 <div class="function">
 		<h2><%= username %></h2>
+		<% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%>
+	 </div>
 		<button id= "sendVideoText">Invia un videomessaggio</button> 
 		<% if(IP != "0"){ %> 
 			<button id="call">Chiama</button>
