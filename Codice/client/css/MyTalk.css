@@ -13,73 +13,104 @@
  */
 
 html, body{
- margin:0.2em; 
- padding:0; 
+ margin:0; 
+ padding:0;
+ height:100%; 
+ font-family: serif;
 }
-#header{
- padding-left:1em;
- padding-bottom:2em;
- border-bottom: 0.1em solid #000000;
-}
+
 #header h1{
+ margin:0.5em;
  text-align:center;
+ color:#210B61;
+ font-size:3em;
 }
 #header a{
  position: absolute;
  top:1em;
  right:1em;
 }
+#authentication{
+ padding:0.1em;
+ padding-left:1em;
+ border:0.1em solid #B18904;
+ background-color:#CEE3F6;
+}
 #sidebar{
  float:left;
- width:10%;
+ width:12%;
+ height:78%;
  margin:0;
- padding:1em;
- border-right:  0.1em solid #000000;
+ padding:0;
+ border-right:  0.1em solid #210B61;
 }
-
- ul {
+#sidebar #callIP{
+ margin: 2em 2em 1em 2em; 
+}
+#conference{
+ margin: 1em 2.5em 1em 2.5em; 
+}
+#contacts{
+ height:inherit;
+ overflow:scroll;
+ margin:1em;
+ padding:0em;
+ border: 0.1em solid #B18904;
+}
+ul {
   list-style: none;
   padding:0;
   margin:0;
 }
-
 li { 
   padding-left: 1em; 
   text-indent: -.7em;
 }
-
-.offline:before {
-  content: "■ ";
-  color: #DC143C; 
-}
-
-.online:before {
-  content: "■ ";
-  color: #00FF00; 
-}
-
-
 .contact{
  padding: 0 1em 0 1em;
  margin:0.5em;
  color:#0011dd;
 }
+.offline:before {
+  content: "■ ";
+  color: #DC143C; 
+}
+.online:before {
+  content: "■ ";
+  color: #00FF00; 
+}
+
 #main{
- padding:1em;
  float:right;
- width:78%;
+ width:80%;
+ padding:2em;
+ padding-top:2em;
+/* text-align:center;*/
+}
+#main #content .function{
+
+/*	background-color:#DBA901;
+	color:#210B61;*/
+	margin:0.5em 0 2em 0;
+}
+#main #content h2{
+	display:inline;
+}
+#main #content button{
+  padding:0.5em;
+}
+#main #chat button{
+ padding:0.5em;
 }
 
 #main #chat{
  clear:both;
-}
-#content #ip{
- display:block;
- margin:1em;
+ margin-top:1em;
 }
 
+
 #remotevid{
- 
+	
 	width:55%;
 }
 
@@ -87,3 +118,4 @@ li {
 	
 	width: 20%;
 }
+
