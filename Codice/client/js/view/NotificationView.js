@@ -30,7 +30,13 @@ define([
      
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
-        $(this.el).html(this.template({Ip : this.options.CallerIp}));
+		if(document.getElementById('content'))
+			$(this.el).html(this.template({Ip : this.options.CallerIp}));
+		else{
+			$('#main').prepend(this.el);
+			$(this.el).html(this.template({Ip : this.options.CallerIp}));
+		}
+			
     },
       
     accept : function(){

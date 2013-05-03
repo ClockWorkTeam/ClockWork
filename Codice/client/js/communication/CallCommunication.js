@@ -15,18 +15,6 @@
 //classe che si occupa di gestire l'avvio della comunicazione tra due utenti
 define(['connection'], function(Connection){
 
-  //metodo per la gestione della risposta ricevuta dall'utente chiamato
-  function onAnswer(evt){
-    var response = JSON.parse(evt.data);
-    if(response.type==='answeredCall'){
-      var isCaller=true;
-      if(response.answer==='true'){
-        call.startCall(iptocall, isCaller, typecall, call, callView)
-        Connection.removeEventListener("message",onAnswer,false);
-      }
-    }
-  };
-
   return {
 	
     //funzione che inoltra la richiesta di chiamata al server
@@ -35,6 +23,18 @@ define(['connection'], function(Connection){
       Connection.send(JSON.stringify(credentials));
       //aggiunta del listener per la ricezione della risposta dell'utente chiamato
       Connection.addEventListener("message", onAnswer, false);
+      //metodo per la gestione della risposta ricevuta dall'utente chiamato
+      var call=this;
+	  function onAnswer(evt){
+		var response = JSON.parse(evt.data);
+		if(response.type==='answeredCall'){
+		  var isCaller=true;
+		  if(response.answer==='true'){
+			call.startCall(iptocall, isCaller, typecall, call, callView)
+			Connection.removeEventListener("message",onAnswer,false);
+		  }
+		}
+	  }
     },
     
     //funzione che invia al server la risposta dell'utente chiamato
@@ -52,6 +52,9 @@ define(['connection'], function(Connection){
     iptoend:'',
     
     remotevid:'',
+    
+    onMessaggeListener:'',
+    
   
     createPeerConnection : function() {
       // Quando viene inserito uno stream nel peerconnection si attiva l'evento che visualizza lo stream dell'altro utente
@@ -125,6 +128,7 @@ define(['connection'], function(Connection){
       var started = false;
       var description=null;
       Connection.addEventListener("message", onMessage, false);
+      
       function onMessage(evt){
         console.log("RECEIVED: "+evt.data);
         var response = JSON.parse(evt.data);
@@ -195,14 +199,15 @@ define(['connection'], function(Connection){
           call.connect(started);
         });
       }
+      onMessaggeListener=onMessage;
     },
 	
     endCall: function() {
-      peerConn.removeStream(localStream);
+		peerConn.removeStream(localStream);
         peerConn.close();
         var credentials={ip : iptoend,type : 'endcall'};
       Connection.send(JSON.stringify(credentials));
-      //Connection.removeEventListener("message", onMessage, false);
+      Connection.removeEventListener("message", onMessaggeListener, false);
     }
   
   };

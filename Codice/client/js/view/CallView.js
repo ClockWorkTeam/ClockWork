@@ -59,6 +59,8 @@ define([
   CallView.prototype.close = function(){
     this.remove();
     this.unbind();
+    alert("chiusura");
+   
   };
 
   return CallView;
