@@ -51,11 +51,13 @@ define([
   
     endCall:function(){
 	  CallCommunication.endCall();
+	  this.close();
 	}
   
   });
 
   CallView.prototype.close = function(){
+	console.log("chiusura vista");
     this.remove();
     this.unbind();
   };
