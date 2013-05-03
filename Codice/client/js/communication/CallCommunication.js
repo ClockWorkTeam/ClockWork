@@ -40,70 +40,104 @@ define(['connection'], function(Connection){
 				var isCaller=true;
 				if(response.answer==='true'){
 					call.startCall(iptocall, isCaller,typecall)
+					Connection.removeEventListener("message",onAnswer,false);
 				}
 			}
 		}
 	},
-	var localStream;
-	var peerConn;
+	localStream:'',
+	peerConn:'',
+	iptoend:'',
 	//funzione che si occupa di inizializzare la chiamata
-	startCall: function (iptocall, isCaller, typecall){
-		var sourcevid = document.getElementById('sourcevid');
-		var remotevid = document.getElementById('remotevid');
-		localStream = null;
-		peerConn = null;
-		var started = false;
-		var description=null;
-		var logg = function(s) { console.log(s); };
-		// when PeerConn is created, send setup data to peer via WebSocket
-		function onSignal(message) {
-		  logg("Sending setup signal");
-		  Connection.send(message);
-		}
 
-		// when remote adds a stream, hand it on to the local video element
-		function onRemoteStreamAdded(event) {
-			logg("Added remote stream");
+		
+
+		 createPeerConnection : function() {
+			 // Quando viene inserito uno stream nel peerconnection si attiva l'evento che visualizza lo stream dell'altro utente
+			function onRemoteStreamAdded(event) {
+			console.log("Added remote stream");
 			remotevid.src = window.webkitURL.createObjectURL(event.stream);
-		}
+			}
 
-		// when remote removes a stream, remove it from the local video element
-		function onRemoteStreamRemoved(event) {
-			peerConn.removeStream(localstream);
-			peerConn.close();
-		}
-
-		function createPeerConnection() {
+			// uando viene rimosso uno stream ndal peerconnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
+			function onRemoteStreamRemoved(event) {
+			console.log("Removed remote stream");
+			//peerConn.removeStream(localstream);
+			//peerConn.close();
+			}
+			
 			var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
 			try {
-				logg("Creating peer connection");
+				console.log("Creating peer connection");
 				peerConn = new webkitRTCPeerConnection(pcConfig);
 				peerConn.onicecandidate = onIceCandidate;
 			} catch (e) {
 				console.log("Failed to create PeerConnection, exception: " + e.message);
 			}
 			peerConn.addEventListener("addstream", onRemoteStreamAdded, false);
-			peerConn.addEventListener("removestream", onRemoteStreamRemoved, false)
-		}
+			peerConn.addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+		},
 		
 
     // start the connection upon user request
-		function connect() {
+		connect : function() {
 			if (!started && localStream ) {	  
 				createPeerConnection();	  
 				started = true;
 				peerConn.addStream(localStream);
-				logg('Adding local stream...');
+				console.log('Adding local stream...');
 				peerConn.createOffer(gotDescription);
 			} else {
 				alert("Local stream not running yet.");
 			}
-		}
+		},
 		
     // accept connection request
+		
+
+    
+		gotDescription : function(desc){
+		
+			peerConn.setLocalDescription(desc);
+			
+			var response=JSON.stringify(desc);
+			var credentials={description : response, ip : iptoend, type : 'offer'};
+			Connection.send(JSON.stringify(credentials));
+		},
+    
+		onIceCandidate: function(event) {
+			setTimeout(function(){
+				if (event.candidate) {
+				  var candidate=JSON.stringify({type : 'candidate',
+				  label: event.candidate.sdpMLineIndex,
+				  id: event.candidate.sdpMid,
+				  candidate: event.candidate.candidate});
+				  var credentials={cand : candidate, ip: iptoend, type : 'candidate'};
+						sendMessage(credentials);
+
+				} else {
+				  console.log("End of candidates.");
+				}
+			}, 5000);
+		},
+    
+		sendMessage : function(message){
+			var response = JSON.stringify(message);
+			console.log('C->S: ' + response);
+			Connection.send(response);
+		},
+		
+	startCall: function (iptocall, isCaller, typecall){
+		var sourcevid = document.getElementById('sourcevid');
+		var remotevid = document.getElementById('remotevid');
+		localStream = null;
+		peerConn = null;
+		iptoend=iptocall;
+		var started = false;
+		var description=null;
 		Connection.addEventListener("message", onMessage, false);
 		function onMessage(evt) {
-			logg("RECEIVED: "+evt.data);
+			console.log("RECEIVED: "+evt.data);
 				
 			var response = JSON.parse(evt.data);
 			if (response.type==='offer' && !isCaller)
@@ -146,48 +180,25 @@ define(['connection'], function(Connection){
 			}
 			if (response.type ==='candidate' && started) {
 				
-				logg("STARTED TRUE");
-										logg('Adding candidate...');
+				console.log("STARTED TRUE");
+				console.log('Adding candidate...');
 				var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
                 candidate:response.candidate});
 				peerConn.addIceCandidate(candidate);
+			}
+			if (response.type ==='endcall') {
+				
+				
+				peerConn.removeStream(localStream);
+				peerConn.close();
+				Connection.removeEventListener("message",onMessage,false);
+				console.log("end stream");
 			}
 				
 				
 			
     // Message returned from other side
-			logg('Processing signaling message...');
-		}
-    
-		function gotDescription(desc) {
-		
-			peerConn.setLocalDescription(desc);
-			
-			var response=JSON.stringify(desc);
-			var credentials={description : response, ip : iptocall, type : 'offer'};
-			Connection.send(JSON.stringify(credentials));
-		}
-    
-		function onIceCandidate(event) {
-			setTimeout(function(){
-				if (event.candidate) {
-				  var candidate=JSON.stringify({type : 'candidate',
-				  label: event.candidate.sdpMLineIndex,
-				  id: event.candidate.sdpMid,
-				  candidate: event.candidate.candidate});
-				  var credentials={cand : candidate, ip: iptocall, type : 'candidate'};
-						sendMessage(credentials);
-
-				} else {
-				  console.log("End of candidates.");
-				}
-			}, 5000);
-		}
-    
-		function sendMessage(message) {
-			var response = JSON.stringify(message);
-			console.log('C->S: ' + response);
-			Connection.send(response);
+			console.log('Processing signaling message...');
 		}
 		
 		if(isCaller && typecall=='video')
@@ -197,7 +208,7 @@ define(['connection'], function(Connection){
 			function(stream) {
 				sourcevid.src = window.webkitURL.createObjectURL(stream);
 				localStream=stream;		
-				connect(stream);
+				this.connect(stream);
         
 			});
 			
@@ -216,8 +227,11 @@ define(['connection'], function(Connection){
 	},
 	
 	endCall: function() {
-    peerConn.removeStream(localstream);
+	peerConn.removeStream(localStream);
     peerConn.close();
+    var credentials={ip : iptoend,type : 'endcall'};
+	Connection.send(JSON.stringify(credentials));
+	Connection.removeEventListener("message", onMessage, false);
 	}
   
   };
