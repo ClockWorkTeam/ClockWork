@@ -41,10 +41,10 @@ define([
     render: function(isCaller,type, iptoCall){
 		$(this.el).html(this.template());
 		if(isCaller===false){
-			CallCommunication.sendAnswer(type, iptoCall);
+			CallCommunication.sendAnswer(type, iptoCall, this);
 			}
 		else{
-			CallCommunication.sendCall(iptoCall,type);
+			CallCommunication.sendCall(iptoCall, type, this);
 			}
 		
     },
@@ -57,7 +57,6 @@ define([
   });
 
   CallView.prototype.close = function(){
-	console.log("chiusura vista");
     this.remove();
     this.unbind();
   };
