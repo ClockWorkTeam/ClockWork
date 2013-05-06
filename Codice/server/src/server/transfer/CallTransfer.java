@@ -41,6 +41,12 @@ public class CallTransfer extends ListenerTransfer {
    	    		wspacket=new RawPacket("{\"type\":\"endcall\"}");
     			sendPacket(wspacket,connector);
    	    	}
+   		}else if(type.equals("candidateready")){
+   			WebSocketConnector connector = getConnector(token.getString("ip"));
+   	    	if(connector!= null){
+   	    		wspacket=new RawPacket("{\"type\":\"candidateready\"}");
+    			sendPacket(wspacket,connector);
+   	    	}
    		}
     }
 

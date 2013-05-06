@@ -55,9 +55,9 @@ define(['connection'], function(Connection){
     
     onMessaggeListener:'',
     
-    readyToSend:false,
+    readyToSend:'',
     
-    messageReceived:false,
+    messageReceived:'',
     
     candidates:'',
     
@@ -117,16 +117,16 @@ define(['connection'], function(Connection){
 			} else {
 				console.log("End of candidates.");
         readyToSend=true;
-				if(messageReceived){
+				if(messageReceived==true){
 					candidates.forEach(
             function(candidate){
               Connection.send(candidate);
               console.log('C->S: ' + candidate);
             });
-				} else {
+				}
+          console.log("candidate ti invierò");
 					var message = JSON.stringify({ip: iptoend, type: 'candidateready'});
           Connection.send(message);
-        }
 			}
 		},
 
@@ -137,6 +137,9 @@ define(['connection'], function(Connection){
       localStream = null;
       peerConn = null;
       iptoend=iptocall;
+      readyToSend=false;
+      messageReceived=false;
+      candidates=[];
       var started = false;
       var description=null;
       Connection.addEventListener("message", onMessage, false);
@@ -194,9 +197,14 @@ define(['connection'], function(Connection){
         
         if (response.type ==='candidateready') {
           messageReceived=true;
+          console.log("pronto ad inviare");
           if(readyToSend){
-			  //inviare candidati
-		  }
+            candidates.forEach(
+            function(candidate){
+              Connection.send(candidate);
+              console.log('C->S: ' + candidate);
+            });
+          }
         }
         console.log('Processing signaling message...');
       }
