@@ -1524,21 +1524,28 @@ Tipo, obiettivo e funzione del componente:
 Relazioni d'uso con altre componenti:
 \series default
  la classe 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\noindent
+
 \family typewriter
 \series bold
-StatisticsModel
+- 
 \family default
 \series default
- riceverà la richiesta da
+è utilizzata da
 \family typewriter
 \series bold
  mytalk.client.view.StatisticsView
 \family default
- 
 \series default
-per l'aggiornamento delle statistiche della chiamata
+ da cui riceve la richiesta per l'aggiornamento delle statistiche della
+ chiamata
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
@@ -1573,20 +1580,22 @@ Tipo, obiettivo e funzione del componente:
 Relazioni d'uso con altre componenti:
 \series default
  la classe
-\family typewriter
-\series bold
- TextMessageModel
-\family default
-\series default
- riceverà da
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\noindent
+- è utilizzata da
 \family typewriter
 \series bold
  mytalk.client.communication.ChatCommunication
 \family default
 \series default
- i messaggi di testo inviati da e verso altri utenti e li gestirà
+ da cui riceve i messaggi di testo inviati da e verso altri utenti e li
+ memorizza
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
@@ -1624,17 +1633,20 @@ Relazioni d'uso con altre componenti:
  la classe
 \family typewriter
 \series bold
- TutorialModel
-\family default
-\series default
- riceverà richieste da parte di
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\noindent
+- è utilizzata da 
 \family typewriter
 \series bold
- mytalk.client.view.TutorialView
+mytalk.client.view.TutorialView
 \family default
 \series default
- per il caricamento di un video tutorial riguardante le funzionalità del
- prodotto 
+ da cui riceve richieste per il caricamento di un video tutorial riguardante
+ le funzionalità del prodotto 
 \begin_inset ERT
 status open
 
@@ -1647,9 +1659,10 @@ PROGETTO}
 
 \end_inset
 
- restituendone l'indirizzo del video
+ e restituisce l'indirizzo del video
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \noindent
 
