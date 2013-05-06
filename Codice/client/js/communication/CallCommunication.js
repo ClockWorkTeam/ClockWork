@@ -59,7 +59,7 @@ define(['connection'], function(Connection){
     
     messageReceived:false,
     
-    ownCandidate:'',
+    candidates:'',
     
     createPeerConnection : function() {
       // Quando viene inserito uno stream nel peerconnection si attiva l'evento che visualizza lo stream dell'altro utente
@@ -68,7 +68,7 @@ define(['connection'], function(Connection){
       remotevid.src = window.webkitURL.createObjectURL(event.stream);
       }
 
-      // uando viene rimosso uno stream ndal peerconnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
+      // Quando viene rimosso uno stream dal peerconnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
       function onRemoteStreamRemoved(event) {
         console.log("Removed remote stream");
         peerConn.removeStream(localstream);
@@ -102,36 +102,32 @@ define(['connection'], function(Connection){
 		gotDescription : function(desc){
 			peerConn.setLocalDescription(desc);
 			var response=JSON.stringify(desc);
-			var credentials={description : response, ip : iptoend, type : 'offer'};
+			var credentials={description: response, ip: iptoend, type: 'offer'};
 			Connection.send(JSON.stringify(credentials));
 		},
     
 		onIceCandidate: function(event) {
 			if (event.candidate) {
-			  var candidate=JSON.stringify({type : 'candidate',
+			  var candidate=JSON.stringify({type: 'candidate',
 			  label: event.candidate.sdpMLineIndex,
 			  id: event.candidate.sdpMid,
 			  candidate: event.candidate.candidate});
-			  var credentials={cand : candidate, ip: iptoend, type : 'candidate'};
-			  var response = JSON.stringify(credentials);
-			  console.log('C->S: ' + response);
-			  ownCandidate.push(response);
+			  var candidate = JSON.stringify({cand: candidate, ip: iptoend, type: 'candidate'});
+			  candidates.push(candidate);
 			} else {
-				readyToSend=true;
 				console.log("End of candidates.");
-				
+        readyToSend=true;
 				if(messageReceived){
-					Connection.send(response);
-				}
-				
-				else
-				{
-					var response = JSON.stringify(ip: iptoend, type : 'candidateready');
-					}
-			  
-			  
+					candidates.forEach(
+            function(candidate){
+              Connection.send(candidate);
+              console.log('C->S: ' + candidate);
+            });
+				} else {
+					var message = JSON.stringify({ip: iptoend, type: 'candidateready'});
+          Connection.send(message);
+        }
 			}
-			
 		},
 
     //funzione che si occupa di inizializzare la chiamata

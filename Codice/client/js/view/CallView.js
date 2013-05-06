@@ -42,10 +42,9 @@ define([
 		$(this.el).html(this.template());
 		if(isCaller===false){
 			CallCommunication.sendAnswer(type, iptoCall, this);
-			}
-		else{
+		}else{
 			CallCommunication.sendCall(iptoCall, type, this);
-			}
+		}
 		
     },
   
