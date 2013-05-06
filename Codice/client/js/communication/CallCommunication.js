@@ -55,7 +55,12 @@ define(['connection'], function(Connection){
     
     onMessaggeListener:'',
     
-  
+    readyToSend:false,
+    
+    messageReceived:false,
+    
+    ownCandidate:'',
+    
     createPeerConnection : function() {
       // Quando viene inserito uno stream nel peerconnection si attiva l'evento che visualizza lo stream dell'altro utente
       function onRemoteStreamAdded(event) {
@@ -102,20 +107,31 @@ define(['connection'], function(Connection){
 		},
     
 		onIceCandidate: function(event) {
-			setTimeout(function(){
-				if (event.candidate) {
-				  var candidate=JSON.stringify({type : 'candidate',
-				  label: event.candidate.sdpMLineIndex,
-				  id: event.candidate.sdpMid,
-				  candidate: event.candidate.candidate});
-				  var credentials={cand : candidate, ip: iptoend, type : 'candidate'};
-				  var response = JSON.stringify(credentials);
-				  console.log('C->S: ' + response);
-				  Connection.send(response);
-				} else {
-				  console.log("End of candidates.");
+			if (event.candidate) {
+			  var candidate=JSON.stringify({type : 'candidate',
+			  label: event.candidate.sdpMLineIndex,
+			  id: event.candidate.sdpMid,
+			  candidate: event.candidate.candidate});
+			  var credentials={cand : candidate, ip: iptoend, type : 'candidate'};
+			  var response = JSON.stringify(credentials);
+			  console.log('C->S: ' + response);
+			  ownCandidate.push(response);
+			} else {
+				readyToSend=true;
+				console.log("End of candidates.");
+				
+				if(messageReceived){
+					Connection.send(response);
 				}
-			}, 5000);
+				
+				else
+				{
+					var response = JSON.stringify(ip: iptoend, type : 'candidateready');
+					}
+			  
+			  
+			}
+			
 		},
 
     //funzione che si occupa di inizializzare la chiamata
@@ -178,6 +194,13 @@ define(['connection'], function(Connection){
           Connection.removeEventListener("message",onMessage,false);
           console.log("end stream");
           callView.close();
+        }
+        
+        if (response.type ==='candidateready') {
+          messageReceived=true;
+          if(readyToSend){
+			  //inviare candidati
+		  }
         }
         console.log('Processing signaling message...');
       }
