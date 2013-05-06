@@ -1022,6 +1022,17 @@ Comunica con
 a cui fornisce i metodi per modificare i dati del proprio account
 \end_layout
 
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer 
+\family default
+\series default
+a cui invia le credenziali per l'autenticazione e da cui riceve se le credenzial
+i inserite sono corrette o meno
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1073,6 +1084,16 @@ Comunica con
  al server
 \end_layout
 
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.AuthenticationTransfer 
+\family default
+\series default
+da cui riceve aggiornamenti sugli utenti connessi o meno al server
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1120,8 +1141,19 @@ Comunica con
  mytalk.client.view.CallView
 \family default
 \series default
- a cui fornirà i metodi per l'avvio di una chiamata audio o audio/video
+ a cui fornisce i metodi per l'avvio di una chiamata audio o audio/video
  tra due utenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Comunica con
+\family typewriter
+\series bold
+ mytalk.client.transfer.CallTransfer
+\family default
+\series default
+ che si occupa di aprire un canale di comunicazione tra due o più utenti
 \end_layout
 
 \end_deeper
@@ -1175,6 +1207,16 @@ Comunica con
  all'interno del server, o di rifiutare chiamate in arrivo
 \end_layout
 
+\begin_layout Itemize
+Comunica con il package 
+\family typewriter
+\series bold
+transfer
+\family default
+\series default
+ per gestire il passaggio di notifiche tra client e server
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1209,20 +1251,28 @@ Tipo, obiettivo e funzione del componente:
 
 \series bold
 Relazioni d'uso con altre componenti:
-\series default
- la classe 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 \noindent
-Comunica con
+Fornisce a
 \family typewriter
 \series bold
  mytalk.client.view.RecordMessageView
 \family default
 \series default
- per l'invio al server e la ricezione di messaggi in differita
+ i metodi per la comunicazione col server
+\end_layout
+
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.RecordMessageTransfer 
+\family default
+\series default
+per l'invio al server e la ricezione di messaggi in differita
 \end_layout
 
 \end_deeper
@@ -1276,6 +1326,16 @@ Comunica con
 \series default
 a cui fornisce i metodi per la comunicazione col server, a cui richiede
  l'indirizzo del video tutorial richiesto, e la visualizzazione di quest'ultimo
+\end_layout
+
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.TutorialTransfer 
+\family default
+\series default
+per la ricezione dei video tutorial richiesti
 \end_layout
 
 \end_deeper
@@ -1333,6 +1393,16 @@ Comunica con
  
 \series default
 a cui fornisce i metodi per l'invio dei file al server
+\end_layout
+
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.server.transfer.SendFileTransfer 
+\family default
+\series default
+per l'invio dei file al server
 \end_layout
 
 \end_deeper
