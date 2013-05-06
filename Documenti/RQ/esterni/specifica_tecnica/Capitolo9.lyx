@@ -373,7 +373,9 @@ status open
 \begin_layout Plain Layout
 Diagramma delle attività che mostra le operazioni a disposizione di un utente
  autenticato
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagramma-delle-attività-utente-autenticato"
 
 \end_inset
 
@@ -383,6 +385,58 @@ Diagramma delle attività che mostra le operazioni a disposizione di un utente
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Il diagramma rappresentato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramma-delle-attività-utente-autenticato"
+
+\end_inset
+
+ spiega le operazioni che un utente autenticato potrà svolgere per interagire
+ con il sistema.
+ Una volta l'utente ha effettuato l'autenticazione potrà decidere di guardare
+ i video tutorial, contattare direttamente un utente tramite l'inserimento
+ dell'indirizzo IP (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Contattare-un-indirizzo"
+
+\end_inset
+
+), contattare un utente registrato presso il server (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Contattare-un-utente"
+
+\end_inset
+
+), modificare le proprie credenziali (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Autenticazione"
+
+\end_inset
+
+) e deautenticarsi dal sistema.
+ Una volta effettuato il logout, l'utente avrà a disposizione solo le funzionali
+tà offerte per l'utente non autenticato (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramma-della-attività-utente-non-autenticato"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -489,7 +543,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma_chiamata IP.pdf
+	filename img/diagramma_chiamata_IP.pdf
 	scale 70
 
 \end_inset
@@ -583,7 +637,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma_chiamata contatto.pdf
+	filename img/diagramma_chiamata_contatto.pdf
 	scale 45
 
 \end_inset
@@ -723,16 +777,10 @@ reference "fig:Diagramma-delle-attività-chiamata"
 \end_layout
 
 \begin_layout Standard
-Questo potrà scegliere se avviare una chiama audio o video.
-\end_layout
-
-\begin_layout Standard
-L'utente potrà, una volta avviata una chiamata, cambiare la tipologia (da
+Quest'ultimo potrà scegliere se avviare una chiama audio o video.
+ Sarà possibile, una volta avviata una chiamata, cambiare la tipologia (da
  audio a video e viceversa) senza interrompere la chiamata.
-\end_layout
-
-\begin_layout Standard
-Inoltre l'utente potrà terminare la chiamata quando vuole (il termine della
+ Inoltre l'utente potrà terminare la chiamata quando vuole (il termine della
  chiamata non implica che non si potranno scrivere messaggi testuali).
 \end_layout
 
@@ -803,11 +851,8 @@ reference "fig:Diagramma-delle-attività-registrazione-messaggio"
 \begin_layout Standard
 Il mittente registrerà il messaggio e, successivamente, potrà confermare
  o annullare il messaggio.
-\end_layout
-
-\begin_layout Standard
-Se il messaggio verrà annullato, sarà eliminato, contrariamente, se verrà
- confermato, verrà inviato al destinatario.
+ Se il messaggio verrà annullato, sarà eliminato, altrimenti verrà inviato
+ al destinatario.
 \end_layout
 
 \begin_layout Subsection
