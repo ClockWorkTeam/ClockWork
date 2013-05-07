@@ -23,6 +23,12 @@ public class CallTransfer extends ListenerTransfer {
    	    		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"true\"}");
    	    		sendPacket(wspacket,connector);
    	    	}   			
+   		}else if(type.equals("refusecall")){
+  		  	WebSocketConnector connector = getConnector(token.getString("ip"));
+   	    	if(connector!= null){
+   	    		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\"}");
+   	    		sendPacket(wspacket,connector);
+   	    	}   			
    		}else if(type.equals("offer")){
   		  	WebSocketConnector connector = getConnector(token.getString("ip"));
    	    	if(connector!= null){

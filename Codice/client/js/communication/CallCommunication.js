@@ -25,16 +25,21 @@ define(['connection'], function(Connection){
       Connection.addEventListener("message", onAnswer, false);
       //metodo per la gestione della risposta ricevuta dall'utente chiamato
       var call=this;
-	  function onAnswer(evt){
-		var response = JSON.parse(evt.data);
-		if(response.type==='answeredCall'){
-		  var isCaller=true;
-		  if(response.answer==='true'){
-			call.startCall(iptocall, isCaller, typecall, call, callView)
-			Connection.removeEventListener("message",onAnswer,false);
-		  }
-		}
-	  }
+      function onAnswer(evt){
+         
+        var response = JSON.parse(evt.data);
+        
+        if(response.type==='answeredCall'){
+          
+          if(response.answer==='true'){
+            var isCaller=true;
+            call.startCall(iptocall, isCaller, typecall, call, callView)	
+          }else if(response.answer==='false'){
+            callView.close();
+          }  
+          Connection.removeEventListener("message",onAnswer,false);
+        }
+      }
     },
     
     //funzione che invia al server la risposta dell'utente chiamato
@@ -209,7 +214,7 @@ define(['connection'], function(Connection){
         console.log('Processing signaling message...');
       }
       
-      if(isCaller && typecall=='video'){			
+      if(isCaller && typecall=='video'){
         navigator.webkitGetUserMedia({video:true, audio:true},
         function(stream) {
           sourcevid.src = window.webkitURL.createObjectURL(stream);

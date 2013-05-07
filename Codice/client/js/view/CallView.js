@@ -39,7 +39,13 @@ define([
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, iptoCall){
-		$(this.el).html(this.template());
+		if(document.getElementById('content'))
+			$(this.el).html(this.template({Ip : this.options.CallerIp}));
+		else{
+			$('#main').prepend(this.el);
+      $(this.el).html(this.template());
+		}
+
 		if(isCaller===false){
 			CallCommunication.sendAnswer(type, iptoCall, this);
 		}else{
@@ -58,8 +64,6 @@ define([
   CallView.prototype.close = function(){
     this.remove();
     this.unbind();
-    alert("chiusura");
-   
   };
 
   return CallView;

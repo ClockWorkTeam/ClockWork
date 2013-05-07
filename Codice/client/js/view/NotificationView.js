@@ -4,14 +4,13 @@ define([
  'backbone',
  'view/CallView',
  'view/ChatView',
- 'communication/NotificationCommunication',
  'text!templates/NotificationTemplate.html'
-], function($, _, Backbone, CallView, ChatView, NotificationCommunication, NotificationTemplate){
+], function($, _, Backbone, CallView, ChatView, NotificationTemplate){
   var NotificationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
 		'click button#acceptCall':'accept',
-		'click button#refuseCall':'refuse',
+		'click button#refuseCall':'refused',
     },
 	
     el : $('#content'),
@@ -24,7 +23,7 @@ define([
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
       _.bindAll(this, 'render');    
-  
+      _.bindAll(this, 'refused');    
       this.render();
     },
      
@@ -42,14 +41,23 @@ define([
     accept : function(){
 		var call= new CallView();	
 		var chat = new ChatView({ip:this.options.CallerIp});
+    this.close();
 		call.render(false, this.options.typeCall,this.options.CallerIp);
+    
 		},
     
-    refuse : function(){
-		var notification= new NotificationCommunication();
-		notification.refuse();
+    refused : function(){
+      this.options.NotificationCommunication.refuse(this.options.CallerIp);
+      this.close();
 		}
-	});
+    
+      }); 
+
+   NotificationView.prototype.close = function(){
+    this.remove();
+    this.unbind();
+  }
+  
   return NotificationView;
 
 });
