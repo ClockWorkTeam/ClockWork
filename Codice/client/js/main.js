@@ -34,8 +34,13 @@ require.config({
 
 });
 
-require(['connection', 'view/AuthenticationView', 'collection/ContactsCollection', 'communication/NotificationCommunication'], function(Connection, AuthenticationView, ContactsCollection, NotificationCommunication){
-  
+require(['connection',
+	     'view/AuthenticationView',
+	     'collection/ContactsCollection',
+	     'communication/NotificationCommunication'],
+	     
+function(Connection, AuthenticationView, ContactsCollection, NotificationCommunication){
+  NotificationCommunication.listenNotification();
   var authentication_view = new AuthenticationView({collection: ContactsCollection});
 });
 
