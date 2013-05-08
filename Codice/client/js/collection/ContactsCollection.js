@@ -1,4 +1,5 @@
 /*
+/*
  * Nome:untitled.js
  * Package: 
  * Autore:
@@ -28,7 +29,13 @@ define([
   record: function() {
       return this.filter(function(contact){ return contact.has('username'); });
     }, 
+   
+   /*Metodo che dato un'ip restituisce il primo username con tale ip*/
+    getUsername:function(ip){
+			return this.where({IP:ip})[0].toJSON().username;
+		},
 	
  });
   return new ContactsCollection();
 });
+
