@@ -30,7 +30,8 @@ define([
 
     initialize: function(){
       _.bindAll(this, 'render', 'view' , 'remove');
-      this.currentFunctions = new FunctionsView({model: this.model});
+      
+      this.currentFunctions = null;
     },
 	
     //rendo visibili i contatti:
@@ -41,11 +42,18 @@ define([
   
     // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
     view : function(){
+     
+      //condizione messa per evitare di chiudere functionview non ancora create
       if(this.currentFunctions){
-        this.currentFunctions.close();
+        console.log("prova");
+        this.currentFunctions.render();
       }
+      else{
       this.currentFunctions = new FunctionsView({model: this.model});
       this.currentFunctions.render();
+      }
+       this.options.callback.disableContact();
+      this.currentFunctions.delegateEvents();
       $('#main').append(this.currentFunctions.el);
       
       if(this.currentChat){

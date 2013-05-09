@@ -30,26 +30,36 @@ define([
 	
     //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
+    
+    calling:'',
         
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
-	
+      this.calling=false;
       _.bindAll(this, 'render');
     },
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, iptoCall){
-		if(document.getElementById('content'))
-			$(this.el).html(this.template({Ip : this.options.CallerIp}));
+		
+    if(document.getElementById('content')){
+			$(this.el).html(this.template());
+      console.log("sono su call");
+    }
 		else{
 			$('#main').prepend(this.el);
       $(this.el).html(this.template());
 		}
+    if(this.calling){
+      CallCommunication.recoverCall();
+      }
 
-		if(isCaller===false){
+		if(isCaller===false && !this.calling){
 			CallCommunication.sendAnswer(type, iptoCall, this);
+      this.calling=true;
 		}else{
 			CallCommunication.sendCall(iptoCall, type, this);
+      this.calling=true;
 		}
 		
     },
