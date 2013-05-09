@@ -1691,7 +1691,7 @@ Tipo, obiettivo e funzione del componente:
  TutorialModel
 \family default
 \series default
- si occuperà di conservare i collegamenti ai tutorial
+ si occupa di conservare i collegamenti ai tutorial
 \end_layout
 
 \begin_layout Itemize
@@ -1739,8 +1739,8 @@ PROGETTO}
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occuperà di conservare i collegamenti da dove prelevare i
- video tutorial
+ la classe si occupa di conservare i collegamenti da cui prelevare i video
+ tutorial
 \end_layout
 
 \begin_layout Subsection
@@ -1752,7 +1752,8 @@ Collection
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- 
+ ha lo scopo di rappresentare localmente le collezioni di oggetti presenti
+ nel database del server al fine di popolare le viste in modo dinamico
 \end_layout
 
 \begin_layout Itemize
@@ -1773,7 +1774,13 @@ mytalk.client.collection.ContactsCollection
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- 
+ la classe 
+\family typewriter
+\series bold
+ContactsCollection 
+\family default
+\series default
+si occupa di conservare la lista degli utenti registrati al server
 \end_layout
 
 \begin_layout Itemize
@@ -1791,7 +1798,10 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- 
+ la classe si occupa di conservare la lista degli utenti da fornire a 
+\family typewriter
+\series bold
+ContactsView
 \end_layout
 
 \begin_layout Subsubsection
@@ -1803,7 +1813,13 @@ mytalk.client.collection.TextMessagesCollection
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- 
+ la classe 
+\family typewriter
+\series bold
+TextMessageCollection 
+\family default
+\series default
+si occupa di conservare le conversazioni via chat in corso
 \end_layout
 
 \begin_layout Itemize
@@ -1821,7 +1837,8 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- 
+ la classe si occupa di fornire al package view un breve storico delle conversaz
+ioni via chat
 \end_layout
 
 \begin_layout Subsubsection
@@ -1833,7 +1850,13 @@ mytalk.client.collection.TutorialsCollection
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- 
+ la classe 
+\family typewriter
+\series bold
+TutorialsCollection 
+\family default
+\series default
+si occupa di conservare la lista dei video tutorial
 \end_layout
 
 \begin_layout Itemize
@@ -1851,7 +1874,7 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- 
+ la classe si occupa di conservare la lista dei video tutorial
 \end_layout
 
 \begin_layout Standard
