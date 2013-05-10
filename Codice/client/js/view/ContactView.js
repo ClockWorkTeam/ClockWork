@@ -45,7 +45,6 @@ define([
      
       //condizione messa per evitare di chiudere functionview non ancora create
       if(this.currentFunctions){
-        console.log("prova");
         this.currentFunctions.render();
       }
       else{
@@ -56,12 +55,10 @@ define([
       this.currentFunctions.delegateEvents();
       $('#main').append(this.currentFunctions.el);
       
-      if(this.currentChat){
-        this.currentChat.close();
-      }
-      this.currentChat = new ChatView({model: this.model});
-      this.currentChat.render();
-      $('#main').append(this.currentChat.el);
+      chat.close();
+      chat= new ChatView({model: this.model, userModel: userModel});
+      chat.render();
+      $('#main').append(chat.el);
     }
 	
   }); 
@@ -69,8 +66,7 @@ define([
   ContactView.prototype.close = function(){
     if(this.currentFunctions)
       this.currentFunctions.close();
-    if(this.currentChat)
-      this.currentChat.close();
+    chat.close();
   };
 
   return ContactView;
