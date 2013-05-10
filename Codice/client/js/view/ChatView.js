@@ -33,17 +33,20 @@ define([
     collection: TextMessagesCollection,
   
 		initialize: function(){
-	//		_.bindAll(this, 'render', 'putMessages', 'putMessage');
+			
+			this.listenTo(this.collection, 'all', this.render);
+			_.bindAll(this, 'render', 'putMessages', 'putMessage');
+			
+			
 		},
   
-		render: function() {
-			if(userModel!=''){
+		render: function() {	
+			if(this.options.userModel!=''){
 				$(this.el).html(this.ChatTemplate({ip: this.model.toJSON().IP}));
 				this.putMessages();
-			}
+				}
 		},
   
-
 		putMessages:function(){  
 			var messages=this.collection.chat_session(this.model.toJSON().username);
 			for(var i=0; i<messages.length; i++){
@@ -55,12 +58,12 @@ define([
 			
 			var node=document.createElement("LI");
 			var name=document.createElement("H3");
-			if(TextMessageModel.toJSON().fromTo=='to'){
-						name.appendChild(document.createTextNode(userModel.toJSON().username+": "));
-						node.setAttribute('class','to');
+			if(TextMessageModel.toJSON().source=='sent'){
+						name.appendChild(document.createTextNode(this.options.userModel.toJSON().username+": "));
+						node.setAttribute('class','sent');
 			}else{
 						name.appendChild(document.createTextNode(this.model.toJSON().username+": "));
-						node.setAttribute('class','from');				
+						node.setAttribute('class','received');				
 			}
 			var message=document.createTextNode(TextMessageModel.toJSON().message);
 			node.appendChild(name);
@@ -70,15 +73,16 @@ define([
   
 		//invia un messaggio
 		send:function(){
-			this.collection.add({recipient:this.model.toJSON().username, message:this.$("#message").val(),fromTo:'to'});
-		//	ChatCommunication.send(this.model.toJSON().IP, this.$("#message").val());
-			this.render();
+						ChatCommunication.send(this.model.toJSON().IP, this.$("#message").val());
+			this.collection.add({contact:this.model.toJSON().username, message:this.$("#message").val(), source:'sent'});
+
+			//this.render();
 		},
-		delivered:function(from, message){
-			this.collection.add({recipient:from, message:message ,fromTo:'from'});			
-			this.render();
+/*		delivered:function(from, message){
+
+			//this.render();
 		}
- 
+*/ 
  });
  
    ChatView.prototype.close = function(){

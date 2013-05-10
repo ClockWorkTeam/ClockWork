@@ -19,8 +19,9 @@ define([
  'text!templates/ContactTemplate.html',
  'view/FunctionsView',
  'view/ChatView',
+ 'model/UserModel',
  'model/TextMessageModel'
-], function($, _, Backbone, ContactTemplate, FunctionsView, ChatView, TextMessageModel){
+], function($, _, Backbone, ContactTemplate, FunctionsView, ChatView, UserModel, TextMessageModel){
   var ContactView = Backbone.View.extend({
     template: _.template(ContactTemplate),
     
@@ -30,7 +31,6 @@ define([
 
     initialize: function(){
       _.bindAll(this, 'render', 'view' , 'remove');
-      
       this.currentFunctions = null;
     },
 	
@@ -56,7 +56,7 @@ define([
       $('#main').append(this.currentFunctions.el);
       
       chat.close();
-      chat= new ChatView({model: this.model, userModel: userModel});
+      chat= new ChatView({model: this.model, userModel: this.options.userModel});
       chat.render();
       $('#main').append(chat.el);
     }

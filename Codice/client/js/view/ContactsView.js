@@ -30,7 +30,7 @@ define([
     
     collection: ContactsCollection,
     
-    userModel : '',
+    myModel : '',
     
     chat: '',
     
@@ -54,7 +54,7 @@ define([
 	},
 
 	render: function (view){
-    userModel=view.UserModel;
+    this.myModel=view.UserModel;
 		$(this.el).html(this.template({logged: true}));
     this.viewContacts();
 	},
@@ -65,7 +65,7 @@ define([
 	},
 	
 	viewContact: function(ContactModel){
-			var contact_view = new ContactView({dom : "sidebar", model: ContactModel, callback: this, userModel: userModel, chat: chat });
+			var contact_view = new ContactView({dom : "sidebar", model: ContactModel, userModel: this.myModel, chat: chat, callback: this });
 			this.$("#contacts").append(contact_view.render().el);
 			this.childViews.push(contact_view);
 	},

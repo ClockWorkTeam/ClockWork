@@ -13,26 +13,22 @@
  */
  
 //classe che si occupa di gestire la chat
-define(['connection','view/ChatView', 'collection/ContactsCollection'], function(Connection, ChatView, ContactsCollection){
+define(['connection','view/ChatView', 'collection/ContactsCollection', 'collection/TextMessagesCollection'], function(Connection, ChatView, ContactsCollection,TextMessagesCollection){
 
-  return {
-/*		send:function(ip, message){
-			var credentials = { type:'sendText', ip: ip, message: message};
-      Connection.send(JSON.stringify(credentials));
-		},
-	
-      Connection.addEventListener("message", onNotification, false);
-			function onNotification(str){
-
-				var
-				 response = JSON.parse(str.data);
+    Connection.addEventListener("message", onReceived, false);
+		function onReceived(str){
+				var response = JSON.parse(str.data);
 				if (response.type === 'sendText'){
 					var from = ContactsCollection.getUsername(response.ip);
-					ChatView.delivered(from, response.message);
+					TextMessagesCollection.add({contact:from, message:response.message ,source:'received'});			
 				}
-		}
-*/
-  
+		};
+
+  return {
+		send:function(ip, message){
+			var credentials = { type:'sendText', ip: ip, message: message};
+      Connection.send(JSON.stringify(credentials));
+		}  
   };
 	
 });
