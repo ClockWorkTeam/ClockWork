@@ -41,7 +41,7 @@ define([
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, iptoCall){
-		
+		this.delegateEvents();
     if(document.getElementById('content')){
 			$(this.el).html(this.template());
       console.log("sono su call");
@@ -65,6 +65,7 @@ define([
     },
   
     endCall:function(){
+      console.log("chiudo chiamata");
 	  CallCommunication.endCall();
 	  this.close();
 	}
