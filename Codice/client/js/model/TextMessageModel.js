@@ -20,7 +20,7 @@ define([
 	
 	  defaults: {
 		  contact: '',
-		  message: ''.
+		  message: '',
       source: '' //sent or received
 	  },
 	

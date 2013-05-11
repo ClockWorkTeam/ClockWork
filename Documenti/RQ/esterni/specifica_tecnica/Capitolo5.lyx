@@ -1640,7 +1640,7 @@ Tipo, obiettivo e funzione del componente:
  TextMessageModel
 \family default
 \series default
- si occupa della comunicazione testuale
+ si occupa della memorizzazione di una comunicazione testuale
 \end_layout
 
 \begin_layout Itemize
@@ -1673,7 +1673,7 @@ Relazioni d'uso con altre componenti:
 Attività svolte e dati trattati:
 \series default
  la classe si occuperà di conservare per un tempo limitato le comunicazioni
- testuali tra utenti
+ testuali da e verso un singolo utente 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1691,7 +1691,7 @@ Tipo, obiettivo e funzione del componente:
  TutorialModel
 \family default
 \series default
- si occupa di conservare i collegamenti ai tutorial
+ si occupa di conservare i dati riguardanti i tutorial
 \end_layout
 
 \begin_layout Itemize
@@ -1739,8 +1739,7 @@ PROGETTO}
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occupa di conservare i collegamenti da cui prelevare i video
- tutorial
+ la classe si occupa di conservare i dati riguardanti un singolo video tutorial
 \end_layout
 
 \begin_layout Subsection
@@ -1762,7 +1761,10 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- 
+ il package viene scritto e utilizzato dal package 
+\family typewriter
+\series bold
+view
 \end_layout
 
 \begin_layout Subsubsection
@@ -1789,9 +1791,21 @@ si occupa di conservare la lista degli utenti registrati al server
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- 
+ la classe
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+- è utilizzata da 
+\family typewriter
+\series bold
+mytalk.client.view.ContactsView 
+\family default
+\series default
+per mostrare all'utente la lista degli utenti registrati presso il server
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \noindent
 
@@ -1802,6 +1816,12 @@ Attività svolte e dati trattati:
 \family typewriter
 \series bold
 ContactsView
+\family default
+\series default
+; ogni oggetto User include l'indirizzo IP dell'utente autenticato
+\family typewriter
+\series bold
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1819,7 +1839,7 @@ Tipo, obiettivo e funzione del componente:
 TextMessageCollection 
 \family default
 \series default
-si occupa di conservare le conversazioni via chat in corso
+si occupa di conservare tutte le conversazioni testuali
 \end_layout
 
 \begin_layout Itemize
@@ -1828,17 +1848,31 @@ si occupa di conservare le conversazioni via chat in corso
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- 
+ la classe
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+- è utilizzata da 
+\family typewriter
+\series bold
+mytalk.client.view.ChatCommunication
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \noindent
 
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occupa di fornire al package view un breve storico delle conversaz
-ioni via chat
+ la classe si occupa di fornire al package 
+\family typewriter
+\series bold
+view
+\family default
+\series default
+ tutte le conversazioni testuali intraprese dall'utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -1865,16 +1899,25 @@ si occupa di conservare la lista dei video tutorial
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- 
+ la classe
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+- è utilizzata da 
+\family typewriter
+\series bold
+mytalk.client.view.TutorialView 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \noindent
 
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe si occupa di conservare la lista dei video tutorial
+ la classe si occupa di conservare la lista di tutti i video tutorial
 \end_layout
 
 \begin_layout Standard

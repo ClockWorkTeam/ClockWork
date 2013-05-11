@@ -6,6 +6,7 @@ import org.jwebsocket.server.TokenServer;
 
 import server.transfer.AuthenticationTransfer;
 import server.transfer.CallTransfer;
+import server.transfer.ChatTransfer;
 import server.transfer.RecordMessageTransfer;
 import server.transfer.UserTransfer;
 public class ServerMyTalk {
@@ -30,12 +31,13 @@ public class ServerMyTalk {
                 UserTransfer user= new UserTransfer(Launcher.getUserMenager());
                 CallTransfer call =new CallTransfer();
                 RecordMessageTransfer recordMessage= new RecordMessageTransfer(Launcher.getUserMenager());
+                ChatTransfer chat = new ChatTransfer();
                 
                 tokenServer.addListener(authentication);
                 tokenServer.addListener(user);
                 tokenServer.addListener(recordMessage);
                 tokenServer.addListener(call);
-
+                tokenServer.addListener(chat);
                 
                 authentication.setTokenServer(this);
             } else {
