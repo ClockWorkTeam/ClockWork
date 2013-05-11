@@ -75,14 +75,8 @@ define([
 		send:function(){
 						ChatCommunication.send(this.model.toJSON().IP, this.$("#message").val());
 			this.collection.add({contact:this.model.toJSON().username, message:this.$("#message").val(), source:'sent'});
-
-			//this.render();
 		},
-/*		delivered:function(from, message){
 
-			//this.render();
-		}
-*/ 
  });
  
    ChatView.prototype.close = function(){

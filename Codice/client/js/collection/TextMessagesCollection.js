@@ -25,7 +25,7 @@ define([
     localStorage: new Storage('textmessages'),
 	  
 		chat_session: function(username) {
-		  return this.where({contact: username}); });
+		  return this.where({contact: username});
 		},
 	
     });
