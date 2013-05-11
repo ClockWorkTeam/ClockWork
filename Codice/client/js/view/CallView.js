@@ -67,6 +67,7 @@ define([
   
     endCall:function(){
       console.log("chiudo chiamata");
+      document.getElementById('chatTemplate').style.float='none';
 	  CallCommunication.endCall();
 	  this.close();
 	}
