@@ -13,16 +13,17 @@
  */
  
 //classe che si occupa di gestire la chat
-define(['connection','view/ChatView', 'collection/ContactsCollection', 'collection/TextMessagesCollection'], function(Connection, ChatView, ContactsCollection,TextMessagesCollection){
+define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesCollection'], function(Connection, ContactsCollection,TextMessagesCollection){
 
-    Connection.addEventListener("message", onReceived, false);
-		function onReceived(str){
-				var response = JSON.parse(str.data);
-				if (response.type === 'sendText'){
-					var from = ContactsCollection.getUsername(response.ip);
-					TextMessagesCollection.add({contact:from, message:response.message ,source:'received'});			
-				}
-		};
+  Connection.addEventListener("message", onReceived, false);
+  function onReceived(str){
+      var response = JSON.parse(str.data);
+      if (response.type === 'sendText'){
+        var from = ContactsCollection.getUsername(response.ip);
+        TextMessagesCollection.add({contact:from, message:response.message ,source:'received'});
+        ContactsCollection.where({IP: response.ip}).set(unread: "1");			
+      }
+  };
 
   return {
 		send:function(ip, message){

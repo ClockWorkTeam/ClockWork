@@ -21,7 +21,8 @@ define([
 		  username: '',
 		  name: '',
 		  surname: '',
-		  IP: '0.0.0.0'
+		  IP: '0.0.0.0',
+      unread: 0
 	  },
 	  
 	clear: function() {
