@@ -59,6 +59,31 @@ define([
       chat= new ChatView({model: this.model, userModel: this.options.userModel});
       chat.render();
       $('#main').append(chat.el);
+    },
+    
+    createCall : function(type){
+     
+      //condizione messa per evitare di chiudere functionview non ancora create
+      if(this.currentFunctions){
+        this.currentFunctions.render();
+      }
+      else{
+      this.currentFunctions = new FunctionsView({model: this.model});
+      }
+      this.options.callback.disableContact();
+      this.currentFunctions.delegateEvents();
+      if(type=="video"){
+        this.currentFunctions.videocall(false);
+      }
+      else{
+        this.currentFunctions.audiocall(false);
+      }
+      $('#main').append(this.currentFunctions.el);
+      
+      chat.close();
+      chat= new ChatView({model: this.model, userModel: this.options.userModel});
+      chat.render();
+      $('#main').append(chat.el);
     }
 	
   }); 

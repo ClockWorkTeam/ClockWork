@@ -50,15 +50,12 @@ define([
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
       if(this.callView){
-        console.log("sono su function");
         this.callView.render();
       }
       else{
-        console.log("sono su function per la prima volta");
         if(typeof this.model == "undefined"){
           $(this.el).html(this.template({From: this.options.From}));
         } else {
-          currentuser=this.model.toJSON().username;
           $(this.el).html(this.template(this.model.toJSON()));
         }
       }
@@ -76,26 +73,35 @@ define([
 		$('#main').prepend(this.recordMessageView.el);
 		},
     
-    audiocall:function(){
+    audiocall:function(isCaller){
 		if(this.callView)
 		{	
 			this.callView.close;
 			}
 		this.close;
 		this.callView=new CallView();
-		this.callView.render(true,'audio',this.model.toJSON().IP);
+    if(!ip){
+      this.callView.render(true,'audio',this.model.toJSON().IP);
+    }
+    else
+      this.callView.render(false, 'audio',ip);
 		$('#main').prepend(this.callView.el);
     },
     
-    videocall:function(){
+    videocall:function(isCaller){
 		if(this.callView)
 		{	
 			this.callView.close;
 		}
 		this.close;
 		this.callView=new CallView();
-		this.callView.render(true,'video',this.model.toJSON().IP);
-		
+    alert(isCaller);
+    if(isCaller==false){
+      this.callView.render(false, 'video',this.model.toJSON().IP);
+    }
+    else{
+      this.callView.render(true,'video',this.model.toJSON().IP);
+    }
 		$('#main').prepend(this.callView.el);
     },
     

@@ -50,7 +50,7 @@ define([
 			$('#main').prepend(this.el);
       $(this.el).html(this.template());
 		}
-    document.getElementById('chatTemplate').style.float='right';
+    //document.getElementById('chatTemplate').style.float='right';
     if(this.calling){
       CallCommunication.recoverCall();
       }
