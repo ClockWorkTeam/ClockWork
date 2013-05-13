@@ -605,8 +605,8 @@ Azione che si potrà effettuare sia da autenticati che da non autenticati.
  Nel caso contrario, verrà mandata la notifica di richiesta di chiamata
  al destinatario e se quest'ultimo accetterà la richiesta, verrà aperto
  il canale di comunicazione tra i soggetti.
- L'utente avrà la possibilità di mandare messaggi di chat con la persona
- desiderata, inviare file ed effettuare una chiamata tutto contemporaneamente.
+ L'utente avrà la possibilità di scambiare messaggi testuali con la persona
+ desiderata, e contemporaneamente, se lo si desidera, effettuare una chiamata.
  Per guardare le funzionalità che comporta la chiamata vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -615,8 +615,7 @@ reference "sub:Chiamata"
 \end_inset
 
 .
- Per l'invio dei file il mittente dovrà selezionare il file desiderato per
- inviarlo al destinatario.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -640,7 +639,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/diagramma_chiamata_utente.pdf
+	filename img/diagramma_chiamata_contatto.pdf
 	scale 60
 
 \end_inset
@@ -689,7 +688,8 @@ reference "fig:Diagramma-delle-attività-servizi-utente"
 \begin_layout Standard
 \noindent
 Se l'utente selezionato risultasse offline l'unico servizio messo a disposizione
- sarà quello di registrare un messaggio e inviarglielo (vedasi sezione 
+ sarà quello di registrare un messaggio differito e inviarglielo (vedasi
+ sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Registrazione-messaggio"
@@ -697,15 +697,17 @@ reference "sub:Registrazione-messaggio"
 \end_inset
 
 ).
- Nel caso in cui risultasse online, le operazioni messe a disposizione saranno
- la registrazione di messaggi (vedasi sezione 
+ Nel caso in cui risultasse online si potranno scambiare dei messaggi testuali.
+ Inoltre, parallelamente all'invio e ricezione di messaggi testuali, se
+ lo si desidera, si potranno inviare file e registrare un messaggio differito
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Registrazione-messaggio"
 
 \end_inset
 
-) o la chiamata (vedasi sezione 
+) oppure effettuare una chiamata (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Chiamata"
@@ -713,8 +715,6 @@ reference "sub:Chiamata"
 \end_inset
 
 ).
- Inoltre, contemporaneamente alle opzioni elencate prima, si potranno inviare
- dei messaggi testuali e file.
  Per l'invio dei file il mittente dovrà selezionare il file desiderato per
  inviarlo al destinatario.
 \end_layout
@@ -848,17 +848,20 @@ reference "fig:Diagramma-delle-attività-registrazione-messaggio"
 
 \end_inset
 
- spiega le operazioni che un utente può effettuare quando decide di registrare
- un messaggio e inviarlo ad un utente registrato presso il server (non sarà
+ spiega le operazioni che un utente può effettuare quando decide di inviare
+ un messaggio differito ad un utente registrato presso il server (non sarà
  possibile inviare un messaggio di questa tipologia ad un utente che non
  è registrato).
 \end_layout
 
 \begin_layout Standard
-Il mittente registrerà il messaggio e, successivamente, potrà confermare
- o annullare il messaggio.
- Se il messaggio verrà annullato, sarà eliminato, altrimenti verrà inviato
- al destinatario.
+Il mittente a questo punto registrerà il messaggio che verrà registrato
+ nel server.
+\end_layout
+
+\begin_layout Standard
+Il messaggio differito verrà inviato al destinatario la prima volta che
+ si autentica.
 \end_layout
 
 \begin_layout Subsection
