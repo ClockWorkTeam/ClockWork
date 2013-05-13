@@ -18,7 +18,6 @@ html, body{
  height:100%; 
  font-family: serif;
 }
-
 #header h1{
  margin:0.5em;
  text-align:center;
@@ -36,6 +35,7 @@ html, body{
  border:0.1em solid #B18904;
  background-color:#CEE3F6;
 }
+
 #sidebar{
  float:left;
  width:12%;
@@ -52,70 +52,134 @@ html, body{
 }
 #contacts{
  height:inherit;
- overflow:scroll;
+ overflow:auto;
  margin:1em;
  padding:0em;
  border: 0.1em solid #B18904;
-}
-ul {
-  list-style: none;
-  padding:0;
-  margin:0;
-}
-li { 
-  padding-left: 1em; 
-  text-indent: -.7em;
+ list-style: none;
 }
 .contact{
  padding: 0 1em 0 1em;
+ padding-left: 1em; 
+ text-indent: -.7em;
  margin:0.5em;
  color:#0011dd;
 }
 .offline:before {
-  content: "■ ";
-  color: #DC143C; 
+ content: "■ "; 
+ color: #DC143C; 
 }
 .online:before {
-  content: "■ ";
-  color: #00FF00; 
+ content: "■ ";
+ color: #00FF00; 
 }
 
 #main{
  float:right;
- width:80%;
- padding:2em;
- padding-top:2em;
-/* text-align:center;*/
+ width:85%;
+ height:78%;
 }
-#main #content .function{
+#main #content{
+ padding-top:1em;
+ padding-bottom:1em;
+}
+#main #content button{
+ margin:1em 1em 1em 0;
+ padding:0.5em;
+}
+#main #content h2{
+ display:inline;
+}
 
-/*	background-color:#DBA901;
-	color:#210B61;*/
-	margin:0.5em 0 2em 0;
+#remotevid{
+	width:55%;
+}	
+
+#sourcevid{
+
+	width: 13%;
+  position:relative;
+  left:-13.5%;
+  margin-bottom:0.2em;
+}
+
+#main #chat{
+ height:inherit;
+}
+#chat #chatTemplate{
+ height:95%;
+ border-top:0.1em solid #B18904;
+ margin-right:2em;
+ padding:1em;
+}
+
+#chat ul{
+ min-height:0em;
+ height:inherit;
+ overflow:auto;
+ margin:1em;
+ padding:0em;
+ list-style: none;
+}
+
+#chat #sendMessage{
+ background-color:#CEE3F6;
+ margin: auto auto 0 auto;
+  text-align:center;
+}
+h3{
+ display:inline;
+}
+
+.to{
+	background-color:#CEEFF6;
+	width:inherit;
+}
+/*
+#main #content{
+ float:left;
+ width: 40%;
+ padding-top:2em;
+}
+#main  #chat{
+ float:right;
+ width:55%;
+ 
+ border-left:0.1em solid #B18904;
+}
+
+#main #content button, #main #content #ip{
+ display:block;
+ margin:1em auto 0 3em;
+
 }
 #main #content h2{
 	display:inline;
 }
-#main #content button{
+
+*/
+/*
+#functionView .function{
+	margin:0.5em 0 2em 0;
+}
+
+
+#functionView button{
   padding:0.5em;
 }
+
+
+
+
 #main #chat button{
  padding:0.5em;
 }
-
 #main #chat{
  clear:both;
  margin-top:1em;
 }
 
 
-#remotevid{
-	
-	width:55%;
-}
+*/
 
-#sourcevid{
-	
-	width: 20%;
-}
 

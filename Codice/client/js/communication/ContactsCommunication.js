@@ -39,7 +39,7 @@ define(['connection'], function(Connection){
 						}
 					}
 				
-				view.contacts_view.render();
+				view.contacts_view.render(view);
 				}
 			}	  					   
 		}

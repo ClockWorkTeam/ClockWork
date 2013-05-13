@@ -17,60 +17,66 @@ define([
  'jquery',
  'underscore',  
  'backbone',
+ 'communication/ChatCommunication',
  'text!templates/ChatTemplate.html',
  'collection/TextMessagesCollection'
-], function($, _, Backbone, ChatTemplate, TextMessagesCollection){
-  var ChatView = Backbone.View.extend({
-    //si occupa di legare gli eventi ad oggetti del DOM
+], function($, _, Backbone,ChatCommunication, ChatTemplate, TextMessagesCollection){
+	var ChatView = Backbone.View.extend({
     events:{
 	  'click button#Send':'send'
-	},
+		},
 	
-    //indica in quale parte del DOM gestirà 
     el : $("#chat"),
 
-    //indico il template da utilizzare
     ChatTemplate: _.template(ChatTemplate),
   
-    //imposto la collezione per generare la chat
     collection: TextMessagesCollection,
   
-//funzione di inizializzazione dell'oggetto
-  initialize: function(){
-	//lega l'oggetto di invocazione alle funzioni render, putMessages e putMessage
-    _.bindAll(this, 'render', 'putMessages', 'putMessage');
-    //visualizza la struttura della chat
-    this.render();
-  },
+		initialize: function(){
+			
+			this.listenTo(this.collection, 'all', this.render);
+			_.bindAll(this, 'render', 'putMessages', 'putMessage');
+			
+			
+		},
   
-//funzione che effettua la scrittura della struttura della pagina - da cambiare
-  render: function() {
-	 //visualizza i messaggi
-	 this.putMessages();
-	 //aggiorna il template
-     $(this.el).html(this.ChatTemplate({messages: '', ip: this.options.ip}))
-    
-  },
+		render: function() {	
+			if(this.options.userModel!=''){
+				$(this.el).html(this.ChatTemplate({ip: this.model.toJSON().IP}));
+				this.putMessages();
+				}
+		},
   
-  //visualizza i messaggi - da cambiare
-  putMessages:function(){  
-	this.collection.each(this.putMessage);
-	//$(this.el).html(this.ChatTemplate({messages: this.collection.chat_session(this.model.get('recipient'))}))
-  },
+		putMessages:function(){  
+			var messages=this.collection.chat_session(this.model.toJSON().username);
+			for(var i=0; i<messages.length; i++){
+					this.putMessage(messages[i]);
+			}
+		},
   
-  //visualizza il singolo messaggio - da cambiare
-  putMessage:function(TextMessageModel){
-	  //if(TextMessageModel.toJSON().recipient == this.model.toJSON().username)
-	  //alert(TextMessageModel.toJSON().messages);
-	  //$(this.el).append(this.ChatTemplate({end: false, messages:TextMessageModel.toJSON().messages}));
-  },
+		putMessage:function(TextMessageModel){
+			
+			var node=document.createElement("LI");
+			var name=document.createElement("H3");
+			if(TextMessageModel.toJSON().source=='sent'){
+						name.appendChild(document.createTextNode(this.options.userModel.toJSON().username+": "));
+						node.setAttribute('class','sent');
+			}else{
+						name.appendChild(document.createTextNode(this.model.toJSON().username+": "));
+						node.setAttribute('class','received');				
+			}
+			var message=document.createTextNode(TextMessageModel.toJSON().message);
+			node.appendChild(name);
+			node.appendChild(message);
+			(this.el).getElementsByTagName("UL")[0].appendChild(node);
+		},
   
-  //invia un messaggio
-  send:function(){
-	  this.collection.add({recipient:this.model.toJSON().username, messages:this.$("#message").val()})
-	  this.render();
-  }
-  
+		//invia un messaggio
+		send:function(){
+						ChatCommunication.send(this.model.toJSON().IP, this.$("#message").val());
+			this.collection.add({contact:this.model.toJSON().username, message:this.$("#message").val(), source:'sent'});
+		},
+
  });
  
    ChatView.prototype.close = function(){

@@ -30,10 +30,14 @@ define([
     
     collection: ContactsCollection,
     
+    myModel : '',
+    
+    chat: '',
+    
     events:{
 		'click button#callIP' : 'callIP',
 		'click button#conference' : 'StartConference'
-	},
+    },
 	
     initialize:function(){
 		_.bindAll(this, 'render', 'unrender', 'viewContact');
@@ -49,9 +53,10 @@ define([
 
 	},
 
-	render: function (){
+	render: function (view){
+    this.myModel=view.UserModel;
 		$(this.el).html(this.template({logged: true}));
-	    this.viewContacts();
+    this.viewContacts();
 	},
 	
 	unrender: function (){
@@ -60,12 +65,13 @@ define([
 	},
 	
 	viewContact: function(ContactModel){
-			var contact_view = new ContactView({dom : "sidebar", model: ContactModel });
+			var contact_view = new ContactView({dom : "sidebar", model: ContactModel, userModel: this.myModel, chat: chat, callback: this });
 			this.$("#contacts").append(contact_view.render().el);
 			this.childViews.push(contact_view);
 	},
 		
 	viewContacts: function(){	
+    chat=new ChatView({model: '', userModel: ''});
 		this.collection.each(this.viewContact);	
 	},
 	
@@ -99,7 +105,17 @@ define([
 	listContacts: function(ContactModel){
 		var contact_view = new ContactView({dom : '', model: ContactModel});
 		this.$("#optionContacts").append(contact_view.render().el);
-	}
+	},
+  
+  disableContact : function(){
+    console.log("prova controllo");
+     var prova=this.events; 
+     _.each(this.childViews, 
+     function(view){
+       if(view.currentFunctions)
+         view.currentFunctions.undelegateEvents();
+        });
+  }
     
   });
 

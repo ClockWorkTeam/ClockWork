@@ -22,11 +22,10 @@ define([
 
 		model: TextMessageModel,
 
-    //url: '/textmessages',
-    	localStorage: new Storage('textmessages'),
+    localStorage: new Storage('textmessages'),
 	  
-		chat_session: function(recipient) {
-		  return this.filter(function(contact){ return contact.where({username: recipient}); });
+		chat_session: function(username) {
+		  return this.where({contact: username});
 		},
 	
     });

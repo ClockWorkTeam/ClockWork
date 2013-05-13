@@ -41,6 +41,7 @@ define([
     
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
+      callView='';
       _.bindAll(this, 'render');
     },
     
@@ -48,12 +49,18 @@ define([
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
-     
-      if(typeof this.model == "undefined"){
-        $(this.el).html(this.template({From: this.options.From}));
-      } else {
-        currentuser=this.model.toJSON().username;
-        $(this.el).html(this.template(this.model.toJSON()));
+      if(this.callView){
+        console.log("sono su function");
+        this.callView.render();
+      }
+      else{
+        console.log("sono su function per la prima volta");
+        if(typeof this.model == "undefined"){
+          $(this.el).html(this.template({From: this.options.From}));
+        } else {
+          currentuser=this.model.toJSON().username;
+          $(this.el).html(this.template(this.model.toJSON()));
+        }
       }
     },   
     

@@ -52,6 +52,8 @@ define(['connection'], function(Connection){
     //stream audio/video locale
     localStream:'',
     
+    remoteStream:'',
+    
     peerConn:'',
     
     iptoend:'',
@@ -66,11 +68,16 @@ define(['connection'], function(Connection){
     
     candidates:'',
     
+    sourcevid:'',
+    
+    
+    
     createPeerConnection : function() {
       // Quando viene inserito uno stream nel peerconnection si attiva l'evento che visualizza lo stream dell'altro utente
       function onRemoteStreamAdded(event) {
       console.log("Added remote stream");
       remotevid.src = window.webkitURL.createObjectURL(event.stream);
+      remoteStream=event.stream;
       }
 
       // Quando viene rimosso uno stream dal peerconnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
@@ -137,9 +144,10 @@ define(['connection'], function(Connection){
 
     //funzione che si occupa di inizializzare la chiamata
     startCall: function (iptocall, isCaller, typecall, call, callView){
-      var sourcevid = document.getElementById('sourcevid');
+      sourcevid = document.getElementById('sourcevid');
       remotevid = document.getElementById('remotevid');
       localStream = null;
+      remoteStream = null;
       peerConn = null;
       iptoend=iptocall;
       readyToSend=false;
@@ -233,7 +241,16 @@ define(['connection'], function(Connection){
       }
       onMessaggeListener=onMessage;
     },
-	
+    
+    recoverCall: function () {
+      sourcevid = document.getElementById('sourcevid');
+      remotevid = document.getElementById('remotevid');
+      sourcevid.src = window.webkitURL.createObjectURL(localStream);
+      remotevid.src = window.webkitURL.createObjectURL(remoteStream);
+      sourcevid.play();
+      remotevid.play();
+    },
+    
     endCall: function() {
 		peerConn.removeStream(localStream);
         peerConn.close();

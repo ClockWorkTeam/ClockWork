@@ -23,7 +23,6 @@ define([
 
     model: ContactModel,
 
-	//url: '/contacts',
 	localStorage: new Storage('contacts'),
   
   record: function() {

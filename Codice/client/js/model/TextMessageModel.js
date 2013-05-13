@@ -19,8 +19,9 @@ define([
     var TextMessageModel = Backbone.Model.extend({
 	
 	  defaults: {
-		  recipient: '',
-		  messages: new Array()
+		  contact: '',
+		  message: '',
+      source: '' //sent or received
 	  },
 	
 	    
