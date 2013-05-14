@@ -31,6 +31,7 @@ define(['connection',
 					notificationView= new NotificationView({CallerIp: response.ip, typeCall: response.typecall, NotificationCommunication:Notification});
 				}
         if (response.type === 'endcall'){
+          console.log("notification");
           notificationView.close();
 				}
 			};

@@ -42,7 +42,7 @@ define([
       console.log("accettato");
 		//var call= new CallView();	
 		//var chat = new ChatView({ip:this.options.CallerIp});
-    //this.close();
+    this.close();
 		//call.render(false, this.options.typeCall,this.options.CallerIp);
       var event=new CustomEvent("acceptCall",{
         detail:{
@@ -53,6 +53,7 @@ define([
         cancelable:true
         });
       document.dispatchEvent(event);
+      
 		},
     
     refused : function(){
@@ -63,6 +64,7 @@ define([
       }); 
 
    NotificationView.prototype.close = function(){
+    console.log("notification close");
     this.remove();
     this.unbind();
   }

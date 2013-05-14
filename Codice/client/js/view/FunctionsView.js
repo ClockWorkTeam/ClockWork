@@ -79,8 +79,8 @@ define([
 			this.callView.close;
 			}
 		this.close;
-		this.callView=new CallView();
-    if(!ip){
+		this.callView=new CallView({FunctionView:this});
+    if(!isCaller){
       this.callView.render(true,'audio',this.model.toJSON().IP);
     }
     else
@@ -89,23 +89,36 @@ define([
     },
     
     videocall:function(isCaller){
-		if(this.callView)
-		{	
-			this.callView.close;
-		}
-		this.close;
-		this.callView=new CallView();
-    if(isCaller==false){
-      this.callView.render(false, 'video',this.model.toJSON().IP);
-    }
-    else{
-      this.callView.render(true,'video',this.model.toJSON().IP);
-    }
-		$('#main').prepend(this.callView.el);
+      if(this.callView)
+      {	
+        this.callView.close;
+      }
+      this.close;
+      this.callView=new CallView({FunctionView:this});
+      if(isCaller==false){
+        this.callView.render(false, 'video',this.model.toJSON().IP);
+      }
+      else{
+        this.callView.render(true,'video',this.model.toJSON().IP);
+      }
+      $('#main').prepend(this.callView.el);
     },
     
     record : function(){
 		
+		},
+    
+    closeview : function(){
+      console.log("prova");
+      //this.close();
+      this.callView='';
+      if(typeof this.model == "undefined"){
+        $(this.el).html(this.template({From: this.options.From}));
+      }else {
+        this.delegateEvents();
+        $('#main').prepend(this.el);
+        $(this.el).html(this.template(this.model.toJSON()));
+      }
 		}
   });
 

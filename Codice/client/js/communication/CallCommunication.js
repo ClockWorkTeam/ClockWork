@@ -203,11 +203,13 @@ define(['connection'], function(Connection){
         }
         
         if (response.type ==='endcall') {
-          peerConn.removeStream(call.localStream);
-          peerConn.close();
+          if(peerConn){
+            //peerConn.removeStream(localStream);
+            peerConn.close();
+          }
           Connection.removeEventListener("message",onMessage,false);
           console.log("end stream");
-          callView.close();
+          callView.endCall(false);
         }
         
         if (response.type ==='candidateready') {
@@ -254,10 +256,11 @@ define(['connection'], function(Connection){
     },
     
     endCall: function() {
-      if(peerConn){
-        peerConn.removeStream(localStream);
+      if(peerConn.close()){
+        //peerConn.removeStream(localStream);
         peerConn.close();
       }
+      console.log(recipient);
       var credentials={ip : recipient , type : 'endcall'};
       Connection.send(JSON.stringify(credentials));
       Connection.removeEventListener("message", onMessaggeListener, false);
