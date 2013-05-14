@@ -21,7 +21,8 @@ define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesC
       if (response.type === 'sendText'){
         var from = ContactsCollection.getUsername(response.ip);
         TextMessagesCollection.add({contact:from, message:response.message ,source:'received'});
-        ContactsCollection.where({IP: response.ip}).set(unread: "1");			
+        var currentUnread = ContactsCollection.where({IP: response.ip})[0].get("unread") + 1;	
+        ContactsCollection.where({IP: response.ip})[0].set({unread: currentUnread});			
       }
   };
 

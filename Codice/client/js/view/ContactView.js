@@ -29,12 +29,14 @@ define([
     },
 
     initialize: function(){
+		  this.listenTo(this.model, 'change', this.render);
       _.bindAll(this, 'render', 'view' , 'remove');
       this.currentFunctions = null;
     },
 	
     //rendo visibili i contatti:
     render: function(){
+      console.log("render contact");
       this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP, unread: this.model.toJSON().unread }));   
     return this;
     },
@@ -58,7 +60,7 @@ define([
       chat= new ChatView({model: this.model, userModel: this.options.userModel});
       chat.render();
       $('#main').append(chat.el);
-      this.model.unread = 0;
+      this.model.set({unread: 0});
     }
 	
   }); 
