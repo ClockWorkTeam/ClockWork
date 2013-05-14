@@ -95,7 +95,6 @@ define([
 		}
 		this.close;
 		this.callView=new CallView();
-    alert(isCaller);
     if(isCaller==false){
       this.callView.render(false, 'video',this.model.toJSON().IP);
     }

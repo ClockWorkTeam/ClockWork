@@ -50,6 +50,7 @@ define([
     document.addEventListener("acceptCall",acceptCall,false);
     var sideBarView=this;
     function acceptCall(event){
+      console.log("contatto");
       sideBarView.setCall(event.detail.ip,event.detail.type);
     };
     
@@ -125,6 +126,7 @@ define([
     _.each(this.childViews, 
     function(view){
       if(view.model.toJSON().IP==ip){
+        console.log("trovato");
         view.createCall(type);
       }
     });

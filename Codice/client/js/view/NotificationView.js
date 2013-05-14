@@ -39,6 +39,7 @@ define([
     },
       
     accept : function(){
+      console.log("accettato");
 		//var call= new CallView();	
 		//var chat = new ChatView({ip:this.options.CallerIp});
     //this.close();
