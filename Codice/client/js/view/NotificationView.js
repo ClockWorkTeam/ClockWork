@@ -39,11 +39,21 @@ define([
     },
       
     accept : function(){
-		var call= new CallView();	
-		var chat = new ChatView({ip:this.options.CallerIp});
+      console.log("accettato");
+		//var call= new CallView();	
+		//var chat = new ChatView({ip:this.options.CallerIp});
     this.close();
-		call.render(false, this.options.typeCall,this.options.CallerIp);
-    
+		//call.render(false, this.options.typeCall,this.options.CallerIp);
+      var event=new CustomEvent("acceptCall",{
+        detail:{
+          type:this.options.typeCall,
+          ip:this.options.CallerIp
+        },
+        bubbles:true,
+        cancelable:true
+        });
+      document.dispatchEvent(event);
+      
 		},
     
     refused : function(){
@@ -54,6 +64,7 @@ define([
       }); 
 
    NotificationView.prototype.close = function(){
+    console.log("notification close");
     this.remove();
     this.unbind();
   }
