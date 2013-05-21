@@ -50,12 +50,8 @@ define([
     document.addEventListener("acceptCall",acceptCall,false);
     var sideBarView=this;
     function acceptCall(event){
-      console.log("contatto");
       sideBarView.setCall(event.detail.ip,event.detail.type);
-    };
-    
-		
-		
+    };	
 		this.$el.html(this.template({logged: false}));
 
 	},
@@ -75,13 +71,11 @@ define([
 	viewContact: function(ContactModel){
 			var contact_view = new ContactView({dom : "sidebar", model: ContactModel, userModel: this.myModel, chat: chat, callback: this });
 			this.$("#contacts").append(contact_view.render().el);
-      console.log("contact");
 			this.childViews.push(contact_view);
 	},
 		
 	viewContacts: function(){	
     chat=new ChatView({model: '', userModel: ''});
-    console.log("contactSSSSSSSSS");
 		this.collection.each(this.viewContact);	
 	},
 	
@@ -128,7 +122,6 @@ define([
   setCall : function(ip,type){  
     _.each(this.childViews, 
     function(view){
-      console.log("view");
       if(view.model.toJSON().IP==ip){
         console.log("trovato "+view.model.toJSON().username);
         view.createCall(type);

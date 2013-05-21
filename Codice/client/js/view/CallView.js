@@ -30,8 +30,6 @@ define([
 	
     //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
-    
-    calling:'',
         
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
@@ -40,7 +38,7 @@ define([
     },
     
     //funzione che effettua la scrittura della struttura della pagina
-    render: function(isCaller,type, iptoCall){
+    render: function(isCaller,type, iptoCall,username){
       this.delegateEvents();
       if(document.getElementById('content')){
         $(this.el).html(this.template());

@@ -74,18 +74,19 @@ define([
 		},
     
     audiocall:function(isCaller){
-		if(this.callView)
-		{	
-			this.callView.close;
-			}
-		this.close;
-		this.callView=new CallView({FunctionView:this});
-    if(!isCaller){
-      this.callView.render(true,'audio',this.model.toJSON().IP);
-    }
-    else
-      this.callView.render(false, 'audio',ip);
-		$('#main').prepend(this.callView.el);
+      if(this.callView)
+      {	
+        this.callView.close;
+      }
+      this.close;
+      this.callView=new CallView({FunctionView:this});
+      if(isCaller==false){
+        this.callView.render(false, 'audio',this.model.toJSON().IP);
+      }
+      else{
+        this.callView.render(true,'audio',this.model.toJSON().IP);
+      }
+      $('#main').prepend(this.callView.el);
     },
     
     videocall:function(isCaller){

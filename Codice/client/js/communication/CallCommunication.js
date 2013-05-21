@@ -41,6 +41,14 @@ define(['connection'], function(Connection){
 	
     //funzione che inoltra la richiesta di chiamata al server
     sendCall: function (recipi, typecall, callView){
+      var event=new CustomEvent("setOnCall",{
+        detail:{
+          type:true
+        },
+        bubbles:true,
+        cancelable:true
+      });
+      document.dispatchEvent(event);
       recipient=recipi;
       var credentials = { ip: recipient , type:'call', calltype:typecall};
       Connection.send(JSON.stringify(credentials));
@@ -58,8 +66,28 @@ define(['connection'], function(Connection){
             var isCaller=true;
             call.startCall(isCaller, typecall, call, callView)	
           }else if(response.answer==='false'){
-            callView.close();
-          }  
+            var event=new CustomEvent("setOnCall",{
+              detail:{
+                type:false
+              },
+              bubbles:true,
+              cancelable:true
+            });
+            document.dispatchEvent(event);
+            callView.endCall(false);
+            alert("chiamata rifiutata");
+          }else if(response.answer==='busy'){
+            var event=new CustomEvent("setOnCall",{
+              detail:{
+                type:false
+              },
+              bubbles:true,
+              cancelable:true
+            });
+            document.dispatchEvent(event);
+            callView.endCall(false);
+            alert("utente occupato");
+          }    
           Connection.removeEventListener("message",onAnswer,false);
         }
       }
@@ -203,10 +231,18 @@ define(['connection'], function(Connection){
         }
         
         if (response.type ==='endcall') {
-          if(peerConn){
-            //peerConn.removeStream(localStream);
+          if(peerConn!=null){
+            peerConn.removeStream(localStream);
             peerConn.close();
           }
+          var event=new CustomEvent("setOnCall",{
+            detail:{
+              type:false
+            },
+            bubbles:true,
+            cancelable:true
+          });
+          document.dispatchEvent(event);
           Connection.removeEventListener("message",onMessage,false);
           console.log("end stream");
           callView.endCall(false);
@@ -256,11 +292,18 @@ define(['connection'], function(Connection){
     },
     
     endCall: function() {
-      if(peerConn.close()){
-        //peerConn.removeStream(localStream);
+      if(peerConn!=null){
+        peerConn.removeStream(localStream);
         peerConn.close();
       }
-      console.log(recipient);
+      var event=new CustomEvent("setOnCall",{
+        detail:{
+          type:false
+        },
+        bubbles:true,
+        cancelable:true
+      });
+      document.dispatchEvent(event);
       var credentials={ip : recipient , type : 'endcall'};
       Connection.send(JSON.stringify(credentials));
       Connection.removeEventListener("message", onMessaggeListener, false);
