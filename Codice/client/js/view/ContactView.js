@@ -43,7 +43,6 @@ define([
   
     // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
     view : function(){
-     
       //condizione messa per evitare di chiudere functionview non ancora create
       if(this.currentFunctions){
         this.currentFunctions.render();
@@ -60,7 +59,7 @@ define([
       chat= new ChatView({model: this.model, userModel: this.options.userModel});
       chat.render();
       $('#main').append(chat.el);
-      this.model.set({unread: 0});
+      this.model.set({unread: -1});
     }
 	
   }); 
