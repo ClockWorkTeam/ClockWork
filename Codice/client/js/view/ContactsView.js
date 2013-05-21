@@ -44,16 +44,20 @@ define([
 		
 		//this.listenTo(this.collection, 'add', this.viewContacts);
 		//this.listenTo(this.collection, 'change', this.viewContacts);
-        //this.listenTo(this.collection, 'reset', this.viewContacts);
+    //this.listenTo(this.collection, 'reset', this.viewContacts);
 		//this.listenTo(this.collection, 'all', this.render);
-		
-		this.childViews = [];
-		
+
+    document.addEventListener("acceptCall",acceptCall,false);
+    var sideBarView=this;
+    function acceptCall(event){
+      sideBarView.setCall(event.detail.ip,event.detail.type);
+    };	
 		this.$el.html(this.template({logged: false}));
 
 	},
 
 	render: function (view){
+		this.childViews = [];
     this.myModel=view.UserModel;
 		$(this.el).html(this.template({logged: true}));
     this.viewContacts();
@@ -108,13 +112,21 @@ define([
 	},
   
   disableContact : function(){
-    console.log("prova controllo");
-     var prova=this.events; 
      _.each(this.childViews, 
      function(view){
        if(view.currentFunctions)
          view.currentFunctions.undelegateEvents();
         });
+  },
+  
+  setCall : function(ip,type){  
+    _.each(this.childViews, 
+    function(view){
+      if(view.model.toJSON().IP==ip){
+        console.log("trovato "+view.model.toJSON().username);
+        view.createCall(type);
+      }
+    });
   }
     
   });
