@@ -131,6 +131,19 @@ public class UserDaoSQL implements UserDao{
 		return userList.getAllUsers();
 	}
 	
+	/**Metodo che controlla la corrispondenza tra l'username e la password
+	 * @param username Username dell'utente
+	 * @param password inserita
+	 * @return boolean 
+	 */
+	public boolean checkPassword(String username, String password){
+		ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
+		try{
+			  rs.getString("username");
+		}catch(SQLException e){return false;}
+		return true;
+	}
+	
 	/**Metodo che restituisce tutti i contatti
 	 * @return vector<User>
 	 */

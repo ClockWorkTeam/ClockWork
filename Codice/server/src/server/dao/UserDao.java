@@ -64,6 +64,13 @@ public interface UserDao{
 	 */
 	public User getUser(String username);
 	
+	/**Metodo che controlla la corrispondenza tra l'username e la password
+	 * @param username Username dell'utente
+	 * @param password inserita
+	 * @return boolean 
+	 */
+	public boolean checkPassword(String username, String password);
+	
 	/**Metodo che restituisce tutti i contatti
 	 * @return vector<User>
 	 */

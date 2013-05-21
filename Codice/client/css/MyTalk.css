@@ -18,6 +18,15 @@ html, body{
  height:100%; 
  font-family: serif;
 }
+
+ul{
+ list-style: none;
+ height:inherit;
+ overflow:auto;
+ margin:1em;
+ padding:0em;
+}
+ 
 #header h1{
  margin:0.5em;
  text-align:center;
@@ -32,7 +41,7 @@ html, body{
 #authentication{
  padding:0.1em;
  padding-left:1em;
- border:0.1em solid #B18904;
+ border:0.1em solid #210B61;
  background-color:#CEE3F6;
 }
 
@@ -47,16 +56,11 @@ html, body{
 #sidebar #callIP{
  margin: 2em 2em 1em 2em; 
 }
-#conference{
+#sidebar #conference{
  margin: 1em 2.5em 1em 2.5em; 
 }
-#contacts{
- height:inherit;
- overflow:auto;
- margin:1em;
- padding:0em;
+#sidebar #contacts{
  border: 0.1em solid #B18904;
- list-style: none;
 }
 .contact{
  padding: 0 1em 0 1em;
@@ -79,11 +83,7 @@ html, body{
  width:85%;
  height:78%;
 }
-#main #content{
- padding-top:1em;
- padding-bottom:1em;
-}
-#main #content button{
+#main button{
  margin:1em 1em 1em 0;
  padding:0.5em;
 }
@@ -91,16 +91,37 @@ html, body{
  display:inline;
 }
 
-#remotevid{
-	width:55%;
+#main #userData li{
+	padding-top:1em;
+}
+#main #userData{
+ height:auto;
+}
+#main #userData+button{
+	margin:2em;
+}
+#content #functionsTemplate{
+ padding:1em;
+ margin-right:1em;
+ border-bottom:0.1em solid #B18904;
+}
+
+#content #callTemplate{
+ width:60%;
+ height:95%;
+ margin:1em;
+ float:left;
+ border-right:0.1em solid #B18904;
+}
+#content #callTemplate #remotevid{
+ width:100%;
+ margin:0;
+ padding:0;
 }	
-
-#sourcevid{
-
-	width: 13%;
+#content #callTemplate #sourcevid{
+	width: 18%;
   position:relative;
-  left:-13.5%;
-  margin-bottom:0.2em;
+  top: -20%;
 }
 
 #main #chat{
@@ -108,24 +129,17 @@ html, body{
 }
 #chat #chatTemplate{
  height:95%;
- border-top:0.1em solid #B18904;
  margin-right:2em;
  padding:1em;
 }
 
 #chat ul{
- min-height:0em;
- height:inherit;
- overflow:auto;
- margin:1em;
- padding:0em;
- list-style: none;
+ border-bottom:0.1em solid #210B61;
 }
 
 #chat #sendMessage{
- background-color:#CEE3F6;
  margin: auto auto 0 auto;
-  text-align:center;
+ text-align:center;
 }
 h3{
  display:inline;
@@ -135,51 +149,4 @@ h3{
 	background-color:#CEEFF6;
 	width:inherit;
 }
-/*
-#main #content{
- float:left;
- width: 40%;
- padding-top:2em;
-}
-#main  #chat{
- float:right;
- width:55%;
- 
- border-left:0.1em solid #B18904;
-}
-
-#main #content button, #main #content #ip{
- display:block;
- margin:1em auto 0 3em;
-
-}
-#main #content h2{
-	display:inline;
-}
-
-*/
-/*
-#functionView .function{
-	margin:0.5em 0 2em 0;
-}
-
-
-#functionView button{
-  padding:0.5em;
-}
-
-
-
-
-#main #chat button{
- padding:0.5em;
-}
-#main #chat{
- clear:both;
- margin-top:1em;
-}
-
-
-*/
-
 
