@@ -171,27 +171,29 @@ SQLite
 \begin_layout Standard
 Considerando la complessità relativamente limitata del database che occorrerà
  per la gestione degli utenti abbiamo deciso di utilizzare SQLite, invece
- del più potente MySQL, poiché lo riteniamo più adatto ai nostri scopi poichè:
+ del più potente MySql, poiché lo riteniamo più adatto ai nostri scopi poichè:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 Facile SQLite, nella sua semplicità, permette un’installazione molto veloce
  ed è quasi privo di esigenze di manutenzione e configurazione, contrariamente
- a MySQL che richiede una installazione ed una configurazione complesse
+ a MySQL
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Dimensione attualmente il limite di dimensione è 2TB per database SQLite
- mentre per database MySQL è pari a 64TB
+Dimensione Un completo database SQL con tabelle, indici, trigger, e viste
+ è contenuto in un unico file con estensione .sqlite.
+ I database SQLite possono essere anche molto grandi; attualmente il limite
+ è 2T mentre MySQL 64TB 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-RAM il limite di RAM utilizzata per SQLite è pari a 16 MB ( Lo schema dell'inter
-o database viene caricato nella memoria quando viene aperto e ci rimane
- fin quando non viene chiuso) a differenza degli 
+RAM il limite di RAM utilizzata è pari a 16 MB( Lo schema dell'intero database
+ viene caricato nella memoria quando viene aperto e ci rimane fin quando
+ non viene chiuso) a differenza degli 
 \emph on
 almeno
 \emph default
