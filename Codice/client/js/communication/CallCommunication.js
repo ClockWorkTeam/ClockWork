@@ -232,6 +232,7 @@ define(['connection'], function(Connection){
         
         if (response.type ==='endcall') {
           if(peerConn!=null){
+            localStream.stop();
             peerConn.removeStream(localStream);
             peerConn.close();
           }
@@ -295,7 +296,10 @@ define(['connection'], function(Connection){
       if(peerConn!=null){
         peerConn.removeStream(localStream);
         peerConn.close();
+        localStream.stop();
       }
+      
+      peerConn=null;
       var event=new CustomEvent("setOnCall",{
         detail:{
           type:false

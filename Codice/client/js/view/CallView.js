@@ -68,7 +68,7 @@ define([
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
-      this.options.FunctionView.closeview();
+      this.options.FunctionView.closeViewCall();
     }
   
   });
