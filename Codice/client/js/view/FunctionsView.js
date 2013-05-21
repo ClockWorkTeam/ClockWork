@@ -109,9 +109,10 @@ define([
 		
 		},
     
-    closeview : function(){
+    closeViewCall : function(){
       console.log("prova");
       //this.close();
+      //callView.close();
       this.callView='';
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));
