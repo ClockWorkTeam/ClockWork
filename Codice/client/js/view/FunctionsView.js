@@ -50,15 +50,12 @@ define([
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
       if(this.callView){
-        console.log("sono su function");
         this.callView.render();
       }
       else{
-        console.log("sono su function per la prima volta");
         if(typeof this.model == "undefined"){
           $(this.el).html(this.template({From: this.options.From}));
         } else {
-          currentuser=this.model.toJSON().username;
           $(this.el).html(this.template(this.model.toJSON()));
         }
       }
@@ -76,31 +73,53 @@ define([
 		$('#main').prepend(this.recordMessageView.el);
 		},
     
-    audiocall:function(){
-		if(this.callView)
-		{	
-			this.callView.close;
-			}
-		this.close;
-		this.callView=new CallView();
-		this.callView.render(true,'audio',this.model.toJSON().IP);
-		$('#main').prepend(this.callView.el);
+    audiocall:function(isCaller){
+      if(this.callView)
+      {	
+        this.callView.close;
+      }
+      this.close;
+      this.callView=new CallView({FunctionView:this});
+      if(isCaller==false){
+        this.callView.render(false, 'audio',this.model.toJSON().IP);
+      }
+      else{
+        this.callView.render(true,'audio',this.model.toJSON().IP);
+      }
+      $('#main').prepend(this.callView.el);
     },
     
-    videocall:function(){
-		if(this.callView)
-		{	
-			this.callView.close;
-		}
-		this.close;
-		this.callView=new CallView();
-		this.callView.render(true,'video',this.model.toJSON().IP);
-		
-		$('#main').prepend(this.callView.el);
+    videocall:function(isCaller){
+      if(this.callView)
+      {	
+        this.callView.close;
+      }
+      this.close;
+      this.callView=new CallView({FunctionView:this});
+      if(isCaller==false){
+        this.callView.render(false, 'video',this.model.toJSON().IP);
+      }
+      else{
+        this.callView.render(true,'video',this.model.toJSON().IP);
+      }
+      $('#main').prepend(this.callView.el);
     },
     
     record : function(){
 		
+		},
+    
+    closeview : function(){
+      console.log("prova");
+      //this.close();
+      this.callView='';
+      if(typeof this.model == "undefined"){
+        $(this.el).html(this.template({From: this.options.From}));
+      }else {
+        this.delegateEvents();
+        $('#main').prepend(this.el);
+        $(this.el).html(this.template(this.model.toJSON()));
+      }
 		}
   });
 

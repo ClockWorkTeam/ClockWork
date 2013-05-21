@@ -30,8 +30,6 @@ define([
 	
     //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
-    
-    calling:'',
         
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
@@ -40,37 +38,38 @@ define([
     },
     
     //funzione che effettua la scrittura della struttura della pagina
-    render: function(isCaller,type, iptoCall){
-		this.delegateEvents();
-    if(document.getElementById('content')){
-			$(this.el).html(this.template());
-      console.log("sono su call");
-    }
-		else{
-			$('#main').prepend(this.el);
-      $(this.el).html(this.template());
-		}
-    document.getElementById('chatTemplate').style.float='right';
-    if(this.calling){
-      CallCommunication.recoverCall();
+    render: function(isCaller,type, iptoCall,username){
+      this.delegateEvents();
+      if(document.getElementById('content')){
+        $(this.el).html(this.template());
+        console.log("sono su call");
       }
-
-		if(isCaller===false && !this.calling){
-			CallCommunication.sendAnswer(type, iptoCall, this);
-      this.calling=true;
-		}else{
-			CallCommunication.sendCall(iptoCall, type, this);
-      this.calling=true;
-		}
-		
+      else{
+        $('#main').prepend(this.el);
+        $(this.el).html(this.template());
+      }
+     // document.getElementById('chatTemplate').style.float='right';
+      if(this.calling){
+        CallCommunication.recoverCall();
+      }else{ 
+        if(isCaller===false){
+          CallCommunication.sendAnswer(type, iptoCall, this);
+          this.calling=true;
+        }else{
+        CallCommunication.sendCall(iptoCall, type, this);
+        this.calling=true;
+        }	
+      }	
     },
   
-    endCall:function(){
+    endCall:function(isEnding){
       console.log("chiudo chiamata");
       document.getElementById('chatTemplate').style.float='none';
-	  CallCommunication.endCall();
-	  this.close();
-	}
+      if(isEnding!=false)
+        CallCommunication.endCall();
+      this.close();
+      this.options.FunctionView.closeview();
+    }
   
   });
 

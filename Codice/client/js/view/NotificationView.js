@@ -6,11 +6,12 @@ define([
  'view/ChatView',
  'text!templates/NotificationTemplate.html'
 ], function($, _, Backbone, CallView, ChatView, NotificationTemplate){
+  
   var NotificationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
 		'click button#acceptCall':'accept',
-		'click button#refuseCall':'refused',
+		'click button#refuseCall':'refuse',
     },
 	
     el : $('#content'),
@@ -23,7 +24,8 @@ define([
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
       _.bindAll(this, 'render');    
-      _.bindAll(this, 'refused');    
+      _.bindAll(this, 'refuse');
+      var timeout=true;
       this.render();
     },
      
@@ -35,18 +37,31 @@ define([
 			$('#main').prepend(this.el);
 			$(this.el).html(this.template({Ip : this.options.CallerIp}));
 		}
-			
+    var notificationView=this;
+		setTimeout(function(){notificationView.timeoutCall()},5000);	
     },
       
     accept : function(){
-		var call= new CallView();	
-		var chat = new ChatView({ip:this.options.CallerIp});
-    this.close();
-		call.render(false, this.options.typeCall,this.options.CallerIp);
-    
+      timeout=false;
+      this.close();
+      var event=new CustomEvent("acceptCall",{
+        detail:{
+          type:this.options.typeCall,
+          ip:this.options.CallerIp
+        },
+        bubbles:true,
+        cancelable:true
+        });
+      document.dispatchEvent(event);
+      
 		},
     
-    refused : function(){
+    timeoutCall : function(){
+      if(timeout==true)
+        this.refuse();
+    },
+    
+    refuse : function(){
       this.options.NotificationCommunication.refuse(this.options.CallerIp);
       this.close();
 		}
@@ -54,6 +69,7 @@ define([
       }); 
 
    NotificationView.prototype.close = function(){
+    console.log("notification close");
     this.remove();
     this.unbind();
   }

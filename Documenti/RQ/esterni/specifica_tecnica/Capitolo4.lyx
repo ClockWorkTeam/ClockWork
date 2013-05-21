@@ -170,7 +170,32 @@ SQLite
 
 \begin_layout Standard
 Considerando la complessità relativamente limitata del database che occorrerà
- per la gestione degli utenti abbiamo deciso di utilizzabile SQLite
+ per la gestione degli utenti abbiamo deciso di utilizzare SQLite, invece
+ del più potente MySQL, poiché lo riteniamo più adatto ai nostri scopi poichè:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Facile SQLite, nella sua semplicità, permette un’installazione molto veloce
+ ed è quasi privo di esigenze di manutenzione e configurazione, contrariamente
+ a MySQL che richiede una installazione ed una configurazione complesse
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Dimensione attualmente il limite di dimensione è 2TB per database SQLite
+ mentre per database MySQL è pari a 64TB
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RAM il limite di RAM utilizzata per SQLite è pari a 16 MB ( Lo schema dell'inter
+o database viene caricato nella memoria quando viene aperto e ci rimane
+ fin quando non viene chiuso) a differenza degli 
+\emph on
+almeno
+\emph default
+ 384 MB richiesti per MySQL
 \end_layout
 
 \begin_layout Itemize
@@ -196,6 +221,19 @@ Non richiede installazione di un server
 Leggero e veloce
 \end_layout
 
+\begin_layout Itemize
+Maggior semplicità di impostazione
+\end_layout
+
+\begin_layout Itemize
+È multipiattaforma
+\end_layout
+
+\begin_layout Itemize
+Ha transizioni atomiche, consistenti, isolate e durabili, anche in caso
+ di crash di sistema o blackout
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -205,7 +243,13 @@ Svantaggi:
 
 \begin_deeper
 \begin_layout Itemize
-Alcune limitazioni rispetto alla versione MySql
+Se il volume di dati diventasse molto ampio l'efficienza della base di dati
+ peggiorerebbe
+\end_layout
+
+\begin_layout Itemize
+Non possiede una vera gestione della concorrenza: in caso di necessità bisognerà
+ implementarla
 \end_layout
 
 \end_deeper
@@ -256,8 +300,25 @@ WebSocket
 \end_layout
 
 \begin_layout Standard
-Per la gestione delle comunicazioni tra client e server utilizziamo la tecnologi
-a WebSocket, come richiesto dal proponente
+Per la gestione delle comunicazioni tra client e server utilizziamo il protocoll
+o WebSocket, come richiesto dal proponente.
+\end_layout
+
+\begin_layout Standard
+La tecnologia WebSocket fornisce un canale che permette la comunicazione
+ in entrambi i versi attraverso una singola connessione ed è ideale per
+ le comunicazioni client-server, mentre non è ottimale per le comunicazioni
+ client-client.
+ Tale protocollo è indipendende dal protocollo TCP, e grazie alla metodologia
+ standard di inviare messaggi tra browser e server tenendo la connessione
+ aperta, permette maggiore interazione tra browser e server, facilitando
+ la creazione di applicazioni che forniscono contenuti in tempo reale.
+ 
+\end_layout
+
+\begin_layout Standard
+Il protocollo in questione è supportato da numerosi browser, come Internet
+ Explorer, Google Chrome, Firefox, Safari ed Opera.
 \end_layout
 
 \begin_layout Subsection
@@ -266,7 +327,15 @@ WebRTC
 
 \begin_layout Standard
 Per la gestione delle comunicazioni tra client e client utilizziamo la tecnologi
-a WebRTC, come richiesto dal proponente
+a WebRTC, come richiesto dal proponente.
+\end_layout
+
+\begin_layout Standard
+La tecnologia WebRTC è sviluppata per fornire metodi di comunicazione tra
+ due o più utenti senza caricare il server, che si occupa solo dell'inizializzaz
+ione del canale, tramite chiamate vocali, videochiamate e condivisione di
+ file, tutto senza l'installazione di plugin.
+ Tale tecnologia è basata sul HTML5 e JavaScript.
 \end_layout
 
 \end_body
