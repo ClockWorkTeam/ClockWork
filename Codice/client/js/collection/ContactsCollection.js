@@ -32,7 +32,7 @@ define([
    /*Metodo che dato un'ip restituisce il primo username con tale ip*/
     getUsername:function(ip){
 			return this.where({IP:ip})[0].toJSON().username;
-		},
+		}
 	
  });
   return new ContactsCollection();

@@ -116,7 +116,9 @@ define([
      function(view){
        if(view.currentFunctions)
          view.currentFunctions.undelegateEvents();
-        });
+       if (view.model.get("unread") == -1)
+         view.model.set({unread: 0});
+     });
   },
   
   setCall : function(ip,type){  
