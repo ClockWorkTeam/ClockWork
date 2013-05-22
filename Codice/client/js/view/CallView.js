@@ -18,8 +18,9 @@ define([
  'underscore',  
  'backbone',
  'communication/CallCommunication',
- 'text!templates/CallTemplate.html'
-], function($, _, Backbone, CallCommunication, CallTemplate){
+ 'text!templates/CallTemplate.html',
+ 'view/StatisticsView'
+], function($, _, Backbone, CallCommunication, CallTemplate, StatisticsView){
   var CallView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -35,6 +36,7 @@ define([
     initialize: function(){
       this.calling=false;
       _.bindAll(this, 'render');
+      var statisticsView = new StatisticsView();
     },
     
     //funzione che effettua la scrittura della struttura della pagina
