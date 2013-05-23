@@ -13,11 +13,12 @@
 -->
 
 <div id="chatTemplate">
-	<ul id='messages'></ul>
+
+	<ul id='<% if(ip!='0'){ %>online<% }else{ %>offline<%}%>'></ul>
 
 	<% if(ip!='0'){ %>
 		<div id="sendMessage">
-			<input type="text" name="message" id="message" />
+			<textarea rows="3" cols="50"></textarea>	
 			<button id="Send">Invia Messaggio</button>
 		</div>
 	<%}%>
