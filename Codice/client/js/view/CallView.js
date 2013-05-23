@@ -38,7 +38,7 @@ define([
     },
     
     //funzione che effettua la scrittura della struttura della pagina
-    render: function(isCaller,type, iptoCall,username){
+    render: function(isCaller,type, contact){
       this.delegateEvents();
       if(document.getElementById('content')){
         $(this.el).html(this.template());
@@ -53,10 +53,10 @@ define([
         CallCommunication.recoverCall();
       }else{ 
         if(isCaller===false){
-          CallCommunication.sendAnswer(type, iptoCall, this);
+          CallCommunication.sendAnswer(type, contact, this);
           this.calling=true;
         }else{
-        CallCommunication.sendCall(iptoCall, type, this);
+        CallCommunication.sendCall(type, contact, this);
         this.calling=true;
         }	
       }	
