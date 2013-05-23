@@ -29,8 +29,8 @@ define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesC
   };
 
   return {
-		send:function(ip, message){
-			var credentials = { type:'sendText', ip: ip, message: message};
+		send:function(ip, contact, message){
+			var credentials = { type:'sendText', ip: ip, username: contact, message: message};
       Connection.send(JSON.stringify(credentials));
 		}  
   };

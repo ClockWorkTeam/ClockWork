@@ -44,7 +44,7 @@ define([
 			if(this.options.userModel!=''){
 				$(this.el).html(this.ChatTemplate({ip: this.model.toJSON().IP}));
 				this.putMessages();
-				}
+			}
 		},
   
 		putMessages:function(){  
@@ -73,8 +73,8 @@ define([
   
 		//invia un messaggio
 		send:function(){
-						ChatCommunication.send(this.model.toJSON().IP, this.$("#message").val());
-			this.collection.add({contact:this.model.toJSON().username, message:this.$("#message").val(), source:'sent'});
+						ChatCommunication.send(this.model.toJSON().IP, this.model.toJSON().username, (this.el).getElementsByTagName("textarea")[0].value);
+			this.collection.add({contact:this.model.toJSON().username, message:(this.el).getElementsByTagName("textarea")[0].value, source:'sent'});
 		},
 
  });
