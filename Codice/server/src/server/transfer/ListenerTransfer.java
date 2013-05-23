@@ -25,15 +25,23 @@ abstract class ListenerTransfer implements WebSocketServerTokenListener{
     	}
     }
     
-    public WebSocketConnector getConnector(String IP){
-    	WebSocketConnector connector = null;
+    public WebSocketConnector getConnector(String IP, String username){
+    	
+    	Collection<WebSocketConnector> clientsWithThatIP=new FastList<WebSocketConnector>().shared();
+    	
     	for (WebSocketConnector lConnector : connectedClients) {
 	    		if(lConnector.getRemoteHost().toString().equals(IP))
-	    			connector= lConnector;
+	    			clientsWithThatIP.add(lConnector);
     	}
+    	WebSocketConnector connector=null;
+    	for (WebSocketConnector lConnector : clientsWithThatIP) {
+    		if(lConnector.getUsername().equals(username))
+    			connector=lConnector;
+    	}
+    	
     	return connector;
     }
-        
+    
     public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){
     	tokenServer.sendPacket(connector, packet); 
     }

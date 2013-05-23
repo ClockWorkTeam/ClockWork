@@ -29,6 +29,8 @@ public class AuthenticationTransfer extends ListenerTransfer{
    			if(user==null){
    				wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"name\":\"\",\"surname\":\"\"}");
    			}else{
+   	   			event.getConnector().setUsername(user.getUsername());
+   	   System.out.println(connectedClients.size());
    				wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"true\", \"name\":\""+user.getName()+"\", \"surname\":\""+user.getSurname()+"\"}");
    				java.util.Vector<User> newUser = new java.util.Vector<User>();
    				newUser.add(user);
@@ -42,6 +44,8 @@ public class AuthenticationTransfer extends ListenerTransfer{
    			if(user==null){
    				wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"false\"}");
    			}else{
+   				event.getConnector().setUsername(user.getUsername());
+   				
    				wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"true\"}");
    				java.util.Vector<User> newUser = new java.util.Vector<User>();
    				newUser.add(user);
@@ -59,6 +63,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
    			if(!answer){
    				wspacket = new RawPacket("{\"type\":\"logout\",\"answer\":\"false\"}");
    			}else{
+   				event.getConnector().removeUsername();
    				User user=userManager.getUser(token.getString("username"));
    				wspacket = new RawPacket("{\"type\":\"logout\",\"answer\":\"true\"}");
    				java.util.Vector<User> newUser = new java.util.Vector<User>();

@@ -12,7 +12,7 @@ public class ChatTransfer extends ListenerTransfer {
    		String type= token.getString("type");
   		WebSocketPacket wspacket=null;
   		if(type.equals("sendText")){
-   			WebSocketConnector connector = getConnector(token.getString("ip"));
+   			WebSocketConnector connector = getConnector(token.getString("ip"), token.getString("username"));
    			wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"ip\":\""+event.getConnector().getRemoteHost()+"\"}");
 			sendPacket(wspacket,connector);
    		}
