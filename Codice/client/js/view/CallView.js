@@ -50,6 +50,8 @@ define([
         $('#main').prepend(this.el);
         $(this.el).html(this.template());
       }
+      if(!document.getElementById('statistics'))
+        $('#main').insertBefore($('#statistics'), $('#chat'));
      // document.getElementById('chatTemplate').style.float='right';
       if(this.calling){
         CallCommunication.recoverCall();

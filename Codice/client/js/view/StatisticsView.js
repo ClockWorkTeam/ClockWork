@@ -56,7 +56,6 @@ define([
   StatisticsView.prototype.close = function(){
     this.remove();
     this.unbind();
-    $('#main').prepend(this.el);
   };
 
   return StatisticsView;

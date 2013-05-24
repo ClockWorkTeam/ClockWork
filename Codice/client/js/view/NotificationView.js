@@ -7,7 +7,7 @@ define([
  'text!templates/NotificationTemplate.html'
 ], function($, _, Backbone, CallView, ChatView, NotificationTemplate){
   
-  var timeout
+  var timeout = null;
   
   var NotificationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
