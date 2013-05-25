@@ -19,7 +19,7 @@ define(['connection'], function(Connection){
     
   var remoteStream = null;
     
-  var peerConnection = null;
+  var peerConn = null;
     
   var recipient = null;
     
@@ -116,38 +116,38 @@ define(['connection'], function(Connection){
       // Quando viene rimosso uno stream dal peerConnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
       function onRemoteStreamRemoved(event) {
         console.log("Removed remote stream");
-        peerConnection.removeStream(this.localStream);
-        peerConnection.close();
+        peerConn.removeStream(this.localStream);
+        peerConn.close();
       }
 
       var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
       try {
         console.log("Creating peer connection");
-        peerConnection = new webkitRTCPeerConnection(pcConfig);
-        peerConnection.onicecandidate = this.onIceCandidate;
+        peerConn = new webkitRTCPeerConnection(pcConfig);
+        peerConn.onicecandidate = this.onIceCandidate;
       } catch (e) {
         console.log("Failed to create peerConnection, exception: " + e.message);
       }
       
-      peerConnection.addEventListener("addstream", onRemoteStreamAdded, false);
-      peerConnection.addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+      peerConn.addEventListener("addstream", onRemoteStreamAdded, false);
+      peerConn.addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
     },
 
     // start the connection upon user request
 		connect : function(started) {
 			if (!started && localStream ) {	  
 				this.createPeerConnection();	  
-				peerConnection.addStream(localStream);
+				peerConn.addStream(localStream);
 				console.log('Adding local stream...');
         
-				peerConnection.createOffer(this.gotDescription);
+				peerConn.createOffer(this.gotDescription);
 			} else {
 				alert("Local stream not running yet.");
 			}
 		},
     
 		gotDescription : function(desc){
-			peerConnection.setLocalDescription(desc);
+			peerConn.setLocalDescription(desc);
 			var response=JSON.stringify(desc);
 			var credentials={description: response, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'offer'};
 			Connection.send(JSON.stringify(credentials));
@@ -176,10 +176,6 @@ define(['connection'], function(Connection){
           Connection.send(message);
 			}
 		},
-    
-    getPeerConnection: function(){
-      return peerConnection;
-    },
 
     //funzione che si occupa di inizializzare la chiamata
     startCall: function (isCaller, typecall, call, callView){
@@ -202,9 +198,9 @@ define(['connection'], function(Connection){
               sourcevid.src = window.webkitURL.createObjectURL(stream);
               call.createPeerConnection();
               localStream=stream;
-              peerConnection.addStream(localStream);
-              peerConnection.setRemoteDescription(new RTCSessionDescription(response));
-              peerConnection.createAnswer(call.gotDescription);
+              peerConn.addStream(localStream);
+              peerConn.setRemoteDescription(new RTCSessionDescription(response));
+              peerConn.createAnswer(call.gotDescription);
             });
           }
           
@@ -214,16 +210,16 @@ define(['connection'], function(Connection){
               sourcevid.src = window.webkitURL.createObjectURL(stream);
               call.createPeerConnection();
               localStream=stream;
-              peerConnection.addStream(localStream);
-              peerConnection.setRemoteDescription(new RTCSessionDescription(response));
-              peerConnection.createAnswer(call.gotDescription);
+              peerConn.addStream(localStream);
+              peerConn.setRemoteDescription(new RTCSessionDescription(response));
+              peerConn.createAnswer(call.gotDescription);
             });
           }           
         }
         
         if (response.type==='answer' && isCaller){
           started=true;
-          peerConnection.setRemoteDescription(new RTCSessionDescription(response));
+          peerConn.setRemoteDescription(new RTCSessionDescription(response));
         }
         
         if (response.type ==='candidate' && started) {
@@ -231,14 +227,14 @@ define(['connection'], function(Connection){
           console.log('Adding candidate...');
           var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
           candidate:response.candidate});
-          peerConnection.addIceCandidate(candidate);
+          peerConn.addIceCandidate(candidate);
         }
         
         if (response.type ==='endcall') {
-          if(peerConnection!=null){
+          if(peerConn!=null){
             localStream.stop();
-            peerConnection.removeStream(localStream);
-            peerConnection.close();
+            peerConn.removeStream(localStream);
+            peerConn.close();
           }
           var event=new CustomEvent("setOnCall",{
             detail:{
@@ -297,13 +293,13 @@ define(['connection'], function(Connection){
     },
     
     endCall: function() {
-      if(peerConnection != null){
-        peerConnection.removeStream(localStream);
-        peerConnection.close();
+      if(peerConn!=null){
+        peerConn.removeStream(localStream);
+        peerConn.close();
         localStream.stop();
       }
       
-      peerConnection = null;
+      peerConn=null;
       var event=new CustomEvent("setOnCall",{
         detail:{
           type:false
