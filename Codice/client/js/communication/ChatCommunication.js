@@ -20,6 +20,9 @@ define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesC
       var response = JSON.parse(str.data);
       if (response.type === 'sendText'){
         var from = ContactsCollection.getUsername(response.ip);
+				if(document.getElementById("chat")!=null && document.getElementById("sendMessage")!=null){
+						TextMessagesCollection.add({contact:from, message:document.getElementById("chat").getElementsByTagName("textarea")[0].value ,source:'writing'});
+				}
         TextMessagesCollection.add({contact:from, message:response.message ,source:'received'});
         var currentUnread = ContactsCollection.where({IP: response.ip})[0].get("unread");
         if (currentUnread > -1){
