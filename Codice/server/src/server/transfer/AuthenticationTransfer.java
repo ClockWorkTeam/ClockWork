@@ -29,7 +29,6 @@ public class AuthenticationTransfer extends ListenerTransfer{
    			if(user==null){
    				wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"name\":\"\",\"surname\":\"\"}");
    			}else{
-   	   			event.getConnector().setUsername(user.getUsername());
    				wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"true\", \"name\":\""+user.getName()+"\", \"surname\":\""+user.getSurname()+"\"}");
    				java.util.Vector<User> newUser = new java.util.Vector<User>();
    				newUser.add(user);
@@ -43,8 +42,6 @@ public class AuthenticationTransfer extends ListenerTransfer{
    			if(user==null){
    				wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"false\"}");
    			}else{
-   				event.getConnector().setUsername(user.getUsername());
-   				
    				wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"true\"}");
    				java.util.Vector<User> newUser = new java.util.Vector<User>();
    				newUser.add(user);
@@ -62,7 +59,6 @@ public class AuthenticationTransfer extends ListenerTransfer{
    			if(!answer){
    				wspacket = new RawPacket("{\"type\":\"logout\",\"answer\":\"false\"}");
    			}else{
-   				event.getConnector().removeUsername();
    				User user=userManager.getUser(token.getString("username"));
    				wspacket = new RawPacket("{\"type\":\"logout\",\"answer\":\"true\"}");
    				java.util.Vector<User> newUser = new java.util.Vector<User>();
@@ -76,7 +72,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
     }
 
     public void processOpened(WebSocketServerEvent event) {
-    	connectedUsers.add(event.getConnector());
+    	connectedClients.add(event.getConnector());
     	java.util.Map<String, String> tut =tutorials.getTutorials();
     	String tmp =converter.convertTutorials(tut, "\"type\":\"tutorials\",");
     	WebSocketPacket wspacket = new RawPacket(tmp);
@@ -84,15 +80,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
    
    }
     public void processClosed(WebSocketServerEvent event) {
-    	User user= userManager.getUser(event.getConnector().getUsername());
-    	if(!user.getIP().equals("0")){
-    		authenticationManager.logout(userManager.getUser(user.getUsername()));
-    		java.util.Vector<User> newUser = new java.util.Vector<User>();
-			newUser.add(user);
-			WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-			broadcastToAll(wspacket2);
-    	}
-    	connectedUsers.remove(event.getConnector());
+    	connectedClients.remove(event.getConnector());
     }
     
 
