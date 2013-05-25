@@ -56,12 +56,6 @@ define([
 		},
   
 		putMessage:function(TextMessageModel){
-			if(TextMessageModel.toJSON().source=='writing'){
-				var text=TextMessageModel.toJSON().message;
-				this.collection.remove(TextMessageModel);
-				(this.el).getElementsByTagName("textarea")[0].value='Prova'+text;
-				alert(text);
-		}else{
 			var node=document.createElement("LI");
 			var name=document.createElement("H3");
 			if(TextMessageModel.toJSON().source=='sent'){
@@ -75,12 +69,12 @@ define([
 			node.appendChild(name);
 			node.appendChild(message);
 			(this.el).getElementsByTagName("UL")[0].appendChild(node);
-		}
+		
 		},
   
 		//invia un messaggio
 		send:function(){
-						ChatCommunication.send(this.model.toJSON().IP, this.model.toJSON().username, (this.el).getElementsByTagName("textarea")[0].value);
+						ChatCommunication.send(this.model.toJSON().username, (this.el).getElementsByTagName("textarea")[0].value);
 			this.collection.add({contact:this.model.toJSON().username, message:(this.el).getElementsByTagName("textarea")[0].value, source:'sent'});
 			(this.el).getElementsByTagName("textarea")[0].value='';
 		},

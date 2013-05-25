@@ -41,14 +41,14 @@ define([
     render: function(isCaller,type, contact){
       this.delegateEvents();
       if(document.getElementById('content')){
-        $(this.el).html(this.template());
+        $(this.el).html(this.template(contact.toJSON()));
         console.log("sono su call");
       }
       else{
         $('#main').prepend(this.el);
         $(this.el).html(this.template());
       }
-     // document.getElementById('chatTemplate').style.float='right';
+
       if(this.calling){
         CallCommunication.recoverCall();
       }else{ 
@@ -64,7 +64,6 @@ define([
   
     endCall:function(isEnding){
       console.log("chiudo chiamata");
-      document.getElementById('chatTemplate').style.float='none';
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
