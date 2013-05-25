@@ -40,29 +40,27 @@ define([
     },
     
     //funzione che effettua la scrittura della struttura della pagina
-    render: function(isCaller,type, contact){
+    render: function(isCaller,type, iptoCall,username){
       this.delegateEvents();
       if(document.getElementById('content')){
-        $(this.el).html(this.template(contact.toJSON()));
+        $(this.el).html(this.template());
         console.log("sono su call");
       }
       else{
         $('#main').prepend(this.el);
         $(this.el).html(this.template());
       }
-
       if(!document.getElementById('statistics'))
         $('#main').insertBefore($('#statistics'), $('#chat'));
      // document.getElementById('chatTemplate').style.float='right';
-
       if(this.calling){
         CallCommunication.recoverCall();
       }else{ 
         if(isCaller===false){
-          CallCommunication.sendAnswer(type, contact, this);
+          CallCommunication.sendAnswer(type, iptoCall, this);
           this.calling=true;
         }else{
-        CallCommunication.sendCall(type, contact, this);
+        CallCommunication.sendCall(iptoCall, type, this);
         this.calling=true;
         }	
       }	
@@ -70,6 +68,7 @@ define([
   
     endCall:function(isEnding){
       console.log("chiudo chiamata");
+      document.getElementById('chatTemplate').style.float='none';
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();

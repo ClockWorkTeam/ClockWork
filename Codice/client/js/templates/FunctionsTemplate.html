@@ -11,29 +11,28 @@
    |______|_______________|___________|
    |      |               |           |
 -->
-<div id="functionsTemplate">
 <% if(typeof From !="undefined"){ %>
 	<% if(From =="IP"){ %>
-		
+	<div class="function">
 		<label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
 		<input type="text" name="ip" id="ip" />
+	</div>
 		<button id= "startChat">Inizia chat</button>  
 		<button id="call">Chiama</button>
 		<button id="video">Videochiama</button>
 		<input type="checkbox" name="record" id="record" >Registra la chiamata
 
 	<% }else if (From == "Conf") { %>
-		
 		<ul id="optionContacts"></ul>
-
 	<% } else {%>
 				<div id="empty"></div>
 	<% } %>
 	
 <% } else { %>
+	 <div class="function">
 		<h2><%= username %></h2>
 		<% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%>
-		<button id='dataContact'>Dettagli contatto</button>
+	 </div>
 		<button id= "sendVideoText">Invia un videomessaggio</button> 
 		<% if(IP != "0"){ %> 
 			<button id="call">Chiama</button>
@@ -41,4 +40,3 @@
 			<input type="checkbox" name="record" id="record" >Registra la chiamata
 		<% } %>
 <% } %>
-</div>

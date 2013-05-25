@@ -63,7 +63,8 @@ define([
     
     sendVideoText:function(){
 		if(this.recordMessageView)
-		{				
+		{	
+			
 			this.recordMessageView.close;
 			}
 		this.close;
@@ -73,15 +74,17 @@ define([
 		},
     
     audiocall:function(isCaller){
-      if(this.callView){	
+      if(this.callView)
+      {	
         this.callView.close;
       }
       this.close;
       this.callView=new CallView({FunctionView:this});
       if(isCaller==false){
-        this.callView.render(false, 'audio',this.model);
-      }else{
-        this.callView.render(true,'audio',this.model);
+        this.callView.render(false, 'audio',this.model.toJSON().IP);
+      }
+      else{
+        this.callView.render(true,'audio',this.model.toJSON().IP);
       }
       $('#main').prepend(this.callView.el);
     },
@@ -94,10 +97,10 @@ define([
       this.close;
       this.callView=new CallView({FunctionView:this});
       if(isCaller==false){
-        this.callView.render(false, 'video',this.model);
+        this.callView.render(false, 'video',this.model.toJSON().IP);
       }
       else{
-        this.callView.render(true,'video',this.model);
+        this.callView.render(true,'video',this.model.toJSON().IP);
       }
       $('#main').prepend(this.callView.el);
     },

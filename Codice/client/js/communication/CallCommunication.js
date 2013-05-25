@@ -40,7 +40,7 @@ define(['connection'], function(Connection){
   return {
 	
     //funzione che inoltra la richiesta di chiamata al server
-    sendCall: function (typecall, contact, callView){
+    sendCall: function (recipi, typecall, callView){
       var event=new CustomEvent("setOnCall",{
         detail:{
           type:true
@@ -49,8 +49,8 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      recipient=contact;
-      var credentials = { ip: recipient.toJSON().IP, username: recipient.toJSON().username , type:'call', calltype:typecall};
+      recipient=recipi;
+      var credentials = { ip: recipient , type:'call', calltype:typecall};
       Connection.send(JSON.stringify(credentials));
       //aggiunta del listener per la ricezione della risposta dell'utente chiamato
       Connection.addEventListener("message", onAnswer, false);
@@ -94,9 +94,9 @@ define(['connection'], function(Connection){
     },
     
     //funzione che invia al server la risposta dell'utente chiamato
-    sendAnswer: function (typecall, contact, callView){
-      recipient=contact;
-      var credentials = { response: true, ip:recipient.toJSON().IP, username: recipient.toJSON().username, type:'answeredCall' };
+    sendAnswer: function (typecall, recipi, callView){
+      recipient=recipi;
+      var credentials = { response: true, ip:recipient, type:'answeredCall' };
       Connection.send(JSON.stringify(credentials));
       this.startCall(false, typecall, this, callView);
     },
@@ -149,7 +149,7 @@ define(['connection'], function(Connection){
 		gotDescription : function(desc){
 			peerConn.setLocalDescription(desc);
 			var response=JSON.stringify(desc);
-			var credentials={description: response, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'offer'};
+			var credentials={description: response, ip: recipient, type: 'offer'};
 			Connection.send(JSON.stringify(credentials));
 		},
     
@@ -159,7 +159,7 @@ define(['connection'], function(Connection){
 			  label: event.candidate.sdpMLineIndex,
 			  id: event.candidate.sdpMid,
 			  candidate: event.candidate.candidate});
-			  var candidate = JSON.stringify({cand: candidate, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'candidate'});
+			  var candidate = JSON.stringify({cand: candidate, ip: recipient, type: 'candidate'});
 			  candidates.push(candidate);
 			} else {
 				console.log("End of candidates.");
@@ -172,7 +172,7 @@ define(['connection'], function(Connection){
             });
 				}
           console.log("candidate ti invierò");
-					var message = JSON.stringify({ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'candidateready'});
+					var message = JSON.stringify({ip: recipient, type: 'candidateready'});
           Connection.send(message);
 			}
 		},
@@ -308,7 +308,7 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      var credentials={ip : recipient.toJSON().IP, username: recipient.toJSON().username , type : 'endcall'};
+      var credentials={ip : recipient , type : 'endcall'};
       Connection.send(JSON.stringify(credentials));
       Connection.removeEventListener("message", onMessaggeListener, false);
     }
