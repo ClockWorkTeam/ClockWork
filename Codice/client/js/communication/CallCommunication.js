@@ -19,7 +19,7 @@ define(['connection'], function(Connection){
     
   var remoteStream = null;
     
-  var peerConn = null;
+  var peerConnection = null;
     
   var recipient = null;
     
@@ -40,7 +40,7 @@ define(['connection'], function(Connection){
   return {
 	
     //funzione che inoltra la richiesta di chiamata al server
-    sendCall: function (recipi, typecall, callView){
+    sendCall: function (typecall, contact, callView){
       var event=new CustomEvent("setOnCall",{
         detail:{
           type:true
@@ -49,8 +49,8 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      recipient=recipi;
-      var credentials = { ip: recipient , type:'call', calltype:typecall};
+      recipient=contact;
+      var credentials = { ip: recipient.toJSON().IP, username: recipient.toJSON().username , type:'call', calltype:typecall};
       Connection.send(JSON.stringify(credentials));
       //aggiunta del listener per la ricezione della risposta dell'utente chiamato
       Connection.addEventListener("message", onAnswer, false);
@@ -94,9 +94,9 @@ define(['connection'], function(Connection){
     },
     
     //funzione che invia al server la risposta dell'utente chiamato
-    sendAnswer: function (typecall, recipi, callView){
-      recipient=recipi;
-      var credentials = { response: true, ip:recipient, type:'answeredCall' };
+    sendAnswer: function (typecall, contact, callView){
+      recipient=contact;
+      var credentials = { response: true, ip:recipient.toJSON().IP, username: recipient.toJSON().username, type:'answeredCall' };
       Connection.send(JSON.stringify(credentials));
       this.startCall(false, typecall, this, callView);
     },
@@ -116,40 +116,40 @@ define(['connection'], function(Connection){
       // Quando viene rimosso uno stream dal peerConnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
       function onRemoteStreamRemoved(event) {
         console.log("Removed remote stream");
-        peerConn.removeStream(this.localStream);
-        peerConn.close();
+        peerConnection.removeStream(this.localStream);
+        peerConnection.close();
       }
 
       var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
       try {
         console.log("Creating peer connection");
-        peerConn = new webkitRTCPeerConnection(pcConfig);
-        peerConn.onicecandidate = this.onIceCandidate;
+        peerConnection = new webkitRTCPeerConnection(pcConfig);
+        peerConnection.onicecandidate = this.onIceCandidate;
       } catch (e) {
         console.log("Failed to create peerConnection, exception: " + e.message);
       }
       
-      peerConn.addEventListener("addstream", onRemoteStreamAdded, false);
-      peerConn.addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+      peerConnection.addEventListener("addstream", onRemoteStreamAdded, false);
+      peerConnection.addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
     },
 
     // start the connection upon user request
 		connect : function(started) {
 			if (!started && localStream ) {	  
 				this.createPeerConnection();	  
-				peerConn.addStream(localStream);
+				peerConnection.addStream(localStream);
 				console.log('Adding local stream...');
         
-				peerConn.createOffer(this.gotDescription);
+				peerConnection.createOffer(this.gotDescription);
 			} else {
 				alert("Local stream not running yet.");
 			}
 		},
     
 		gotDescription : function(desc){
-			peerConn.setLocalDescription(desc);
+			peerConnection.setLocalDescription(desc);
 			var response=JSON.stringify(desc);
-			var credentials={description: response, ip: recipient, type: 'offer'};
+			var credentials={description: response, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'offer'};
 			Connection.send(JSON.stringify(credentials));
 		},
     
@@ -159,7 +159,7 @@ define(['connection'], function(Connection){
 			  label: event.candidate.sdpMLineIndex,
 			  id: event.candidate.sdpMid,
 			  candidate: event.candidate.candidate});
-			  var candidate = JSON.stringify({cand: candidate, ip: recipient, type: 'candidate'});
+			  var candidate = JSON.stringify({cand: candidate, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'candidate'});
 			  candidates.push(candidate);
 			} else {
 				console.log("End of candidates.");
@@ -172,10 +172,14 @@ define(['connection'], function(Connection){
             });
 				}
           console.log("candidate ti invierò");
-					var message = JSON.stringify({ip: recipient, type: 'candidateready'});
+					var message = JSON.stringify({ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'candidateready'});
           Connection.send(message);
 			}
 		},
+    
+    getPeerConnection: function(){
+      return peerConnection;
+    },
 
     //funzione che si occupa di inizializzare la chiamata
     startCall: function (isCaller, typecall, call, callView){
@@ -198,9 +202,9 @@ define(['connection'], function(Connection){
               sourcevid.src = window.webkitURL.createObjectURL(stream);
               call.createPeerConnection();
               localStream=stream;
-              peerConn.addStream(localStream);
-              peerConn.setRemoteDescription(new RTCSessionDescription(response));
-              peerConn.createAnswer(call.gotDescription);
+              peerConnection.addStream(localStream);
+              peerConnection.setRemoteDescription(new RTCSessionDescription(response));
+              peerConnection.createAnswer(call.gotDescription);
             });
           }
           
@@ -210,16 +214,16 @@ define(['connection'], function(Connection){
               sourcevid.src = window.webkitURL.createObjectURL(stream);
               call.createPeerConnection();
               localStream=stream;
-              peerConn.addStream(localStream);
-              peerConn.setRemoteDescription(new RTCSessionDescription(response));
-              peerConn.createAnswer(call.gotDescription);
+              peerConnection.addStream(localStream);
+              peerConnection.setRemoteDescription(new RTCSessionDescription(response));
+              peerConnection.createAnswer(call.gotDescription);
             });
           }           
         }
         
         if (response.type==='answer' && isCaller){
           started=true;
-          peerConn.setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection.setRemoteDescription(new RTCSessionDescription(response));
         }
         
         if (response.type ==='candidate' && started) {
@@ -227,14 +231,14 @@ define(['connection'], function(Connection){
           console.log('Adding candidate...');
           var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
           candidate:response.candidate});
-          peerConn.addIceCandidate(candidate);
+          peerConnection.addIceCandidate(candidate);
         }
         
         if (response.type ==='endcall') {
-          if(peerConn!=null){
+          if(peerConnection!=null){
             localStream.stop();
-            peerConn.removeStream(localStream);
-            peerConn.close();
+            peerConnection.removeStream(localStream);
+            peerConnection.close();
           }
           var event=new CustomEvent("setOnCall",{
             detail:{
@@ -293,13 +297,13 @@ define(['connection'], function(Connection){
     },
     
     endCall: function() {
-      if(peerConn!=null){
-        peerConn.removeStream(localStream);
-        peerConn.close();
+      if(peerConnection != null){
+        peerConnection.removeStream(localStream);
+        peerConnection.close();
         localStream.stop();
       }
       
-      peerConn=null;
+      peerConnection = null;
       var event=new CustomEvent("setOnCall",{
         detail:{
           type:false
@@ -308,7 +312,7 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      var credentials={ip : recipient , type : 'endcall'};
+      var credentials={ip : recipient.toJSON().IP, username: recipient.toJSON().username , type : 'endcall'};
       Connection.send(JSON.stringify(credentials));
       Connection.removeEventListener("message", onMessaggeListener, false);
     }
