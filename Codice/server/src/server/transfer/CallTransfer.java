@@ -18,6 +18,7 @@ public class CallTransfer extends ListenerTransfer {
    	    		sendPacket(wspacket,connector);
    	    	}
    		}else if(type.equals("answeredCall")){
+   			System.out.println("rispondo alla chiamata");
   		  	WebSocketConnector connector = getConnector(token.getString("ip"));
    	    	if(connector!= null){
    	    		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"true\"}");

@@ -59,9 +59,9 @@ define(['connection'], function(Connection){
       function onAnswer(evt){
          
         var response = JSON.parse(evt.data);
-        
+        console.log("ho ricevuto un messaggio");
         if(response.type==='answeredCall'){
-          
+          console.log("ho ricevuto una risposta");
           if(response.answer==='true'){
             var isCaller=true;
             call.startCall(isCaller, typecall, call, callView)	

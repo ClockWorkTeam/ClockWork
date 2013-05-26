@@ -37,13 +37,13 @@ define([
 			this.listenTo(this.collection, 'all', this.render);
 			_.bindAll(this, 'render', 'putMessages', 'putMessage');
 			if(this.options.userModel!='' && this.model.toJSON().IP!="0"){
-				$(this.el)[0].childNodes[3].innerHTML=((_.template(ComposeTemplate))());
+			//	$(this.el)[0].childNodes[3].innerHTML=((_.template(ComposeTemplate))());
 			}
 		},
  
 		render: function() {	
 			if(this.options.userModel!=''){
-				$(this.el)[0].childNodes[1].innerHTML=(this.ChatTemplate({ip: this.model.toJSON().IP}));
+				//$(this.el)[0].childNodes[1].innerHTML=(this.ChatTemplate({ip: this.model.toJSON().IP}));
 				this.putMessages();
 			}
 		},
