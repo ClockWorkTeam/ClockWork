@@ -36,14 +36,14 @@ define([
     initialize: function(){
       this.calling=false;
       _.bindAll(this, 'render');
-      var statisticsView = new StatisticsView();
+      this.statisticsView = new StatisticsView();
     },
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, contact){
       this.delegateEvents();
       if(document.getElementById('content')){
-        $(this.el).html(this.template(contact.toJSON()));
+        $(this.el).html(this.template());
         console.log("sono su call");
       }
       else{
@@ -74,6 +74,7 @@ define([
         CallCommunication.endCall();
       this.close();
       this.options.FunctionView.closeViewCall();
+      this.statisticsView.close();
     }
   
   });

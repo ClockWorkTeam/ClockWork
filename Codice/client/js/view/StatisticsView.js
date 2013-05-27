@@ -20,13 +20,9 @@ define([
  'text!templates/StatisticsTemplate.html',
  'communication/CallCommunication'
 ], function($, _, Backbone, StatisticsTemplate, CallCommunication){
+  var interval=null;
   var StatisticsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
-    events:{
-		'click button#update':'updateStatistics',
-    'click button#close':'close'
-    },
-	
     el : $('#statistics'),
 	
     //indica in quale parte del DOM gestirà 
@@ -40,61 +36,76 @@ define([
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
-      if(document.getElementById('statistics')){
-        $(this.el).html(this.statisticsTemplate({sent: 0, received: 0}));
-      }
-      else{
+      if(!document.getElementById('statistics')){
         $('#main').prepend(this.el);
-        $(this.el).html(this.statisticsTemplate({sent: 0, received: 0}));
       }
-    },
-    
-    updateStatistics: function(){
-      var pc = CallCommunication.getPeerConnection();
-      var baselineReport, currentReport;
-      var selector = pc.getRemoteStreams()[0].getAudioTracks()[0];
-
-      pc.getStats(selector, function (report) {
-          baselineReport = report;
-      });
-
-      // ... wait a bit
-      setTimeout(function () {
-          pc.getStats(selector, function (report) {
-              currentReport = report;
-              processStats();
-          });
-      }, 2000);
-
-      function processStats() {
-          // compare the elements from the current report with the baseline
-          for (var now in currentReport) {
-              if (now.type != "outbund-rtp")
-                  continue;
-
-              // get the corresponding stats from the baseline report
-              base = baselineReport[now.id];
-
-              if (base) {
-                  remoteNow = currentReport[now.remoteId];
-                  remoteBase = baselineReport[base.remoteId];
-
-                  var packetsSent = now.packetsSent - base.packetsSent;
-                  var packetsReceived = remoteNow.packetsReceived - remoteBase.packetsReceived;
+      document.addEventListener("setPeerConn",setPeerConn,false);
+      var view=this;
+      function setPeerConn(event){
+        var peerConnection=event.detail.peercon;
+        var baseTime=0;
+        var prevTime=0;
+        interval= setInterval(function() {
+          if (peerConnection && peerConnection.getRemoteStreams()[0]) {
+            if (peerConnection.getStats) {
+              peerConnection.getStats(function(stats) {
+                var byteAudioSent=0;
+                var byteVideoSent=0;
+                var time=0;
+                var bitrate=0;
+                var latency=0;
+                var results = stats.result();
+                var audio=0;
+                for (var i = 0; i < results.length; ++i) {
+                  var res = results[i];
+                  if(baseTime==0){
+                    baseTime=res.timestamp;
+                  }
+                  time=res.timestamp-baseTime;
+                  res.timestamp;
                   
-                  $(this.el).html(this.statisticsTemplate({sent: packetsSent, received: packetsReceived}));
-
-                  // if fractionLost is > 0.3, we have probably found the culprit
-                  var fractionLost = (packetsSent - packetsReceived) / packetsSent;
-              }
+                  if(res.stat("bytesSent")){
+                    if(audio==0){
+                      byteAudioSent=res.stat("bytesSent");
+                      audio=1;
+                    }
+                    else
+                      byteVideoSent=res.stat("bytesSent");
+                  }
+                  if(res.stat("googBucketDelay")){
+                    latency=res.stat("googBucketDelay");
+                  }
+                  if(res.stat("googTransmitBitrate")){
+                    bitrate=res.stat("googTransmitBitrate");
+                  }  
+                }
+                bitrate=Math.round(bitrate/8);
+                byteAudioSent=Math.round(byteAudioSent/1024);
+                byteVideoSent=Math.round(byteVideoSent/1024);
+                var data=new Date();
+                time=Math.floor(time/1000);
+                var hour=Math.floor(time/3600);
+                time=time-3600*hour;
+                var minute=Math.floor(time/60);
+                time=time-60*minute;
+                var second=time;
+                data.setHours(hour); 
+                data.setMinutes(minute); 
+                data.setSeconds(second);
+                var timeToDisplay=data.getHours()+":"+data.getMinutes()+":"+data.getSeconds();
+                $(view.el).html(view.statisticsTemplate({time: timeToDisplay, sentAudio: byteAudioSent, sentVideo: byteVideoSent,latency: latency, bitrate: bitrate}));
+              })     
+            }
           }
-      }
+        },1000);
+      };
     }
   });
 
   StatisticsView.prototype.close = function(){
     this.remove();
     this.unbind();
+    clearInterval(interval);
   };
 
   return StatisticsView;

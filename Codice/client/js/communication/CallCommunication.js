@@ -111,6 +111,14 @@ define(['connection'], function(Connection){
       console.log("Added remote stream");
       remotevid.src = window.webkitURL.createObjectURL(event.stream);
       remoteStream=event.stream;
+      var event=new CustomEvent("setPeerConn",{
+        detail:{
+          peercon:peerConnection
+        },
+        bubbles:true,
+        cancelable:true
+      });
+      document.dispatchEvent(event);
       }
 
       // Quando viene rimosso uno stream dal peerConnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
