@@ -21,6 +21,7 @@ define([
  'communication/CallCommunication'
 ], function($, _, Backbone, StatisticsTemplate, CallCommunication){
   var interval=null;
+  var peerConnection=null;
   var StatisticsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     el : $('#statistics'),
@@ -37,14 +38,22 @@ define([
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
       if(!document.getElementById('statistics')){
-        $('#main').prepend(this.el);
+        $('#main').append(this.el);
+        $(this.el).html(this.statisticsTemplate({time: 0, sentAudio: 0, sentVideo: 0,latency: 0, bitrate: 0}));
       }
       document.addEventListener("setPeerConn",setPeerConn,false);
       var view=this;
       function setPeerConn(event){
-        var peerConnection=event.detail.peercon;
+        peerConnection=event.detail.peercon;
         var baseTime=0;
         var prevTime=0;
+        if(interval){
+          clearInterval(interval);
+        }
+        else{
+          baseTime=0;
+          prevTime=0;
+        }
         interval= setInterval(function() {
           if (peerConnection && peerConnection.getRemoteStreams()[0]) {
             if (peerConnection.getStats) {
@@ -106,6 +115,7 @@ define([
     this.remove();
     this.unbind();
     clearInterval(interval);
+    peerConnection=null
   };
 
   return StatisticsView;

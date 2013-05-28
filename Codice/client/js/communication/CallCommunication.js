@@ -300,8 +300,10 @@ define(['connection'], function(Connection){
       remotevid = document.getElementById('remotevid');
       sourcevid.src = window.webkitURL.createObjectURL(localStream);
       remotevid.src = window.webkitURL.createObjectURL(remoteStream);
-      sourcevid.play();
-      remotevid.play();
+      setTimeout(function(){
+        sourcevid.play();
+        remotevid.play();
+      },1000);
     },
     
     endCall: function() {

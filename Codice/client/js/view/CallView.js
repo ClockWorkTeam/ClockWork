@@ -57,6 +57,7 @@ define([
 
       if(this.calling){
         CallCommunication.recoverCall();
+        this.statisticsView.render();
       }else{ 
         if(isCaller===false){
           CallCommunication.sendAnswer(type, contact, this);

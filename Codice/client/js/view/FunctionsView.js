@@ -19,8 +19,9 @@ define([
  'backbone',
  'view/CallView',
  'view/RecordMessageView',
+ 'communication/NotificationCommunication',
  'text!templates/FunctionsTemplate.html'
-], function($, _, Backbone, CallView, RecordMessageView, FunctionsTemplate){
+], function($, _, Backbone, CallView, RecordMessageView,NotificationCommunication, FunctionsTemplate){
   var FunctionsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -73,33 +74,36 @@ define([
 		},
     
     audiocall:function(isCaller){
-      if(this.callView){	
-        this.callView.close;
+      if(NotificationCommunication.getStatus() && isCaller!=false){
+        alert("hai già una chiamata attiva");
       }
-      this.close;
-      this.callView=new CallView({FunctionView:this});
-      if(isCaller==false){
-        this.callView.render(false, 'audio',this.model);
-      }else{
-        this.callView.render(true,'audio',this.model);
+      else{
+        this.close;
+        this.callView=new CallView({FunctionView:this});
+        if(isCaller==false){
+          this.callView.render(false, 'audio',this.model);
+        }else{
+          this.callView.render(true,'audio',this.model);
+        }
+        $('#main').prepend(this.callView.el);
       }
-      $('#main').prepend(this.callView.el);
     },
     
     videocall:function(isCaller){
-      if(this.callView)
-      {	
-        this.callView.close;
-      }
-      this.close;
-      this.callView=new CallView({FunctionView:this});
-      if(isCaller==false){
-        this.callView.render(false, 'video',this.model);
+      if(NotificationCommunication.getStatus() && isCaller!=false){
+        alert("hai già una chiamata attiva");
       }
       else{
-        this.callView.render(true,'video',this.model);
+        this.close;
+        this.callView=new CallView({FunctionView:this});
+        if(isCaller==false){
+          this.callView.render(false, 'video',this.model);
+        }
+        else{
+          this.callView.render(true,'video',this.model);
+        }
+        $('#main').prepend(this.callView.el);
       }
-      $('#main').prepend(this.callView.el);
     },
     
     record : function(){
@@ -108,8 +112,7 @@ define([
     
     closeViewCall : function(){
       console.log("prova");
-      //this.close();
-      //callView.close();
+      this.callView.close();
       this.callView='';
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));

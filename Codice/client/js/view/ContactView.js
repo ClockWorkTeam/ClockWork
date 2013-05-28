@@ -52,7 +52,7 @@ define([
       }
        this.options.callback.disableContact();
       this.currentFunctions.delegateEvents();
-      $('#main').append(this.currentFunctions.el);
+      $('#main').prepend(this.currentFunctions.el);
       
       chat.close();
       chat= new ChatView({model: this.model, userModel: this.options.userModel});
@@ -78,7 +78,11 @@ define([
       else{
         this.currentFunctions.audiocall(false);
       }
-      $('#main').append(this.currentFunctions.el);
+      if(!document.getElementById('content')){
+        console.log("prova");
+         $('#main').prepend("#content");
+      }
+      $('#main').prepend(this.currentFunctions.el);
       
       chat.close();
       chat= new ChatView({model: this.model, userModel: this.options.userModel});
