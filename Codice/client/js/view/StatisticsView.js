@@ -45,14 +45,18 @@ define([
       var view=this;
       function setPeerConn(event){
         peerConnection=event.detail.peercon;
-        var baseTime=0;
-        var prevTime=0;
+        var baseTime;
+        var prevTime;
+        var bitprev;
+        var actualtime;
         if(interval){
           clearInterval(interval);
         }
         else{
           baseTime=0;
           prevTime=0;
+          bitprev=0;
+          actualtime=0;
         }
         interval= setInterval(function() {
           if (peerConnection && peerConnection.getRemoteStreams()[0]) {
@@ -65,43 +69,57 @@ define([
                 var latency=0;
                 var results = stats.result();
                 var audio=0;
+                prevTime=actualtime
                 for (var i = 0; i < results.length; ++i) {
                   var res = results[i];
+                  actualtime=res.timestamp;
                   if(baseTime==0){
                     baseTime=res.timestamp;
                   }
                   time=res.timestamp-baseTime;
-                  res.timestamp;
                   
                   if(res.stat("bytesSent")){
                     if(audio==0){
                       byteAudioSent=res.stat("bytesSent");
                       audio=1;
                     }
-                    else
-                      byteVideoSent=res.stat("bytesSent");
+                    else{
+                      byteVideoSent=res.stat("bytesSent");                        
+                    }
                   }
-                  if(res.stat("googBucketDelay")){
-                    latency=res.stat("googBucketDelay");
+                  if(res.stat("googRtt")){
+                    latency=res.stat("googRtt")/2;
                   }
-                  if(res.stat("googTransmitBitrate")){
-                    bitrate=res.stat("googTransmitBitrate");
-                  }  
                 }
-                bitrate=Math.round(bitrate/8);
+                
+                bitrate = Math.round((((parseInt(byteVideoSent)+parseInt(byteAudioSent)) - parseInt(bitprev)) /
+                                    ((actualtime - prevTime)/1000))/1024);
+                console.log(actualtime );
+                bitprev=parseInt(byteVideoSent)+parseInt(byteAudioSent);                    
+                
                 byteAudioSent=Math.round(byteAudioSent/1024);
                 byteVideoSent=Math.round(byteVideoSent/1024);
-                var data=new Date();
+                
                 time=Math.floor(time/1000);
                 var hour=Math.floor(time/3600);
                 time=time-3600*hour;
                 var minute=Math.floor(time/60);
                 time=time-60*minute;
                 var second=time;
-                data.setHours(hour); 
-                data.setMinutes(minute); 
-                data.setSeconds(second);
-                var timeToDisplay=data.getHours()+":"+data.getMinutes()+":"+data.getSeconds();
+                
+                if(hour<10)
+                  timeToDisplay="0"+hour+":";
+                else
+                  timeToDisplay=hour+":";
+                if(minute<10)
+                  timeToDisplay=timeToDisplay+"0"+minute+":";
+                else
+                  timeToDisplay=timeToDisplay+minute+":";
+                if(second<10)
+                  timeToDisplay=timeToDisplay+"0"+second;
+                else
+                  timeToDisplay=timeToDisplay+second;
+                  
                 $(view.el).html(view.statisticsTemplate({time: timeToDisplay, sentAudio: byteAudioSent, sentVideo: byteVideoSent,latency: latency, bitrate: bitrate}));
               })     
             }
