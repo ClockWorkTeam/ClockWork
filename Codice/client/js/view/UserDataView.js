@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:UserDataView.js
  * Package: 
  * Autore:
@@ -20,30 +20,38 @@ define([
   'communication/UserDataCommunication'
 ], function($, _, Backbone, UserDataTemplate, UserDataCommunication){
   var UserDataView = Backbone.View.extend({
-    //si occupa di legare gli eventi ad oggetti del DOM
+    
+    /**
+     * si occupa di legare gli eventi ad oggetti del DOM
+     */
 	  events: {
       'click button#submitChange': 'checkPassword',
       'click button#reset': 'render',
       'click button#denyChange': 'unrender' 
 		},
 		
-	 el: '#main',
+    el: '#main',
 		
-    //template per il rendering di questa vista 
-    userDataTemplate: _.template(UserDataTemplate),
+    template: _.template(template),
     
-        //funzione di inizializzazione della vista
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
     initialize: function(){
-	    //rendo visibile l'oggetto di invocazione alla funzione render e connect
       _.bindAll(this, 'render', 'unrender');
-      //genero la struttura della pagina
       this.render();
 		},
 		
-		 //funzione che effettua la scrittura della struttura della pagina
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
     render: function() {
-      $(this.el).html(this.userDataTemplate(this.model.toJSON()));
+      $(this.el).html(this.template(this.model.toJSON()));
     },
+
+    /**
+     * funzione che si occupa di rimuovere la struttura della vista dalla pagina
+     */
 		
 		unrender:function(){
 			this.close();
@@ -51,6 +59,9 @@ define([
 			$('body').append(this.el);
 		},
 
+    /**
+     * funzione che si occupa di verificare se abbiamo inserito correttamente 
+     */
 		checkPassword:function(){
 			UserDataCommunication.checkPassword(this.model,this.$('#oldPassword').val(), this);
 		},
@@ -68,6 +79,10 @@ define([
     },
 
 	});
+  
+  /**
+   * si occupa di chiudere la vista
+   */
 	 UserDataView.prototype.close = function(){
     this.remove();
     this.unbind();

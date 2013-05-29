@@ -24,6 +24,7 @@ define([
   'view/ContactsView'
 ], function($, _, Backbone, authenticationTemplate, AuthenticationCommunication, ContactsCommunication, UserModel, ContactsView){
   var AuthenticationView = Backbone.View.extend({
+    
     //si occupa di legare gli eventi ad oggetti del DOM
 	  events: {
       'click button#login': 'connect',
@@ -115,7 +116,6 @@ define([
         //controllo se la password e la sua conferma corrispondono
         if(pass == pass2){
           //invio la richiesta di registrazione al server
-//          var authentication_communication = new AuthenticationCommunication();
           //se lo username non è già presente nel sistema procedo all'autenticazione
           AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
         }

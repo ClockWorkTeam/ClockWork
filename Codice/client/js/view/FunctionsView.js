@@ -22,38 +22,50 @@ define([
  'communication/NotificationCommunication',
  'text!templates/FunctionsTemplate.html'
 ], function($, _, Backbone, CallView, RecordMessageView,NotificationCommunication, FunctionsTemplate){
+  
+  var callView=null;
+    
+  var recordMessageView=null;
+  
   var FunctionsView = Backbone.View.extend({
-    //si occupa di legare gli eventi ad oggetti del DOM
+    /**
+     * si occupa di legare gli eventi ad oggetti del DOM
+     */
     events:{
-		'click button#sendVideoText':'sendVideoText',
-		'click button#call':'audiocall',
-		'click button#video':'videocall',	
-		'click input#record' : 'record'
+      'click button#sendVideoText':'sendVideoText',
+      'click button#call':'audiocall',
+      'click button#video':'videocall',	
+      'click input#record' : 'record'
     },
 	
     el : $('#content'),
 	
-    //indica in quale parte del DOM gestirà 
     template : _.template(FunctionsTemplate),
     
-    callView : '',
-    
-    recordMessageView : '',
-    
-    //funzione di inizializzazione dell'oggetto
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
+         
     initialize: function(){
-      callView='';
       _.bindAll(this, 'render');
     },
     
-    current_user: '',
-    
-    //funzione che effettua la scrittura della struttura della pagina
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
     render: function(){
-      if(this.callView){
-        this.callView.render();
+    /**
+     * se si è già in chiamata con la persona selezionata si carica direttamente la vista della 
+     * CallView senza caricare quella della FunctionView altrimenti si andrà a generare quest'ultima
+     */
+      if(callView){
+        callView.render();
       }
       else{
+        /**
+         * controllo atto a verificare se si sta eseguendo una FunctionView di un utente presente nella lista utenti
+         * o dall'inserimento di un indirizzo IP
+         */
         if(typeof this.model == "undefined"){
           $(this.el).html(this.template({From: this.options.From}));
         } else {
@@ -62,16 +74,24 @@ define([
       }
     },   
     
+    /**
+     * funzione che si occupa di generare il videomessaggio da inviare
+     */
+    
     sendVideoText:function(){
-		if(this.recordMessageView)
+		if(recordMessageView)
 		{				
-			this.recordMessageView.close;
+			recordMessageView.close;
 			}
-		this.close;
-		this.recordMessageView=new RecordMessageView({model : this.model});
-		this.recordMessageView.render();
-		$('#main').prepend(this.recordMessageView.el);
+		this.close();
+		recordMessageView=new RecordMessageView({model : this.model});
+		recordMessageView.render();
+		$('#main').prepend(recordMessageView.el);
 		},
+    
+    /**
+     * funzione che si occupa di inizializzare la chiamata solo audio
+     */
     
     audiocall:function(isCaller){
       if(NotificationCommunication.getStatus() && isCaller!=false){
@@ -79,15 +99,19 @@ define([
       }
       else{
         this.close;
-        this.callView=new CallView({FunctionView:this});
+        callView=new CallView({FunctionView:this});
         if(isCaller==false){
-          this.callView.render(false, 'audio',this.model);
+          callView.render(false, 'audio',this.model);
         }else{
-          this.callView.render(true,'audio',this.model);
+          callView.render(true,'audio',this.model);
         }
-        $('#main').prepend(this.callView.el);
+        $('#main').prepend(callView.el);
       }
     },
+    
+    /**
+     * funzione che si occupa di inizializzare la chiamata audio e video
+     */    
     
     videocall:function(isCaller){
       if(NotificationCommunication.getStatus() && isCaller!=false){
@@ -95,25 +119,34 @@ define([
       }
       else{
         this.close;
-        this.callView=new CallView({FunctionView:this});
+        callView=new CallView({FunctionView:this});
         if(isCaller==false){
-          this.callView.render(false, 'video',this.model);
+          callView.render(false, 'video',this.model);
         }
         else{
-          this.callView.render(true,'video',this.model);
+          callView.render(true,'video',this.model);
         }
-        $('#main').prepend(this.callView.el);
+        $('#main').prepend(callView.el);
       }
     },
+    
+    /**
+     * funzione che si occupa di registrare in locale la chiamata che si andrà ad effettuare
+     */ 
     
     record : function(){
 		
 		},
     
+    /**
+     * funzione che si occupa di ripristinare la vista una volta che la chiamata audio o audio e video
+     * venga terminata
+     */ 
+    
     closeViewCall : function(){
       console.log("prova");
-      this.callView.close();
-      this.callView='';
+      callView.close();
+      callView=null;
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));
       }else {
@@ -123,6 +156,10 @@ define([
       }
 		}
   });
+
+  /**
+   * si occupa di chiudere la vista
+   */
 
   FunctionsView.prototype.close = function(){
     this.remove();

@@ -1,6 +1,6 @@
-/*
+/**
  * Nome:ChatView.js
- * Package: 
+ * Package: View
  * Autore:
  * Data:
  * Versione:
@@ -12,7 +12,6 @@
  * |      |               | Scrittura codice          |
  */
  
-//definizione delle dipendenze
 define([
  'jquery',
  'underscore',  
@@ -29,10 +28,12 @@ define([
 	
     el : $("#chat"),
 
-    ChatTemplate: _.template(ChatTemplate),
+    template: _.template(ChatTemplate),
   
     collection: TextMessagesCollection,
-  
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
 		initialize: function(){
 			this.listenTo(this.collection, 'all', this.render);
 			_.bindAll(this, 'render', 'putMessages', 'putMessage');
@@ -40,21 +41,28 @@ define([
 			//	$(this.el)[0].childNodes[3].innerHTML=((_.template(ComposeTemplate))());
 			}
 		},
- 
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
 		render: function() {	
 			if(this.options.userModel!=''){
 				//$(this.el)[0].childNodes[1].innerHTML=(this.ChatTemplate({ip: this.model.toJSON().IP}));
 				this.putMessages();
 			}
 		},
-  
+    /**
+     * funzione che si occupa di scorrere tutti i messaggi dell'utente selezionato e visualizzarli a video
+     */
 		putMessages:function(){  
 			var messages=this.collection.chat_session(this.model.toJSON().username);
 			for(var i=0; i<messages.length; i++){
 					this.putMessage(messages[i]);
 			}
 		},
-  
+    
+    /**
+     * funzione che si occupa di visualizare un messaggio contenuto all'interno della collection
+     */
 		putMessage:function(TextMessageModel){
 			var node=document.createElement("LI");
 			var name=document.createElement("H3");
@@ -72,7 +80,9 @@ define([
 		
 		},
   
-		//invia un messaggio
+		/**
+     * funzione che si occupa di rendere visibile un messaggio contenuto all'interno della collection
+     */
 		send:function(){
 						ChatCommunication.send(this.model.toJSON().username, (this.el).getElementsByTagName("textarea")[0].value);
 			this.collection.add({contact:this.model.toJSON().username, message:(this.el).getElementsByTagName("textarea")[0].value, source:'sent'});
@@ -80,6 +90,10 @@ define([
 		},
 
  });
+ 
+  /**
+   * si occupa di chiudere la vista della classe
+   */
  
    ChatView.prototype.close = function(){
     this.remove();

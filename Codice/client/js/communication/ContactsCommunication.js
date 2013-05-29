@@ -21,13 +21,14 @@ define(['connection'], function(Connection){
 				username: view.UserModel.toJSON().username
 			};
 			Connection.send(JSON.stringify(request));
-		  
 			Connection.onmessage = function(str){
+        var temp=0;
 				var response = JSON.parse(str.data);
 				if(response.type==='getContacts'){
 					for(var i=0; i<response.size; i++){
 						var existing = view.collection.find(function(contact){return contact.get('username') === response['username'+i];});
 						if(!existing){
+              temp++;
 							view.collection.create(
 								{username: response['username'+i], 
 									name: response['name'+i], 
@@ -38,8 +39,9 @@ define(['connection'], function(Connection){
 							existing.set('IP', response['IP'+i]);
 						}
 					}
-				
-				view.contacts_view.render(view);
+          if (response.size==temp){
+            view.contacts_view.render(view);
+          }
 				}
 			}	  					   
 		}

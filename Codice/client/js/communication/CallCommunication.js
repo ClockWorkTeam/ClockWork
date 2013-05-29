@@ -36,7 +36,6 @@ define(['connection'], function(Connection){
   var candidates = null;
 
   
-  
   return {
 	
     //funzione che inoltra la richiesta di chiamata al server

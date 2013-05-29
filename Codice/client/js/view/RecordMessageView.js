@@ -19,8 +19,15 @@ define([
  'backbone',
  'text!templates/RecordMessageTemplate.html',
 ], function($, _, Backbone, RecordMessageTemplate){
+  
+  var localStream=null;
+  
   var RecordMessageView = Backbone.View.extend({
-    //si occupa di legare gli eventi ad oggetti del DOM
+
+    /**
+     * si occupa di legare gli eventi ad oggetti del DOM
+     */
+     
     events:{
 		'click button#startrecord' : 'startrecord',
 		'click button#sendrecord' : 'sendrecord'
@@ -28,47 +35,52 @@ define([
 	
     el : $('#content'),
 	
-    //indica in quale parte del DOM gestirà 
     template : _.template(RecordMessageTemplate),
     
-    
-    //funzione di inizializzazione dell'oggetto
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */    
     initialize: function(){
 	
       _.bindAll(this, 'render');
 		
     },
-    
-    localstream : '',
-    
-    //funzione che effettua la scrittura della struttura della pagina
-	render: function(){
-		alert(this.model.toJSON().username);
-		$(this.el).html(this.template(this.model.toJSON()));
-		$(this.el).append('<button id= "startrecord">Inizia registrazione</button>');
-		navigator.webkitGetUserMedia({video:true, audio:true},
-			function(stream) {
-				video = document.getElementById("live_video");
-				video.src = window.webkitURL.createObjectURL(stream);
-				localstream=stream;
-				});
-		alert(navigator.webkitGetUserMedia.duration);
-	},
-    
+        
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
+    render: function(){
+      $(this.el).html(this.template(this.model.toJSON()));
+      $(this.el).append('<button id= "startrecord">Inizia registrazione</button>');
+      navigator.webkitGetUserMedia({video:true, audio:true},
+        function(stream) {
+          var video = document.getElementById("live_video");
+          video.src = window.webkitURL.createObjectURL(stream);
+          localStream=stream;
+          });
+    },
+ 
+    /**
+     * funzione che si occupa di avviare la registrazione della chiamata
+     */    
     startrecord : function(){
-		alert(localstream);
-		localstream.stop();
-		$('#startrecord').remove()
-		$(this.el).append('<button id= "sendrecord">Termina registrazione ed invia</button>');
+      $('#startrecord').remove()
+      $(this.el).append('<button id= "sendrecord">Termina registrazione ed invia</button>');
 		},
-	
-	sendrecord : function()
-    {
-		$('#sendrecord').remove()
-		$(this.el).append('<button id= "startrecord">Inizia registrazione</button>');
+    
+    /**
+     * funzione che si occupa di interrompere la registrazione ed inviarla al server
+     */   	
+    sendrecord : function(){
+      $('#sendrecord').remove()
+      $(this.el).append('<button id= "startrecord">Inizia registrazione</button>');
 		}
+  
   });
 
+  /**
+   * si occupa di chiudere la vista
+   */
   RecordMessageView.prototype.close = function(){
     this.remove();
     this.unbind();
