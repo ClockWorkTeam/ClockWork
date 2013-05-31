@@ -112,10 +112,6 @@ Il server contiene i seguenti package:
 \end_layout
 
 \begin_layout Itemize
-sqlite (vedasi sezione )
-\end_layout
-
-\begin_layout Itemize
 dao (vedasi sezione )
 \end_layout
 
@@ -133,396 +129,6 @@ functionmanager (vedasi sezione)
 
 \begin_layout Itemize
 transfer (vedasi sezione )
-\end_layout
-
-\begin_layout Subsection
-Package Sqlite
-\end_layout
-
-\begin_layout Standard
-Il package Sqlite rappresenta il database
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/packagesqlite.pdf
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package SQLite
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazioni d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Il package è utilizzato da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-mytalk.server.dao
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Costituito dalle classi:
-\end_layout
-
-\begin_layout Itemize
-mytalk.server.sqlite.RecordMessageDataSQL (vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:mytalk.server.sqlite.RecordMessa-1"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-mytalk.server.sqlite.TutorialsDataSQL (vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:mytalk.server.sqlite.TutorialDat-1"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-mytalk.server.sqlite.UserDataSQL (vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:mytalk.server.sqlite.UserDataSQL-1"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.server.sqlite.RecordMessageDataSQL
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:mytalk.server.sqlite.RecordMessa-1"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/sqliteRecordMessageDataSQL.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe RecordMessageDataSQL
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tabella che rappresenta i messaggi differiti inviati agli utenti
-\end_layout
-
-\begin_layout Paragraph
-Attributi pubblici
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-sender:
-\series default
- rappresenta lo username del mittente del messaggio differito
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-addressee: 
-\series default
-rappresenta lo username del destinatario del messaggio differito
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-record_message:
-\series default
- indirizzo dove si trova il messaggio differito all'interno del server 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-È unico in tutto il database.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-creation:
-\series default
- data di creazione del messaggio
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.server.sqlite.TutorialDataSQL
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:mytalk.server.sqlite.TutorialDat-1"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/sqliteTutorialDataSQL.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe TutorialDataSQL
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Attributi pubblici
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-url: 
-\series default
-url di destinazione dove si trova il tutorial video
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-È unico in tutto il database.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-title:
-\series default
- titolo del tutorial video
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.server.sqlite.UserDataSQL
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:mytalk.server.sqlite.UserDataSQL-1"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/sqliteUserDataSQL.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe UserDataSQL
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tabella che rappresenta gli utenti
-\end_layout
-
-\begin_layout Paragraph
-Attributi pubblici
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-username:
-\series default
- username dell'utente
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-È unico in tutta la tabella.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-password:
-\series default
- password dell'utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-name:
-\series default
- nome dell'utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-surname
-\series default
-: cognome dell'utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-IP:
-\series default
- indirizzo IP dell'utente
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Se uguale a 0 rappresenta un utente non connesso.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1826,6 +1432,17 @@ reference "sub:mytalk.server.shared.UserList-1"
 \end_layout
 
 \begin_layout Itemize
+mytalk.server.shared.Tutorials (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mytalk.server.shared.Tutorials-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
 mytalk.server.shared.RecordMessage (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2190,6 +1807,86 @@ metodo che restituisce tutta la lista di utenti
 boolean removeUser(String username): 
 \series default
 metodo che elimina un utente dal vettore di utenti
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.Tutorials
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.shared.Tutorials-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe UserList rappresenterà la lista degli utenti registrati al server
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserList
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+xxx
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+xxx
 \end_layout
 
 \begin_layout Subsubsection
@@ -2874,7 +2571,7 @@ reference "sub:mytalk.server.functionmanager.Co-1"
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.functionmanager.ContactsManager
+mytalk.server.functionmanager.Converter
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.functionmanager.Co-1"
@@ -2885,8 +2582,8 @@ name "sub:mytalk.server.functionmanager.Co-1"
 \end_layout
 
 \begin_layout Standard
-La classe ContactsManager restituisce in forma di stringa il vettore di
- utenti passato per argomento
+La classe Converter restituisce in forma di stringa il vettore di utenti
+ passato per argomento
 \end_layout
 
 \begin_layout Standard
@@ -2898,17 +2595,10 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Graphics
-	filename img/functionmanagerContactsManager.pdf
-	scale 90
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe ContactsManager
+Classe Converter
 \end_layout
 
 \end_inset
@@ -3029,6 +2719,10 @@ Costituito dalle classi:
 \end_layout
 
 \begin_layout Itemize
+mytalk.server.transfer.ListenerTransfer (xxx)
+\end_layout
+
+\begin_layout Itemize
 mytalk.server.transfer.AuthenticationTransfer (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3051,7 +2745,7 @@ reference "sub:mytalk.server.transfer.CallTrans-1"
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.transfer.ListenerTransfer (xxx)
+mytalk.server.transfer.RecordMessageTransfer (xxx)
 \end_layout
 
 \begin_layout Itemize
@@ -3059,7 +2753,102 @@ mytalk.server.transfer.UserTransfer (xxx)
 \end_layout
 
 \begin_layout Itemize
-mytalk.server.transfer.RecordMessageTransfer (xxx)
+mytalk.server.transfer.ChatTransfer (xxx)
+\end_layout
+
+\begin_layout Itemize
+mytalk.server.transfer.FileTransfer (xxx)
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.ListenerTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.ListenerTransfer-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe AuthenticationTransfer si occupa della registrazione e autenticazione
+ degli utenti
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ListenerTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+xxx
 \end_layout
 
 \begin_layout Subsubsection
@@ -3422,6 +3211,366 @@ void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
  
 \series default
 metodo che si occupa della gestione di un pacchetto
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.RecordMessageTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.RecordMessageTransfer-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe RecordMessageTransfer si occupa della registrazione dei messaggi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessageTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.UserTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.UserTransfer-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe UserTransfer si occupa della...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe UserTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.ChatTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.ChatTransfer-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe ChatTransfer si occupa della registrazione dei messaggi di chat
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ChatTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.FileTransfer
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.transfer.FileTransfer-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe FileTransfer si occupa della gestione dei file inviati
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe FileTransfer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Relazioni d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+xxx
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+xxx
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+xxx
 \end_layout
 
 \end_body
