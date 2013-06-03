@@ -42,11 +42,9 @@ define([
       this.delegateEvents();
       if(document.getElementById('content')){
         $(this.el).html(this.template(contact.toJSON()));
-        console.log("sono su call");
-      }
-      else{
+      }else{
         $('#main').prepend(this.el);
-        $(this.el).html(this.template());
+        $(this.el).html(this.template(contact.toJSON()));
       }
 
       if(this.calling){
@@ -63,7 +61,6 @@ define([
     },
   
     endCall:function(isEnding){
-      console.log("chiudo chiamata");
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();

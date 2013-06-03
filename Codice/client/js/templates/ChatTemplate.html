@@ -11,7 +11,10 @@
    |______|_______________|___________|
    |      |               |           |
 -->
-
 <ul id='<% if(ip!='0'){ %>online<% }else{ %>offline<%}%>'></ul>
-
-
+<% if(ip!='0'){ %>
+	<div id='compose'>
+		<textarea rows="4"></textarea>	
+		<button id="Send">Invia Messaggio</button>
+	</div>
+<%}%>

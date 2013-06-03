@@ -16,11 +16,10 @@ define([
  'jquery',
  'underscore',  
  'backbone',
- 'text!templates/ContactTemplate.html',
  'view/FunctionsView',
- 'view/ChatView',
+ 'text!templates/ContactTemplate.html',
  'model/UserModel'
-], function($, _, Backbone, ContactTemplate, FunctionsView, ChatView, UserModel){
+], function($, _, Backbone, FunctionsView, ContactTemplate, UserModel){
   var ContactView = Backbone.View.extend({
     template: _.template(ContactTemplate),
     
@@ -29,70 +28,48 @@ define([
     },
 
     initialize: function(){
-		  this.listenTo(this.model, 'change', this.render);
-      _.bindAll(this, 'render', 'view' , 'remove');
-      this.currentFunctions = null;
+			this.listenTo(this.model, 'change', this.render);
+      _.bindAll(this, 'view');
     },
 	
     //rendo visibili i contatti:
     render: function(){
-      console.log("render contact");
-      this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP, unread: this.model.toJSON().unread }));   
-    return this;
+			console.log(this.model.toJSON().username);
+      this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP, unread: this.model.toJSON().unread }));
+			return this;
     },
   
     // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
     view : function(){
-      //condizione messa per evitare di chiudere functionview non ancora create
-      if(this.currentFunctions){
-        this.currentFunctions.render();
-      }
-      else{
-      this.currentFunctions = new FunctionsView({model: this.model});
-      this.currentFunctions.render();
-      }
-       this.options.callback.disableContact();
-      this.currentFunctions.delegateEvents();
-      $('#main').append(this.currentFunctions.el);
-      
-      chat.close();
-      chat= new ChatView({model: this.model, userModel: this.options.userModel});
-      chat.render();
-      $('#main').append(chat.el);
-      this.model.set({unread: -1});
+			this.options.callback.closeOtherContacts(this.model.toJSON().username);
+      if(!this.currentFunctions)
+					this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+			this.currentFunctions.render();
+
+			$('#main').prepend(this.currentFunctions.el);
     },
     
     createCall : function(type){
-     
       //condizione messa per evitare di chiudere functionview non ancora create
-      if(this.currentFunctions){
+      if(!this.currentFunctions){
+				this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+      }else{
         this.currentFunctions.render();
       }
-      else{
-      this.currentFunctions = new FunctionsView({model: this.model});
-      }
-      this.options.callback.disableContact();
-      this.currentFunctions.delegateEvents();
+      this.options.callback.closeOtherContacts(this.model.toJSON().username);
       if(type=="video"){
         this.currentFunctions.videocall(false);
-      }
-      else{
+      }else{
         this.currentFunctions.audiocall(false);
       }
-      $('#main').append(this.currentFunctions.el);
-      
-      chat.close();
-      chat= new ChatView({model: this.model, userModel: this.options.userModel});
-      chat.render();
-      $('#main').append(chat.el);
+      $('#main').prepend(this.currentFunctions.el);
     }
-	
   }); 
 
   ContactView.prototype.close = function(){
-    if(this.currentFunctions)
-      this.currentFunctions.close();
-    chat.close();
+    if(this.currentFunctions){
+      this.currentFunctions.unrender();
+		}
   };
 
   return ContactView;

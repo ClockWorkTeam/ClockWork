@@ -41,7 +41,7 @@ define(['connection'], function(Connection){
 	
     //funzione che inoltra la richiesta di chiamata al server
     sendCall: function (typecall, contact, callView){
-      var event=new CustomEvent("setOnCall",{
+      var event=new CustomEvent('setOnCall',{
         detail:{
           type:true
         },
@@ -50,23 +50,21 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
-      var credentials = { ip: recipient.toJSON().IP, username: recipient.toJSON().username , type:'call', calltype:typecall};
+      var credentials = { contact: recipient.toJSON().username , type:'call', calltype:typecall};
       Connection.send(JSON.stringify(credentials));
       //aggiunta del listener per la ricezione della risposta dell'utente chiamato
-      Connection.addEventListener("message", onAnswer, false);
+      Connection.addEventListener('message', onAnswer, false);
       //metodo per la gestione della risposta ricevuta dall'utente chiamato
       var call=this;
+ 
       function onAnswer(evt){
-         
-        var response = JSON.parse(evt.data);
-        
-        if(response.type==='answeredCall'){
-          
-          if(response.answer==='true'){
+         var response = JSON.parse(evt.data);
+         if(response.type==='answeredCall'){
+           if(response.answer==='true'){
             var isCaller=true;
             call.startCall(isCaller, typecall, call, callView)	
-          }else if(response.answer==='false'){
-            var event=new CustomEvent("setOnCall",{
+          }else{
+						var event=new CustomEvent('setOnCall',{
               detail:{
                 type:false
               },
@@ -75,20 +73,16 @@ define(['connection'], function(Connection){
             });
             document.dispatchEvent(event);
             callView.endCall(false);
-            alert("chiamata rifiutata");
-          }else if(response.answer==='busy'){
-            var event=new CustomEvent("setOnCall",{
-              detail:{
-                type:false
-              },
-              bubbles:true,
-              cancelable:true
-            });
-            document.dispatchEvent(event);
-            callView.endCall(false);
-            alert("utente occupato");
-          }    
-          Connection.removeEventListener("message",onAnswer,false);
+            
+            if(response.answer==='false'){
+							alert('chiamata rifiutata');
+						}else if(response.answer==='busy'){
+              alert('utente occupato');    
+						}else if(response.answer==='error'){
+							alert('erroe durante la chiamata');
+						}
+					}
+          Connection.removeEventListener('message',onAnswer,false);
         }
       }
     },
@@ -96,7 +90,7 @@ define(['connection'], function(Connection){
     //funzione che invia al server la risposta dell'utente chiamato
     sendAnswer: function (typecall, contact, callView){
       recipient=contact;
-      var credentials = { response: true, ip:recipient.toJSON().IP, username: recipient.toJSON().username, type:'answeredCall' };
+      var credentials = { response: true, contact: recipient.toJSON().username, type:'answeredCall' };
       Connection.send(JSON.stringify(credentials));
       this.startCall(false, typecall, this, callView);
     },
@@ -108,29 +102,29 @@ define(['connection'], function(Connection){
     createPeerConnection : function() {
       // Quando viene inserito uno stream nel peerConnection si attiva l'evento che visualizza lo stream dell'altro utente
       function onRemoteStreamAdded(event) {
-      console.log("Added remote stream");
-      remotevid.src = window.webkitURL.createObjectURL(event.stream);
-      remoteStream=event.stream;
+				console.log('Added remote stream');
+				remotevid.src = window.webkitURL.createObjectURL(event.stream);
+				remoteStream=event.stream;
       }
 
       // Quando viene rimosso uno stream dal peerConnection si attiva l'evento (non funziona attualmente poichè removestream non è corretto)
       function onRemoteStreamRemoved(event) {
-        console.log("Removed remote stream");
+        console.log('Removed remote stream');
         peerConn.removeStream(this.localStream);
         peerConn.close();
       }
 
-      var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
+      var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
       try {
-        console.log("Creating peer connection");
+        console.log('Creating peer connection');
         peerConn = new webkitRTCPeerConnection(pcConfig);
         peerConn.onicecandidate = this.onIceCandidate;
       } catch (e) {
-        console.log("Failed to create peerConnection, exception: " + e.message);
+        console.log('Failed to create peerConnection, exception: ' + e.message);
       }
       
-      peerConn.addEventListener("addstream", onRemoteStreamAdded, false);
-      peerConn.addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+      peerConn.addEventListener('addstream', onRemoteStreamAdded, false);
+      peerConn.addEventListener('oniceconnectionstatechange', onRemoteStreamRemoved, false)
     },
 
     // start the connection upon user request
@@ -142,14 +136,14 @@ define(['connection'], function(Connection){
         
 				peerConn.createOffer(this.gotDescription);
 			} else {
-				alert("Local stream not running yet.");
+				alert('Local stream not running yet.');
 			}
 		},
     
 		gotDescription : function(desc){
 			peerConn.setLocalDescription(desc);
 			var response=JSON.stringify(desc);
-			var credentials={description: response, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'offer'};
+			var credentials={description: response, contact: recipient.toJSON().username, type: 'offer'};
 			Connection.send(JSON.stringify(credentials));
 		},
     
@@ -159,10 +153,10 @@ define(['connection'], function(Connection){
 			  label: event.candidate.sdpMLineIndex,
 			  id: event.candidate.sdpMid,
 			  candidate: event.candidate.candidate});
-			  var candidate = JSON.stringify({cand: candidate, ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'candidate'});
+			  var candidate = JSON.stringify({cand: candidate, contact: recipient.toJSON().username, type: 'candidate'});
 			  candidates.push(candidate);
 			} else {
-				console.log("End of candidates.");
+				console.log('End of candidates.');
         readyToSend=true;
 				if(messageReceived==true){
 					candidates.forEach(
@@ -171,24 +165,23 @@ define(['connection'], function(Connection){
               console.log('C->S: ' + candidate);
             });
 				}
-          console.log("candidate ti invierò");
-					var message = JSON.stringify({ip: recipient.toJSON().IP, username: recipient.toJSON().username, type: 'candidateready'});
+					var message = JSON.stringify({contact: recipient.toJSON().username, type: 'candidateready'});
           Connection.send(message);
 			}
 		},
 
     //funzione che si occupa di inizializzare la chiamata
     startCall: function (isCaller, typecall, call, callView){
-      console.log("sono su startCall");
+      console.log('sono su startCall');
       sourcevid = document.getElementById('sourcevid');
       remotevid = document.getElementById('remotevid');
       candidates=[];
       var started = false;
       var description=null;
-      Connection.addEventListener("message", onMessage, false);
+      Connection.addEventListener('message', onMessage, false);
       
       function onMessage(evt){
-        console.log("RECEIVED: "+evt.data);
+        console.log('RECEIVED: '+evt.data);
         var response = JSON.parse(evt.data);
         if (response.type==='offer' && !isCaller){	
           started = true;
@@ -223,7 +216,7 @@ define(['connection'], function(Connection){
         }
         
         if (response.type ==='candidate' && started) {
-          console.log("STARTED TRUE");
+          console.log('STARTED TRUE');
           console.log('Adding candidate...');
           var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
           candidate:response.candidate});
@@ -236,7 +229,7 @@ define(['connection'], function(Connection){
             peerConn.removeStream(localStream);
             peerConn.close();
           }
-          var event=new CustomEvent("setOnCall",{
+          var event=new CustomEvent('setOnCall',{
             detail:{
               type:false
             },
@@ -244,8 +237,8 @@ define(['connection'], function(Connection){
             cancelable:true
           });
           document.dispatchEvent(event);
-          Connection.removeEventListener("message",onMessage,false);
-          console.log("end stream");
+          Connection.removeEventListener('message',onMessage,false);
+          console.log('end stream');
           callView.endCall(false);
         }
         
@@ -300,7 +293,7 @@ define(['connection'], function(Connection){
       }
       
       peerConn=null;
-      var event=new CustomEvent("setOnCall",{
+      var event=new CustomEvent('setOnCall',{
         detail:{
           type:false
         },
@@ -308,9 +301,9 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      var credentials={ip : recipient.toJSON().IP, username: recipient.toJSON().username , type : 'endcall'};
+      var credentials={contact: recipient.toJSON().username , type : 'endcall'};
       Connection.send(JSON.stringify(credentials));
-      Connection.removeEventListener("message", onMessaggeListener, false);
+      Connection.removeEventListener('message', onMessaggeListener, false);
     }
   
   };

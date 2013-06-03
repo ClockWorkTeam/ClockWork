@@ -24,8 +24,8 @@ define(['connection',
 			//Precondizione la chiamata arriva solo all'ip che si vuole contattare non a tutte le persone presenti nel server presenta l'ip chiamante e il tipo di chiamata
 			var Notification=this;
       var notificationView=null;
-      Connection.addEventListener("message", onNotification, false);
-      document.addEventListener("setOnCall",setOnCall,false);
+      Connection.addEventListener('message', onNotification, false);
+      document.addEventListener('setOnCall',setOnCall,false);
       function setOnCall(event){
         onCalling=event.detail.type;
       };
@@ -34,12 +34,11 @@ define(['connection',
 				if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
-            notificationView= new NotificationView({CallerIp: response.ip, typeCall: response.typecall, NotificationCommunication:Notification});
-          }
-          else{
-            var credentials = {
-              ip: response.ip,
-              type:"busy"
+            notificationView= new NotificationView({caller: response.contact, typeCall: response.typecall, NotificationCommunication:Notification});
+          }else{
+						var credentials = {
+              contact: response.contact,
+              type:'busy'
             };
             Connection.send(JSON.stringify(credentials));
           }
@@ -47,19 +46,16 @@ define(['connection',
         if (response.type === 'endcall'){
           onCalling=false;
           if(notificationView != null){
-            notificationView.close();
+            notificationView.unrender();
           }
-				}
-        if (response.type === 'busy'){
-          
 				}
 			};
 		},
-		refuse : function(iptocall){
+		refuse : function(caller){
       onCalling=false;
 			var credentials = {
-				ip: iptocall,
-				type:"refusecall"
+				contact: caller,
+				type:'refusecall'
 				};
 			Connection.send(JSON.stringify(credentials));
 		}
