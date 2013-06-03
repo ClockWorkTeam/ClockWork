@@ -1,7 +1,7 @@
 /*
 /*
- * Nome:untitled.js
- * Package: 
+ * Nome: ContactsCollection.js
+ * Package: collection
  * Autore:
  * Data:
  * Versione:
@@ -23,16 +23,16 @@ define([
 
     model: ContactModel,
 
-	localStorage: new Storage('contacts'),
+    localStorage: new Storage('contacts'),
   
-  record: function() {
+    record: function() {
       return this.filter(function(contact){ return contact.has('username'); });
     }, 
    
-   /*Metodo che dato un'ip restituisce il primo username con tale ip*/
+    /*Metodo che dato un'ip restituisce il primo username con tale ip*/
     getUsername:function(ip){
-			return this.where({IP:ip})[0].toJSON().username;
-		}
+      return this.where({IP:ip})[0].toJSON().username;
+    }
 	
  });
   return new ContactsCollection();
