@@ -1,6 +1,6 @@
 /*
  * Nome: ContactModel.js
- * Package: 
+ * Package: model
  * Autore:
  * Data:
  * Versione:
@@ -17,18 +17,18 @@ define([
   ], function(_, Backbone){
     var ContactModel = Backbone.Model.extend({
 	  
-	  defaults: {
-		  username: '',
-		  name: '',
-		  surname: '',
-		  IP: '0.0.0.0',
-      unread: 0
-	  },
+      defaults: {
+	username: '',
+	name: '',
+	surname: '',
+	IP: '0.0.0.0',
+      	unread: 0
+      },
 	  
-	clear: function() {
-      this.destroy();
-    }
+      clear: function() {
+        this.destroy();
+      }
 	    
-});
+    });
     return ContactModel;
 });
