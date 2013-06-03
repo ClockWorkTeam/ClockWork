@@ -41,19 +41,15 @@ define([
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, contact){
-      this.delegateEvents();
       if(document.getElementById('content')){
-        $(this.el).html(this.template());
-        console.log("sono su call");
-      }
-      else{
+        $(this.el).html(this.template(contact.toJSON()));
+      }else{
         $('#main').prepend(this.el);
-        $(this.el).html(this.template());
+        $(this.el).html(this.template(contact.toJSON()));
       }
 
       if(!document.getElementById('statistics'))
         $('#main').insertBefore($('#statistics'), $('#chat'));
-     // document.getElementById('chatTemplate').style.float='right';
 
       if(this.calling){
         CallCommunication.recoverCall();
@@ -70,7 +66,6 @@ define([
     },
   
     endCall:function(isEnding){
-      console.log("chiudo chiamata");
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();

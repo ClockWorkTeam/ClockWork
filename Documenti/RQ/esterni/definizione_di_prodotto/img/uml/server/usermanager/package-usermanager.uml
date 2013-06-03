@@ -1,0 +1,880 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<uml version="6">
+  <argo version="6">
+    <documentation>
+      <authorname></authorname>
+      <authoremail></authoremail>
+      <version>0.34</version>
+      <description>
+        
+      </description>
+    </documentation>
+    <settings>
+      <notationlanguage>UML 1.4</notationlanguage>
+      <showboldnames>true</showboldnames>
+      <useguillemots>false</useguillemots>
+      <showassociationnames>true</showassociationnames>
+      <showvisibility>false</showvisibility>
+      <showmultiplicity>false</showmultiplicity>
+      <showinitialvalue>false</showinitialvalue>
+      <showproperties>false</showproperties>
+      <showtypes>true</showtypes>
+      <showstereotypes>false</showstereotypes>
+      <showsingularmultiplicities>true</showsingularmultiplicities>
+      <defaultshadowwidth>1</defaultshadowwidth>
+      <hidebidirectionalarrows>true</hidebidirectionalarrows>    
+      <fontname>Dialog</fontname>
+      <fontsize>12</fontsize>
+      <defaultstereotypeview>0</defaultstereotypeview>
+      <activediagram>Diagramma di Classe</activediagram>
+    </settings>
+    <searchpath href="PROJECT_DIR" />
+    <members>
+      <member type="profile"
+              name="package-usermanager_profile.profile" />
+      <member type="xmi"
+              name="package-usermanager.xmi" />
+      <member type="pgml"
+              name="package-usermanager_DiagrammadiClasse.pgml"
+              diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
+              diagramname="Diagramma di Classe" />
+      <member type="pgml"
+              name="package-usermanager_DiagrammadeiCasidUso.pgml"
+              diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
+              diagramname="Diagramma dei Casi d&apos;Uso" />
+      <member type="todo"
+              name="package-usermanager.todo" />
+    </members>
+    <historyfile name="" />
+  </argo>
+<profile>
+		<plugin>
+			UML 1.4
+		</plugin>
+		<plugin>
+			GoodPractices
+		</plugin>
+		<plugin>
+			CodeGeneration
+		</plugin>
+</profile>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri May 31 17:44:13 CEST 2013'>
+  <XMI.header>    <XMI.documentation>
+      <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
+      <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
+    </XMI.documentation>
+    <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
+  <XMI.content>
+    <UML:Model xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000865'
+      name = 'Modello Senza Nome' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+      isAbstract = 'false'>
+      <UML:Namespace.ownedElement>
+        <UML:Package xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000866'
+          name = 'mytalk::server::sqlite' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'>
+          <UML:Namespace.ownedElement>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000867'
+              name = 'RecordMessageDataSQL' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000868'
+              name = 'TutorialDataSQL' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000869'
+              name = 'UserDataSQL' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+          </UML:Namespace.ownedElement>
+        </UML:Package>
+        <UML:Package xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086A'
+          name = 'mytalk::server::dao' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7A'/>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7B'/>
+          </UML:ModelElement.clientDependency>
+          <UML:Namespace.ownedElement>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086B'
+              name = 'JavaConnectionSQLite' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086C'
+              name = 'LoginDao' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086D'
+              name = 'LoginDaoSQL' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9C'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000870'
+              name = 'UserDao' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7A'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086A'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000866'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7B'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086A'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Class xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A92'
+              name = 'TutorialsDaoSql' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9B'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086E'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871'
+              name = 'UserDaoSQL' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9D'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086E'
+              name = 'RecordMessageDao' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F'
+              name = 'RecordMessageDaoSQL' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9B'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9C'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086D'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086C'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9D'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000870'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+          </UML:Namespace.ownedElement>
+        </UML:Package>
+        <UML:Package xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'
+          name = 'mytalk::server::usermanager' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A80'/>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A81'/>
+            <UML:Dependency xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A95'/>
+          </UML:ModelElement.clientDependency>
+          <UML:Namespace.ownedElement>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000873'
+              name = 'AuthenticationManager' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000874'
+              name = 'UserManager' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A80'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086A'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A81'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A77'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A95'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+          </UML:Namespace.ownedElement>
+        </UML:Package>
+        <UML:Package xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'
+          name = 'mytalk::server::shared' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A8B'/>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A8D'/>
+          </UML:ModelElement.clientDependency>
+          <UML:Namespace.ownedElement>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000876'
+              name = 'User' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000877'
+              name = 'UserList' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000878'
+              name = 'RecordMessage' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A8B'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A8D'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Class xmi.id = '-64--88-2-5-12768677:13e7520e5ce:-8000:0000000000000A8E'
+              name = 'Tutorials' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+          </UML:Namespace.ownedElement>
+        </UML:Package>
+        <UML:Package xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'
+          name = 'mytalk::server::transfer' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7E'/>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7F'/>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A8A'/>
+            <UML:Dependency xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A94'/>
+          </UML:ModelElement.clientDependency>
+          <UML:ModelElement.comment>
+            <UML:Comment xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A75'/>
+          </UML:ModelElement.comment>
+          <UML:Namespace.ownedElement>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000087A'
+              name = 'AuthenticationTransfer' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A98'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000087B'
+              name = 'CallTransfer' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A97'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Class xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7D'
+              name = 'MyTalkListener' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7E'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7F'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A77'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A8A'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A77'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Class xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A90'
+              name = 'RecordMessageTransfer' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A99'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Class xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A91'
+              name = 'UserTransfer' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:GeneralizableElement.generalization>
+                <UML:Generalization xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9A'/>
+              </UML:GeneralizableElement.generalization>
+            </UML:Class>
+            <UML:Dependency xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A94'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Class xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A96'
+              name = 'ListenerTransfer' visibility = 'public' isSpecification = 'false'
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A97'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000087B'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A96'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A98'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000087A'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A96'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A99'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A90'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A96'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+            <UML:Generalization xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A9A'
+              isSpecification = 'false'>
+              <UML:Generalization.child>
+                <UML:Class xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A91'/>
+              </UML:Generalization.child>
+              <UML:Generalization.parent>
+                <UML:Class xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A96'/>
+              </UML:Generalization.parent>
+            </UML:Generalization>
+            <UML:Class xmi.id = '-64--88-2-7--2d9ebcb9:13e94deb771:-8000:0000000000000A9D'
+              name = 'ChatTransfer' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+            <UML:Class xmi.id = '-64--88-2-7--2d9ebcb9:13e94deb771:-8000:0000000000000A9E'
+              name = 'FileTransfer' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+          </UML:Namespace.ownedElement>
+        </UML:Package>
+        <UML:Comment xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A74'
+          isSpecification = 'false' body = 'transfer&#10;'/>
+        <UML:Comment xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A75'
+          isSpecification = 'false'>
+          <UML:Comment.annotatedElement>
+            <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+          </UML:Comment.annotatedElement>
+        </UML:Comment>
+        <UML:Comment xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A76'
+          isSpecification = 'false' body = 'manager&#10;'/>
+        <UML:Package xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A77'
+          name = 'mytalk::server::functionmanager' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A93'/>
+          </UML:ModelElement.clientDependency>
+          <UML:Namespace.ownedElement>
+            <UML:Dependency xmi.id = '-64--88-2-7-35e2bb0b:13e8fb8c845:-8000:0000000000000A93'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Package xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A77'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+          </UML:Namespace.ownedElement>
+        </UML:Package>
+        <UML:Comment xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A79'
+          isSpecification = 'false' body = 'data'/>
+        <UML:Class xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A7C'
+          name = 'mytalk::server::' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'
+          name = 'Launcher' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A84'/>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A87'/>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A88'/>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A89'/>
+            <UML:Dependency xmi.idref = '-64--88-2-5-12768677:13e7520e5ce:-8000:0000000000000A8F'/>
+          </UML:ModelElement.clientDependency>
+          <UML:Namespace.ownedElement>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A84'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A83'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A87'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A88'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086A'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A89'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000877'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-5-12768677:13e7520e5ce:-8000:0000000000000A8F'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000875'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+          </UML:Namespace.ownedElement>
+        </UML:Class>
+        <UML:Class xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A83'
+          name = 'ServerMyTalk' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Dependency xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A85'/>
+            <UML:Dependency xmi.idref = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A86'/>
+          </UML:ModelElement.clientDependency>
+          <UML:Namespace.ownedElement>
+            <UML:Dependency xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A85'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A83'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Package xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000879'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+            <UML:Dependency xmi.id = '-64--88-2-4--40fe7bc0:13e19107a32:-8000:0000000000000A86'
+              isSpecification = 'false'>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A83'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Class xmi.idref = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A82'/>
+              </UML:Dependency.supplier>
+            </UML:Dependency>
+          </UML:Namespace.ownedElement>
+        </UML:Class>
+        <UML:Class xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A78'
+          name = 'Converter' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+      </UML:Namespace.ownedElement>
+    </UML:Model>
+  </XMI.content>
+</XMI>
+<pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000865"
+      name="Diagramma di Classe"
+>
+  <group name="Fig0"
+       description="org.argouml.uml.diagram.static_structure.ui.FigPackage[56, 32, 288, 128]pathVisible=false;stereotypeView=0;stereotypeVisible=true;visibilityVisible=false"
+       href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872"
+       fill="1"
+       fillcolor="200 255 200"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+    </private>
+    
+    <rectangle name="Fig0.0"
+      x="56"
+      y="32"
+      width="288"
+      height="128"
+      fill="0"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="black"
+    />
+    <path name="Fig0.1"
+      description="org.argouml.uml.diagram.static_structure.ui.FigPackage$PackageBackground"
+      fill="1"
+      fillcolor="200 255 200"
+      stroke="0"
+      strokecolor="black"
+    >
+      <moveto x="56"
+              y="32" />
+      <lineto x="294"
+              y="32" />
+      <lineto x="294"
+              y="56" />
+      <lineto x="343"
+              y="56" />
+      <lineto x="343"
+              y="159" />
+      <lineto x="56"
+              y="159" />
+      <lineto x="56"
+              y="32" />
+    </path>
+    <text name="Fig0.2"
+      x="56"
+      y="32"
+      width="239"
+      height="25"
+      fill="0"
+      fillcolor="200 255 200"
+      stroke="1"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="true"
+      textsize="12"
+      justification="Left"
+    >mytalk::server::usermanager</text>
+    <group name="Fig0.3"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[56, 32, 238, 1]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000872"
+         fill="1"
+         fillcolor="200 255 200"
+         stroke="0"
+         strokecolor="black"
+         visibility="0"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.3.0"
+        x="56"
+        y="32"
+        width="238"
+        height="1"
+        fill="1"
+        fillcolor="200 255 200"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+    <text name="Fig0.4"
+      x="56"
+      y="56"
+      width="288"
+      height="104"
+      fill="0"
+      fillcolor="200 255 200"
+      stroke="1"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="false"
+      textsize="12"
+      justification="Center"
+    ></text>
+  </group>
+  <group name="Fig1"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[72, 72, 142, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000873"
+       fill="1"
+       fillcolor="white"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+      enclosingFig="Fig0"
+    </private>
+    
+    <rectangle name="Fig1.0"
+      x="72"
+      y="72"
+      width="142"
+      height="68"
+      fill="1"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+    <text name="Fig1.1"
+      x="73"
+      y="73"
+      width="140"
+      height="23"
+      fill="0"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="true"
+      textsize="12"
+      justification="Center"
+    >AuthenticationManager</text>
+    <group name="Fig1.2"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[73, 73, 310, 0]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000873"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+         visibility="0"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig1.2.0"
+        x="73"
+        y="73"
+        width="310"
+        height="0"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+    <rectangle name="Fig1.3"
+      x="72"
+      y="96"
+      width="142"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig1.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[73, 97, 140, 21]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000873"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig1.4.0"
+        x="73"
+        y="97"
+        width="140"
+        height="21"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+    <rectangle name="Fig1.5"
+      x="72"
+      y="117"
+      width="142"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig1.6"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[73, 118, 140, 21]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000873"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig1.6.0"
+        x="73"
+        y="118"
+        width="140"
+        height="21"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+  </group>
+  <group name="Fig2"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[232, 72, 87, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000874"
+       fill="1"
+       fillcolor="white"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+      enclosingFig="Fig0"
+    </private>
+    
+    <rectangle name="Fig2.0"
+      x="232"
+      y="72"
+      width="87"
+      height="68"
+      fill="1"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+    <text name="Fig2.1"
+      x="233"
+      y="73"
+      width="85"
+      height="23"
+      fill="0"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="true"
+      textsize="12"
+      justification="Center"
+    >UserManager</text>
+    <group name="Fig2.2"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[233, 73, 255, 0]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000874"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+         visibility="0"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig2.2.0"
+        x="233"
+        y="73"
+        width="255"
+        height="0"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+    <rectangle name="Fig2.3"
+      x="232"
+      y="96"
+      width="87"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig2.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[233, 97, 85, 21]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000874"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig2.4.0"
+        x="233"
+        y="97"
+        width="85"
+        height="21"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+    <rectangle name="Fig2.5"
+      x="232"
+      y="117"
+      width="87"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig2.6"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[233, 118, 85, 21]"
+         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000874"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig2.6.0"
+        x="233"
+        y="118"
+        width="85"
+        height="21"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+  </group>
+</pgml>
+<pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000865"
+      name="Diagramma dei Casi d&apos;Uso"
+>
+</pgml>
+<todo>
+<todolist>
+</todolist>
+<resolvedcritics>
+</resolvedcritics>
+</todo>
+</uml>

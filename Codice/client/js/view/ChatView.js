@@ -19,31 +19,36 @@ define([
  'backbone',
  'communication/ChatCommunication',
  'text!templates/ChatTemplate.html',
- 'text!templates/ComposeTemplate.html',
  'collection/TextMessagesCollection'
-], function($, _, Backbone,ChatCommunication, ChatTemplate, ComposeTemplate, TextMessagesCollection){
+], function($, _, Backbone, ChatCommunication, ChatTemplate, TextMessagesCollection){
 	var ChatView = Backbone.View.extend({
     events:{
-	  'click button#Send':'send'
+			'click button#Send':'send',
+			'keyup #compose textarea':'pressEnter',
+		},
+	
+	  pressEnter:function(event){
+			if(event.keyCode == 13){
+				var val=(this.el).getElementsByTagName("textarea")[0].value;
+				(this.el).getElementsByTagName("textarea")[0].value=val.substring(0, val.length - 1);				
+				this.send();
+			}
 		},
 	
     el : $("#chat"),
 
-    ChatTemplate: _.template(ChatTemplate),
+    chatTemplate: _.template(ChatTemplate),
   
     collection: TextMessagesCollection,
   
 		initialize: function(){
 			this.listenTo(this.collection, 'all', this.render);
-			_.bindAll(this, 'render', 'putMessages', 'putMessage');
-			if(this.options.userModel!='' && this.model.toJSON().IP!="0"){
-			//	$(this.el)[0].childNodes[3].innerHTML=((_.template(ComposeTemplate))());
-			}
+			_.bindAll(this, 'render', 'send');
 		},
  
-		render: function() {	
+		render: function(){	
 			if(this.options.userModel!=''){
-				//$(this.el)[0].childNodes[1].innerHTML=(this.ChatTemplate({ip: this.model.toJSON().IP}));
+				$(this.el).html(this.chatTemplate({ip: this.model.toJSON().IP}));
 				this.putMessages();
 			}
 		},
@@ -64,6 +69,9 @@ define([
 			}else if(TextMessageModel.toJSON().source=='received'){
 						name.appendChild(document.createTextNode(this.model.toJSON().username+": "));
 						node.setAttribute('class','received');				
+			}else if(TextMessageModel.toJSON().source=='notsent'){
+						name.appendChild(document.createTextNode(this.options.userModel.toJSON().username+": "));
+						node.setAttribute('class','notsent');				
 			}
 			var message=document.createTextNode(TextMessageModel.toJSON().message);
 			node.appendChild(name);
@@ -74,10 +82,15 @@ define([
   
 		//invia un messaggio
 		send:function(){
-						ChatCommunication.send(this.model.toJSON().username, (this.el).getElementsByTagName("textarea")[0].value);
+			ChatCommunication.send(this.model.toJSON().username, (this.el).getElementsByTagName("textarea")[0].value);
 			this.collection.add({contact:this.model.toJSON().username, message:(this.el).getElementsByTagName("textarea")[0].value, source:'sent'});
 			(this.el).getElementsByTagName("textarea")[0].value='';
 		},
+		
+		unrender:function(){
+			_.each(this.collection.chat_session(this.model.toJSON().username), function(message){message.clear();});
+			this.close();
+		}
 
  });
  

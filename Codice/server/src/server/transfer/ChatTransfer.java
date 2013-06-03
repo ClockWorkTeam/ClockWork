@@ -12,9 +12,14 @@ public class ChatTransfer extends ListenerTransfer {
    		String type= token.getString("type");
   		WebSocketPacket wspacket=null;
   		if(type.equals("sendText")){
-   			WebSocketConnector connector = getConnector(token.getString("ip"));
-   			wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"ip\":\""+event.getConnector().getRemoteHost()+"\"}");
-			sendPacket(wspacket,connector);
+   			WebSocketConnector connector = getUserConnector(token.getString("username"));
+   			if(connector!=null){
+   				wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"username\":\""+event.getConnector().getUsername()+"\"}");
+   			}else{
+   				wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"username\":\""+token.getString("username")+"\"}");
+   				connector= event.getConnector();
+   			}
+   			sendPacket(wspacket,connector);
    		}
     
     }

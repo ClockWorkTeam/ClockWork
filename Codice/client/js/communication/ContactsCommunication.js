@@ -12,13 +12,13 @@
  * |      |               |           |
  */
 //classe che comunica con il server per i dati che riguardano il ricavare la lista dei contatti
-define(['connection'], function(Connection){
+define(['connection','collection/ContactsCollection'], function(Connection, contactsCollection){
 	
 	return {
-		fetchContacts: function(view) {
+		fetchContacts: function(username) {
 			var request = {
 				type: 'getContacts',
-				username: view.UserModel.toJSON().username
+				username: username
 			};
 			Connection.send(JSON.stringify(request));
 		  
@@ -26,9 +26,9 @@ define(['connection'], function(Connection){
 				var response = JSON.parse(str.data);
 				if(response.type==='getContacts'){
 					for(var i=0; i<response.size; i++){
-						var existing = view.collection.find(function(contact){return contact.get('username') === response['username'+i];});
+						var existing = contactsCollection.find(function(contact){return contact.get('username') === response['username'+i];});
 						if(!existing){
-							view.collection.create(
+							contactsCollection.add(
 								{username: response['username'+i], 
 									name: response['name'+i], 
 									surname: response['surname'+i],  
@@ -38,8 +38,7 @@ define(['connection'], function(Connection){
 							existing.set('IP', response['IP'+i]);
 						}
 					}
-				
-				view.contacts_view.render(view);
+
 				}
 			}	  					   
 		}

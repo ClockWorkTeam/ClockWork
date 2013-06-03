@@ -188,7 +188,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/package-client.pdf
+	filename img/package-view.pdf
 	width 100text%
 
 \end_inset
@@ -2694,7 +2694,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/packagemodel.pdf
+	filename img/package-model.pdf
 	scale 90
 
 \end_inset
@@ -3492,7 +3492,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/packageCollection.pdf
+	filename img/package-collection.pdf
 	scale 90
 
 \end_inset
@@ -4034,7 +4034,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/packageCommunication.pdf
+	filename img/package-communication.pdf
 	scale 90
 
 \end_inset
@@ -4130,7 +4130,7 @@ mytalk.client.communication.CallCommunication
 
 \family typewriter
 \series bold
-mytalk.client.communication.ContactCommunication
+mytalk.client.communication.ContactsCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -4152,6 +4152,13 @@ mytalk.client.communication.SendFileCommunication
 \family typewriter
 \series bold
 mytalk.client.communication.NotificationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.communication.ChatCommunication
 \end_layout
 
 \begin_layout Subsubsection
@@ -4953,6 +4960,96 @@ onNotification(string):
 refuse(): 
 \series default
 metodo che di occupa di gestire il rifiuto di una notifica
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\begin_layout Standard
+La classe 
+\family typewriter
+\series bold
+ChatCommunication
+\family default
+\series default
+ si occupa di comunicare con il server per quanto riguarda i messaggi di
+ chat
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ChatCommunication
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ChatView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+mytalk.client.view.ChatView
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+xxx
 \end_layout
 
 \end_body
