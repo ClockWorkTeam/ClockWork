@@ -12,56 +12,28 @@ import server.functionmanager.Converter;
 
 abstract class ListenerTransfer implements WebSocketServerTokenListener{
 	static protected TokenServer tokenServer;
-	static protected Collection<WebSocketConnector> connectedUsers=new FastList<WebSocketConnector>().shared();
+	static protected Collection<WebSocketConnector> connectedClients=new FastList<WebSocketConnector>().shared();
 	protected Converter converter =new Converter();
 	
 	public void setTokenServer(ServerMyTalk server) {
         tokenServer=server.getTokenServer();
     }
-
-    /**Metodo che invia il pacchetto dato in broadcast a tutti gli utenti connessi
-     * 
-     * @param packet Pacchetto da inviare
-     */
+	
     public void broadcastToAll(WebSocketPacket packet) {
-    	for (WebSocketConnector lConnector : connectedUsers) {
+    	for (WebSocketConnector lConnector : connectedClients) {
     		tokenServer.sendPacket(lConnector, packet);
     	}
     }
- 
-    /**Metodo che individua nella lista di connettori quello corrispondente al dato username
-     * 
-     * @param username del connettore da cercare
-     * @return connettore corrispondente alla username o null se non è presente
-     */
-    public WebSocketConnector getUserConnector(String username){
-    	WebSocketConnector connector=null;
-    	for (WebSocketConnector lConnector : connectedUsers) {
-    		if(lConnector.getUsername().equals(username))
-    			connector=lConnector;
-    	}    	
-    	return connector;
-    }
-
-    /**Metodo che individua nella lista di connettori l'ultimo con ip corrispondente a quello dato
-     * 
-     * @param ip del connettore da cercare
-     * @return ultimo connettore presente in lista tra quelli con ip uguale a quello dato, null se non è presente
-     */
-    public WebSocketConnector getIpConnector(String ip){
-    	WebSocketConnector connector=null;    	
-    	for (WebSocketConnector lConnector : connectedUsers) {
-	    		if(lConnector.getRemoteHost().toString().equals(ip))
-	    			connector = lConnector;
+    
+    public WebSocketConnector getConnector(String IP){
+    	WebSocketConnector connector = null;
+    	for (WebSocketConnector lConnector : connectedClients) {
+	    		if(lConnector.getRemoteHost().toString().equals(IP))
+	    			connector= lConnector;
     	}
     	return connector;
     }
-    
-    /**Metodo invia il pacchetto al connettore 
-     * 
-     * @param packet Pacchetto da inviare
-     * @param connector Utente a cui inviarlo
-     */
+        
     public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){
     	tokenServer.sendPacket(connector, packet); 
     }

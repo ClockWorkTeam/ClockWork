@@ -34,7 +34,6 @@ define([
 	
     //rendo visibili i contatti:
     render: function(){
-			console.log(this.model.toJSON().username);
       this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP, unread: this.model.toJSON().unread }));
 			return this;
     },
@@ -45,7 +44,6 @@ define([
       if(!this.currentFunctions)
 					this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
 			this.currentFunctions.render();
-
 			$('#main').prepend(this.currentFunctions.el);
     },
     

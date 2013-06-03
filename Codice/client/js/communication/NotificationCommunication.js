@@ -19,6 +19,10 @@ define(['connection',
   var onCalling=false;
 	return {
     
+    //getStatus: function(){
+    //  return onCalling;  
+    //},
+      
 		listenNotification : function(){
 			//funzione che si occupa di segnalare la presenza di chiamate in arrivo
 			//Precondizione la chiamata arriva solo all'ip che si vuole contattare non a tutte le persone presenti nel server presenta l'ip chiamante e il tipo di chiamata

@@ -12,27 +12,32 @@
  * |      |               | Scrittura codice          |
  */
  
-//definizione delle dipendenze
 define([
   'jquery',
   'underscore',  
   'backbone',
+  'view/SideView',
+  'view/UserDataView',
   'text!templates/AuthenticationTemplate.html',
   'communication/AuthenticationCommunication',
-  'communication/ContactsCommunication',
-  'model/UserModel',
-  'view/ContactsView'
-], function($, _, Backbone, authenticationTemplate, AuthenticationCommunication, ContactsCommunication, UserModel, ContactsView){
+  'model/UserModel'
+], function($, _, Backbone, sideView, UserDataView, authenticationTemplate, AuthenticationCommunication, UserModel){
   var AuthenticationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
 	  events: {
+			'keyup input#password:last-of-type':'pressEnter',
       'click button#login': 'connect',
       'click button#logout': 'disconnect',
       'click button#signup': 'view_signup',
       'click button#sign': 'signup',
-      'click button#deny': 'deny'
+      'click button#deny': 'deny',
+      'click button#edit': 'editProfile'
     },
     
+    pressEnter:function(event){
+			if(event.keyCode == 13)
+				this.connect();
+		},
     //indica quale parte del DOM gestirà 
     el: $("#authentication"),
 
@@ -48,7 +53,7 @@ define([
       //genero la struttura della pagina
       this.render();
       //creo la vista dei contatti
-      this.contacts_view = new ContactsView();
+      this.contacts_view = new sideView();
     },
   
     //funzione che effettua la scrittura della struttura della pagina
@@ -61,16 +66,16 @@ define([
       return {
         doLogin: function(user, pass, answer, view){
           //se i dati inseriti sono corretti li inserisco nel modello
-          view.UserModel = new UserModel({
+          view.userModel = new UserModel({
             username: user,
             password: pass,
             name: answer.name,
             surname: answer.surname
           });
           //aggiorno il template
-          $(view.el).html(view.authenticationTemplate({authenticated: true, name: view.UserModel.toJSON().username}));
+          $(view.el).html(view.authenticationTemplate({authenticated: true, name: view.userModel.toJSON().username}));
           //recupero la lista contatti dal server e li metto nel local storage
-          ContactsCommunication.fetchContacts(view);
+          view.contacts_view.getContacts(view);
           // visione dei contatti	
 
         }
@@ -90,11 +95,15 @@ define([
 	
     //funzione che si occupa di chiudere la sessione con il server
     disconnect: function(){
-      AuthenticationCommunication.logout(this.UserModel.toJSON().username);
+      AuthenticationCommunication.logout(this.userModel.toJSON().username);
       //aggiorno il template
       $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}));
       //cancello la lista dei contatti
       this.contacts_view.unrender();
+       if(this.userDataView){
+				this.userDataView.unrender();
+				this.userDataView=undefined;
+			}
     },
     
     //visualizzo il form di registrazione
@@ -133,7 +142,15 @@ define([
     //funzione per annullare la compilazione della registrazione
     deny: function(){
       this.render();
-    }    
+    },    
+    
+    editProfile: function(){
+			this.contacts_view.closeOtherContacts();
+			if(this.userDataView){
+				this.userDataView.unrender();
+			}
+			this.userDataView =new UserDataView({model: this.userModel});
+		}
     
     });
 

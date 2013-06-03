@@ -32,7 +32,7 @@ public class RecordMessageTransfer extends ListenerTransfer{
    			}else{
    				wspacket = new RawPacket("{\"type\":\"saveMessage\",\"answer\":\"true\"}");
    	   	  		sendPacket(wspacket, event.getConnector());
-   				WebSocketConnector connector = getConnector(userManager.getUser(token.getString("addressee")).getIP(),token.getString("addressee"));
+   				WebSocketConnector connector = getConnector(userManager.getUser(token.getString("addressee")).getIP());
    				if(connector!= null){
    					java.util.Vector<RecordMessage> vecRecMex=new java.util.Vector<RecordMessage>();
    					vecRecMex.add(recMex);

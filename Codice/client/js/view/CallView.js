@@ -18,8 +18,9 @@ define([
  'underscore',  
  'backbone',
  'communication/CallCommunication',
- 'text!templates/CallTemplate.html'
-], function($, _, Backbone, CallCommunication, CallTemplate){
+ 'text!templates/CallTemplate.html',
+ 'view/StatisticsView'
+], function($, _, Backbone, CallCommunication, CallTemplate, StatisticsView){
   var CallView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -35,11 +36,11 @@ define([
     initialize: function(){
       this.calling=false;
       _.bindAll(this, 'render');
+      this.statisticsView = new StatisticsView();
     },
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(isCaller,type, contact){
-      this.delegateEvents();
       if(document.getElementById('content')){
         $(this.el).html(this.template(contact.toJSON()));
       }else{
@@ -47,8 +48,12 @@ define([
         $(this.el).html(this.template(contact.toJSON()));
       }
 
+      if(!document.getElementById('statistics'))
+        $('#main').insertBefore($('#statistics'), $('#chat'));
+
       if(this.calling){
         CallCommunication.recoverCall();
+        this.statisticsView.render();
       }else{ 
         if(isCaller===false){
           CallCommunication.sendAnswer(type, contact, this);
@@ -65,6 +70,7 @@ define([
         CallCommunication.endCall();
       this.close();
       this.options.FunctionView.closeViewCall();
+      this.statisticsView.close();
     }
   
   });

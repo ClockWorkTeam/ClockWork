@@ -89,6 +89,9 @@ define([
     },
 		
 		call:function(isCaller,type){
+      //if(NotificationCommunication.getStatus() && isCaller!=false){
+      //  alert("hai già una chiamata attiva");
+      //}
 			if(this.callView){
         this.forceClose();
       }
@@ -101,7 +104,7 @@ define([
       }
       $('#main').prepend(this.callView.el);
 		},
-   
+
     record : function(){
 		
 		},

@@ -23,7 +23,7 @@ define([
     initialize: function(){
       _.bindAll(this, 'render');    
       _.bindAll(this, 'refuse');
-      var timeout=true;
+      this.timeout=true;
       this.render();
     },
      
@@ -41,7 +41,7 @@ define([
 		},
 		
     accept : function(){
-      timeout=false;
+      this.timeout=false;
       this.unrender();
       var event=new CustomEvent('acceptCall',{
         detail:{
@@ -56,7 +56,7 @@ define([
 		},
     
     timeoutCall : function(){
-      if(timeout==true)
+      if(this.timeout==true)
         this.refuse();
     },
     
