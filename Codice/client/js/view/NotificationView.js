@@ -2,11 +2,9 @@ define([
  'jquery',
  'underscore',  
  'backbone',
- 'view/CallView',
- 'view/ChatView',
  'text!templates/NotificationTemplate.html'
-], function($, _, Backbone, CallView, ChatView, NotificationTemplate){
-  
+], function($, _, Backbone, NotificationTemplate){
+  var timeout = null;
   var NotificationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
@@ -14,7 +12,7 @@ define([
 		'click button#refuseCall':'refuse',
     },
 	
-    el : $('#content'),
+    el : $('#main'),
 	
     //indica in quale parte del DOM gestirà 
     template : _.template(NotificationTemplate),
@@ -31,23 +29,24 @@ define([
      
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
-		if(document.getElementById('content'))
-			$(this.el).html(this.template({Ip : this.options.CallerIp}));
-		else{
-			$('#main').prepend(this.el);
-			$(this.el).html(this.template({Ip : this.options.CallerIp}));
-		}
-    var notificationView=this;
-		setTimeout(function(){notificationView.timeoutCall()},5000);	
+			$(this.el).html(this.template({username : this.options.caller}));
+			var notificationView=this;
+			setTimeout(function(){notificationView.timeoutCall()},5000);	
     },
       
+    unrender:function(){
+			this.close();
+      $(this.el).html('');
+			$('body').append(this.el);			
+		},
+		
     accept : function(){
       timeout=false;
-      this.close();
-      var event=new CustomEvent("acceptCall",{
+      this.unrender();
+      var event=new CustomEvent('acceptCall',{
         detail:{
           type:this.options.typeCall,
-          ip:this.options.CallerIp
+          contact:this.options.caller
         },
         bubbles:true,
         cancelable:true
@@ -62,14 +61,14 @@ define([
     },
     
     refuse : function(){
-      this.options.NotificationCommunication.refuse(this.options.CallerIp);
-      this.close();
-		}
+      this.options.NotificationCommunication.refuse(this.options.caller);
+      this.unrender();
+ 		}
     
       }); 
 
    NotificationView.prototype.close = function(){
-    console.log("notification close");
+    console.log('notification close');
     this.remove();
     this.unbind();
   }

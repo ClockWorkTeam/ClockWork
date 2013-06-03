@@ -25,6 +25,11 @@ define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesC
           ContactsCollection.where({username: response.username})[0].set({unread: currentUnread + 1});
         }
 			}
+			else if(response.type === 'notDelivered'){
+				alert('Messaggio per '+response.username+' non è stato consegnato');
+				var existing = TextMessagesCollection.find(function(mex){return (mex.get('contact') === response['username'] && mex.get('message')===response['message']);});
+				existing.set('source', 'notsent');
+			}
   };
 
   return {

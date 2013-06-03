@@ -17,7 +17,7 @@ public class RecordMessageTransfer extends ListenerTransfer{
 	
 	@Override
     public void processToken(WebSocketServerTokenEvent event, Token token) {
-   		String type= token.getString("type");
+/*   		String type= token.getString("type");
    		WebSocketPacket wspacket=null;	
    		if(type.equals("getMessages")){
    			wspacket = new RawPacket(converter.convertMessages(userManager.getMessages(token.getString("username")),"\"type\":\"getMessages\""));
@@ -48,6 +48,6 @@ public class RecordMessageTransfer extends ListenerTransfer{
    				wspacket = new RawPacket("{\"type\":\"removeMessage\",\"answer\":\"false\"}");
    			sendPacket(wspacket, event.getConnector());
    		}
-	}
+*/	}
 
 }
