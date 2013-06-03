@@ -1,18 +1,5 @@
-<!--
-   Nome:untitled.html
-   Package: 
-   Autore:
-   Data:
-   Versione:
-   
-   Modifiche:
-    __________________________________
-   | Data | Programmatore | Modifiche |
-   |______|_______________|___________|
-   |      |               |           |
--->
 <% if(dom=="sidebar"){%>
-<li class="contact <% if(ip == "0"){ %> offline <% } else { %> online <% } %>"><% if(unread > 0){ %> (<%= unread %>) <% } %><%= username %></li>
+  <li class="contact <% if(ip == "0"){ %> offline <% } else { %> online <% } %>"><% if(unread > 0){ %> (<%= unread %>) <% } %><%= username %></li>
 <%}else{%>
-<li><input type="checkbox" name=<%=username %> id=<%=username %> > <%=username %></li>
+  <li><input type="checkbox" name=<%=username %> id=<%=username %> > <%=username %></li>
 <%}%>
