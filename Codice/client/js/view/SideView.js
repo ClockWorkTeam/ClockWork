@@ -19,14 +19,14 @@ define([
  'view/ContactView',
  'view/FunctionsView',
  'communication/ContactsCommunication',
- 'text!templates/ContactsTemplate.html',
+ 'text!templates/SideTemplate.html',
  'collection/ContactsCollection'
-], function($, _, Backbone, ContactView, FunctionsView, ContactsCommunication, ContactsTemplate, ContactsCollection){
+], function($, _, Backbone, ContactView, FunctionsView, ContactsCommunication, SideTemplate, ContactsCollection){
   var SideView = Backbone.View.extend({
 		
     el: $("#sidebar"),
     
-    template: _.template(ContactsTemplate),
+    template: _.template(SideTemplate),
     
     collection: ContactsCollection,
     
