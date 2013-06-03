@@ -18,13 +18,12 @@ define([
   ], function(_, Backbone){
     var TextMessageModel = Backbone.Model.extend({
 	
-	  defaults: {
-		  contact: '',
-		  message: '',
-      source: '' //sent or received
-	  },
-	
+      defaults: {
+        contact: '',
+	message: '',
+        source: '' //sent o received o notsent
+      },
 	    
-});
+    });
     return TextMessageModel;
 });
