@@ -1,35 +1,23 @@
-<!--
-   Nome:AuthenticationTemplate.html
-   Package: 
-   Autore:
-   Data:
-   Versione:
-   
-   Modifiche:
-	__________________________________
-   | Data | Programmatore | Modifiche |
-   |______|_______________|___________|
-   |      |               | Scrittura codice          |
--->
-
 <% if (!authenticated) { %>
-	<% if (!signup) { %>
-      <label for="user">Username</label><input type="text" id="user" name="user" />
-      <label for="password">Password</label><input type="password" id="password" name="password" />
-      <button id='login'>Login</button>
-      <span>Non sei registrato <button id='signup'>Registrazione</button></span>
-    <% } else{ %>
-		<label for="user">Username</label><input type="text" id="user" name="user" />
-		<label for="password">Password</label><input type="password" id="password" name="password" />
-		<label for="password2">Conferma Password</label><input type="password" id="password2" name="password2" />
-		<label for="name">Nome</label><input type="text" id="name" name="name" />
-		<label for="surname">Cognome</label><input type="text" id="surname" name="surname" />
-		<button id='sign'>Conferma Registrazione</button>	
-		<button id='deny'>Annulla Registrazione</button>	
-    <% } %>
+  <% if (!signup) { %>
+    <label for='user'>Username</label><input type='text' id='user' name='user' />
+    <label for='password'>Password</label><input type='password' id='password' name='password' />
+    <button id='login'>Login</button>
+    <span>Non sei registrato <button id='signup'>Registrazione</button></span>
+  <% } else{ %>
+    <label for='user'>Username</label><input type='text' id='user' name='user' />
+    <label for='password'>Password</label><input type='password' id='password' name='password' />
+    <label for='password2'>Conferma Password</label><input type='password' id='password2' name='password2' />
+    <label for='name'>Nome</label><input type='text' id='name' name='name' />
+    <label for='surname'>Cognome</label><input type='text' id='surname' name='surname' />
+    <button id='sign'>Conferma Registrazione</button>	
+    <button id='deny'>Annulla Registrazione</button>	
+  <% } %>
 <% } %>
+
 <% if (authenticated) { %>
   Ciao, <%= name %>
   <button id='logout'>Logout</button>
+  <button id='edit'>Modifica dati profilo</button>
 <% } %>  
 
