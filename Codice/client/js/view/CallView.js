@@ -24,7 +24,7 @@ define([
   var CallView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
-		'click button#endCall':'endCall',
+      'click button#endCall':'endCall',
     },
 	
     el : $('#content'),
