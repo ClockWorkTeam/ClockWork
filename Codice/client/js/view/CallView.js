@@ -1,7 +1,7 @@
-/*
+/**
  * Nome: CallView.js
- * Package: 
- * Autore:
+ * Package: View
+ * Autore: 
  * Data:
  * Versione:
  * 
@@ -21,56 +21,80 @@ define([
  'text!templates/CallTemplate.html',
  'view/StatisticsView'
 ], function($, _, Backbone, CallCommunication, CallTemplate, StatisticsView){
+  
+  var statisticsView=null;
+  var calling=null;
+
   var CallView = Backbone.View.extend({
-    //si occupa di legare gli eventi ad oggetti del DOM
+    /**
+     * si occupa di legare gli eventi ad oggetti del DOM
+     */
     events:{
       'click button#endCall':'endCall',
     },
 	
     el : $('#content'),
 	
-    //indica in quale parte del DOM gestirà 
     template : _.template(CallTemplate),
         
-    //funzione di inizializzazione dell'oggetto
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
     initialize: function(){
-      this.calling=false;
+      calling=false;
       _.bindAll(this, 'render');
-      this.statisticsView = new StatisticsView();
+      statisticsView = new StatisticsView();
     },
     
-    //funzione che effettua la scrittura della struttura della pagina
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
     render: function(isCaller,type, contact){
-      if(document.getElementById('content')){
-        $(this.el).html(this.template(contact.toJSON()));
-      }else{
+      /**
+      * controllo se nel DOM esiste l'elemento content, se non esiste viene reinserito nel documento 
+      */
+      if(!document.getElementById('content')){
         $('#main').prepend(this.el);
-        $(this.el).html(this.template(contact.toJSON()));
       }
-
+      $(this.el).html(this.template());
       if(!document.getElementById('statistics'))
         $('#main').insertBefore($('#statistics'), $('#chat'));
-
-      if(this.calling){
+     
+     /** 
+      * si controlla se l'attuale vista ha già una chiamata in corso
+      * se si viene ripristinata la visualizzazione della chiamata
+      * rendendo nuovamente visibile lo stream video ed audio e le statistiche
+      * altrimenti significa che si sta instaurando una nuova chiamata
+      * si invocano quindi metodi in base se si è il chiamante o il chiamato
+      * della chiamata
+      */ 
+      
+      if(calling){
         CallCommunication.recoverCall();
-        this.statisticsView.render();
+        statisticsView.render();
       }else{ 
         if(isCaller===false){
           CallCommunication.sendAnswer(type, contact, this);
-          this.calling=true;
+          calling=true;
         }else{
         CallCommunication.sendCall(type, contact, this);
-        this.calling=true;
+        calling=true;
         }	
       }	
     },
-  
+
+    /**
+     *  metodo per la chiusura della chiamata
+     */
     endCall:function(isEnding){
+      /**
+       *  controllo che si effettua per verificare chi ha deciso di concludere la chiamata
+       */
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
       this.options.FunctionView.closeViewCall();
-      this.statisticsView.close();
+      statisticsView.close();
     }
   
   });
