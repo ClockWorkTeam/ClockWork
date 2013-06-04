@@ -18,15 +18,11 @@ define([
     var ContactModel = Backbone.Model.extend({
 	  
       defaults: {
-	username: '',
-	name: '',
-	surname: '',
-	IP: '0.0.0.0',
+        username: '',
+        name: '',
+        surname: '',
+        IP: '0.0.0.0',
       	unread: 0
-      },
-	  
-      clear: function() {
-        this.destroy();
       }
 	    
     });

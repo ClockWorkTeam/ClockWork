@@ -25,13 +25,13 @@ define(['connection'], function(Connection){
       Connection.send(JSON.stringify(credentials));
       Connection.onmessage = function(str){
         var response = JSON.parse(str.data);
-	if(response.type==="login"){				
-	  if(response.answer === "true"){
-	    callBacks.doLogin(user, pass, response, view);
-	  }else if(response.answer === "false"){
-	    alert("Login e username errate");
-	  }
-	}
+        if(response.type==="login"){				
+          if(response.answer === "true"){
+            callBacks.doLogin(user, pass, response, view);
+          }else if(response.answer === "false"){
+            alert("Login e username errate");
+          }
+        }
       }
     },
 		

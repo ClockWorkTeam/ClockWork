@@ -27,43 +27,34 @@ define(['../../js/model/ContactModel'], function( ContactModel ) {
 
   });
 
-/*
-  test('Will call a custom initialize function on the model instance when created.', function() {
-      expect( 1 );
-
-      var toot = new Todo({ text: 'Stop monkeys from throwing their own crap!' });
-      equal( toot.get('text'), 'Stop monkeys from throwing their own rainbows!' );
-  });
-
   test('Fires a custom event when the state changes.', function() {
       expect( 1 );
 
       var spy = this.spy();
-      var todo = new Todo();
+      var contactModel = new ContactModel( { username: 'johndoe', name: 'john', surname: 'doe', IP: '1.2.3.4', unread: 0 } );
 
-      todo.on( 'change', spy );
+      contactModel.on( 'change', spy );
       // Change the model state
-      todo.set( { text: 'new text' } );
+      contactModel.set( { IP: '0.0.0.0' } );
 
       ok( spy.calledOnce, 'A change event callback was correctly triggered' );
   });
 
-
-  test('Can contain custom validation rules, and will trigger an invalid event on failed validation.', function() {
-      expect( 3 );
+  test('After calling function clear the model is empty.', function() {
+      expect( 5 );
 
       var errorCallback = this.spy();
-      var todo = new Todo();
+      var contactModel = new ContactModel( { username: 'johndoe', name: 'john', surname: 'doe', IP: '1.2.3.4', unread: 0 } );
 
-      todo.on('invalid', errorCallback);
-      // Change the model state in such a way that validation will fail
-      todo.set( { done: 'not a boolean' } );
+      // Clear the model
+      contactModel.clear();
 
-      ok( errorCallback.called, 'A failed validation correctly triggered an error' );
-      notEqual( errorCallback.getCall(0), undefined );
-      equal( errorCallback.getCall(0).args[1], 'Todo.done must be a boolean value.' );
+      equal( contactModel.get('username'), undefined );
+      equal( contactModel.get('name'), undefined );
+      equal( contactModel.get('surname'), undefined );
+      equal( contactModel.get('IP'), undefined );
+      equal( contactModel.get('unread'), undefined );
 
   });
-**/
 
 });
