@@ -68,9 +68,8 @@ Java
 \end_layout
 
 \begin_layout Standard
-L'utilizzo di Java è legato ai requisiti di capitolato; verrà utilizzato
- per la parte server e in particolare per l'utilizzo del protocollo di comunicaz
-ione WebSocket.
+L'utilizzo di Java è legato ai requisiti di capitolato, verrà utilizzato
+ per la parte server.
  È stato deciso di utilizzare la versione 7.0
 \end_layout
 
@@ -117,7 +116,96 @@ Nessun svantaggio rilevato
 
 \end_deeper
 \begin_layout Subsection
-HTML5
+SQLite
+\end_layout
+
+\begin_layout Standard
+Considerando la complessità relativamente limitata del database che occorrerà
+ per la gestione degli utenti abbiamo deciso di utilizzare SQLite, invece
+ del più potente MySQL, poiché lo riteniamo più adatto ai nostri scopi.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conoscenza da parte dei componenti del gruppo del linguaggio SQL
+\end_layout
+
+\begin_layout Itemize
+Gestibile attraverso il package 
+\family typewriter
+java.sql
+\family default
+ di Java
+\end_layout
+
+\begin_layout Itemize
+È multipiattaforma
+\end_layout
+
+\begin_layout Itemize
+Non richiede installazione di un server
+\end_layout
+
+\begin_layout Itemize
+Leggero e veloce
+\end_layout
+
+\begin_layout Itemize
+Maggior semplicità di impostazione
+\end_layout
+
+\begin_layout Itemize
+Ha transizioni atomiche, consistenti, isolate e durabili, anche in caso
+ di crash di sistema o blackout
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se il volume di dati diventasse molto ampio l'efficienza della base di dati
+ ne risentirebbe
+\end_layout
+
+\begin_layout Itemize
+Non possiede una vera gestione della concorrenza: in caso di necessità bisognerà
+ implementarla
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Differenze tra SQLite e MySQL
+\end_layout
+
+\begin_layout Itemize
+SQLite, nella sua semplicità, permette un’installazione molto veloce ed
+ è quasi privo di esigenze di manutenzione e configurazione, contrariamente
+ a MySQL che richiede una installazione ed una configurazione complesse
+\end_layout
+
+\begin_layout Itemize
+Attualmente il limite di dimensione massima è 2TB per database SQLite mentre
+ per database MySQL è pari a 64TB
+\end_layout
+
+\begin_layout Itemize
+Il limite di RAM utilizzata per SQLite è pari a 16 MB mentre MySQL richiede
+ almeno 384 MB
+\end_layout
+
+\begin_layout Subsection
+HTML5 e CSS3
 \end_layout
 
 \begin_layout Standard
@@ -165,96 +253,6 @@ L'utilizzo di JavaScript è legato ai requisiti di capitolato.
 \end_layout
 
 \begin_layout Subsection
-SQLite
-\end_layout
-
-\begin_layout Standard
-Considerando la complessità relativamente limitata del database che occorrerà
- per la gestione degli utenti abbiamo deciso di utilizzare SQLite, invece
- del più potente MySQL, poiché lo riteniamo più adatto ai nostri scopi.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Vantaggi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Conoscenza del linguaggio SQL
-\end_layout
-
-\begin_layout Itemize
-Gestibile attraverso una libreria di Java
-\end_layout
-
-\begin_layout Itemize
-Non richiede installazione di un server
-\end_layout
-
-\begin_layout Itemize
-Leggero e veloce
-\end_layout
-
-\begin_layout Itemize
-Maggior semplicità di impostazione
-\end_layout
-
-\begin_layout Itemize
-È multipiattaforma
-\end_layout
-
-\begin_layout Itemize
-Ha transizioni atomiche, consistenti, isolate e durabili, anche in caso
- di crash di sistema o blackout
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Svantaggi:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Se il volume di dati diventasse molto ampio l'efficienza della base di dati
- peggiorerebbe
-\end_layout
-
-\begin_layout Itemize
-Non possiede una vera gestione della concorrenza: in caso di necessità bisognerà
- implementarla
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-Differenze tra SQLite e MySQL
-\end_layout
-
-\begin_layout Itemize
-SQLite, nella sua semplicità, permette un’installazione molto veloce ed
- è quasi privo di esigenze di manutenzione e configurazione, contrariamente
- a MySQL che richiede una installazione ed una configurazione complesse
-\end_layout
-
-\begin_layout Itemize
-Attualmente il limite di dimensione massima è 2TB per database SQLite mentre
- per database MySQL è pari a 64TB
-\end_layout
-
-\begin_layout Itemize
-Il limite di RAM utilizzata per SQLite è pari a 16 MB ( Lo schema dell'intero
- database viene caricato nella memoria quando viene aperto e ci rimane fin
- quando non viene chiuso) a differenza degli 
-\emph on
-almeno
-\emph default
- 384 MB richiesti per MySQL
-\end_layout
-
-\begin_layout Subsection
 Backbone.js
 \end_layout
 
@@ -265,9 +263,8 @@ Per la gestione del lato client abbiamo deciso di utilizzare il framework
 \end_layout
 
 \begin_layout Standard
-Per la sua architettura, Backbone.js rientra nella categoria delle librerie
- MV*, in quanto implementa Model e View, ma non ha un componente Controller
- tradizionale, delegandone i compiti alle View e ad un componente di routing.
+Backbone.js ha una architettura MV*, in quanto implementa Model e View, delegando
+ a quest'ultima i compiti di una componente Controller tradizionale.
 \end_layout
 
 \begin_layout Itemize
@@ -286,7 +283,7 @@ Backbone.js è un progetto open source
 \end_layout
 
 \begin_layout Itemize
-Dover seguire la struttura data dal framework
+Struttura già data dal framework
 \end_layout
 
 \end_deeper
@@ -312,8 +309,8 @@ o WebSocket, come richiesto dal proponente.
 \end_layout
 
 \begin_layout Standard
-La tecnologia WebSocket fornisce un canale che permette la comunicazione
- in entrambi i versi attraverso una singola connessione ed è ideale per
+La tecnologia WebSocket fornisce un canale che permette la comunicazione,
+ in entrambi i versi, attraverso una singola connessione ed è ideale per
  le comunicazioni client-server, mentre non è ottimale per le comunicazioni
  client-client.
  Tale protocollo è indipendende dal protocollo TCP, e grazie alla metodologia
@@ -338,10 +335,10 @@ a WebRTC, come richiesto dal proponente.
 \end_layout
 
 \begin_layout Standard
-La tecnologia WebRTC è sviluppata per fornire metodi di comunicazione tra
- due o più utenti senza caricare il server, che si occupa solo dell'inizializzaz
-ione del canale, tramite chiamate vocali, videochiamate e condivisione di
- file, tutto senza l'installazione di plugin.
+La tecnologia WebRTC è sviluppata per fornire metodi di comunicazione, tramite
+ chiamate vocali, videochiamate e condivisione di file, tra due o più utenti
+ senza caricare il server, che si occupa solo dell'inizializzazione del
+ canale, inoltre non richiede l'installazione di plugin.
  Tale tecnologia è basata sul HTML5 e JavaScript.
 \end_layout
 
