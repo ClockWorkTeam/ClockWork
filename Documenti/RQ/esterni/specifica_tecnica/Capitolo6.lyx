@@ -143,6 +143,97 @@ Le classi
  questo passaggio sarà considerato implicito nelle descrizioni delle classi
 \end_layout
 
+\begin_layout Subsection
+Stile architetturale
+\end_layout
+
+\begin_layout Standard
+Lo stile architetturale che verrà seguito per creare il server è il Multitier
+ nella forma Three Tier.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/multi-tier.pdf
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione Three Tier
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\series default
+ tale stile architetturale permette una disgiunzione fra i vari gruppi di
+ entità che cooperano per l'erogazione del servizio.
+ Un primo livello si occuperà della comunicazione con il client, un secondo
+ livello invece si occuperà di effettuare le operazioni logiche e di comunicare
+ con il terzo strato che si occuperà di modificare la base di dati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Motivazione:
+\series default
+ il beneficio principale di questo stile è la possibilità di aggiornare/cambiare
+ un livello senza modificare i livelli adiacenti.
+ La forte comunicazione rigidamente strutturata tra gli strati, che favorisce
+ il disaccoppiamento, rende tale architettura un ottimo modello per applicazioni
+ client-server, poiché ogni livello non esiste come unità logica a se stante,
+ ma si adegua allo specifico ambiente di rete in cui esegue
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+ tale stile verrà utilizzato come struttura portante del server e sarà suddiviso
+ come segue
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transfer Layer: offrirà un'interfaccia di comunicazione con il client e
+ i livelli sottostanti del server
+\end_layout
+
+\begin_layout Itemize
+Manager Layer: si occuperà di svolgere le funzionalità di comunicazione
+ e di gestire la visualizzazione e la modifica delle informazioni presenti
+ nello strato Data
+\end_layout
+
+\begin_layout Itemize
+Data Layer: sarà un contenitore di informazioni riguardanti gli utenti e
+ di messaggi registrati e collegamenti
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Float figure
 placement H
