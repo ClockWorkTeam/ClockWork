@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:ContactView.js
  * Package: 
  * Autore:
@@ -20,53 +20,78 @@ define([
  'text!templates/ContactTemplate.html',
  'model/UserModel'
 ], function($, _, Backbone, FunctionsView, ContactTemplate, UserModel){
+  
+  var currentFunctions=null;
+  
   var ContactView = Backbone.View.extend({
     template: _.template(ContactTemplate),
-    
+ 
+    /**
+     * si occupa di legare gli eventi ad oggetti del DOM
+     */
     events: {
       'click li.contact': 'view'
     },
+
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
 
     initialize: function(){
       this.listenTo(this.model, 'change', this.render);
       _.bindAll(this, 'view');
     },
 	
-    //rendo visibili i contatti:
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */	
     render: function(){
       this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP, unread: this.model.toJSON().unread }));
       return this;
     },
-  
-    // funzione che crea le viste di funzioni e di chat quando clicco su un contatto
+
+    /**
+     * funzione che si occupa di creare la function view dell'utente selezionato
+     */  
     view : function(){
+      /**
+       * condizione messa per evitare di chiudere functionview non ancora create
+       */      
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
-      if(!this.currentFunctions)
-	this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
-      this.currentFunctions.render();
-      $('#main').prepend(this.currentFunctions.el);
+      if(!currentFunctions)
+        currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+      currentFunctions.render();
+      $('#main').prepend(currentFunctions.el);
     },
     
+    /**
+     * funzione che si occupa di creare la function view nel caso si decida di accettare la chiamata in ingresso
+     */
     createCall : function(type){
-      //condizione messa per evitare di chiudere functionview non ancora create
-      if(!this.currentFunctions){
-	this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+      /**
+       * condizione messa per evitare di chiudere functionview non ancora create
+       */
+      if(!currentFunctions){
+        currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
       }else{
-        this.currentFunctions.render();
+        currentFunctions.render();
       }
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
       if(type=="video"){
-        this.currentFunctions.videocall(false);
+        currentFunctions.videocall(false);
       }else{
-        this.currentFunctions.audiocall(false);
+        currentFunctions.audiocall(false);
       }
-      $('#main').prepend(this.currentFunctions.el);
+      $('#main').prepend(currentFunctions.el);
     }
   }); 
-
+  
+  /**
+   * si occupa di chiudere la vista
+   */
   ContactView.prototype.close = function(){
-    if(this.currentFunctions){
-      this.currentFunctions.unrender();
+    if(!currentFunctions){
+      currentFunctions.unrender();
     }
   };
   

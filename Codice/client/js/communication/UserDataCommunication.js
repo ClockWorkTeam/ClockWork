@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:UserDataCommunication.js
  * Package: communication
  * Autore:

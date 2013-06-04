@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:CallCommunication.js
  * Package: communication
  * Autore:
@@ -12,7 +12,9 @@
  * |      |               |           |
  */
  
-//classe che si occupa di gestire l'avvio della comunicazione tra due utenti
+/**
+ * classe che si occupa di gestire l'avvio della comunicazione tra due utenti
+ */
 define(['connection'], function(Connection){
   
   var localStream = null;
@@ -37,8 +39,13 @@ define(['connection'], function(Connection){
 
   return {
 	
-    //funzione che inoltra la richiesta di chiamata al server
+    /**
+     * funzione che inoltra la richiesta di chiamata al server
+     */
     sendCall: function (typecall, contact, callView){
+      /**
+       * imposto che sto chiamando e sono quindi occupato
+       */
       var event=new CustomEvent('setOnCall',{
         detail:{
           type:true
@@ -48,21 +55,34 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
-      var credentials = { contact: recipient.toJSON().username , type:'call', calltype:typecall};
-      Connection.send(JSON.stringify(credentials));
-      //aggiunta del listener per la ricezione della risposta dell'utente chiamato
+      var message = { contact: recipient.toJSON().username , type:'call', calltype:typecall};
+      Connection.send(JSON.stringify(message));
+      /**
+       * aggiunta del listener per la ricezione della risposta dell'utente chiamato
+       */
       Connection.addEventListener('message', onAnswer, false);
-      //metodo per la gestione della risposta ricevuta dall'utente chiamato
+
+      /**
+       * viene impostata questa variabile per poter tener traccia della funzione stessa
+       */
       var call=this;
- 
+      
+      /**
+       * metodo per la gestione della risposta ricevuta dall'utente chiamato
+       */
       function onAnswer(evt){
         var response = JSON.parse(evt.data);
         if(response.type==='answeredCall'){
+          /**
+           * controllo la risposta del chiamato, se positiva avvio la chiamata
+           * altrimenti imposto nuovamente la disponibilità a ricevere la chiamata
+           * e chiudo la vista
+           */
           if(response.answer==='true'){
             var isCaller=true;
             call.startCall(isCaller, typecall, call, callView)	
           }else{
-	    var event=new CustomEvent('setOnCall',{
+            var event=new CustomEvent('setOnCall',{
               detail:{
                 type:false
               },
@@ -73,27 +93,31 @@ define(['connection'], function(Connection){
             callView.endCall(false);
             
             if(response.answer==='false'){
-	      alert('chiamata rifiutata');
+              alert('chiamata rifiutata');
             }else if(response.answer==='busy'){
               alert('utente occupato');    
-	    }else if(response.answer==='error'){
-	      alert('errore durante la chiamata');
-	    }
-	  }
+            }else if(response.answer==='error'){
+              alert('errore durante la chiamata');
+            }
+          }
           Connection.removeEventListener('message',onAnswer,false);
         }
       }
     },
     
-    //funzione che invia al server la risposta dell'utente chiamato
+    /**
+     * funzione che invia al server la risposta dell'utente chiamato
+     */
     sendAnswer: function (typecall, contact, callView){
       recipient=contact;
-      var credentials = { response: true, contact: recipient.toJSON().username, type:'answeredCall' };
-      Connection.send(JSON.stringify(credentials));
+      var message = { response: true, contact: recipient.toJSON().username, type:'answeredCall' };
+      Connection.send(JSON.stringify(message));
       this.startCall(false, typecall, this, callView);
     },
     
-    //stream audio/video locale
+    /**
+     * crea la peerconnection
+     */
     
     createPeerConnection : function() {
       // Quando viene inserito uno stream nel peerConnection si attiva l'evento che visualizza lo stream dell'altro utente
