@@ -1,6 +1,6 @@
 /*
- * Nome:UserModel.js
- * Package: 
+ * Nome:TextMessagesCollection.js
+ * Package: collection
  * Autore:
  * Data:
  * Versione:
@@ -20,13 +20,13 @@ define([
   ], function(_, Backbone, Storage, TextMessageModel){
     var TextMessagesCollection = Backbone.Collection.extend({
 
-		model: TextMessageModel,
+      model: TextMessageModel,
 
-    localStorage: new Storage('textmessages'),
-	  
-		chat_session: function(username) {
-		  return this.where({contact: username});
-		},
+      localStorage: new Storage('textmessages'),
+
+      chat_session: function(username) {
+        return this.where({contact: username});
+      },
 	
     });
   return new TextMessagesCollection();

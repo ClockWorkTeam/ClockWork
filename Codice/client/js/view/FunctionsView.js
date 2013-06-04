@@ -25,11 +25,11 @@ define([
   var FunctionsView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
     events:{
-		'click button#dataContact':'viewDataContact',
-		'click button#sendVideoText':'sendVideoText',
-		'click button#call':'audiocall',
-		'click button#video':'videocall',	
-		'click input#record' : 'record'
+      'click button#dataContact':'viewDataContact',
+      'click button#sendVideoText':'sendVideoText',
+      'click button#call':'audiocall',
+      'click button#video':'videocall',	
+      'click input#record' : 'record'
     },
 	
     el : $('#content'),
@@ -41,58 +41,59 @@ define([
     
     //funzione di inizializzazione dell'oggetto
     initialize: function(){
-			if(!this.options.From){
-				this.listenTo(this.model, 'change', this.render);
-			}
-				_.bindAll(this, 'render');
+      if(!this.options.From){
+	this.listenTo(this.model, 'change', this.render);
+      }
+      _.bindAll(this, 'render');
     },
     
     //funzione che effettua la scrittura della struttura della pagina
     render: function(){
       if(this.callView){
-				if(this.model.toJSON().IP==='0'){
-					this.forceClose();
-				}else{
-					this.startChat();
-					this.callView.render(null,null, this.model);
-				}
+	if(this.model.toJSON().IP==='0'){
+	  this.forceClose();
+        }else{
+	  this.startChat();
+	  this.callView.render(null,null, this.model);
+        }
       }else{
         if(!this.options.From){
           $(this.el).html(this.template(this.model.toJSON()));
-					this.startChat();
-        }else {
-					 $(this.el).html(this.template({From: this.options.From}));
+	  this.startChat();
+        }else{
+	  $(this.el).html(this.template({From: this.options.From}));
         }
       }
     },   
     
     unrender:function(){
-			this.chatView.unrender();
-			this.chatView=undefined;
-			this.close();
-		},
+      this.chatView.unrender();
+      this.chatView=undefined;
+      this.close();
+    },
+
     startChat:function(){
-			if(!this.chatView){
-				this.chatView= new ChatView({model: this.model, userModel: this.options.userModel});
-			}
-			this.chatView.render();
-			$('#main').append(this.chatView.el);
-			this.model.set({unread: 0});
-		},
+      if(!this.chatView){
+	this.chatView= new ChatView({model: this.model, userModel: this.options.userModel});
+      }
+      this.chatView.render();
+      $('#main').append(this.chatView.el);
+      this.model.set({unread: 0});
+    },
     
-		audiocall:function(isCaller){
-			this.call(isCaller, 'audio');
+    audiocall:function(isCaller){
+      this.call(isCaller, 'audio');
     },
     
     videocall:function(isCaller){
       this.call(isCaller, 'video');
     },
 		
-		call:function(isCaller,type){
+    call:function(isCaller,type){
       //if(NotificationCommunication.getStatus() && isCaller!=false){
       //  alert("hai già una chiamata attiva");
       //}
-			if(this.callView){
+      if(this.callView){
         this.forceClose();
       }
       this.startChat();
@@ -103,25 +104,25 @@ define([
         this.callView.render(true,type,this.model);
       }
       $('#main').prepend(this.callView.el);
-		},
+    },
 
     record : function(){
 		
-		},
+    },
 		
-		sendVideoText:function(){
-			if(this.recordMessageView){				
-				this.recordMessageView.close();
-			}
-			this.close();
-			this.recordMessageView=new RecordMessageView({model : this.model});
-			this.recordMessageView.render();
-			$('#main').prepend(this.recordMessageView.el);
-		},
-		
-		forceClose:function(){
-			this.callView.endCall();
-		},
+    sendVideoText:function(){
+      if(this.recordMessageView){				
+        this.recordMessageView.close();
+      }
+      this.close();
+      this.recordMessageView=new RecordMessageView({model : this.model});
+      this.recordMessageView.render();
+      $('#main').prepend(this.recordMessageView.el);
+    },
+    
+    forceClose:function(){
+      this.callView.endCall();
+    },
     
     closeViewCall : function(){
       this.callView=undefined;
@@ -132,17 +133,18 @@ define([
         $(this.el).html(this.template(this.model.toJSON()));
         this.startChat();
       }
-		},
-		
-		viewDataContact:function(){
-			alert('vedi dettaglio');
-		}
+    },
+    
+    viewDataContact:function(){
+      alert('vedi dettaglio');
+    }
+  
   });
 
   FunctionsView.prototype.close = function(){
-		if(this.chatView){
-			this.chatView.close();
-		}
+    if(this.chatView){
+      this.chatView.close();
+    }
     this.remove();
     this.unbind();
   };

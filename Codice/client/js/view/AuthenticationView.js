@@ -24,8 +24,8 @@ define([
 ], function($, _, Backbone, sideView, UserDataView, authenticationTemplate, AuthenticationCommunication, UserModel){
   var AuthenticationView = Backbone.View.extend({
     //si occupa di legare gli eventi ad oggetti del DOM
-	  events: {
-			'keyup input#password:last-of-type':'pressEnter',
+    events: {
+      'keyup input#password:last-of-type':'pressEnter',
       'click button#login': 'connect',
       'click button#logout': 'disconnect',
       'click button#signup': 'view_signup',
@@ -35,9 +35,9 @@ define([
     },
     
     pressEnter:function(event){
-			if(event.keyCode == 13)
-				this.connect();
-		},
+      if(event.keyCode == 13)
+	this.connect();
+    },
     //indica quale parte del DOM gestirà 
     el: $("#authentication"),
 
@@ -58,7 +58,7 @@ define([
   
     //funzione che effettua la scrittura della struttura della pagina
     render: function() {
-	    //applico il template all'elemento base (el)
+      //applico il template all'elemento base (el)
       $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}))  
     },
 
@@ -77,7 +77,6 @@ define([
           //recupero la lista contatti dal server e li metto nel local storage
           view.contacts_view.getContacts(view);
           // visione dei contatti	
-
         }
       };
     },
@@ -85,12 +84,12 @@ define([
     //funzione che tenta il login
     connect: function(){
       var aView = this;
-	    //recupero lo username inserito
-	    var user = this.$("#user").val();
-	    //recupero la password inserita
-	    var pass = this.$("#password").val();
-	    //chiamo il metodo di comunicazione col server
-	    AuthenticationCommunication.checkCredentials(user, pass, aView.callBacks(), this);
+      //recupero lo username inserito
+      var user = this.$("#user").val();
+      //recupero la password inserita
+      var pass = this.$("#password").val();
+      //chiamo il metodo di comunicazione col server
+      AuthenticationCommunication.checkCredentials(user, pass, aView.callBacks(), this);
     },
 	
     //funzione che si occupa di chiudere la sessione con il server
@@ -100,10 +99,10 @@ define([
       $(this.el).html(this.authenticationTemplate({authenticated: false, signup: false}));
       //cancello la lista dei contatti
       this.contacts_view.unrender();
-       if(this.userDataView){
-				this.userDataView.unrender();
-				this.userDataView=undefined;
-			}
+      if(this.userDataView){
+	this.userDataView.unrender();
+	this.userDataView=undefined;
+      }
     },
     
     //visualizzo il form di registrazione
@@ -127,13 +126,11 @@ define([
 //          var authentication_communication = new AuthenticationCommunication();
           //se lo username non è già presente nel sistema procedo all'autenticazione
           AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
-        }
-        else{
+        }else{
           //errore nel caso la password e la sua conferma non corrispondano
           alert('Le password inserite non coincidono');
         }
-      }
-      else{
+      }else{
          //errore nel caso in cui manchino dei campi obbligatori
          alert('Non hai compilato tutti i campi obbligatori');
       }
@@ -145,15 +142,13 @@ define([
     },    
     
     editProfile: function(){
-			this.contacts_view.closeOtherContacts();
-			if(this.userDataView){
-				this.userDataView.unrender();
-			}
-			this.userDataView =new UserDataView({model: this.userModel});
-		}
-    
-    });
-
+      this.contacts_view.closeOtherContacts();
+      if(this.userDataView){
+	this.userDataView.unrender();
+      }
+      this.userDataView =new UserDataView({model: this.userModel});
+    }
+  });
     return AuthenticationView;
 });
 
