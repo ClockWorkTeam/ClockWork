@@ -1,6 +1,6 @@
 /*
  * Nome:UserModel.js
- * Package: 
+ * Package: model
  * Autore:
  * Data:
  * Versione:

@@ -1,5 +1,5 @@
 /*
- * Nome:ContactModelTestConfig.js
+ * Nome:UserModelTestConfig.js
  * Package: 
  * Autore:
  * Data:
@@ -35,7 +35,7 @@ require.config({
 
 QUnit.config.autostart = false;
  
-require(['ContactModelTest.js'], function(){
+require(['UserModelTest.js'], function(){
   QUnit.start(); //Tests loaded, run tests
 });
 
