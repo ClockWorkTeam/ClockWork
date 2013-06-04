@@ -24,5 +24,32 @@ define(['../../js/model/UserModel'], function( UserModel ) {
       equal( userModel.get('surname'), 'doe', "inserting surname" );
 
   });
+  test('Fires a custom event when the state changes.', function() {
+      expect( 1 );
+
+      var spy = this.spy();
+      var userModel = new UserModel( { username: 'johndoe', password: '123', name: 'john', surname: 'doe' } );
+
+      userModel.on( 'change', spy );
+      // Change the model state
+      userModel.set( { password: '456' } );
+
+      ok( spy.calledOnce, 'A change event callback was correctly triggered' );
+  });
+
+  test('After calling function clear the model is empty.', function() {
+      expect( 4 );
+
+      var errorCallback = this.spy();
+      var userModel = new UserModel( {username: 'johndoe', password: '123', name: 'john', surname: 'doe' } );
+
+      // Clear the model
+      userModel.clear();
+
+      equal( userModel.get('username'), undefined );
+      equal( userModel.get('password'), undefined );
+      equal( userModel.get('name'), undefined );
+      equal( userModel.get('surname'), undefined );
+  });
 
 });
