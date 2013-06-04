@@ -20,18 +20,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tutorials {
-	private Map<String, String> tutorials;
+  private Map<String, String> tutorials;
 
-	public Tutorials(int num){
-		tutorials=new HashMap<String,String>(num);
-	}
+  /**Costruttore classe tutorials
+   * 
+   * @param numero di tutorials
+   */
+  public Tutorials(int num){
+	tutorials=new HashMap<String,String>(num);
+  }
 	
-	public void insert(String title, String url){
-		tutorials.put(title, url);
-	}
+  /**Metodo che inserisce un tutorials nella mappa di tutorials
+   * 
+   * @param title del video
+   * @param indirizzo in cui si trova il video
+   */
+  public void insert(String title, String url){
+	tutorials.put(title, url);
+  }
 	
-	public Map<String,String> getTutorials(){
-		return tutorials;
-	}
+  /**Metodo che restituisce i tutorial presenti nel server
+   * 
+   * @return lista dei tutorial
+   */
+  public Map<String,String> getTutorials(){
+	return tutorials;
+  }
 	
 }
