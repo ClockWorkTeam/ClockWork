@@ -1,5 +1,5 @@
 /*
- * Nome:ContactModelTestConfig.js
+ * Nome:AuthenticationViewTestConfig.js
  * Package: 
  * Autore:
  * Data:
@@ -35,8 +35,6 @@ require.config({
 
 QUnit.config.autostart = false;
  
-require(['ContactModelTest.js'], function(){
+require(['AuthenticationViewTest.js'], function(){
   QUnit.start(); //Tests loaded, run tests
 });
-
-

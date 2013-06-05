@@ -94,7 +94,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/architettura-generale.pdf
+	filename img/architetturaGenerale.pdf
 	scale 85
 
 \end_inset
@@ -131,8 +131,8 @@ Client
 \end_layout
 
 \begin_layout Standard
-Il client si occuperà di gestire l'interfaccia visibile all'utente le cui
- operazioni verranno poi inviate al server.
+Si occuperà di gestire l'interfaccia visibile all'utente le cui operazioni
+ verranno poi inviate al server.
  Il lato client è stato suddiviso nel seguente modo:
 \end_layout
 
@@ -213,8 +213,7 @@ Server
 \end_layout
 
 \begin_layout Standard
-Il server si occuperà di gestire le richieste fatte e di inviare una risposta
- al client.
+Si occuperà di gestire le richieste fatte e di inviare una risposta al client.
  Il server è stato suddiviso in
 \end_layout
 
@@ -231,7 +230,7 @@ CSER1:
 \series bold
 CSER2:
 \series default
- gestione dati utenti
+ gestione dati utente
 \end_layout
 
 \begin_layout Itemize
@@ -245,9 +244,9 @@ CSER3:
 \begin_layout Itemize
 
 \series bold
-CSER4:
+CSER4: 
 \series default
- salvataggio messaggio in differita
+trasferimento file e messaggi di testo
 \end_layout
 
 \begin_layout Itemize
@@ -255,7 +254,7 @@ CSER4:
 \series bold
 CSER5:
 \series default
- tutorial
+ salvataggio messaggio in differita
 \end_layout
 
 \begin_layout Itemize
@@ -263,7 +262,7 @@ CSER5:
 \series bold
 CSER6:
 \series default
- notification
+ tutorial
 \end_layout
 
 \begin_layout Subsection
@@ -291,7 +290,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/architettura-generale-intero-sistema.pdf
+	filename img/architetturaGeneraleInteroSistema.pdf
 	scale 70
 
 \end_inset
@@ -315,10 +314,6 @@ name "fig:Architettura-generale-dell'intero-sistema"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -364,7 +359,7 @@ PROGETTO}
 mytalk.client.view
 \series default
  racchiude al suo interno l'interfaccia grafica e la parte logica.
-  Questo strato viene definito dal framework Backbone
+  Questo strato viene definito dal framework Backbone.js
 \end_layout
 
 \begin_layout Itemize
@@ -372,7 +367,7 @@ mytalk.client.view
 \series bold
 mytalk.client.model
 \series default
- contiene dati locali
+ contiene localmente le informazioni necessarie a popolare le viste
 \end_layout
 
 \begin_layout Itemize
@@ -473,5 +468,88 @@ mytalk.server.shared
 \end_deeper
 \end_deeper
 \end_deeper
+\begin_layout Subsection
+Stile architetturale del server
+\end_layout
+
+\begin_layout Standard
+Lo stile architetturale che verrà seguito per il server è il Multitier nella
+ forma Three Tier.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Multitier.pdf
+	scale 85
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione Three Tier
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\series default
+ tale stile architetturale permette una disgiunzione fra i vari gruppi di
+ entità che cooperano per l'erogazione del servizio.
+ Un primo livello si occuperà della comunicazione con il client, un secondo
+ livello invece si occuperà di effettuare le operazioni logiche e di comunicare
+ con il terzo strato che si occuperà di modificare la base di dati
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+strato transfer: offrirà un'interfaccia di comunicazione con il client e
+ i livelli sottostanti del server
+\end_layout
+
+\begin_layout Itemize
+strato manager: si occuperà di svolgere le funzionalità di comunicazione
+ e di gestire la visualizzazione e la modifica delle informazioni presenti
+ nello strato Data
+\end_layout
+
+\begin_layout Itemize
+strato data: sarà un contenitore di informazioni riguardanti gli utenti
+ e di messaggi registrati e collegamenti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Motivazione:
+\series default
+ il beneficio principale di questo stile è la possibilità di aggiornare/cambiare
+ un livello senza modificare i livelli adiacenti.
+ La forte comunicazione rigidamente strutturata tra gli strati, che favorisce
+ il disaccoppiamento, rende tale architettura un ottimo modello per applicazioni
+ client-server, poiché ogni livello non esiste come unità logica a se stante,
+ ma si adegua allo specifico ambiente di rete in cui esegue
+\end_layout
+
 \end_body
 \end_document

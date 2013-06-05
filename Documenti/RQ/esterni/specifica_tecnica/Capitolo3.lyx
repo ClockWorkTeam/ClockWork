@@ -73,10 +73,6 @@ Presentiamo qui di seguito i design pattern che andremo ad utilizzare per
 \end_layout
 
 \begin_layout Subsection
-Architettura server
-\end_layout
-
-\begin_layout Subsubsection
 Singleton
 \end_layout
 
@@ -108,10 +104,10 @@ Contesto applicativo:
 \family typewriter
 Launcher
 \family default
-, per inizializzare correttamente le classi del nostro server
+ per inizializzare correttamente le classi del nostro server
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 DAO
 \end_layout
 
@@ -140,16 +136,53 @@ utilizeremo questo design pattern per accedere al data base ed effettuare
 \series bold
 Contesto applicativo:
 \series default
- verrà utilizzato nello strato Data per prelevare e modificare dati dal
- database
+ verrà utilizzato nello strato data del server per prelevare e modificare
+ dati dal database
 \end_layout
 
 \begin_layout Subsection
-Architettura client
+MV*
 \end_layout
 
-\begin_layout Subsubsection
-MV*
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/patternMVStar.pdf
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione MV* 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-MV*"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -204,10 +237,10 @@ utilizzeremo questo pattern in quanto è quello utilizzato da Backbone.js
 \series bold
 Contesto applicativo:
 \series default
- vedasi quello di Backbone.js
+ verrà utilizzato per l'architettura del lato client
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Observer
 \end_layout
 
@@ -220,8 +253,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/struttura_observer.jpg
-	scale 70
+	filename img/patternObserver.pdf
+	scale 85
 
 \end_inset
 
@@ -272,7 +305,7 @@ osservare
 
  altri oggetti delle classi soggette a controlli.
  Inoltre, permette l'aggiornamento degli oggetti osservatori quando lo stato
- di un oggetto soggetto viene modificato.
+ di un oggetto soggetto viene modificato
 \end_layout
 
 \begin_layout Itemize
@@ -293,9 +326,9 @@ Motivazione:
 \series bold
 Contesto applicativo:
 \series default
- verrà utilizzato per la manutenibilità della lista utenti registrati (connessio
-ne e disconnessione degli utenti) o nel caso nuovi utenti si registrino,
- e per l'invio e ricezione dei messaggi testuali
+ verrà utilizzato, nel lato client, per la manutenibilità della lista utenti
+ registrati (connessione e disconnessione degli utenti) o nel caso nuovi
+ utenti si registrino, e per l'invio e ricezione dei messaggi testuali
 \end_layout
 
 \end_body
