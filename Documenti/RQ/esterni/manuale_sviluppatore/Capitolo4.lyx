@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language italian
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,7 +25,6 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -61,24 +60,7 @@
 \begin_body
 
 \begin_layout Section
-Guida allo sviluppo
-\end_layout
-
-\begin_layout Standard
-Il gruppo 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-NOMEGRUPPO}
-\end_layout
-
-\end_inset
-
-, in fase di progettazione, ha pensato di rendere il prodotto 
+Esecuzione 
 \begin_inset ERT
 status open
 
@@ -91,23 +73,11 @@ PROGETTO}
 
 \end_inset
 
- facilmente estendibile in merito a:
-\end_layout
 
-\begin_layout Itemize
-Database
-\end_layout
-
-\begin_layout Itemize
-Servizi di comunicazione
-\end_layout
-
-\begin_layout Subsection
-Server
 \end_layout
 
 \begin_layout Standard
-Quando il progetto 
+Per poter eseguire 
 \begin_inset ERT
 status open
 
@@ -120,54 +90,15 @@ PROGETTO}
 
 \end_inset
 
- è iniziato, era richiesto un database leggero, di conseguenza è stato utilizzat
-o SQLite.
+ è necessario
 \end_layout
 
-\begin_layout Standard
-Si è deciso dunque di implementare nel package mytalk.server.dao la classe
- JavaConnectionSQLite, in maniera da accedere al database solamente da una
- classe.
+\begin_layout Enumerate
+Possedere un server apache nel quale andrà inserito il progetto
 \end_layout
 
-\begin_layout Standard
-Infatti in caso di un futuro cambiamento del database, dovuto a nuove necessità,
- basterà adattare la classe JavaConnectionSQLite per connettersi al nuovo
- database.
-\end_layout
-
-\begin_layout Subsubsection
-Gestione dati
-\end_layout
-
-\begin_layout Standard
-La gestione dei dati presenti nel database è effettuata dalle classi presenti
- nel package mytalk.server.dao.
-\end_layout
-
-\begin_layout Standard
-In caso di necessità di apportare dei cambiamenti alla gestione dei dati
- non servirà modificare gli strati superiori, in quanto è stata realizzata
- una interfaccia per ogni classe, così da evitare di dover riadattare tutti
- i moduli con cui il dao interagisce.
-\end_layout
-
-\begin_layout Standard
-La natura multipiattaforma, e la precisa volontà da parte degli sviluppatori
- della tecnologia WebRTC di progettare dei protocolli per farli diventare standard
- rendono 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-PROGETTO}
-\end_layout
-
-\end_inset
- facilmente estensibile, purché si resti all'interno dei limiti delle funzionalità supportate.
+\begin_layout Enumerate
+Eseguire la parte server tramite Eclipse
 \end_layout
 
 \end_body
