@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:ConactsView.js
  * Package: 
  * Autore:
@@ -32,11 +32,18 @@ define([
     
     myModel : '',
     authenticationView:'',
-    
+ 
+    /**
+     * si occupa di legare gli eventi ad oggetti del DOM
+     */    
     events:{
 		'click button#callIP' : 'callIP',
 		'click button#conference' : 'StartConference'
     },
+
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
 	
     initialize:function(){
 			_.bindAll(this, 'render', 'unrender', 'viewContact');
@@ -50,43 +57,71 @@ define([
 			this.childViews = [];
 		},
 
+    /**
+     * si occupa di prelevare i contatti una volta fatto il login
+     */
+
 		getContacts:function(view){
 			this.myModel=view.userModel;
 			this.authenticationView=view;
 			ContactsCommunication.fetchContacts(this.myModel.toJSON().username);
 			this.$el.html(this.template({logged: true}));
 		},
+
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
 		
 		render: function (){
 			this.viewContact(this.collection.at(this.collection.length-1));
 		},
+    
+    /**
+     * funzione che si occupa di inizializzare e rendere visibile ogni contatto presente nella lista
+     */
+    
 		viewContact: function(ContactModel){
-			var contact_view = new ContactView({dom : "sidebar", model: ContactModel, userModel: this.myModel, callback: this });
-			this.childViews.push(contact_view);
-			this.$("#contacts").append(contact_view.render().el);
+			var contactView = new ContactView({dom : "sidebar", model: ContactModel, userModel: this.myModel, callback: this });
+			this.childViews.push(contactView);
+			this.$("#contacts").append(contactView.render().el);
 			
 		},
+    
+    /**
+     * si occupa di disabilitare la vista quando si effettua il logout
+     */
+    
 		unrender: function (){
 			this.stopListening(this.collection, 'all', this.render);
 			$(this.el).html(this.template({logged: false}));
 			this.destroyContacts();
 		},
 
+    /**
+     * si occupa di chiudere le viste di ogni contatto presente
+     */
+
 		destroyContacts: function(){
 			_.each(this.childViews, function(view){view.close();});
 			_.each(this.collection.record(), function(contact){contact.clear();});
 		},
 	
-	callIP:function(){
+    /**
+     * si occupa di effettuare chiamate IP
+     */
+    callIP:function(){
       _.each(this.childViews, function(view){view.close();});
-	  if(this.currentFunctions){
+      if(this.currentFunctions){
         this.currentFunctions.close();
       }
       this.currentFunctions = new FunctionsView({From: 'IP'});
       this.currentFunctions.render();
       $('#main').prepend(this.currentFunctions.el);
-	},
+    },
 
+    /**
+     * si occupa di effettuare conferenze
+     */
     StartConference: function(){
 	  _.each(this.childViews, function(view){view.close();});
 	  if(this.currentFunctions){
@@ -98,25 +133,29 @@ define([
 	  this.collection.each(this.listContacts);
 	},
 	
-	listContacts: function(ContactModel){
-		var contact_view = new ContactView({dom : '', model: ContactModel});
-		this.$("#optionContacts").append(contact_view.render().el);
-	},
-  
- closeOtherContacts: function(contact){
-	 if(contact && this.authenticationView.userDataView){
-		 this.authenticationView.userDataView.unrender();
-		 this.authenticationView.userDataView=undefined;
-	 }
-
-		_.each(this.childViews, 
+    /**
+     * si occupa di gestire la lista dei contatti da selezionare per una videoconferenza
+     */
+    listContacts: function(ContactModel){
+      var contactView = new ContactView({dom : '', model: ContactModel});
+      this.$("#optionContacts").append(contactView.render().el);
+    },
+    /**
+     * si occupa di chiudere viste inattese
+     */
+    closeOtherContacts: function(contact){
+      if(contact && this.authenticationView.userDataView){
+        this.authenticationView.userDataView.unrender();
+        this.authenticationView.userDataView=undefined;
+      }
+      _.each(this.childViews, 
 			function(view){
-				if(view.currentFunctions){
-					if(view.model.toJSON().username!=contact){
-						if(view.currentFunctions.callView && view.currentFunctions.callView.calling){
-							if(view.currentFunctions.chatView){
-								view.currentFunctions.chatView.close();
-								view.currentFunctions.chatView=undefined;
+        if(view.currentFunctions){
+          if(view.model.toJSON().username!=contact){
+            if(view.currentFunctions.callView && view.currentFunctions.callView.calling){
+              if(view.currentFunctions.chatView){
+                view.currentFunctions.chatView.close();
+                view.currentFunctions.chatView=undefined;
 							}
 						}else{
 							view.currentFunctions.close();
@@ -129,17 +168,20 @@ define([
 				this.currentFunctions.close();
 				this.currentFunctions=undefined;
 			}
-  },
+    },
 
-  setCall : function(contact,type){  
-    _.each(this.childViews, 
-    function(view){
-      if(view.model.toJSON().username==contact){
-        console.log("trovato "+view.model.toJSON().username);
-        view.createCall(type);
-      }
-    });
-  }
+    /** 
+     * metodo invoca allo scopo di capire quale utente sta chiamando
+     */
+
+    setCall : function(contact,type){  
+      _.each(this.childViews, 
+      function(view){
+        if(view.model.toJSON().username==contact){
+          view.createCall(type);
+        }
+      });
+    }
     
   });
 
