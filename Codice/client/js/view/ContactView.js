@@ -36,7 +36,6 @@ define([
     /**
      * funzione di inizializzazione dell'oggetto
      */
-
     initialize: function(){
       this.listenTo(this.model, 'change', this.render);
       _.bindAll(this, 'view');
@@ -90,7 +89,7 @@ define([
    * si occupa di chiudere la vista
    */
   ContactView.prototype.close = function(){
-    if(!currentFunctions){
+    if(currentFunctions!=null){
       currentFunctions.unrender();
     }
   };

@@ -42,7 +42,7 @@ define([
         $('#main').append(this.el);
         $(this.el).html(this.template({time: 0, sentAudio: 0, sentVideo: 0,latency: 0, bitrate: 0}));
       }
-      readStatistic();
+      this.readStatistic();
     },
       
       /**
@@ -58,8 +58,8 @@ define([
         peerConnection=event.detail.peercon;
         var baseTime;
         var prevTime;
-        var bitprev;
-        var actualtime;
+        var bitPrev;
+        var actualTime;
         
         /**
          * condizione realizzata per impedire l'avvio di due intervall della stessa chiamata
@@ -70,8 +70,8 @@ define([
         else{
           baseTime=0;
           prevTime=0;
-          bitprev=0;
-          actualtime=0;
+          bitPrev=0;
+          actualTime=0;
         }
         
         /**
