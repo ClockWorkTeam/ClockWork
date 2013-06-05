@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:AuthenticationCommunication.js
  * Package: 
  * Autore:
@@ -11,20 +11,25 @@
  * +------+---------------+-----------+
  * |      |               |           |
  */
-//classe che comunica con il server per ricezione di notifiche di chiamata o ricezione di messaggi
 
+/**
+ * classe che comunica con il server per ricezione di notifiche di chiamata 
+ */
 define(['connection', 'view/NotificationView'],function(Connection, NotificationView){
-
+  
+  /**
+   * variabile che indica se sono già in chiamata o meno
+   */
   var onCalling=false;
   return {
-    
     //getStatus: function(){
     //  return onCalling;  
     //},
-      
+    
+    /**
+     * funzione che si occupa di segnalare la presenza di chiamate in arrivo e avvertire l'utente
+     */
     listenNotification : function(){
-      //funzione che si occupa di segnalare la presenza di chiamate in arrivo
-      //Precondizione la chiamata arriva solo all'ip che si vuole contattare non a tutte le persone presenti nel server presenta l'ip chiamante e il tipo di chiamata
       var Notification=this;
       var notificationView=null;
       Connection.addEventListener('message', onNotification, false);
@@ -32,20 +37,29 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
       function setOnCall(event){
         onCalling=event.detail.type;
       };
+      /**
+       * ascoltatore che si occupa di segnalare l'arrivo di segnali di chiamata
+       */
       function onNotification(str){
         var response = JSON.parse(str.data);
+        /**
+         * segnala la presenza di una chiamata in ingresso
+         */
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
             notificationView= new NotificationView({caller: response.contact, typeCall: response.typecall, NotificationCommunication:Notification});
           }else{
-	    var credentials = {
+            var message = {
               contact: response.contact,
               type:'busy'
             };
-            Connection.send(JSON.stringify(credentials));
+            Connection.send(JSON.stringify(message));
           }
         }
+        /**
+         * segnala la presenza di chiusura chiamata ancora prima che quest'ultima inizi
+         */
         if (response.type === 'endcall'){
           onCalling=false;
           if(notificationView != null){
@@ -55,13 +69,16 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
       };
     },
 
+    /**
+     * funzione che si occupa di inviare il segnale di rifiuta chiamata da parte del chiamato
+     */
     refuse : function(caller){
       onCalling=false;
-      var credentials = {
+      var message = {
         contact: caller,
-	type:'refusecall'
+        type:'refusecall'
       };
-      Connection.send(JSON.stringify(credentials));
+      Connection.send(JSON.stringify(message));
     }
   };	
 });
