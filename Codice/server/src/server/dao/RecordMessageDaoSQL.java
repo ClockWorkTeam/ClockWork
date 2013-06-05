@@ -1,7 +1,7 @@
 /**
 * Nome: RecordMessageDaoSQL
 * Package: server.dao
-* Autore: Zohouri Haghian Pardis
+* Autore: Gavagnin Jessica
 * Data: 2013/03/06
 * Versione: 1.0
 *
@@ -9,11 +9,11 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     ZHP       | + creazione documento	   |
+* |  130306 |     GJ        | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
-*/ 
+*/
 
 package server.dao;
 import server.shared.RecordMessage;
@@ -29,17 +29,17 @@ import java.util.Vector;
 public class RecordMessageDaoSQL implements RecordMessageDao{
 	private JavaConnectionSQLite connection;
 	private UserList userList;
-	
+
 	public RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users){
 		this.connection=connection;
 		this.userList=users;
 	}
 
  /**
-   * Metodo che trova i messaggi inviati all'user 
+   * Metodo che trova i messaggi inviati all'user
    * @param user Oggetto User ricevente dei messagi
    * @return vettore dei messaggi inviati all'user
-   */    
+   */
   public Vector<RecordMessage> getAllMessages(String username){
 	  User user= userList.getUser(username);
 	  if(user==null){return null;}
@@ -56,7 +56,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
 			}while( rs.next());
 		}catch(SQLException e){return null;}
 	}
-	return user.getMessages();  
+	return user.getMessages();
   }
 
   /** Metodo che resituisce un dato messaggio
@@ -65,7 +65,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
    * @param path
    * @param date
    * @return RecordMessage trovato, o null se l'operazione non ha avuto buon esito
-   */    
+   */
   public RecordMessage getMessage(String sender, String addressee, String path, String date){
 	  Vector<RecordMessage> myMessage = getAllMessages(addressee);
 	  boolean trovato =false;
@@ -87,7 +87,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
    * @param path
    * @param date
     * @return RecordMessage creato, o null se l'operazione non ha avuto buon esito
-   */    
+   */
   public RecordMessage createMessage(String sender, String addressee, String path, String date){
 	  User user= userList.getUser(addressee);
 	  if(user==null){return null;}
@@ -96,21 +96,21 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
 	  RecordMessage message=null;
 		if(done){
 			message = new RecordMessage(sender, addressee,path,date);
-			user.setMessage(message);			
+			user.setMessage(message);
 		}
 		return message;
-		
+
   }
 
   /** Metodo che elimina un dato messaggio
    * @param message Oggetto RecordMessage da eliminare
    * @return un boolean che indica se l'operazione ha avuto successo o no
-   */    
+   */
   public boolean removeMessage(RecordMessage message){
 		boolean done = connection.executeUpdate("DELETE FROM RecordMessageDataSQL WHERE (sender='"+message.getSender()+"' AND addressee='"+message.getAddressee()+"' AND record_message = '"+message.getPath()+"' AND creation='"+message.getDate()+"');");
 		if(done){
 			(userList.getUser(message.getAddressee())).removeMessage(message);
 		}
-      	return done;  	
-  } 
+      	return done;
+  }
 }
