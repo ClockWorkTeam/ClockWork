@@ -40,7 +40,7 @@ define(['../../js/model/ContactModel'], function( ContactModel ) {
       ok( spy.calledOnce, 'A change event callback was correctly triggered' );
   });
 
-  test('After calling function clear the model is empty.', function() {
+  test('The model is clear correctly.', function() {
       expect( 5 );
 
       var errorCallback = this.spy();
