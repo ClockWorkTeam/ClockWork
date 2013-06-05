@@ -1,5 +1,5 @@
 //Wait for relevant code bits to load before starting any tests
-define(['../js/collection/ContactsCollection','../js/model/ContactModel','storage'], function( ContactsCollection, ContactModel,Storage) {
+define(['../js/collection/ContactsCollection','../js/model/ContactModel'], function( ContactsCollection, ContactModel) {
 
 /*module( 'About Backbone.Collection');
   test('Can be created with default values for its attributes.', function() {
@@ -33,21 +33,28 @@ module('Test Collection', {
         this.contactsCollection.add(this.contactModelTwo);
     },
     teardown: function() {
+        this.contactsCollection.remove(this.contactModelOne);
+        this.contactsCollection.remove(this.contactModelTwo);
         window.errors = null;
     }
 });
 
-test('Has the ContactModel model', function() { 
-     ok(this.contactsCollection.model,'bla');
+test('Has the ContactModel model', function() {
+	expect( 1 );
+	
+	ok(this.contactsCollection.model);
+  
 });
 
-
-//module('done');
-test('returns an array of the todos that are done', function() {
-	this.contactModelTwo.done = true;
-	equal(this.contactsCollection.done(),this.contactModelTwo);
+test('returns an array of ContactModel that has username', function() {
+  expect( 2 );
+   
+	equal(this.contactsCollection.record()[0],this.contactModelOne);
+  equal(this.contactsCollection.record()[1],this.contactModelTwo);
+	
+	
+    //ok(this.contactsCollection.model);
 });
-
 
 
 
