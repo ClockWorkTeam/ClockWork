@@ -288,6 +288,16 @@ Utilizza
  al fine di visualizzare il video scelto dall'utente
 \end_layout
 
+\begin_layout Itemize
+Preleva da 
+\family typewriter
+\series bold
+mytalk.client.collection.TutorialsCollection
+\family default
+\series default
+ i link relativi ai videotutorial
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -618,16 +628,6 @@ Utilizzerà
  per il rifiuto di chiamate in arrivo
 \end_layout
 
-\begin_layout Itemize
-Genera
-\family typewriter
-\series bold
- mytalk.client.view.CallView
-\family default
-\series default
- nel qualcaso si decida di iniziare una nuova chiamata
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -680,10 +680,10 @@ Utilizza
 \end_layout
 
 \begin_layout Itemize
-Memorizza e legge da
+Preleva e memorizza da
 \family typewriter
 \series bold
- mytalk.client.model.TextMessageModel
+ mytalk.client.collection.TextMessagesCollection
 \family default
 \series default
  i messaggi della conversazione
@@ -770,26 +770,6 @@ Tipo, obiettivo e funzione del componente:
 e di statistiche durante e dopo lo svolgimento di una chiamata
 \end_layout
 
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\noindent
-Utilizza
-\family typewriter
-\series bold
- mytalk.client.model.StatisticsModel
-\family default
-\series default
- per recuperare le statistiche della chiamata
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 \noindent
 
@@ -1094,6 +1074,17 @@ mytalk.server.transfer.AuthenticationTransfer
 da cui riceve aggiornamenti sugli utenti connessi o meno al server
 \end_layout
 
+\begin_layout Itemize
+Salva all'interno di 
+\family typewriter
+\series bold
+mytalk.client.collection.ContactsCollection
+\family default
+\series default
+ tutti gli utenti presenti nel server e i loro cambiamenti di stato dopo
+ aver effettuato l'accesso
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1154,6 +1145,7 @@ Comunica con
 \family default
 \series default
  che si occupa di aprire un canale di comunicazione tra due o più utenti
+ e la chiusura della chiamata
 \end_layout
 
 \end_deeper
@@ -1205,16 +1197,6 @@ Comunica con
  a cui fornirà i metodi per segnalare la presenza di una chiamata in arrivo
  da parte di un altro utente, oppure la presenza di file o messaggi registrati
  all'interno del server, o di rifiutare chiamate in arrivo
-\end_layout
-
-\begin_layout Itemize
-Comunica con il package 
-\family typewriter
-\series bold
-transfer
-\family default
-\series default
- per gestire il passaggio di notifiche tra client e server
 \end_layout
 
 \end_deeper
@@ -1336,6 +1318,16 @@ mytalk.server.transfer.TutorialTransfer
 \family default
 \series default
 per la ricezione dei video tutorial richiesti
+\end_layout
+
+\begin_layout Itemize
+Salva all'interno di 
+\family typewriter
+\series bold
+mytalk.client.collection.TutorialsCollection 
+\family default
+\series default
+i vari videotutorial presenti nel server
 \end_layout
 
 \end_deeper
@@ -1482,22 +1474,25 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_deeper
-\begin_layout Description
-\noindent
-
-\family typewriter
-\series bold
-- 
-\family default
-\series default
+\begin_layout Itemize
 Viene utilizzata da
 \family typewriter
 \series bold
- mytalk.client.communication.AuthenticationCommunication
+ mytalk.client.view.AuthenticationView
 \family default
 \series default
- che vi salva le informazioni riguardanti l'account dell'utente autenticato
- 
+ che vi salva le informazioni riguardanti l'account dell'utente una volta
+ autenticato 
+\end_layout
+
+\begin_layout Itemize
+Viene utilizzata da
+\family typewriter
+\series bold
+ mytalk.client.view.UserDataView
+\family default
+\series default
+ che lo aggiorna in caso di modifiche delle credenziali dell'utente
 \end_layout
 
 \end_deeper
@@ -1543,16 +1538,22 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_deeper
-\begin_layout Description
-\noindent
-- Viene utilizzata da
+\begin_layout Itemize
+Viene utilizzata da
 \family typewriter
 \series bold
- mytalk.client.view.SideView
+ mytalk.client.communication.ContactsCommunication
 \family default
 \series default
  che vi salva la lista degli utenti che sono presenti nella lista e il loro
- stato una volta effettuato l'accesso 
+ stato una volta effettuato l'accesso
+\end_layout
+
+\begin_layout Itemize
+I singoli contatti vengono salvati all'interno di 
+\family typewriter
+\series bold
+mytalk.client.collection.ContactsCollection
 \end_layout
 
 \end_deeper
@@ -1597,9 +1598,8 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_deeper
-\begin_layout Description
-\noindent
-- è utilizzata da
+\begin_layout Itemize
+È utilizzata da
 \family typewriter
 \series bold
  mytalk.client.communication.ChatCommunication
@@ -1607,6 +1607,13 @@ Relazioni d'uso con altre componenti:
 \series default
  da cui riceve i messaggi di testo inviati da e verso altri utenti e li
  memorizza
+\end_layout
+
+\begin_layout Itemize
+I singoli messaggi vengono salvati in 
+\family typewriter
+\series bold
+mytalk.client.collection.TextMessagesCollection
 \end_layout
 
 \end_deeper
@@ -1651,9 +1658,8 @@ Relazioni d'uso con altre componenti:
 \end_layout
 
 \begin_deeper
-\begin_layout Description
-\noindent
-- è utilizzata da 
+\begin_layout Itemize
+È utilizzata da 
 \family typewriter
 \series bold
 mytalk.client.view.TutorialView
@@ -1674,6 +1680,13 @@ PROGETTO}
 \end_inset
 
  e restituisce l'indirizzo del video
+\end_layout
+
+\begin_layout Itemize
+I singoli video vengono salvati all'interno di 
+\family typewriter
+\series bold
+mytalk.client.collection.TutorialsCollection
 \end_layout
 
 \end_deeper
@@ -1740,7 +1753,7 @@ Relazioni d'uso con altre componenti:
 
 \begin_deeper
 \begin_layout Description
-- è utilizzata da 
+- È utilizzata da 
 \family typewriter
 \series bold
 mytalk.client.view.ContactsView 
@@ -1797,7 +1810,7 @@ Relazioni d'uso con altre componenti:
 
 \begin_deeper
 \begin_layout Description
-- è utilizzata da 
+- È utilizzata da 
 \family typewriter
 \series bold
 mytalk.client.view.ChatCommunication
@@ -1848,7 +1861,7 @@ Relazioni d'uso con altre componenti:
 
 \begin_deeper
 \begin_layout Description
-- è utilizzata da 
+- È utilizzata da 
 \family typewriter
 \series bold
 mytalk.client.view.TutorialView 
