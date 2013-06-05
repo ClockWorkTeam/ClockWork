@@ -1,7 +1,7 @@
 /**
 * Nome: LoginDaoSQL
 * Package: server.dao
-* Autore: Zohouri Haghian Pardis
+* Autore: Gavagnin Jessica
 * Data: 2013/03/06
 * Versione: 1.0
 *
@@ -9,7 +9,7 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     ZHP       | + creazione documento	   |
+* |  130306 |     GJ        | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *

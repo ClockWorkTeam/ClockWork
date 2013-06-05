@@ -1,7 +1,7 @@
 /**
 * Nome: UserDaoSQL
 * Package: server.dao
-* Autore: Zohouri Haghian Pardis
+* Autore: Gavagnin Jessica
 * Data: 2013/03/05
 * Versione: 1.0
 *
@@ -9,7 +9,7 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
+* |  130306 |     GJ       | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
@@ -26,21 +26,21 @@ import java.util.Vector;
 public class UserDaoSQL implements UserDao{
 	private JavaConnectionSQLite connection;
 	private UserList userList;
-	
+
 	public UserDaoSQL(JavaConnectionSQLite connection, UserList users){
 		this.connection=connection;
 		this.userList=users;
 		getUsersFromDB();
 	}
 
-	/**Metodo che registra un'utente nel DB 
+	/**Metodo che registra un'utente nel DB
 	 * @param username
 	 * @param password
 	 * @param name
 	 * @param surname
 	 * @param IP
 	 * @return l'oggetto User se l'operazione ha buon fine, altrimenti null
-	 */     
+	 */
 	public User createUser(String username, String password, String name, String surname, String IP){
 		User user=null;
 		if(userList.getUser(username)==null){
@@ -50,11 +50,11 @@ public class UserDaoSQL implements UserDao{
 		}
 		return user;
 	}
-	
-	/**Metodo che elimina un'utente nel DB 
+
+	/**Metodo che elimina un'utente nel DB
 	 * @param username
 	 * @return l'oggetto User se l'operazione ha buon fine, altrimenti null
-	 */     
+	 */
 	public boolean removeUser(String username){
 		boolean done = userList.removeUser(username);
 		 if(done){
@@ -62,12 +62,12 @@ public class UserDaoSQL implements UserDao{
 		 }
 		 return done;
 	}
-		 
+
   /**Metodo che setta il campo password di un User nel DB
    * @param username dell'utente che vuole eseguire l'operazione
    * @param password la stringa della nuova password del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
-   */   
+   */
 	public boolean setPassword(String username, String password){
 		User user=userList.getUser(username);
 		boolean done;
@@ -83,7 +83,7 @@ public class UserDaoSQL implements UserDao{
   * @param username Stringa dell'utente da cui si prendono le informazioni
    * @param name la stringa del nuovo name del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
-   */   
+   */
 	public boolean setName(String username, String name){
 		User user=userList.getUser(username);
 		boolean done;
@@ -91,18 +91,18 @@ public class UserDaoSQL implements UserDao{
 			done=false;
 		}else{
 			done = connection.executeUpdate("UPDATE UserDataSQL SET name='"+name+"' WHERE username='"+username+"';");
-	    	if(done){ 
-	    		user.setName(name); 
+	    	if(done){
+	    		user.setName(name);
 	    	}
 		}
-		return done;	
+		return done;
 	}
 
   /**Metodo che setta il campo surname di un User
    * @param username Stringa dell'utente da cui si prendono le informazioni
    * @param surname la stringa del nuovo surname del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
-   */   
+   */
 	public boolean setSurname(String username, String surname){
 		User user=userList.getUser(username);
 		boolean done;
@@ -130,11 +130,11 @@ public class UserDaoSQL implements UserDao{
 	public Vector<User> getAllUsers(){
 		return userList.getAllUsers();
 	}
-	
+
 	/**Metodo che controlla la corrispondenza tra l'username e la password
 	 * @param username Username dell'utente
 	 * @param password inserita
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public boolean checkPassword(String username, String password){
 		ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
@@ -143,12 +143,12 @@ public class UserDaoSQL implements UserDao{
 		}catch(SQLException e){return false;}
 		return true;
 	}
-	
+
 	/**Metodo che restituisce tutti i contatti
 	 * @return vector<User>
 	 */
 	private void getUsersFromDB(){
-		ResultSet rs =connection.select("UserDataSQL", "*", "", "");		 
+		ResultSet rs =connection.select("UserDataSQL", "*", "", "");
 		if(rs!=null){
 			  String username, name, surname, IP;
 			  try{
@@ -160,6 +160,6 @@ public class UserDaoSQL implements UserDao{
 			        userList.addUser(new User(username, name, surname, IP));
 				}while(rs.next());
 			}catch(SQLException e){}
-		}  
+		}
 	}
 }

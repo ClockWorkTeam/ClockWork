@@ -1,5 +1,5 @@
 /*
- * Nome:UserModel.js
+ * Nome:TextMessageModel.js
  * Package: 
  * Autore:
  * Data:
@@ -20,7 +20,7 @@ define([
 	
       defaults: {
         contact: '',
-	message: '',
+        message: '',
         source: '' //sent o received o notsent
       },
 	    
