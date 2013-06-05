@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:ChatCommunication.js
  * Package: communication
  * Autore:
@@ -12,9 +12,14 @@
  * |      |               |           |
  */
  
-//classe che si occupa di gestire la chat
+/**
+ * classe che si occupa di gestire la chat
+ */
 define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesCollection'], function(Connection, ContactsCollection,TextMessagesCollection){
 
+  /**
+   * ascoltatore di messaggi testuali in ingresso
+   */
   Connection.addEventListener("message", onReceived, false);
   function onReceived(str){
     var response = JSON.parse(str.data);
@@ -32,9 +37,12 @@ define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesC
   };
 
   return {
+    /**
+     * funzione per inviare il messaggio
+     */
     send:function(contact, message){
-      var credentials = { type:'sendText', username: contact, message: message};
-      Connection.send(JSON.stringify(credentials));
+      var chatMessage = { type:'sendText', username: contact, message: message};
+      Connection.send(JSON.stringify(chatMessage));
     }  
   };
 	
