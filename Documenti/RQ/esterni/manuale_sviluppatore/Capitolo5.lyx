@@ -61,16 +61,24 @@
 \begin_body
 
 \begin_layout Section
-Introduzione
-\end_layout
-
-\begin_layout Subsection
-Scopo del documento
+Guida allo sviluppo
 \end_layout
 
 \begin_layout Standard
-Lo scopo di questo documento è quello di fornire linee guida per lo sviluppo
- del prodotto 
+Il 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+, in fase di progettazione, ha pensato di rendere il prodotto 
 \begin_inset ERT
 status open
 
@@ -83,15 +91,23 @@ PROGETTO}
 
 \end_inset
 
-.
+ facilmente estendibile in merito a:
+\end_layout
+
+\begin_layout Itemize
+Database
+\end_layout
+
+\begin_layout Itemize
+Servizi di comunicazione
 \end_layout
 
 \begin_layout Subsection
-Descrizione generale
+Server
 \end_layout
 
 \begin_layout Standard
-Il prodotto 
+Quando il progetto 
 \begin_inset ERT
 status open
 
@@ -104,23 +120,42 @@ PROGETTO}
 
 \end_inset
 
- è uno strumento che permette la comunicazione di tipo 
-\bar under
-VoIP
-\bar default
- (Voice over IP) tra due o più utenti in tempo reale tramite Internet e
- la presenza di WebRTC, senza l'installazione di programmi od estensioni,
- così da non comportare costi per l'installazione di strumenti che permettono
- le stesse funzionalità che le aziende di grandi dimensioni sosterrebbero.
-\end_layout
-
-\begin_layout Subsection
-Glossario
+ è iniziato, era richiesto un database leggero, di conseguenza è stato utilizzat
+o SQLite.
 \end_layout
 
 \begin_layout Standard
-Per la spiegazione dei termini tecnici, abbreviazioni ed acronimi presenti
- all'interno dei documenti, si faccia riferimento al documento esterno 
+Si è deciso dunque di implementare nel package mytalk.server.dao la classe
+ JavaConnectionSQLite, in maniera da accedere al database solamente da una
+ classe.
+\end_layout
+
+\begin_layout Standard
+Infatti in caso di un futuro cambiamento del database, dovuto a nuove necessità,
+ basterà adattare la classe JavaConnectionSQLite per connettersi al nuovo
+ database.
+\end_layout
+
+\begin_layout Subsubsection
+Gestione dati
+\end_layout
+
+\begin_layout Standard
+La gestione dei dati presenti nel database è effettuata dalle classi presenti
+ nel package mytalk.server.dao.
+\end_layout
+
+\begin_layout Standard
+In caso di necessità di apportare dei cambiamenti alla gestione dei dati
+ non servirà modificare gli strati superiori, in quanto è stata realizzata
+ una interfaccia per ogni classe, così da evitare di dover riadattare tutti
+ i moduli con cui il dao interagisce.
+\end_layout
+
+\begin_layout Standard
+La natura multipiattaforma, e la precisa volontà da parte degli sviluppatori
+ della tecnologia WebRTC di progettare dei protocolli per farli diventare
+ standard rendono 
 \begin_inset ERT
 status open
 
@@ -128,27 +163,13 @@ status open
 
 {
 \backslash
-Gl}
+PROGETTO}
 \end_layout
 
 \end_inset
 
-, dato in allegato.
- Come specificato nel documento 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-NdP}
-\end_layout
-
-\end_inset
-
-, verrà sottolineata in ogni documento la prima occorrenza del termine da
- specificare.
+ facilmente estensibile, purché si resti all'interno dei limiti delle funzionali
+tà supportate.
 \end_layout
 
 \end_body

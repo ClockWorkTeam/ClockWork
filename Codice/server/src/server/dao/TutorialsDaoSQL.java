@@ -1,7 +1,7 @@
 /**
 * Nome: TutorialsDaoSQL
 * Package: server.dao
-* Autore: Zohouri Haghian Pardis
+* Autore: Gavagnin Jessica
 * Data: 2013/03/06
 * Versione: 1.0
 *
@@ -9,11 +9,11 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     ZHP       | + creazione documento	   |
+* |  130306 |      JG       | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
-*/ 
+*/
 
 package server.dao;
 
@@ -24,7 +24,7 @@ import server.shared.Tutorials;
 public class TutorialsDaoSQL {
 	 private JavaConnectionSQLite connection;
 	 private Tutorials tutorials;
-	 
+
 	 public TutorialsDaoSQL(JavaConnectionSQLite server){
 		 this.connection=server;
 		 ResultSet rs =connection.select("TutorialDataSQL", "count(*) as total", "", "");
@@ -35,9 +35,9 @@ public class TutorialsDaoSQL {
 		}
 		 getTutorialsFromDB();
 	 }
-	 
+
 	 private void getTutorialsFromDB(){
-		ResultSet rs =connection.select("TutorialDataSQL", "*", "", "");		 
+		ResultSet rs =connection.select("TutorialDataSQL", "*", "", "");
 			if(rs!=null){
 				  String url, title;
 				  try{
@@ -47,7 +47,7 @@ public class TutorialsDaoSQL {
 				        tutorials.insert(title, url);
 					}while(rs.next());
 				}catch(SQLException e){}
-			}  
+			}
 	 }
 	 public Tutorials getTutorials(){
 		 return tutorials;
