@@ -143,97 +143,6 @@ Le classi
  questo passaggio sarà considerato implicito nelle descrizioni delle classi
 \end_layout
 
-\begin_layout Subsection
-Stile architetturale
-\end_layout
-
-\begin_layout Standard
-Lo stile architetturale che verrà seguito per creare il server è il Multitier
- nella forma Three Tier.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/multi-tier.pdf
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Rappresentazione Three Tier
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione:
-\series default
- tale stile architetturale permette una disgiunzione fra i vari gruppi di
- entità che cooperano per l'erogazione del servizio.
- Un primo livello si occuperà della comunicazione con il client, un secondo
- livello invece si occuperà di effettuare le operazioni logiche e di comunicare
- con il terzo strato che si occuperà di modificare la base di dati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Motivazione:
-\series default
- il beneficio principale di questo stile è la possibilità di aggiornare/cambiare
- un livello senza modificare i livelli adiacenti.
- La forte comunicazione rigidamente strutturata tra gli strati, che favorisce
- il disaccoppiamento, rende tale architettura un ottimo modello per applicazioni
- client-server, poiché ogni livello non esiste come unità logica a se stante,
- ma si adegua allo specifico ambiente di rete in cui esegue
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Contesto applicativo:
-\series default
- tale stile verrà utilizzato come struttura portante del server e sarà suddiviso
- come segue
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Transfer Layer: offrirà un'interfaccia di comunicazione con il client e
- i livelli sottostanti del server
-\end_layout
-
-\begin_layout Itemize
-Manager Layer: si occuperà di svolgere le funzionalità di comunicazione
- e di gestire la visualizzazione e la modifica delle informazioni presenti
- nello strato Data
-\end_layout
-
-\begin_layout Itemize
-Data Layer: sarà un contenitore di informazioni riguardanti gli utenti e
- di messaggi registrati e collegamenti
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -487,60 +396,6 @@ per poter essere mandata in formato corretto al client
 
 \end_deeper
 \begin_layout Subsubsection
-mytalk.server.transfer.UserTransfer
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente:
-\series default
- la classe si occupa della gestione dei dati dell'utente
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Comunica con 
-\family typewriter
-\series bold
-mytalk.client.communication.AuthenticationCommunication
-\end_layout
-
-\begin_layout Itemize
-\noindent
-Utilizza 
-\family typewriter
-\series bold
-mytalk.server.usermanager.UserManager
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\noindent
-
-\series bold
-Attività svolte e dati trattati:
-\series default
- gestisce le richieste di modifica dei dati degli utenti inviate dal client
- comunicando con 
-\family typewriter
-\series bold
-UserManager
-\family default
-\series default
-, se le operazioni hanno buon esito manda gli aggiornamenti in broadcast
-\end_layout
-
-\begin_layout Subsubsection
 mytalk.server.transfer.CallTransfer
 \end_layout
 
@@ -580,6 +435,85 @@ Attività svolte e dati trattati:
  gestisce il trasferimento dei pacchetti necessari al fine di creare il
  canale WebRTC per la comunicazione tra i due utenti, utilizza il vettore
  di connettori per individuare gli utenti
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.ChatTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe si occupa di gestire la chat
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ gestisce il traferimento dei pacchetti, contenenti messaggi di testo, tra
+ i due utenti che stanno comunicando via chat
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.transfer.FileTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe si occupa della communicazione per l'invio dei file
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.client.communication.FileCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ si occupa del trasferimento di file tra due utenti
 \end_layout
 
 \begin_layout Subsubsection
@@ -645,7 +579,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.transfer.ChatTransfer
+mytalk.server.transfer.UserTransfer
 \end_layout
 
 \begin_layout Itemize
@@ -653,7 +587,7 @@ mytalk.server.transfer.ChatTransfer
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe si occupa della comunicazione per la chat
+ la classe si occupa della gestione dei dati dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -665,43 +599,37 @@ Relazioni d'uso con altre componenti:
  
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Comunica con 
+\family typewriter
+\series bold
+mytalk.client.communication.AuthenticationCommunication
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Utilizza 
+\family typewriter
+\series bold
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \noindent
 
 \series bold
 Attività svolte e dati trattati:
 \series default
- 
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.server.transfer.FileTransfer
-\end_layout
-
-\begin_layout Itemize
-
+ gestisce le richieste di modifica dei dati degli utenti inviate dal client
+ comunicando con 
+\family typewriter
 \series bold
-Tipo, obiettivo e funzione del componente:
+UserManager
+\family default
 \series default
- la classe si occupa della communicazione per l'invio dei file
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- 
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Attività svolte e dati trattati:
-\series default
- 
+, se le operazioni hanno buon esito manda gli aggiornamenti in broadcast
 \end_layout
 
 \begin_layout Subsection
@@ -1094,95 +1022,6 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.dao.UserDao
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente:
-\series default
- l'interfaccia con cui comunicherà lo strato manager per le operazioni sugli
- utenti
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\noindent
-Viene utilizzata da
-\family typewriter
-\series bold
- mytalk.server.usermanager.UserManager 
-\family default
-\series default
-da
-\family typewriter
-\series bold
- mytalk.server.usermanager.AuthenticationManager
-\end_layout
-
-\begin_layout Itemize
-\noindent
-Viene implementata da
-\family typewriter
-\series bold
- mytalk.server.dao.UserDaoSQL
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-mytalk.server.dao.UserDaoSQL
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente:
-\series default
- la classe implementa l'interfaccia
-\family typewriter
-\series bold
- UserDao
-\family default
-\series default
- e fornisce le possibili operazioni sugli utenti
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- implementa
-\family typewriter
-\series bold
- mytalk.server.dao.UserDao
-\family default
-\series default
- e agisce sia sulla base di dati che sullo strato shared
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Attività svolte e dati trattati: 
-\series default
-si occupa della creazione e cancellazione di un utente e della modifica
- dei suoi dati
-\end_layout
-
-\begin_layout Subsubsection
 mytalk.server.dao.RecordMessageDao
 \end_layout
 
@@ -1299,7 +1138,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.shared.Tutorials
+mytalk.server.dao.UserDao
 \end_layout
 
 \begin_layout Itemize
@@ -1307,7 +1146,8 @@ mytalk.server.shared.Tutorials
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe contiene tutti i tutorial presenti nella base di dati
+ l'interfaccia con cui comunicherà lo strato manager per le operazioni sugli
+ utenti
 \end_layout
 
 \begin_layout Itemize
@@ -1322,103 +1162,96 @@ Relazioni d'uso con altre componenti:
 \begin_deeper
 \begin_layout Itemize
 \noindent
-Viene inizializzata dalla classe
+Viene utilizzata da
 \family typewriter
 \series bold
- mytalk.server.dao.TutorialsDaoSQL
+ mytalk.server.usermanager.UserManager 
 \family default
 \series default
- 
+da
+\family typewriter
+\series bold
+ mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
 \begin_layout Itemize
 \noindent
-Viene acceduta da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\noindent
-
-\family typewriter
-\series bold
-mytalk.server.transfer.ListenerTransfer
-\family default
-\series default
-, per mandare la lista di tutorial ai client alla prima connessione
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\family typewriter
-\series bold
-mytalk.server.functionmanager.Converter
-\family default
-\series default
- che si occupa di tradurla in una stringa JSON
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-\noindent
-
-\series bold
-Attività svolte e dati trattati:
-\series default
- la classe
-\family typewriter
-\series bold
- TutorialList
-\family default
-\series default
- preserva la lista di collegamenti ai tutorial video
-\end_layout
-
-\begin_layout Subsubsection
-mytalk.server.shared.UserList
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tipo, obiettivo e funzione del componente:
-\series default
- la classe contenente la lista degli utenti registrati sul server 
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Relazioni d'uso con altre componenti:
-\series default
- viene utilizzata da 
-\family typewriter
-\series bold
-mytalk.server.dao.LoginDaoSQL
-\family default
-\series default
-, 
-\family typewriter
-\series bold
-mytalk.server.dao.RecordMessageDaoSQL
-\family default
-\series default
- e
+Viene implementata da
 \family typewriter
 \series bold
  mytalk.server.dao.UserDaoSQL
-\family default
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+mytalk.server.dao.UserDaoSQL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
 \series default
- per la ricerca di un dato utente, inoltre la classe 
+ la classe implementa l'interfaccia
 \family typewriter
 \series bold
-UserDaoSQL
+ UserDao
 \family default
 \series default
- opera anche operazioni di aggiunta e rimozione di utenti
+ e fornisce le possibili operazioni sugli utenti
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ implementa
+\family typewriter
+\series bold
+ mytalk.server.dao.UserDao
+\family default
+\series default
+ e agisce sia sulla base di dati che sullo strato shared
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati: 
+\series default
+si occupa della creazione e cancellazione di un utente e della modifica
+ dei suoi dati
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.RecordMessage
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe contiene le informazioni su un messaggio registrato contenute
+ nel database
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ viene scritta e utilizzata dalla classe 
+\family typewriter
+\series bold
+ mytalk.server.dao.RecordMessageDaoSQL
+\family default
+\series default
+ che si occupa di creare, eliminare e visualizzare i messaggi salvati
 \end_layout
 
 \begin_layout Itemize
@@ -1427,8 +1260,9 @@ UserDaoSQL
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe preserva una lista con tutti gli utenti registrati, per evitare
- situazioni di incoerenza e interferenza nei dati salvati
+ la classe contiene le informazioni riguardanti un messaggio, ovvero il
+ mittente, il destinatario, l'indirizzo in cui è salvato il messaggio e
+ la data di creazione
 \end_layout
 
 \begin_layout Subsubsection
@@ -1527,7 +1361,7 @@ Attività svolte e dati trattati:
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.shared.RecordMessage
+mytalk.server.shared.UserList
 \end_layout
 
 \begin_layout Itemize
@@ -1535,8 +1369,7 @@ mytalk.server.shared.RecordMessage
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe contiene le informazioni su un messaggio registrato contenute
- nel database
+ la classe contenente la lista degli utenti registrati sul server 
 \end_layout
 
 \begin_layout Itemize
@@ -1545,13 +1378,31 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- viene scritta e utilizzata dalla classe 
+ viene utilizzata da 
 \family typewriter
 \series bold
- mytalk.server.dao.RecordMessageDaoSQL
+mytalk.server.dao.LoginDaoSQL
 \family default
 \series default
- che si occupa di creare, eliminare e visualizzare i messaggi salvati
+, 
+\family typewriter
+\series bold
+mytalk.server.dao.RecordMessageDaoSQL
+\family default
+\series default
+ e
+\family typewriter
+\series bold
+ mytalk.server.dao.UserDaoSQL
+\family default
+\series default
+ per la ricerca di un dato utente, inoltre la classe 
+\family typewriter
+\series bold
+UserDaoSQL
+\family default
+\series default
+ opera anche operazioni di aggiunta e rimozione di utenti
 \end_layout
 
 \begin_layout Itemize
@@ -1560,9 +1411,86 @@ Relazioni d'uso con altre componenti:
 \series bold
 Attività svolte e dati trattati:
 \series default
- la classe contiene le informazioni riguardanti un messaggio, ovvero il
- mittente, il destinatario, l'indirizzo in cui è salvato il messaggio e
- la data di creazione
+ la classe preserva una lista con tutti gli utenti registrati, per evitare
+ situazioni di incoerenza e interferenza nei dati salvati
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.Tutorials
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe contiene tutti i tutorial presenti nella base di dati
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+Viene inizializzata dalla classe
+\family typewriter
+\series bold
+ mytalk.server.dao.TutorialsDaoSQL
+\family default
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Viene acceduta da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+
+\family typewriter
+\series bold
+mytalk.server.transfer.ListenerTransfer
+\family default
+\series default
+, per mandare la lista di tutorial ai client alla prima connessione
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\family typewriter
+\series bold
+mytalk.server.functionmanager.Converter
+\family default
+\series default
+ che si occupa di tradurla in una stringa JSON
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe
+\family typewriter
+\series bold
+ TutorialList
+\family default
+\series default
+ preserva la lista di collegamenti ai tutorial video
 \end_layout
 
 \end_body

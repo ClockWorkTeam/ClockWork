@@ -1,4 +1,4 @@
-/*
+/**
  * Nome: StatisticsView.js
  * Package: 
  * Autore:
@@ -12,7 +12,6 @@
  * |      |               |           |
  */
  
-//definizione delle dipendenze
 define([
  'jquery',
  'underscore',  
@@ -23,32 +22,48 @@ define([
   var interval=null;
   var peerConnection=null;
   var StatisticsView = Backbone.View.extend({
-    //si occupa di legare gli eventi ad oggetti del DOM
     el : $('#statistics'),
 	
-    //indica in quale parte del DOM gestirà 
-    statisticsTemplate : _.template(StatisticsTemplate),
+    template : _.template(StatisticsTemplate),
     
-    //funzione di inizializzazione dell'oggetto
+    /**
+     * funzione di inizializzazione dell'oggetto
+     */
     initialize: function(){
       _.bindAll(this, 'render');
       this.render();
     },
     
-    //funzione che effettua la scrittura della struttura della pagina
+    /**
+     * funzione che effettua la scrittura della struttura della pagina
+     */
     render: function(){
       if(!document.getElementById('statistics')){
         $('#main').append(this.el);
-        $(this.el).html(this.statisticsTemplate({time: 0, sentAudio: 0, sentVideo: 0,latency: 0, bitrate: 0}));
+        $(this.el).html(this.template({time: 0, sentAudio: 0, sentVideo: 0,latency: 0, bitrate: 0}));
       }
+      readStatistic();
+    },
+      
+      /**
+       * funzione che si occupa di tenere aggiornate le statistiche della chiamata in corso
+       */
+    readStatistic: function(){   
       document.addEventListener("setPeerConn",setPeerConn,false);
       var view=this;
+      /**
+       * ascoltatore che rimane in attesa di ricevere un peerConnection dalla callCommunication
+       */
       function setPeerConn(event){
         peerConnection=event.detail.peercon;
         var baseTime;
         var prevTime;
         var bitprev;
         var actualtime;
+        
+        /**
+         * condizione realizzata per impedire l'avvio di due intervall della stessa chiamata
+         */
         if(interval){
           clearInterval(interval);
         }
@@ -58,6 +73,10 @@ define([
           bitprev=0;
           actualtime=0;
         }
+        
+        /**
+         * metodo che aggiorna le statistiche di una chiamata ad ogni secondo passato
+         */
         interval= setInterval(function() {
           if (peerConnection && peerConnection.getRemoteStreams()[0]) {
             if (peerConnection.getStats) {
@@ -65,14 +84,14 @@ define([
                 var byteAudioSent=0;
                 var byteVideoSent=0;
                 var time=0;
-                var bitrate=0;
+                var bitRate=0;
                 var latency=0;
                 var results = stats.result();
                 var audio=0;
-                prevTime=actualtime
+                prevTime=actualTime
                 for (var i = 0; i < results.length; ++i) {
                   var res = results[i];
-                  actualtime=res.timestamp;
+                  actualTime=res.timestamp;
                   if(baseTime==0){
                     baseTime=res.timestamp;
                   }
@@ -92,10 +111,9 @@ define([
                   }
                 }
                 
-                bitrate = Math.round((((parseInt(byteVideoSent)+parseInt(byteAudioSent)) - parseInt(bitprev)) /
-                                    ((actualtime - prevTime)/1000))/1024);
-                console.log(actualtime );
-                bitprev=parseInt(byteVideoSent)+parseInt(byteAudioSent);                    
+                bitRate = Math.round((((parseInt(byteVideoSent)+parseInt(byteAudioSent)) - parseInt(bitPrev)) /
+                                    ((actualTime - prevTime)/1000))/1024);
+                bitPrev=parseInt(byteVideoSent)+parseInt(byteAudioSent);                    
                 
                 byteAudioSent=Math.round(byteAudioSent/1024);
                 byteVideoSent=Math.round(byteVideoSent/1024);
@@ -107,6 +125,9 @@ define([
                 time=time-60*minute;
                 var second=time;
                 
+                /**
+                 * serie di condizioni fatte allo scopo di poter ottenere la data nel formato hh:mm:ss
+                 */
                 if(hour<10)
                   timeToDisplay="0"+hour+":";
                 else
@@ -120,7 +141,7 @@ define([
                 else
                   timeToDisplay=timeToDisplay+second;
                   
-                $(view.el).html(view.statisticsTemplate({time: timeToDisplay, sentAudio: byteAudioSent, sentVideo: byteVideoSent,latency: latency, bitrate: bitrate}));
+                $(view.el).html(view.template({time: timeToDisplay, sentAudio: byteAudioSent, sentVideo: byteVideoSent,latency: latency, bitrate: bitRate}));
               })     
             }
           }
@@ -129,6 +150,9 @@ define([
     }
   });
 
+  /**
+   * si occupa di chiudere la vista
+   */
   StatisticsView.prototype.close = function(){
     this.remove();
     this.unbind();
