@@ -37,9 +37,7 @@ define([
      */
          
     initialize: function(){
-	    //rendo visibile l'oggetto di invocazione alla funzione render e connect
       _.bindAll(this, 'render', 'unrender');
-      //genero la struttura della pagina
       this.render();
 		},
 		
