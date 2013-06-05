@@ -9,7 +9,11 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     JG        | + creazione documento	   |
+* |  130306 |     JG        | + getAllMessages         |
+* |         |               | + getMessage             |
+* |         |               | + removeMessage          |
+* |         |               | + createMessage          |
+* |         |               | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
