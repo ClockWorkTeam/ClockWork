@@ -77,7 +77,7 @@ define([
             surname: answer.surname
           });
           $(view.el).html(view.template({authenticated: true, name: view.userModel.toJSON().username}));
-          view.contactsView.getContacts(view);
+          contactsView.getContacts(view);
         }
       };
     },
@@ -97,7 +97,7 @@ define([
     disconnect: function(){
       AuthenticationCommunication.logout(this.userModel.toJSON().username);
       $(this.el).html(this.template({authenticated: false, signup: false}));
-      this.contactsView.unrender();
+      contactsView.unrender();
       if(this.userDataView){
         this.userDataView.unrender();
         this.userDataView=undefined;
@@ -159,7 +159,7 @@ define([
     },    
     
     editProfile: function(){
-      this.contactsView.closeOtherContacts();
+      contactsView.closeOtherContacts();
       if(this.userDataView){
         this.userDataView.unrender();
       }
