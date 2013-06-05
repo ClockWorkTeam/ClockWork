@@ -6,12 +6,14 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130306 |      JG       | + creazione documento	   |
-* |         |               |                          |
-* +---------+---------------+--------------------------+
+* +---------+---------------+-----------------------+
+* | Data    | Programmatore |         Modifiche     |
+* +---------+---------------+-----------------------+
+* |  130306 |      JG       | + getTutorial         |
+* |         |               | + getTutorialFromDB   |
+* |         |               | + TutorialDaoSQL      |
+* |         |               | + creazione documento |
+* +---------+---------------+-----------------------+
 *
 */
 
@@ -49,6 +51,7 @@ public class TutorialsDaoSQL {
 				}catch(SQLException e){}
 			}
 	 }
+
 	 public Tutorials getTutorials(){
 		 return tutorials;
 	 }

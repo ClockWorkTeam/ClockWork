@@ -9,8 +9,15 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     GJ        | + creazione documento	   |
-* |         |               |                          |
+* |  130306 |     GJ        | + setSurname             |
+* |         |               | + setName                |
+* |         |               | + setPassword            |
+* |         |				| + checkPassword          |
+* |         |               | + getAllUsers            |
+* |         |               | + getUser                |
+* |         |               | + removeUser             |
+* |         |               | + createUser             |
+* |         |               | + creazione documento    |
 * +---------+---------------+--------------------------+
 *
 */
