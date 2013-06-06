@@ -1,17 +1,17 @@
 /*
  * Nome:main.js
- * Package: 
- * Autore:
- * Data:
- * Versione:
- * 
+ * Package: client
+ * Autore: Ceseracciu Marco
+ * Data: 2013/05/23
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               | Scrittura codice          |
- * |      |               | Inserite require  con le tre classi view iniziali |
-*/
+ * +--------+---------------+-----------------------+
+ * |  Data  | Programmatore |      Modifiche        |
+ * +--------+---------------+-----------------------+
+ * | 130523 |     CM        | + main                |
+ * |        |               | + creazione documento |
+ */
 require.config({
   paths: {
     jquery: 'libs/jquery/jquery-min',
@@ -20,7 +20,7 @@ require.config({
     text: 'libs/require/text',
     storage: 'libs/backbone/backbone.noStorage'
   },
-  
+
   shim: {
     underscore: {
       exports: '_'
