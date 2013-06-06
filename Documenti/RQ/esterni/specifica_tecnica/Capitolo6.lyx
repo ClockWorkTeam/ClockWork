@@ -71,10 +71,8 @@ Alcune annotazioni:
 \begin_layout Itemize
 La classe 
 \family typewriter
-\series bold
 mytalk.server.Laucher
 \family default
-\series default
  ha il solo scopo di inizializzare le classi degli strati manager e data,
  in modo da non creare copie che comporterebbero interferenza e malfunzionamento
  del server.
@@ -83,12 +81,13 @@ mytalk.server.Laucher
 \end_layout
 
 \begin_layout Itemize
-La classe 
-\family typewriter
+La classe
 \series bold
+ 
+\family typewriter
+\series default
 mytalk.server.ServerMyTalk
 \family default
-\series default
  ha lo scopo di avviare il server, utilizzando la classe Launcher, e inizializza
 ndo le classi dello strato transfer affinchè il server possa comunicare
  con il lato client
@@ -97,25 +96,30 @@ ndo le classi dello strato transfer affinchè il server possa comunicare
 \begin_layout Itemize
 Il package 
 \family typewriter
-\series bold
 mytalk.server.shared
 \family default
-\series default
  contiene le strutture dati utilizzate in tutto il server
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ad eccezione delle classi 
 \family typewriter
-\series bold
 mytalk.server.transfer.CallTransfer
 \family default
-\series default
+, 
+\family typewriter
+mytalk.server.transfer.ChatTransfer
+\family default
+, 
+\family typewriter
+mytalk.server.transfer.FileTransfer
+\family default
  e 
 \family typewriter
+mytalk.server.dao.JavaConnectionSQLite
 \series bold
-mytalk.server.dao.JavaConnectionSQLite.
+.
 \end_layout
 
 \end_inset
@@ -136,9 +140,10 @@ I dati vengono salvati sia nel package shared, sopra indicato, sia nella
 Le classi
 \family typewriter
 \series bold
- mytalk.server.dao.*SQL
-\family default
+ 
 \series default
+mytalk.server.dao.*SQL
+\family default
  agiscono sulla base di dati attraverso la classe JavaConnectionSQLite,
  questo passaggio sarà considerato implicito nelle descrizioni delle classi
 \end_layout
@@ -200,11 +205,8 @@ Relazioni d'uso con altre componenti:
  lo strato transfer interagisce con lo strato manager del server e con il
  package
 \family typewriter
- 
-\series bold
-mytalk.client.communication
+ mytalk.client.communication
 \family default
-\series default
  presente nel client
 \end_layout
 
@@ -219,7 +221,6 @@ Tipo, obiettivo e funzione del componente:
 \series default
  è una classe astratta che implementa l'interfaccia 
 \family typewriter
-\series bold
 org.jwebsocket.listener.WebSocketServerTokenListener
 \end_layout
 
@@ -253,8 +254,9 @@ Per evitare ridondanza, nella definizione delle altre classi dello strato
 \noindent
 Utilizza la classe 
 \family typewriter
-\series bold
 mytalk.server.functionmanager.Converter
+\series bold
+
 \begin_inset Foot
 status collapsed
 
@@ -274,10 +276,8 @@ L'oggetto della classe Converter sarà protetto, in modo da essere utilizzabile
  per le operazioni di conversione da strutture dati della classe, quindi
  istanze delle classi presenti in 
 \family typewriter
-\series bold
 mytalk.server.shared
 \family default
-\series default
  a stringhe JSON per la comunicazione tramite WebSocket
 \end_layout
 
@@ -325,9 +325,10 @@ Relazioni d'uso con altre componenti:
 Comunica con
 \family typewriter
 \series bold
- mytalk.client.communication.AuthenticationCommunication
-\family default
+ 
 \series default
+mytalk.client.communication.AuthenticationCommunication
+\family default
 , per le richieste effetttive di autenticazione e con 
 \family typewriter
 \series bold
@@ -335,9 +336,10 @@ Comunica con
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.client.communication.ContactsCommunication
 \family default
-\series default
  per le passare all'utente la lista di contatti
 \end_layout
 
@@ -346,17 +348,25 @@ mytalk.client.communication.ContactsCommunication
 Utilizza
 \family typewriter
 \series bold
- mytalk.server.usermanager.AuthenticationManager
-\family default
+ 
 \series default
- e 
+mytalk.server.usermanager.AuthenticationManager
+\family default
+\series bold
+ 
+\series default
+e 
 \family typewriter
 \series bold
 
 \begin_inset Newline newline
 \end_inset
 
-mytalk.server.usermanager.UserManager 
+
+\series default
+mytalk.server.usermanager.UserManager
+\series bold
+ 
 \family default
 \series default
 per la comunicazione con il server
@@ -378,28 +388,18 @@ gestisce le richieste, da parte del lato client di
 Autenticazione, comunicando con
 \family typewriter
 \series bold
- AuthenticationManager
+ 
 \family default
 \series default
-, se le operazioni vanno a buon termine manda gli aggiornamenti in broadcast
- a tutti gli utenti connessi
+AuthenticationManager, se le operazioni vanno a buon termine manda gli aggiornam
+enti in broadcast a tutti gli utenti connessi
 \end_layout
 
 \begin_layout Itemize
 \noindent
-Visione della lista degli utenti connessi, comunicando con 
-\family typewriter
-\series bold
-UserManager
-\family default
-\series default
-, il vettore verrà convertito dalla classe 
-\family typewriter
-\series bold
-Converter 
-\family default
-\series default
-per poter essere mandata in formato corretto al client
+Visione della lista degli utenti connessi, comunicando con UserManager,
+ il vettore verrà convertito dalla classe Converter per poter essere mandata
+ in formato corretto al client
 \end_layout
 
 \end_deeper
@@ -429,7 +429,6 @@ Relazioni d'uso con altre componenti:
 \begin_layout Itemize
 Comunica con 
 \family typewriter
-\series bold
 mytalk.client.communication.CallCommunication
 \end_layout
 
@@ -470,7 +469,6 @@ Relazioni d'uso con altre componenti:
 \begin_layout Itemize
 Comunica con 
 \family typewriter
-\series bold
 mytalk.client.communication.ChatCommunication
 \end_layout
 
@@ -508,9 +506,11 @@ Relazioni d'uso con altre componenti:
 
 \begin_deeper
 \begin_layout Itemize
-Comunica con 
-\family typewriter
+Comunica con
 \series bold
+ 
+\family typewriter
+\series default
 mytalk.client.communication.FileCommunication
 \end_layout
 
@@ -551,21 +551,26 @@ Relazioni d'uso con altre componenti:
 \noindent
 Comunica con 
 \family typewriter
+mytalk.client.communication.RecordMessageCommunication
 \series bold
-mytalk.client.communication.RecordMessageCommunication 
+ 
 \family default
 \series default
 e
 \family typewriter
 \series bold
- mytalk.client.communication.NotificationCommunication
+ 
+\series default
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
 \begin_layout Itemize
 Utilizza
 \family typewriter
 \series bold
- mytalk.server.usermanager.UserManager
+ 
+\series default
+mytalk.server.usermanager.UserManager
 \end_layout
 
 \end_deeper
@@ -575,15 +580,10 @@ Utilizza
 \series bold
 Attività svolte e dati trattati:
 \series default
- comunica con la classe
-\family typewriter
-\series bold
- UserManager
-\family default
-\series default
- per la gestione dei messaggi registrati, in particolare per le richieste
- da parte del client di registrazione e di cancellazione di un messaggio
- nel database, e per l'invio dei messaggi all'utente.
+ comunica con la classe UserManager per la gestione dei messaggi registrati,
+ in particolare per le richieste da parte del client di registrazione e
+ di cancellazione di un messaggio nel database, e per l'invio dei messaggi
+ all'utente.
 \end_layout
 
 \begin_layout Subsubsection
@@ -611,15 +611,16 @@ Relazioni d'uso con altre componenti:
 \begin_layout Itemize
 Comunica con 
 \family typewriter
-\series bold
 mytalk.client.communication.AuthenticationCommunication
 \end_layout
 
 \begin_layout Itemize
 \noindent
-Utilizza 
-\family typewriter
+Utilizza
 \series bold
+ 
+\family typewriter
+\series default
 mytalk.server.usermanager.UserManager
 \end_layout
 
@@ -631,13 +632,8 @@ mytalk.server.usermanager.UserManager
 Attività svolte e dati trattati:
 \series default
  gestisce le richieste di modifica dei dati degli utenti inviate dal client
- comunicando con 
-\family typewriter
-\series bold
-UserManager
-\family default
-\series default
-, se le operazioni hanno buon esito manda gli aggiornamenti in broadcast
+ comunicando con UserManager, se le operazioni hanno buon esito manda gli
+ aggiornamenti in broadcast
 \end_layout
 
 \begin_layout Subsection
@@ -697,10 +693,9 @@ Relazioni d'uso con altre componenti:
 \noindent
 Viene utilizzata da 
 \family typewriter
-\series bold
 mytalk.server.transfer.AuthenticationTransfer
 \family default
-\series default
+\series bold
  
 \end_layout
 
@@ -709,12 +704,12 @@ mytalk.server.transfer.AuthenticationTransfer
 Utilizza
 \family typewriter
 \series bold
- mytalk.server.dao.UserDao
-\family default
+ 
 \series default
+mytalk.server.dao.UserDao
+\family default
  e 
 \family typewriter
-\series bold
 mytalk.server.dao.LoginDao
 \end_layout
 
@@ -725,14 +720,8 @@ mytalk.server.dao.LoginDao
 \series bold
 Attività svolte e dati trattati:
 \series default
- comunica con la classe
-\family typewriter
-\series bold
- AuthenticationTransfer
-\family default
-\series default
- e lo strato data per la gestione della registrazione e delle operazioni
- di login e logout degli utenti
+ comunica con la classe AuthenticationTransfer e lo strato data per la gestione
+ della registrazione e delle operazioni di login e logout degli utenti
 \end_layout
 
 \begin_layout Subsubsection
@@ -763,16 +752,12 @@ Relazioni d'uso con altre componenti:
 \noindent
 Viene utilizzata da
 \family typewriter
-\series bold
  mytalk.server.transfer.AuthenticationTransfer
 \family default
-\series default
 , 
 \family typewriter
-\series bold
 mytalk.server.transfer.UserTransfer
 \family default
-\series default
  e 
 \family typewriter
 \series bold
@@ -780,6 +765,8 @@ mytalk.server.transfer.UserTransfer
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.RecordMessageTransfer
 \end_layout
 
@@ -788,13 +775,19 @@ mytalk.server.transfer.RecordMessageTransfer
 Utilizza
 \family typewriter
 \series bold
- mytalk.server.dao.UserDao 
+ 
+\series default
+mytalk.server.dao.UserDao
+\series bold
+ 
 \family default
 \series default
 e
 \family typewriter
 \series bold
- mytalk.server.dao.RecordMessageDao
+ 
+\series default
+mytalk.server.dao.RecordMessageDao
 \end_layout
 
 \end_deeper
@@ -821,10 +814,8 @@ Tipo, obiettivo e funzione del componente:
  la classe si occupa delle operazioni di conversione da oggetti propri del
  server, definiti nel package 
 \family typewriter
-\series bold
 mytalk.server.shared
 \family default
-\series default
 , a stringhe JSON
 \end_layout
 
@@ -841,9 +832,10 @@ Relazioni d'uso con altre componenti:
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.ListenerTransfer
 \family default
-\series default
 , 
 \family typewriter
 \series bold
@@ -851,9 +843,10 @@ mytalk.server.transfer.ListenerTransfer
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.AuthenticationTransfer
 \family default
-\series default
  e 
 \family typewriter
 \series bold
@@ -861,9 +854,10 @@ mytalk.server.transfer.AuthenticationTransfer
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.RecordMessageTransfer
 \family default
-\series default
  
 \end_layout
 
@@ -888,10 +882,8 @@ Tipo, obiettivo e funzione del componente:
 \series default
  lo strato data contiene i dati persistenti e il package 
 \family typewriter
-\series bold
 mytalk.server.dao
 \family default
-\series default
  che è l'unico package ad operare modifiche sui dati
 \end_layout
 
@@ -923,10 +915,14 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- viene utilizzata dalle classi 
-\family typewriter
+ viene utilizzata dalle classi
 \series bold
+ 
+\family typewriter
+\series default
 mytalk.server.dao.*SQL
+\series bold
+
 \begin_inset Foot
 status open
 
@@ -934,10 +930,8 @@ status open
 \noindent
 Per evitare ridondanze nelle classi 
 \family typewriter
-\series bold
-dao.*SQL
+mytalk.server.dao.*SQL
 \family default
-\series default
  non verrà specificata la relazione con questa classe.
 \end_layout
 
@@ -987,9 +981,11 @@ Relazioni d'uso con altre componenti:
 Viene utilizzata da
 \family typewriter
 \series bold
- mytalk.server.usermanager.AuthenticationManager
-\family default
+ 
 \series default
+mytalk.server.usermanager.AuthenticationManager
+\family default
+\series bold
  
 \end_layout
 
@@ -997,7 +993,6 @@ Viene utilizzata da
 \noindent
 Viene implementata da
 \family typewriter
-\series bold
  mytalk.server.dao.LoginDaoSQL
 \end_layout
 
@@ -1011,13 +1006,8 @@ mytalk.server.dao.LoginDaoSQL
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe implementa l'interfaccia 
-\family typewriter
-\series bold
-LoginDao
-\family default
-\series default
- e fornisce le operazioni di login e logout
+ la classe implementa l'interfaccia LoginDao e fornisce le operazioni di
+ login e logout
 \end_layout
 
 \begin_layout Itemize
@@ -1028,10 +1018,8 @@ Relazioni d'uso con altre componenti:
 \series default
  implementa
 \family typewriter
-\series bold
  mytalk.server.dao.LoginDao
 \family default
-\series default
  e agisce sia sulla base di dati che sullo strato shared
 \end_layout
 
@@ -1073,7 +1061,9 @@ Relazioni d'uso con altre componenti:
 Viene utilizzata dalla classe
 \family typewriter
 \series bold
- mytalk.server.usermanager.UserManager
+ 
+\series default
+mytalk.server.usermanager.UserManager
 \end_layout
 
 \begin_layout Itemize
@@ -1081,7 +1071,9 @@ Viene utilizzata dalla classe
 Viene implementata da
 \family typewriter
 \series bold
- mytalk.server.dao.RecordMessageDaoSQL
+ 
+\series default
+mytalk.server.dao.RecordMessageDaoSQL
 \end_layout
 
 \end_deeper
@@ -1094,13 +1086,15 @@ mytalk.server.dao.RecordMessageDaoSQL
 \series bold
 Tipo, obiettivo e funzione del componente:
 \series default
- la classe implementa l'interfaccia 
-\family typewriter
+ la classe implementa l'interfaccia
 \series bold
-RecordMessageDao
-\family default
+ 
 \series default
- e fornisce le operazioni per i messaggi audio/video
+RecordMessageDao
+\series bold
+ 
+\series default
+e fornisce le operazioni per i messaggi audio/video
 \end_layout
 
 \begin_layout Itemize
@@ -1116,9 +1110,10 @@ Relazioni d'uso con altre componenti:
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.dao.RecordMessageDao
 \family default
-\series default
  e agisce sia sulla base di dati che sullo strato shared
 \end_layout
 
@@ -1143,10 +1138,8 @@ Tipo, obiettivo e funzione del componente:
 \series default
  la classe si occupa di copiare in 
 \family typewriter
-\series bold
 mytalk.server.shared.Tutorials
 \family default
-\series default
  i tutorial presenti nella base di dati
 \end_layout
 
@@ -1159,9 +1152,11 @@ Attività svolte e dati trattati:
  si occupa di inizializzare, riempire e restituire l'oggetto della classe
 \family typewriter
 \series bold
- Tutorials
+ 
 \family default
 \series default
+Tutorials
+\series bold
  
 \end_layout
 
@@ -1193,12 +1188,15 @@ Relazioni d'uso con altre componenti:
 Viene utilizzata da
 \family typewriter
 \series bold
- mytalk.server.usermanager.UserManager 
+ 
+\series default
+mytalk.server.usermanager.UserManager
+\series bold
+ 
 \family default
 \series default
 da
 \family typewriter
-\series bold
  mytalk.server.usermanager.AuthenticationManager
 \end_layout
 
@@ -1207,7 +1205,9 @@ da
 Viene implementata da
 \family typewriter
 \series bold
- mytalk.server.dao.UserDaoSQL
+ 
+\series default
+mytalk.server.dao.UserDaoSQL
 \end_layout
 
 \end_deeper
@@ -1223,10 +1223,10 @@ Tipo, obiettivo e funzione del componente:
  la classe implementa l'interfaccia
 \family typewriter
 \series bold
- UserDao
+ 
 \family default
 \series default
- e fornisce le possibili operazioni sugli utenti
+UserDao e fornisce le possibili operazioni sugli utenti
 \end_layout
 
 \begin_layout Itemize
@@ -1238,9 +1238,10 @@ Relazioni d'uso con altre componenti:
  implementa
 \family typewriter
 \series bold
- mytalk.server.dao.UserDao
-\family default
+ 
 \series default
+mytalk.server.dao.UserDao
+\family default
  e agisce sia sulla base di dati che sullo strato shared
 \end_layout
 
@@ -1276,9 +1277,10 @@ Relazioni d'uso con altre componenti:
  viene scritta e utilizzata dalla classe 
 \family typewriter
 \series bold
- mytalk.server.dao.RecordMessageDaoSQL
-\family default
+ 
 \series default
+mytalk.server.dao.RecordMessageDaoSQL
+\family default
  che si occupa di creare, eliminare e visualizzare i messaggi salvati
 \end_layout
 
@@ -1322,31 +1324,29 @@ Relazioni d'uso con altre componenti:
 Viene scritta da
 \family typewriter
 \series bold
- mytalk.server.dao.LoginDaoSQL
-\family default
+ 
 \series default
+mytalk.server.dao.LoginDaoSQL
+\family default
 , che effettua la modifica dell'IP dell'utente, 
 \family typewriter
-\series bold
 mytalk.server.dao.RecordMessageDaoSQL
 \family default
-\series default
 , che ne gestisce i messaggi e
 \family typewriter
 \series bold
- mytalk.server.dao.UserDaoSQL
-\family default
+ 
 \series default
+mytalk.server.dao.UserDaoSQL
+\family default
  che crea ed elimina utenti e modifica i dati degli utenti già presenti
 \end_layout
 
 \begin_layout Itemize
 Viene utilizata da 
 \family typewriter
-\series bold
 mytalk.server.functionmanager.Converter
 \family default
-\series default
 , 
 \family typewriter
 \series bold
@@ -1354,9 +1354,10 @@ mytalk.server.functionmanager.Converter
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.usermanager.AuthenticationManager
 \family default
-\series default
 , 
 \family typewriter
 \series bold
@@ -1364,9 +1365,10 @@ mytalk.server.usermanager.AuthenticationManager
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.usermanager.UserManager
 \family default
-\series default
 , 
 \family typewriter
 \series bold
@@ -1374,9 +1376,10 @@ mytalk.server.usermanager.UserManager
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.AuthenticationTransfer
 \family default
-\series default
 , 
 \family typewriter
 \series bold
@@ -1384,9 +1387,10 @@ mytalk.server.transfer.AuthenticationTransfer
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.UserTransfer
 \family default
-\series default
  e 
 \family typewriter
 \series bold
@@ -1394,6 +1398,8 @@ mytalk.server.transfer.UserTransfer
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 mytalk.server.transfer.RecordMessageTransfer
 \end_layout
 
@@ -1432,34 +1438,40 @@ Relazioni d'uso con altre componenti:
 \begin_deeper
 \begin_layout Itemize
 \noindent
-Viene utilizzata da 
-\family typewriter
+Viene utilizzata da
 \series bold
+ 
+\family typewriter
+\series default
 mytalk.server.dao.LoginDaoSQL
 \family default
-\series default
-, 
-\family typewriter
+,
 \series bold
+ 
+\family typewriter
+\series default
 mytalk.server.dao.RecordMessageDaoSQL
 \family default
+\series bold
+ 
 \series default
- per la ricerca di un dato utente
+per la ricerca di un dato utente
 \end_layout
 
 \begin_layout Itemize
 \noindent
 Viene utilizzata e modificata, per operazioni di aggiunta e rimozione di
- utenti, da 
-\family typewriter
+ utenti, da
 \series bold
-UserDaoSQL
+ 
+\family typewriter
+\series default
+mytalk.server.dao.UserDaoSQL
 \end_layout
 
 \begin_layout Itemize
 Contiene la lista delle istanze di 
 \family typewriter
-\series bold
 mytalk.server.shared.User
 \end_layout
 
@@ -1501,9 +1513,11 @@ Relazioni d'uso con altre componenti:
 Viene inizializzata dalla classe
 \family typewriter
 \series bold
- mytalk.server.dao.TutorialsDaoSQL
-\family default
+ 
 \series default
+mytalk.server.dao.TutorialsDaoSQL
+\family default
+\series bold
  
 \end_layout
 
@@ -1517,10 +1531,8 @@ Viene acceduta da:
 \noindent
 
 \family typewriter
-\series bold
 mytalk.server.transfer.ListenerTransfer
 \family default
-\series default
 , per mandare la lista di tutorial ai client alla prima connessione
 \end_layout
 
@@ -1528,10 +1540,8 @@ mytalk.server.transfer.ListenerTransfer
 \noindent
 
 \family typewriter
-\series bold
 mytalk.server.functionmanager.Converter
 \family default
-\series default
  che si occupa di tradurla in una stringa JSON
 \end_layout
 
@@ -1546,10 +1556,10 @@ Attività svolte e dati trattati:
  la classe
 \family typewriter
 \series bold
- TutorialList
+ 
 \family default
 \series default
- preserva la lista di collegamenti ai tutorial video
+preserva la lista di collegamenti ai tutorial video
 \end_layout
 
 \end_body
