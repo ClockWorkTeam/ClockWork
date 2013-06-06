@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:TextMessagesCollection.js
  * Package: collection
  * Autore:
@@ -17,17 +17,15 @@ define([
   'backbone',
   'storage',
   'model/TextMessageModel'
-  ], function(_, Backbone, Storage, TextMessageModel){
-    var TextMessagesCollection = Backbone.Collection.extend({
+], function(_, Backbone, Storage, TextMessageModel){
+  var TextMessagesCollection = Backbone.Collection.extend({
+    model: TextMessageModel,
 
-      model: TextMessageModel,
+    localStorage: new Storage('textmessages'),
 
-      localStorage: new Storage('textmessages'),
-
-      chat_session: function(username) {
-        return this.where({contact: username});
-      },
-	
-    });
+    chat_session: function(username) {
+      return this.where({contact: username});
+    },
+  });
   return new TextMessagesCollection();
 });

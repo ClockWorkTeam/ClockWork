@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:TextMessageModel.js
  * Package: 
  * Autore:
@@ -15,15 +15,15 @@
 define([
   'underscore',
   'backbone'
-  ], function(_, Backbone){
-    var TextMessageModel = Backbone.Model.extend({
-	
-      defaults: {
-        contact: '',
-        message: '',
-        source: '' //sent o received o notsent
-      },
-	    
-    });
-    return TextMessageModel;
+], function(_, Backbone){
+  var TextMessageModel = Backbone.Model.extend({
+
+    defaults: {
+      contact: '',
+      message: '',
+      source: '' 
+    },
+    
+  });
+  return TextMessageModel;
 });

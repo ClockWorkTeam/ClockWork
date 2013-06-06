@@ -1,4 +1,4 @@
-/*
+/**
  * Nome:UserModel.js
  * Package: model
  * Autore:
@@ -15,16 +15,16 @@
 define([
   'underscore',
   'backbone'
-  ], function(_, Backbone){
-    var UserModel = Backbone.Model.extend({
-		
-	  defaults:{
-		  username: '',
-		  password: '',
-		  name: '',
-		  surname: ''
-	  }
-	  	  
-    });
-    return UserModel;
+], function(_, Backbone){
+  var UserModel = Backbone.Model.extend({
+  
+  defaults:{
+    username: '',
+    password: '',
+    name: '',
+    surname: ''
+  }
+      
+  });
+  return UserModel;
 });
