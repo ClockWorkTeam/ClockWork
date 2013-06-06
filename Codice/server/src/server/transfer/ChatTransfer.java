@@ -1,3 +1,20 @@
+/**
+* Nome: ChatTransfer
+* Package: server.transfer
+* Autore: Ceseracciu Marco
+* Data: 2013/05/28
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+--------------------------+
+* | Data    | Programmatore |         Modifiche        |
+* +---------+---------------+--------------------------+
+* |  130528 |      CM       | + processToken           |
+* |         |               | + creazione documento	   |
+* |         |               |                          |
+* +---------+---------------+--------------------------+
+*
+*/
 package server.transfer;
 
 import org.jwebsocket.api.WebSocketConnector;
@@ -17,11 +34,11 @@ public class ChatTransfer extends ListenerTransfer {
    				wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"username\":\""+event.getConnector().getUsername()+"\"}");
    			}else{
    				wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"username\":\""+token.getString("username")+"\"}");
-   				connector= event.getConnector();				
+   				connector= event.getConnector();
    			}
    			sendPacket(wspacket,connector);
    		}
-    
+
     }
 
 }

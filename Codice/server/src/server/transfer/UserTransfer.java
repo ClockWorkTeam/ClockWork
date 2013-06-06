@@ -1,4 +1,21 @@
-
+/**
+* Nome: UserTransfer
+* Package: server.transfer
+* Autore: Palmisano Maria Antonietta
+* Data: 2013/04/25
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+--------------------------+
+* | Data    | Programmatore |         Modifiche        |
+* +---------+---------------+--------------------------+
+* |  130425 |      PMA      | + processToken           |
+* |         |               | + UserTranser            |
+* |         |               | + creazione documento	   |
+* |         |               |                          |
+* +---------+---------------+--------------------------+
+*
+*/
 package server.transfer;
 
 import org.jwebsocket.api.WebSocketPacket;
@@ -11,14 +28,16 @@ import server.usermanager.UserManager;
 
 public class UserTransfer extends ListenerTransfer{
 	private UserManager userManager;
-	
+
 	public UserTransfer(UserManager userManager){
 		this.userManager=userManager;
 	}
-	
+/*
+metodo per la gestione dei token
+*/
     public void processToken(WebSocketServerTokenEvent event, Token token) {
    		String type= token.getString("type");
-   		WebSocketPacket wspacket=null;	    
+   		WebSocketPacket wspacket=null;
    		if(type.equals("checkCredentials")){
    			User user=userManager.getUser(token.getString("username"));
    			boolean answer= userManager.checkPassword(user,token.getString("password"));

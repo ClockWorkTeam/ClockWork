@@ -1,3 +1,20 @@
+/**
+* Nome: CallTransfer
+* Package: server.transfer
+* Autore: Zohouri Haghian Pardis
+* Data: 2013/05/28
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+--------------------------+
+* | Data    | Programmatore |         Modifiche        |
+* +---------+---------------+--------------------------+
+* |  130528 |      ZHP      | + processToken           |
+* |         |               | + creazione documento	   |
+* |         |               |                          |
+* +---------+---------------+--------------------------+
+*
+*/
 package server.transfer;
 
 import org.jwebsocket.api.WebSocketConnector;
@@ -23,7 +40,7 @@ public class CallTransfer extends ListenerTransfer {
    		}else if(type.equals("answeredCall")){
   		  	WebSocketConnector connector = getUserConnector(token.getString("contact"));
    	    	wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"true\"}");
-   	    	sendPacket(wspacket,connector);   			
+   	    	sendPacket(wspacket,connector);
    		}else if(type.equals("refusecall")){
   		  	WebSocketConnector connector =  getUserConnector(token.getString("contact"));
    	    	wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\"}");
@@ -31,7 +48,7 @@ public class CallTransfer extends ListenerTransfer {
    		}else if(type.equals("busy")){
   		  	WebSocketConnector connector = getUserConnector(token.getString("contact"));
      		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"busy\"}");
-     		sendPacket(wspacket,connector);   			
+     		sendPacket(wspacket,connector);
    		}else if(type.equals("offer")){
   		  	WebSocketConnector connector = getUserConnector(token.getString("contact"));
    			wspacket=new RawPacket(token.getString("description"));

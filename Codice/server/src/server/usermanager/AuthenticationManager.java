@@ -2,14 +2,14 @@
 * Nome: AuthenticationManager
 * Package: server.usermanager
 * Autore: Zohouri Haghian Pardis
-* Data: 2013/04/17
+* Data: 2013/05/17
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130417 |     ZHP       | + removeUser             |
+* |  130517 |     ZHP       | + removeUser             |
 * |         |               | + logout                 |
 * |         |               | + login                  |
 * |         |               | + createUser             |
