@@ -20,5 +20,6 @@
 
 define(function(){
   var wsc = new WebSocket('ws://127.0.0.1:8787');
+  alert('connection');
   return wsc;
 });
