@@ -1,15 +1,20 @@
 /**
 * Nome: UserList
 * Package: server.shared
-* Autore: Zohouri Haghian Pardis
-* Data: 2013/03/05
+* Autore: Gavagnin Jessica
+* Data: 2013/04/10
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
+* | 1300410 |     GJ        | + getAllUsers            |
+* |         |               | + getUser                |
+* |         |               | + removeUser             |
+* |         |               | + addUser                |
+* |         |               | + UserList               |
+* |         |               | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
@@ -24,7 +29,7 @@ public class UserList {
 	public UserList(){
 		users=new Vector<User>();
 	}
-	
+
 	/**Metodo che inserisce un nuovo utente nella lista degli utenti
 	 * @param user (nuovo user da inserire)
 	 * @param boolean, operazione ha avuto succeso o meno (in particolare se l'utente era già presente)
@@ -37,7 +42,7 @@ public class UserList {
 		}
 		return false;
 	}
-	
+
 	/**Metodo che restituisce l'utent corrispondente ad un dato username
 	 * @param username dell'utente da cercare
 	 * @return user dell'utente trovato, o null se non presente
@@ -49,15 +54,15 @@ public class UserList {
 		}
 		return null;
 	}
-	
+
 	/**Metodo che restituisce tutta la lista di utenti
-	 * 
+	 *
 	 * @return vettor degli utenti presenti
 	 */
 	public Vector<User> getAllUsers(){
 		return users;
 	}
-	
+
 	/** Metodo che elimina un utente dal vettore di utenti
 	 * @param username Username dell'utente da eliminare
 	 * return boolean che corrisponde al successo dell'operazione
