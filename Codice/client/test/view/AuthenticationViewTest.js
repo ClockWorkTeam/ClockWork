@@ -1,69 +1,58 @@
 //Wait for relevant code bits to load before starting any tests
 define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
 
-  module( 'About Backbone.view');
-
-test('boh', function(){
-	ok(1,1);
-});
-
-est("Should be tied to a DOM element when created, based off the property provided.", function() {
-    expect( 1 );
-    notEqual( this.el.tagName.toLowerCase(), null );
-    
- });
-/*test("Can render, after which the DOM representation of the view will be visible.", function() {
-   this.todoView.render();
-    $("ul#todoList").append(this.todoView.el);
-    equal($("#todoList").find("li").length, 1);
-});
- test('Can be created with default values for its attributes.', function() {
-      expect( 4 );
-
-      var userModel = new UserModel();
-      equal( userModel.get('username'), '' , "default username");
-      equal( userModel.get('password'), '', "default password" );
-      equal( userModel.get('name'), '', "default name" );
-      equal( userModel.get('surname'), '', "default surname" );
-
+  module( 'About Backbone.View', {
+      setup: function() {
+          $('body').append('<div id="authentication"></div>');
+          this.authenticationView = new AuthenticationView({ collection: new Backbone.Collection() });
+      },
+      teardown: function() {
+          this.autenticationView.remove();
+          $('#authentication').remove();
+      }
   });
 
-  test('Will set attributes on the model instance when created.', function() {
-      expect( 4 );
-
-      var userModel = new UserModel( { username: 'johndoe', password: '123', name: 'john', surname: 'doe' } );
-      equal( userModel.get('username'), 'johndoe', "inserting username" );
-      equal( userModel.get('password'), '123', "inserting password" );
-      equal( userModel.get('name'), 'john', "inserting name" );
-      equal( userModel.get('surname'), 'doe', "inserting surname" );
-
-  });
-  test('Fires a custom event when the state changes.', function() {
+  test('Should be tied to a DOM element when created, based off the property provided.', function() {
       expect( 1 );
-
-      var spy = this.spy();
-      var userModel = new UserModel( { username: 'johndoe', password: '123', name: 'john', surname: 'doe' } );
-
-      userModel.on( 'change', spy );
-      // Change the model state
-      userModel.set( { password: '456' } );
-
-      ok( spy.calledOnce, 'A change event callback was correctly triggered' );
+      equal( this.authenticationView.el.tagName.toLowerCase(), 'authentication' );
   });
 
-  test('After calling function clear the model is empty.', function() {
-      expect( 4 );
-
-      var errorCallback = this.spy();
-      var userModel = new UserModel( {username: 'johndoe', password: '123', name: 'john', surname: 'doe' } );
-
-      // Clear the model
-      userModel.clear();
-
-      equal( userModel.get('username'), undefined );
-      equal( userModel.get('password'), undefined );
-      equal( userModel.get('name'), undefined );
-      equal( userModel.get('surname'), undefined );
+  test('Is backed by a model instance, which provides the data.', function() {
+      expect( 2 );
+      notEqual( this.authenticationView.model, undefined );
+      equal( this.authenticationView.model.get('done'), false );
   });
-*/
+
+  test('Can render, after which the DOM representation of the view will be visible.', function() {
+     this.authenticationView.render();
+
+      // Append the DOM representation of the view to ul#todoList
+      $('ul#todoList').append(this.authenticationView.el);
+
+      // Check the number of li items rendered to the list
+      equal($('#todoList').find('li').length, 1);
+  });
+
+  asyncTest('Can wire up view methods to DOM elements.', function() {
+      expect( 2 );
+      var viewElt;
+
+      $('#todoList').append( this.authenticationView.render().el );
+
+      setTimeout(function() {
+          viewElt = $('#todoList li input.check').filter(':first');
+
+          equal(viewElt.length > 0, true);
+
+          // Ensure QUnit knows we can continue
+          start();
+      }, 1000, 'Expected DOM Elt to exist');
+
+      // Trigget the view to toggle the 'done' status on an item or items
+      $('#todoList li input.check').click();
+
+      // Check the done status for the model is true
+      equal( this.authenticationView.model.get('done'), true );
+  });
+
 });
