@@ -1,15 +1,15 @@
-/**
+/*
  * Nome:TextMessagesCollection.js
  * Package: collection
- * Autore:
- * Data:
- * Versione:
- * 
+ * Autore: Furlan Valentino
+ * Data: 2013/04/10
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +--------+---------------+---------------------------+
+ * |  Data  | Programmatore |       Modifiche           |
+ * +--------+---------------+---------------------------+
+ * | 130410 |       FV      | + creazione del documento |
  */
 
 define([
@@ -17,15 +17,17 @@ define([
   'backbone',
   'storage',
   'model/TextMessageModel'
-], function(_, Backbone, Storage, TextMessageModel){
-  var TextMessagesCollection = Backbone.Collection.extend({
-    model: TextMessageModel,
+  ], function(_, Backbone, Storage, TextMessageModel){
+    var TextMessagesCollection = Backbone.Collection.extend({
 
-    localStorage: new Storage('textmessages'),
+      model: TextMessageModel,
 
-    chat_session: function(username) {
-      return this.where({contact: username});
-    },
-  });
+      localStorage: new Storage('textmessages'),
+
+      chat_session: function(username) {
+        return this.where({contact: username});
+      },
+
+    });
   return new TextMessagesCollection();
 });
