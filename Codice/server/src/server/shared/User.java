@@ -1,19 +1,31 @@
 /**
 * Nome: User
 * Package: server.shared
-* Autore: Zohouri Haghian Pardis
-* Data: 2013/03/05
+* Autore: Gavagnin Jessica
+* Data: 2013/04/10
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
+* |  130410 |      GJ       | + removeMessage          |
+* |         |               | + setMessages            |
+* |         |               | + getMessages            |
+* |         |               | + setMessage             |
+* |         |               | + setIP                  |
+* |         |               | + setSurname             |
+* |         |               | + setName                |
+* |         |               | + getIP                  |
+* |         |               | + getSurname             |
+* |         |               | + getName                |
+* |         |               | + getUsername            |
+* |         |               | + User                   |
+* |         |               | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
-*/ 
+*/
 
 package server.shared;
 import java.util.Vector;
@@ -29,7 +41,7 @@ public class User {
   private String IP;
   private Vector<RecordMessage> messages;
 
-	
+
   /**Costruttore di User con tutti i parametri (tranne password e messaggi)
    * @param username
    * @param name
@@ -57,7 +69,7 @@ public class User {
 	  return this.IP;
   }
 
-//metodi set	
+//metodi set
   public void setName(String name){
 	this.name=name;
   }
@@ -78,7 +90,7 @@ public class User {
   public void setMessage(RecordMessage message){
 		 this.messages.add(message);
   }
-	
+
   public void removeMessage(RecordMessage message){
 	  this.messages.remove(message);
   }

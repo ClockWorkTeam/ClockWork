@@ -1,19 +1,24 @@
 /**
 * Nome: RecordMessage
 * Package: server.shared
-* Autore: Zohouri Haghian Pardis
-* Data: 2013/03/05
+* Autore: Gavagnin Jessica
+* Data: 2013/04/11
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
+* |  130411 |      GJ       | + getDate                |
+* |         |               | + getSender              |
+* |         |               | + getAddressee           |
+* |         |               | + getPath                |
+* |         |               | + RecordMessage          |
+* |         |               | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *
-*/ 
+*/
 
 package server.shared;
 /**
@@ -25,7 +30,7 @@ public class RecordMessage{
 	private String addressee;
 	private String path;
 	private String dateCreation;
-	
+
 	/**
 	 * Costruttore dell'oggetto RecordMessage
 	 * @param sender, persona che ha inviato il messaggio
@@ -39,11 +44,11 @@ public class RecordMessage{
 		this.path=path;
 		this.dateCreation=dateCreation;
 	}
-	
+/* metodi get*/
 	public String getSender(){
 		return sender;
 	}
-	
+
 	public String getAddressee(){
 		return addressee;
 	}
