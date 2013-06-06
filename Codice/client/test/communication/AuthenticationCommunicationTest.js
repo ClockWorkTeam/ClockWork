@@ -7,7 +7,7 @@ module('About AuthenticationCommunication', {
     
     var Connection = require('connection');
     this.sendSpy = sinon.spy();
-    this.server = sinon.stub(Connection, 'send', this.sendSpy );
+    this.sendStub = sinon.stub(Connection, 'send', this.sendSpy );
     //var Connection = { send: function(){}, onmessage: function(){} };
     //this.sendStub = sinon.stub(Connection, 'send', function(string){} );
     //this.onmessageStub = sinon.stub(Connection, 'onmessage');
@@ -18,7 +18,7 @@ module('About AuthenticationCommunication', {
     
     //this.sendStub.restore();
     //this.onmessageStub.restore();
-    this.server.restore();
+    this.sendStub.restore();
     
   }
   
