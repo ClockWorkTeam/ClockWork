@@ -1,5 +1,5 @@
 //Wait for relevant code bits to load before starting any tests
-define(['../../js/view/AuthenticationView'], function( AuthenticationView ) {
+define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
 
   module( 'About Backbone.view');
 

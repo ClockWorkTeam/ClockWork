@@ -13,12 +13,13 @@
  * |      |               | Inserite require  con le tre classi view iniziali |
 */
 require.config({
+  baseUrl: '../../js/',
   paths: {
-    jquery: '../resources/jquery/jquery-min',
-    underscore: '../resources/underscore/underscore-min',
-    backbone: '../resources/backbone/backbone',
-    text: '../resources/require/text',
-    storage: '../resources/backbone/backbone.noStorage'
+    jquery: '../test/resources/jquery/jquery-min',
+    underscore: '../test/resources/underscore/underscore-min',
+    backbone: '../test/resources/backbone/backbone',
+    text: '../test/resources/require/text',
+    storage: '../test/resources/backbone/backbone.noStorage'
   },
   
   shim: {
@@ -35,6 +36,6 @@ require.config({
 
 QUnit.config.autostart = false;
  
-require(['AuthenticationViewTest.js'], function(){
+require(['../view/AuthenticationViewTest.js'], function(){
   QUnit.start(); //Tests loaded, run tests
 });
