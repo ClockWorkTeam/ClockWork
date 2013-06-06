@@ -232,7 +232,7 @@ Memorizza in
 \series default
 mytalk.client.model.UserModel
 \family default
- le credenziali dell'utente una volta effettuata l''autenticazione
+ le credenziali dell'utente una volta effettuata l'autenticazione
 \end_layout
 
 \end_deeper
@@ -422,12 +422,18 @@ mytalk.client.model.ContactModel
 
 \begin_layout Itemize
 Ogni sua singola istanza viene generata e raggruppata da 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.vie.SideView
 \family default
  
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -956,13 +962,7 @@ mytalk.client.communication.AuthenticationCommunication
 Tipo, obiettivo e funzione del componente:
 \series default
  la classe si occupa di inviare le credenziali inserite per l'accesso al
- server, e restituirne la risposta
-\family typewriter
-\series bold
-.
-
-\family default
-\series default
+ server, e restituirne la risposta.
  Gestisce inoltre le operazioni di registrazione di un nuovo utente e di
  disconnessione dal sistema
 \end_layout
@@ -999,8 +999,11 @@ mytalk.server.transfer.AuthenticationTransfer
  
 \family default
 \series default
-a cui invia le credenziali per effettuare le operazioni e da cui riceve
- se le credenziali inserite sono corrette o meno
+a cui invia le credenziali inserite in 
+\family typewriter
+AuthenticationView
+\family default
+ e da cui riceve la notifica di autenticazione riuscita o meno
 \end_layout
 
 \end_deeper
@@ -1299,7 +1302,7 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- la classe 
+ 
 \end_layout
 
 \begin_deeper
@@ -1553,7 +1556,7 @@ mytalk.client.view
 \series default
 e 
 \family typewriter
-mytalk.client.comunication
+mytalk.client.comunication,
 \family default
  inoltre ogni sua classe contiene un oggetto del package 
 \family typewriter
@@ -1588,7 +1591,12 @@ mytalk.client.view.SideView
  
 \family default
 \series default
-e 
+e
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.communication.ContactsCommunication
 \family default
@@ -1596,6 +1604,7 @@ mytalk.client.communication.ContactsCommunication
  il server
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Viene utilizzata da
 \series bold
@@ -1609,13 +1618,16 @@ mytalk.client.communication.ChatCommunication
 
 \begin_layout Itemize
 Contiene i riferimenti alle istanze della classe
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
-\series bold
- 
-\series default
 mytalk.client.model.ContactModel
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1665,17 +1677,28 @@ mytalk.client.view.ChatView
  e da
 \series bold
  
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
-\series default
 mytalk.client.communication.ChatCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Contiene i riferimenti alle istanze della classe 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.model.TexMessageModel
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1721,19 +1744,28 @@ mytalk.client.view.TutorialView
 \family default
 \series default
 e da 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.communication.TutorialCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Contiene i riferimenti alle istanze della classe
-\series bold
- 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
-\series default
 mytalk.client.model.TutorialModel
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1817,18 +1849,27 @@ Viene utilizzata da
 \series default
 mytalk.client.view.ContactView
 \family default
-\series bold
- e 
+ e
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
-\series default
 mytalk.client.view.FunctionView
 \family default
 \series bold
  
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 I singoli contatti vengono salvati all'interno di 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.collection.ContactsCollection
 \family default
@@ -1856,6 +1897,7 @@ mytalk.client.collection.ContactsCollection
 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1916,15 +1958,21 @@ e
 \family typewriter
 \series bold
  
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\family typewriter
 mytalk.client.communication.UserDataCommunication
 \family default
 \series bold
  
 \series default
-che per le operazioni di modifica delle credenziali dell'utente
+per le operazioni di modifica delle credenziali dell'utente
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -1966,6 +2014,11 @@ Relazioni d'uso con altre componenti:
 \begin_deeper
 \begin_layout Itemize
 I singoli messaggi vengono salvati in 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.collection.TextMessagesCollection
 \family default
@@ -1992,6 +2045,7 @@ collection.TextMessagesCollection.
 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
@@ -2027,6 +2081,11 @@ Relazioni d'uso con altre componenti:
 \begin_deeper
 \begin_layout Itemize
 I singoli video vengono salvati all'interno di 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
 \family typewriter
 mytalk.client.collection.TutorialsCollection
 \family default
@@ -2054,6 +2113,7 @@ mytalk.client.collection.TutorialsCollection
 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \noindent
