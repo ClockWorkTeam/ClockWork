@@ -2,14 +2,14 @@
 * Nome: UserDaoSQL
 * Package: server.dao
 * Autore: Gavagnin Jessica
-* Data: 2013/03/05
+* Data: 2013/04/02
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+------------------------+
 * | Data    | Programmatore |         Modifiche      |
 * +---------+---------------+------------------------+
-* |  130306 |     GJ        | + removeUser           |
+* |  130402 |     GJ        | + removeUser           |
 * |         |               | + checkPassword        |
 * |         |               | + setSurname           |
 * |         |               | + setName              |
@@ -88,7 +88,7 @@ public class UserDaoSQL implements UserDao{
 		return done;
 	}
 
-  /**Metodo che setta il campo name di un User
+  /**Metodo che setta il campo name di un utente
   * @param username Stringa dell'utente da cui si prendono le informazioni
    * @param name la stringa del nuovo name del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
@@ -107,7 +107,7 @@ public class UserDaoSQL implements UserDao{
 		return done;
 	}
 
-  /**Metodo che setta il campo surname di un User
+  /**Metodo che setta il campo surname di un utente
    * @param username Stringa dell'utente da cui si prendono le informazioni
    * @param surname la stringa del nuovo surname del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
@@ -140,7 +140,7 @@ public class UserDaoSQL implements UserDao{
 		return userList.getAllUsers();
 	}
 
-	/**Metodo che controlla la corrispondenza tra l'username e la password
+	/**Metodo che controlla la corrispondenza tra lo username e la password
 	 * @param username Username dell'utente
 	 * @param password inserita
 	 * @return boolean
@@ -153,7 +153,7 @@ public class UserDaoSQL implements UserDao{
 		return true;
 	}
 
-	/**Metodo che restituisce tutti i contatti
+	/**Metodo che restituisce tutti gli utenti registrati
 	 * @return vector<User>
 	 */
 	private void getUsersFromDB(){
