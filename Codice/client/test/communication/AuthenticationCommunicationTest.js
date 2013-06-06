@@ -1,10 +1,11 @@
 //Wait for relevant code bits to load before starting any tests
-define([ '../js/connection', '../js/communication/AuthenticationCommunication'], function( Connection, AuthenticationCommunication ) {
+define([ '../js/communication/AuthenticationCommunication'], function( AuthenticationCommunication ) {
 
 module('About AuthenticationCommunication', {
 
   setup: function() {
     
+    var Connection = require('connection');
     this.sendSpy = sinon.spy();
     this.server = sinon.stub(Connection, 'send', this.sendSpy );
     //var Connection = { send: function(){}, onmessage: function(){} };
@@ -24,7 +25,7 @@ module('About AuthenticationCommunication', {
 });
 
   test('Login with wrong credentials.', function() {
-      expect( 3 );
+      expect( 4 );
       
       var callBacks = this.spy();
       var view = this.spy();
@@ -37,6 +38,7 @@ module('About AuthenticationCommunication', {
       document.dispatchEvent(event);
       
       ok(this.sendSpy.called);
+      equal(this.sendSpy.callCount, 1);
       equal(callBacks.callCount, 0);
       equal(view.callCount, 0);
     
