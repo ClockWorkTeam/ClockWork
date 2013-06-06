@@ -2,14 +2,14 @@
  * Nome:main.js
  * Package: client
  * Autore: Ceseracciu Marco
- * Data: 2013/05/23
+ * Data: 2013/05/18
  * Versione: 1.0
  *
  * Modifiche:
  * +--------+---------------+-----------------------+
  * |  Data  | Programmatore |      Modifiche        |
  * +--------+---------------+-----------------------+
- * | 130523 |     CM        | + main                |
+ * | 130518 |     CM        | + main                |
  * |        |               | + creazione documento |
  */
 require.config({
@@ -36,6 +36,6 @@ require.config({
 
 require(['connection', 'view/AuthenticationView', 'collection/ContactsCollection', 'communication/NotificationCommunication'], function(Connection, AuthenticationView, ContactsCollection, NotificationCommunication){
   NotificationCommunication.listenNotification();
-  var authentication_view = new AuthenticationView({collection: ContactsCollection});
+  var authentication_view = new AuthenticationView();
 });
 
