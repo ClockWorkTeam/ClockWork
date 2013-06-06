@@ -1426,7 +1426,13 @@ Tipo, obiettivo e funzione del componente:
 \series bold
 Relazioni d'uso con altre componenti:
 \series default
- viene utilizzata da 
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+Viene utilizzata da 
 \family typewriter
 \series bold
 mytalk.server.dao.LoginDaoSQL
@@ -1438,21 +1444,26 @@ mytalk.server.dao.LoginDaoSQL
 mytalk.server.dao.RecordMessageDaoSQL
 \family default
 \series default
- e
-\family typewriter
-\series bold
- mytalk.server.dao.UserDaoSQL
-\family default
-\series default
- per la ricerca di un dato utente, inoltre la classe 
+ per la ricerca di un dato utente
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Viene utilizzata e modificata, per operazioni di aggiunta e rimozione di
+ utenti, da 
 \family typewriter
 \series bold
 UserDaoSQL
-\family default
-\series default
- opera anche operazioni di aggiunta e rimozione di utenti
 \end_layout
 
+\begin_layout Itemize
+Contiene la lista delle istanze di 
+\family typewriter
+\series bold
+mytalk.server.shared.User
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \noindent
 
