@@ -9,7 +9,12 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     GJ        | + creazione documento	   |
+* |  130306 |     GJ        | + removeMessage          |
+* |         |               | + getAllMessages         |
+* |         |               | + getMessage             |
+* |         |               | + createMessage          |
+* |         |               | + RecordMessageDaoSQL    |                         |
+* |         |               | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
 *

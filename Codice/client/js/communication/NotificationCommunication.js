@@ -1,15 +1,20 @@
 /**
- * Nome:AuthenticationCommunication.js
- * Package: 
- * Autore:
- * Data:
- * Versione:
+ * Nome:NotificationCommunication.js
+ * Package: Communication
+ * Autore: La Bruna Agostino
+ * Data: 2013/04/08
+ * Versione: 1.0
  * 
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +---------+---------------+-------------------------------------+
+ * | Data    | Programmatore |        Modifiche                    | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/09 |    LBA        | + variabile onCalling per capire se | 
+ * |         |               |   occupato o meno con altri utenti  | 
+ * +---------|---------------|-------------------------------------| 
+ * |13/04/08 |    LBA        | + Metodo listenNotification         | 
+ * |         |               | + Metodo refuse                     | 
+ * |_________|_______________|_____________________________________| 
  */
 
 /**

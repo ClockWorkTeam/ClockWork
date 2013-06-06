@@ -1,17 +1,21 @@
-/*
- * Nome: ContactsCommunication.js
- * Package: communication
- * Autore:
- * Data:
- * Versione:
+/**
+ * Nome:ContactsCommunication.js
+ * Package: Communication
+ * Autore: Ceseracciu Marco
+ * Data: 2013/04/07
+ * Versione: 1.0
  * 
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +---------+---------------+-------------------------------------+
+ * | Data    | Programmatore |        Modifiche                    | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/09 |    CM         | # Modifiche allo scopo di capire    | 
+ * |         |               |   che utenti sono online o meno     | 
+ * +---------|---------------|-------------------------------------| 
+ * |13/04/07 |    CM         | + Metodo fetchContacts              | 
+ * |_________|_______________|_____________________________________| 
  */
-//classe che comunica con il server per i dati che riguardano il ricavare la lista dei contatti
+ 
 define(['connection','collection/ContactsCollection'], function(Connection, contactsCollection){
   return {
     /**

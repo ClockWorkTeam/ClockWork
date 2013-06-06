@@ -1,5 +1,33 @@
+<!-- 
+ * Nome: ContactTemplate.html
+ * Package: Template
+ * Autore: Furlan Valentino
+ * Data: 2013/04/06
+ * Versione: 1.0
+ * 
+ * Modifiche:
+ * +--------+---------------+----------------------+
+ * |  Data  | Programmatore | Modifiche            | 
+ * +--------+---------------+----------------------+
+ * |13/04/08|     FV        | + Rconoscimento user | 
+ * |        |               |   online o meno      | 
+ * |--------|---------------|----------------------| 
+ * |13/04/06|     FV        | + Creazione documento| 
+ * |_______________________________________________| 
+ */
+-->
+
 <% if(dom=="sidebar"){%>
-  <li class="contact <% if(ip == "0"){ %> offline <% } else { %> online <% } %>"><% if(unread > 0){ %> (<%= unread %>) <% } %><%= username %></li>
-<%}else{%>
-  <li><input type="checkbox" name=<%=username %> id=<%=username %> > <%=username %></li>
-<%}%>
+    <li class="contact 
+    <% if(ip == "0"){ 
+      %> offline <% 
+    }else {
+       %> online <% 
+    } %>">
+    <% if(unread > 0){ 
+      %> (<%= unread %>) <% 
+    } 
+    %><%= username %></li>
+  <%}else{%>
+    <li><input type="checkbox" name=<%=username %> id=<%=username %> > <%=username %></li>
+  <%}%>

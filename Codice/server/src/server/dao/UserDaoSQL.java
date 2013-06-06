@@ -6,19 +6,21 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130306 |     GJ        |
-* |         |               |
-* |         |               |
-* |         |               |
-* |         |               |
-* |         |               |  + removeUser
-* |         |               |  + createUser
-* |         |               |  + UserDaoSQL
-* |         |               |  + creazione documento   |
-* +---------+---------------+--------------------------+
+* +---------+---------------+------------------------+
+* | Data    | Programmatore |         Modifiche      |
+* +---------+---------------+------------------------+
+* |  130306 |     GJ        | + removeUser           |
+* |         |               | + checkPassword        |
+* |         |               | + setSurname           |
+* |         |               | + setName              |
+* |         |               | + setPassword 	     |
+* |         |               | + getUser              |
+* |         |               | + getAllUsers          |
+* |         |               | + getUserFromDB        |
+* |         |               |  + createUser          |
+* |         |               |  + UserDaoSQL          |
+* |         |               |  + creazione documento |
+* +---------+---------------+------------------------+
 *
 */
 
