@@ -2,14 +2,14 @@
 * Nome: UserManager
 * Package: server.usermanager
 * Autore: Zohouri Haghian Pardis
-* Data: 2013/04/16
+* Data: 2013/05/16
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130416 |     ZHP       | + getMessages |
+* |  130516 |     ZHP       | + getMessages |
 * |         |               | + getMessage |
 * |         |               | + createMessage |
 * |         |               | + getAllUsers |

@@ -1,3 +1,22 @@
+/**
+* Nome: RecordMessageTransfer
+* Package: server.transfer
+* Autore: Zohouri Haghian Pardis
+* Data: 2013/05/26
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+--------------------------+
+* | Data    | Programmatore |         Modifiche        |
+* +---------+---------------+--------------------------+
+* |  130526 |      ZHP      | + processToken           |
+* |         |               | + RecordMessageTransfer  |
+* |         |               | + creazione documento	   |
+* |         |               |                          |
+* +---------+---------------+--------------------------+
+*
+*/
+
 package server.transfer;
 
 import org.jwebsocket.api.WebSocketConnector;
@@ -10,15 +29,19 @@ import server.usermanager.UserManager;
 
 public class RecordMessageTransfer extends ListenerTransfer{
 	private UserManager userManager;
-	
+
 	public RecordMessageTransfer(UserManager userManager){
 		this.userManager=userManager;
 	}
-	
+
+/*
+metodo per la gestione dei token
+*/
+
 	@Override
     public void processToken(WebSocketServerTokenEvent event, Token token) {
 /*   		String type= token.getString("type");
-   		WebSocketPacket wspacket=null;	
+   		WebSocketPacket wspacket=null;
    		if(type.equals("getMessages")){
    			wspacket = new RawPacket(converter.convertMessages(userManager.getMessages(token.getString("username")),"\"type\":\"getMessages\""));
    	  		sendPacket(wspacket, event.getConnector());
@@ -38,7 +61,7 @@ public class RecordMessageTransfer extends ListenerTransfer{
    					vecRecMex.add(recMex);
    					wspacket=new RawPacket(converter.convertMessages(vecRecMex, "\"type\":\"getMessages\""));
    					sendPacket(wspacket,connector);
-   				}   
+   				}
    			}
    		}else if (type.equals("removeMessage")){
    			boolean answer =userManager.removeMessage(token.getString("sender"), token.getString("addressee"), token.getString("path"),token.getString("date"));
