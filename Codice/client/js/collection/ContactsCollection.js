@@ -2,20 +2,20 @@
 /*
  * Nome: ContactsCollection.js
  * Package: collection
- * Autore:
- * Data:
- * Versione:
- * 
+ * Autore: Furlan Valentino
+ * Data: 2013/04/12
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +--------+---------------+------------------------------+
+ * |  Data  | Programmatore |           Modifiche          |
+ * +--------+---------------+------------------------------+
+ * | 130412 |      FV       | + creazione documento        |
  */
 
 define([
- 'underscore',  
- 'backbone', 
+ 'underscore',
+ 'backbone',
  'storage',
  'model/ContactModel'
 ], function( _, Backbone, Storage, ContactModel){
@@ -24,11 +24,11 @@ define([
     model: ContactModel,
 
     localStorage: new Storage('contacts'),
-  
+
     record: function() {
       return this.filter(function(contact){ return contact.has('username'); });
     }
-    
+
  });
   return new ContactsCollection();
 });

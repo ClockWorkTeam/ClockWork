@@ -1,20 +1,23 @@
 /**
  * Nome:ConactsView.js
- * Package: 
- * Autore:
- * Data:
- * Versione:
- * 
+ * Package: View
+ * Autore: Palmisano Maria Antonietta
+ * Data: 2013/05/12
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               | Scrittura codice          |
+ * +--------+---------------+-----------------------+
+ * | Data   | Programmatore |     Modifiche         |
+ * +--------+---------------+-----------------------+
+ * | 130524 |      FV       | + metodo che chiude le|
+ * |        |               |   viste di ogni       |
+ * |        |               |   contatto presente   |
+ * +--------+---------------+-----------------------+
+ * | 130512 |    PMA        | + creazione documento |
  */
-
 define([
  'jquery',
- 'underscore',  
+ 'underscore',
  'backbone',
  'view/ContactView',
  'view/FunctionsView',
@@ -23,19 +26,19 @@ define([
  'collection/ContactsCollection'
 ], function($, _, Backbone, ContactView, FunctionsView, ContactsCommunication, SideTemplate, ContactsCollection){
   var SideView = Backbone.View.extend({
-		
+
     el: $("#sidebar"),
-    
+
     template: _.template(SideTemplate),
-    
+
     collection: ContactsCollection,
-    
+
     myModel : '',
     authenticationView:'',
- 
+
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
-     */    
+     */
     events:{
 		'click button#callIP' : 'callIP',
 		'click button#conference' : 'StartConference'
@@ -44,7 +47,7 @@ define([
     /**
      * funzione di inizializzazione dell'oggetto
      */
-	
+
     initialize:function(){
 			_.bindAll(this, 'render', 'unrender', 'viewContact');
 			this.listenTo(this.collection, 'add', this.render);
@@ -52,7 +55,7 @@ define([
 			var sideBarView=this;
  			function acceptCall(event){
 				sideBarView.setCall(event.detail.contact,event.detail.type);
-			};	
+			};
 			this.$el.html(this.template({logged: false}));
 			this.childViews = [];
 		},
@@ -71,26 +74,26 @@ define([
     /**
      * funzione che effettua la scrittura della struttura della pagina
      */
-		
+
 		render: function (){
 			this.viewContact(this.collection.at(this.collection.length-1));
 		},
-    
+
     /**
      * funzione che si occupa di inizializzare e rendere visibile ogni contatto presente nella lista
      */
-    
+
 		viewContact: function(ContactModel){
 			var contactView = new ContactView({dom : "sidebar", model: ContactModel, userModel: this.myModel, callback: this });
 			this.childViews.push(contactView);
 			this.$("#contacts").append(contactView.render().el);
-			
+
 		},
-    
+
     /**
      * si occupa di disabilitare la vista quando si effettua il logout
      */
-    
+
 		unrender: function (){
 			this.stopListening(this.collection, 'all', this.render);
 			$(this.el).html(this.template({logged: false}));
@@ -105,7 +108,7 @@ define([
 			_.each(this.childViews, function(view){view.close();});
 			_.each(this.collection.record(), function(contact){contact.clear();});
 		},
-	
+
     /**
      * si occupa di effettuare chiamate IP
      */
@@ -132,7 +135,7 @@ define([
 	  $('#main').prepend(this.currentFunctions.el);
 	  this.collection.each(this.listContacts);
 	},
-	
+
     /**
      * si occupa di gestire la lista dei contatti da selezionare per una videoconferenza
      */
@@ -148,7 +151,7 @@ define([
         this.authenticationView.userDataView.unrender();
         this.authenticationView.userDataView=undefined;
       }
-      _.each(this.childViews, 
+      _.each(this.childViews,
 			function(view){
         if(view.currentFunctions){
           if(view.model.toJSON().username!=contact){
@@ -170,22 +173,22 @@ define([
 			}
     },
 
-    /** 
+    /**
      * metodo invoca allo scopo di capire quale utente sta chiamando
      */
 
-    setCall : function(contact,type){  
-      _.each(this.childViews, 
+    setCall : function(contact,type){
+      _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
           view.createCall(type);
         }
       });
     }
-    
+
   });
 
   return SideView;
-  
+
 });
 
