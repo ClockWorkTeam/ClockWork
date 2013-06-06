@@ -1,5 +1,4 @@
-/*
-/*
+/**
  * Nome: ContactsCollection.js
  * Package: collection
  * Autore: Furlan Valentino
@@ -29,7 +28,7 @@ define([
       return this.filter(function(contact){ return contact.has('username'); });
     }
 
- });
+  });
   return new ContactsCollection();
 });
 
