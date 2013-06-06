@@ -1,15 +1,22 @@
 /**
  * Nome:AuthenticationCommunication.js
- * Package: communication
- * Autore:
- * Data:
- * Versione:
+ * Package: Communication
+ * Autore: Ceseracciu Marco
+ * Data: 2013/04/05
+ * Versione: 1.0
  * 
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +---------+---------------+---------------------------+
+ * | Data    | Programmatore | Modifiche                 | 
+ * +---------+---------------+---------------------------+
+ * |13/04/06 |    ZHP        | + Modifiche metodo logout | 
+ * +---------+---------------+---------------------------+
+ * |13/04/05 |    PMA        | + Metodo  signup          |                                 | 
+ * +---------+---------------+---------------------------+
+ * |13/04/05 |    CM         | + Creazione documento     | 
+ * |         |               | + Metodo checkCredentials | 
+ * |         |               | + Metodo logout           | 
+ * |_________|_______________|___________________________| 
  */
  
 /**

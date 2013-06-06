@@ -1,15 +1,20 @@
 /**
  * Nome:UserDataCommunication.js
- * Package: communication
- * Autore:
- * Data:
- * Versione:
+ * Package: Communication
+ * Autore: Zohouri Haghian Pardis
+ * Data: 2013/04/12
+ * Versione: 1.0
  * 
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +---------+---------------+-------------------------------------+
+ * | Data    | Programmatore |        Modifiche                    | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/13 |    MC         | + aggiunti allert per capire se le  | 
+ * |         |               |   modifiche sono state fatte        | 
+ * +---------|---------------|-------------------------------------| 
+ * |13/04/12 |    ZHP        | + Metodo checkPassword              | 
+ * |         |               | + Metodo changeData                 | 
+ * |_________|_______________|_____________________________________| 
  */
  
 /**
