@@ -73,7 +73,7 @@ reference "sub:WebSocket"
 \end_inset
 
 ).
- I messagi che si andranno ad inviare saranno formati dalle informazioni
+ I messaggi che si andranno ad inviare saranno formati dalle informazioni
  che si vogliono spedire e dalla presenza di un campo 
 \begin_inset Quotes eld
 \end_inset
@@ -92,9 +92,9 @@ type
 \begin_inset Quotes erd
 \end_inset
 
- allo scopo di una corretta gestione del messaggio da parte del client.
+ allo scopo di una corretta gestione da parte del client.
  I messaggi prima di essere inviati dal client dovranno essere convertiti
- tramite l'utilizzo della funzione 
+ tramite l'utilizzo del metodo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -102,7 +102,7 @@ JSON.stringify
 \begin_inset Quotes erd
 \end_inset
 
- e convertire i messaggi ricevuti tramiteil metodo 
+ e i messaggi ricevuti tramite il metodo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -110,11 +110,11 @@ JSON.parse
 \begin_inset Quotes erd
 \end_inset
 
-, questi due metodi permetteranno la conversione in uscita e in entrata
- dei messaggi, in array associativi facilmente utilizzabili .
- Il server nell'inviare messaggi invece si limiterà ad inviarli in formato
- di array associativi che verranno convertiti nel formato corretto dal client
- come detto in precedenza.
+; questi due metodi permetteranno la conversione in uscita e in entrata
+ dei messaggi in array associativi facilmente utilizzabili.
+ Il server nell'inviare messaggi invece si limiterà a spedirli come array
+ associativi.
+ 
 \end_layout
 
 \end_body

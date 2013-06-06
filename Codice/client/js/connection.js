@@ -1,21 +1,19 @@
 /*
- * 
- *  Nome: {nome del file}
- *  Package: {package di appartenenza}
- *  Autore: {autore del file}
- *  Data: {data di creazione del file}
- *  Versione: {versione del file}
- * 
+ *
+ *  Nome: connection
+ *  Package: client
+ *  Autore: Ceseracciu Marco
+ *  Data: 2013/05/19
+ *  Versione: 1.0
+ *
  *  Modifiche:
- *  +---------+---------------+------------------+
- *  | Data | Programmatore | Modifiche |
- *  +---------+---------------+------------------+
- *  | AAMMGG | NomeCognome | - [label]metodo1 |
- *  | | | - [label]metodo2 |
- *  | | | - ....           |
- *  +---------+---------------+------------------+
- * 
- * 
+ *  +--------+---------------+-----------------------+
+ *  | Data   | Programmatore |     Modifiche         |
+ *  +--------+---------------+-----------------------+
+ *  | 130519 |      CM       | + creazione documento |
+ *  +--------+---------------+-----------------------+
+ *
+ *
  */
 
 define(function(){
