@@ -1,19 +1,21 @@
 /**
  * Nome:UserDataView.js
- * Package: 
- * Autore:
- * Data:
- * Versione:
- * 
+ * Package: View
+ * Autore: Palmisano Maria Antonietta
+ * Data: 2013/05/10
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               | Scrittura codice          |
+ * +--------+---------------+-----------------------+
+ * | Data   | Programmatore |     Modifiche         |
+ * +--------+---------------+-----------------------+
+ * | 130516 |    FV         | + pulsante reset      |
+ * +--------+---------------+-----------------------+
+ * | 130510 |    PMA        | + creazione documento |
  */
 define([
   'jquery',
-  'underscore',  
+  'underscore',
   'backbone',
   'text!templates/UserDataTemplate.html',
   'communication/UserDataCommunication'
@@ -25,22 +27,22 @@ define([
 	  events: {
       'click button#submitChange': 'checkPassword',
       'click button#reset': 'render',
-      'click button#denyChange': 'unrender' 
+      'click button#denyChange': 'unrender'
 		},
-		
+
     el: '#main',
-		
+
     template: _.template(UserDataTemplate),
 
     /**
      * funzione di inizializzazione dell'oggetto
      */
-         
+
     initialize: function(){
       _.bindAll(this, 'render', 'unrender');
       this.render();
 		},
-		
+
     /**
      * funzione che effettua la scrittura della struttura della pagina
      */
@@ -50,7 +52,7 @@ define([
 
     /**
      * funzione che si occupa di rimuovere la struttura della vista dalla pagina
-     */		
+     */
 		unrender:function(){
 			this.close();
       $(this.el).html('');
@@ -58,15 +60,15 @@ define([
 		},
 
     /**
-     * funzione che si occupa di verificare se abbiamo inserito correttamente 
+     * funzione che si occupa di verificare se abbiamo inserito correttamente
      */
 		checkPassword:function(){
 			UserDataCommunication.checkPassword(this.model,this.$('#oldPassword').val(), this);
 		},
-		
+
     /**
      * funzione che si occupa di accettare i nuovi dati e di inviarli per essere processati
-     */        
+     */
 		callBacks: function(){
       return {
         changeData: function(model, view){
@@ -82,11 +84,11 @@ define([
 	});
   /**
    * si occupa di chiudere la vista
-   */  
+   */
   UserDataView.prototype.close = function(){
     this.remove();
     this.unbind();
   };
-  
+
 	return UserDataView;
 });

@@ -1,20 +1,26 @@
 /**
  * Nome:AuthenticationView.js
- * Package: 
- * Autore:
- * Data:
- * Versione:
- * 
+ * Package: View
+ * Autore: Valentino Furlan
+ * Data: 2013/05/18
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               | Scrittura codice          |
+ * +--------+---------------+-----------------------+
+ * | Data   | Programmatore |     Modifiche         |
+ * +--------+---------------+-----------------------+
+ * | 130518 |    PMA        | + funzione che tenta  |
+ * |        |               |   login               |
+ * |        |               | + funzione che tenta  |
+ * |        |               |   logout              |
+ * +--------+---------------+-----------------------+
+ * | 130518 |    FV         | + creazione documento |
+
  */
- 
+
 define([
   'jquery',
-  'underscore',  
+  'underscore',
   'backbone',
   'view/SideView',
   'view/UserDataView',
@@ -45,9 +51,9 @@ define([
     },
     el: $("#authentication"),
 
-    
+
     template: _.template(authenticationTemplate),
-  
+
     /**
      * funzione di inizializzazione dell'oggetto
      */
@@ -56,12 +62,12 @@ define([
       this.render();
       contactsView = new sideView();
     },
-  
+
     /**
      * funzione che effettua la scrittura della struttura della pagina
      */
     render: function() {
-      $(this.el).html(this.template({authenticated: false, signup: false}))  
+      $(this.el).html(this.template({authenticated: false, signup: false}))
     },
 
     callBacks: function(){
@@ -90,7 +96,7 @@ define([
       var pass = this.$("#password").val();
       AuthenticationCommunication.checkCredentials(user, pass, this.callBacks(), this);
     },
-	
+
     /**
      * funzione che si occupa di chiudere la sessione con il server
      */
@@ -103,14 +109,14 @@ define([
         this.userDataView=undefined;
       }
     },
-    
+
     /**
      * visualizzo il form di registrazione
      */
     view_signup: function(){
       $(this.el).html(this.template({authenticated: false, signup: true}));
     },
-    
+
     /**
      * tento di effettuare la registrazione
      */
@@ -130,10 +136,10 @@ define([
         /**
          * controllo se la password e la sua conferma corrispondono
          */
-        if(pass == pass2){      
+        if(pass == pass2){
           //var authentication_communication = new AuthenticationCommunication();
           /**
-           * invio la richiesta di registrazione al server 
+           * invio la richiesta di registrazione al server
            * se lo username non è già presente nel sistema procedo all'autenticazione
            */
           AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
@@ -150,14 +156,14 @@ define([
          alert('Non hai compilato tutti i campi obbligatori');
       }
     },
-    
+
     /**
      * funzione per annullare la compilazione della registrazione
      */
     deny: function(){
       this.render();
-    },    
-    
+    },
+
     editProfile: function(){
       contactsView.closeOtherContacts();
       if(this.userDataView){

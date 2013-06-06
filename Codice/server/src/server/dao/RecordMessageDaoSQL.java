@@ -2,14 +2,14 @@
 * Nome: RecordMessageDaoSQL
 * Package: server.dao
 * Autore: Gavagnin Jessica
-* Data: 2013/03/06
+* Data: 2013/04/03
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     GJ        | + removeMessage          |
+* |  130403 |     GJ        | + removeMessage          |
 * |         |               | + getAllMessages         |
 * |         |               | + getMessage             |
 * |         |               | + createMessage          |

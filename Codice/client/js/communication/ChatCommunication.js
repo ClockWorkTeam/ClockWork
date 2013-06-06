@@ -1,15 +1,17 @@
 /**
  * Nome:ChatCommunication.js
- * Package: communication
- * Autore:
- * Data:
- * Versione:
+ * Package: Communication
+ * Autore: Palmisano Maria Antonietta
+ * Data: 2013/04/10
+ * Versione: 1.0
  * 
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +---------+---------------+-------------------------------------+
+ * | Data    | Programmatore |        Modifiche                    | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/10 |    PMA        | + Metodo send                       | 
+ * |         |               | + Metodo onReceived                 |  
+ * |_________|_______________|_____________________________________| 
  */
  
 /**

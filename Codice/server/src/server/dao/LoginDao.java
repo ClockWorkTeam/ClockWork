@@ -2,14 +2,14 @@
 * Nome: LoginDao
 * Package: server.dao
 * Autore: Gavagnin Jessica
-* Data: 2013/03/06
+* Data: 2013/04/02
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     JG        | + logout                 |
+* |  130402 |     JG        | + logout                 |
 * |         |               | + login                  |
 * |         |               | + creato documento  	   |
 * |         |               |                          |

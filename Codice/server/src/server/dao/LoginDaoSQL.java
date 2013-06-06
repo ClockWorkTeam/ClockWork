@@ -2,14 +2,14 @@
 * Nome: LoginDaoSQL
 * Package: server.dao
 * Autore: Gavagnin Jessica
-* Data: 2013/03/06
+* Data: 2013/04/02
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     GJ        | + logout                 |
+* |  130402 |     GJ        | + logout                 |
 * |         |               | + login                  |
 * |         |               | + LoginDaoSQL            |
 * |         |               | + creazione documento	   |
@@ -47,6 +47,7 @@ public class LoginDaoSQL implements LoginDao{
    * @param password Password inserita dall'utente per accedere
    * @param IP della connessione del computer dell'utente
    * @return User che rappresenta l'utente corrispondente nel DB,se la login ha avuto successo, o null se i dati sono sbagliati
+   *              inoltre aggiorna l'istanza presente nel package shared
    */
   public User login(String username, String password, String IP){
 	  ResultSet rs = connection.select("UserDataSQL","*", "username='"+username+"' AND (password='"+password+"')","");
@@ -60,9 +61,9 @@ public class LoginDaoSQL implements LoginDao{
   }
 
   /** Metodo che effettua il logout
-   *
    * @param user Oggetto User dell'utente che vuole disconnettersi
    * @return un boolean che indica se il logout e` avvenuto con successo o no
+   *         inoltre aggiorna l'istanza presente nel package shared
    */
   public boolean logout(User user){
     user.setIP("0");

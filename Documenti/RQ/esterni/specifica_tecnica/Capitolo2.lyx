@@ -326,18 +326,18 @@ name "fig:Architettura-generale-dell'intero-sistema"
 
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk
-\series default
+\family default
  incorpora l'intero sistema
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.client
-\series default
+\family default
  racchiude al suo interno il lato client di 
 \begin_inset ERT
 status open
@@ -357,26 +357,26 @@ PROGETTO}
 \begin_deeper
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.client.view
-\series default
+\family default
  racchiude al suo interno l'interfaccia grafica e la parte logica.
   Questo strato viene definito dal framework Backbone.js
 \end_layout
 
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.client.model
-\series default
+\family default
  contiene localmente le informazioni necessarie a popolare le viste
 \end_layout
 
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.client.communication
-\series default
+\family default
  si occupa della gestione delle comunicazioni tra client e server e tra
  più client
 \end_layout
@@ -384,9 +384,9 @@ mytalk.client.communication
 \end_deeper
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.server
-\series default
+\family default
  racchiude al suo interno il lato server di 
 \begin_inset ERT
 status open
@@ -406,9 +406,9 @@ PROGETTO}
 \begin_deeper
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.server.transfer
-\series default
+\family default
  gestisce il collegamento tra server e client e le operazioni di comunicazione
  tra peers
 \end_layout
@@ -417,24 +417,27 @@ mytalk.server.transfer
 
 \series bold
 mytalk.server.manager
+\family typewriter
+ 
+\family default
 \series default
- racchiude al suo interno:
+racchiude al suo interno:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.server.functionmanager
-\series default
+\family default
  gestisce le operazioni di conversione dati per lo strato transfer
 \end_layout
 
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.server.usermanager
-\series default
+\family default
  gestisce le operazioni di comunicazione tra lo strato transfer e lo strato
  data
 \end_layout
@@ -451,8 +454,11 @@ racchiude al suo interno:
 \begin_deeper
 \begin_layout Itemize
 
+\family typewriter
+mytalk.server.dao
+\family default
 \series bold
-mytalk.server.dao 
+ 
 \series default
 gestisce la base di dati, ovvero l'inserimento, la modifica e la rimozione
  dei dati e la loro permanenza
@@ -460,9 +466,9 @@ gestisce la base di dati, ovvero l'inserimento, la modifica e la rimozione
 
 \begin_layout Itemize
 
-\series bold
+\family typewriter
 mytalk.server.shared
-\series default
+\family default
  contiene al suo interno una copia del database in modo da ridurre al minimo
  gli accessi a quest'ultimo
 \end_layout

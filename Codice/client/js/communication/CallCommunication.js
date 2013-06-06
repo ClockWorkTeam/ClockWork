@@ -1,15 +1,31 @@
 /**
  * Nome:CallCommunication.js
- * Package: communication
- * Autore:
- * Data:
- * Versione:
+ * Package: Communication
+ * Autore: Zohouri Haghian Pardis
+ * Data: 2013/04/09
+ * Versione: 1.0
  * 
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +---------+---------------+-------------------------------------+
+ * | Data    | Programmatore |        Modifiche                    | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/12 |    PMA        | + Medoto recoverCall                | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/11 |    ZHP        | # Gestione migliorata di startCall  | 
+ * |         |               |   per la chiusura chiamata          | 
+ * |         |               | # Globalizzazione delle variabili   | 
+ * |         |               |                                     | 
+ * +---------+---------------+-------------------------------------+ 
+ * |13/04/10 |    ZHP        | + Metodo endCall                    | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/10 |    CM         | # Completamente startcall           | 
+ * |         |               |   possibilità di effettuare         | 
+ * |         |               |   chiamate                          | 
+ * +---------+---------------+-------------------------------------+
+ * |13/04/09 |    ZHP        | + Metodo sendCall                   | 
+ * |         |               | + Metodo sendAnswer                 | 
+ * |         |               | + Bozza startCall                   | 
+ * |_________|_______________|_____________________________________| 
  */
  
 /**

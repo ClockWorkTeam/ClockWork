@@ -2,14 +2,14 @@
 * Nome: UserDao
 * Package: server.dao
 * Autore: Gavagnin Jessica
-* Data: 2013/03/06
+* Data: 2013/04/02
 * Versione: 1.0
 *
 * Modifiche:
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
-* |  130306 |     GJ        | + setSurname             |
+* |  130402 |     GJ        | + setSurname             |
 * |         |               | + setName                |
 * |         |               | + setPassword            |
 * |         |				| + checkPassword          |
@@ -38,7 +38,7 @@ public interface UserDao{
 	 */
 	public User createUser(String username, String password, String name, String surname, String IP);
 
-	/**Metodo che registra un'utente nel DB
+	/**Metodo che elimina un utente dal DB
 	 * @param username
 	 * @return l'oggetto User se l'operazione ha buon fine, altrimenti null
 	 */

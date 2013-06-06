@@ -1,21 +1,26 @@
 /*
  * Nome: CallView.js
- * Package: 
- * Autore:
- * Data:
- * Versione:
- * 
+ * Package: View
+ * Autore: Palmisano Maria Antonietta
+ * Data: 2013/05/15
+ * Versione: 1.0
+ *
  * Modifiche:
- * +------+---------------+-----------+
- * | Data | Programmatore | Modifiche |
- * +------+---------------+-----------+
- * |      |               |           |
+ * +--------+---------------+------------------------+
+ * | Data   | Programmatore |     Modifiche          |
+ * +--------+---------------+------------------------+
+ * |        |    PMA        | + metodo che interrompe|
+ * |        |               |   la registrazione e la|
+ * |        |               |   invia al server      |
+ * +--------+---------------+------------------------+
+ * | 130515 |    FV         | + creazione documento  |
+
  */
- 
+
 //definizione delle dipendenze
 define([
  'jquery',
- 'underscore',  
+ 'underscore',
  'backbone',
  'text!templates/RecordMessageTemplate.html',
 ], function($, _, Backbone, RecordMessageTemplate){
@@ -29,20 +34,20 @@ define([
       'click button#startrecord' : 'startrecord',
       'click button#sendrecord' : 'sendrecord'
       },
-    
+
       el : $('#content'),
-    
+
       template : _.template(RecordMessageTemplate),
-      
+
       /**
        * funzione di inizializzazione dell'oggetto
-       */     
+       */
       initialize: function(){
-    
+
         _.bindAll(this, 'render');
-      
+
       },
-      
+
       /**
        * funzione che effettua la scrittura della struttura della pagina
        */
@@ -61,17 +66,17 @@ define([
 
       /**
        * funzione che si occupa di avviare la registrazione della chiamata
-       */         
+       */
       startrecord : function(){
         alert(localstream);
         localstream.stop();
         $('#startrecord').remove()
         $(this.el).append('<button id= "sendrecord">Termina registrazione ed invia</button>');
       },
- 
+
       /**
        * funzione che si occupa di interrompere la registrazione ed inviarla al server
-       */   	
+       */
       sendrecord : function(){
         $('#sendrecord').remove()
         $(this.el).append('<button id= "startrecord">Inizia registrazione</button>');
