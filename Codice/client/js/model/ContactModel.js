@@ -4,7 +4,7 @@
  * Autore:
  * Data:
  * Versione:
- * 
+ *
  * Modifiche:
  * +------+---------------+-----------+
  * | Data | Programmatore | Modifiche |
@@ -16,7 +16,7 @@ define([
   'backbone'
   ], function(_, Backbone){
     var ContactModel = Backbone.Model.extend({
-	  
+
       defaults: {
         username: '',
         name: '',
@@ -24,7 +24,7 @@ define([
         IP: '0.0.0.0',
       	unread: 0
       }
-	    
+
     });
     return ContactModel;
 });
