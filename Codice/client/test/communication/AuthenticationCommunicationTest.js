@@ -52,8 +52,7 @@ module('About AuthenticationCommunication', {
   test('Login with valid credentials.', function() {
       expect( 3 );
       
-      var callBacks =  this.spy();
-      callBacks.prototype.doLogin = this.spy();
+      var callBacks =  { doLogin: this.spy() };
       var view = this.spy();
       
       var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -73,31 +72,5 @@ module('About AuthenticationCommunication', {
       stub.restore();
      
   });
-
-    /*
-     * 
-     * 
-     * codice di checkCredentials
-    checkCredentials: function(user, pass, callBacks, view) {
-      var credentials = {
-        type: "login",
-        username: user,
-        password: pass
-      };
-      Connection.send(JSON.stringify(credentials));
-      //ascoltatore di eventi da parte del server che si occupa di verificare
-      //che le credenziali inserite siano corrette o meno
-      Connection.onmessage = function(str){
-        var response = JSON.parse(str.data);
-        if(response.type==="login"){				
-          if(response.answer === "true"){
-            callBacks.doLogin(user, pass, response, view);
-          }else if(response.answer === "false"){
-            alert("Login e username errate");
-          }
-        }
-      }
-      }
-      */
 
 });
