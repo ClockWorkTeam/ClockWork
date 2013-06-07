@@ -16,7 +16,7 @@ module('About AuthenticationCommunication', {
 
   teardown: function() {
     
-    //this.sendStub.restore();
+    this.sendStub.restore();
     //this.onmessageStub.restore();
 
     
@@ -30,6 +30,8 @@ module('About AuthenticationCommunication', {
       var callBacks = this.spy();
       var view = this.spy();
       
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
       AuthenticationCommunication.checkCredentials( 'johndoe', '1234', callBacks, view );
       
       var data = JSON.stringify({"type":"login","answer":"false"});
@@ -37,11 +39,41 @@ module('About AuthenticationCommunication', {
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
       this.Connection.dispatchEvent(event);
       
-      ok(this.sendSpy.called);
-      equal(this.sendSpy.callCount, 1);
-      equal(callBacks.callCount, 0);
-      equal(view.callCount, 0);
-    
+      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
+      equal(callBacks.callCount, 0, 'callBacks not called.');
+
+      equal( stub.callCount, 1, 'response.answer === "false"');
+      equal( stub.getCall(0).args[0], 'Login e username errate', "Alert correctly displayed." );
+      
+      stub.restore();
+     
+  });
+  
+  test('Login with valid credentials.', function() {
+      expect( 3 );
+      
+      var callBacks =  this.spy();
+      callBacks.prototype.doLogin = this.spy();
+      var view = this.spy();
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
+      AuthenticationCommunication.checkCredentials( 'johndoe', '1234', callBacks, view );
+      
+      var data = JSON.stringify({"type":"login","answer":"true"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
+      equal(callBacks.doLogin.callCount, 1, 'response.answer === "false"');
+
+      equal( stub.callCount, 0, 'No alert displayed.');
+      
+      stub.restore();
+     
+  });
+
     /*
      * 
      * 
@@ -67,8 +99,5 @@ module('About AuthenticationCommunication', {
       }
       }
       */
-     
-  });
-
 
 });

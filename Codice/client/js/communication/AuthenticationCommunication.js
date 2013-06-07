@@ -67,7 +67,6 @@ define(['connection'], function(Connection){
        * che l'username inserito sia univoco o meno
        */
       Connection.onmessage = function(str){
-        alert('onmessage');
         var response = JSON.parse(str.data);
         if(response.type==="signUp"){
           if(response.answer === "true"){
