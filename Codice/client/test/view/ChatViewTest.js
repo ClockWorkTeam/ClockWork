@@ -39,13 +39,13 @@ define(['../js/view/ChatView'], function( ChatView ) {
     expect( 1 );
 
 		$(this.chatView.el).html(this.chatView.template({ ip: '1' }));
-    this.connectSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.chatView, 'send', this.connectSpy );
+    this.sendSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.chatView, 'send', this.sendSpy );
     this.chatView.delegateEvents();
     // Trigger the event
      $('button#Send').click();
     // Check the done status for the model is true
-    ok( this.connectSpy.called );
+    ok( this.sendSpy.called );
     
     this.sendStub.restore();
   });
