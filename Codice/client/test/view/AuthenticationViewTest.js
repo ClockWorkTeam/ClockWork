@@ -6,7 +6,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
         this.authenticationView = new AuthenticationView();
       },
       teardown: function() {
-        this.sendStub.restore();
+        this.authenticationView.remove();
       }
   });
 
@@ -52,13 +52,14 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.connectSpy = sinon.spy();
     this.sendStub = sinon.stub(this.authenticationView, 'connect', this.connectSpy );
     
+    this.authenticationView.delegateEvents();
     // Trigger the event
     $('button#login').click();
 
     // Check the done status for the model is true
     ok( this.connectSpy.called );
     
-    this.authenticationView.remove();
+    this.sendStub.restore();
   });
 
 });

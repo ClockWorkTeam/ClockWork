@@ -5,9 +5,9 @@ module('About AuthenticationCommunication', {
 
   setup: function() {
     
-    var Connection = require('connection');
+    this.Connection = require('connection');
     this.sendSpy = sinon.spy();
-    this.sendStub = sinon.stub(Connection, 'send', this.sendSpy );
+    this.sendStub = sinon.stub(this.Connection, 'send', this.sendSpy );
     //var Connection = { send: function(){}, onmessage: function(){} };
     //this.sendStub = sinon.stub(Connection, 'send', function(string){} );
     //this.onmessageStub = sinon.stub(Connection, 'onmessage');
@@ -18,7 +18,7 @@ module('About AuthenticationCommunication', {
     
     //this.sendStub.restore();
     //this.onmessageStub.restore();
-    this.sendStub.restore();
+
     
   }
   
@@ -32,10 +32,10 @@ module('About AuthenticationCommunication', {
       
       AuthenticationCommunication.checkCredentials( 'johndoe', '1234', callBacks, view );
       
-      var event=new MessageEvent('message',{
-        data: {"type":"login","answer":"false"}
-        });        
-      document.dispatchEvent(event);
+      var data = JSON.stringify({"type":"login","answer":"false"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
       
       ok(this.sendSpy.called);
       equal(this.sendSpy.callCount, 1);
