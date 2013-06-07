@@ -31,19 +31,19 @@
     <searchpath href="PROJECT_DIR" />
     <members>
       <member type="profile"
-              name="dao.UserDao_profile.profile" />
+              name="UserDao_profile.profile" />
       <member type="xmi"
-              name="dao.UserDao.xmi" />
+              name="UserDao.xmi" />
       <member type="pgml"
-              name="dao.UserDao_DiagrammadiClasse.pgml"
+              name="UserDao_DiagrammadiClasse.pgml"
               diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
               diagramname="Diagramma di Classe" />
       <member type="pgml"
-              name="dao.UserDao_DiagrammadeiCasidUso.pgml"
+              name="UserDao_DiagrammadeiCasidUso.pgml"
               diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
               diagramname="Diagramma dei Casi d&apos;Uso" />
       <member type="todo"
-              name="dao.UserDao.todo" />
+              name="UserDao.todo" />
     </members>
     <historyfile name="" />
   </argo>
@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Mar 14 14:37:11 CET 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jun 07 14:59:15 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -213,6 +213,63 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
+            <UML:Operation xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A89'
+              name = '+getUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A8A'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-66-1--4ba62225:13d68ca03b5:-8000:0000000000000877'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A8B'
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A8C'
+              name = '+checkPassword' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A8D'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-66-1--4ba62225:13d68ca03b5:-8000:0000000000000879'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A8E'
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A8F'
+                  name = 'password' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A90'
+              name = '+getAllUsers' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A91'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A92'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
           </UML:Classifier.feature>
         </UML:Class>
         <UML:Stereotype xmi.id = '10-1-66-1--4ba62225:13d68ca03b5:-8000:0000000000000867'
@@ -226,6 +283,9 @@
         <UML:Class xmi.id = '10-1-66-1--4ba62225:13d68ca03b5:-8000:0000000000000879'
           name = 'boolean' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000A92'
+          name = 'Vector&lt;User&gt;' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -234,7 +294,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 16, 542, 159]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 16, 542, 210]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1--4ba62225:13d68ca03b5:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -248,7 +308,7 @@
       x="0"
       y="16"
       width="542"
-      height="159"
+      height="210"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -351,7 +411,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 82, 540, 93]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 82, 540, 144]"
          href="10-1-66-1--4ba62225:13d68ca03b5:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -365,7 +425,7 @@
         x="1"
         y="82"
         width="540"
-        height="93"
+        height="144"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -377,7 +437,7 @@
         width="540"
         height="17"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -393,7 +453,7 @@
         width="540"
         height="17"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -409,7 +469,7 @@
         width="540"
         height="17"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -425,7 +485,7 @@
         width="540"
         height="17"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -439,6 +499,54 @@
         x="1"
         y="150"
         width="540"
+        height="17"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+setSurname(username : String,surname : String) : boolean</text>
+      <text name="Fig0.6.6"
+        x="1"
+        y="167"
+        width="540"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getUser(username : String) : User</text>
+      <text name="Fig0.6.7"
+        x="1"
+        y="184"
+        width="540"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+checkPassword(username : String,password : String) : boolean</text>
+      <text name="Fig0.6.8"
+        x="1"
+        y="201"
+        width="540"
         height="23"
         fill="0"
         fillcolor="white"
@@ -450,7 +558,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+setSurname(username : String,surname : String) : boolean</text>
+      >+getAllUsers() : Vector&lt;User&gt;</text>
     </group>
   </group>
 </pgml>
