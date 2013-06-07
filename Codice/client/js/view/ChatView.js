@@ -46,7 +46,7 @@ define([
 
     el : '#chat',
 
-    chatTemplate: _.template(ChatTemplate),
+    template: _.template(ChatTemplate),
 
     collection: TextMessagesCollection,
 
@@ -63,7 +63,7 @@ define([
      */
     render: function(){
       if(this.options.userModel!=''){
-        $(this.el).html(this.chatTemplate({ip: this.model.toJSON().IP}));
+        $(this.el).html(this.template({ip: this.model.toJSON().IP}));
         this.putMessages();
       }
     },
