@@ -6,7 +6,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
         this.authenticationView = new AuthenticationView();
       },
       teardown: function() {
-        this.sendStub.restore();
+        this.authenticationView.remove();
       }
   });
 
@@ -46,19 +46,96 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     
   });
 
-  test('Can wire up view methods to DOM elements.', function() {
+  test('Can wire up connect method to DOM element.', function() {
     expect( 1 );
 
     this.connectSpy = sinon.spy();
     this.sendStub = sinon.stub(this.authenticationView, 'connect', this.connectSpy );
-    
+    this.authenticationView.delegateEvents();
     // Trigger the event
-    $('button#login').click();
-
+     $('button#login').click();
     // Check the done status for the model is true
     ok( this.connectSpy.called );
     
-    this.authenticationView.remove();
+    this.sendStub.restore();
   });
 
+  test('Can wire up disconnect method to DOM element.', function() {
+    expect( 1 );
+	
+		$(this.authenticationView.el).html(this.authenticationView.template({authenticated: true, name: 'johndoe'}));
+
+    this.connectSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.authenticationView, 'disconnect', this.connectSpy );
+    this.authenticationView.delegateEvents();
+    // Trigger the event
+    $('button#logout').click();
+    // Check the done status for the model is true
+    ok( this.connectSpy.called );
+    
+    this.sendStub.restore();
+  });
+  
+  test('Can wire up view_signup method to DOM element.', function() {
+    expect( 1 );
+
+    this.connectSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.authenticationView, 'view_signup', this.connectSpy );
+    this.authenticationView.delegateEvents();
+    // Trigger the event
+    $('button#signup').click();
+    // Check the done status for the model is true
+    ok( this.connectSpy.called );
+    
+    this.sendStub.restore();
+  });
+ 
+  test('Can wire up signup method to DOM element.', function() {
+    expect( 1 );
+
+    $(this.authenticationView.el).html(this.authenticationView.template({authenticated: false, signup: true}));
+
+    this.connectSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.authenticationView, 'signup', this.connectSpy );
+    this.authenticationView.delegateEvents();
+    // Trigger the event
+    $('button#sign').click();
+    // Check the done status for the model is true
+    ok( this.connectSpy.called );
+    
+    this.sendStub.restore();
+  });
+   
+  test('Can wire up deny method to DOM element.', function() {
+    expect( 1 );
+
+    $(this.authenticationView.el).html(this.authenticationView.template({authenticated: false, signup: true}));
+
+    this.connectSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.authenticationView, 'deny', this.connectSpy );
+    this.authenticationView.delegateEvents();
+    // Trigger the event
+    $('button#deny').click();
+    // Check the done status for the model is true
+    ok( this.connectSpy.called );
+    
+    this.sendStub.restore();
+  });
+   
+  test('Can wire up editProfile method to DOM element.', function() {
+    expect( 1 );
+
+		$(this.authenticationView.el).html(this.authenticationView.template({authenticated: true, name: 'johndoe'}));
+
+    this.connectSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.authenticationView, 'editProfile', this.connectSpy );
+    this.authenticationView.delegateEvents();
+    // Trigger the event
+    $('button#edit').click();
+    // Check the done status for the model is true
+    ok( this.connectSpy.called );
+    
+    this.sendStub.restore();
+  });
+  
 });
