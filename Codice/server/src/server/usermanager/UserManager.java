@@ -88,8 +88,8 @@ public class UserManager{
 	public RecordMessage getMessage(String sender, String addressee, String path, String date){
 		return messageDao.getMessage(sender, addressee, path, date);
 	}
-	public boolean removeMessage(String sender, String addressee, String path, String date){
-		return messageDao.removeMessage(messageDao.getMessage(sender, addressee, path, date));
+	public boolean removeMessage(RecordMessageDao message){
+		return messageDao.removeMessage(message));
 	}
 
   public User getUser(String username){

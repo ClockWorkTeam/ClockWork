@@ -1,27 +1,15 @@
 //Wait for relevant code bits to load before starting any tests
 define([ '../js/communication/AuthenticationCommunication'], function( AuthenticationCommunication ) {
 
-module('About AuthenticationCommunication', {
-
+module('About AuthenticationCommunication.checkCredentials', {
   setup: function() {
-    
     this.Connection = require('connection');
     this.sendSpy = sinon.spy();
     this.sendStub = sinon.stub(this.Connection, 'send', this.sendSpy );
-    //var Connection = { send: function(){}, onmessage: function(){} };
-    //this.sendStub = sinon.stub(Connection, 'send', function(string){} );
-    //this.onmessageStub = sinon.stub(Connection, 'onmessage');
-
   },
-
-  teardown: function() {
-    
+  teardown: function() {  
     this.sendStub.restore();
-    //this.onmessageStub.restore();
-
-    
   }
-  
 });
 
   test('Login with wrong credentials.', function() {
@@ -52,8 +40,7 @@ module('About AuthenticationCommunication', {
   test('Login with valid credentials.', function() {
       expect( 3 );
       
-      var callBacks =  this.spy();
-      callBacks.prototype.doLogin = this.spy();
+      var callBacks =  { doLogin: this.spy() };
       var view = this.spy();
       
       var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -66,38 +53,138 @@ module('About AuthenticationCommunication', {
       this.Connection.dispatchEvent(event);
       
       equal(this.sendSpy.callCount, 1, 'Connection.send called.');
-      equal(callBacks.doLogin.callCount, 1, 'response.answer === "false"');
+      equal(callBacks.doLogin.callCount, 1, 'response.answer === "true"');
 
       equal( stub.callCount, 0, 'No alert displayed.');
       
       stub.restore();
      
   });
+  
+  
+  
+  
+  
+module('About AuthenticationCommunication.signup', {
+  setup: function() {
+    this.Connection = require('connection');
+    this.sendSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.Connection, 'send', this.sendSpy );
+  },
+  teardown: function() {  
+    this.sendStub.restore();
+  }
+});
 
-    /*
-     * 
-     * 
-     * codice di checkCredentials
-    checkCredentials: function(user, pass, callBacks, view) {
-      var credentials = {
-        type: "login",
-        username: user,
-        password: pass
-      };
-      Connection.send(JSON.stringify(credentials));
-      //ascoltatore di eventi da parte del server che si occupa di verificare
-      //che le credenziali inserite siano corrette o meno
-      Connection.onmessage = function(str){
-        var response = JSON.parse(str.data);
-        if(response.type==="login"){				
-          if(response.answer === "true"){
-            callBacks.doLogin(user, pass, response, view);
-          }else if(response.answer === "false"){
-            alert("Login e username errate");
-          }
-        }
-      }
-      }
-      */
+  test('Signup with wrong credentials.', function() {
+      expect( 4 );
+      
+      var callBacks = this.spy();
+      var view = this.spy();
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
+      AuthenticationCommunication.signup( 'johndoe', '1234', 'john', 'doe', callBacks, view );
+      
+      var data = JSON.stringify({"type":"signUp","answer":"false"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
+      equal(callBacks.callCount, 0, 'callBacks not called.');
 
+      equal( stub.callCount, 1, 'response.answer === "false"');
+      equal( stub.getCall(0).args[0], 'Username non disponibile', "Alert correctly displayed." );
+      
+      stub.restore();
+     
+  });
+  
+  test('Signup with valid credentials.', function() {
+      expect( 3 );
+      
+      var callBacks =  { doLogin: this.spy() };
+      var view = this.spy();
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
+      AuthenticationCommunication.signup( 'johndoe', '1234', 'john', 'doe', callBacks, view );
+      
+      var data = JSON.stringify({"type":"signUp","answer":"true"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
+      equal(callBacks.doLogin.callCount, 1, 'response.answer === "true"');
+
+      equal( stub.callCount, 0, 'No alert displayed.');
+      
+      stub.restore();
+     
+  });
+  
+  
+  
+  
+  
+module('About AuthenticationCommunication.logout', {
+  setup: function() {
+    this.Connection = require('connection');
+    this.sendSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.Connection, 'send', this.sendSpy );
+  },
+  teardown: function() {  
+    this.sendStub.restore();
+  }
+});
+
+  test('Logout with wrong credentials.', function() {
+      expect( 4 );
+      
+      var user = this.spy();
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
+      AuthenticationCommunication.logout( user );
+      
+      var data = JSON.stringify({"type":"logout","answer":"false"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
+      equal(user.callCount, 0, 'callBacks not called.');
+
+      equal( stub.callCount, 1, 'response.answer === "false"');
+      equal( stub.getCall(0).args[0], 'Logout fallito', "Alert correctly displayed." );
+      
+      stub.restore();
+     
+  });
+  
+  test('Logout with valid credentials.', function() {
+      expect( 3 );
+      
+      var user = this.spy();
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
+      AuthenticationCommunication.logout( user );
+      
+      var data = JSON.stringify({"type":"logout","answer":"true"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
+      equal(user.callCount, 0, 'response.answer === "true"');
+
+      equal( stub.callCount, 0, 'No alert displayed.');
+      
+      stub.restore();
+     
+  });
+  
 });
