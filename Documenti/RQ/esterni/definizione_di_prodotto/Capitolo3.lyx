@@ -1149,7 +1149,7 @@ JavaConnectionSQLite connection:
 \begin_layout Itemize
 
 \series bold
-UserList users:
+UserList userList:
 \series default
  riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -1349,7 +1349,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-TutorialsDaoSQL(JavaConnectionSQLite connection):
+TutorialsDaoSQL(JavaConnectionSQLite server):
 \series default
  costruttore della classe che dovrà impostare il valore degli attributi
  secondo il valore dei parametri passati
@@ -1694,7 +1694,7 @@ i al server
 \begin_layout Itemize
 
 \series bold
-UserList users:
+UserList userList:
 \series default
  riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -2287,7 +2287,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-Tutorials(int numero):
+Tutorials(int num):
 \series default
  costruttore che inizializza la lista di tutorials dellla dimensione passatagli
  dal parametro
@@ -2586,7 +2586,7 @@ Vector<RecordMessage> getMessages()
 \begin_layout Itemize
 
 \series bold
-void setMessages(RecordMessage message)
+void setMessages(Vector<RecordMessage> messagesNew)
 \series default
 : metodo che cambia la lista dei messaggi differiti inviati all'utente in
  questione
@@ -2595,7 +2595,7 @@ void setMessages(RecordMessage message)
 \begin_layout Itemize
 
 \series bold
-setMessage(RecordMessage message)
+void setMessage(RecordMessage message)
 \series default
 : metodo che aggiunge un messaggio differito nel vettore messages
 \end_layout
@@ -2603,7 +2603,7 @@ setMessage(RecordMessage message)
 \begin_layout Itemize
 
 \series bold
-removeMessage(RecordMessage message)
+void removeMessage(RecordMessage message)
 \series default
 : metodo che rimuove un messaggio differito dal vettore dei messaggi
 \end_layout
@@ -3212,7 +3212,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-init(UserDao userDao, RecordMessageDao messageDao): 
+void init(UserDao userDao, RecordMessageDao messageDao): 
 \series default
 metodo che funge da costruttore della classe
 \end_layout
@@ -3245,8 +3245,8 @@ metodo che modifica il nome e il cognome esistenti con quelli passati
 \begin_layout Itemize
 
 \series bold
-RecordMessage createMessage(String sender, String adressee, String path,
- Date date): 
+RecordMessage createMessage(String sender, String addressee, String path,
+ String date): 
 \series default
 metodo che aggiunge un messaggio registrato destinato all'utente
 \end_layout
@@ -3289,7 +3289,7 @@ User getUser(String username)
 \begin_layout Itemize
 
 \series bold
-Vector<User> getAllContacts(User): 
+Vector<User> getAllContacts(User user): 
 \series default
 metodo che restituisce tutti gli utenti presenti nel server, ad eccezione
  di quello dato
@@ -3496,7 +3496,7 @@ String convertUsers(Vector<User> users, String type):
 \begin_layout Itemize
 
 \series bold
-String convertMessages(Vector<RecordMessage> messages, String type):
+String convertMessages(Vector<RecordMessage> mex, String type):
 \series default
  metodo che converte in forma di stringa il vettore di messaggi passato
  per argomento, inserendo inizialmente la stringa type e il numero di messaggi
@@ -3506,7 +3506,7 @@ String convertMessages(Vector<RecordMessage> messages, String type):
 \begin_layout Itemize
 
 \series bold
-String convertTutorials(Mao<String, String> tutorials, String type):
+String convertTutorials(Map<String, String> tutorials, String type):
 \series default
  metodo che converte in forma di stringa i tutorials passati per argomento,
  inserendo inizialmente la stringa type e il numero di tutorials presenti

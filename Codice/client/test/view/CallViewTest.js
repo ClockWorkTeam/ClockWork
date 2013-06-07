@@ -28,13 +28,13 @@ define(['../js/view/CallView'], function( CallView ) {
     expect( 1 );
 
 		$(this.callView.el).html(this.callView.template({ username: 'clockwork' }));
-    this.connectSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.callView, 'endCall', this.connectSpy );
+    this.endCallSpy = sinon.spy();
+    this.sendStub = sinon.stub(this.callView, 'endCall', this.endCallSpy );
     this.callView.delegateEvents();
     // Trigger the event
      $('button#endCall').click();
     // Check the done status for the model is true
-    ok( this.connectSpy.called );
+    ok( this.endCallSpy.called );
     
     this.sendStub.restore();
   });

@@ -37,7 +37,7 @@ define([
       'keyup input#password:last-of-type':'pressEnter',
       'click button#login': 'connect',
       'click button#logout': 'disconnect',
-      'click button#signup': 'view_signup',
+      'click button#signup': 'viewSignup',
       'click button#sign': 'signup',
       'click button#deny': 'deny',
       'click button#edit': 'editProfile'
@@ -113,7 +113,7 @@ define([
     /**
      * visualizzo il form di registrazione
      */
-    view_signup: function(){
+    viewSignup: function(){
       $(this.el).html(this.template({authenticated: false, signup: true}));
     },
 

@@ -26,12 +26,12 @@ define([
 
   var ContactView = Backbone.View.extend({
     template: _.template(ContactTemplate),
-
+		tagName: 'li',
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
      */
     events: {
-      'click li.contact': 'view'
+      'click span.contact': 'view'
     },
 
     /**
