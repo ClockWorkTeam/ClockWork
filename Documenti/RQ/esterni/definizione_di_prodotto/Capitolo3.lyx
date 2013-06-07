@@ -694,7 +694,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-User LoginDao(String username, String password, String IP):
+User login(String username, String password, String IP):
 \series default
  metodo che controllerà la correttezza dei dati inseriti da un utente per
  connettersi al sistema, e in caso affermativo reimpostera l'IP
@@ -831,7 +831,7 @@ JavaConnectionSQLite connection:
 \begin_layout Itemize
 
 \series bold
-UserList users:
+UserList userList:
 \series default
  riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -843,7 +843,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-LoginDaoSQL(JavaConnectionSQLite connection):
+LoginDaoSQL(JavaConnectionSQLite server, UserList users):
 \series default
  costruttore della classe che dovrà impostare il valore degli attributi
  secondo il valore dei parametri passati
