@@ -39,7 +39,6 @@ define(['connection'], function(Connection){
        * che le credenziali inserite siano corrette o meno
        */
       Connection.onmessage = function(str){
-        alert('onmessage');
         var response = JSON.parse(str.data);
         if(response.type==="login"){				
           if(response.answer === "true"){

@@ -35,7 +35,7 @@ define([
       'click button#sendrecord' : 'sendrecord'
       },
 
-      el : $('#content'),
+      el : '#content',
 
       template : _.template(RecordMessageTemplate),
 

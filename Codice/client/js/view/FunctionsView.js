@@ -43,7 +43,7 @@ define([
       'click input#record' : 'record'
     },
 
-    el : $('#content'),
+    el : '#content',
 
     template : _.template(FunctionsTemplate),
 

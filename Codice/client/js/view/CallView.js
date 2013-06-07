@@ -37,7 +37,7 @@ define([
       'click button#endCall':'endCall',
     },
 
-    el : $('#content'),
+    el : '#content',
 
     template : _.template(CallTemplate),
 
