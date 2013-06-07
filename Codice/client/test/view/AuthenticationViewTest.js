@@ -3,10 +3,10 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
 
   module( 'About Backbone.View', {
       setup: function() {
-          this.authenticationView = new AuthenticationView();
+        this.authenticationView = new AuthenticationView();
       },
       teardown: function() {
-          this.authenticationView.remove();
+        this.sendStub.restore();
       }
   });
 
@@ -45,32 +45,20 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     equal($('#authentication').find('button').length, 2, 'Two buttons rendered.');
     
   });
-/*
+
   test('Can wire up view methods to DOM elements.', function() {
-    expect( 2 );
+    expect( 1 );
+
     this.connectSpy = sinon.spy();
     this.sendStub = sinon.stub(this.authenticationView, 'connect', this.connectSpy );
-    var viewElt;
-
-    setTimeout(function() {
-        viewElt = $('button#login');
-        
-        alert('timeout');
-
-        equal(viewElt.length, 1);
-
-        // Ensure QUnit knows we can continue
-       start();
-    }, 1000, 'Expected DOM Elt to exist');
-    stop();
-
-    // Trigget the view to toggle the 'done' status on an item or items
+    
+    // Trigger the event
     $('button#login').click();
 
     // Check the done status for the model is true
-    ok( this.connectSpy.calleOnce );
+    ok( this.connectSpy.called );
     
-    this.sendStub.restore();
+    this.authenticationView.remove();
   });
-*/
+
 });
