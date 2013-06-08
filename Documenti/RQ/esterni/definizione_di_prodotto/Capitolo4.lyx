@@ -492,9 +492,9 @@ AuthenticationView
 \series bold
  
 \series default
-definisce la struttura, e la conseguente visualizzazione, della parte della
- pagina web che consente di effettuare la registrazione, l'accesso e la
- disconnessione dal sistema
+deve definire la struttura, e la conseguente visualizzazione, della parte
+ della pagina web che consente di effettuare la registrazione, l'accesso
+ e la disconnessione dal sistema
 \end_layout
 
 \begin_layout Standard
@@ -604,7 +604,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- contiene l'elemento DOM al quale è legata la classe
+ conterrà l'elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -616,7 +616,7 @@ SideView
 \series bold
  contactsView:
 \series default
- contiene il riferimento alla classe SideView
+ conterrà il riferimento alla classe SideView
 \end_layout
 
 \begin_layout Itemize
@@ -624,15 +624,15 @@ SideView
 \series bold
 [UserDataView] userDataView:
 \series default
- contiene il riferimento alla classe UserDataView
+ conterrà il riferimento alla classe UserDataView
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[UseModel] userModel: 
+[UserModel] userModel: 
 \series default
-contiene il riferimento alla classe UserModel
+conterrà il riferimento alla classe UserModel
 \end_layout
 
 \begin_layout Itemize
@@ -640,7 +640,7 @@ contiene il riferimento alla classe UserModel
 \series bold
 [Template] template: 
 \series default
-contiene il riferimento al template utilizzato
+conterrà il riferimento al template utilizzato
 \end_layout
 
 \begin_layout Standard
@@ -654,11 +654,7 @@ Eventi:
 \series bold
 click button#login: 
 \series default
-collega il pulsante 
-\emph on
-Login
-\emph default
- al metodo 
+evento che richiama la funzione  
 \emph on
 connect()
 \end_layout
@@ -668,11 +664,7 @@ connect()
 \series bold
 click button#logout: 
 \series default
-collega il pulsante 
-\emph on
-Logout
-\emph default
- al metodo 
+evento che richiama la funzione 
 \emph on
 disconnect()
 \end_layout
@@ -682,11 +674,7 @@ disconnect()
 \series bold
 click button#signup: 
 \series default
-collega il pulsante 
-\emph on
-Registrazione
-\emph default
- al metodo 
+evento che richiama la funzione 
 \emph on
 viewSignup()
 \end_layout
@@ -696,11 +684,7 @@ viewSignup()
 \series bold
 click button#sign: 
 \series default
-collega il pulsante 
-\emph on
-Conferma Registrazione
-\emph default
- al metodo 
+evento che richiama la funzione 
 \emph on
 signup()
 \end_layout
@@ -710,11 +694,7 @@ signup()
 \series bold
 click button#deny: 
 \series default
-collega il pulsante 
-\emph on
-Annulla Registrazione
-\emph default
- al metodo 
+evento che richiama la funzione 
 \emph on
 deny()
 \end_layout
@@ -722,13 +702,9 @@ deny()
 \begin_layout Itemize
 
 \series bold
-click button#edit: 
+click button#edit:
 \series default
-collega il pulsante 
-\emph on
-Modifica dati profilo
-\emph default
- al metodo 
+evento che richiama la funzione 
 \emph on
 editProfile()
 \end_layout
@@ -742,13 +718,13 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-initialize():
+[void] initialize():
 \series default
- metodo di inizializzazione dell'oggetto, inizializza 
+ metodo per inizializzare l'oggetto, si occuperà di inizzializzare 
 \emph on
 contactsView 
 \emph default
-e richiama il metodo 
+e richiamare il metodo 
 \emph on
 render()
 \end_layout
@@ -756,18 +732,18 @@ render()
 \begin_layout Itemize
 
 \series bold
-render():
+[void] render():
 \series default
- metodo che effettua la scrittura nella pagina del template authenticationTempla
-te
+ metodo per effettuare la scrittura nella pagina del template authenticationTemp
+late
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-callBacks():
+[doLogin()] callBacks():
 \series default
- metodo che permette ad altre classi di usufruire del metodo 
+ metodo che permetterà ad altre classi di usufruire del metodo 
 \emph on
 doLogin(String, String, String[], AuthenticationView) 
 \end_layout
@@ -776,10 +752,11 @@ doLogin(String, String, String[], AuthenticationView)
 \begin_layout Itemize
 
 \series bold
-callBacks().doLogin(String, String, String[], AuthenticationView)
+[void] callBacks().doLogin(String, String, String[], AuthenticationView)
 \series default
-: metodo che effettua il login, creando il model corrispondente all'utente
- e aggiornando il template, inoltre invoca il metodo 
+: metodo che effettuerà l'operazione di login.
+ Si occuperà di creare il model corrispondente all'utente, aggiornare il
+ template e invocare il metodo 
 \emph on
 getContacts(AuthenticationView) 
 \emph default
@@ -792,9 +769,9 @@ contactsView
 \begin_layout Itemize
 
 \series bold
-connect():
+[void] connect():
 \series default
- metodo che avvia l'operazione di login dell'utente richiamando il metodo
+ metodo che avvierà l'operazione di login dell'utente richiamando il metodo
  
 \emph on
 checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticatioVIe
@@ -811,22 +788,22 @@ AuthenticationCommunication
 \begin_layout Itemize
 
 \series bold
-disconnect():
+[void] disconnect():
 \series default
- metodo che si occupa di chiudere la sessione con il server, invocando il
- metodo 
+ metodo che si occuparà di chiudere la sessione con il server, dovrà invocare
+ il metodo 
 \emph on
 logout(String)
 \emph default
-
-\begin_inset space ~
-\end_inset
-
-della classe 
+ della classe 
 \emph on
-AuthenticationCommunication, 
+AuthenticationCommunication
 \emph default
-aggiornando il template e deallocando 
+,
+\emph on
+ 
+\emph default
+aggiornare il template e deallocare 
 \emph on
 userDataView 
 \emph default
@@ -838,19 +815,20 @@ contactsView
 \begin_layout Itemize
 
 \series bold
-viewSignup():
+[void] viewSignup():
 \series default
- metodo che visualizza il form di registrazione
+ metodo che permetterà la visualizzazione del form di registrazione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-signup():
+[void] signup():
 \series default
- metodo che avvia l'operazione di registrazione dell'utente, se i campi
- obbligatori (username e password) sono compilati e se la password di conferma
- risulta uguale alla password inserita, allora invoca il metodo 
+ metodo che avvierà l'operazione di registrazione dell'utente.
+ Dovrà controllare che i campi obbligatori siano compilati e che la password
+ e quella di conferma coincidano, in caso affermativo invocherà il metodo
+ 
 \emph on
 signup(String, String, String, String, AuthenticationView.callBacks(), Authentica
 tioView) 
@@ -859,13 +837,13 @@ della classe
 \emph on
 AuthenticationCommunication
 \emph default
- altrimenti mostra l'avviso di errore
+ altrimenti mostrerà l'avviso di errore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-deny():
+[void] deny():
 \series default
  metodo per annullare la compilazione della registrazione e tornare allo
  stato precedente alla registrazione
@@ -874,15 +852,15 @@ deny():
 \begin_layout Itemize
 
 \series bold
-editProfile()
+[void] editProfile()
 \series default
-: metodo che avvia l'operazione di modifica dati, inizializzando 
+: metodo che avvierà l'operazione di modifica dati, inizializzando 
 \emph on
 userDataView.
  
 \emph default
-Prima di effettuare l'operazione chiude la View presente in quel momento
- nel content
+Prima di effettuare l'operazione dovrà controllare che tutte le view presenti
+ nel content siano state chiuse
 \end_layout
 
 \begin_layout Subsubsection
