@@ -484,17 +484,9 @@ name "sub:AuthenticationView"
 \end_layout
 
 \begin_layout Standard
-La classe
-\family typewriter
- 
-\family default
-AuthenticationView
-\series bold
- 
-\series default
-deve definire la struttura, e la conseguente visualizzazione, della parte
- della pagina web che consente di effettuare la registrazione, l'accesso
- e la disconnessione dal sistema
+La classe AuthenticationView deve definire la struttura, e la conseguente
+ visualizzazione, della parte della pagina web che consente di effettuare
+ la registrazione, l'accesso e la disconnessione dal sistema
 \end_layout
 
 \begin_layout Standard
@@ -877,14 +869,8 @@ name "sub:CallView"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-CallView 
-\family default
-\series default
-definisce la struttura, e la conseguente visualizzazione, della pagina di
- chiamata
+La classe CallView definisce la struttura, e la conseguente visualizzazione,
+ della pagina di chiamata
 \end_layout
 
 \begin_layout Standard
@@ -939,7 +925,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.communication.CallCommunication
 \end_layout
 
@@ -954,14 +939,12 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.NotificationView
 \end_layout
 
@@ -978,8 +961,7 @@ La classe deriva da
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.view
+mytalk.client.Backbone.View
 \end_layout
 
 \end_deeper
@@ -1055,6 +1037,26 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template CallTemplate
+ e che verificherà che sia in corso una chiamata e, in caso affermativo,
+ chiamerà il metodo 
+\shape italic
+recoverCall()
+\shape default
+ di CallCommunication e il metodo 
+\shape italic
+render()
+\shape default
+ di StatisticsView.
+ Inoltre, a seconda che l'utente sia il chiamato o il chiamante, chiamerà
+ i metodi 
+\shape italic
+sendAnswer()
+\shape default
+ o 
+\shape italic
+sendCall()
+\shape default
+ di CallCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -1062,7 +1064,7 @@ render()
 \series bold
 [void] endcall(): 
 \series default
-metodo che termina la chiamata in corso richiamando anche il metodo 
+metodo che terminerà la chiamata in corso richiamando anche il metodo 
 \shape italic
 closeViewCall()
 \shape default
@@ -1074,7 +1076,7 @@ closeViewCall()
 \series bold
 [void] CallView.prototype.close():
 \series default
- metodo che chiude l'istanza della classe creata
+ metodo che chiuderà l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1091,14 +1093,8 @@ name "sub:ChatView"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ChatView
-\family default
-\series default
- definisce la struttura, e la conseguente visualizzazione, della parte della
- pagina web che consente di effettuare comunicazioni testuali
+La classe ChatView definisce la struttura, e la conseguente visualizzazione,
+ della parte della pagina web che consente di effettuare comunicazioni testuali
 \end_layout
 
 \begin_layout Standard
@@ -1153,7 +1149,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.communication.ChatCommunication
 \end_layout
 
@@ -1168,7 +1163,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
@@ -1185,8 +1179,7 @@ La classe deriva da
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.view
+mytalk.client.Backbone.View
 \end_layout
 
 \end_deeper
@@ -1217,7 +1210,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [TextMessagesCollection] collection:
 \series default
- utilizzato per tenere la collezione di messaggi testuali tra i due utenti
+ conterrà il riferimento alla classe TextMessagesCollection
 \end_layout
 
 \begin_layout Standard
@@ -1262,6 +1255,24 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template ChatTemplate
+ e, nel caso in cui saranno salvati messaggi di testo, invocherà il metodo
+ 
+\shape italic
+putMessages()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] unrender():
+\series default
+ metodo per rimuovere da 
+\shape italic
+collection
+\shape default
+ la conversazione con l'utente e invocare il metodo 
+\shape italic
+close() 
 \end_layout
 
 \begin_layout Itemize
@@ -1274,7 +1285,7 @@ metodo per inviare un messaggio ad un altro utente tramite il metodo
 send()
 \shape default
  della classe ChatCommunication.
- Provvede anche ad aggiungere il messaggio a 
+ Provvederà anche ad aggiungere il messaggio a 
 \shape italic
 collection
 \end_layout
@@ -1291,15 +1302,30 @@ collection
  tutti i messaggi di testo della conversazione scelta salvati in model chiamando
  la funzione 
 \shape italic
-putMessage()
+putMessage(messages[i])
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] putMessage(TextMessageModel)
+\series default
+: metodo per inserire nell'array 
+\shape italic
+TextMessageModel
+\shape default
+ la lista di messaggi di testo della conversazione scelta distinguendo tra
+ messaggi inviati, ricevuti e scritti ma non inviati
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 [void] ChatView.prototype.close(): 
 \series default
-metodo che chiude l'istanza della classe creata
+metodo che chiuderà l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1316,14 +1342,8 @@ name "sub:ContactView"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ContactView 
-\family default
-\series default
-consente la visualizzazione all'interno della pagina web di un singolo utente
- registrato 
+La classe ContactView consente la visualizzazione all'interno della pagina
+ web di un singolo utente registrato 
 \end_layout
 
 \begin_layout Standard
@@ -1378,7 +1398,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
@@ -1393,7 +1412,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.SideView
 \end_layout
 
@@ -1408,8 +1426,7 @@ La classe deriva da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.view
+mytalk.client.Backbone.View
 \end_layout
 
 \end_deeper
@@ -1422,17 +1439,41 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+[DOM element] el:
 \series default
- utilizzato per indicare quale parte del DOM gestirà
+ conterrà l'elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-template:
+[Template] template: 
 \series default
- utilizzato per tenere il template per il rendering di questa vista 
+conterrà il riferimento al template utilizzato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[FunctionsView] currentFunctions: 
+\series default
+conterrà il riferimento alla classe FunctionsView
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Eventi:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click span.contact: 
+\series default
+evento che richiama la funzione 
+\emph on
+view()
 \end_layout
 
 \begin_layout Paragraph
@@ -1444,33 +1485,83 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-initialize():
+[void] initialize():
 \series default
- metodo di inizializzazione della vista
+ metodo per inizializzare l'oggetto, si occuperà di inizializzare 
+\emph on
+currentFunctions 
+\emph default
+e richiamare il metodo 
+\emph on
+render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-render():
+[void] render():
 \series default
- metodo che rende visibili i contatti
+ metodo per effettuare la scrittura nella pagina del template ContactTemplate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-view():
+[void] view():
 \series default
- metodo che crea le viste di funzioni e di chat quando seleziono su un contatto
+ metodo che invocherà il metodo 
+\shape italic
+options.callback.closeOtherContacts(this.model.toJSON().username)
+\shape default
+, se necessario aggiornerà il campo 
+\shape italic
+currentFunctions
+\shape default
+ e chiamerà il suo metodo 
+\shape italic
+render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-ContactView.prototype.close():
+[void] createCall(type):
 \series default
- metodo che chiude l'istanza creata
+ metodo che verrà chiamato quando si accetterà una chiamata in arrivo; invocherà
+ il metodo 
+\shape italic
+options.callback.closeOtherContacts(this.model.toJSON().username)
+\shape default
+, se necessario aggiornerà il campo 
+\shape italic
+currentFunctions
+\shape default
+ e chiamerà il suo metodo 
+\shape italic
+render()
+\shape default
+, infine chiamerà i metodi 
+\shape italic
+currentFunctions.videocall(isCaller)
+\shape default
+ o 
+\shape italic
+currentFunctions.audiocall(isCaller)
+\shape default
+, essendo chiamato dall'utente chiamato invocherà tali metodi con valore
+ 
+\shape italic
+false
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] ContactView.prototype.close():
+\series default
+ metodo che chiuderà l'istanza della classe creata invocando il metodo 
+\shape italic
+currentFunctions,unrender()
 \end_layout
 
 \begin_layout Subsubsection
@@ -1487,15 +1578,9 @@ name "sub:.FileView"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-SendFileView
-\family default
-\series default
- definisce la struttura, e la conseguente visualizzazione, della parte della
- pagina web che consente di selezionare un file salvato in locale per mandarlo
- all'utente autenticato selezionato
+La classe FileView definisce la struttura, e la conseguente visualizzazione,
+ della parte della pagina web che consente di selezionare un file salvato
+ in locale per mandarlo all'utente autenticato selezionato
 \end_layout
 
 \begin_layout Standard
@@ -1550,8 +1635,7 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.communication.SendFileCommunication
+mytalk.client.communication.FileCommunication
 \end_layout
 
 \end_deeper
@@ -1565,7 +1649,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.FunctionsView
 \end_layout
 
@@ -1582,8 +1665,7 @@ La classe deriva da
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.view
+mytalk.client.Backbone.View
 \end_layout
 
 \end_deeper
@@ -1596,17 +1678,17 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+[DOM element] el:
 \series default
- utilizzato per indicare quale parte del DOM gestirà
+ conterrà l'elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-template:
+[Template] template: 
 \series default
- utilizzato per tenere il template per il rendering di questa vista 
+conterrà il riferimento al template utilizzato
 \end_layout
 
 \begin_layout Paragraph
@@ -1618,36 +1700,37 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-initialize():
+[void] initialize():
 \series default
- metodo di inizializzazione dell'oggetto
+ metodo per inizializzare l'oggetto, si occuperà di richiamare il metodo
+ 
+\emph on
+render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-render():
+[void] render():
 \series default
- metodo che effettua la scrittura della struttura della pagina
+ metodo per effettuare la scrittura nella pagina del template FileTemplate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-submit():
+[void] submit():
 \series default
- metodo che invia il file al server, attraverso l'utilizzo di 
-\family typewriter
-\series bold
-SendFileCommunication
+ metodo che invierà il file al server, attraverso l'utilizzo di FileCommunicatio
+n
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-SendiFileView.prototype.close(): 
+[void] FileView.prototype.close(): 
 \series default
-metodo che chiude l'istanza creata
+metodo che chiuderà l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1664,14 +1747,8 @@ name "sub:FunctionsView"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-FunctionsView
-\family default
-\series default
- definisce la struttura, e la conseguente visualizzazione, delle funzionalità
- offerte dopo aver selezionato un contatto
+La classe FunctionsView definisce la struttura, e la conseguente visualizzazione
+, delle funzionalità offerte dopo aver selezionato un contatto
 \end_layout
 
 \begin_layout Standard
@@ -1726,21 +1803,18 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.CallView
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.RecordMessageView
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.ChatView
 \end_layout
 
@@ -1756,13 +1830,14 @@ La classe è utilizzata da:
 
 \family typewriter
 \series bold
-mytalk.client.view.ContactView
+m
+\series default
+ytalk.client.view.ContactView
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.SideView
 \end_layout
 
@@ -1779,8 +1854,7 @@ La classe deriva da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.view
+mytalk.client.Backbone.View
 \end_layout
 
 \end_deeper
@@ -1793,47 +1867,79 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+[DOM element] el:
 \series default
- utilizzato per indicare quale parte del DOM gestirà
+ conterrà l'elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-template: 
+[Template] template: 
 \series default
-utilizzato per tenere il template per il rendering di questa vista
+conterrà il riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-current_user:
+[CallView] callView: 
 \series default
- utilizzato per tenere traccia dell'utente corrente
+conterrà il riferimento alla classe CallView
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-callView: 
+[RecordMessageView] recordMessageView:
 \series default
-utilizzato per tenere traccia della vista 
-\family typewriter
+ conterrà il riferimento alla classe RecordMessageView
+\end_layout
+
+\begin_layout Standard
+
 \series bold
-CallView
-\family default
-\series default
- corrente
+Eventi:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-recordMessageView:
+click button#dataContact: 
 \series default
- utilizzato per tenere traccia della vista per la registrazione di un messaggio
+evento che richiama la funzione viewDataContact
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#sendVideoText: 
+\series default
+evento che richiama la funzione sendVideoText
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#call: 
+\series default
+evento che richiama la funzione audiocall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#video: 
+\series default
+evento che richiama la funzione videocall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click input#record: 
+\series default
+evento che richiama la funzione record
 \end_layout
 
 \begin_layout Paragraph
@@ -1845,57 +1951,158 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-initialize(): 
+[void] initialize():
 \series default
-metodo di inizializzazione della vista
+ metodo per inizializzare l'oggetto, si occuperà di inizializzare 
+\shape italic
+callView
+\shape default
+ e 
+\shape italic
+recordMessageView
+\shape default
+ richiamare il metodo 
+\emph on
+render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-render():
+[void] render():
 \series default
- metodo che rende visibili i contatti
+ metodo per effettuare la scrittura nella pagina del template FunctionsTemplate
+ e per controllare se si sia già in chiamata con l'utente selezionato ed
+ invocare la funzione 
+\shape italic
+startchat()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-sendVideoText():
+[void] unrender():
 \series default
- metodo che crea la vista per l'invio di messaggi video
+ metodo per invocare il metodo 
+\shape italic
+chatView.unrender()
+\shape default
+ e il metodo 
+\shape italic
+close()
+\shape default
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-audiocall():
+[void] startChat():
 \series default
- metodo che crea la vista per l'audio chiamata
+ metodo per avviare una comunicazione testuale con un altro utente, invocherà
+ 
+\shape italic
+chatView.render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-videocall():
+[void] sendVideoText():
 \series default
- metodo che crea la vista per la video chiamata
+ metodo per inizializzare la vista per la registrazione di un messaggio
+ invocando il metodo 
+\shape italic
+recordMessageView.render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-record(): 
+[void] audiocall():
 \series default
-metodo che attiva la registrazione della chiamata
+ metodo che invocherà il metodo 
+\shape italic
+call(isCaller, type)
+\shape default
+ con la variabile type impostata a 'audio'
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-FunctionsView.prototype.close(): 
+[void] videocall():
 \series default
-metodo che chiude l'istanza creata
+ metodo che invocherà il metodo 
+\shape italic
+call(isCaller, type)
+\shape default
+ con la variabile type impostata a 'video'
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] call():
+\series default
+ metodo per gestire la vista della chiamata invocando i metodi 
+\shape italic
+startchat()
+\shape default
+ e 
+\shape italic
+callView.render(isCaller, type, this.model) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] record(): 
+\series default
+metodo che attiverà la registrazione della chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] forceClose():
+\series default
+ metodo che forzerà la chiusura di una chiamata invocando 
+\shape italic
+callView.endcall()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] closeViewCall():
+\series default
+ metodo che ripristinerà la vista quando si chiuderà una chiamata impostando
+ 
+\shape italic
+callView
+\shape default
+ a 'undefined' e richiamando FunctionsTemplate e la funziona 
+\shape italic
+startChat()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] viewDataContact():
+\series default
+ metodo che mostrerà i dati dell'utente selezionato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] FunctionsView.prototype.close(): 
+\series default
+metodo che chiuderà l'istanza della classe creata e invoca 
+\shape italic
+chatView.close()
 \end_layout
 
 \begin_layout Subsubsection
