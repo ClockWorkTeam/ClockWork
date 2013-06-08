@@ -31,19 +31,19 @@
     <searchpath href="PROJECT_DIR" />
     <members>
       <member type="profile"
-              name="transfer.AuthenticationTransfer_profile.profile" />
+              name="AuthenticationTransfer_profile.profile" />
       <member type="xmi"
-              name="transfer.AuthenticationTransfer.xmi" />
+              name="AuthenticationTransfer.xmi" />
       <member type="pgml"
-              name="transfer.AuthenticationTransfer_DiagrammadiClasse.pgml"
+              name="AuthenticationTransfer_DiagrammadiClasse.pgml"
               diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
               diagramname="Diagramma di Classe" />
       <member type="pgml"
-              name="transfer.AuthenticationTransfer_DiagrammadeiCasidUso.pgml"
+              name="AuthenticationTransfer_DiagrammadeiCasidUso.pgml"
               diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
               diagramname="Diagramma dei Casi d&apos;Uso" />
       <member type="todo"
-              name="transfer.AuthenticationTransfer.todo" />
+              name="AuthenticationTransfer.todo" />
     </members>
     <historyfile name="" />
   </argo>
@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Mar 29 16:45:25 CET 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jun 07 21:53:44 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -90,6 +90,12 @@
                   name = 'userManager' isSpecification = 'false' kind = 'in'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000876'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A8A'
+                  name = 'tutorials' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A89'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
@@ -124,25 +130,6 @@
                 <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000876'/>
               </UML:StructuralFeature.type>
             </UML:Attribute>
-            <UML:Operation xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000879'
-              name = '+setTokenServer' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087A'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087D'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087B'
-                  name = 'server' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087C'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
             <UML:Operation xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087E'
               name = '+processToken' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
@@ -180,7 +167,7 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000886'
-                  name = 'arg0' isSpecification = 'false' kind = 'in'>
+                  name = 'event' isSpecification = 'false' kind = 'in'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000887'/>
                   </UML:Parameter.type>
@@ -206,56 +193,21 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088B'
-              name = '+sendPacket' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088C'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087D'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088D'
-                  name = 'packet' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088E'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088F'
-                  name = 'event' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000887'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000890'
-              name = '+processPacket' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000891'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000087D'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000892'
-                  name = 'event' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000887'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000893'
-                  name = 'packet' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088E'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
+            <UML:Attribute xmi.id = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A86'
+              name = '-tutorials' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A87'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A88'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A89'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
           </UML:Classifier.feature>
         </UML:Class>
         <UML:Class xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000875'
@@ -282,6 +234,9 @@
         <UML:Class xmi.id = '10-0-2-15--59cecf54:13dacc7cbd3:-8000:000000000000088E'
           name = 'WebSocketPacket' visibility = 'public' isSpecification = 'false'
           isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '127-0-0-1-7e37cb22:13f202c46e3:-8000:0000000000000A89'
+          name = 'Tutorials' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -290,7 +245,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 16, 565, 194]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 16, 722, 152]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -303,8 +258,8 @@
     <rectangle name="Fig0.0"
       x="0"
       y="16"
-      width="565"
-      height="194"
+      width="722"
+      height="152"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -313,8 +268,8 @@
     <text name="Fig0.1"
       x="1"
       y="17"
-      width="563"
-      height="23"
+      width="720"
+      height="22"
       fill="0"
       fillcolor="255 255 200"
       stroke="0"
@@ -327,7 +282,7 @@
       justification="Center"
     >AuthenticationTransfer</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1, 17, 562, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1, 17, 594, 0]"
          href="10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -341,7 +296,7 @@
       <rectangle name="Fig0.2.0"
         x="1"
         y="17"
-        width="562"
+        width="594"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -351,8 +306,8 @@
     </group>
     <rectangle name="Fig0.3"
       x="0"
-      y="40"
-      width="565"
+      y="39"
+      width="722"
       height="1"
       fill="1"
       fillcolor="black"
@@ -360,7 +315,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1, 41, 563, 42]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1, 40, 720, 56]"
          href="10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -372,9 +327,9 @@
       
       <rectangle name="Fig0.4.0"
         x="1"
-        y="41"
-        width="563"
-        height="42"
+        y="40"
+        width="720"
+        height="56"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -382,9 +337,9 @@
       />
       <text name="Fig0.4.1"
         x="1"
-        y="41"
-        width="563"
-        height="17"
+        y="40"
+        width="720"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -398,9 +353,9 @@
       >-authenticationManager : AuthenticationManager</text>
       <text name="Fig0.4.2"
         x="1"
-        y="58"
-        width="563"
-        height="23"
+        y="56"
+        width="720"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -412,11 +367,27 @@
         textsize="12"
         justification="Left"
       >-userManager : UserManager</text>
+      <text name="Fig0.4.3"
+        x="1"
+        y="72"
+        width="720"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >-tutorials : Tutorials</text>
     </group>
     <rectangle name="Fig0.5"
       x="0"
-      y="82"
-      width="565"
+      y="95"
+      width="722"
       height="1"
       fill="1"
       fillcolor="black"
@@ -424,7 +395,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 83, 563, 127]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 96, 720, 72]"
          href="10-0-2-15--59cecf54:13dacc7cbd3:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -436,9 +407,9 @@
       
       <rectangle name="Fig0.6.0"
         x="1"
-        y="83"
-        width="563"
-        height="127"
+        y="96"
+        width="720"
+        height="72"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -446,9 +417,9 @@
       />
       <text name="Fig0.6.1"
         x="1"
-        y="83"
-        width="563"
-        height="17"
+        y="96"
+        width="720"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -459,28 +430,12 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+AuthenticationTransfer(authenticationManager : AuthenticationManager,userManager : UserManager)</text>
+      >+AuthenticationTransfer(authenticationManager : AuthenticationManager,userManager : UserManager,tutorials : Tutorials)</text>
       <text name="Fig0.6.2"
         x="1"
-        y="100"
-        width="563"
-        height="17"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+setTokenServer(server : ServerMyTalk) : void</text>
-      <text name="Fig0.6.3"
-        x="1"
-        y="117"
-        width="563"
-        height="17"
+        y="112"
+        width="720"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -492,11 +447,11 @@
         textsize="12"
         justification="Left"
       >+processToken(event : WebSocketServerTokenEvent,token : Token) : void</text>
-      <text name="Fig0.6.4"
+      <text name="Fig0.6.3"
         x="1"
-        y="134"
-        width="563"
-        height="17"
+        y="128"
+        width="720"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -507,12 +462,12 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+processClosed(arg0 : WebSocketServerEvent) : void</text>
-      <text name="Fig0.6.5"
+      >+processClosed(event : WebSocketServerEvent) : void</text>
+      <text name="Fig0.6.4"
         x="1"
-        y="151"
-        width="563"
-        height="17"
+        y="144"
+        width="720"
+        height="22"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -524,38 +479,6 @@
         textsize="12"
         justification="Left"
       >+processOpened(event : WebSocketServerEvent) : void</text>
-      <text name="Fig0.6.6"
-        x="1"
-        y="168"
-        width="563"
-        height="17"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+sendPacket(packet : WebSocketPacket,event : WebSocketServerEvent) : void</text>
-      <text name="Fig0.6.7"
-        x="1"
-        y="185"
-        width="563"
-        height="23"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+processPacket(event : WebSocketServerEvent,packet : WebSocketPacket) : void</text>
     </group>
   </group>
 </pgml>
