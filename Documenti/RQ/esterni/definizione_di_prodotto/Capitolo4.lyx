@@ -720,7 +720,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizzializzare 
+ metodo per inizializzare l'oggetto, si occuperà di inizializzare 
 \emph on
 contactsView 
 \emph default
@@ -734,7 +734,7 @@ render()
 \series bold
 [void] render():
 \series default
- metodo per effettuare la scrittura nella pagina del template authenticationTemp
+ metodo per effettuare la scrittura nella pagina del template AuthenticationTemp
 late
 \end_layout
 
@@ -992,17 +992,41 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-callEl:
+[DOM element] el:
 \series default
- utilizzato per indicare quale parte del DOM gestirà
+ conterrà l'elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-callTemplate:
+[StatisticsView] statisticsView:
 \series default
- utilizzato per tenere il template per il rendering di questa vista 
+ contterà il riferimento alla classe StatisticsView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[Template] template: 
+\series default
+conterrà il riferimento al template utilizzato
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Eventi:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#endcall: 
+\series default
+evento che richiama la funzione 
+\emph on
+endcall()
 \end_layout
 
 \begin_layout Paragraph
@@ -1014,33 +1038,43 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-initialize():
+[void] initialize():
 \series default
- metodo di inizializzazione dell'oggetto
+ metodo per inizializzare l'oggetto, si occuperà di inizializzare 
+\emph on
+statisticsView 
+\emph default
+e richiamare il metodo 
+\emph on
+render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-render():
+[void] render():
 \series default
- metodo che effettua la scrittura della struttura della pagina
+ metodo per effettuare la scrittura nella pagina del template CallTemplate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-endcall(): 
+[void] endcall(): 
 \series default
-metodo che chiude la chiamata in corso
+metodo che termina la chiamata in corso richiamando anche il metodo 
+\shape italic
+closeViewCall()
+\shape default
+ della classe FunctionsView
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-CallView.prototype.close():
+[void] CallView.prototype.close():
 \series default
- metodo che chiude l'istanza creata
+ metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1135,7 +1169,7 @@ La classe è utilizzata da:
 
 \family typewriter
 \series bold
-mytalk.client.view.FunctionView
+mytalk.client.view.FunctionsView
 \end_layout
 
 \end_deeper
@@ -1165,25 +1199,41 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-el:
+[DOM element] el:
 \series default
- utilizzato per indicare quale parte del DOM gestirà
+ conterrà l'elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-template:
+[Template] template: 
 \series default
- utilizzato per tenere il template per il rendering di questa vista 
+conterrà il riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-collection:
+[TextMessagesCollection] collection:
 \series default
- utilizzato per tenere la collezione che genera la chat
+ utilizzato per tenere la collezione di messaggi testuali tra i due utenti
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Eventi:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#send: 
+\series default
+evento che richiama la funzione 
+\emph on
+send()
 \end_layout
 
 \begin_layout Paragraph
@@ -1195,33 +1245,61 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-initialize():
+[void] initialize():
 \series default
- metodo di inizializzazione dell'oggetto
+ metodo per inizializzare l'oggetto, si occuperà di inizializzare 
+\emph on
+collection 
+\emph default
+e richiamare il metodo 
+\emph on
+render()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-render():
+[void] render():
 \series default
- metodo che effettua la scrittura della struttura della pagina
+ metodo per effettuare la scrittura nella pagina del template ChatTemplate
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-send(): 
+[void] send(): 
 \series default
-metodo che invia un messaggio
+metodo per inviare un messaggio ad un altro utente tramite il metodo 
+\shape italic
+send()
+\shape default
+ della classe ChatCommunication.
+ Provvede anche ad aggiungere il messaggio a 
+\shape italic
+collection
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-ChatView.prototype.close(): 
+[void] putMessages()
 \series default
-metodo che chiude l'istanza creata
+: metodo per inserire in 
+\shape italic
+collection
+\shape default
+ tutti i messaggi di testo della conversazione scelta salvati in model chiamando
+ la funzione 
+\shape italic
+putMessage()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] ChatView.prototype.close(): 
+\series default
+metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
