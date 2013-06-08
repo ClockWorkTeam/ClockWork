@@ -97,7 +97,7 @@ define([
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
-      this.options.FunctionView.closeViewCall();
+      this.options.FunctionsView.closeViewCall();
       statisticsView.close();
     }
 
