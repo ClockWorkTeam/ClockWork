@@ -4911,12 +4911,12 @@ name "sub:Package-Collection"
 \begin_layout Standard
 Nel package 
 \family typewriter
-\series bold
-Collection
+mytalk.client.collection
 \family default
-\series default
- sono presenti le classi che modellano la logica di persistenza dei dati
- nel browser
+ saranno presenti le classi che conterranno le liste di oggetti di tipo
+ Model.
+ Non sarà presente una classe del package Collection per ogni classe del
+ package Model 
 \end_layout
 
 \begin_layout Standard
@@ -4977,7 +4977,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.model
 \end_layout
 
@@ -4994,7 +4993,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view
 \end_layout
 
@@ -5008,21 +5006,18 @@ Costituito dalle classi:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.collection.ContactsCollection
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.collection.TextMessagesCollection
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.collection.TutorialsCollection
 \end_layout
 
@@ -5033,13 +5028,7 @@ mytalk.client.collection.ContactsCollection
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ContactsCollection
-\family default
-\series default
- rappresenta la collezione dei contatti
+La classe ContactsCollection rappresenterà la collezione dei contatti registrati
 \end_layout
 
 \begin_layout Standard
@@ -5098,7 +5087,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.model.ContactModel
 \end_layout
 
@@ -5114,7 +5102,9 @@ La classe è utilizzata da:
 
 \family typewriter
 \series bold
-mytalk.client.view.SideView
+m
+\series default
+ytalk.client.communication.ContactsCommunication
 \end_layout
 
 \end_deeper
@@ -5130,8 +5120,7 @@ La classe deriva da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.collection
+mytalk.client.Backbone.Collection
 \end_layout
 
 \end_deeper
@@ -5144,9 +5133,9 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-model: 
+[ContactModel] model: 
 \series default
-specifica quale classe di modello contiene la collezione
+conterrà il riferimento alla classe ContactModel
 \end_layout
 
 \begin_layout Paragraph
@@ -5158,9 +5147,9 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-record(): 
+[ContactModel[]] record(): 
 \series default
-metodo che restituisce un array contenente i modelli di tutta la collezione
+metodo per restituire un array contenente tutti i ContactModel della collezione
 \end_layout
 
 \begin_layout Subsubsection
@@ -5170,13 +5159,8 @@ mytalk.client.collection.TextMessagesCollection
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-TextMessagesCollection 
-\family default
-\series default
-rappresenta la collezione dei messaggi di testo
+La classe TextMessagesCollection rappresenterà la collezione dei messaggi
+ di testo di una singola conversazione
 \end_layout
 
 \begin_layout Standard
@@ -5235,7 +5219,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.model.TextMessageModel
 \end_layout
 
@@ -5252,7 +5235,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.ChatView
 \end_layout
 
@@ -5269,8 +5251,7 @@ La classe deriva da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.collection
+mytalk.client.Backbone.Collection
 \end_layout
 
 \end_deeper
@@ -5283,9 +5264,9 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-model: 
+[TextMessageModel] model: 
 \series default
-specifica quale classe di modello contiene la collezione
+conterrà il riferimento alla classe TextMessageModel
 \end_layout
 
 \begin_layout Paragraph
@@ -5297,10 +5278,10 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-chat_session(string): 
+[TextMessagesCollection] chat_session(string): 
 \series default
-metodo che restituisce i messaggi di chat della persona indicata come parametro
- in ingresso
+metodo per restituire l'intera conversazione con l'utente il cui username
+ sarà parametro della funzione
 \end_layout
 
 \begin_layout Subsubsection
@@ -5310,13 +5291,8 @@ mytalk.client.collection.TutorialsCollection
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ContactsCollection
-\family default
-\series default
- rappresenta la collezione dei tutorial
+La classe TutorialsCollection rappresenterà la collezione dei tutorial video
+ disponibili all'utente
 \end_layout
 
 \begin_layout Standard
@@ -5375,7 +5351,6 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.model.TutorialModel
 \end_layout
 
@@ -5390,7 +5365,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.TutorialView
 \end_layout
 
@@ -5407,8 +5381,7 @@ La classe deriva da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.collection
+mytalk.client.Backbone.Collection
 \end_layout
 
 \end_deeper
@@ -5421,9 +5394,9 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-model: 
+[TutorialModel] model: 
 \series default
-specifica quale classe di modello contiene la collezione
+conterrà il riferimento alla classe TutorialModel
 \end_layout
 
 \begin_layout Paragraph
@@ -5435,9 +5408,9 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-record(): 
+[TutorialModel] sendVideo(): 
 \series default
-metodo che restituisce un array contenente i modelli di tutta la collezione
+metodo che restituirà il video tutorial richiesto
 \end_layout
 
 \begin_layout Subsection
@@ -5454,11 +5427,10 @@ name "sub:Package-Model"
 \begin_layout Standard
 Il package 
 \family typewriter
-\series bold
-Model
+mytalk.client.model
 \family default
-\series default
- racchiude le informazioni logiche di un record
+ costituirà la parte del sistema dedita alla permanenza ed alla gestione
+ dei dati 
 \end_layout
 
 \begin_layout Standard
@@ -5513,14 +5485,12 @@ Il package viene utilizzato da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.collection
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view
 \end_layout
 
@@ -5534,38 +5504,386 @@ Costituito dalle classi:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.model.UserModel
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
 mytalk.client.model.ContactModel
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.model.StatisticsModel
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
 mytalk.client.model.TextMessageModel
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.model.TutorialModel
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.UserModel
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.model.ContactModel
+\end_layout
+
+\begin_layout Standard
+La classe ContactModel rappresenterà un singolo contatto registrato
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ContactModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe ContactModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.SideView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.ContactsCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ conterrà i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello saranno:
+\end_layout
+
+\begin_layout Itemize
+username
+\end_layout
+
+\begin_layout Itemize
+name
+\end_layout
+
+\begin_layout Itemize
+surname
+\end_layout
+
+\begin_layout Itemize
+IP
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.model.TextMessageModel
+\end_layout
+
+\begin_layout Standard
+La classe TextMessageModel rappresenterà un messaggio testuale inviato tra
+ due utenti; conterrà quindi il messaggio stesso, il mittente ed il destinatario
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/TextMessageModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TextMessageModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.ChatView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.TextMessagesCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ conterrà i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello saranno:
+\end_layout
+
+\begin_layout Itemize
+contact
+\end_layout
+
+\begin_layout Itemize
+message
+\end_layout
+
+\begin_layout Itemize
+source
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.model.TutorialModel
+\end_layout
+
+\begin_layout Standard
+La classe TutorialModel rappresenterà il collegamento ad un video tutorial
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/TutorialModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe TutorialModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.TutorialCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.TutorialsCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+defaults:
+\series default
+ conterrà i valori di default per i campi dati
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+I campi dati di questo modello saranno:
+\end_layout
+
+\begin_layout Itemize
+title
+\end_layout
+
+\begin_layout Itemize
+link
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
@@ -5573,13 +5891,7 @@ mytalk.client.model.UserModel
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-UserModel
-\family default
-\series default
- rappresenta la struttura dei dati dell'utente
+La classe UserModel rappresenterà i dati dell'utente attivo
 \end_layout
 
 \begin_layout Standard
@@ -5636,7 +5948,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.AuthenticationView
 \end_layout
 
@@ -5651,8 +5962,7 @@ La classe deriva da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.Backbone.model
+mytalk.client.Backbone.Model
 \end_layout
 
 \end_deeper
@@ -5667,557 +5977,28 @@ Attributi pubblici:
 \series bold
 defaults:
 \series default
- contiene i valori di default per i campi dati
+ conterrà i valori di default per i campi dati
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-I campi dati di questo modello sono:
+I campi dati di questo modello saranno:
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 username
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
 password
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-name
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-surname
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-
-\family typewriter
-mytalk.client.model.ContactModel
-\end_layout
-
-\begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ContactModel
-\family default
-\series default
- rappresenta la struttura dei dati dei contatti
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/ContactModel.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe ContactModel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.view.SideView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.collection.ContactsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.Backbone.model
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Attributi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-defaults:
-\series default
- contiene i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello sono:
-\end_layout
-
-\begin_layout Itemize
-username
-\end_layout
-
-\begin_layout Itemize
 name
 \end_layout
 
 \begin_layout Itemize
 surname
-\end_layout
-
-\begin_layout Itemize
-IP
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Metodi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-clear(): 
-\series default
-metodo che distrugge il model creato
-\end_layout
-
-\begin_layout Subsubsection
-
-\family typewriter
-mytalk.client.model.StatisticsModel
-\end_layout
-
-\begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-StatisticsModel
-\family default
-\series default
- rappresenta la struttura dei dati delle statistiche di una chiamata
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/StatisticsModel.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe StatisticsModel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.view.CallView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.Backbone.model
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Attributi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-defaults: 
-\series default
-contiene i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello sono:
-\end_layout
-
-\begin_layout Itemize
-tempo
-\end_layout
-
-\begin_layout Itemize
-byteTrasmessi
-\end_layout
-
-\begin_layout Itemize
-latenza
-\end_layout
-
-\begin_layout Itemize
-velocitaComunicazione
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-
-\family typewriter
-mytalk.client.model.TextMessageModel
-\end_layout
-
-\begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-TextMessageModel
-\family default
-\series default
- rappresenta la struttura dei dati dei messaggi di testo
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/TextMessageModel.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe TextMessageModel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.view.ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.collection.TextMessagesCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.Backbone.model
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Attributi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-defaults:
-\series default
- contiene i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello sono:
-\end_layout
-
-\begin_layout Itemize
-recipient
-\end_layout
-
-\begin_layout Itemize
-messages
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-
-\family typewriter
-mytalk.client.model.TutorialModel
-\end_layout
-
-\begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-TutorialModel
-\family default
-\series default
- rappresenta la struttura dei dati dei tutorial
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/TutorialModel.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe TutorialModel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.communication.TutorialCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.collection.TutorialsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-mytalk.client.Backbone.model
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
-Attributi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-defaults:
-\series default
- contiene i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello sono:
-\end_layout
-
-\begin_layout Itemize
-titolo
-\end_layout
-
-\begin_layout Itemize
-link
 \end_layout
 
 \end_deeper
