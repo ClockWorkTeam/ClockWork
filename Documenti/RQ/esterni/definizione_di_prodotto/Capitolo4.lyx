@@ -4488,13 +4488,8 @@ name "sub:NotificationCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-NotificationCommunication
-\family default
-\series default
- si occupa di comunicare con il server per quanto riguarda le notifiche
+La classe NotificationCommunication si occupa di comunicare con il server
+ per quanto riguarda le notifiche
 \end_layout
 
 \begin_layout Standard
@@ -4549,7 +4544,6 @@ La classe utilizza
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.NotificationView
 \end_layout
 
@@ -4566,11 +4560,24 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.NotificationView
 \end_layout
 
 \end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[boolean] onCalling:
+\series default
+ variabile che indicherà se l'utente avrà una chiamata in corso
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -4580,17 +4587,39 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-onNotification(string):
+[void] listenNotification():
 \series default
- metodo che si occupa di segnalare la presenza di chiamate in arrivo
+ metodo di tipo listener che in caso di arrivo di una notifica invocherà
+ il metodo 
+\shape italic
+setOnCall(event)
+\shape default
+ per impostare 
+\shape italic
+onCalling
+\shape default
+ e il metodo 
+\shape italic
+onNotification(string) 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-refuse(): 
+[void] onNotification(string):
 \series default
-metodo che di occupa di gestire il rifiuto di una notifica
+ metodo per gestire una chiamata in ingresso invocando la creazione di una
+ nuova NotificationView o, se l'utente è già in chiamata, riferendo al chiamante
+ che l'utente desiderato è occupato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] refuse(): 
+\series default
+metodo per rispondere ad una richiesta di chiamata con un rifiuto, inviando
+ un messaggio allo strato transfer
 \end_layout
 
 \begin_layout Subsubsection
@@ -4607,13 +4636,8 @@ name "sub:RecordMessageCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-RecordMessageCommunication
-\family default
-\series default
- si occupa di inviare e ricevere i messaggi registrati
+La classe RecordMessageCommunication si occuperà di registrare, inviare
+ e ricevere i messaggi registrati
 \end_layout
 
 \begin_layout Standard
@@ -4670,7 +4694,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.RecordMessageView
 \end_layout
 
@@ -4684,25 +4707,25 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-startRecording(string): 
+[void] startRecording(string): 
 \series default
-metodo che si occupa di inizializzare la registrazione
+metodo che si occuperà di inizializzare la registrazione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-onMessage(object): 
+[void] onMessage(object): 
 \series default
-metodo che sta in ascolto di messaggi in arrivo dal server e li gestisce
+metodo che sarà in ascolto di messaggi in arrivo dal server e li gestirà
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-sendMessage(string): 
+[void] sendMessage(string): 
 \series default
-metodo che invia i messaggi al server
+metodo per inviare i messaggi al server
 \end_layout
 
 \begin_layout Subsubsection
@@ -4719,13 +4742,8 @@ name "sub:TutorialCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-TutorialCommunication
-\family default
-\series default
- si occupa di comunicare con il server per quanto riguarda i tutorial
+La classe TutorialCommunication si occuperà di comunicare con il server
+ per il prelievo dei tutorial video
 \end_layout
 
 \begin_layout Standard
@@ -4782,7 +4800,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.TutorialView
 \end_layout
 
@@ -4796,9 +4813,9 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-getTutorials():
+[TutorialsCollection] getTutorials():
 \series default
- metodo che restituisce un array contenente tutti i tutorial nel server
+ metodo che restituirà un array contenente tutti i tutorial 
 \end_layout
 
 \begin_layout Subsubsection
@@ -4815,13 +4832,8 @@ name "sub:UserDataCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-TutorialCommunication
-\family default
-\series default
- si occupa di comunicare con il server per quanto riguarda i tutorial
+La classe UserDataCommunication si occuperà di comunicare con il server
+ per la modifica dei dati dell'utente
 \end_layout
 
 \begin_layout Standard
@@ -4835,7 +4847,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialCommunication.pdf
+	filename img/UserDataCommunication.pdf
 	scale 90
 
 \end_inset
@@ -4847,7 +4859,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe TutorialCommunication
+Classe UserDataCommunication
 \end_layout
 
 \end_inset
@@ -4878,8 +4890,7 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.view.TutorialView
+mytalk.client.view.UserDataView
 \end_layout
 
 \end_deeper
@@ -4892,9 +4903,28 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-getTutorials():
+[void] checkPassword(model, password, view):
 \series default
- metodo che restituisce un array contenente tutti i tutorial nel server
+ metodo per controllare che la password di verifica inserita dall'utente
+ corrisponda a quella salvata nella base di dati; se il controllo verrà
+ superato invocherà il metodo 
+\shape italic
+view.callBacks.changeData(model, view)
+\shape default
+, altrimenti mostrerà un messaggio di errore
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] changeData(model, name, surname, password, view):
+\series default
+ metodo per inviare i dati aggiornati al server e gestirne la risposta;
+ se il cambiamento sarà riuscito si chiamerà il metodo 
+\shape italic
+render()
+\shape default
+ della view, altrimenti verrà mostrato un messaggio di errore
 \end_layout
 
 \begin_layout Subsection
