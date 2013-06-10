@@ -1286,9 +1286,12 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, collegherà il metodo render() della
- classe alla collection in modo da richiamarlo ogni qual volta avvenga un
- cambiamento di quest'ultima
+ metodo per inizializzare l'oggetto, collegherà il metodo 
+\emph on
+render()
+\emph default
+ della classe alla collection in modo da richiamarlo ogni qual volta avvenga
+ un cambiamento di quest'ultima
 \end_layout
 
 \begin_layout Itemize
@@ -1445,6 +1448,18 @@ La classe utilizza:
 mytalk.client.view.FunctionsView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.ContactModel
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.template.ContactTemplate
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -1504,6 +1519,14 @@ conterrà il riferimento al template utilizzato
 conterrà il riferimento alla classe FunctionsView
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+[ContactModel] model:
+\series default
+ conterrà il model del contatto visualizzato
+\end_layout
+
 \begin_layout Standard
 
 \series bold
@@ -1531,13 +1554,12 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
-\emph on
-currentFunctions 
-\emph default
-e richiamare il metodo 
+ metodo per inizializzare l'oggetto, ollegherà il metodo 
 \emph on
 render()
+\emph default
+ della classe al model in modo da richiamarlo ogni qual volta avvenga un
+ cambiamento di quest'ultimo
 \end_layout
 
 \begin_layout Itemize
@@ -1553,59 +1575,50 @@ render()
 \series bold
 [void] view():
 \series default
- metodo che invocherà il metodo 
+ metodo che si occuperà di avviare la FunctionsView relativa al contatto.
+ Prima di fare ciò invocherà il metodo 
 \shape italic
-options.callback.closeOtherContacts(this.model.toJSON().username)
+closeOtherContacts(String username)
 \shape default
-, se necessario aggiornerà il campo 
-\shape italic
-currentFunctions
-\shape default
- e chiamerà il suo metodo 
-\shape italic
-render()
+ della classe SideView per controllare che tutte le view presenti nel content
+ siano state chiuse
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] createCall(type):
+[void] createCall(String):
 \series default
  metodo che verrà chiamato quando si accetterà una chiamata in arrivo; invocherà
  il metodo 
 \shape italic
-options.callback.closeOtherContacts(this.model.toJSON().username)
+closeOtherContacts(String username)
 \shape default
-, se necessario aggiornerà il campo 
+ della classe SideView, per controllare che tutte le view presenti nel content
+ siano state chiuse, e uno tra i metodi 
 \shape italic
-currentFunctions
-\shape default
- e chiamerà il suo metodo 
-\shape italic
-render()
-\shape default
-, infine chiamerà i metodi 
-\shape italic
-currentFunctions.videocall(isCaller)
+videocall(boolean)
 \shape default
  o 
 \shape italic
-currentFunctions.audiocall(isCaller)
+audiocall(boolean)
+\emph on
+, della classe FunctionsView,
 \shape default
-, essendo chiamato dall'utente chiamato invocherà tali metodi con valore
- 
-\shape italic
-false
+\emph default
+ a seconda che si tratti di una videochiamata o chiamata solo vocale.
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] ContactView.prototype.close():
+[void] close():
 \series default
  metodo che chiuderà l'istanza della classe creata invocando il metodo 
 \shape italic
-currentFunctions,unrender()
+unrender() 
+\emph on
+della classe FunctionsView
 \end_layout
 
 \begin_layout Subsubsection
