@@ -1062,11 +1062,11 @@ render()
  Altrimenti, a seconda che l'utente sia il chiamato o il chiamante, invocherà
  i metodi 
 \shape italic
-sendAnswer()
+sendAnswer(String, ContactModel, CallView)
 \shape default
  o 
 \shape italic
-sendCall()
+sendCall(String, ContactModel, CallView)
 \shape default
  di CallCommunication e assegnerà a 
 \emph on
@@ -1078,7 +1078,7 @@ lo stato di chiamata
 \begin_layout Itemize
 
 \series bold
-[void] endcall(): 
+[void] endcall(boolean): 
 \series default
 metodo che terminerà la chiamata in corso richiamando i metodi 
 \shape italic
@@ -1108,7 +1108,7 @@ endCall()
 \begin_layout Itemize
 
 \series bold
-[void] CallView.prototype.close():
+[void] close():
 \series default
  metodo che chiuderà l'istanza della classe creata
 \end_layout
