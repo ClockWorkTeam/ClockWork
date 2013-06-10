@@ -26,9 +26,6 @@ define([
  'view/StatisticsView'
 ], function($, _, Backbone, CallCommunication, CallTemplate, StatisticsView){
 
-  var statisticsView=null;
-  var calling=null;
-
   var CallView = Backbone.View.extend({
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
@@ -40,14 +37,18 @@ define([
     el : '#content',
 
     template : _.template(CallTemplate),
+    
+    statisticsView:'',
+    
+    calling:'',
 
     /**
      * funzione di inizializzazione dell'oggetto
      */
     initialize: function(){
-      calling=false;
+      this.calling=false;
       _.bindAll(this, 'render');
-      statisticsView = new StatisticsView();
+      this.statisticsView = new StatisticsView();
     },
 
     /**
@@ -73,16 +74,16 @@ define([
       * della chiamata
       */
 
-      if(calling){
+      if(this.calling){
         CallCommunication.recoverCall();
-        statisticsView.render();
+        this.statisticsView.render();
       }else{
         if(isCaller===false){
           CallCommunication.sendAnswer(type, contact, this);
-          calling=true;
+          this.calling=true;
         }else{
         CallCommunication.sendCall(type, contact, this);
-        calling=true;
+        this.calling=true;
         }
       }
     },
@@ -98,7 +99,7 @@ define([
         CallCommunication.endCall();
       this.close();
       this.options.FunctionsView.closeViewCall();
-      statisticsView.close();
+      this.statisticsView.close();
     }
 
   });

@@ -56,7 +56,7 @@ define(['connection'], function(Connection){
   return {
 	
     /**
-     * funzione che inoltra la richiesta di chiamata al server
+     * funzione che inoltra la richiesta di chiamata al server e attende una risposta
      */
     sendCall: function (typecall, contact, callView){
       /**
@@ -77,7 +77,6 @@ define(['connection'], function(Connection){
        * aggiunta del listener per la ricezione della risposta dell'utente chiamato
        */
       Connection.addEventListener('message', onAnswer, false);
-
       /**
        * viene impostata questa variabile per poter tener traccia della funzione stessa
        */
@@ -234,13 +233,6 @@ define(['connection'], function(Connection){
         var message = JSON.stringify({contact: recipient.toJSON().username, type: 'candidateready'});
         Connection.send(message);
       }
-    },
-    
-    /**
-     * restituisce il peerconnectio
-     */
-    getPeerConnection: function(){
-      return peerConnection;
     },
 
     /**

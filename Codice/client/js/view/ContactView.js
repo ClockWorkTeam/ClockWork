@@ -22,7 +22,6 @@ define([
  'model/UserModel'
 ], function($, _, Backbone, FunctionsView, ContactTemplate, UserModel){
 
-  var currentFunctions=null;
 
   var ContactView = Backbone.View.extend({
     template: _.template(ContactTemplate),
@@ -33,11 +32,14 @@ define([
     events: {
       'click span.contact': 'view'
     },
-
+    
+    currentFunctions:'',
+    
     /**
      * funzione di inizializzazione dell'oggetto
      */
     initialize: function(){
+      this.currentFunctions=null;
       this.listenTo(this.model, 'change', this.render);
       _.bindAll(this, 'view');
     },
@@ -58,10 +60,12 @@ define([
        * condizione messa per evitare di chiudere functionview non ancora create
        */
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
-      if(!currentFunctions)
-        currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
-      currentFunctions.render();
-      $('#main').prepend(currentFunctions.el);
+      if(!this.currentFunctions)
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+      alert(this.currentFunctions.el);
+ //     $('#main').prepend(this.currentFunctions.el);
+      this.currentFunctions.render();
+
     },
 
     /**
@@ -71,18 +75,18 @@ define([
       /**
        * condizione messa per evitare di chiudere functionview non ancora create
        */
-      if(!currentFunctions){
-        currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+      if(!this.currentFunctions){
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
       }else{
-        currentFunctions.render();
+        this.currentFunctions.render();
       }
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
       if(type=="video"){
-        currentFunctions.videocall(false);
+        this.currentFunctions.videocall(false);
       }else{
-        currentFunctions.audiocall(false);
+        this.currentFunctions.audiocall(false);
       }
-      $('#main').prepend(currentFunctions.el);
+     // $('#main').prepend(this.currentFunctions.el);
     }
   });
 
@@ -90,8 +94,8 @@ define([
    * si occupa di chiudere la vista
    */
   ContactView.prototype.close = function(){
-    if(currentFunctions!=null){
-      currentFunctions.unrender();
+    if(this.currentFunctions){
+      this.currentFunctions.unrender();
     }
   };
 
