@@ -1,19 +1,19 @@
-<!-- 
+<!--
  * Nome: FunctionsTemplate.html
  * Package: Template
  * Autore: Furlan Valentino
  * Data: 2013/04/07
  * Versione: 1.0
- * 
+ *
  * Modifiche:
  * +--------+---------------+----------------------+
- * |  Data  | Programmatore | Modifiche            | 
+ * |  Data  | Programmatore | Modifiche            |
  * +--------+---------------+----------------------+
- * |13/04/08|     FV        | + Aggiunta pulsante  | 
- * |        |               |   dati contatto      | 
- * |--------|---------------|----------------------| 
- * |13/04/07|     FV        | + Creazione documento| 
- * |_______________________________________________| 
+ * |13/04/08|     FV        | + Aggiunta pulsante  |
+ * |        |               |   dettagli contatto  |
+ * |--------|---------------|----------------------|
+ * |13/04/07|     FV        | + Creazione documento|
+ * |_______________________________________________|
  */
 -->
 
@@ -22,7 +22,7 @@
     <% if(From =='IP'){ %>
       <label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
         <input type="text" name="ip" id="ip" />
-      <button id= "startChat">Inizia chat</button>  
+      <button id= "startChat">Inizia chat</button>
       <button id="call">Chiama</button>
       <button id="video">Videochiama</button>
       <input type="checkbox" name="record" id="record" >Registra la chiamata
@@ -35,8 +35,8 @@
     <h2><%= username %></h2>
     <% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%>
     <button id='dataContact'>Dettagli contatto</button>
-    <button id= "sendVideoText">Invia un videomessaggio</button> 
-    <% if(IP != "0"){ %> 
+    <button id= "sendVideoText">Invia un videomessaggio</button>
+    <% if(IP != "0"){ %>
       <button id="call">Chiama</button>
       <button id="video">Videochiama</button>
       <input type="checkbox" name="record" id="record" >Registra la chiamata
