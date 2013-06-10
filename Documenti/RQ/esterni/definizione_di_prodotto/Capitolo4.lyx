@@ -3039,7 +3039,7 @@ collection
  in modo da richiamarlo ogni qual volta si aggiunga un elemento a quest'ultima,
  predisporrà la funzione 
 \shape italic
-acceptCall(event)
+acceptCall(Event)
 \shape default
 \emph on
  
@@ -3056,7 +3056,7 @@ acceptCall
 \begin_layout Itemize
 
 \series bold
-[void] initialize().acceptCall(event): 
+[void] initialize().acceptCall(Event): 
 \series default
 metodo che invocherà il metodo 
 \shape italic
@@ -3317,7 +3317,7 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.StatisticsModel
+mytalk.client.template.StatisticsTemplate
 \end_layout
 
 \end_deeper
@@ -3373,6 +3373,14 @@ Attributi pubblici:
 conterrà il riferimento al template utilizzato
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+[RTCPeerConnection] peerConnection:
+\series default
+ conterrà il flusso dati della chiamata
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -3384,11 +3392,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
-\shape italic
-interval, peerConnection
-\shape default
- e richiamare il metodo 
+ metodo per inizializzare l'oggetto, inoltre richiamerà il metodo 
 \emph on
 render()
 \end_layout
@@ -3399,9 +3403,11 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template StatisticsTemplate
- ed invocare il metodo 
+ ed invocherà il metodo 
 \shape italic
-readStatistic()
+readStatistic() 
+\emph on
+per visulizzare le stastiche a video
 \end_layout
 
 \begin_layout Itemize
@@ -3409,54 +3415,47 @@ readStatistic()
 \series bold
 [void] readStatistic():
 \series default
- metodo che istanzierà un listener per il metodo 
+ metodo per la gestione delle statistiche delle chiamate audio/video.
+ Per fare ciò istanzierà un listener per gli eventi di tipo 
 \shape italic
-setPeerConn(event)
+setPeerConn,
 \shape default
-, che invocherà egli stesso
+ collegandolo al metodo 
+\emph on
+showStatistics(Event)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] setPeerConn(event):
+[void] showStatistics(Event):
 \series default
- metodo per impostare 
-\shape italic
+ metodo che si occuperà di aggionare, con la frequenza di un secondo, la
+ durata, i byte di video e audio trasmessi, la latenza e la velocità di
+ trasmissione della chiamata.
+ Ricaverà i dati necessari dal metodo 
+\emph on
+getStats() 
+\emph default
+dell'oggetto 
+\emph on
 peerConnection
-\shape default
- e 
-\shape italic
-interval
-\shape default
- e invocare 
+\emph default
+ e utilizzerà il metodo 
 \shape italic
 setInterval()
+\emph on
+ di JavaScript per aggiornarsi
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-[void] setInterval():
-\series default
- metodo per aggiornare le statistiche della chiamata ad ogni secondo trascorso
- tramite il metodo 
-\shape italic
-peerConnection.getStats(stats)
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-[void] StatisticsView.prototype.close(): 
+[void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata azzerando 
-\shape italic
-interval
+metodo che chiuderà l'istanza della classe creata 
 \end_layout
 
 \begin_layout Subsubsection

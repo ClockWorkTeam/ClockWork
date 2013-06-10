@@ -57,12 +57,12 @@ define([
        * funzione che si occupa di tenere aggiornate le statistiche della chiamata in corso
        */
     readStatistic: function(){
-      document.addEventListener("setPeerConn",setPeerConn,false);
+      document.addEventListener("setPeerConn",showStatistics,false);
       var view=this;
       /**
        * ascoltatore che rimane in attesa di ricevere un peerConnection dalla callCommunication
        */
-      function setPeerConn(event){
+      function showStatistics(event){
         peerConnection=event.detail.peercon;
         var baseTime;
         var prevTime;
