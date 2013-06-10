@@ -130,7 +130,7 @@ define([
         this.forceClose();
       }
       this.startChat();
-      callView=new CallView({FunctionView:this});
+      callView=new CallView({FunctionsView:this});
       if(isCaller==false){
         callView.render(false, type ,this.model);
       }else{

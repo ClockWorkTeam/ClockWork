@@ -50,7 +50,8 @@ define([
         this.connect();
     },
     el: '#authentication',
-
+		userDataView: undefined,
+		userModel:null,
 
     template: _.template(authenticationTemplate),
 
