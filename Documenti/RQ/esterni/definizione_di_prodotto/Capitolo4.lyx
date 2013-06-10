@@ -3014,7 +3014,7 @@ click button#Conference:
 \series default
 evento che richiama la funzione 
 \shape italic
-StartConference()
+startConference()
 \end_layout
 
 \begin_layout Paragraph
@@ -3179,7 +3179,7 @@ IP
 \begin_layout Itemize
 
 \series bold
-[void] StartConference():
+[void] startConference():
 \series default
  metodo per effettuare una videoconferenza, , per fare ciò inizialmente
  invocherà il metodo 
@@ -3210,7 +3210,7 @@ per visualizzare la lista degli utenti da selezionare per la conferenza
 \begin_layout Itemize
 
 \series bold
-[void] listContacts(ContactModeò):
+[void] listContacts(ContactModel):
 \series default
  metodo per gestire la lista degli utenti da selezionare per una conferenza,
  se l'utente risulta connesso si creerà un ContactView corrispondente all'utente
@@ -3786,6 +3786,12 @@ mytalk.client.communication.UserDataCommunication
 \begin_layout Itemize
 
 \family typewriter
+mytalk.client.template.UserDataTemplate
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
 mytalk.client.model.UserModel
 \end_layout
 
@@ -3840,6 +3846,14 @@ Attributi pubblici:
 [Template] template: 
 \series default
 conterrà il riferimento al template utilizzato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[UserModel] model: 
+\series default
+conterrà il riferimento alla classe UserModel
 \end_layout
 
 \begin_layout Standard
@@ -3920,40 +3934,60 @@ close()
 \series bold
 [void] checkPassword(): 
 \series default
-metodo che invierà la password di verifica a UserDataCommunication che provveder
-à a controllarne la correttezza 
+metodo che provvederà a controllare la correttezza della password, per fare
+ ciò invocherà il metodo 
+\emph on
+checkPassword(UserModel, String, UserDataView)
+\emph default
+ della classe UserDataCommunication
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] callBacks():
+[changeData()] callBacks():
 \series default
- metodo invocato da UserDataCommunication per chiamare 
+ metodo che permetterà ad altre classi di usufruire del metodo 
 \shape italic
-changeData(model, view)
+changeData(UserModel, 
+\shape default
+\emph on
+UserDataView
+\shape italic
+\emph default
+)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] changeData(model, view):
-\series default
- metodo per verificare la conferma della nuova password e, in caso tale
- verifica sia superata, per invocare il metodo 
+[void] callBacks().changeData(
 \shape italic
-changeData(model, name, surname, password, view)
+\emph on
+UserModel
+\series default
 \shape default
- di UserDataCommunication; se non sarà superata verrà reso noto all'utente
- l'errore
+, 
+\series bold
+\emph default
+UserDataView):
+\series default
+ metodo per modificare i dati dell'utente.
+ Per fare ciò, inizialmente, deve verificare che la nuova password, se esistente
+, coincida con quella di verifica, se supera il controllo invocherà il metodo
+ 
+\shape italic
+changeData(UserModel, String, String, String, UserDataView)
+\shape default
+ di UserDataCommunication, passandogli i dati aggiornati
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-[void] UserDataView.prototype.close(): 
+[void] close(): 
 \series default
 metodo che chiuderà l'istanza della classe creata
 \end_layout
