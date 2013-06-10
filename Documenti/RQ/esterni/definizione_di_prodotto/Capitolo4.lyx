@@ -2169,7 +2169,7 @@ passando come parametri quello di audiocall e la stringa
 \begin_layout Itemize
 
 \series bold
-[void] videocall(): 
+[void] videocall(boolean): 
 \series default
 metodo per avviare una chiamata audio, per fare ciò invocherà il metodo
  
@@ -2255,7 +2255,7 @@ close()
 \begin_layout Itemize
 
 \series bold
-close(): 
+[void] close(): 
 \series default
 metodo che chiuderà l'istanza della classe creata e invoca il metodo 
 \shape italic
@@ -2334,19 +2334,7 @@ La classe utilizza:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.communication.NotificationCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.CallView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.RecordMessageView
+mytalk.client.template.NotificationTemplate
 \end_layout
 
 \end_deeper
@@ -2453,7 +2441,11 @@ Metodi pubblici:
 \shape italic
 timeout
 \shape default
- e richiamare il metodo 
+ a 
+\emph on
+true 
+\emph default
+e richiamare il metodo 
 \emph on
 render()
 \end_layout
@@ -2464,23 +2456,11 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template NotificationTempla
-te e impostare la funzione 
-\shape italic
-setTimeout()
+te.
+ Si occuperà inoltre di e impostare un timout, in modo da terminare la chiamata
+ nel caso non si risponda dopo un determinato intervallo di tempo
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-[void] setTimeout():
-\series default
- metodo per impostare il tempo a cui scatterà 
-\shape italic
-timeout
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -2496,34 +2476,40 @@ close()
 \series bold
 [void] accept():
 \series default
- metodo per accettare una chiamata in arrivo; invoca il metodo 
+ metodo per accettare una chiamata in arrivo, invocherà il metodo 
 \shape italic
 unrender()
 \shape default
- e invia un evento apposito
+ e assegnerà a 
+\emph on
+timeout
+\emph default
+ il valore 
+\emph on
+false, 
+\emph default
+infine invierà un evento di tipo 
+\emph on
+acceptCall
+\emph default
+ per segnalare che si sta iniziando una chiamata
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] refuse(): 
-\series default
-metodo per rifiutare una chiamata che invia il rifiuto col metodo 
-\shape italic
-NotificationCommunication.refuse(caller)
-\shape default
- e chiama il metodo 
-\shape italic
-unrender()
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] timeoutCall:
+[void] timeoutCall():
 \series default
  metodo per rifiutare una chiamata nel caso in cui non si risponda in tempo
- alla notifica, chiamerà il metodo 
+ alla notifica, quindi se 
+\emph on
+timeout
+\emph default
+ risulterà 
+\emph on
+false
+\emph default
+ chiamerà il metodo 
 \shape italic
 refuse()
 \end_layout
@@ -2531,7 +2517,23 @@ refuse()
 \begin_layout Itemize
 
 \series bold
-[void] NotificationView.prototype.close(): 
+[void] refuse(): 
+\series default
+metodo per rifiutare una chiamata, per fare ciò invocherà il metodo
+\shape italic
+ refuse(String)
+\shape default
+ della classe NotificationCommunication e il metodo 
+\shape italic
+unrender() 
+\emph on
+della classe stessa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] close(): 
 \series default
 metodo che chiuderà l'istanza della classe creata
 \end_layout
