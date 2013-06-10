@@ -27,10 +27,6 @@ define([
  'text!templates/FunctionsTemplate.html'
 ], function($, _, Backbone, CallView, RecordMessageView,  ChatView, FunctionsTemplate){
 
-  var callView=null;
-
-  var recordMessageView=null;
-
   var FunctionsView = Backbone.View.extend({
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
@@ -43,7 +39,14 @@ define([
       'click input#record' : 'record'
     },
 
-    el : '#content',
+    tagName : 'div',
+
+    el : 'content',
+    
+    
+    callView:'',
+    
+    recordMessageView:'',
 
     template : _.template(FunctionsTemplate),
 
@@ -64,23 +67,24 @@ define([
      * se si è già in chiamata con la persona selezionata si carica direttamente la vista della
      * CallView senza caricare quella della FunctionView altrimenti si andrà a generare quest'ultima
      */
-      if(callView){
+      if(this.callView){
         if(this.model.toJSON().IP==='0'){
           this.forceClose();
         }else{
           this.startChat();
-          callView.render(null,null, this.model);
+          this.callView.render(null,null, this.model);
         }
       }else{
         /**
          * controllo atto a verificare se si sta eseguendo una FunctionView di un utente presente nella lista utenti
          * o dall'inserimento di un indirizzo IP
          */
+       
         if(!this.options.From){
-          $(this.el).html(this.template(this.model.toJSON()));
+          $('#content').html(this.template(this.model.toJSON()));
           this.startChat();
         }else{
-          $(this.el).html(this.template({From: this.options.From}));
+          $('#content').html(this.template({From: this.options.From}));
         }
       }
     },
@@ -94,7 +98,7 @@ define([
       this.close();
     },
     /**
-     * inizializza la chat
+     * inizializza la chat per chiamate IP
      */
     startChat:function(){
       if(!this.chatView){
@@ -126,17 +130,17 @@ define([
       //if(NotificationCommunication.getStatus() && isCaller!=false){
       //  alert("hai già una chiamata attiva");
       //}
-      if(callView){
+      if(this.callView){
         this.forceClose();
       }
       this.startChat();
-      callView=new CallView({FunctionsView:this});
+      this.callView=new CallView({FunctionsView:this});
       if(isCaller==false){
-        callView.render(false, type ,this.model);
+        this.callView.render(false, type ,this.model);
       }else{
-        callView.render(true,type,this.model);
+        this.callView.render(true,type,this.model);
       }
-      $('#main').prepend(callView.el);
+      $('#main').prepend(this.callView.el);
     },
 
     /**
@@ -151,20 +155,20 @@ define([
      * si occupa di gestire il messaggio da registrare
      */
     sendVideoText:function(){
-      if(recordMessageView){
-        recordMessageView.close();
+      if(this.recordMessageView){
+        this.recordMessageView.close();
       }
       this.close();
-      recordMessageView=new RecordMessageView({model : this.model});
-      recordMessageView.render();
-      $('#main').prepend(recordMessageView.el);
+      this.recordMessageView=new RecordMessageView({model : this.model});
+      this.recordMessageView.render();
+      $('#main').prepend(this.recordMessageView.el);
     },
 
     /**
      * forza la chiusura della chiamata
      */
     forceClose:function(){
-      callView.endCall();
+      this.callView.endCall();
     },
 
     /**
@@ -172,7 +176,7 @@ define([
      * venga terminata
      */
     closeViewCall : function(){
-      callView=undefined;
+      this.callView=undefined;
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));
       }else{
