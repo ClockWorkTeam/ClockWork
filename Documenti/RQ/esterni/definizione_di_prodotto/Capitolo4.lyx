@@ -1554,7 +1554,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, ollegherà il metodo 
+ metodo per inizializzare l'oggetto, collegherà il metodo 
 \emph on
 render()
 \emph default
@@ -1892,13 +1892,25 @@ mytalk.client.view.CallView
 \begin_layout Itemize
 
 \family typewriter
+mytalk.client.view.ChatView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
 mytalk.client.view.RecordMessageView
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.view.ChatView
+mytalk.client.view.FileView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.ContactModel
 \end_layout
 
 \end_deeper
@@ -1974,9 +1986,25 @@ conterrà il riferimento alla classe CallView
 \begin_layout Itemize
 
 \series bold
+[ChatView] chatView:
+\series default
+ conterrà il riferimento alla classe ChatView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 [RecordMessageView] recordMessageView:
 \series default
  conterrà il riferimento alla classe RecordMessageView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[FileView] fileView:
+\series default
+ conterrà il riferimento alla classe FileView
 \end_layout
 
 \begin_layout Standard
@@ -1990,7 +2018,9 @@ Eventi:
 \series bold
 click button#dataContact: 
 \series default
-evento che richiama la funzione viewDataContact
+evento che richiama la funzione 
+\emph on
+viewDataContact()
 \end_layout
 
 \begin_layout Itemize
@@ -1998,7 +2028,19 @@ evento che richiama la funzione viewDataContact
 \series bold
 click button#sendVideoText: 
 \series default
-evento che richiama la funzione sendVideoText
+evento che richiama la funzione 
+\emph on
+sendVideoText()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#sendFile:
+\series default
+evento che richiama la funzione 
+\emph on
+sendFile()
 \end_layout
 
 \begin_layout Itemize
@@ -2006,7 +2048,9 @@ evento che richiama la funzione sendVideoText
 \series bold
 click button#call: 
 \series default
-evento che richiama la funzione audiocall
+evento che richiama la funzione 
+\emph on
+audiocall()
 \end_layout
 
 \begin_layout Itemize
@@ -2014,15 +2058,9 @@ evento che richiama la funzione audiocall
 \series bold
 click button#video: 
 \series default
-evento che richiama la funzione videocall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-click input#record: 
-\series default
-evento che richiama la funzione record
+evento che richiama la funzione 
+\emph on
+videocall()
 \end_layout
 
 \begin_layout Paragraph
@@ -2036,17 +2074,12 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
-\shape italic
-callView
-\shape default
- e 
-\shape italic
-recordMessageView
-\shape default
- richiamare il metodo 
+ metodo per inizializzare l'oggetto, collegherà il metodo 
 \emph on
 render()
+\emph default
+ della classe al model in modo da richiamarlo ogni qual volta avvenga un
+ cambiamento di quest'ultimo
 \end_layout
 
 \begin_layout Itemize
@@ -2054,27 +2087,10 @@ render()
 \series bold
 [void] render():
 \series default
- metodo per effettuare la scrittura nella pagina del template FunctionsTemplate
- e per controllare se si sia già in chiamata con l'utente selezionato ed
- invocare la funzione 
-\shape italic
-startchat()
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] unrender():
-\series default
- metodo per invocare il metodo 
-\shape italic
-chatView.unrender()
-\shape default
- e il metodo 
-\shape italic
-close()
-\shape default
- 
+ metodo per effettuare la scrittura nella pagina del template FunctionsTemplate,
+ per fare ciò dovrà controllare se l'istanza è stata creata da SideView
+ o da ContactView e se esiste già una chiamata in corso, nel qual caso si
+ mostrerà la chiamata.
 \end_layout
 
 \begin_layout Itemize
@@ -2082,10 +2098,16 @@ close()
 \series bold
 [void] startChat():
 \series default
- metodo per avviare una comunicazione testuale con un altro utente, invocherà
- 
+ metodo per avviare una comunicazione testuale con il contatto, per fare
+ ciò inizializzerà 
+\emph on
+chatView
+\emph default
+, se non è già esistente, e invocherà il metodo 
 \shape italic
-chatView.render()
+render() 
+\emph on
+della classe ChatView
 \end_layout
 
 \begin_layout Itemize
@@ -2093,56 +2115,93 @@ chatView.render()
 \series bold
 [void] sendVideoText():
 \series default
- metodo per inizializzare la vista per la registrazione di un messaggio
- invocando il metodo 
+ metodo per inizializzare la vista per la registrazione di un messaggio,
+ per fare ciò inizializzerà 
 \shape italic
-recordMessageView.render()
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] audiocall():
-\series default
- metodo che invocherà il metodo 
-\shape italic
-call(isCaller, type)
+recordMessageView
 \shape default
- con la variabile type impostata a 'audio'
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] videocall():
-\series default
- metodo che invocherà il metodo 
+, se non è già esistente, e invocherà il metodo 
 \shape italic
-call(isCaller, type)
+render() 
+\emph on
+della classe RecordMessageView
 \shape default
- con la variabile type impostata a 'video'
+\emph default
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] call():
+[void] sendFile():
 \series default
- metodo per gestire la vista della chiamata invocando i metodi 
+ metodo per inizializzare la vista per l'invio di un file, per fare ciò
+ inizializzerà 
 \shape italic
-startchat()
+fileView
 \shape default
- e 
+, se non è già esistente, e invocherà il metodo 
 \shape italic
-callView.render(isCaller, type, this.model) 
+render() 
+\emph on
+della classe fileView
+\shape default
+\emph default
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] record(): 
+[void] audiocall(boolean):
 \series default
-metodo che attiverà la registrazione della chiamata
+ metodo per avviare una chiamata audio, per fare ciò invocherà il metodo
+ 
+\shape italic
+call(boolean, String), 
+\emph on
+passando come parametri quello di audiocall e la stringa
+\shape default
+\emph default
+ 'audio'
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] videocall(): 
+\series default
+metodo per avviare una chiamata audio, per fare ciò invocherà il metodo
+ 
+\shape italic
+call(boolean, String), 
+\emph on
+passando come parametri quello di videocall e la stringa
+\shape default
+\emph default
+ 'video'
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] call(boolean, String):
+\series default
+ metodo per gestire l'inizializzazione di una chiamata, per fare ciò inizializze
+rà 
+\emph on
+callView 
+\emph default
+e invocherà il metodo 
+\shape italic
+render(boolean, String, ContactModel, boolean)
+\emph on
+ specificando se si è il chiamante, il tipo di chiamata, il contatto con
+ cui si sta comunicando e se si vuole registrare la chiamata.
+ Inoltre si occuperà di manterenre la chat attiva, richiamando il metodo
+ 
+\emph default
+startChat() 
 \end_layout
 
 \begin_layout Itemize
@@ -2152,7 +2211,9 @@ metodo che attiverà la registrazione della chiamata
 \series default
  metodo che forzerà la chiusura di una chiamata invocando 
 \shape italic
-callView.endcall()
+endcall() 
+\emph on
+della classe CallView
 \end_layout
 
 \begin_layout Itemize
@@ -2160,14 +2221,7 @@ callView.endcall()
 \series bold
 [void] closeViewCall():
 \series default
- metodo che ripristinerà la vista quando si chiuderà una chiamata impostando
- 
-\shape italic
-callView
-\shape default
- a 'undefined' e richiamando FunctionsTemplate e la funziona 
-\shape italic
-startChat()
+ metodo che, a chiamata terminata, ripristinerà la vista
 \end_layout
 
 \begin_layout Itemize
@@ -2181,11 +2235,33 @@ startChat()
 \begin_layout Itemize
 
 \series bold
-[void] FunctionsView.prototype.close(): 
+[void] unrender():
 \series default
-metodo che chiuderà l'istanza della classe creata e invoca 
+ metodo per chiudere deifinitivaessamente l'istanza, deve invocare il metodo
+ 
 \shape italic
-chatView.close()
+unrender() 
+\emph on
+della classe ChatView
+\shape default
+\emph default
+ e il metodo 
+\shape italic
+close()
+\shape default
+ della classe stessa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+close(): 
+\series default
+metodo che chiuderà l'istanza della classe creata e invoca il metodo 
+\shape italic
+close()
+\emph on
+ della classe ChatView
 \end_layout
 
 \begin_layout Subsubsection
