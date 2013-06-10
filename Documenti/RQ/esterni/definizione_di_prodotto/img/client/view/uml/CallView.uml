@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 10:38:32 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 12:21:05 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -99,8 +99,8 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Attribute xmi.id = '10-1-66-1-539a64bc:13d6844cde2:-8000:000000000000086C'
-              name = '+staticsView' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              changeability = 'changeable' targetScope = 'instance'>
+              name = '+statisticsView' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '10-1-66-1-539a64bc:13d6844cde2:-8000:000000000000086D'>
                   <UML:Multiplicity.range>
@@ -110,7 +110,7 @@
                 </UML:Multiplicity>
               </UML:StructuralFeature.multiplicity>
               <UML:StructuralFeature.type>
-                <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:0000000000000CA7'/>
+                <UML:Class xmi.idref = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000EDB'/>
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Operation xmi.id = '10-1-66-1-539a64bc:13d6844cde2:-8000:0000000000000872'
@@ -137,12 +137,14 @@
                     <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:0000000000000CAD'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000EDC'
+                  name = 'boolean' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-66-1-539a64bc:13d6844cde2:-8000:0000000000000878'
-              name = '+CallView.prototype.close' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
+              name = '+close' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
                 <UML:Parameter xmi.id = '10-1-66-1-539a64bc:13d6844cde2:-8000:0000000000000879'
                   name = 'return' isSpecification = 'false' kind = 'return'>
@@ -199,6 +201,9 @@
         <UML:Class xmi.id = '10-1-124-1-15ee342b:13f2d210dc8:-8000:0000000000000CAD'
           name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000EDB'
+          name = 'StatisticsView' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -207,7 +212,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 32, 205, 168]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 32, 187, 168]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1-539a64bc:13d6844cde2:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -220,7 +225,7 @@
     <rectangle name="Fig0.0"
       x="48"
       y="32"
-      width="205"
+      width="187"
       height="168"
       fill="1"
       fillcolor="255 255 200"
@@ -230,7 +235,7 @@
     <text name="Fig0.1"
       x="49"
       y="33"
-      width="203"
+      width="185"
       height="22"
       fill="0"
       fillcolor="255 255 200"
@@ -269,7 +274,7 @@
     <rectangle name="Fig0.3"
       x="48"
       y="55"
-      width="205"
+      width="187"
       height="1"
       fill="1"
       fillcolor="black"
@@ -277,7 +282,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 56, 203, 72]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 56, 185, 72]"
          href="10-1-66-1-539a64bc:13d6844cde2:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -290,7 +295,7 @@
       <rectangle name="Fig0.4.0"
         x="49"
         y="56"
-        width="203"
+        width="185"
         height="72"
         fill="0"
         fillcolor="white"
@@ -300,7 +305,7 @@
       <text name="Fig0.4.1"
         x="49"
         y="56"
-        width="203"
+        width="185"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -316,7 +321,7 @@
       <text name="Fig0.4.2"
         x="49"
         y="72"
-        width="203"
+        width="185"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -328,11 +333,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+staticsView : StaticsView</text>
+      >+statisticsView : StatisticsView</text>
       <text name="Fig0.4.3"
         x="49"
         y="88"
-        width="203"
+        width="185"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -348,7 +353,7 @@
       <text name="Fig0.4.4"
         x="49"
         y="104"
-        width="203"
+        width="185"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -365,7 +370,7 @@
     <rectangle name="Fig0.5"
       x="48"
       y="127"
-      width="205"
+      width="187"
       height="1"
       fill="1"
       fillcolor="black"
@@ -373,7 +378,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 128, 203, 72]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 128, 185, 72]"
          href="10-1-66-1-539a64bc:13d6844cde2:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -386,7 +391,7 @@
       <rectangle name="Fig0.6.0"
         x="49"
         y="128"
-        width="203"
+        width="185"
         height="72"
         fill="0"
         fillcolor="white"
@@ -396,7 +401,7 @@
       <text name="Fig0.6.1"
         x="49"
         y="128"
-        width="203"
+        width="185"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -412,7 +417,7 @@
       <text name="Fig0.6.2"
         x="49"
         y="144"
-        width="203"
+        width="185"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -428,7 +433,7 @@
       <text name="Fig0.6.3"
         x="49"
         y="160"
-        width="203"
+        width="185"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -440,11 +445,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+endcall() : void</text>
+      >+endcall(boolean) : void</text>
       <text name="Fig0.6.4"
         x="49"
         y="176"
-        width="203"
+        width="185"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -456,7 +461,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+CallView.prototype.close() : void</text>
+      >+close() : void</text>
     </group>
   </group>
 </pgml>
