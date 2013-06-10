@@ -1319,7 +1319,7 @@ collection
  tutti i messaggi di testo della conversazione scelta, e invocherà la funzione
  
 \shape italic
-putMessage(messages[i])
+putMessage(TextMessageModel)
 \emph on
  per permetterne la visualizzazione all'utente
 \end_layout
@@ -1578,7 +1578,7 @@ render()
  metodo che si occuperà di avviare la FunctionsView relativa al contatto.
  Prima di fare ciò invocherà il metodo 
 \shape italic
-closeOtherContacts(String username)
+closeOtherContacts(Strings)
 \shape default
  della classe SideView per controllare che tutte le view presenti nel content
  siano state chiuse
@@ -1592,7 +1592,7 @@ closeOtherContacts(String username)
  metodo che verrà chiamato quando si accetterà una chiamata in arrivo; invocherà
  il metodo 
 \shape italic
-closeOtherContacts(String username)
+closeOtherContacts(String)
 \shape default
  della classe SideView, per controllare che tutte le view presenti nel content
  siano state chiuse, e uno tra i metodi 
@@ -1606,7 +1606,7 @@ audiocall(boolean)
 , della classe FunctionsView,
 \shape default
 \emph default
- a seconda che si tratti di una videochiamata o chiamata solo vocale.
+ a seconda del tipo di chiamata passata dal parametro
 \end_layout
 
 \begin_layout Itemize
@@ -1695,6 +1695,12 @@ La classe utilizza:
 mytalk.client.communication.FileCommunication
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.template.FileTemplate
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -1748,6 +1754,22 @@ Attributi pubblici:
 conterrà il riferimento al template utilizzato
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Eventi:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#sendFile: 
+\series default
+evento che richiama la funzione 
+\emph on
+sendFile()
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -1776,16 +1798,20 @@ render()
 \begin_layout Itemize
 
 \series bold
-[void] submit():
+[void] sendFile():
 \series default
- metodo che invierà il file al server, attraverso l'utilizzo di FileCommunicatio
-n
+ metodo che invierà il file al server, attraverso l'utilizzo del metodo
+ 
+\emph on
+sendFile(String, Object) 
+\emph default
+di FileCommunication
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] FileView.prototype.close(): 
+[void] close(): 
 \series default
 metodo che chiuderà l'istanza della classe creata
 \end_layout
