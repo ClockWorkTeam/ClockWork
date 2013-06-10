@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 10:56:07 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 12:08:20 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -141,19 +141,6 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000875'
-              name = '+unrender' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000876'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
             <UML:Operation xmi.id = '10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000877'
               name = '+startChat' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
@@ -181,7 +168,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1--74-1--70488c9b:13d5dd9db67:-8000:000000000000087B'
-              name = '+audiocall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+sendFile' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -194,7 +181,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1--74-1--70488c9b:13d5dd9db67:-8000:000000000000087F'
-              name = '+videocall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+audiocall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -204,10 +191,12 @@
                     <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A92'
+                  name = 'boolean' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000881'
-              name = '+call' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+videocall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -217,11 +206,13 @@
                     <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A95'
+                  name = 'boolean' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Attribute xmi.id = '10-1--38-1--4a4ff0e4:13db5ad9e14:-8000:0000000000000A7C'
-              name = '+recordMessageView' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              name = '+chatView' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '10-1--38-1--4a4ff0e4:13db5ad9e14:-8000:0000000000000A7D'>
                   <UML:Multiplicity.range>
@@ -231,11 +222,11 @@
                 </UML:Multiplicity>
               </UML:StructuralFeature.multiplicity>
               <UML:StructuralFeature.type>
-                <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C2'/>
+                <UML:Class xmi.idref = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8A'/>
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Operation xmi.id = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C4'
-              name = '+record' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+void' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -245,6 +236,10 @@
                     <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A96'
+                  name = 'boolean' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A97'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C6'
@@ -287,11 +282,54 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022CC'
-              name = '+FunctioView.prototype.close' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
+              name = '+unrender' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
                 <UML:Parameter xmi.id = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022CD'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Attribute xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8B'
+              name = '+recordMessageView' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8C'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8D'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C2'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Attribute xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8E'
+              name = '+fileView' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8F'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A90'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A91'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Operation xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A93'
+              name = '+close' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A94'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'/>
@@ -316,6 +354,12 @@
         <UML:Class xmi.id = '10-1-124-1-15ee342b:13f2d210dc8:-8000:00000000000022C3'
           name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A8A'
+          name = 'ChatView' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--607b34c5:13f2d873457:-8000:0000000000000A91'
+          name = 'FileView' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -324,7 +368,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[88, 24, 261, 312]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[88, 24, 261, 344]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -338,7 +382,7 @@
       x="88"
       y="24"
       width="261"
-      height="312"
+      height="344"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -361,7 +405,7 @@
       justification="Center"
     >FunctionsView</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[89, 25, 191, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[89, 25, 261, 0]"
          href="10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -375,7 +419,7 @@
       <rectangle name="Fig0.2.0"
         x="89"
         y="25"
-        width="191"
+        width="261"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -394,7 +438,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[89, 48, 259, 72]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[89, 48, 259, 104]"
          href="10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -408,7 +452,7 @@
         x="89"
         y="48"
         width="259"
-        height="72"
+        height="104"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -466,7 +510,7 @@
         x="89"
         y="96"
         width="259"
-        height="22"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -477,11 +521,43 @@
         bold="false"
         textsize="12"
         justification="Left"
+      >+chatView : ChatView</text>
+      <text name="Fig0.4.5"
+        x="89"
+        y="112"
+        width="259"
+        height="16"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
       >+recordMessageView : RecordMessageView</text>
+      <text name="Fig0.4.6"
+        x="89"
+        y="128"
+        width="259"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+fileView : FileView</text>
     </group>
     <rectangle name="Fig0.5"
       x="88"
-      y="119"
+      y="151"
       width="261"
       height="1"
       fill="1"
@@ -490,7 +566,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[89, 120, 259, 216]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[89, 152, 259, 216]"
          href="10-1--74-1--70488c9b:13d5dd9db67:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -502,7 +578,7 @@
       
       <rectangle name="Fig0.6.0"
         x="89"
-        y="120"
+        y="152"
         width="259"
         height="216"
         fill="0"
@@ -512,7 +588,7 @@
       />
       <text name="Fig0.6.1"
         x="89"
-        y="120"
+        y="152"
         width="259"
         height="16"
         fill="0"
@@ -528,7 +604,7 @@
       >+initialize() : void</text>
       <text name="Fig0.6.2"
         x="89"
-        y="136"
+        y="168"
         width="259"
         height="16"
         fill="0"
@@ -544,38 +620,6 @@
       >+render() : void</text>
       <text name="Fig0.6.3"
         x="89"
-        y="152"
-        width="259"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+unrender() : void</text>
-      <text name="Fig0.6.4"
-        x="89"
-        y="168"
-        width="259"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+startChat() : void</text>
-      <text name="Fig0.6.5"
-        x="89"
         y="184"
         width="259"
         height="16"
@@ -589,8 +633,8 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+sendVideoText() : void</text>
-      <text name="Fig0.6.6"
+      >+startChat() : void</text>
+      <text name="Fig0.6.4"
         x="89"
         y="200"
         width="259"
@@ -605,8 +649,8 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+audiocall() : void</text>
-      <text name="Fig0.6.7"
+      >+sendVideoText() : void</text>
+      <text name="Fig0.6.5"
         x="89"
         y="216"
         width="259"
@@ -621,8 +665,8 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+videocall() : void</text>
-      <text name="Fig0.6.8"
+      >+sendFile() : void</text>
+      <text name="Fig0.6.6"
         x="89"
         y="232"
         width="259"
@@ -637,14 +681,14 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+call() : void</text>
-      <text name="Fig0.6.9"
+      >+audiocall(boolean) : void</text>
+      <text name="Fig0.6.7"
         x="89"
         y="248"
         width="259"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -653,14 +697,30 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+record() : void</text>
-      <text name="Fig0.6.10"
+      >+videocall(boolean) : void</text>
+      <text name="Fig0.6.8"
         x="89"
         y="264"
         width="259"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+void(boolean,String) : void</text>
+      <text name="Fig0.6.9"
+        x="89"
+        y="280"
+        width="259"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -670,13 +730,13 @@
         textsize="12"
         justification="Left"
       >+forceClose() : void</text>
-      <text name="Fig0.6.11"
+      <text name="Fig0.6.10"
         x="89"
-        y="280"
+        y="296"
         width="259"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -686,13 +746,13 @@
         textsize="12"
         justification="Left"
       >+closeViewCall() : void</text>
-      <text name="Fig0.6.12"
+      <text name="Fig0.6.11"
         x="89"
-        y="296"
+        y="312"
         width="259"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -702,9 +762,25 @@
         textsize="12"
         justification="Left"
       >+viewDataContact() : void</text>
+      <text name="Fig0.6.12"
+        x="89"
+        y="328"
+        width="259"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+unrender() : void</text>
       <text name="Fig0.6.13"
         x="89"
-        y="312"
+        y="344"
         width="259"
         height="22"
         fill="0"
@@ -717,7 +793,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+FunctioView.prototype.close() : void</text>
+      >+close() : void</text>
     </group>
   </group>
 </pgml>
