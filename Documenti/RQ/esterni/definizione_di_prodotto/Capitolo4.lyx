@@ -4311,13 +4311,8 @@ name "sub:CallCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-CallCommunication
-\family default
-\series default
- si occupa di avviare la comunicazione tra utenti con il server
+La classe CallCommunication si occuperà di avviare la comunicazione tra
+ utenti
 \end_layout
 
 \begin_layout Standard
@@ -4374,11 +4369,101 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.CallView
 \end_layout
 
 \end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[MediaStream] localStream:
+\series default
+ conterrà lo stream audio/video dell'utente locale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[MediaStream] remoteStream:
+\series default
+ conterrà lo stream audio/video dell'utente con cui si starà comunicando
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[RTCPeerConnection] peerConnection:
+\series default
+ conterrà il canale attraverso cui scorrerà il flusso della chiamata tra
+ due utenti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[ContactModel] recipent:
+\series default
+ conterrà il riferimento alla classe ContactModel riguardante l'utente con
+ cui si starà comunicando
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[HTMLVideoElement] remotevid:
+\series default
+ conterrà l'elemento HTMLVideoElement dell'utente con cui si starà comunicando
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[HTMLVideoElement] sourcevid: 
+\series default
+conterrà l'elemento HTMLVideoElement dell'utente locale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[boolean] readyToSend:
+\series default
+ variabile booleana che indicherà se è possibile o meno l'invio di 
+\shape italic
+candidates
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[booleand] messageReceived:
+\series default
+ variabile booleana che indicherà se l'utente con cui si vorrà comunicare
+ sarà pronto ad accettare 
+\shape italic
+candidates
+\shape default
+ o meno
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[string[]] candidates:
+\series default
+ array associativo contenente gli ICE candidates, 
+\shape italic
+recipient
+\shape default
+ e il tipo di messaggio da inviare al server
+\end_layout
+
 \begin_layout Paragraph
 
 \series bold
@@ -4388,116 +4473,281 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-sendCall(string, string):
+[void] sendCall(string, ContactModel, CallView):
 \series default
- metodo che si occupa di mandare l'ip da chiamare al server e restituire
- se accettata o meno
+ metodo per inizializzare la chiamata; lancerà l'evento 
+\shape italic
+setOnCall,
+\shape default
+ che NotificationCommunication raccoglierà per impostare la variabile onCalling
+ a 'true', e invierà il 
+\shape italic
+recipient
+\shape default
+ che si vuole chiamare al server.
+ Infine inizializzerà il listener che si occuperà di attendere la risposta
+ dal server e invocherà 
+\shape italic
+onAnswer(event)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onAnswer(event):
+\series default
+ metodo che gestirà la risposta inviata dall'utente che si vuole chiamare;
+ se la risposta sarà affermativa invocherà il metodo 
+\shape italic
+startCall(isCaller, typecall, call, callView)
+\shape default
+, altrimenti lancerà l'evento 
+\shape italic
+setOnCall,
+\shape default
+ che NotificationCommunication raccoglierà per impostare la variabile onCalling
+ a 'false', e comunicherà all'utente il motivo della non inizializzazione
+ della chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+[void] sendAnswer(string, ContactModel, CallView): 
+\series default
+metodo per inviare all'utente che ha effettuato la chiamata una risposta
+ positiva e per invocare il metodo 
+\shape italic
+startCall(isCaller, typecall, call, callView)
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-sendAnswer(string, string): 
+[void] createPeerConnection(): 
 \series default
-metodo che si occupa di inviare una risposta all'utente che ha effettuato
- la chiamata
+metodo per inizializzare 
+\shape italic
+peerConnection
+\shape default
+ e aggiungere gli ascoltatori per l'aggiunta e la rimozione dello stream
+ remoto 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onRemoteStreamAdded(event):
+\series default
+ metodo per impostare 
+\shape italic
+remoteStream
+\shape default
+ allo stream remoto e mandare l'evento 
+\shape italic
+setPeerConn
+\shape default
+ a StatisticsViewo 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-receiveAnswer(string, string, object): 
+[void] onRemoteStreamRemoved(event):
 \series default
-metodo che si occupa di ricevere la risposta di una richiesta di chiamata
- e se positiva ne avvia la chiamata
+ metodo per rimuovere 
+\shape italic
+localStream
+\shape default
+ da 
+\shape italic
+peerConnection
+\shape default
+ ( ancora non supportato da WebRTC)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+[void] connect(bool):
+\series default
+ metodo per inizializzare una RTCPeerConnection invocando il metodo 
+\shape italic
+createPeerConnection()
+\shape default
+, aggiungendo a 
+\shape italic
+peerConnection
+\shape default
+ il proprio 
+\shape italic
+localStream
+\shape default
+ e invocando il metodo 
+\shape italic
+createOffer(this.gotDescription)
+\shape default
+ di RTCPeerConnection
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-startcall(string): 
+[void] gotDescription(sdp): 
 \series default
-metodo che si occupa di inizializzare la chiamata
+metodo per impostare il proprio sdp tramite il metodo 
+\shape italic
+setLocalDescription(sdp)
+\shape default
+ di RTCPeerConnection ed inviarlo all'utente con cui si vuole comunicare
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-onSignal(string): 
+[void] onIceCandidate(object): 
 \series default
-metodo che quando una PeerConn è creata, manda i dati di configurazione
- via WebSocket
+metodo per generare i candidati e memorizzarli in 
+\shape italic
+candidates
+\shape default
+ e, una volta salvati tutti, inviarli all'utente remoto se sarà pronto a
+ riceverli, altrimenti invierà al server un messaggio che indichi la disponibili
+tà a ricevere candidati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-onRemoteStreamAdded(object):
+[void] startCall(string): 
 \series default
- metodo che quando si aggiunge un flusso remoto, lo consegna ad un elemento
- video locale
+metodo per avviare la comunicazione tra due utenti.
+ Imposterà 
+\shape italic
+sourcevid
+\shape default
+ e 
+\shape italic
+remotevid
+\shape default
+, inizializzerà il listener 
+\shape italic
+onMessage(event)
+\shape default
+ e nel caso l'utente sia il chiamante imposterà lo stream audio o audio/video
+ e invocherà il metodo 
+\shape italic
+connect(started)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] startCall(String).onMessage(event):
+\series default
+ metodo per gestire messaggi dal server; in base al messaggio ricevuto effettuer
+à una determinata serie di azioni:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+se il messaggio conterrà il sdp del chiamante imposterà 
+\shape italic
+localStream
+\shape default
+, inizializzerà 
+\shape italic
+peerConnection
+\shape default
+ ed imposterà il sdp ricevuto e invierà il proprio sdp
+\end_layout
+
+\begin_layout Itemize
+se il messaggio conterrà il sdp del chiamato imposterà in 
+\shape italic
+peerConnection
+\shape default
+ il sdp ricevuto
+\end_layout
+
+\begin_layout Itemize
+se il messaggio conterrà il segnale indicante la disponibilità dell'utente
+ remoto a ricevere candidati, verrà impostato a 'true' 
+\shape italic
+messageReceived
+\shape default
+ e nel caso in cui 
+\shape italic
+readyToSend
+\shape default
+ sia 'true' invierà 
+\shape italic
+candidates
+\end_layout
+
+\begin_layout Itemize
+se il messaggio conterrà un candidato esso verrà aggiunto a 
+\shape italic
+peerConnection
+\end_layout
+
+\begin_layout Itemize
+se il messaggio conterrà il segnale di fine chiamata interromperà 
+\shape italic
+localStream
+\shape default
+, chiuderà 
+\shape italic
+peerConnection
+\shape default
+ e lancerà l'evento 
+\shape italic
+setOnCall,
+\shape default
+ che NotificationCommunication raccoglierà per impostare la variabile onCalling
+ a 'false', e invierà il messaggio di fine chiamata
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+[void] recoverCall():
+\series default
+ metodo per ripristinare la visione dello stream nel caso in cui fosse stata
+ interrotta selezionando un altro utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-onRemoteStreamRemoved(object):
+[void] endCall():
 \series default
- metodo che quando si rimuove un flusso remoto, lo rimuove dall'elemento
- video locale
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-createPeerConnection(): 
-\series default
-metodo che crea una connessione peer to peer
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-connect():
-\series default
- metodo che avvia la connessione su richiesta dell'utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-onMessage(object): 
-\series default
-metodo che sta in ascolto di messaggi in arrivo dal server e li gestisce
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-gotDescription(string): 
-\series default
-metodo che ottiene la descrizione del protocollo di comunicazione per la
- sessione corrente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-onIceCandidate(object): 
-\series default
-metodo che invia i possibili candidati per la configurazione della comunicazione
-, attraverso l'utilizzo di 
-\family typewriter
-\series bold
-sendMessage(string)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-sendMessage(string): 
-\series default
-metodo che invia i messaggi al server
+ metodo che interromperà 
+\shape italic
+localStream
+\shape default
+, chiuderà 
+\shape italic
+peerConnection
+\shape default
+ e lancerà l'evento 
+\shape italic
+setOnCall,
+\shape default
+ che NotificationCommunication raccoglierà per impostare la variabile onCalling
+ a 'false' e invocherà il metodo 
+\shape italic
+endcall(false)
+\shape default
+ di CallView
 \end_layout
 
 \begin_layout Subsubsection
@@ -4514,14 +4764,8 @@ name "sub:ChatCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ChatCommunication
-\family default
-\series default
- si occupa di comunicare con il server per quanto riguarda i messaggi di
- chat
+La classe ChatCommunication si occuperà di comunicare con il server per
+ quanto riguarda il trasferimento e la gestione di messaggi testuali
 \end_layout
 
 \begin_layout Standard
@@ -4565,7 +4809,6 @@ La classe utilizza
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.ChatView
 \end_layout
 
@@ -4582,7 +4825,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.ChatView
 \end_layout
 
@@ -4594,7 +4836,15 @@ Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] onReceived(event):
+\series default
+ metodo di tipo listener per la ricezione e la gestione di segnali riguardanti
+ i messaggi testuali; se il segnale significherà l'arrivo di un nuovo messaggio
+ lo aggiungerà all'oggetto di tipo TextMessagesCollection e lo segnalerà
+ all' utente, mentre se indicherà errori nella consegna del testo avviserà
+ l'utente e imposterà lo stato del messaggio come 'not sent'
 \end_layout
 
 \begin_layout Subsubsection
@@ -4611,13 +4861,8 @@ name "sub:ContactsCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-ContactsCommunication
-\family default
-\series default
- si occupa di ricevere la lista degli utenti presenti nel server
+La classe ContactsCommunication si occuperà di prelevare la lista degli
+ utenti presenti nel server e di aggiornarla nel caso di cambiamenti
 \end_layout
 
 \begin_layout Standard
@@ -4674,7 +4919,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
 mytalk.client.view.SideView
 \end_layout
 
@@ -4688,9 +4932,9 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-fetchContacts(object):
+[void] fetchContacts(string):
 \series default
- metodo per ottenere la lista dei contatti
+ metodo per prelevare dal server la lista dei contatti registrati
 \end_layout
 
 \begin_layout Subsubsection
@@ -4707,13 +4951,8 @@ name "sub:FileCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe 
-\family typewriter
-\series bold
-SendFileCommunication
-\family default
-\series default
- si occupa di gestire l'invio di le al server
+La classe FileCommunication si occuperà di gestire l'invio di file ad un
+ altro utente e la ricezione
 \end_layout
 
 \begin_layout Standard
@@ -4727,7 +4966,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/SendFileCommunication.pdf
+	filename img/FileCommunication.pdf
 	scale 90
 
 \end_inset
@@ -4739,7 +4978,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe SendFileCommunication
+Classe FileCommunication
 \end_layout
 
 \end_inset
@@ -4770,8 +5009,7 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.view.SendFileView
+mytalk.client.view.FileView
 \end_layout
 
 \end_deeper
@@ -4784,9 +5022,17 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-sendFile(object):
+[void] sendFile(object, ContactModel):
 \series default
- metodo che invia il file al server
+ metodo per inviare un file salvato in locale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] receiveFile(object):
+\series default
+ metodo per salvare in locale un file inviato da un altro utente
 \end_layout
 
 \begin_layout Subsubsection
