@@ -28,7 +28,7 @@ define([
   'communication/AuthenticationCommunication',
   'model/UserModel'
 ], function($, _, Backbone, sideView, UserDataView, authenticationTemplate, AuthenticationCommunication, UserModel){
-  var contactsView=null;
+
   var AuthenticationView = Backbone.View.extend({
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
@@ -54,6 +54,8 @@ define([
 		userModel:null,
 
     template: _.template(authenticationTemplate),
+    
+    contactsView:'',
 
     /**
      * funzione di inizializzazione dell'oggetto
@@ -61,7 +63,7 @@ define([
     initialize: function(){
       _.bindAll(this, 'render', 'connect', 'disconnect');
       this.render();
-      contactsView = new sideView();
+      this.contactsView = new sideView();
     },
 
     /**
@@ -84,7 +86,7 @@ define([
             surname: answer.surname
           });
           $(view.el).html(view.template({authenticated: true, name: view.userModel.toJSON().username}));
-          contactsView.getContacts(view);
+          view.contactsView.getContacts(view);
         }
       };
     },
@@ -104,7 +106,7 @@ define([
     disconnect: function(){
       AuthenticationCommunication.logout(this.userModel.toJSON().username);
       $(this.el).html(this.template({authenticated: false, signup: false}));
-      contactsView.unrender();
+      this.contactsView.unrender();
       if(this.userDataView){
         this.userDataView.unrender();
         this.userDataView=undefined;
@@ -166,7 +168,7 @@ define([
     },
 
     editProfile: function(){
-      contactsView.closeOtherContacts();
+      this.contactsView.closeOtherContacts();
       if(this.userDataView){
         this.userDataView.unrender();
       }
