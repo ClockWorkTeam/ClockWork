@@ -93,8 +93,8 @@ define([ '../js/communication/ChatCommunication' , '../js/model/TextMessageModel
   test('Check of Connection.send.', function() {
     expect( 1 );
         
-    var onReceived = this.spy();
-    this.Connection.send("message", onReceived, false);
+    ChatCommunication.send('johndoe','hello');    
+    
     equal(this.sendStub.callCount, 1, 'Connection.send called.');
         
   });
