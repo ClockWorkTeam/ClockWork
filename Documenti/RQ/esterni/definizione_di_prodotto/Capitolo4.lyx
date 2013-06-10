@@ -1186,6 +1186,18 @@ La classe utilizza:
 mytalk.client.communication.ChatCommunication
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.TextMessagesCollection
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.template.ChatTemplate
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -1274,13 +1286,9 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
-\emph on
-collection 
-\emph default
-e richiamare il metodo 
-\emph on
-render()
+ metodo per inizializzare l'oggetto, collegherà il metodo render() della
+ classe alla collection in modo da richiamarlo ogni qual volta avvenga un
+ cambiamento di quest'ultima
 \end_layout
 
 \begin_layout Itemize
@@ -1289,24 +1297,41 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template ChatTemplate
- e, nel caso in cui saranno salvati messaggi di testo, invocherà il metodo
- 
+ inoltre, invocherà il metodo 
 \shape italic
-putMessages()
+putMessages() 
+\emph on
+per visualizzare i messaggi scambiati fino ad ora
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] unrender():
+[void] putMessages()
 \series default
- metodo per rimuovere da 
+: metodo che si occuperà di prelevare dalla 
 \shape italic
 collection
 \shape default
- la conversazione con l'utente e invocare il metodo 
+ tutti i messaggi di testo della conversazione scelta, e invocherà la funzione
+ 
 \shape italic
-close() 
+putMessage(messages[i])
+\emph on
+ per permetterne la visualizzazione all'utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] putMessage(TextMessageModel)
+\series default
+: metodo che si occuperà della scrittura di un messaggio di testo, presente
+ nella 
+\emph on
+collection,
+\emph default
+ all'interno della pagina
 \end_layout
 
 \begin_layout Itemize
@@ -1314,7 +1339,8 @@ close()
 \series bold
 [void] send(): 
 \series default
-metodo per inviare un messaggio ad un altro utente tramite il metodo 
+metodo per inviare un messaggio al contatto, per fare ciò invocherà il metodo
+ 
 \shape italic
 send()
 \shape default
@@ -1327,37 +1353,21 @@ collection
 \begin_layout Itemize
 
 \series bold
-[void] putMessages()
+[void] unrender():
 \series default
-: metodo per inserire in 
+ metodo per chiudere l'istanza, per fare ciò rimuoverà da 
 \shape italic
 collection
 \shape default
- tutti i messaggi di testo della conversazione scelta salvati in model chiamando
- la funzione 
+ la conversazione con l'utente e invocherà il metodo 
 \shape italic
-putMessage(messages[i])
+close() 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] putMessage(TextMessageModel)
-\series default
-: metodo per inserire nell'array 
-\shape italic
-TextMessageModel
-\shape default
- la lista di messaggi di testo della conversazione scelta distinguendo tra
- messaggi inviati, ricevuti e scritti ma non inviati
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-[void] ChatView.prototype.close(): 
+[void] close(): 
 \series default
 metodo che chiuderà l'istanza della classe creata
 \end_layout
