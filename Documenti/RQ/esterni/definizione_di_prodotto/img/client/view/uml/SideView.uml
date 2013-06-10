@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 11:49:35 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 17:03:12 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -74,7 +74,7 @@
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
           <UML:Classifier.feature>
             <UML:Attribute xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D85'
-              name = '+el DOM element' visibility = 'public' isSpecification = 'false'
+              name = '+el : DOM element' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D86'>
@@ -128,53 +128,81 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D93'
-              name = '+render' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D94'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D95'
-              name = '+unrender' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D96'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D97'
-              name = '+viewContact' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D98'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D99'
-                  name = 'ContactModel' isSpecification = 'false' kind = 'in'/>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D9A'
+            <UML:Attribute xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000200E'
+              name = '+myModel' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000200F'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002010'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002011'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Attribute xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002012'
+              name = '+authenticationView' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002013'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002014'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002015'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Attribute xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002016'
+              name = '+childViews : ContactView[ ]' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000201B'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000201A'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+            </UML:Attribute>
+            <UML:Attribute xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000201C'
+              name = '+currenteFunctions : FunctionsView [ ]' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002021'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002020'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+            </UML:Attribute>
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002027'
               name = '+getContacts' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D9B'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002028'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002029'
+                  name = 'AuthenticationView' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000202C'
+              name = '+render' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000202D'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
@@ -182,12 +210,53 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D9C'
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002031'
+              name = '+viewContact' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002032'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002033'
+                  name = 'ContactModel' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002034'
+              name = '+unrender' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002035'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002036'
+              name = '+destroyContacts' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002037'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002038'
               name = '+callIP' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D9D'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002039'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
@@ -195,12 +264,12 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D9E'
-              name = '+StartConference' visibility = 'public' isSpecification = 'false'
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203A'
+              name = '+startConference' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D9F'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203B'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
@@ -208,48 +277,50 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA0'
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203C'
               name = '+listContacts' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA1'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203D'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA2'
-                  name = 'Object' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203E'
+                  name = 'ContactModel' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA3'
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203F'
               name = '+closeOtherContacts' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA4'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002040'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002041'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA5'
+            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002042'
               name = '+setCall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA6'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002043'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA7'
-                  name = 'contact' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000DA8'
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002044'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002045'
                   name = 'String' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
@@ -264,6 +335,18 @@
         <UML:Class xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D92'
           name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002011'
+          name = 'UserModel' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002015'
+          name = 'AuthenticationView' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002019'
+          name = 'ContactView' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000201F'
+          name = 'FunctionsView' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -272,7 +355,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[176, 48, 229, 262]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[32, 8, 273, 347]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
        fill="1"
        fillcolor="255 255 200"
@@ -283,19 +366,19 @@
     </private>
     
     <rectangle name="Fig0.0"
-      x="176"
-      y="48"
-      width="229"
-      height="262"
+      x="32"
+      y="8"
+      width="273"
+      height="347"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
       strokecolor="black"
     />
     <text name="Fig0.1"
-      x="177"
-      y="49"
-      width="227"
+      x="33"
+      y="9"
+      width="271"
       height="23"
       fill="0"
       fillcolor="255 255 200"
@@ -309,7 +392,7 @@
       justification="Center"
     >SideView</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[177, 49, 64, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[33, 9, 227, 0]"
          href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
          fill="0"
          fillcolor="255 255 200"
@@ -321,9 +404,9 @@
       </private>
       
       <rectangle name="Fig0.2.0"
-        x="177"
-        y="49"
-        width="64"
+        x="33"
+        y="9"
+        width="227"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -332,9 +415,9 @@
       />
     </group>
     <rectangle name="Fig0.3"
-      x="176"
-      y="72"
-      width="229"
+      x="32"
+      y="32"
+      width="273"
       height="1"
       fill="1"
       fillcolor="black"
@@ -342,7 +425,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[177, 73, 227, 59]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[33, 33, 271, 127]"
          href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
          fill="0"
          fillcolor="255 255 200"
@@ -353,19 +436,19 @@
       </private>
       
       <rectangle name="Fig0.4.0"
-        x="177"
-        y="73"
-        width="227"
-        height="59"
+        x="33"
+        y="33"
+        width="271"
+        height="127"
         fill="0"
         fillcolor="white"
         stroke="0"
         strokecolor="black"
       />
       <text name="Fig0.4.1"
-        x="177"
-        y="73"
-        width="227"
+        x="33"
+        y="33"
+        width="271"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -377,11 +460,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+el DOM element</text>
+      >+el : DOM element</text>
       <text name="Fig0.4.2"
-        x="177"
-        y="90"
-        width="227"
+        x="33"
+        y="50"
+        width="271"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -395,10 +478,10 @@
         justification="Left"
       >+template : Template</text>
       <text name="Fig0.4.3"
-        x="177"
-        y="107"
-        width="227"
-        height="23"
+        x="33"
+        y="67"
+        width="271"
+        height="17"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -410,11 +493,75 @@
         textsize="13"
         justification="Left"
       >+collection : ContactsCollection</text>
+      <text name="Fig0.4.4"
+        x="33"
+        y="84"
+        width="271"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+myModel : UserModel</text>
+      <text name="Fig0.4.5"
+        x="33"
+        y="101"
+        width="271"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+authenticationView : AuthenticationView</text>
+      <text name="Fig0.4.6"
+        x="33"
+        y="118"
+        width="271"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+childViews : ContactView[ ]</text>
+      <text name="Fig0.4.7"
+        x="33"
+        y="135"
+        width="271"
+        height="23"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+currenteFunctions : FunctionsView [ ]</text>
     </group>
     <rectangle name="Fig0.5"
-      x="176"
-      y="131"
-      width="229"
+      x="32"
+      y="159"
+      width="273"
       height="1"
       fill="1"
       fillcolor="black"
@@ -422,7 +569,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[177, 132, 227, 178]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[33, 160, 271, 195]"
          href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
          fill="0"
          fillcolor="255 255 200"
@@ -433,19 +580,19 @@
       </private>
       
       <rectangle name="Fig0.6.0"
-        x="177"
-        y="132"
-        width="227"
-        height="178"
+        x="33"
+        y="160"
+        width="271"
+        height="195"
         fill="0"
         fillcolor="white"
         stroke="0"
         strokecolor="black"
       />
       <text name="Fig0.6.1"
-        x="177"
-        y="132"
-        width="227"
+        x="33"
+        y="160"
+        width="271"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -459,12 +606,28 @@
         justification="Left"
       >+initialize() : void</text>
       <text name="Fig0.6.2"
-        x="177"
-        y="149"
-        width="227"
+        x="33"
+        y="177"
+        width="271"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+getContacts(AuthenticationView) : void</text>
+      <text name="Fig0.6.3"
+        x="33"
+        y="194"
+        width="271"
+        height="17"
+        fill="0"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -474,29 +637,13 @@
         textsize="13"
         justification="Left"
       >+render() : void</text>
-      <text name="Fig0.6.3"
-        x="177"
-        y="166"
-        width="227"
-        height="17"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Lucida Grande"
-        italic="false"
-        bold="false"
-        textsize="13"
-        justification="Left"
-      >+unrender() : void</text>
       <text name="Fig0.6.4"
-        x="177"
-        y="183"
-        width="227"
+        x="33"
+        y="211"
+        width="271"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -507,12 +654,12 @@
         justification="Left"
       >+viewContact(ContactModel) : void</text>
       <text name="Fig0.6.5"
-        x="177"
-        y="200"
-        width="227"
+        x="33"
+        y="228"
+        width="271"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -521,14 +668,30 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+getContacts() : void</text>
+      >+unrender() : void</text>
       <text name="Fig0.6.6"
-        x="177"
-        y="217"
-        width="227"
+        x="33"
+        y="245"
+        width="271"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+destroyContacts() : void</text>
+      <text name="Fig0.6.7"
+        x="33"
+        y="262"
+        width="271"
+        height="17"
+        fill="0"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -538,29 +701,13 @@
         textsize="13"
         justification="Left"
       >+callIP() : void</text>
-      <text name="Fig0.6.7"
-        x="177"
-        y="234"
-        width="227"
-        height="17"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Lucida Grande"
-        italic="false"
-        bold="false"
-        textsize="13"
-        justification="Left"
-      >+StartConference() : void</text>
       <text name="Fig0.6.8"
-        x="177"
-        y="251"
-        width="227"
+        x="33"
+        y="279"
+        width="271"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -569,14 +716,14 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+listContacts(Object) : void</text>
+      >+startConference() : void</text>
       <text name="Fig0.6.9"
-        x="177"
-        y="268"
-        width="227"
+        x="33"
+        y="296"
+        width="271"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -585,14 +732,30 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+closeOtherContacts() : void</text>
+      >+listContacts(ContactModel) : void</text>
       <text name="Fig0.6.10"
-        x="177"
-        y="285"
-        width="227"
+        x="33"
+        y="313"
+        width="271"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+closeOtherContacts(String) : void</text>
+      <text name="Fig0.6.11"
+        x="33"
+        y="330"
+        width="271"
         height="23"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -601,7 +764,7 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+setCall(contact,String) : void</text>
+      >+setCall(String,String) : void</text>
     </group>
   </group>
 </pgml>
