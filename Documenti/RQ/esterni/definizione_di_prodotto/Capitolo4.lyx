@@ -3545,6 +3545,18 @@ La classe utilizza:
 mytalk.client.communication.TutorialCommunication
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.template.TutorialTemplate
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.TutorialsCollection
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -3587,9 +3599,45 @@ conterrà il riferimento al template utilizzato
 \begin_layout Itemize
 
 \series bold
-currentTutorial:
+[TutorialModel] currentTutorial:
 \series default
  utilizzato per tenere traccia del tutorial corrente
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Eventi:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click li.videoTutorial: 
+\series default
+evento che richiama la funzione 
+\shape italic
+viewTutorial(String)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#next: 
+\series default
+evento che richiama la funzione 
+\shape italic
+next()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#previous: 
+\series default
+evento che richiama la funzione 
+\shape italic
+prev()
 \end_layout
 
 \begin_layout Paragraph
@@ -3603,11 +3651,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
-\shape italic
-currentTutorial
-\shape default
- e richiamare il metodo 
+ metodo per inizializzare l'oggetto e richiamerà il metodo 
 \emph on
 render()
 \end_layout
@@ -3617,8 +3661,22 @@ render()
 \series bold
 [void] render():
 \series default
- metodo per effettuare la scrittura nella pagina del template TutorialTemplate
- 
+ metodo per effettuare la scrittura nella pagina del template TutorialTemplate,
+ al fine di visualizzare la lista dei tutorials disponibili
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] viewTutorial(String):
+\series default
+ metodo per visualizzare il tutorial selezionato, indicato attraverso il
+ parametro, per fare ciò dovrà aggiornare il template.
+ Inoltre assegnerà ad 
+\emph on
+currentTutorial 
+\emph default
+il tutorial selezionato
 \end_layout
 
 \begin_layout Itemize
@@ -3626,7 +3684,10 @@ render()
 \series bold
 [void] next():
 \series default
- metodo per passare al video successivo
+ metodo per passare al video successivo, si occuperà anche di aggiornare
+ 
+\emph on
+currentTutorial
 \end_layout
 
 \begin_layout Itemize
@@ -3634,13 +3695,16 @@ render()
 \series bold
 [void] prev(): 
 \series default
-metodo per passare al video precedente
+metodo per passare al video precedente, si occuperà anche di aggiornare
+ 
+\emph on
+currentTutorial
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] TutorialView.prototype.close(): 
+[void] close(): 
 \series default
 metodo che chiuderà l'istanza della classe creata
 \end_layout
