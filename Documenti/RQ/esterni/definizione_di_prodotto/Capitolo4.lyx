@@ -1088,11 +1088,7 @@ closeViewCall()
 \emph on
 close()
 \emph default
-
-\begin_inset space ~
-\end_inset
-
-della classe stessa e 
+ della classe stessa e 
 \emph on
 close() 
 \emph default
@@ -2987,6 +2983,14 @@ conterrà il riferimento al template utilizzato
 conterrà i riferimenti alle istanze della classe ContactView
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+[FunctionsView[] ] currentFunctions: 
+\series default
+conterrà il riferimento alla classe FunctionsView
+\end_layout
+
 \begin_layout Standard
 
 \series bold
@@ -3154,7 +3158,22 @@ collection
 [void] callIP():
 \series default
  metodo per effettuare una comunicazione attraverso indirizzo IP, per fare
- ciò inizialmente 
+ ciò inizialmente invocherà il metodo 
+\shape italic
+closeOtherContacts(Strings)
+\shape default
+, per controllare che tutte le view presenti nel content siano state chiuse,
+ e inizializzerà 
+\emph on
+currentFunctions 
+\emph default
+passandogli come parametro 
+\emph on
+From
+\emph default
+ il valore 
+\emph on
+IP
 \end_layout
 
 \begin_layout Itemize
@@ -3162,42 +3181,69 @@ collection
 \series bold
 [void] StartConference():
 \series default
- metodo per creare una nuova FunctionsView per effettuare una conferenza
+ metodo per effettuare una videoconferenza, , per fare ciò inizialmente
+ invocherà il metodo 
+\shape italic
+closeOtherContacts(Strings)
+\shape default
+, per controllare che tutte le view presenti nel content siano state chiuse,
+ e inizializzerà 
+\emph on
+currentFunctions 
+\emph default
+passandogli come parametro 
+\emph on
+From
+\emph default
+ il valore 
+\emph on
+Conference.
  
+\emph default
+Inoltre invocherà il metodo 
+\emph on
+listContacts(ContactModel) 
+\emph default
+per visualizzare la lista degli utenti da selezionare per la conferenza
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] listContacts(Object):
+[void] listContacts(ContactModeò):
 \series default
- metodo per gestire la lista degli utenti da selezionare per una conferenza
+ metodo per gestire la lista degli utenti da selezionare per una conferenza,
+ se l'utente risulta connesso si creerà un ContactView corrispondente all'utente
+ e si appenderà nella lista degli utenti da selezionare
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] closeOtherContacts(contact):
+[void] closeOtherContacts(String):
 \series default
- metodo che si occuperà di chiudere viste inattese tramite il metodo 
-\shape italic
-unrender()
-\shape default
- di UserDataView e i metodi 
-\shape italic
-close()
-\shape default
- di ChatView e FunctionsView
+ metodo che si occuperà di chiudere le istanze di FunctionsView e UserDataView
+ aperte, in modo da garantire che solo una view sia presente nel content.
+ Se il metodo è invocato da un'istanza di ContactView, viene passato come
+ parametro lo username relativo al contatto
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] setCall(contact, type): 
+[void] setCall(String, String): 
 \series default
-metodo per associare uno username al chiamante ed invocare il metodo 
+metodo per impostare la ricezione di una chiamata, i parametri rapprentano
+ lo username del chiamante e il tipo di chiamata.
+ Invocherà la funzione 
 \shape italic
-createcall(type) 
+createCall(String) 
+\emph on
+dell'istanza, della
+\emph default
+ 
+\emph on
+classe ContactView, relativa al contatto
 \end_layout
 
 \begin_layout Subsubsection
