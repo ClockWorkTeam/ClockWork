@@ -1080,11 +1080,29 @@ lo stato di chiamata
 \series bold
 [void] endcall(): 
 \series default
-metodo che terminerà la chiamata in corso richiamando anche il metodo 
+metodo che terminerà la chiamata in corso richiamando i metodi 
 \shape italic
 closeViewCall()
 \shape default
- della classe FunctionsView
+ della classe FunctionsView, 
+\emph on
+close()
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+della classe stessa e 
+\emph on
+close() 
+\emph default
+della classe StatisticsView.
+ Inoltre nel caso il metodo venga invocato dall'utente che ha deciso di
+ chiudere la chiamata, verrà invocato anche il metodo 
+\emph on
+endCall()
+\emph default
+ della classe CallCommunication.
 \end_layout
 
 \begin_layout Itemize
