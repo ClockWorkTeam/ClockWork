@@ -1,5 +1,5 @@
 //Wait for relevant code bits to load before starting any tests
-define(['../js/view/SideView'], function( SideView ) {
+define(['../js/view/SideView','../js/model/UserModel','../js/view/AuthenticationView'], function( SideView, UserModel, AuthenticationView ) {
 
   module( 'About Backbone.View', {
       setup: function() {
@@ -63,4 +63,22 @@ define(['../js/view/SideView'], function( SideView ) {
     
     this.sendStub.restore();
   });
+  
+  test('Can wire up getContacts method to DOM element.', function() {
+    expect( 1 );
+    
+    this.contactsCommunication=require('communication/ContactsCommunication');
+    this.commStub = sinon.stub(this.contactsCommunication, 'fetchContacts' );
+    
+    this.model=new UserModel({username:'johndoe'});
+    this.view=new AuthenticationView();
+    this.view.userModel = this.model;
+    
+    this.sideView.getContacts(this.view);
+    
+    ok( this.commStub.called );
+    
+    this.commStub.restore();
+  });
+  
 });
