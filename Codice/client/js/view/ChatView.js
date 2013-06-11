@@ -44,7 +44,7 @@ define([
       }
     },
 
-    el : '#chat',
+    el : $('#chat'),
 
     template: _.template(ChatTemplate),
 

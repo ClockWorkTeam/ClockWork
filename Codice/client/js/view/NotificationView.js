@@ -35,7 +35,7 @@ define([
       'click button#refuseCall':'refuse',
     },
 
-    el : '#main',
+    el : $('#main'),
 
     //indica in quale parte del DOM gestir√
     template : _.template(NotificationTemplate),
