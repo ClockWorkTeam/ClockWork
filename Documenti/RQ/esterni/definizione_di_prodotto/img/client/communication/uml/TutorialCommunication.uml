@@ -11,7 +11,7 @@
     </documentation>
     <settings>
       <notationlanguage>UML 1.4</notationlanguage>
-      <showboldnames>true</showboldnames>
+      <showboldnames>false</showboldnames>
       <useguillemots>false</useguillemots>
       <showassociationnames>true</showassociationnames>
       <showvisibility>false</showvisibility>
@@ -23,27 +23,27 @@
       <showsingularmultiplicities>true</showsingularmultiplicities>
       <defaultshadowwidth>1</defaultshadowwidth>
       <hidebidirectionalarrows>true</hidebidirectionalarrows>    
-      <fontname>Dialog</fontname>
-      <fontsize>12</fontsize>
+      <fontname>Lucida Grande</fontname>
+      <fontsize>13</fontsize>
       <defaultstereotypeview>0</defaultstereotypeview>
       <activediagram>Diagramma di Classe</activediagram>
     </settings>
     <searchpath href="PROJECT_DIR" />
     <members>
       <member type="profile"
-              name="TutorialsCollection_profile.profile" />
+              name="TutorialCommunication_profile.profile" />
       <member type="xmi"
-              name="TutorialsCollection.xmi" />
+              name="TutorialCommunication.xmi" />
       <member type="pgml"
-              name="TutorialsCollection_DiagrammadiClasse.pgml"
+              name="TutorialCommunication_DiagrammadiClasse.pgml"
               diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
               diagramname="Diagramma di Classe" />
       <member type="pgml"
-              name="TutorialsCollection_DiagrammadeiCasidUso.pgml"
+              name="TutorialCommunication_DiagrammadeiCasidUso.pgml"
               diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
               diagramname="Diagramma dei Casi d&apos;Uso" />
       <member type="todo"
-              name="TutorialsCollection.todo" />
+              name="TutorialCommunication.todo" />
     </members>
     <historyfile name="" />
   </argo>
@@ -58,54 +58,49 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 16:07:43 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 15:31:36 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
     </XMI.documentation>
     <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
   <XMI.content>
-    <UML:Model xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6C'
+    <UML:Model xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A3'
       name = 'Modello Senza Nome' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
       isAbstract = 'false'>
       <UML:Namespace.ownedElement>
-        <UML:Class xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6D'
-          name = 'TutorialsCollection' visibility = 'public' isSpecification = 'false'
+        <UML:Class xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A4'
+          name = 'TutorialCommunication' visibility = 'public' isSpecification = 'false'
           isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
           <UML:Classifier.feature>
-            <UML:Attribute xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6E'
-              name = '+model' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              changeability = 'changeable' targetScope = 'instance'>
-              <UML:StructuralFeature.multiplicity>
-                <UML:Multiplicity xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6F'>
-                  <UML:Multiplicity.range>
-                    <UML:MultiplicityRange xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A70'
-                      lower = '1' upper = '1'/>
-                  </UML:Multiplicity.range>
-                </UML:Multiplicity>
-              </UML:StructuralFeature.multiplicity>
-              <UML:StructuralFeature.type>
-                <UML:Class xmi.idref = '-64--88-56-1--50baf811:13f33667372:-8000:0000000000000F71'/>
-              </UML:StructuralFeature.type>
-            </UML:Attribute>
+            <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A5'
+              name = '+getTutorials' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A6'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A7'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
           </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A71'
-          name = 'Object' visibility = 'public' isSpecification = 'false' isRoot = 'false'
-          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
-        <UML:Class xmi.id = '-64--88-56-1--50baf811:13f33667372:-8000:0000000000000F71'
-          name = 'TutorialModel' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+        <UML:Class xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A7'
+          name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
 </XMI>
-<pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6C"
+<pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A3"
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[36, 20, 145, 71]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
-       href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6D"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 48, 159, 71]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       href="10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A4"
        fill="1"
        fillcolor="255 255 200"
        stroke="1"
@@ -115,9 +110,9 @@
     </private>
     
     <rectangle name="Fig0.0"
-      x="36"
-      y="20"
-      width="145"
+      x="48"
+      y="48"
+      width="159"
       height="71"
       fill="1"
       fillcolor="255 255 200"
@@ -125,24 +120,24 @@
       strokecolor="black"
     />
     <text name="Fig0.1"
-      x="37"
-      y="21"
-      width="143"
-      height="22"
+      x="49"
+      y="49"
+      width="157"
+      height="23"
       fill="0"
       fillcolor="255 255 200"
       stroke="0"
       strokecolor="black"
       textcolor="black"
-      font="Dialog"
+      font="Lucida Grande"
       italic="false"
-      bold="true"
-      textsize="12"
+      bold="false"
+      textsize="13"
       justification="Center"
-    >TutorialsCollection</text>
+    >TutorialCommunication</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[37, 21, 143, 0]"
-         href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6D"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[49, 49, 64, 0]"
+         href="10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A4"
          fill="0"
          fillcolor="255 255 200"
          stroke="0"
@@ -153,9 +148,9 @@
       </private>
       
       <rectangle name="Fig0.2.0"
-        x="37"
-        y="21"
-        width="143"
+        x="49"
+        y="49"
+        width="64"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -164,9 +159,9 @@
       />
     </group>
     <rectangle name="Fig0.3"
-      x="36"
-      y="43"
-      width="145"
+      x="48"
+      y="72"
+      width="159"
       height="1"
       fill="1"
       fillcolor="black"
@@ -174,8 +169,8 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[37, 44, 143, 24]"
-         href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6D"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 73, 157, 21]"
+         href="10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A4"
          fill="0"
          fillcolor="255 255 200"
          stroke="0"
@@ -185,36 +180,20 @@
       </private>
       
       <rectangle name="Fig0.4.0"
-        x="37"
-        y="44"
-        width="143"
-        height="24"
+        x="49"
+        y="73"
+        width="157"
+        height="21"
         fill="0"
         fillcolor="white"
         stroke="0"
         strokecolor="black"
       />
-      <text name="Fig0.4.1"
-        x="37"
-        y="44"
-        width="143"
-        height="22"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+model : TutorialModel</text>
     </group>
     <rectangle name="Fig0.5"
-      x="36"
-      y="68"
-      width="145"
+      x="48"
+      y="93"
+      width="159"
       height="1"
       fill="1"
       fillcolor="black"
@@ -222,8 +201,8 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[37, 69, 143, 21]"
-         href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6D"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 94, 157, 25]"
+         href="10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A4"
          fill="0"
          fillcolor="255 255 200"
          stroke="0"
@@ -233,19 +212,35 @@
       </private>
       
       <rectangle name="Fig0.6.0"
-        x="37"
-        y="69"
-        width="143"
-        height="21"
+        x="49"
+        y="94"
+        width="157"
+        height="25"
         fill="0"
         fillcolor="white"
         stroke="0"
         strokecolor="black"
       />
+      <text name="Fig0.6.1"
+        x="49"
+        y="94"
+        width="157"
+        height="23"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+getTutorials() : void</text>
     </group>
   </group>
 </pgml>
-<pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000A6C"
+<pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|10-1-124-1--112bb65e:13f332d45b0:-8000:00000000000028A3"
       name="Diagramma dei Casi d&apos;Uso"
 >
 </pgml>
