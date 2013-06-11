@@ -31,7 +31,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
   }); 
 
 
-  test('Can wire up send method to DOM element.', function() {
+  test('Can wire up checkPassword method to DOM element.', function() {
     expect( 1 );
 
     this.checkPasswordSpy = sinon.spy();
@@ -45,7 +45,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     this.sendStub.restore();
   });
   
-  test('Can wire up send method to DOM element.', function() {
+  test('Can wire up render method to DOM element.', function() {
     expect( 1 );
 
     this.renderSpy = sinon.spy();
@@ -59,7 +59,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     this.sendStub.restore();
   });
   
-    test('Can wire up send method to DOM element.', function() {
+    test('Can wire up unrender method to DOM element.', function() {
     expect( 1 );
 
     this.unrenderSpy = sinon.spy();
@@ -72,4 +72,24 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     
     this.sendStub.restore();
   });
+  
+  test('Can wire up callBacks method to DOM element.', function() {
+    expect( 1 );
+
+    this.model = this.spy();
+    this.view = this.spy();
+		//var view = { contactsView: { getContacts: this.cViewSpy },template: function(){} };
+
+    this.userDataCommunication=require('communication/UserDataCommunication');
+    
+    this.changeStub = sinon.stub(this.userDataCommunication, 'changeData');
+
+    this.userDataView.callBacks().changeData(this.model,this.view);
+
+    ok( this.changeStub.called );
+    
+    this.changeStub.restore();
+  });
+  
+  
 });

@@ -138,4 +138,16 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub.restore();
   });
   
+    test('Can wire up callBacks method to DOM element.', function() {
+    expect( 1 );
+
+    this.cViewSpy = this.spy();
+		var view = { contactsView: { getContacts: this.cViewSpy },template: function(){} };
+
+    this.authenticationView.callBacks().doLogin('johndoe','1234','true',view);
+
+    ok( this.cViewSpy.called );
+  });
+  
+  
 });

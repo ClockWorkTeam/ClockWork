@@ -1,5 +1,5 @@
 //Wait for relevant code bits to load before starting any tests
-define(['../js/view/ChatView'], function( ChatView ) {
+define(['../js/view/ChatView','../js/model/TextMessageModel'], function( ChatView, TextMessageModel ) {
 
   module( 'About Backbone.View', {
       setup: function() {
@@ -49,5 +49,5 @@ define(['../js/view/ChatView'], function( ChatView ) {
     
     this.sendStub.restore();
   });
-
+  
 });
