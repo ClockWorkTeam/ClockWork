@@ -4431,12 +4431,11 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-checkCredentials(String username,
+[void] checkCredentials(String,
 \series default
  
 \series bold
-String password, AuthenticationView.function() callBacks, AuthenticationView
- view):
+String, AuthenticationView.function(), AuthenticationView):
 \series default
  metodo che si occuperà di controllare la correttezza dello username e della
  password inserite.
@@ -4460,8 +4459,8 @@ di AuthenticationView
 \begin_layout Itemize
 
 \series bold
-signup(String username, String password, String name, String surname, Authentica
-tionView.function() callBacks, AuthenticationView view): 
+[void] signup(String, String, String, String, AuthenticationView.function(),
+ AuthenticationView): 
 \series default
 metodo che si occuperà della registrazione dell'utente.
  Per fare ciò invierà al server un pacchetto contenente tutte le credenziali
@@ -4484,7 +4483,7 @@ di AuthenticationView
 \begin_layout Itemize
 
 \series bold
-logout(string): 
+[void] logout(String): 
 \series default
 metodo che gestisce la deautenticazione dell'utente
 \end_layout
