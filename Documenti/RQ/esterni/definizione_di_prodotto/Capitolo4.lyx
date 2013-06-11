@@ -6216,7 +6216,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/client/collection/pdf/packageCollection.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/packageCollection.pdf
 	scale 90
 
 \end_inset
@@ -6228,15 +6228,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Package Collection
+Package collection
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6282,6 +6278,12 @@ La classe è utilizzata da:
 mytalk.client.view
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication
+\end_layout
+
 \end_deeper
 \begin_layout Paragraph
 
@@ -6293,24 +6295,73 @@ Costituito dalle classi:
 
 \family typewriter
 mytalk.client.collection.ContactsCollection
+\family default
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: ContactsCollection"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.collection.TextMessagesCollection
+mytalk.client.collection.RecordMessagesCollection 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: RecordMessagesCollection"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.collection.TutorialsCollection
+mytalk.client.collection.TextMessagesCollection 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: TextMessagesCollection"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.TutorialsCollection 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TutorialsCollection"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.collection.ContactsCollection
+mytalk.client.collection.ContactsCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: ContactsCollection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6328,7 +6379,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ContactsCollection.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/ContactsCollection.pdf
 	scale 90
 
 \end_inset
@@ -6345,10 +6396,6 @@ Classe ContactsCollection
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6384,6 +6431,15 @@ La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.view.SideView
+\end_layout
+
 \begin_layout Itemize
 
 \family typewriter
@@ -6441,7 +6497,168 @@ metodo per restituire un array contenente tutti i ContactModel della collezione
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.collection.TextMessagesCollection
+mytalk.client.collection.RecordMessagesCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: RecordMessagesCollection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe RecordMessagesCollection rappresenterà la collezione dei messaggi
+ audio e video rievuti 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/RecordMessagesCollection.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessagesCollection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.RecordMessageModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.view.RecordMessageView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.communication.NotificationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.communication.RecordMessageCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Collection
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[RecordMessageModel] model: 
+\series default
+conterrà il riferimento alla classe RecordMessageModel
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[RecordMessageModel[]] getMessages(String): 
+\series default
+metodo per restituire un array contenente i RecordMessageModel della collezione,
+ avente come mittente lo username passato per parametro
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.collection.TextMessagesCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: TextMessagesCollection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6460,7 +6677,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TextMessagesCollection.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/TextMessagesCollection.pdf
 	scale 90
 
 \end_inset
@@ -6477,10 +6694,6 @@ Classe TextMessagesCollection
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6524,6 +6737,12 @@ La classe è utilizzata da:
 mytalk.client.view.ChatView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.ChatCommunication
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -6564,7 +6783,7 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[TextMessagesCollection] chat_session(string): 
+[TextMessagesCollection] chatSession(String): 
 \series default
 metodo per restituire l'intera conversazione con l'utente il cui username
  sarà parametro della funzione
@@ -6573,7 +6792,14 @@ metodo per restituire l'intera conversazione con l'utente il cui username
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.collection.TutorialsCollection
+mytalk.client.collection.TutorialsCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TutorialsCollection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6592,7 +6818,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialsCollection.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/TutorialsCollection.pdf
 	scale 90
 
 \end_inset
@@ -6609,10 +6835,6 @@ Classe TutorialsCollection
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6654,6 +6876,12 @@ La classe è utilizzata da:
 mytalk.client.view.TutorialView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.TutorialCommunication
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -6683,20 +6911,6 @@ Attributi pubblici:
 [TutorialModel] model: 
 \series default
 conterrà il riferimento alla classe TutorialModel
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Metodi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[TutorialModel] sendVideo(): 
-\series default
-metodo che restituirà il video tutorial richiesto
 \end_layout
 
 \begin_layout Subsection
@@ -6730,7 +6944,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/package-model.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/packageModel.pdf
 	scale 90
 
 \end_inset
@@ -6742,7 +6956,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Package Model
+Package model
 \end_layout
 
 \end_inset
@@ -6780,6 +6994,12 @@ mytalk.client.collection
 mytalk.client.view
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication
+\end_layout
+
 \end_deeper
 \begin_layout Paragraph
 
@@ -6790,31 +7010,89 @@ Costituito dalle classi:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.ContactModel
+mytalk.client.model.ContactModel 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:ContactModel"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.RecordMessageModel
+\family default
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RecordMessageModel "
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
 mytalk.client.model.TextMessageModel
+\family default
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TextMessageModel"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.TutorialModel
+mytalk.client.model.TutorialModel 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TutorialModel"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.UserModel
+mytalk.client.model.UserModel 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UserModel"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.model.ContactModel
+mytalk.client.model.ContactModel 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:ContactModel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6832,7 +7110,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ContactModel.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/ContactModel.pdf
 	scale 90
 
 \end_inset
@@ -6873,7 +7151,19 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.view.SideView
+mytalk.client.view.CotactView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.FunctionsView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.CallCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -6906,42 +7196,60 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String] username
 \series default
- conterrà i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+: username del contatto
 \end_layout
 
 \begin_layout Itemize
-username
+
+\series bold
+[String] name
+\series default
+: nome del contatto
 \end_layout
 
 \begin_layout Itemize
-name
+
+\series bold
+[String] surname
+\series default
+: cognome del contatto
 \end_layout
 
 \begin_layout Itemize
-surname
+
+\series bold
+[String] IP
+\series default
+: indirizzo IP del contatto
 \end_layout
 
 \begin_layout Itemize
-IP
+
+\series bold
+\lang english
+[int] unread: 
+\series default
+numero di messaggi non ancora letti, inviti dal contatto
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.model.TextMessageModel
+mytalk.client.model.RecordMessageModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RecordMessageModel "
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-La classe TextMessageModel rappresenterà un messaggio testuale inviato tra
- due utenti; conterrà quindi il messaggio stesso, il mittente ed il destinatario
+La classe RecordMessageModel rappresenterà un messaggio video/audio inviato
+ all'utente
 \end_layout
 
 \begin_layout Standard
@@ -6955,7 +7263,131 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TextMessageModel.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/RecordtMessageModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessageModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] contact: 
+\series default
+mittente del messagio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String]
+\begin_inset space \space{}
+\end_inset
+
+record: 
+\series default
+indirizzo url del server in cui è salvato il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] date: 
+\series default
+data di creazione del messaggio
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.model.TextMessageModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TextMessageModel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe TextMessageModel rappresenterà un messaggio testuale inviato tra
+ due utenti
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/TextMessageModel.pdf
 	scale 90
 
 \end_inset
@@ -6996,12 +7428,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.view.ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
 mytalk.client.collection.TextMessagesCollection
 \end_layout
 
@@ -7031,26 +7457,48 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String] contact: 
 \series default
- conterrà i valori di default per i campi dati
+mittente del messagio testuale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] message: 
+\series default
+contenuto del messaggio testuale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] source: 
+\series default
+stato del messaggio
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+\begin_layout Itemize
+
+\emph on
+sent
+\emph default
+ : se il messaggio è stato inviato al contatto (e 
+\emph on
+\lang english
+notsent
+\emph default
+: se ci sono stati problemi nella consegna)
 \end_layout
 
 \begin_layout Itemize
-contact
-\end_layout
 
-\begin_layout Itemize
-message
-\end_layout
-
-\begin_layout Itemize
-source
+\emph on
+\lang english
+received:
+\emph default
+ se il messaggio è stato inviato dal contatto
 \end_layout
 
 \end_deeper
@@ -7058,6 +7506,13 @@ source
 
 \family typewriter
 mytalk.client.model.TutorialModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TutorialModel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7075,7 +7530,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialModel.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/TutorialModel.pdf
 	scale 90
 
 \end_inset
@@ -7116,12 +7571,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.communication.TutorialCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
 mytalk.client.collection.TutorialsCollection
 \end_layout
 
@@ -7151,29 +7600,36 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String]
+\begin_inset space \space{}
+\end_inset
+
+title: 
 \series default
- conterrà i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+titolo del tutorial
 \end_layout
 
 \begin_layout Itemize
-title
+
+\series bold
+\lang english
+[String] url: 
+\series default
+\lang italian
+indirizzo url del server in cui è salvato il tutorial
 \end_layout
 
-\begin_layout Itemize
-link
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
 mytalk.client.model.UserModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UserModel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7191,7 +7647,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UserModel.pdf
+	filename ../../../../../../../../../Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/UserModel.pdf
 	scale 90
 
 \end_inset
@@ -7237,6 +7693,24 @@ La classe è utilizzata da:
 mytalk.client.view.AuthenticationView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.SideView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.UserDataView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.UserDataCommunication
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -7261,32 +7735,35 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String] username
 \series default
- conterrà i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+: username del utente
 \end_layout
 
 \begin_layout Itemize
-username
+
+\series bold
+\lang english
+[String] password: 
+\series default
+password del utente
 \end_layout
 
 \begin_layout Itemize
-password
+
+\series bold
+[String] name
+\series default
+: nome del utente
 \end_layout
 
 \begin_layout Itemize
-name
+
+\series bold
+[String] surname
+\series default
+: cognome del utente
 \end_layout
 
-\begin_layout Itemize
-surname
-\end_layout
-
-\end_deeper
 \end_body
 \end_document
