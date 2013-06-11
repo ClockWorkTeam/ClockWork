@@ -17,7 +17,6 @@
  * | 130518 |    FV         | + creazione documento |
 
  */
-
 define([
   'jquery',
   'underscore',
@@ -27,7 +26,7 @@ define([
   'text!templates/AuthenticationTemplate.html',
   'communication/AuthenticationCommunication',
   'model/UserModel'
-], function($, _, Backbone, sideView, UserDataView, authenticationTemplate, AuthenticationCommunication, UserModel){
+], function($, _, Backbone, SideView, UserDataView, authenticationTemplate, AuthenticationCommunication, UserModel){
 
   var AuthenticationView = Backbone.View.extend({
     /**
@@ -46,8 +45,9 @@ define([
      * richiama il metodo connect nel caso si sia sulla password durante la fase di login
      */
     pressEnter:function(event){
-      if(event.keyCode == 13)
+      if(event.keyCode == 13){
         this.connect();
+      }
     },
     el: $('#authentication'),
 		userDataView: undefined,
@@ -63,14 +63,14 @@ define([
     initialize: function(){
       _.bindAll(this, 'render', 'connect', 'disconnect');
       this.render();
-      this.contactsView = new sideView();
+      this.contactsView = new SideView();
     },
 
     /**
      * funzione che effettua la scrittura della struttura della pagina
      */
     render: function() {
-      $(this.el).html(this.template({authenticated: false, signup: false}))
+      $(this.el).html(this.template({authenticated: false, signup: false}));
     },
 
     callBacks: function(){
