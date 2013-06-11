@@ -289,12 +289,16 @@ module('About CallCommunication.startCall', {
     this.getUserMediaSpy = sinon.spy(navigator, 'webkitGetUserMedia');
     this.objSpy = sinon.spy(window.webkitURL, 'createObjectURL');
     this.connectSpy = sinon.spy(CallCommunication, 'connect');
+    
+    window.Connection = Connection;
+    this.addSpy = sinon.stub(window.Connection, 'addEventListener');
   },
 
   teardown: function() {
     this.getUserMediaSpy.restore();
     this.objSpy.restore();
     this.connectSpy.restore();
+    this.addSpy.restore();
   }
   
 });

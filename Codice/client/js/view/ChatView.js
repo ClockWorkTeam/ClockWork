@@ -31,7 +31,7 @@ define([
      */
     events:{
       'click button#Send':'send',
-      'keyup #compose textarea':'pressEnter',
+      'keyup #compose textarea':'pressEnter'
     },
     /**
      * si occupa di legare il tasto di invia messaggio al pulsante Invio della tastiera

@@ -1090,18 +1090,6 @@ Particolare attenzione va posta sulla stima di questo valore: il costrutto
 \begin_layout Itemize
 
 \series bold
-Peso delle classi:
-\series default
- è la somma totale della complessità ciclomatica di tutti i metodi appartenenti
- ad una determinata classe.
- Il valore deve essere ragionevole, e dove venisse ritenuto troppo alto,
- si procederà ad aumentare il numero di metodi della classe in considerazione,
- oppure verrà affidata parte dei compiti ad una o più nuove classi coese
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 Numero di parametri:
 \series default
  vedasi sezione 
@@ -1117,11 +1105,12 @@ reference "sec:Specifica-Tecnica"
 \begin_layout Itemize
 
 \series bold
-Numero di campi dati per classe:
+Volume di Halstead:
 \series default
- un numero elevato di attributi interni ad una classe potrebbe palesare
- la necessità di incapsulamento di parte di essi in nuove classi coese,
- che forniscano inoltre metodi utili al loro utilizzo
+ rappresenta il contenuto informativo di un programma, definito da Halstead,
+ viene calcolato come lunghezza del programma moltiplicata per il logaritmo
+ in base due della somma di operatori unici.
+ Il valore dovrebbe essere compreso tra 20 e 1000
 \end_layout
 
 \begin_layout Itemize
