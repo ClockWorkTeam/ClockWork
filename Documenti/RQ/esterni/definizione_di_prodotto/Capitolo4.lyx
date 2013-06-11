@@ -210,46 +210,6 @@ mytalk.client.view
  Backbone.js, che prevede uno schema di tipo MV*
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/client/view/pdf/packageView.pdf
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package view
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Paragraph
 
 \series bold
@@ -742,7 +702,7 @@ doLogin(String, String, String[], AuthenticationView)
 \begin_layout Itemize
 
 \series bold
-[void] callBacks().doLogin(String, String, String[], AuthenticationView)
+[void] doLogin(String, String, String[], AuthenticationView)
 \series default
 : metodo che effettuerà l'operazione di login.
  Si occuperà di creare il model corrispondente all'utente, aggiornare il
@@ -2409,7 +2369,7 @@ click button#acceptCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-accept()
+acceptCall()
 \end_layout
 
 \begin_layout Itemize
@@ -2419,7 +2379,53 @@ click button#refuseCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-refuse()
+refuseCall()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#viewMessage:
+\series default
+ evento che richiama la funzione 
+\emph on
+viewRecordMessage
+\emph default
+()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#ignoreMessage:
+\series default
+ evento che richiama la funzione 
+\emph on
+ignoreMessage
+\emph default
+()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#acceptFile
+\series default
+: evento che richiama la funzione 
+\emph on
+acceptFile
+\emph default
+()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#refuseFile
+\series default
+: evento che richiama la funzione 
+\emph on
+refuseFile()
 \end_layout
 
 \begin_layout Paragraph
@@ -2453,9 +2459,7 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template NotificationTempla
-te.
- Si occuperà inoltre di e impostare un timout, in modo da terminare la chiamata
- nel caso non si risponda dopo un determinato intervallo di tempo
+te
 \end_layout
 
 \begin_layout Itemize
@@ -2471,7 +2475,7 @@ close()
 \begin_layout Itemize
 
 \series bold
-[void] accept():
+[void] acceptCall():
 \series default
  metodo per accettare una chiamata in arrivo, invocherà il metodo 
 \shape italic
@@ -2508,17 +2512,77 @@ false
 \emph default
  chiamerà il metodo 
 \shape italic
-refuse()
+refuseCall()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] refuse(): 
+[void] refuseCall(): 
 \series default
 metodo per rifiutare una chiamata, per fare ciò invocherà il metodo
 \shape italic
- refuse(String)
+ refuseCall(String)
+\shape default
+ della classe NotificationCommunication e il metodo 
+\shape italic
+unrender() 
+\emph on
+della classe stessa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] viewMessage(): 
+\series default
+metodo per visualizzare il messaggio video/audio ricevuto, invocherà il
+ metodo 
+\shape italic
+unrender()
+\shape default
+ e invierà un evento di tipo 
+\emph on
+viewMessage 
+\emph default
+che sarà catturato da SideView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] ignoreMessage(): 
+\series default
+metodo per ignorare la visualizzazione del messaggio video/audio ricevuto,
+ invocherà il metodo 
+\shape italic
+unrender()
+\shape default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] acceptFile():
+\series default
+ metodo per accettare la ricezione di un file in arrivo, scaricherà il file
+ e invocherà il metodo 
+\shape italic
+unrender()
+\shape default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] refuseFile(): 
+\series default
+metodo per rifiutare la ricezione di un file in arrivo, per fare ciò invocherà
+ il metodo
+\shape italic
+ refuseFile(String)
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
@@ -2615,6 +2679,12 @@ mytalk.client.communication.RecordMessageCommunication
 mytalk.client.template.RecordMessageTemplate
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -2685,7 +2755,7 @@ Eventi:
 \begin_layout Itemize
 
 \series bold
-click button#startrecord: 
+click button#startRecord: 
 \series default
 evento che richiama la funzione 
 \shape italic
@@ -2695,7 +2765,7 @@ startRecording()
 \begin_layout Itemize
 
 \series bold
-click button#stoprecord: 
+click button#stopRecord: 
 \series default
 evento che richiama la funzione 
 \shape italic
@@ -2705,11 +2775,31 @@ stopRecording()
 \begin_layout Itemize
 
 \series bold
-click button#sendrecord: 
+click button#sendRecord: 
 \series default
 evento che richiama la funzione 
 \shape italic
 sendRecording()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click li.message:
+\series default
+ evento che richiama la funzione 
+\emph on
+viewMessage(Event)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#removeRecord: 
+\series default
+evento che richiama la funzione 
+\emph on
+removeMessage()
 \end_layout
 
 \begin_layout Paragraph
@@ -2783,6 +2873,28 @@ sendRecordMessage(String
  Blob)
 \emph default
  di RecordMessageCommunication e ripristinando lo stato iniziale della view
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] viewMessage(Event): 
+\series default
+metodo per visualizzare il videomessaggio selezionato, dovrà anche aggiornare
+ il template
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] removeMessage(Event): 
+\series default
+metodo per eliminare il videomessaggio selezionato, invocherà il metodo
+ 
+\emph on
+removeRecordMessage(RecordMessageModel) 
+\emph default
+della classe RecordMessageCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -2986,7 +3098,7 @@ conterrà i riferimenti alle istanze della classe ContactView
 \begin_layout Itemize
 
 \series bold
-[FunctionsView[] ] currentFunctions: 
+[FunctionsView] currentFunctions: 
 \series default
 conterrà il riferimento alla classe FunctionsView
 \end_layout
@@ -3036,27 +3148,36 @@ render()
 \emph on
 collection
 \emph default
- in modo da richiamarlo ogni qual volta si aggiunga un elemento a quest'ultima,
- predisporrà la funzione 
+ in modo da richiamarlo ogni qual volta si aggiunga un elemento a quest'ultima.
+ Predisporrà le funzioni 
 \shape italic
 acceptCall(Event)
 \shape default
 \emph on
  
 \emph default
-per gestire l'evento 
+e 
+\emph on
+viewMessage(Event)
+\emph default
+ per gestire, rispettivamente, gli eventi 
 \shape italic
 acceptCall
 \shape default
- inviato da NotificationView e infine effettuerà la scrittura, nella pagina,
- del template SideTemplate con lo stato dell'utente impostato come disconnesso
+ e 
+\emph on
+viewMessage 
+\emph default
+inviati da NotificationView.
+ Infine effettuerà la scrittura, nella pagina, del template SideTemplate
+ con lo stato dell'utente impostato come disconnesso
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] initialize().acceptCall(Event): 
+[void] acceptCall(Event): 
 \series default
 metodo che invocherà il metodo 
 \shape italic
@@ -3972,7 +4093,7 @@ UserDataView
 \begin_layout Itemize
 
 \series bold
-[void] callBacks().changeData(
+[void] changeData(
 \shape italic
 \emph on
 UserModel
@@ -4019,42 +4140,6 @@ Nel package
 mytalk.client.communication
 \family default
  sono presenti le classi che effettuano la comunicazione con il server.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/client/communication/pdf/packageCommunication.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package communication
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -4346,12 +4431,11 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-checkCredentials(String username,
+[void] checkCredentials(String,
 \series default
  
 \series bold
-String password, AuthenticationView.function() callBacks, AuthenticationView
- view):
+String, AuthenticationView.function(), AuthenticationView):
 \series default
  metodo che si occuperà di controllare la correttezza dello username e della
  password inserite.
@@ -4375,8 +4459,8 @@ di AuthenticationView
 \begin_layout Itemize
 
 \series bold
-signup(String username, String password, String name, String surname, Authentica
-tionView.function() callBacks, AuthenticationView view): 
+[void] signup(String, String, String, String, AuthenticationView.function(),
+ AuthenticationView): 
 \series default
 metodo che si occuperà della registrazione dell'utente.
  Per fare ciò invierà al server un pacchetto contenente tutte le credenziali
@@ -4399,7 +4483,7 @@ di AuthenticationView
 \begin_layout Itemize
 
 \series bold
-logout(string): 
+[void] logout(String): 
 \series default
 metodo che gestisce la deautenticazione dell'utente
 \end_layout
@@ -4433,7 +4517,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/CallCommunication.pdf
+	filename img/client/communication/pdf/CallCommunication.pdf
 	scale 90
 
 \end_inset
@@ -4464,6 +4548,20 @@ Classe CallCommunication
 Relazione d'uso con altri moduli
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.ContactsModel
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -4809,7 +4907,11 @@ connect(boolean)
 
 \begin_deeper
 \begin_layout Itemize
-se il pacchetto conterrà 'offer', inviato dal chamante, imposterà 
+se il pacchetto conterrà comie tipo 
+\emph on
+offer
+\emph default
+, e sarà inviato dal chamante, imposterà 
 \shape italic
 localStream
 \shape default
@@ -4830,7 +4932,11 @@ RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'answer', inviato dal chiamato, imposterà in 
+se il pacchetto sarà di tipo 
+\emph on
+answer
+\emph default
+, e sarà inviato dal chiamato, imposterà in 
 \shape italic
 peerConnection
 \shape default
@@ -4844,7 +4950,15 @@ RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'candidateready' imposterà a 'true' 
+se il pacchetto conterrà il tipo 
+\emph on
+candidateready
+\emph default
+ imposterà a 
+\emph on
+true
+\emph default
+ 
 \shape italic
 messageReceived
 \shape default
@@ -4852,20 +4966,31 @@ messageReceived
 \shape italic
 readyToSend
 \shape default
- sia 'true' invierà 
+ sia 
+\emph on
+true
+\emph default
+ invierà 
 \shape italic
 candidates
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'candidate' preleverà il RTCIceCandidate e imposterà
- in 
+se il pacchetto conterrà il tipo 
+\emph on
+candidate
+\emph default
+ preleverà il RTCIceCandidate e imposterà in 
 \shape italic
 peerConnection
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'endcall' interromperà 
+se il pacchetto conterrà il tipo 
+\emph on
+endcall
+\emph default
+ interromperà 
 \shape italic
 localStream
 \shape default
@@ -4962,6 +5087,17 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/client/communication/pdf/ChatCommunication.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -5037,7 +5173,7 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[void] send:
+[void] send(String, String):
 \series default
  metodo che si occuperà di inviare un pacchetto al server, contrassegnato
  con il tipo 
@@ -5099,7 +5235,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ContactsCommunication.pdf
+	filename img/client/communication/pdf/ContactsCommunication.pdf
 	scale 90
 
 \end_inset
@@ -5237,7 +5373,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/FileCommunication.pdf
+	filename img/client/communication/pdf/FileCommunication.pdf
 	scale 90
 
 \end_inset
@@ -5346,7 +5482,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/NotificationCommunication.pdf
+	filename img/client/communication/pdf/NotificationCommunication.pdf
 	scale 90
 
 \end_inset
@@ -5380,12 +5516,18 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+La classe utilizza:
 \series default
  
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
 \begin_layout Itemize
 
 \family typewriter
@@ -5444,45 +5586,116 @@ Metodi pubblici:
 \series bold
 [void] listenNotification():
 \series default
- metodo di tipo listener che in caso di arrivo di una notifica invocherà
- il metodo 
-\shape italic
-setOnCall(event)
-\shape default
- per impostare 
-\shape italic
-onCalling
-\shape default
- e il metodo 
-\shape italic
-onNotification(string) 
+ metodo di tipo listener per gestire gli eventi di tipo 
+\emph on
+setOnCall
+\emph default
+ e 
+\emph on
+message, 
+\emph default
+in arrivo
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] onNotification(string):
+[void] SetOnCall[Event] 
 \series default
- metodo per gestire una chiamata in ingresso invocando la creazione di una
- nuova NotificationView o, se l'utente è già in chiamata, riferendo al chiamante
- che l'utente desiderato è occupato
+imposta 
+\emph on
+onCalling 
+\emph default
+a seconda del tipo racchiuso nel parametro passatogli
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] refuse(): 
+[void] onNotification(String):
+\series default
+ metodo per gestire le notifiche in ingresso, che potranno essere chiamate,
+ messaggi video o file.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se si tratta di una chiamata in arrivo, quindi il pacchetto risulterà contrasseg
+nato dal tipo 
+\emph on
+call
+\emph default
+, se l'utente non risulterà occupato in altre conversazioni verrà creata
+ una istanza NotificationView e impostato il timout, in modo da terminare
+ la chiamata nel caso non si risponda dopo un determinato intervallo di
+ tempo.
+ Se l'utente risulterà invece già in chiamata, si manderà un messaggio al
+ server, di tipo 
+\emph on
+busy
+\emph default
+ per avvisare il chiamante 
+\end_layout
+
+\begin_layout Itemize
+Se si tratta della terminazione di una chiamata, quindi il pacchetto risulterà
+ contrassegnato dal tipo 
+\emph on
+endcall
+\emph default
+, si assegnerà 
+\emph on
+false
+\emph default
+ alla variabile onCalling
+\end_layout
+
+\begin_layout Itemize
+Se si tratta di un file in arrivo, pacchetto contrassegnato dal tipo 
+\emph on
+file
+\emph default
+, verrà creata e avviata una istanza di NotificationView con i relativi
+ dati
+\end_layout
+
+\begin_layout Itemize
+Se si tratta di un messaggio video in arrivo, pacchetto contrassegnato dal
+ tipo 
+\emph on
+record, 
+\emph default
+verrà creato ed aggiunto il messaggio alla collection, successivamente verrà
+ creata e avviata una istanza di NotificationView con i relativi dati
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+[void] refuseCall(String): 
 \series default
 metodo per rispondere ad una richiesta di chiamata con un rifiuto, inviando
- un messaggio allo strato transfer
+ un pacchetto con tipo 
+\emph on
+refuseCall
+\emph default
+, contenente lo username del chiamante, allo strato transfer
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] receiveFile(object):
+[void] refuseFile(String):
 \series default
- metodo per salvare in locale un file inviato da un altro utente
+ metodo per rifiutare la ricezione di un file, invierà un pacchetto con
+ tipo 
+\emph on
+refuse
+\emph default
+File, contenente lo username del mittente, allo strato transfer
 \end_layout
 
 \begin_layout Subsubsection
@@ -5548,6 +5761,22 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
+La classe utilizza:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.RecordMessageCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
 La classe è utilizzata da:
 \series default
  
@@ -5558,6 +5787,22 @@ La classe è utilizzata da:
 
 \family typewriter
 mytalk.client.view.RecordMessageView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe comunica con:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.RecordMessageTransfer
 \end_layout
 
 \end_deeper
@@ -5572,7 +5817,25 @@ Metodi pubblici:
 \series bold
 [void] sendRecordMessage(String, Blob): 
 \series default
-metodo per inviare i messaggi al server
+metodo per inviare un messaggio video/audio, per fare ciò invierà al server
+ un pacchetto con tipo 
+\emph on
+sendRecord 
+\emph default
+e contenente il nome del destinatario e il file audio/videoa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] removeRecordMessage(RecordMessageModel): 
+\series default
+metodo per eliminare un messaggio video/audio, invierà al server la richiesta,
+ con tipo 
+\emph on
+removeRecord, 
+\emph default
+ed eliminerà il messaggio dalla collection
 \end_layout
 
 \begin_layout Subsubsection
@@ -5604,7 +5867,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialCommunication.pdf
+	filename img/client/communication/pdf/TutorialCommunication.pdf
 	scale 90
 
 \end_inset
@@ -5730,7 +5993,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UserDataCommunication.pdf
+	filename img/client/communication/pdf/UserDataCommunication.pdf
 	scale 90
 
 \end_inset
@@ -5764,6 +6027,22 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
+La classe utilizza:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.UserDataModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
 La classe è utilizzata da:
 \series default
  
@@ -5777,6 +6056,20 @@ mytalk.client.view.UserDataView
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe comunica con:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.UserDataTransfer
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -5786,13 +6079,19 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[void] checkPassword(model, password, view):
+[void] checkPassword(UserModel, String, UserDataView):
 \series default
  metodo per controllare che la password di verifica inserita dall'utente
- corrisponda a quella salvata nella base di dati; se il controllo verrà
- superato invocherà il metodo 
+ corrisponda a quella salvata nella base di dati.
+ Per fare ciò invierà al server un pacchetto, contrassegnato dal tipo 
+\emph on
+checkCredentials
+\emph default
+ e contenente lo username dell'utente e la password inserita, se il pacchetto
+ di risposta, contrassegato dallo stesso tipo, sarà affermativo verrà invocato
+ il metodo 
 \shape italic
-view.callBacks.changeData(model, view)
+view.callBacks.changeData(UserModel, UserDataView)
 \shape default
 , altrimenti mostrerà un messaggio di errore
 \end_layout
@@ -5800,14 +6099,20 @@ view.callBacks.changeData(model, view)
 \begin_layout Itemize
 
 \series bold
-[void] changeData(model, name, surname, password, view):
+[void] changeData(UserModel, String, String, String, UserDataView):
 \series default
- metodo per inviare i dati aggiornati al server e gestirne la risposta;
- se il cambiamento sarà riuscito si chiamerà il metodo 
+ metodo che invierà i dati aggiornati al server, racchiudendoli in un pacchetto
+ di tipo 
+\emph on
+changeData
+\emph default
+ ed attenderà la risposta.
+ Se il pacchetto di risposta, contrassegnato dallo stesso tipo, sarà affermativo
+ si aggiorneranno i dati del model e si chiamerà il metodo 
 \shape italic
 render()
 \shape default
- della view, altrimenti verrà mostrato un messaggio di errore
+ di UserDataView, altrimenti verrà mostrato un messaggio di errore
 \end_layout
 
 \begin_layout Subsection
@@ -5843,7 +6148,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/package-collection.pdf
+	filename C:/Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/packageCollection.pdf
 	scale 90
 
 \end_inset
@@ -5855,15 +6160,11 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Package Collection
+Package collection
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -5909,6 +6210,12 @@ La classe è utilizzata da:
 mytalk.client.view
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication
+\end_layout
+
 \end_deeper
 \begin_layout Paragraph
 
@@ -5920,24 +6227,73 @@ Costituito dalle classi:
 
 \family typewriter
 mytalk.client.collection.ContactsCollection
+\family default
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: ContactsCollection"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.collection.TextMessagesCollection
+mytalk.client.collection.RecordMessagesCollection 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: RecordMessagesCollection"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.collection.TutorialsCollection
+mytalk.client.collection.TextMessagesCollection 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: TextMessagesCollection"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.TutorialsCollection 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TutorialsCollection"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.collection.ContactsCollection
+mytalk.client.collection.ContactsCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: ContactsCollection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5955,7 +6311,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ContactsCollection.pdf
+	filename img/client/collection/pdf/ContactsCollection.pdf
 	scale 90
 
 \end_inset
@@ -5972,10 +6328,6 @@ Classe ContactsCollection
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6011,6 +6363,15 @@ La classe è utilizzata da:
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.view.SideView
+\end_layout
+
 \begin_layout Itemize
 
 \family typewriter
@@ -6068,7 +6429,168 @@ metodo per restituire un array contenente tutti i ContactModel della collezione
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.collection.TextMessagesCollection
+mytalk.client.collection.RecordMessagesCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: RecordMessagesCollection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe RecordMessagesCollection rappresenterà la collezione dei messaggi
+ audio e video rievuti 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/client/collection/pdf/RecordMessagesCollection.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessagesCollection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe utilizza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.RecordMessageModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.view.RecordMessageView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.communication.NotificationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+m
+\series default
+ytalk.client.communication.RecordMessageCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Collection
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[RecordMessageModel] model: 
+\series default
+conterrà il riferimento alla classe RecordMessageModel
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[RecordMessageModel[]] getMessages(String): 
+\series default
+metodo per restituire un array contenente i RecordMessageModel della collezione,
+ avente come mittente lo username passato per parametro
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.collection.TextMessagesCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: TextMessagesCollection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6087,7 +6609,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TextMessagesCollection.pdf
+	filename img/client/collection/pdf/TextMessagesCollection.pdf
 	scale 90
 
 \end_inset
@@ -6104,10 +6626,6 @@ Classe TextMessagesCollection
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6151,6 +6669,12 @@ La classe è utilizzata da:
 mytalk.client.view.ChatView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.ChatCommunication
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -6191,7 +6715,7 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[TextMessagesCollection] chat_session(string): 
+[TextMessagesCollection] chatSession(String): 
 \series default
 metodo per restituire l'intera conversazione con l'utente il cui username
  sarà parametro della funzione
@@ -6200,7 +6724,14 @@ metodo per restituire l'intera conversazione con l'utente il cui username
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.collection.TutorialsCollection
+mytalk.client.collection.TutorialsCollection 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TutorialsCollection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6219,7 +6750,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialsCollection.pdf
+	filename img/client/collection/pdf/TutorialsCollection.pdf
 	scale 90
 
 \end_inset
@@ -6236,10 +6767,6 @@ Classe TutorialsCollection
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6281,6 +6808,12 @@ La classe è utilizzata da:
 mytalk.client.view.TutorialView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.TutorialCommunication
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -6310,20 +6843,6 @@ Attributi pubblici:
 [TutorialModel] model: 
 \series default
 conterrà il riferimento alla classe TutorialModel
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Metodi pubblici:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[TutorialModel] sendVideo(): 
-\series default
-metodo che restituirà il video tutorial richiesto
 \end_layout
 
 \begin_layout Subsection
@@ -6357,7 +6876,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/package-model.pdf
+	filename C:/Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/packageModel.pdf
 	scale 90
 
 \end_inset
@@ -6369,7 +6888,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Package Model
+Package model
 \end_layout
 
 \end_inset
@@ -6407,6 +6926,12 @@ mytalk.client.collection
 mytalk.client.view
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication
+\end_layout
+
 \end_deeper
 \begin_layout Paragraph
 
@@ -6417,31 +6942,89 @@ Costituito dalle classi:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.ContactModel
+mytalk.client.model.ContactModel 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:ContactModel"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.RecordMessageModel
+\family default
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RecordMessageModel "
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
 mytalk.client.model.TextMessageModel
+\family default
+ (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TextMessageModel"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.TutorialModel
+mytalk.client.model.TutorialModel 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:TutorialModel"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.model.UserModel
+mytalk.client.model.UserModel 
+\family default
+(vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UserModel"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.model.ContactModel
+mytalk.client.model.ContactModel 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:ContactModel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6459,7 +7042,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ContactModel.pdf
+	filename img/client/model/pdf/ContactModel.pdf
 	scale 90
 
 \end_inset
@@ -6500,7 +7083,19 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.view.SideView
+mytalk.client.view.CotactView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.FunctionsView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.CallCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -6533,42 +7128,60 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String] username
 \series default
- conterrà i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+: username del contatto
 \end_layout
 
 \begin_layout Itemize
-username
+
+\series bold
+[String] name
+\series default
+: nome del contatto
 \end_layout
 
 \begin_layout Itemize
-name
+
+\series bold
+[String] surname
+\series default
+: cognome del contatto
 \end_layout
 
 \begin_layout Itemize
-surname
+
+\series bold
+[String] IP
+\series default
+: indirizzo IP del contatto
 \end_layout
 
 \begin_layout Itemize
-IP
+
+\series bold
+\lang english
+[int] unread: 
+\series default
+numero di messaggi non ancora letti, inviti dal contatto
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
-mytalk.client.model.TextMessageModel
+mytalk.client.model.RecordMessageModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RecordMessageModel "
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-La classe TextMessageModel rappresenterà un messaggio testuale inviato tra
- due utenti; conterrà quindi il messaggio stesso, il mittente ed il destinatario
+La classe RecordMessageModel rappresenterà un messaggio video/audio inviato
+ all'utente
 \end_layout
 
 \begin_layout Standard
@@ -6582,7 +7195,131 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TextMessageModel.pdf
+	filename img/client/model/pdf/RecordMessageModel.pdf
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe RecordMessageModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Relazione d'uso con altri moduli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+La classe è utilizzata da: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe deriva da:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.Backbone.Model
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+
+\series bold
+Attributi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] contact: 
+\series default
+mittente del messagio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String]
+\begin_inset space \space{}
+\end_inset
+
+record: 
+\series default
+indirizzo url del server in cui è salvato il messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] date: 
+\series default
+data di creazione del messaggio
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.model.TextMessageModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TextMessageModel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe TextMessageModel rappresenterà un messaggio testuale inviato tra
+ due utenti
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/client/model/pdf/TextMessageModel.pdf
 	scale 90
 
 \end_inset
@@ -6623,12 +7360,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.view.ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
 mytalk.client.collection.TextMessagesCollection
 \end_layout
 
@@ -6658,26 +7389,48 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String] contact: 
 \series default
- conterrà i valori di default per i campi dati
+mittente del messagio testuale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] message: 
+\series default
+contenuto del messaggio testuale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] source: 
+\series default
+stato del messaggio
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+\begin_layout Itemize
+
+\emph on
+sent
+\emph default
+ : se il messaggio è stato inviato al contatto (e 
+\emph on
+\lang english
+notsent
+\emph default
+: se ci sono stati problemi nella consegna)
 \end_layout
 
 \begin_layout Itemize
-contact
-\end_layout
 
-\begin_layout Itemize
-message
-\end_layout
-
-\begin_layout Itemize
-source
+\emph on
+\lang english
+received:
+\emph default
+ se il messaggio è stato inviato dal contatto
 \end_layout
 
 \end_deeper
@@ -6685,6 +7438,13 @@ source
 
 \family typewriter
 mytalk.client.model.TutorialModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:TutorialModel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6702,7 +7462,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialModel.pdf
+	filename img/client/model/pdf/TutorialModel.pdf
 	scale 90
 
 \end_inset
@@ -6743,12 +7503,6 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.communication.TutorialCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
 mytalk.client.collection.TutorialsCollection
 \end_layout
 
@@ -6778,29 +7532,36 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String]
+\begin_inset space \space{}
+\end_inset
+
+title: 
 \series default
- conterrà i valori di default per i campi dati
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-I campi dati di questo modello saranno:
+titolo del tutorial
 \end_layout
 
 \begin_layout Itemize
-title
+
+\series bold
+\lang english
+[String] url: 
+\series default
+\lang italian
+indirizzo url del server in cui è salvato il tutorial
 \end_layout
 
-\begin_layout Itemize
-link
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
 mytalk.client.model.UserModel
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UserModel"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6818,7 +7579,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UserModel.pdf
+	filename img/client/model/pdf/UserModel.pdf
 	scale 90
 
 \end_inset
@@ -6864,6 +7625,24 @@ La classe è utilizzata da:
 mytalk.client.view.AuthenticationView
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.SideView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.view.UserDataView
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.UserDataCommunication
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -6888,30 +7667,873 @@ Attributi pubblici:
 \begin_layout Itemize
 
 \series bold
-defaults:
+[String] username
 \series default
- conterrà i valori di default per i campi dati
+: username del utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+[String] password: 
+\series default
+password del utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] name
+\series default
+: nome del utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[String] surname
+\series default
+: cognome del utente
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+template
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+mytalk.client.template
+\family default
+ costituisce la parte del sistema che implementa l'interfaccia web usufruibile
+ dagli utenti mediante pagine web, visualizzata in base alle esigenze.
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.AuthenticationTemplate 
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che l'utente visualizzerà necessari per effettuare le operazioni di 
+\emph on
+login
+\emph default
+ e registrazione e, una volta connessi, per accedere alla sezione di modifica
+ dati ed effettuare il 
+\emph on
+logout
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Il template è utilizzato da: 
+\family typewriter
+\series default
+mytalk.client.view.AuthenticationView
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Visualizzazione della pagina:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Utente non autenticato:
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#user:
+\series default
+ input di tipo text, in cui l'utente dovrà inserire il proprio username
+ per effettuare l'accesso
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#password: 
+\series default
+input di tipo password, in cui l'utente dovrà inserire la propria password
+ per effettuare l'accesso
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#login: 
+\series default
+bottone per effettuare la 
+\emph on
+login 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#signup: 
+\series default
+bottone per visualizzare il modulo di registrazione
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Registrazione:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#user:
+\series default
+ input di tipo text, in cui l'utente dovrà inserire il proprio username
+ per effettuare la registrazione 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#password: 
+\series default
+input di tipo password, in cui l'utente dovrà inserire la propria password
+ per effettuare la registrazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#password2: 
+\series default
+input di tipo password, in cui l'utente dovrà inserire nuovamente la propria
+ password per controllare che quella inserita precedentemente sia quella
+ desiderata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#name: 
+\series default
+input di tipo text, in cui l'utente potrà inserire il proprio nome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#surname: 
+\series default
+input di tipo text, in cui l'utente potrà inserire il proprio cognome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#sign: 
+\series default
+bottone per effettuare la registrazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#deny: 
+\series default
+bottone per annullare la registrazione, e chiudere il modulo di registrazione
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Utente autenticato:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#logout: 
+\series default
+bottone per effettuare la 
+\emph on
+logout
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#edit: 
+\series default
+bottone che farà accedere alla sezione per modificare i propri dati
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.CallTemplate 
+\end_layout
+
 \begin_layout Standard
-I campi dati di questo modello saranno:
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che visualizzerà l'utente durante una chiamata in corso.
 \end_layout
 
 \begin_layout Itemize
-username
+
+\series bold
+Il template è utilizzato da: 
+\family typewriter
+\series default
+myTalk.client.view.CallView
 \end_layout
 
 \begin_layout Itemize
-password
+
+\series bold
+Chiamata avviata:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+video#remotevid: 
+\series default
+video di tipologia autoplay, corrisponderà al video remoto
 \end_layout
 
 \begin_layout Itemize
-name
+
+\series bold
+\lang english
+video#sourcevid:
+\series default
+ video di tipologia autoplay, corrisponderà al video locale 
 \end_layout
 
 \begin_layout Itemize
-surname
+
+\series bold
+\lang english
+button#endCall: 
+\series default
+bottone che terminerà la chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.ChatTemplate 
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che l'utente visualizzerà quando la chat è attiva.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da: 
+\family typewriter
+\series default
+myTalk.client.view.ChatView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Chat attivata:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+textarea#compose: 
+\series default
+area testuale per la scrittura dei messaggi testuali
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#Send: 
+\series default
+bottone che invierà il messaggio testuale
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.ContactTemplate
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ dove l'utente visualizzerà la separazione degli utenti online da quelli
+ offline nella lista degli utenti, e quando richiederà di avviare una video
+ conferenza, mostrerà la possibilità di scegliere gli utenti partecipanti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\series default
+ 
+\family typewriter
+myTalk.client.view.ContactView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Utente autenticato: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+verrà verificato l'indirizzo ip per ogni utente registrato al server e,
+ se un utente è connesso verrà visto nella sidebar 
+\begin_inset Quotes eld
+\end_inset
+
+online
+\begin_inset Quotes erd
+\end_inset
+
+, altrimenti 
+\begin_inset Quotes eld
+\end_inset
+
+offline
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Richiesta di video conferenza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#username: 
+\series default
+input di tipo checkbox, dove l'utente decide i partecipanti alla video conferenz
+a
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.FunctionsTemplate
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che l'utente visualizzerà necessari per effettuare le operazioni che si
+ possono compiere dopo aver contattato un utente inserendo l'indirizzo IP,
+ oppure selezionandolo dalla lista degli utenti.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\family typewriter
+\series default
+ myTalk.client.view.FunctionsView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Contatto tramite l'inserimento dell'indirizzo IP: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#ip:
+\series default
+ input di tipo text dove l'utente dovrà inserire l'indirizzo ip che vorrà
+ contattare
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#StartChat: 
+\series default
+button che avvierà la chat
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#call: 
+\series default
+bottone che avvierà la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#video: 
+\series default
+bottone che avvierà la video chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#record: 
+\series default
+input di tipo checkbox che registrerà la chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Utente offline:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#dataContact: 
+\series default
+bottone che farà visualizzare i dettagli del contatto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#sendVideoText:
+\series default
+ bottone che farà visualizzare le opzioni per registrare un video messaggio
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Utente online:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#call: 
+\series default
+bottone che avvierà la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#video: 
+\series default
+bottone che avvierà la video chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#record:
+\series default
+ bottone che registrerà la chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.NotificationTemplate
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che farà visualizzare all'utente destinatario necessari per accettare o
+ rifiutare una chiamata dal mittente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\series default
+ 
+\family typewriter
+myTalk.client.view.NotificationView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Notifica della ricezione di una chiamata:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#acceptCall: 
+\series default
+bottone che avvierà la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#refuseCall: 
+\series default
+bottone che rifiuterà la chiamata
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.RecordMessageTemplate
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che l'utente visualizzerà quando vorrà registrare un video messaggio
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\series default
+ 
+\family typewriter
+myTalk.client.view.RecordMessageView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Registra un video messaggio:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+video#live_video:
+\series default
+ video di tipologia autoplay e controls, così l'utente in maniera tale da
+ poter fermare la registrazione quando lo si desidera
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.SideTemplate
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Questo template 
+\lang italian
+creerà gli elementi dell'interfaccia grafica
+\lang english
+ che l'utente visualizzerà nella sidebar
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\family typewriter
+\series default
+ myTalk.client.view.SideView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sidebar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#callIP:
+\series default
+ bottone che permette di contattare una persona tramite l'indirizzo IP
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+ul#contacts:
+\series default
+ lista degli utenti registrati presso il server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#conference: 
+\series default
+bottone che permetterà all'utente di selezionare i partecipanti alla video
+ conferenza
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.StatisticsTemplate
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ riguardanti le statistiche che l'utente visualizzerà durante una chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\series default
+ 
+\family typewriter
+myTalk.client.view.StatisticsView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Statistiche:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Durata della chiamata: tempo di durata della chiamata dall'avvio della chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Byte audio trasmessi: KB trasmessi dall'avvio della chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Byte video trasmessi: KB trasmessi dall'avvio della chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Latenza: tempo di latenza in ms
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Velocità di trasmissione: KB/s trasmessi
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.client.template.UserDataTemplate
+\end_layout
+
+\begin_layout Standard
+Questo template crea gli elementi dell'interfaccia grafica
+\lang english
+ che l'utente visualizzerà quando accederà alla sezione per modificare i
+ propri dati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Il template è utilizzato da:
+\series default
+ 
+\family typewriter
+myTalk.client.view.UserDataView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Modifica dati:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#name: 
+\series default
+input di tipo text, dove l'utente potrà inserire il proprio nome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#surname: 
+\series default
+input di tipo text, dove l'utente potrà inserire il poprio cognome
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#password: 
+\series default
+input di tipo password, dove l'utente potrà inserire la nuova password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#password2: 
+\series default
+input di tipo password, dove l'utente dovrà inserire la conferma della nuova
+ password
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+input#oldPassword: 
+\series default
+input di tipo password, dove l'utente dovrà inserire la password attuale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#submitChange: 
+\series default
+bottone che confermerà le modifiche
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#reset: 
+\series default
+bottone che resetterà gli input del modulo di modifica dei dati 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+button#denyChange: 
+\series default
+bottone che annullerà le modifiche e chiuderà il modulo di modifica dei
+ dati
 \end_layout
 
 \end_deeper

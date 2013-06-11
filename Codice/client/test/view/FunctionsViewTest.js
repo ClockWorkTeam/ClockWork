@@ -21,10 +21,10 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
 		
 		$(this.functionsView.el).html(this.functionsView.template({ From :'IP' }));
     // Check the number of items rendered
-    equal($('#content').find('input').length, 2, 'Two input rendered.');
-    equal($('#content').find('input')[0].type, 'text', 'One input text rendered.');
-		equal($('#content').find('input')[1].type, 'checkbox', 'One input checkbox rendered.');
-    equal($('#content').find('button').length, 3, '3 button rendered.');
+    equal(this.functionsView.$el.find('input').length, 2, 'Two input rendered.');
+    equal(this.functionsView.$el.find('input')[0].type, 'text', 'One input text rendered.');
+		equal(this.functionsView.$el.find('input')[1].type, 'checkbox', 'One input checkbox rendered.');
+    equal(this.functionsView.$el.find('button').length, 3, '3 button rendered.');
   }); 
    
  test('The template is render correctly when called from conference.', function() {
@@ -32,7 +32,7 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
 		
 		$(this.functionsView.el).html(this.functionsView.template({ From :'Conf' }));
     // Check the number of items rendered
-    equal($('#content').find('ul').length, 1, 'One list rendered.');
+    equal(this.functionsView.$el.find('ul').length, 1, 'One list rendered.');
   });
   
  test('The template is render correctly when the contact is online.', function() {
@@ -40,10 +40,10 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
 		
 		$(this.functionsView.el).html(this.functionsView.template({ username:'clockwork', IP:'1' }));
     // Check the number of items rendered
-    notStrictEqual($('#content').innerHTML, '(Online)', 'The online string is displayed.');
-    equal($('#content').find('button').length, 4, 'Four buttons rendered.');
-    equal($('#content').find('input').length, 1, 'One input rendered.');
-		equal($('#content').find('input')[0].type, 'checkbox', 'One input checkbox rendered.');
+    notStrictEqual(this.functionsView.$el.innerHTML, '(Online)', 'The online string is displayed.');
+    equal(this.functionsView.$el.find('button').length, 4, 'Four buttons rendered.');
+    equal(this.functionsView.$el.find('input').length, 1, 'One input rendered.');
+		equal(this.functionsView.$el.find('input')[0].type, 'checkbox', 'One input checkbox rendered.');
   });
   
  test('The template is render correctly when the contact is offline.', function() {
@@ -51,9 +51,9 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
 		
 		$(this.functionsView.el).html(this.functionsView.template({ username:'clockwork', IP:'0' }));
     // Check the number of items rendered
-    notStrictEqual($('#content').innerHTML, '(Offline)', 'The offline string is displayed.');
-    equal($('#content').find('button').length, 2, 'Two buttons rendered.');
-    equal($('#content').find('input').length, 0, 'Zero input rendered.');
+    notStrictEqual(this.functionsView.$el.innerHTML, '(Offline)', 'The offline string is displayed.');
+    equal(this.functionsView.$el.find('button').length, 2, 'Two buttons rendered.');
+    equal(this.functionsView.$el.find('input').length, 0, 'Zero input rendered.');
   });
   
   test('Can wire up send method to DOM element.', function() {
@@ -64,7 +64,7 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
     this.sendStub = sinon.stub(this.functionsView, 'viewDataContact', this.viewDataContactSpy );
     this.functionsView.delegateEvents();
     // Trigger the event
-     $('button#dataContact').click();
+     this.functionsView.$el.find('button#dataContact').click();
     // Check the done status for the model is true
     ok( this.viewDataContactSpy.called );
     
@@ -79,7 +79,7 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
     this.sendStub = sinon.stub(this.functionsView, 'sendVideoText', this.sendVideoTextSpy );
     this.functionsView.delegateEvents();
     // Trigger the event
-     $('button#sendVideoText').click();
+     this.functionsView.$el.find('button#sendVideoText').click();
     // Check the done status for the model is true
     ok( this.sendVideoTextSpy.called );
     
@@ -94,7 +94,7 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
     this.sendStub = sinon.stub(this.functionsView, 'audiocall', this.audiocallSpy );
     this.functionsView.delegateEvents();
     // Trigger the event
-     $('button#call').click();
+     this.functionsView.$el.find('button#call').click();
     // Check the done status for the model is true
     ok( this.audiocallSpy.called );
     
@@ -109,7 +109,7 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
     this.sendStub = sinon.stub(this.functionsView, 'videocall', this.videocallSpy );
     this.functionsView.delegateEvents();
     // Trigger the event
-     $('button#video').click();
+     this.functionsView.$el.find('button#video').click();
     // Check the done status for the model is true
     ok( this.videocallSpy.called );
     
@@ -124,7 +124,7 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
     this.sendStub = sinon.stub(this.functionsView, 'record', this.recordSpy );
     this.functionsView.delegateEvents();
     // Trigger the event
-     $('input#record').click();
+     this.functionsView.$el.find('input#record').click();
     // Check the done status for the model is true
     ok( this.recordSpy.called );
     

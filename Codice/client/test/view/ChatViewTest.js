@@ -1,5 +1,5 @@
 //Wait for relevant code bits to load before starting any tests
-define(['../js/view/ChatView'], function( ChatView ) {
+define(['../js/view/ChatView','../js/model/TextMessageModel'], function( ChatView, TextMessageModel ) {
 
   module( 'About Backbone.View', {
       setup: function() {
@@ -20,9 +20,9 @@ define(['../js/view/ChatView'], function( ChatView ) {
 		
 		$(this.chatView.el).html(this.chatView.template({ ip: '0' }));
     // Check the number of items rendered
-    equal($('#chat').find('ul').length, 1, 'One list rendered.');
-    equal($('#chat').find('textarea').length, 0, 'Zero textarea rendered.');
-    equal($('#chat').find('button').length, 0, 'Zero button rendered.');
+    equal(this.chatView.$el.find('ul').length, 1, 'One list rendered.');
+    equal(this.chatView.$el.find('textarea').length, 0, 'Zero textarea rendered.');
+    equal(this.chatView.$el.find('button').length, 0, 'Zero button rendered.');
   });
   
   test('The template is render correctly when the contact is online.', function() {
@@ -30,9 +30,9 @@ define(['../js/view/ChatView'], function( ChatView ) {
 		
 		$(this.chatView.el).html(this.chatView.template({ ip: '1' }));
     // Check the number of items rendered
-    equal($('#chat').find('ul').length, 1, 'One list rendered.');
-    equal($('#chat').find('textarea').length, 1, 'One textarea rendered.');
-    equal($('#chat').find('button').length, 1, 'One button rendered.');
+    equal(this.chatView.$el.find('ul').length, 1, 'One list rendered.');
+    equal(this.chatView.$el.find('textarea').length, 1, 'One textarea rendered.');
+    equal(this.chatView.$el.find('button').length, 1, 'One button rendered.');
   });
 
   test('Can wire up send method to DOM element.', function() {
@@ -43,11 +43,11 @@ define(['../js/view/ChatView'], function( ChatView ) {
     this.sendStub = sinon.stub(this.chatView, 'send', this.sendSpy );
     this.chatView.delegateEvents();
     // Trigger the event
-     $('button#Send').click();
+     this.chatView.$el.find('button#Send').click();
     // Check the done status for the model is true
     ok( this.sendSpy.called );
     
     this.sendStub.restore();
   });
-
+  
 });

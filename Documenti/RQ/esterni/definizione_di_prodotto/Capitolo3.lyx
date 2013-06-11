@@ -78,7 +78,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/packageServer.pdf
+	filename img/server/packageServer.pdf
 	width 100text%
 
 \end_inset
@@ -194,44 +194,12 @@ name "sub:Package-dao"
 \end_layout
 
 \begin_layout Standard
-Il package dao contiene tutte le classi che si occupano di eseguire le operazion
-i sul database
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/packageDao.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package dao
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Il package 
+\family typewriter
+mytalk.server.dao
+\family default
+ contiene tutte le classi che si occupano di eseguire le operazioni sul
+ database.
 \end_layout
 
 \begin_layout Paragraph
@@ -282,7 +250,7 @@ mytalk.server.dao.JavaConnectionSQLite
  (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:mytalk.server.dao.JavaConnection"
+reference "sub:JavaConnectionSQLite"
 
 \end_inset
 
@@ -398,7 +366,7 @@ reference "sub:mytalk.server.dao.UserDaoSQL"
 mytalk.server.dao.JavaConnectionSQLite
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:mytalk.server.dao.JavaConnection"
+name "sub:JavaConnectionSQLite"
 
 \end_inset
 
@@ -420,7 +388,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/JavaConnectionSQLite.pdf
+	filename img/server/dao/pdf/JavaConnectionSQLite.pdf
 	scale 90
 
 \end_inset
@@ -485,17 +453,17 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-Connection connection:
+[Connection] connection:
 \series default
- riferimento alla connessione al database di riferimento
+ conterrà il riferimento alla connessione al database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Statement statement:
+[Statement] statement: 
 \series default
- riferimento alla risorsa impiegata per eseguire query sul database
+conterrà il riferimento alla risorsa impiegata per eseguire query sul database
 \end_layout
 
 \begin_layout Paragraph
@@ -507,31 +475,30 @@ Metodi pubblici
 \series bold
 JavaConnectionSQLite():
 \series default
- costruttore che crea la connessione al database.
- Se la connessione non va a buon fine, vengono lanciate delle eccezioni,
- che stampano a video l'errore riscontrato
+ costruttore della classe che si occuperà di creare la connessione al database.
+ In caso di fallimento della connessione, verrà lanciata un eccezione che
+ stamperà a video l'errore riscontrato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void finalize():
+[void] finalize():
 \series default
- distruttore della classe JavaConnectionSQLite.
- Prima di distruggere una istanza, la connessione al database deve essere
+ metodo che fungerà da distruttore della classe JavaConnectionSQLite.
+ Prima di distruggere una istanza, la connessione al database dovrà essere
  chiusa.
- Se la chiusura della connessione lancia eccezioni, stamperà a video l'errore
- riscontrato
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-ResultSet select(String table, String column, String condition, String extra):
+[ResultSet] select(String, String, String, String):
 \series default
- metodo che ritorna una tupla di valori, della tabella indicata, che rispettano
- i parametri di controllo indicati.
- Quindi eseguirà la query sul database utilizzando i parametri:
+ metodo che ritornerà una tupla di valori, della tabella indicata, che rispettan
+o i parametri di controllo indicati.
+ Quindi eseguirà la query sul database utilizzando i parametri passati:
 \end_layout
 
 \begin_deeper
@@ -540,7 +507,7 @@ ResultSet select(String table, String column, String condition, String extra):
 \emph on
 table:
 \emph default
- rappresenta il nome della tabella su cui eseguire la query
+ rappresenterà il nome della tabella su cui eseguire la query
 \end_layout
 
 \begin_layout Itemize
@@ -548,7 +515,7 @@ table:
 \emph on
 column:
 \emph default
- rappresenta le colonne che saranno selezionate
+ rappresenterà le colonne che saranno selezionate
 \end_layout
 
 \begin_layout Itemize
@@ -556,7 +523,7 @@ column:
 \emph on
 condition:
 \emph default
- condizione principale applicata per effettuare la selezione
+ sarà la condizione principale applicata per effettuare la selezione
 \end_layout
 
 \begin_layout Itemize
@@ -564,7 +531,7 @@ condition:
 \emph on
 extra:
 \emph default
- condizioni extra
+ rappresenterà le condizioni extra, se necessarie
 \end_layout
 
 \begin_layout Standard
@@ -578,10 +545,10 @@ Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
 \begin_layout Itemize
 
 \series bold
-boolean executeUpdate(String query):
+[boolean] executeUpdate(String):
 \series default
- metodo che esegue la query passata nel database, aggiornandolo.
- Se la query viene conclusa con successo il metodo ritornerà
+ metodo che si occuperà di eseguire la query passata nel database, aggiornandolo.
+ Se la query verrà conclusa con successo il metodo ritornerà
 \emph on
  true
 \emph default
@@ -619,7 +586,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/LoginDao.pdf
+	filename img/server/dao/pdf/LoginDao.pdf
 	scale 90
 
 \end_inset
@@ -735,7 +702,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/LoginDaoSQL.pdf
+	filename img/server/dao/pdf/LoginDaoSQL.pdf
 	scale 90
 
 \end_inset
@@ -908,7 +875,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/RecordMessageDao.pdf
+	filename img/server/dao/pdf/RecordMessageDao.pdf
 	scale 80
 
 \end_inset
@@ -1047,7 +1014,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/RecordMessageDaoSQL.pdf
+	filename img/server/dao/pdf/RecordMessageDaoSQL.pdf
 	scale 80
 
 \end_inset
@@ -1275,7 +1242,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/TutorialseDaoSQL.pdf
+	filename img/server/dao/pdf/TutorialsDaoSQL.pdf
 	scale 80
 
 \end_inset
@@ -1409,7 +1376,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/UserDao.pdf
+	filename img/server/dao/pdf/UserDao.pdf
 	scale 70
 
 \end_inset
@@ -1592,7 +1559,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/UserDaoSQL.pdf
+	filename img/server/dao/pdf/UserDaoSQL.pdf
 	scale 80
 
 \end_inset
@@ -1877,7 +1844,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/packageShared.pdf
+	filename img/server/shared/pdf/packageShared.pdf
 	scale 90
 
 \end_inset
@@ -3524,45 +3491,11 @@ name "sub:Package-transfer"
 \end_layout
 
 \begin_layout Standard
-Lo strato Transfer si occupa della comunicazione tra il client e il server.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/packageTransfer.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\lang english
-Package transfer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Il package 
+\family typewriter
+mytalk.server.transfer
+\family default
+ si occupa della comunicazione con il client.
 \end_layout
 
 \begin_layout Paragraph
@@ -3598,7 +3531,7 @@ mytalk.server.shared
 \begin_layout Itemize
 
 \series bold
-Il package viene utilizzato da:
+Comunica con:
 \end_layout
 
 \begin_deeper
@@ -3636,7 +3569,7 @@ mytalk.server.transfer.AuthenticationTransfer
  (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:mytalk.server.transfer.AuthenticationTransfer"
+reference "sub:AuthenticationTransfer"
 
 \end_inset
 
@@ -3719,7 +3652,11 @@ reference "sub:mytalk.server.transfer.UserTransfer"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.ListenerTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.ListenerTransfer"
@@ -3730,8 +3667,8 @@ name "sub:mytalk.server.transfer.ListenerTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe ListenerTransfer si occupa della registrazione e autenticazione
- degli utenti
+La classe astratta ListenerTransfer implementa WebSocketServerTokenListener
+ e viene estesa da tutte le altre classi dello strato.
 \end_layout
 
 \begin_layout Standard
@@ -3744,7 +3681,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ListenerTransfer.pdf
+	filename img/server/transfer/pdf/ListenerTransfer.pdf
 	scale 90
 
 \end_inset
@@ -3773,39 +3710,105 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Utilizza:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.functionmanager.Converter
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Implementa:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
+org.jwebsocket.listener.WebSocketServerTokenListener
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
 \series bold
-xxx
+Viene estesa da:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.AuthenticationTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.CallTransfer
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.ChatTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.FileTransfer
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.RecordMessageTransfer
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.UserTransfer
 \end_layout
 
 \end_deeper
 \begin_layout Paragraph
-Attributi privati
+Attributi protetti
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[TokenServer] tokenServer:
+\series default
+ conterrà un riferimento al token server di JWebSocket
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[Collection<WebSocketConnector>] connectedUsers
+\series default
+: conterrà la lista dei connettori collegati al server
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[Converter] converter
+\series default
+: conterrà un riferimento alla classe Converter
 \end_layout
 
 \begin_layout Paragraph
@@ -3813,14 +3816,60 @@ Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] setTokenServer(ServerMyTalk): 
+\series default
+metodo per inizializzare 
+\emph on
+tokenServer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] broadcastToAll(WebSocketPacket): 
+\series default
+metodo per inviare il pacchetto a tutti gli utenti presenti in 
+\emph on
+connectedUsers
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[WebSocketConnector] getUserConnector(String): 
+\series default
+metodo per trovare il connettore dell'utente connesso, con il dato username,
+ al sistema
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[WebSocketConnector] getIpConnector(String):
+\series default
+ metodo per trovare il connettore, avente il dato indirizzo IP, connesso
+ al sistema
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] sendPacket(WebSocketPacket WebSocketConnector): 
+\series default
+metodo per inviare il dato pacchetto al dato connettore
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.AuthenticationTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:mytalk.server.transfer.AuthenticationTransfer"
+name "sub:AuthenticationTransfer"
 
 \end_inset
 
@@ -3829,7 +3878,7 @@ name "sub:mytalk.server.transfer.AuthenticationTransfer"
 
 \begin_layout Standard
 La classe AuthenticationTransfer si occupa della registrazione e autenticazione
- degli utenti
+ degli utenti.
 \end_layout
 
 \begin_layout Standard
@@ -3842,7 +3891,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/AuthenticationTransfer.pdf
+	filename img/server/transfer/pdf/AuthenticationTransfer.pdf
 	scale 90
 
 \end_inset
@@ -3877,42 +3926,72 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Utilizza:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.server.usermanager.AuthenticationManager 
-\family default
-\series default
-,
+mytalk.server.usermanager.AuthenticationManager
+\end_layout
+
+\begin_layout Itemize
+
 \family typewriter
-\series bold
-mytalk.server.usermanager.UserManager 
-\family default
-\series default
-e
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\begin_layout Itemize
+
 \family typewriter
-\series bold
-mytalk.server.functionmanager.ContactsManager 
+mytalk.server.shared.Tutorials
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.shared.User
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
+mytalk.server.transfer.ListenerTransfer
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
 \series bold
-mytalk.client.AuthenticationCommunication.AuthenticationCommunication 
+Comunica con:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.AuthenticationCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.ContactsCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.TutorialCommunication
 \end_layout
 
 \end_deeper
@@ -3923,28 +4002,27 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-AuthenticationManager authenticationManager:
+[AuthenticationManager] authenticationManager:
 \series default
- è il riferimento alla singola istanza della classe AuthenticationManager
- inizializzata nel Launcher
+ conterrà il riferimento alla singola istanza della classe AuthenticationManager
+ presente nel server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-UserManager userManager:
+[UserManager] userManager:
 \series default
- è il riferimento alla singola istanza della classe UserManager inizializzata
- nel Launcher
+ conterrà il riferimento alla singola istanza della classe UserManager presente
+ nel server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Collection<WebSocketConnector> mClients:
+[Tutorials] tutorials: 
 \series default
- è una collezione di tutti gli utenti che sono correntemente collegati al
- server
+conterrà il riferimento ai tutorials presenti nel package shared
 \end_layout
 
 \begin_layout Paragraph
@@ -3954,80 +4032,151 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-AuthenticationTransfer(AuthenticationManager authenticationManager, UserManager
- userManager): 
+AuthenticationTransfer(AuthenticationManager, UserManager, Tutorials): 
 \series default
-metodo che inizializza la classe
+costruttore della classe, dovrà inizializzaere gli attributi della classe
+ con i parametri ricevuti
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setTokenServer(ServerMyTalk server):
+[void] processToken(WebSocketServerTokenEvent, Token):
 \series default
- metodo che restituisce il TokenServer inizializzato nel server
+ metodo per la gestione dei token in arrivo, in particolare si occuperà
+ di quelli aventi come tipo:
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
-\series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
-\series default
- metodo che si occupa della gestione dei Token in arrivo
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-void processClosed(WebSocketServerEvent arg0): 
-\series default
-metodo che si occupa della chiusura di un processo
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-void processOpened(WebSocketServerEvent event): 
-\series default
-metodo che si occupa della creazione di un processo
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-void sendPacket(WebSocketPacket packet, WebSocketServerEvent event): 
-\series default
-metodo che si occupa dell'invio di uno specifico pacchetto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
+\emph on
+login
+\emph default
+: invocherà il metodo 
+\emph on
+login(String, String, String) 
+\emph default
+della classe AuthenticationManager, usando come parametri lo username e
+ la password, presenti nel token, e l'indirizzo IP del connettore da cui
+ riceve il pacchetto.
+ Se l'operazione non andrà a buon termine, invierà una risposta negativa
+ al client, al contrario, invierà una risposta positiva al client e il nuovo
+ indirizzo IP del contatto a tutti gli utenti connessi, utilizzando il metodo
  
+\emph on
+broadcastToAll(WebSocketPacket), 
+\emph default
+infine assegnerà al connettore lo username dell'utente autenticato
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+signUp
+\emph default
+: invocherà il metodo 
+\emph on
+createUser(String, String, String, String, String) 
+\emph default
+della classe AuthenticationManager, usando come parametri i dati presenti
+ nel token, e l'indirizzo IP del connettore da cui riceve il pacchetto.
+ Se l'operazione non andrà a buon termine, invierà una risposta negativa
+ al client, al contrario, invierà una risposta positiva al client ed invierà
+ il nuovo indirizzo IP del contatto a tutti gli utenti connessi, utilizzando
+ il metodo 
+\emph on
+broadcastToAll(WebSocketPacket)
+\emph default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+getContacts
+\emph default
+: invocherà il metodo 
+\emph on
+getAllContacts(User) 
+\emph default
+della classe UserManager, per ottenere il vettore degli utenti presenti
+ nel server, e il metodo 
+\emph on
+convertUsers(Vector<User>,String)
+\emph default
+ della classe Converter per convertire tale lista in stringa, infine restituirà
+ al client il pacchetto contenente tale stringa
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+logout
+\emph default
+: invocherà il metodo 
+\emph on
+logout(User) 
+\emph default
+della classe AuthenticationManager, se l'operazione non andrà a buon termine,
+ invierà una risposta negativa al client, al contrario, invierà una risposta
+ positiva al client ed invierà il nuovo indirizzo IP del contatto a tutti
+ gli utenti connessi, utilizzando il metodo 
+\emph on
+broadcastToAll(WebSocketPacket), 
+\emph default
+infine rimuoverà dal connettore lo username
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+[void] processOpened(WebSocketServerEvent): 
 \series default
-metodo che si occupa della gestione di un pacchetto
+metodo che si occuperà della creazione di un processo.
+ Aggiungerà il nuovo connettore ad 
+\emph on
+connectedUsers, 
+\emph default
+invocherà il metodo 
+\emph on
+convertTutorials(Map<String,String>, String) 
+\emph default
+della classe Converter e invierà la stringa così ottenuta al nuovo connettore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void broadcastToAll(WebSocketPacket packet): 
+[void] processClosed(WebSocketServerEvent): 
 \series default
-metodo che si occupa di inviare un pacchetto a tutti gli utenti connessi
- al server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Collection<WebSocketConnector> getClients(): 
-\series default
-metodo che restituisce la lista degli utenti connessi al server
+metodo che si occuperà della chiusura di un processo.
+ Se non si è fatta l'operazione di 
+\emph on
+logout
+\emph default
+ dal client, invocherà il metodo 
+\emph on
+logout(User) 
+\emph default
+della classe AuthenticationManager ed invierà il nuovo indirizzo IP del
+ contatto a tutti gli utenti connessi, utilizzando il metodo 
+\emph on
+broadcastToAll(WebSocketPacket).
+ 
+\emph default
+Infine rimuoverà il connettore da 
+\emph on
+connectedUsers
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.CallTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.CallTransfer"
@@ -4038,7 +4187,7 @@ name "sub:mytalk.server.transfer.CallTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe CaalTransfer si occupa di gestire il traffico di pacchetti per
+La classe CalTransfer si occupa di gestire il traffico di pacchetti per
  effettuare l'inizializzazione di una comunicazione audio/video
 \end_layout
 
@@ -4052,7 +4201,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/CallTransfer.pdf
+	filename img/server/transfer/pdf/CallTransfer.pdf
 	scale 90
 
 \end_inset
@@ -4087,36 +4236,37 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza ed è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.communication.CallCommunication 
-\family default
-\series default
-e utilizza
-\family typewriter
-\series bold
-mytalk.server.transfer.AuthenticationTransfer 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
+\begin_layout Itemize
+
+\series bold
+Comunica con:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.CallCommunication
 \end_layout
 
 \begin_layout Itemize
 
-\series bold
-AuthenticationTransfer authentication:
-\series default
- 
+\family typewriter
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
@@ -4124,62 +4274,136 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-CallTransfer(AuthenticationTransfer authentication):
+[void] processToken(WebSocketServerTokenEvent, Token):
 \series default
- metodo che inizializza l'instanza
+metodo per la gestione dei token in arrivo.
+ Per ogni token che gestirà, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se non esiste invierà al connettore che ha effettuato la richiesta un pacchetto
+ con tipo 
+\emph on
+answeredCall
+\emph default
+ avente come risposta 
+\emph on
+error
+\emph default
+.
+ Se il connettore esiste risponderà con un pacchetto di tipo diverso a seconda
+ della richiesta:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+richiesta di tipo 
+\emph on
+call, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+call, 
+\emph default
+contenente il tipo di chiamata, passatogli dal client, e lo username dell'utente
+ che ha effettuato la richiesta
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void setTokenServer(ServerMyTalk server):
-\series default
- metodo che restituisce il TokenServer inizializzato nel server
+richiesta di tipo 
+\emph on
+answeredCall, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+true
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
-\series default
- metodo che si occupa della gestione dei Token in arrivo 
+richiesta di tipo 
+\emph on
+refuseCall, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+false
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processClosed(WebSocketServerEvent arg0):
-\series default
- metodo che si occupa della chiusura di un processo
+richiesta di tipo 
+\emph on
+busy, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+busy
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processOpened(WebSocketServerEvent event):
-\series default
- metodo che si occupa della creazione di un processo
+richiesta di tipo 
+\emph on
+offer, 
+\emph default
+invierà un pacchetto contentent l'attributo 
+\emph on
+description 
+\emph default
+passatogli dal client che ha effettuato la richiesta
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void sendPacket(WebSocketPacket packet, WebSocketConnector connector): 
-\series default
-metodo che si occupa della gestione di un pacchetto
+richiesta di tipo 
+\emph on
+candidate, 
+\emph default
+invierà un pacchetto contentent l'attributo 
+\emph on
+cand 
+\emph default
+passatogli dal client che ha effettuato la richiesta
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
- 
-\series default
-metodo che si occupa della gestione di un pacchetto
+richiesta di tipo 
+\emph on
+endCall, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+endCall
 \end_layout
 
+\begin_layout Itemize
+richiesta di tipo 
+\emph on
+candidateReady, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+candidateReady
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.ChatTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.ChatTransfer"
@@ -4202,6 +4426,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/ChatTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4225,51 +4456,70 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Comunica con:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.client.communication.ChatCommunication
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
-\begin_layout Itemize
-xxx
-\end_layout
-
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+metodo per la gestione dei token in arrivo.
+ Gestirà i token aventi come tipo 
+\emph on
+sendText
+\emph default
+, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se il connettore non è presente, invierà al connettore che ha effettuato
+ la richiesta un pacchetto con tipo 
+\emph on
+notDelivered,
+\emph default
+ altrimenti manderà al connettore trovato un pacchetto di tipo 
+\emph on
+sendText
+\emph default
+, avente come attributi il messaggio ricevuto in arrivo e lo username del
+ mittente
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.FileTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.FileTransfer"
@@ -4292,6 +4542,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/FileTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4315,51 +4572,67 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Comunica con:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-Attributi privati
+mytalk.client.communication.FileCommunication
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\family typewriter
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+metodo per la gestione dei token in arrivo.
+ Gestirà i token aventi come tipo 
+\emph on
+file
+\emph default
+, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Infine Manderà al connettore trovato un pacchetto con lo stesso, avente
+ come attributi il file ricevuto in arrivo e lo username del mittente
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.RecordMessageTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.RecordMessageTransfer"
@@ -4382,6 +4655,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/RecordMessageTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4405,49 +4685,111 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Utilizza:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.shared.RecordMessage
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
+\begin_layout Itemize
+
+\series bold
+Comunica con:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.RecordMessageCommunication
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\family typewriter
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+ metodo per la gestione dei token in arrivo.
+ in particolare si occuperà di quelli aventi come tipo:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+sendRecord
+\emph default
+: invocherà il metodo 
+\emph on
+createMessage(String, String, String, String)
+\emph default
+ per salvare il messaggio nel server, usando come parametri quelli ricevuti.
+ Successivamente invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se è presente, gli invierà un pacchetto di tipo 
+\emph on
+record
+\emph default
+, contente le informazioni ricevute
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+removerRecord:
+\emph default
+ invocherà i metodi 
+\emph on
+getMessage(String, String, String, String) 
+\emph default
+e 
+\emph on
+removeMessage(RecordMessage) 
+\emph default
+della classe UserManager per trovare ed eliminare il messaggio dal server
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 mytalk.server.transfer.UserTransfer
 \begin_inset CommandInset label
@@ -4460,7 +4802,8 @@ name "sub:mytalk.server.transfer.UserTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe UserTransfer si occupa della...
+La classe UserTransfer si occupa della gestione delle modifiche dei dati
+ dell'utente
 \end_layout
 
 \begin_layout Standard
@@ -4472,6 +4815,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/UserTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4495,48 +4845,89 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Utilizza:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.usermanager.UserManager
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
 \begin_layout Itemize
-xxx
+
+\series bold
+Comunica con:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+ metodo per la gestione dei token in arrivo.
+ in particolare si occuperà di quelli aventi come tipo:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+checkCredentials
+\emph default
+: invocherà il metodo 
+\emph on
+checkPassword(User, String)
+\emph default
+, passandogli come parametro lo user corrispondente all'utente che ha effettuato
+ la richiesta e la password presente nel pacchetto, e invierà al client
+ la risposta ottenuta
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+changeData:
+\emph default
+ invocherà i metodi 
+\emph on
+setUserData(User, String, String) 
+\emph default
+e 
+\emph on
+setPassword(UserString) 
+\emph default
+per modificare i dati dell'utente con quelli ricevuti nel pacchetto
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

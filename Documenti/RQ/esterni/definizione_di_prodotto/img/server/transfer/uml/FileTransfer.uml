@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jun 07 22:13:41 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 16:36:02 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -71,6 +71,29 @@
       <UML:Namespace.ownedElement>
         <UML:Class xmi.id = '127-0-0-1--2f37b6f8:13f20450f35:-8000:0000000000000866'
           name = 'FileTransfer' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <UML:Classifier.feature>
+            <UML:Operation xmi.id = '10-1-124-1-3ff8fef5:13f33a64c75:-8000:0000000000000A5F'
+              name = '+processToken' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1-3ff8fef5:13f33a64c75:-8000:0000000000000A60'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1-3ff8fef5:13f33a64c75:-8000:0000000000000A63'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1-3ff8fef5:13f33a64c75:-8000:0000000000000A61'
+                  name = 'WebSocketServerTokenEvent' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '10-1-124-1-3ff8fef5:13f33a64c75:-8000:0000000000000A62'
+                  name = 'Token' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+          </UML:Classifier.feature>
+        </UML:Class>
+        <UML:Class xmi.id = '10-1-124-1-3ff8fef5:13f33a64c75:-8000:0000000000000A63'
+          name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
@@ -80,7 +103,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[40, 48, 84, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[40, 48, 376, 71]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="127-0-0-1--2f37b6f8:13f20450f35:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -93,8 +116,8 @@
     <rectangle name="Fig0.0"
       x="40"
       y="48"
-      width="84"
-      height="68"
+      width="376"
+      height="71"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -103,7 +126,7 @@
     <text name="Fig0.1"
       x="41"
       y="49"
-      width="82"
+      width="374"
       height="23"
       fill="0"
       fillcolor="255 255 200"
@@ -117,7 +140,7 @@
       justification="Center"
     >FileTransfer</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[41, 49, 64, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[41, 49, 82, 0]"
          href="127-0-0-1--2f37b6f8:13f20450f35:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -131,7 +154,7 @@
       <rectangle name="Fig0.2.0"
         x="41"
         y="49"
-        width="64"
+        width="82"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -142,7 +165,7 @@
     <rectangle name="Fig0.3"
       x="40"
       y="72"
-      width="84"
+      width="376"
       height="1"
       fill="1"
       fillcolor="black"
@@ -150,7 +173,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[41, 73, 82, 21]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[41, 73, 374, 21]"
          href="127-0-0-1--2f37b6f8:13f20450f35:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -163,7 +186,7 @@
       <rectangle name="Fig0.4.0"
         x="41"
         y="73"
-        width="82"
+        width="374"
         height="21"
         fill="0"
         fillcolor="white"
@@ -174,7 +197,7 @@
     <rectangle name="Fig0.5"
       x="40"
       y="93"
-      width="84"
+      width="376"
       height="1"
       fill="1"
       fillcolor="black"
@@ -182,7 +205,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[41, 94, 82, 21]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[41, 94, 374, 25]"
          href="127-0-0-1--2f37b6f8:13f20450f35:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -195,13 +218,29 @@
       <rectangle name="Fig0.6.0"
         x="41"
         y="94"
-        width="82"
-        height="21"
+        width="374"
+        height="25"
         fill="0"
         fillcolor="white"
         stroke="0"
         strokecolor="black"
       />
+      <text name="Fig0.6.1"
+        x="41"
+        y="94"
+        width="374"
+        height="23"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+processToken(WebSocketServerTokenEvent,Token) : void</text>
     </group>
   </group>
 </pgml>

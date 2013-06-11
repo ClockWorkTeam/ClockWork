@@ -1,5 +1,5 @@
 //Wait for relevant code bits to load before starting any tests
-define(['../js/view/SideView'], function( SideView ) {
+define(['../js/view/SideView','../js/model/UserModel','../js/view/AuthenticationView'], function( SideView, UserModel, AuthenticationView ) {
 
   module( 'About Backbone.View', {
       setup: function() {
@@ -20,8 +20,8 @@ define(['../js/view/SideView'], function( SideView ) {
     expect( 2 );
 
     // Check the number of items rendered
-    equal($('#sidebar').find('button').length, 1, 'One button rendered.');
-    equal($('#sidebar').find('ul').length, 0, 'Zero lists rendered.');
+    equal(this.sideView.$el.find('button').length, 1, 'One button rendered.');
+    equal(this.sideView.$el.find('ul').length, 0, 'Zero lists rendered.');
 
   }); 
    
@@ -31,8 +31,8 @@ define(['../js/view/SideView'], function( SideView ) {
 		$(this.sideView.el).html(this.sideView.template({logged: true}));
 
     // Check the number of items rendered
-    equal($('#sidebar').find('button').length, 2, 'Two buttons rendered.');
-    equal($('#sidebar').find('ul').length, 1, 'One list rendered.');
+    equal(this.sideView.$el.find('button').length, 2, 'Two buttons rendered.');
+    equal(this.sideView.$el.find('ul').length, 1, 'One list rendered.');
 
   }); 
   test('Can wire up send method to DOM element.', function() {
@@ -42,7 +42,7 @@ define(['../js/view/SideView'], function( SideView ) {
     this.sendStub = sinon.stub(this.sideView, 'callIP', this.callIPSpy );
     this.sideView.delegateEvents();
     // Trigger the event
-     $('button#callIP').click();
+     this.sideView.$el.find('button#callIP').click();
     // Check the done status for the model is true
     ok( this.callIPSpy.called );
     
@@ -57,10 +57,28 @@ define(['../js/view/SideView'], function( SideView ) {
     this.sendStub = sinon.stub(this.sideView, 'StartConference', this.StartConferenceSpy );
     this.sideView.delegateEvents();
     // Trigger the event
-     $('button#conference').click();
+     this.sideView.$el.find('button#conference').click();
     // Check the done status for the model is true
     ok( this.StartConferenceSpy.called );
     
     this.sendStub.restore();
   });
+  
+  test('Can wire up getContacts method to DOM element.', function() {
+    expect( 1 );
+    
+    this.contactsCommunication=require('communication/ContactsCommunication');
+    this.commStub = sinon.stub(this.contactsCommunication, 'fetchContacts' );
+    
+    this.model=new UserModel({username:'johndoe'});
+    this.view=new AuthenticationView();
+    this.view.userModel = this.model;
+    
+    this.sideView.getContacts(this.view);
+    
+    ok( this.commStub.called );
+    
+    this.commStub.restore();
+  });
+  
 });

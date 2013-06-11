@@ -49,7 +49,7 @@ define([
      */
     initialize: function(){
       _.bindAll(this, 'render');
-      _.bindAll(this, 'refuse');
+      _.bindAll(this, 'refuseCall');
       this.timeout=true;
       this.render();
     },
@@ -102,6 +102,34 @@ define([
     refuseCall : function(){
       this.options.NotificationCommunication.refuseCall(this.options.caller);
       this.unrender();
+    },
+    
+     /**
+     * funzione che si occupa di visualizzare un messaggio video in arrivo
+     */
+    viewRecordMessage : function(){
+
+    },
+    
+     /**
+     * funzione che annulla la visualizzazione di un messaggio video in arrivo
+     */
+    ignoreMessage: function(){
+
+    },
+    
+     /**
+     * funzione che si occupa di accettare la ricezione di un file
+     */
+    acceptFile : function(){
+
+    },
+    
+     /**
+     * funzione che si occupa di rifiutare la ricezione di un file
+     */
+    refuseFile : function(){
+
     }
 
   });
