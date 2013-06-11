@@ -24,7 +24,7 @@ define([
  'jquery',
  'underscore',
  'backbone',
- 'text!templates/StatisticsTemplate.html',
+ 'text!template/StatisticsTemplate.html',
  'communication/CallCommunication'
 ], function($, _, Backbone, StatisticsTemplate, CallCommunication){
   var interval=null;

@@ -24,9 +24,9 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     expect( 3 );
 
     // Check the number of items rendered
-    equal($('#main').find('button').length, 3, 'Three buttons rendered.');
-    equal($('#main').find('ul').length, 1, 'One list rendered.');
-    equal($('#main').find('input').length, 5, 'Five input rendered.');
+    equal(this.userDataView.$el.find('button').length, 3, 'Three buttons rendered.');
+    equal(this.userDataView.$el.find('ul').length, 1, 'One list rendered.');
+    equal(this.userDataView.$el.find('input').length, 5, 'Five input rendered.');
 
   }); 
 
@@ -38,7 +38,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     this.sendStub = sinon.stub(this.userDataView, 'checkPassword', this.checkPasswordSpy );
     this.userDataView.delegateEvents();
     // Trigger the event
-     $('button#submitChange').click();
+     this.userDataView.$el.find('button#submitChange').click();
     // Check the done status for the model is true
     ok( this.checkPasswordSpy.called );
     
@@ -52,7 +52,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     this.sendStub = sinon.stub(this.userDataView, 'render', this.renderSpy );
     this.userDataView.delegateEvents();
     // Trigger the event
-     $('button#reset').click();
+     this.userDataView.$el.find('button#reset').click();
     // Check the done status for the model is true
     ok( this.renderSpy.called );
     
@@ -66,7 +66,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     this.sendStub = sinon.stub(this.userDataView, 'unrender', this.unrenderSpy );
     this.userDataView.delegateEvents();
     // Trigger the event
-     $('button#denyChange').click();
+     this.userDataView.$el.find('button#denyChange').click();
     // Check the done status for the model is true
     ok( this.unrenderSpy.called );
     

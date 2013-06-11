@@ -20,8 +20,8 @@ define(['../js/view/CallView'], function( CallView ) {
 		
 		$(this.callView.el).html(this.callView.template({ username: 'clockwork' }));
     // Check the number of items rendered
-    equal($('#content').find('video').length, 2, 'Two video frames rendered.');
-    equal($('#content').find('button').length, 1, 'One button rendered.');
+    equal(this.callView.$el.find('video').length, 2, 'Two video frames rendered.');
+    equal(this.callView.$el.find('button').length, 1, 'One button rendered.');
   });
 
   test('Can wire up endCall method to DOM element.', function() {
@@ -32,7 +32,7 @@ define(['../js/view/CallView'], function( CallView ) {
     this.sendStub = sinon.stub(this.callView, 'endCall', this.endCallSpy );
     this.callView.delegateEvents();
     // Trigger the event
-     $('button#endCall').click();
+     this.callView.$el.find('button#endCall').click();
     // Check the done status for the model is true
     ok( this.endCallSpy.called );
     

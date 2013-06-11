@@ -22,7 +22,7 @@ define([
  'underscore',
  'backbone',
  'communication/ChatCommunication',
- 'text!templates/ChatTemplate.html',
+ 'text!template/ChatTemplate.html',
  'collection/TextMessagesCollection'
 ], function($, _, Backbone, ChatCommunication, ChatTemplate, TextMessagesCollection){
   var ChatView = Backbone.View.extend({

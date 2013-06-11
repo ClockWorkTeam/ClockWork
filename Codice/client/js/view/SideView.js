@@ -24,7 +24,7 @@ define([
  'view/ContactView',
  'view/FunctionsView',
  'communication/ContactsCommunication',
- 'text!templates/SideTemplate.html',
+ 'text!template/SideTemplate.html',
  'collection/ContactsCollection'
 ], function($, _, Backbone, ContactView, FunctionsView, ContactsCommunication, SideTemplate, ContactsCollection){
   var SideView = Backbone.View.extend({

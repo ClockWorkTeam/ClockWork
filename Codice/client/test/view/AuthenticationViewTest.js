@@ -19,9 +19,9 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     expect( 3 );
 
     // Check the number of items rendered
-    equal($('#authentication').find('label').length, 2, 'Two labels rendered.');
-    equal($('#authentication').find('input').length, 2, 'Two inputs rendered.');
-    equal($('#authentication').find('button').length, 2, 'Two buttons rendered.');
+    equal(this.authenticationView.$el.find('label').length, 2, 'Two labels rendered.');
+    equal(this.authenticationView.$el.find('input').length, 2, 'Two inputs rendered.');
+    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
   });
   
   test('The register form is render correctly.', function() {
@@ -30,9 +30,9 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.authenticationView.viewSignup();
 
     // Check the number of items rendered
-    equal($('#authentication').find('label').length, 5, 'Five labels rendered.');
-    equal($('#authentication').find('input').length, 5, 'Five inputs rendered.');
-    equal($('#authentication').find('button').length, 2, 'Two buttons rendered.');
+    equal(this.authenticationView.$el.find('label').length, 5, 'Five labels rendered.');
+    equal(this.authenticationView.$el.find('input').length, 5, 'Five inputs rendered.');
+    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
     
   });
   
@@ -42,7 +42,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     $(this.authenticationView.el).html(this.authenticationView.template({authenticated: true, name: 'johndoe'}));
 
     // Check the number of items rendered
-    equal($('#authentication').find('button').length, 2, 'Two buttons rendered.');
+    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
     
   });
 
@@ -53,7 +53,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub = sinon.stub(this.authenticationView, 'connect', this.connectSpy );
     this.authenticationView.delegateEvents();
     // Trigger the event
-     $('button#login').click();
+     this.authenticationView.$el.find('button#login').click();
     // Check the done status for the model is true
     ok( this.connectSpy.called );
     
@@ -69,7 +69,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub = sinon.stub(this.authenticationView, 'disconnect', this.disconnectSpy );
     this.authenticationView.delegateEvents();
     // Trigger the event
-    $('button#logout').click();
+    this.authenticationView.$el.find('button#logout').click();
     // Check the done status for the model is true
     ok( this.disconnectSpy.called );
     
@@ -83,7 +83,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub = sinon.stub(this.authenticationView, 'viewSignup', this.viewSignupSpy );
     this.authenticationView.delegateEvents();
     // Trigger the event
-    $('button#signup').click();
+    this.authenticationView.$el.find('button#signup').click();
     // Check the done status for the model is true
     ok( this.viewSignupSpy.called );
     
@@ -99,7 +99,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub = sinon.stub(this.authenticationView, 'signup', this.signupSpy );
     this.authenticationView.delegateEvents();
     // Trigger the event
-    $('button#sign').click();
+    this.authenticationView.$el.find('button#sign').click();
     // Check the done status for the model is true
     ok( this.signupSpy.called );
     
@@ -115,7 +115,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub = sinon.stub(this.authenticationView, 'deny', this.denySpy );
     this.authenticationView.delegateEvents();
     // Trigger the event
-    $('button#deny').click();
+    this.authenticationView.$el.find('button#deny').click();
     // Check the done status for the model is true
     ok( this.denySpy.called );
     
@@ -131,7 +131,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub = sinon.stub(this.authenticationView, 'editProfile', this.editSpy );
     this.authenticationView.delegateEvents();
     // Trigger the event
-    $('button#edit').click();
+    this.authenticationView.$el.find('button#edit').click();
     // Check the done status for the model is true
     ok( this.editSpy.called );
     

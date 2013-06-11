@@ -22,7 +22,7 @@ define([
  'underscore',
  'backbone',
  'communication/CallCommunication',
- 'text!templates/CallTemplate.html',
+ 'text!template/CallTemplate.html',
  'view/StatisticsView'
 ], function($, _, Backbone, CallCommunication, CallTemplate, StatisticsView){
 

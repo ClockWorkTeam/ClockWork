@@ -24,7 +24,7 @@ define([
  'view/CallView',
  'view/RecordMessageView',
   'view/ChatView',
- 'text!templates/FunctionsTemplate.html'
+ 'text!template/FunctionsTemplate.html'
 ], function($, _, Backbone, CallView, RecordMessageView,  ChatView, FunctionsTemplate){
 
   var FunctionsView = Backbone.View.extend({
