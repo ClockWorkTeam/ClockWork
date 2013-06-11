@@ -31,19 +31,19 @@
     <searchpath href="PROJECT_DIR" />
     <members>
       <member type="profile"
-              name="ContactsCommunication_nuovo_profile.profile" />
+              name="ContactsCommunication_profile.profile" />
       <member type="xmi"
-              name="ContactsCommunication_nuovo.xmi" />
+              name="ContactsCommunication.xmi" />
       <member type="pgml"
-              name="ContactsCommunication_nuovo_DiagrammadiClasse.pgml"
+              name="ContactsCommunication_DiagrammadiClasse.pgml"
               diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
               diagramname="Diagramma di Classe" />
       <member type="pgml"
-              name="ContactsCommunication_nuovo_DiagrammadeiCasidUso.pgml"
+              name="ContactsCommunication_DiagrammadeiCasidUso.pgml"
               diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
               diagramname="Diagramma dei Casi d&apos;Uso" />
       <member type="todo"
-              name="ContactsCommunication_nuovo.todo" />
+              name="ContactsCommunication.todo" />
     </members>
     <historyfile name="" />
   </argo>
@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jun 07 21:29:31 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 15:04:29 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -73,23 +73,26 @@
           name = 'ContactsCommunication' visibility = 'public' isSpecification = 'false'
           isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
           <UML:Classifier.feature>
-            <UML:Operation xmi.id = '-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7D'
-              name = 'fetchContacts' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
+            <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001763'
+              name = '+fetchContacts' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7E'
-                  name = 'return' isSpecification = 'false' kind = 'return'/>
-                <UML:Parameter xmi.id = '-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7F'
-                  name = 'username' isSpecification = 'false' kind = 'in'>
+                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001764'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
-                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                    <UML:Class xmi.idref = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001762'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001765'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
         </UML:Class>
+        <UML:Class xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001762'
+          name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -98,7 +101,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[88, 44, 189, 71]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[88, 44, 176, 69]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7C"
        fill="1"
        fillcolor="255 255 200"
@@ -111,8 +114,8 @@
     <rectangle name="Fig0.0"
       x="88"
       y="44"
-      width="189"
-      height="71"
+      width="176"
+      height="69"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -121,8 +124,8 @@
     <text name="Fig0.1"
       x="89"
       y="45"
-      width="187"
-      height="23"
+      width="174"
+      height="22"
       fill="0"
       fillcolor="255 255 200"
       stroke="0"
@@ -135,7 +138,7 @@
       justification="Center"
     >ContactsCommunication</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[89, 45, 146, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[89, 45, 192, 0]"
          href="-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7C"
          fill="0"
          fillcolor="255 255 200"
@@ -149,7 +152,7 @@
       <rectangle name="Fig0.2.0"
         x="89"
         y="45"
-        width="146"
+        width="192"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -159,8 +162,8 @@
     </group>
     <rectangle name="Fig0.3"
       x="88"
-      y="68"
-      width="189"
+      y="67"
+      width="176"
       height="1"
       fill="1"
       fillcolor="black"
@@ -168,7 +171,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[89, 69, 187, 21]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[89, 68, 174, 21]"
          href="-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7C"
          fill="0"
          fillcolor="255 255 200"
@@ -180,8 +183,8 @@
       
       <rectangle name="Fig0.4.0"
         x="89"
-        y="69"
-        width="187"
+        y="68"
+        width="174"
         height="21"
         fill="0"
         fillcolor="white"
@@ -191,8 +194,8 @@
     </group>
     <rectangle name="Fig0.5"
       x="88"
-      y="89"
-      width="189"
+      y="88"
+      width="176"
       height="1"
       fill="1"
       fillcolor="black"
@@ -200,7 +203,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[89, 90, 187, 25]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[89, 89, 174, 24]"
          href="-64--88-56-1--18b8f62a:13f1f5e8815:-8000:0000000000000D7C"
          fill="0"
          fillcolor="255 255 200"
@@ -212,9 +215,9 @@
       
       <rectangle name="Fig0.6.0"
         x="89"
-        y="90"
-        width="187"
-        height="25"
+        y="89"
+        width="174"
+        height="24"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -222,11 +225,11 @@
       />
       <text name="Fig0.6.1"
         x="89"
-        y="90"
-        width="187"
-        height="23"
+        y="89"
+        width="174"
+        height="22"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -235,7 +238,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >fetchContacts(username : String)</text>
+      >+fetchContacts(String) : void</text>
     </group>
   </group>
 </pgml>
