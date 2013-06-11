@@ -363,7 +363,11 @@ reference "sub:mytalk.server.dao.UserDaoSQL"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.dao.JavaConnectionSQLite
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:JavaConnectionSQLite"
@@ -453,7 +457,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-[Connection] connection:
+Connection connection:
 \series default
  conterrà il riferimento alla connessione al database
 \end_layout
@@ -461,7 +465,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-[Statement] statement: 
+Statement statement: 
 \series default
 conterrà il riferimento alla risorsa impiegata per eseguire query sul database
 \end_layout
@@ -483,7 +487,7 @@ JavaConnectionSQLite():
 \begin_layout Itemize
 
 \series bold
-[void] finalize():
+void finalize():
 \series default
  metodo che fungerà da distruttore della classe JavaConnectionSQLite.
  Prima di distruggere una istanza, la connessione al database dovrà essere
@@ -494,7 +498,7 @@ JavaConnectionSQLite():
 \begin_layout Itemize
 
 \series bold
-[ResultSet] select(String, String, String, String):
+ResultSet select(String, String, String, String):
 \series default
  metodo che ritornerà una tupla di valori, della tabella indicata, che rispettan
 o i parametri di controllo indicati.
@@ -545,7 +549,7 @@ Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
 \begin_layout Itemize
 
 \series bold
-[boolean] executeUpdate(String):
+boolean executeUpdate(String):
 \series default
  metodo che si occuperà di eseguire la query passata nel database, aggiornandolo.
  Se la query verrà conclusa con successo il metodo ritornerà
@@ -558,7 +562,11 @@ Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.dao.LoginDao
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.dao.LoginDao"
@@ -661,7 +669,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP):
+User login(String, String, String):
 \series default
  metodo che controllerà la correttezza dei dati inseriti da un utente per
  connettersi al sistema, e in caso affermativo reimpostera l'IP
@@ -670,12 +678,14 @@ User login(String username, String password, String IP):
 \begin_layout Itemize
 
 \series bold
-boolean logout(User user):
+boolean logout(User):
 \series default
  metodo che effettuerà la disconnessione dal sistema
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.dao.LoginDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
@@ -789,10 +799,9 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-JavaConnectionSQLite connection:
+JavaConnectionSQLite connection: 
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contenente i
- riferimenti al server
+conterrà il riferimento all'istanza della classe JavaConnectionSQLite 
 \end_layout
 
 \begin_layout Itemize
@@ -800,7 +809,7 @@ JavaConnectionSQLite connection:
 \series bold
 UserList userList:
 \series default
- riferimento alla lista degli utenti registrati nel database
+ conterrà il riferimento alla lista degli utenti registrati nel database
 \end_layout
 
 \begin_layout Paragraph
@@ -810,7 +819,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-LoginDaoSQL(JavaConnectionSQLite server, UserList users):
+LoginDaoSQL(JavaConnectionSQLite, UserList):
 \series default
  costruttore della classe che dovrà impostare il valore degli attributi
  secondo il valore dei parametri passati
@@ -819,27 +828,42 @@ LoginDaoSQL(JavaConnectionSQLite server, UserList users):
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP):
+User login(Stringe, String, String):
 \series default
- metodo che effettua il login dell'utente.
- Deve controllare la correttezza dell'username e della password inseriti.
- Crea una query per verificare se esiste un utente con lo
+ metodo che gestirà l'operazione di 
+\emph on
+login
+\emph default
+ dell'utente.
+ Dovrà controllare la correttezza dell'username e della password inseriti.
+ Crearà una query per verificare se esiste un utente con lo
 \emph on
  username
 \emph default
  ricevuto e che la password associata a tale utente sia uguale a quella
  ricevuta.
- Se non dovesse esistere tale parametro restituira null, in caso contrario
- aggiornerà l'indirizzo IP dell'utente che vuole effettuare la connessione
+ Se non dovesse esistere tale parametro restituirà 
+\emph on
+null
+\emph default
+, in caso contrario aggiornerà l'indirizzo IP dell'utente che vuole effettuare
+ la connessione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean logout(User user):
+boolean logout(User):
 \series default
- metodo che effettua il logout dell'utente aggiornando l'indirizzo IP a
- 0, sia nell'istanza dell'utente contenuta nel package 
+ metodo che gestirà l'operazione di 
+\emph on
+logout
+\emph default
+ dell'utente aggiornando l'indirizzo IP a 
+\emph on
+0
+\emph default
+, sia nell'istanza dell'utente contenuta nel package 
 \family typewriter
 mytalk.server.shared
 \family default
@@ -847,6 +871,8 @@ mytalk.server.shared
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.dao.RecordMessageDao
 \begin_inset CommandInset label
 LatexCommand label
@@ -955,39 +981,39 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-Vector<RecordMessage> getAllMessages(String username):
+Vector<RecordMessage> getAllMessages(String):
 \series default
- metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ metodo che ritornerà il vettore dei messaggi differiti che sono stati mandati
  ad un utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-RecordMessage createMessage(String sender, String addressee, String path,
- String date):
+RecordMessage createMessage(String, String, String, String):
 \series default
- metodo che aggiunge un messaggio differito nel database 
+ metodo che aggiungerà un messaggio differito nel database 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-RecordMessage getMessage(String sender, String addressee, String path, String
- date):
+RecordMessage getMessage(String, String, String, String):
 \series default
- metodo che restituisce un dato messaggio differito presente nel database
+ metodo che restituirà un dato messaggio differito presente nel database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message):
+boolean removeMessage(RecordMessage):
 \series default
- metodo che elimina un messaggio differito dal database
+ metodo che eliminerà un messaggio differito dal database
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.dao.RecordMessageDaoSQL
 \begin_inset CommandInset label
 LatexCommand label
@@ -1109,8 +1135,8 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contenente i
- riferimenti al server
+ conterrà il riferimento all'istanza della classe JavaConnectionSQLite contenent
+e i riferimenti al server
 \end_layout
 
 \begin_layout Itemize
@@ -1118,7 +1144,7 @@ JavaConnectionSQLite connection:
 \series bold
 UserList userList:
 \series default
- riferimento alla lista degli utenti registrati nel database
+ conterrà il riferimento alla lista degli utenti registrati nel database
 \end_layout
 
 \begin_layout Paragraph
@@ -1139,17 +1165,17 @@ RecordMessageDaoSQL(JavaConnectionSQLite connection, UserList users):
 \series bold
 Vector<RecordMessage> getAllMessages(String username):
 \series default
- metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ metodo che ritornerà il vettore dei messaggi differiti che sono stati mandati
  ad un utente.
- Il metodo deve verificare che esista realmente un utente associato allo
+ Il metodo dovrà verificare che esista realmente un utente associato allo
  
 \emph on
 username
 \emph default
- ricevuto, se esiste crea la query da effettuare per trovare tutti i messaggi
- che come destinatario hanno tale username.
- Se la query restituisce almeno un messaggio differito, lo inserisce nel
- vettore dell'utente.
+ ricevuto, se esisterà creerà la query da effettuare per trovare tutti i
+ messaggi che come destinatario avranno tale username.
+ Se la query restituirà almeno un messaggio differito, lo inserirà nel vettore
+ dell'utente.
 \end_layout
 
 \begin_layout Itemize
@@ -1158,10 +1184,10 @@ username
 RecordMessage getMessage(String sender, String addressee, String path, String
  date):
 \series default
- metodo che ritorna il messaggio differito avente le caratteristiche richeiste.
- Il metodo inizialmente trova tutti i messaggi del destinatario richiesto,
- invocando il metodo gatAllMessages(String), successivamente ricerca tra
- quei messaggi quello corrispondente alle richieste e lo restituisce.
+ metodo che ritornerà il messaggio differito avente le caratteristiche richieste.
+ Il metodo inizialmente troverà tutti i messaggi del destinatario richiesto,
+ invocando il metodo gatAllMessages(String), successivamente ricercherà
+ tra quei messaggi quello corrispondente alle richieste e lo restituirà.
  Nel caso che il messaggio non esista verrà restituito 
 \emph on
 null
@@ -1173,10 +1199,10 @@ null
 RecordMessage createMessage(String sender, String addressee, String path,
  String date):
 \series default
- metodo che crea un messaggio differito nel database.
- Deve verificare che l'utente destinatario esista nel database.
- Successivamente deve creare la query per aggiungere nel database il messaggio.
- Se l'aggiunta avviene con successo, viene aggiornata anche l'istanza dell'utent
+ metodo che creerà un messaggio differito nel database.
+ Dovrà verificare che l'utente destinatario esista nel database.
+ Successivamente dovrà creare la query per aggiungere nel database il messaggio.
+ Se l'aggiunta avverrà con successo, verrà aggiornata anche l'istanza dell'utent
 e nel package 
 \family typewriter
 mytalk.server.shared.User
@@ -1185,7 +1211,7 @@ mytalk.server.shared.User
 
 \family default
 \series default
- Il metodo ritorna il messaggio creato, che sarà
+ Il metodo ritornerà il messaggio creato, che sarà
 \emph on
  null
 \emph default
@@ -1197,10 +1223,10 @@ mytalk.server.shared.User
 \series bold
 boolean removeMessage(RecordMessage message):
 \series default
- metodo che elimina un messaggio differito dal database.
- Il metodo deve creare la query per la cancellazione del messaggio differito
+ metodo che eliminerà un messaggio differito dal database.
+ Il metodo dovrà creare la query per la cancellazione del messaggio differito
  nel database.
- Successivamente viene aggiornata anche l'istanza dell'utente nel package
+ Successivamente verrà aggiornata anche l'istanza dell'utente nel package
 \family typewriter
 \series bold
  
@@ -1208,11 +1234,11 @@ boolean removeMessage(RecordMessage message):
 mytalk.server.shared.User.
 
 \family default
- Nel caso l'eliminazione avvenga con successo il metodo ritorna
+ Nel caso l'eliminazione avvenga con successo il metodo ritornerà
 \emph on
  true
 \emph default
-, in caso contrario ritorna
+, in caso contrario ritornerà
 \emph on
  false
 \end_layout
@@ -1327,7 +1353,7 @@ TutorialsDaoSQL(JavaConnectionSQLite server):
 \series bold
 Tutorials getTutorials():
 \series default
- metodo che restituisce la lista di tutorials presenti in 
+ metodo che restituirà la lista di tutorials presenti in 
 \family typewriter
 mytalk.server.shared.Tutorials
 \end_layout
@@ -1341,7 +1367,7 @@ Metodi privati
 \series bold
 void getTutorialsFromDB():
 \series default
- metodo che inserisce in 
+ metodo che inserirà in 
 \family typewriter
 mytalk.server.shared.Tutorials
 \family default
@@ -1460,7 +1486,7 @@ Metodi pubblici
 User createUser(String username, String password, String name, String surname,
  String IP):
 \series default
- metodo che crea un utente nel database
+ metodo che creerà un utente nel database
 \end_layout
 
 \begin_layout Itemize
@@ -1468,7 +1494,7 @@ User createUser(String username, String password, String name, String surname,
 \series bold
 boolean removeUser(String username):
 \series default
- metodo che elimina un utente dal database
+ metodo che eliminerà un utente dal database
 \end_layout
 
 \begin_layout Itemize
@@ -1476,7 +1502,7 @@ boolean removeUser(String username):
 \series bold
 boolean setPassword(String username, String password):
 \series default
- metodo che imposta la password dell'utente corrispondente ad
+ metodo che imposterà la password dell'utente corrispondente ad
 \emph on
  username
 \emph default
@@ -3856,7 +3882,7 @@ metodo per trovare il connettore dell'utente connesso, con il dato username,
 \begin_layout Itemize
 
 \series bold
-[void] sendPacket(WebSocketPacket WebSocketConnector): 
+[void] sendPacket(WebSocketPacket, WebSocketConnector): 
 \series default
 metodo per inviare il dato pacchetto al dato connettore
 \end_layout
