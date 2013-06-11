@@ -31,8 +31,12 @@ define([
      * si occupa di legare gli eventi ad oggetti del DOM
      */
     events:{
-      'click button#acceptCall':'accept',
-      'click button#refuseCall':'refuse',
+      'click button#acceptCall':'acceptCall',
+      'click button#refuseCall':'refuseCall',
+      'click button#viewMessage':'viewRecordMessage',
+      'click button#ignoreMessage':'ignoreMessage',
+      'click button#acceptFile':'acceptFile',
+      'click button#refuseFile':'refuseFile'
     },
 
     el : $('#main'),
@@ -55,8 +59,7 @@ define([
      */
     render: function(){
       $(this.el).html(this.template({username : this.options.caller}));
-      var notificationView=this;
-      setTimeout(function(){notificationView.timeoutCall()},5000);
+     
     },
     /**
      * funziona che si occupa di disabilitare la vista
@@ -70,7 +73,7 @@ define([
     /**
      * funzione che si occupa di istanziare una chiamata nel qualcaso venga accettata
      */
-    accept : function(){
+    acceptCall : function(){
       this.timeout=false;
       this.unrender();
       var event=new CustomEvent('acceptCall',{
@@ -96,8 +99,8 @@ define([
      /**
      * funzione che si occupa di segnalare il rifiuto di una chiamata in ingresso
      */
-    refuse : function(){
-      this.options.NotificationCommunication.refuse(this.options.caller);
+    refuseCall : function(){
+      this.options.NotificationCommunication.refuseCall(this.options.caller);
       this.unrender();
     }
 
