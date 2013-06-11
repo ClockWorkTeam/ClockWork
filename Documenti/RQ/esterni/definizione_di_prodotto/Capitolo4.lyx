@@ -4803,13 +4803,13 @@ connect(boolean)
 \series bold
 [void] onMessage(Event):
 \series default
- metodo per gestire messaggi dal server, in base al messaggio ricevuto effettuer
+ metodo per gestire messaggi dal server, in base al pacchetto ricevuto effettuer
 à una determinata serie di azioni:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-se il messaggio conterrà il sdp del chiamante imposterà 
+se il pacchetto conterrà 'offer', inviato dal chamante, imposterà 
 \shape italic
 localStream
 \shape default
@@ -4817,20 +4817,34 @@ localStream
 \shape italic
 peerConnection
 \shape default
- ed imposterà il sdp ricevuto e invierà il proprio sdp
+ ed imposterà il 
+\shape italic
+\emph on
+RTCSessionDescription
+\shape default
+\emph default
+ ricevuto e invierà il proprio
+\shape italic
+\emph on
+ RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il messaggio conterrà il sdp del chiamato imposterà in 
+se il pacchetto conterrà 'answer', inviato dal chiamato, imposterà in 
 \shape italic
 peerConnection
 \shape default
- il sdp ricevuto
+ il 
+\shape italic
+\emph on
+RTCSessionDescription
+\shape default
+\emph default
+ ricevuto
 \end_layout
 
 \begin_layout Itemize
-se il messaggio conterrà il segnale indicante la disponibilità dell'utente
- remoto a ricevere candidati, verrà impostato a 'true' 
+se il pacchetto conterrà 'candidateready' imposterà a 'true' 
 \shape italic
 messageReceived
 \shape default
@@ -4844,13 +4858,14 @@ candidates
 \end_layout
 
 \begin_layout Itemize
-se il messaggio conterrà un candidato esso verrà aggiunto a 
+se il pacchetto conterrà 'candidate' preleverà il RTCIceCandidate e imposterà
+ in 
 \shape italic
 peerConnection
 \end_layout
 
 \begin_layout Itemize
-se il messaggio conterrà il segnale di fine chiamata interromperà 
+se il pacchetto conterrà 'endcall' interromperà 
 \shape italic
 localStream
 \shape default
@@ -4870,7 +4885,11 @@ onCalling
 \emph on
 false
 \emph default
-, e invierà il messaggio di fine chiamata
+, e invocherà il metodo 
+\emph on
+endCall(bool)
+\emph default
+ di CallView
 \end_layout
 
 \end_deeper

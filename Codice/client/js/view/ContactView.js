@@ -62,10 +62,8 @@ define([
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
       if(!this.currentFunctions)
         this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
-      alert(this.currentFunctions.el);
- //     $('#main').prepend(this.currentFunctions.el);
       this.currentFunctions.render();
-
+      $('#main').prepend(this.currentFunctions.el);
     },
 
     /**
@@ -86,7 +84,7 @@ define([
       }else{
         this.currentFunctions.audiocall(false);
       }
-     // $('#main').prepend(this.currentFunctions.el);
+      $('#main').prepend(this.currentFunctions.el);
     }
   });
 

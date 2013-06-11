@@ -30,7 +30,7 @@ define([
   var interval=null;
   var peerConnection=null;
   var StatisticsView = Backbone.View.extend({
-    el : '#statistics',
+    el : $('#statistics'),
 
     template : _.template(StatisticsTemplate),
 

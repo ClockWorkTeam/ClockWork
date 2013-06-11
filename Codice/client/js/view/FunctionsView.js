@@ -39,10 +39,7 @@ define([
       'click input#record' : 'record'
     },
 
-    tagName : 'div',
-
-    el : 'content',
-    
+    el : $('#content'),
     
     callView:'',
     
@@ -79,12 +76,11 @@ define([
          * controllo atto a verificare se si sta eseguendo una FunctionView di un utente presente nella lista utenti
          * o dall'inserimento di un indirizzo IP
          */
-       
         if(!this.options.From){
-          $('#content').html(this.template(this.model.toJSON()));
+          $(this.el).html(this.template(this.model.toJSON()));
           this.startChat();
         }else{
-          $('#content').html(this.template({From: this.options.From}));
+          $(this.el).html(this.template({From: this.options.From}));
         }
       }
     },
@@ -98,7 +94,7 @@ define([
       this.close();
     },
     /**
-     * inizializza la chat per chiamate IP
+     * inizializza la chat
      */
     startChat:function(){
       if(!this.chatView){
