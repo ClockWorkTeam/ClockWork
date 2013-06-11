@@ -49,7 +49,7 @@ define([
       if(event.keyCode == 13)
         this.connect();
     },
-    el: '#authentication',
+    el: $('#authentication'),
 		userDataView: undefined,
 		userModel:null,
 
