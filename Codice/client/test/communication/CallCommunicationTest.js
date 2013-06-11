@@ -287,13 +287,14 @@ module('About CallCommunication.startCall', {
 
   setup: function() {
     this.getUserMediaSpy = sinon.spy(navigator, 'webkitGetUserMedia');
-    window.Connection = Connection;
-    this.sendSpy = sinon.stub(window.Connection, 'send');
+    this.objSpy = sinon.spy(window.webkitURL, 'createObjectURL');
+    this.connectSpy = sinon.spy(CallCommunication, 'connect');
   },
 
   teardown: function() {
     this.getUserMediaSpy.restore();
-    this.sendSpy.restore();
+    this.objSpy.restore();
+    this.connectSpy.restore();
   }
   
 });
