@@ -3653,7 +3653,11 @@ reference "sub:mytalk.server.transfer.UserTransfer"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.ListenerTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.ListenerTransfer"
@@ -3859,7 +3863,11 @@ metodo per inviare il dato pacchetto al dato connettore
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.AuthenticationTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:AuthenticationTransfer"
@@ -4142,7 +4150,7 @@ della classe Converter e invierà la stringa così ottenuta al nuovo connettore
 \begin_layout Itemize
 
 \series bold
-[void] processClosed(WebSocketServerEvent arg0): 
+[void] processClosed(WebSocketServerEvent): 
 \series default
 metodo che si occuperà della chiusura di un processo.
  Se non si è fatta l'operazione di 
@@ -4165,7 +4173,11 @@ connectedUsers
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.CallTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.CallTransfer"
@@ -4247,6 +4259,12 @@ Comunica con:
 
 \family typewriter
 mytalk.client.communication.CallCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
 \end_deeper
@@ -4382,7 +4400,11 @@ candidateReady
 
 \end_deeper
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.ChatTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.ChatTransfer"
@@ -4405,6 +4427,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/ChatTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4428,51 +4457,70 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Comunica con:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.client.communication.ChatCommunication
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
-\begin_layout Itemize
-xxx
-\end_layout
-
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+metodo per la gestione dei token in arrivo.
+ Gestirà i token aventi come tipo 
+\emph on
+sendText
+\emph default
+, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se il connettore non è presente, invierà al connettore che ha effettuato
+ la richiesta un pacchetto con tipo 
+\emph on
+notDelivered,
+\emph default
+ altrimenti manderà al connettore trovato un pacchetto di tipo 
+\emph on
+sendText
+\emph default
+, avente come attributi il messaggio ricevuto in arrivo e lo username del
+ mittente
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.FileTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.FileTransfer"
@@ -4495,6 +4543,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/FileTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4518,47 +4573,59 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Comunica con:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-Attributi privati
+mytalk.client.communication.FileCommunication
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\family typewriter
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+metodo per la gestione dei token in arrivo.
+ Gestirà i token aventi come tipo 
+\emph on
+file
+\emph default
+, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Infine Manderà al connettore trovato un pacchetto con lo stesso, avente
+ come attributi il file ricevuto in arrivo e lo username del mittente
 \end_layout
 
 \begin_layout Subsubsection
