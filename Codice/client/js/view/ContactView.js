@@ -18,7 +18,7 @@ define([
  'underscore',
  'backbone',
  'view/FunctionsView',
- 'text!templates/ContactTemplate.html',
+ 'text!template/ContactTemplate.html',
  'model/UserModel'
 ], function($, _, Backbone, FunctionsView, ContactTemplate, UserModel){
 
