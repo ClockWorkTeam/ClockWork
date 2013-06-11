@@ -3570,7 +3570,7 @@ mytalk.server.transfer.AuthenticationTransfer
  (vedasi sezione
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:mytalk.server.transfer.AuthenticationTransfer"
+reference "sub:AuthenticationTransfer"
 
 \end_inset
 
@@ -3862,7 +3862,7 @@ metodo per inviare il dato pacchetto al dato connettore
 mytalk.server.transfer.AuthenticationTransfer
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:mytalk.server.transfer.AuthenticationTransfer"
+name "sub:AuthenticationTransfer"
 
 \end_inset
 
@@ -4176,7 +4176,7 @@ name "sub:mytalk.server.transfer.CallTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe CaalTransfer si occupa di gestire il traffico di pacchetti per
+La classe CalTransfer si occupa di gestire il traffico di pacchetti per
  effettuare l'inizializzazione di una comunicazione audio/video
 \end_layout
 
@@ -4190,7 +4190,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/CallTransfer.pdf
+	filename img/server/transfer/pdf/CallTransfer.pdf
 	scale 90
 
 \end_inset
@@ -4225,36 +4225,31 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza ed è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-mytalk.client.communication.CallCommunication 
-\family default
-\series default
-e utilizza
-\family typewriter
-\series bold
-mytalk.server.transfer.AuthenticationTransfer 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
 \begin_layout Itemize
 
 \series bold
-AuthenticationTransfer authentication:
-\series default
- 
+Comunica con:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.CallCommunication
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
@@ -4262,60 +4257,130 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-CallTransfer(AuthenticationTransfer authentication):
+[void] processToken(WebSocketServerTokenEvent, Token):
 \series default
- metodo che inizializza l'instanza
+metodo per la gestione dei token in arrivo.
+ Per ogni token che gestirà, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se non esiste invierà al connettore che ha effettuato la richiesta un pacchetto
+ con tipo 
+\emph on
+answeredCall
+\emph default
+ avente come risposta 
+\emph on
+error
+\emph default
+.
+ Se il connettore esiste risponderà con un pacchetto di tipo diverso a seconda
+ della richiesta:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+richiesta di tipo 
+\emph on
+call, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+call, 
+\emph default
+contenente il tipo di chiamata, passatogli dal client, e lo username dell'utente
+ che ha effettuato la richiesta
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void setTokenServer(ServerMyTalk server):
-\series default
- metodo che restituisce il TokenServer inizializzato nel server
+richiesta di tipo 
+\emph on
+answeredCall, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+true
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
-\series default
- metodo che si occupa della gestione dei Token in arrivo 
+richiesta di tipo 
+\emph on
+refuseCall, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+false
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processClosed(WebSocketServerEvent arg0):
-\series default
- metodo che si occupa della chiusura di un processo
+richiesta di tipo 
+\emph on
+busy, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+busy
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processOpened(WebSocketServerEvent event):
-\series default
- metodo che si occupa della creazione di un processo
+richiesta di tipo 
+\emph on
+offer, 
+\emph default
+invierà un pacchetto contentent l'attributo 
+\emph on
+description 
+\emph default
+passatogli dal client che ha effettuato la richiesta
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void sendPacket(WebSocketPacket packet, WebSocketConnector connector): 
-\series default
-metodo che si occupa della gestione di un pacchetto
+richiesta di tipo 
+\emph on
+candidate, 
+\emph default
+invierà un pacchetto contentent l'attributo 
+\emph on
+cand 
+\emph default
+passatogli dal client che ha effettuato la richiesta
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-void processPacket(WebSocketServerEvent event, WebSocketPacket packet):
- 
-\series default
-metodo che si occupa della gestione di un pacchetto
+richiesta di tipo 
+\emph on
+endCall, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+endCall
 \end_layout
 
+\begin_layout Itemize
+richiesta di tipo 
+\emph on
+candidateReady, 
+\emph default
+invierà un pacchetto di tipo 
+\emph on
+candidateReady
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 mytalk.server.transfer.ChatTransfer
 \begin_inset CommandInset label
