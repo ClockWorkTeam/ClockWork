@@ -15,6 +15,8 @@
  * +--------+---------------+-----------------------+
  * | 130512 |    PMA        | + creazione documento |
  */
+ 
+ 
 define([
  'jquery',
  'underscore',
@@ -27,7 +29,7 @@ define([
 ], function($, _, Backbone, ContactView, FunctionsView, ContactsCommunication, SideTemplate, ContactsCollection){
   var SideView = Backbone.View.extend({
 
-    el: '#sidebar',
+    el: $('#sidebar'),
 
     template: _.template(SideTemplate),
 

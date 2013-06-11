@@ -271,7 +271,6 @@ define(['connection'], function(Connection){
               peerConnection.createAnswer(call.gotDescription);
             });
           }
-          
           if(typecall==='audio'){
             navigator.webkitGetUserMedia({video:false, audio:true},
             function(stream) {

@@ -30,7 +30,7 @@ define([
       'click button#denyChange': 'unrender'
 		},
 
-    el: '#main',
+    el: $('#main'),
 
     template: _.template(UserDataTemplate),
 

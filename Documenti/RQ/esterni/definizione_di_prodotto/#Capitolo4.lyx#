@@ -2409,7 +2409,7 @@ click button#acceptCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-accept()
+acceptCall()
 \end_layout
 
 \begin_layout Itemize
@@ -2419,7 +2419,53 @@ click button#refuseCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-refuse()
+refuseCall()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#viewMessage:
+\series default
+ evento che richiama la funzione 
+\emph on
+viewRecordMessage
+\emph default
+()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#ignoreMessage:
+\series default
+ evento che richiama la funzione 
+\emph on
+ignoreMessage
+\emph default
+()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#acceptFile
+\series default
+: evento che richiama la funzione 
+\emph on
+acceptFile
+\emph default
+()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#refuseFile
+\series default
+: evento che richiama la funzione 
+\emph on
+refuseFile()
 \end_layout
 
 \begin_layout Paragraph
@@ -2453,9 +2499,7 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template NotificationTempla
-te.
- Si occuperà inoltre di e impostare un timout, in modo da terminare la chiamata
- nel caso non si risponda dopo un determinato intervallo di tempo
+te
 \end_layout
 
 \begin_layout Itemize
@@ -2471,7 +2515,7 @@ close()
 \begin_layout Itemize
 
 \series bold
-[void] accept():
+[void] acceptCall():
 \series default
  metodo per accettare una chiamata in arrivo, invocherà il metodo 
 \shape italic
@@ -2508,17 +2552,77 @@ false
 \emph default
  chiamerà il metodo 
 \shape italic
-refuse()
+refuseCall()
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] refuse(): 
+[void] refuseCall(): 
 \series default
 metodo per rifiutare una chiamata, per fare ciò invocherà il metodo
 \shape italic
- refuse(String)
+ refuseCall(String)
+\shape default
+ della classe NotificationCommunication e il metodo 
+\shape italic
+unrender() 
+\emph on
+della classe stessa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] viewMessage(): 
+\series default
+metodo per visualizzare il messaggio video/audio ricevuto, invocherà il
+ metodo 
+\shape italic
+unrender()
+\shape default
+ e invierà un evento di tipo 
+\emph on
+viewMessage 
+\emph default
+che sarà catturato da SideView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] ignoreMessage(): 
+\series default
+metodo per ignorare la visualizzazione del messaggio video/audio ricevuto,
+ invocherà il metodo 
+\shape italic
+unrender()
+\shape default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] acceptFile():
+\series default
+ metodo per accettare la ricezione di un file in arrivo, scaricherà il file
+ e invocherà il metodo 
+\shape italic
+unrender()
+\shape default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] refuseFile(): 
+\series default
+metodo per rifiutare la ricezione di un file in arrivo, per fare ciò invocherà
+ il metodo
+\shape italic
+ refuseFile(String)
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
@@ -2615,6 +2719,12 @@ mytalk.client.communication.RecordMessageCommunication
 mytalk.client.template.RecordMessageTemplate
 \end_layout
 
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -2685,7 +2795,7 @@ Eventi:
 \begin_layout Itemize
 
 \series bold
-click button#startrecord: 
+click button#startRecord: 
 \series default
 evento che richiama la funzione 
 \shape italic
@@ -2695,7 +2805,7 @@ startRecording()
 \begin_layout Itemize
 
 \series bold
-click button#stoprecord: 
+click button#stopRecord: 
 \series default
 evento che richiama la funzione 
 \shape italic
@@ -2705,11 +2815,31 @@ stopRecording()
 \begin_layout Itemize
 
 \series bold
-click button#sendrecord: 
+click button#sendRecord: 
 \series default
 evento che richiama la funzione 
 \shape italic
 sendRecording()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click li.message:
+\series default
+ evento che richiama la funzione 
+\emph on
+viewMessage(Event)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#removeRecord: 
+\series default
+evento che richiama la funzione 
+\emph on
+removeMessage()
 \end_layout
 
 \begin_layout Paragraph
@@ -2783,6 +2913,28 @@ sendRecordMessage(String
  Blob)
 \emph default
  di RecordMessageCommunication e ripristinando lo stato iniziale della view
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] viewMessage(Event): 
+\series default
+metodo per visualizzare il videomessaggio selezionato, dovrà anche aggiornare
+ il template
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] removeMessage(Event): 
+\series default
+metodo per eliminare il videomessaggio selezionato, invocherà il metodo
+ 
+\emph on
+removeRecordMessage(RecordMessageModel) 
+\emph default
+della classe RecordMessageCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -3036,27 +3188,36 @@ render()
 \emph on
 collection
 \emph default
- in modo da richiamarlo ogni qual volta si aggiunga un elemento a quest'ultima,
- predisporrà la funzione 
+ in modo da richiamarlo ogni qual volta si aggiunga un elemento a quest'ultima.
+ Predisporrà le funzioni 
 \shape italic
 acceptCall(Event)
 \shape default
 \emph on
  
 \emph default
-per gestire l'evento 
+e 
+\emph on
+viewMessage(Event)
+\emph default
+ per gestire, rispettivamente, gli eventi 
 \shape italic
 acceptCall
 \shape default
- inviato da NotificationView e infine effettuerà la scrittura, nella pagina,
- del template SideTemplate con lo stato dell'utente impostato come disconnesso
+ e 
+\emph on
+viewMessage 
+\emph default
+inviati da NotificationView.
+ Infine effettuerà la scrittura, nella pagina, del template SideTemplate
+ con lo stato dell'utente impostato come disconnesso
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] initialize().acceptCall(Event): 
+[void] acceptCall(Event): 
 \series default
 metodo che invocherà il metodo 
 \shape italic
@@ -4809,7 +4970,11 @@ connect(boolean)
 
 \begin_deeper
 \begin_layout Itemize
-se il pacchetto conterrà 'offer', inviato dal chamante, imposterà 
+se il pacchetto conterrà comie tipo 
+\emph on
+offer
+\emph default
+, e sarà inviato dal chamante, imposterà 
 \shape italic
 localStream
 \shape default
@@ -4830,7 +4995,11 @@ RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'answer', inviato dal chiamato, imposterà in 
+se il pacchetto sarà di tipo 
+\emph on
+answer
+\emph default
+, e sarà inviato dal chiamato, imposterà in 
 \shape italic
 peerConnection
 \shape default
@@ -4844,7 +5013,15 @@ RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'candidateready' imposterà a 'true' 
+se il pacchetto conterrà il tipo 
+\emph on
+candidateready
+\emph default
+ imposterà a 
+\emph on
+true
+\emph default
+ 
 \shape italic
 messageReceived
 \shape default
@@ -4852,20 +5029,31 @@ messageReceived
 \shape italic
 readyToSend
 \shape default
- sia 'true' invierà 
+ sia 
+\emph on
+true
+\emph default
+ invierà 
 \shape italic
 candidates
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'candidate' preleverà il RTCIceCandidate e imposterà
- in 
+se il pacchetto conterrà il tipo 
+\emph on
+candidate
+\emph default
+ preleverà il RTCIceCandidate e imposterà in 
 \shape italic
 peerConnection
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà 'endcall' interromperà 
+se il pacchetto conterrà il tipo 
+\emph on
+endcall
+\emph default
+ interromperà 
 \shape italic
 localStream
 \shape default
@@ -5464,7 +5652,9 @@ onNotification(string)
 [void] onNotification(string):
 \series default
  metodo per gestire una chiamata in ingresso invocando la creazione di una
- nuova NotificationView o, se l'utente è già in chiamata, riferendo al chiamante
+ nuova NotificationView o Si occuperà inoltre di e impostare un timout,
+ in modo da terminare la chiamata nel caso non si risponda dopo un determinato
+ intervallo di tempo, se l'utente è già in chiamata, riferendo al chiamante
  che l'utente desiderato è occupato
 \end_layout
 
@@ -5548,6 +5738,22 @@ Relazione d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
+La classe utilizza:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.model.RecordMessageModel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
 La classe è utilizzata da:
 \series default
  
@@ -5558,6 +5764,22 @@ La classe è utilizzata da:
 
 \family typewriter
 mytalk.client.view.RecordMessageView
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+La classe comunica con:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.transfer.RecordMessageTransfer
 \end_layout
 
 \end_deeper
@@ -5572,7 +5794,20 @@ Metodi pubblici:
 \series bold
 [void] sendRecordMessage(String, Blob): 
 \series default
-metodo per inviare i messaggi al server
+metodo per inviare un messaggio video/audio al server, per fare ciò invierà
+ un pacchetto con tipo 
+\emph on
+sendRecord 
+\emph default
+e contenente il nome del destinatario e il file audio/videoa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] removeRecordMessage(RecordMessageModel): 
+\series default
+metodo per 
 \end_layout
 
 \begin_layout Subsubsection
