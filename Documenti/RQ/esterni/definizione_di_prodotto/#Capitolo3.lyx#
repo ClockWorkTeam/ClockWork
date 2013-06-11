@@ -1564,11 +1564,7 @@ metodo che restituirà la lista di tutti gli utenti presenti nel database
 \end_layout
 
 \begin_layout Subsubsection
-
-\family typewriter
 mytalk.server.dao.UserDaoSQL
-\family default
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.dao.UserDaoSQL"
@@ -1689,8 +1685,8 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- conterrà il riferimento all'istanza della classe JavaConnectionSQLite contente
- i riferimenti al server
+ riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+i al server
 \end_layout
 
 \begin_layout Itemize
@@ -1698,7 +1694,7 @@ JavaConnectionSQLite connection:
 \series bold
 UserList userList:
 \series default
- conterrà il riferimento alla lista degli utenti registrati nel database
+ riferimento alla lista degli utenti registrati nel database
 \end_layout
 
 \begin_layout Paragraph
@@ -1708,7 +1704,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-UserDaoSQL(JavaConnectionSQLite, UserList):
+UserDaoSQL(JavaConnectionSQLite connection, UserList users):
 \series default
  costruttore della classe che dovrà impostare il valore degli attributi
  secondo il valore dei parametri passati
@@ -1717,9 +1713,10 @@ UserDaoSQL(JavaConnectionSQLite, UserList):
 \begin_layout Itemize
 
 \series bold
-User createUser(String, String, String, String, String):
+User createUser(String username, String password, String name, String surname,
+ String IP):
 \series default
- metodo che creerà un utente con i parametri passati
+ metodo che crea un utente con i parametri passati
 \begin_inset Foot
 status open
 
@@ -1738,14 +1735,14 @@ mytalk.server.dao.shared.UserList.
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String):
+boolean removeUser(String username):
 \series default
- metodo che eliminerà un utente dal database.
- Se l'eliminazione sarà andata a buon fine ritornerà
+ metodo che elimina un utente dal database.
+ Se l'eliminazione è andata a buon fine ritorna
 \emph on
  true
 \emph default
-, altrimenti ritornerà
+, altrimenti ritorna
 \emph on
  false
 \end_layout
@@ -1753,14 +1750,14 @@ boolean removeUser(String):
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String, String):
+boolean setPassword(String username, String password):
 \series default
- metodo che imposterà la password dell'utente con il nuovo valore passato.
- Se il cambiamento sarà andato a buon fine, il metodo ritornerà
+ metodo che imposta la password dell'utente con il nuovo valore passato.
+ Se il cambiamento è andato a buon fine, il metodo ritorna
 \emph on
  true
 \emph default
-, altrimenti ritornerà
+, altrimenti ritorna
 \emph on
  false
 \end_layout
@@ -1768,19 +1765,19 @@ boolean setPassword(String, String):
 \begin_layout Itemize
 
 \series bold
-boolean setName(String, String):
+boolean setName(String username, String name):
 \series default
- metodo che imposterà il nome dell'utente con il nuovo valore passato.
- Se il cambiamento sarà andato a buon fine, si aggiornerà anche l'istanza
- dell'utente presente in 
+ metodo che imposta il nome dell'utente con il nuovo valore passato.
+ Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
+ presente in 
 \family typewriter
 mytalk.server.shared.User
 \family default
- ed il metodo ritornerà
+ ed il metodo ritorna
 \emph on
  true
 \emph default
-, altrimenti ritornerà
+, altrimenti ritorna
 \emph on
  false
 \end_layout
@@ -1788,19 +1785,19 @@ mytalk.server.shared.User
 \begin_layout Itemize
 
 \series bold
-boolean setSurname(String, String):
+boolean setSurname(String username, String surname):
 \series default
- metodo che imposterà il cognome dell'utente con il nuovo valore.
- Se il cambiamento sarà andato a buon fine, si aggiornerà anche l'istanza
- dell'utente presente in 
+ metodo che imposta il cognome dell'utente con il nuovo valore.
+ Se il cambiamento è andato a buon fine, si aggiorna anche l'istanza dell'utente
+ presente in 
 \family typewriter
 mytalk.server.shared.User
 \family default
- ed il metodo ritornerà
+ ed il metodo ritorna
 \emph on
  true
 \emph default
-, altrimenti ritornerà
+, altrimenti ritorna
 \emph on
  false
 \end_layout
@@ -1808,9 +1805,9 @@ mytalk.server.shared.User
 \begin_layout Itemize
 
 \series bold
-User getUser(String)
+User getUser(String username)
 \series default
-: metodo che restituirà l'utente, avente username corrispondente a quello
+: metodo che restituisce l'utente, avente username corrispondente a quello
  dato, presente in 
 \family typewriter
 mytalk.server.shared.UserList
@@ -1819,9 +1816,9 @@ mytalk.server.shared.UserList
 \begin_layout Itemize
 
 \series bold
-boolean checkPassword(String, String):
+boolean checkPassword(String username, String password):
 \series default
- metodo che controllerà nel database la corrispondenza dell'username passato
+ metodo che controlla nel database la corrispondenza dell'username passato
  con la password passata
 \end_layout
 
@@ -1830,7 +1827,7 @@ boolean checkPassword(String, String):
 \series bold
 Vector<User> getAllUsers(): 
 \series default
-metodo che restituirà gli utenti presenti in 
+metodo che restituisce gli utenti presenti in 
 \family typewriter
 mytalk.server.shared.User
 \end_layout
@@ -1844,7 +1841,7 @@ Metodi privati
 \series bold
 void getUsersFromDB():
 \series default
- metodo che inserirà in 
+ metodo che inserisce in 
 \family typewriter
 mytalk.server.shared.userList
 \family default
