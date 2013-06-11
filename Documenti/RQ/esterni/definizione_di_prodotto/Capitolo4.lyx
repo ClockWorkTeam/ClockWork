@@ -4563,7 +4563,7 @@ candidates
 \begin_layout Itemize
 
 \series bold
-[booleand] messageReceived:
+[boolean] messageReceived:
 \series default
  variabile booleana che indicherà se l'utente con cui si vorrà comunicare
  sarà pronto ad accettare 
@@ -4735,7 +4735,7 @@ localStream
 \shape default
  e invocando il metodo 
 \shape italic
-createOffer(this.gotDescription)
+createOffer(RTCSessionDescriptionCallback)
 \shape default
  di RTCPeerConnection
 \end_layout
@@ -4743,11 +4743,17 @@ createOffer(this.gotDescription)
 \begin_layout Itemize
 
 \series bold
-[void] gotDescription(sdp): 
+[void] gotDescription(
+\shape italic
+\emph on
+RTCSessionDescription
+\shape default
+\emph default
+): 
 \series default
 metodo per impostare il proprio sdp tramite il metodo 
 \shape italic
-setLocalDescription(sdp)
+setLocalDescription(RTCSessionDescription)
 \shape default
  di RTCPeerConnection ed inviarlo all'utente con cui si vuole comunicare
  
@@ -4788,7 +4794,7 @@ onMessage(Event)
  e nel caso l'utente sia il chiamante imposterà lo stream audio o audio/video
  e invocherà il metodo 
 \shape italic
-connect(started)
+connect(boolean)
 \end_layout
 
 \begin_deeper
@@ -4797,7 +4803,7 @@ connect(started)
 \series bold
 [void] onMessage(Event):
 \series default
- metodo per gestire messaggi dal server; in base al messaggio ricevuto effettuer
+ metodo per gestire messaggi dal server, in base al messaggio ricevuto effettuer
 à una determinata serie di azioni:
 \end_layout
 
@@ -4901,13 +4907,13 @@ onCalling
 \emph default
  a 
 \emph on
-false
+false, 
 \emph default
- e invocherà il metodo 
-\shape italic
-endcall(false)
-\shape default
- di CallView
+infine invierà al server un pacchetto, contrassegnato dal tipo 
+\emph on
+endcall
+\emph default
+ contenente lo username del contatto con cui si era in chiamata
 \end_layout
 
 \begin_layout Subsubsection
