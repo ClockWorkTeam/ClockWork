@@ -31,19 +31,19 @@
     <searchpath href="PROJECT_DIR" />
     <members>
       <member type="profile"
-              name="AuthenticationCommunication_nuovo_profile.profile" />
+              name="AuthenticationCommunication_profile.profile" />
       <member type="xmi"
-              name="AuthenticationCommunication_nuovo.xmi" />
+              name="AuthenticationCommunication.xmi" />
       <member type="pgml"
-              name="AuthenticationCommunication_nuovo_DiagrammadiClasse.pgml"
+              name="AuthenticationCommunication_DiagrammadiClasse.pgml"
               diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
               diagramname="Diagramma di Classe" />
       <member type="pgml"
-              name="AuthenticationCommunication_nuovo_DiagrammadeiCasidUso.pgml"
+              name="AuthenticationCommunication_DiagrammadeiCasidUso.pgml"
               diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
               diagramname="Diagramma dei Casi d&apos;Uso" />
       <member type="todo"
-              name="AuthenticationCommunication_nuovo.todo" />
+              name="AuthenticationCommunication.todo" />
     </members>
     <historyfile name="" />
   </argo>
@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jun 07 21:37:28 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 14:25:50 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -129,6 +129,19 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
+            <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000000A6B'
+              name = 'checkCredentials(String,String)' visibility = 'private' isSpecification = 'false'
+              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000000A6C'
+                  name = 'return' isSpecification = 'false' kind = 'return'/>
+                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000000A6D'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000000A6E'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
           </UML:Classifier.feature>
         </UML:Class>
         <UML:Class xmi.id = '-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000AB2'
@@ -142,7 +155,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 32, 557, 88]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 32, 593, 101]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000AA9"
        fill="1"
        fillcolor="255 255 200"
@@ -155,8 +168,8 @@
     <rectangle name="Fig0.0"
       x="0"
       y="32"
-      width="557"
-      height="88"
+      width="593"
+      height="101"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -165,8 +178,8 @@
     <text name="Fig0.1"
       x="1"
       y="33"
-      width="555"
-      height="23"
+      width="591"
+      height="22"
       fill="0"
       fillcolor="255 255 200"
       stroke="0"
@@ -179,7 +192,7 @@
       justification="Center"
     >AuthenticationCommunication</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1, 33, 555, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1, 33, 579, 0]"
          href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000AA9"
          fill="0"
          fillcolor="255 255 200"
@@ -193,7 +206,7 @@
       <rectangle name="Fig0.2.0"
         x="1"
         y="33"
-        width="555"
+        width="579"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -203,8 +216,8 @@
     </group>
     <rectangle name="Fig0.3"
       x="0"
-      y="56"
-      width="557"
+      y="55"
+      width="593"
       height="1"
       fill="1"
       fillcolor="black"
@@ -212,7 +225,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1, 57, 555, 21]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1, 56, 591, 21]"
          href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000AA9"
          fill="0"
          fillcolor="255 255 200"
@@ -224,8 +237,8 @@
       
       <rectangle name="Fig0.4.0"
         x="1"
-        y="57"
-        width="555"
+        y="56"
+        width="591"
         height="21"
         fill="0"
         fillcolor="white"
@@ -235,8 +248,8 @@
     </group>
     <rectangle name="Fig0.5"
       x="0"
-      y="77"
-      width="557"
+      y="76"
+      width="593"
       height="1"
       fill="1"
       fillcolor="black"
@@ -244,7 +257,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 78, 555, 42]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 77, 591, 56]"
          href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000AA9"
          fill="0"
          fillcolor="255 255 200"
@@ -256,9 +269,9 @@
       
       <rectangle name="Fig0.6.0"
         x="1"
-        y="78"
-        width="555"
-        height="42"
+        y="77"
+        width="591"
+        height="56"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -266,9 +279,9 @@
       />
       <text name="Fig0.6.1"
         x="1"
-        y="78"
-        width="555"
-        height="17"
+        y="77"
+        width="591"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -282,9 +295,9 @@
       >signup(user : String,pass : String,name : String,surname : String,callBacks,view : AuthenticationView)</text>
       <text name="Fig0.6.2"
         x="1"
-        y="95"
-        width="555"
-        height="23"
+        y="93"
+        width="591"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -296,6 +309,22 @@
         textsize="12"
         justification="Left"
       >logout(user : String)</text>
+      <text name="Fig0.6.3"
+        x="1"
+        y="109"
+        width="591"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >checkCredentials(String,String)(String,String)</text>
     </group>
   </group>
 </pgml>
