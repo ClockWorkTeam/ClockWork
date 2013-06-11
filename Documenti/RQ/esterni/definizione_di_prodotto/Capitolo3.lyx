@@ -453,17 +453,17 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-Connection connection:
+[Connection] connection:
 \series default
- riferimento alla connessione al database di riferimento
+ conterrà il riferimento alla connessione al database
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Statement statement:
+[Statement] statement: 
 \series default
- riferimento alla risorsa impiegata per eseguire query sul database
+conterrà il riferimento alla risorsa impiegata per eseguire query sul database
 \end_layout
 
 \begin_layout Paragraph
@@ -475,31 +475,30 @@ Metodi pubblici
 \series bold
 JavaConnectionSQLite():
 \series default
- costruttore che crea la connessione al database.
- Se la connessione non va a buon fine, vengono lanciate delle eccezioni,
- che stampano a video l'errore riscontrato
+ costruttore della classe che si occuperà di creare la connessione al database.
+ In caso di fallimento della connessione, verrà lanciata un eccezione che
+ stamperà a video l'errore riscontrato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void finalize():
+[void] finalize():
 \series default
- distruttore della classe JavaConnectionSQLite.
- Prima di distruggere una istanza, la connessione al database deve essere
+ metodo che fungerà da distruttore della classe JavaConnectionSQLite.
+ Prima di distruggere una istanza, la connessione al database dovrà essere
  chiusa.
- Se la chiusura della connessione lancia eccezioni, stamperà a video l'errore
- riscontrato
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-ResultSet select(String table, String column, String condition, String extra):
+[ResultSet] select(String, String, String, String):
 \series default
- metodo che ritorna una tupla di valori, della tabella indicata, che rispettano
- i parametri di controllo indicati.
- Quindi eseguirà la query sul database utilizzando i parametri:
+ metodo che ritornerà una tupla di valori, della tabella indicata, che rispettan
+o i parametri di controllo indicati.
+ Quindi eseguirà la query sul database utilizzando i parametri passati:
 \end_layout
 
 \begin_deeper
@@ -508,7 +507,7 @@ ResultSet select(String table, String column, String condition, String extra):
 \emph on
 table:
 \emph default
- rappresenta il nome della tabella su cui eseguire la query
+ rappresenterà il nome della tabella su cui eseguire la query
 \end_layout
 
 \begin_layout Itemize
@@ -516,7 +515,7 @@ table:
 \emph on
 column:
 \emph default
- rappresenta le colonne che saranno selezionate
+ rappresenterà le colonne che saranno selezionate
 \end_layout
 
 \begin_layout Itemize
@@ -524,7 +523,7 @@ column:
 \emph on
 condition:
 \emph default
- condizione principale applicata per effettuare la selezione
+ sarà la condizione principale applicata per effettuare la selezione
 \end_layout
 
 \begin_layout Itemize
@@ -532,7 +531,7 @@ condition:
 \emph on
 extra:
 \emph default
- condizioni extra
+ rappresenterà le condizioni extra, se necessarie
 \end_layout
 
 \begin_layout Standard
@@ -546,10 +545,10 @@ Se la funzione di esecuzione della query non lancerà alcuna eccezione, il
 \begin_layout Itemize
 
 \series bold
-boolean executeUpdate(String query):
+[boolean] executeUpdate(String):
 \series default
- metodo che esegue la query passata nel database, aggiornandolo.
- Se la query viene conclusa con successo il metodo ritornerà
+ metodo che si occuperà di eseguire la query passata nel database, aggiornandolo.
+ Se la query verrà conclusa con successo il metodo ritornerà
 \emph on
  true
 \emph default
