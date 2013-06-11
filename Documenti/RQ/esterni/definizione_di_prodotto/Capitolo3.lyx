@@ -4142,7 +4142,7 @@ della classe Converter e invierà la stringa così ottenuta al nuovo connettore
 \begin_layout Itemize
 
 \series bold
-[void] processClosed(WebSocketServerEvent arg0): 
+[void] processClosed(WebSocketServerEvent): 
 \series default
 metodo che si occuperà della chiusura di un processo.
  Se non si è fatta l'operazione di 
@@ -4405,6 +4405,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/ChatTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4428,47 +4435,62 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Comunica con:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.client.communication.ChatCommunication
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
-\begin_layout Itemize
-xxx
-\end_layout
-
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+metodo per la gestione dei token in arrivo.
+ Gestirà i token aventi come tipo 
+\emph on
+sendText
+\emph default
+, invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se il connettore non è presente, invierà al connettore che ha effettuato
+ la richiesta un pacchetto con tipo 
+\emph on
+notDelivered,
+\emph default
+ altrimenti manderà al connettore trovato un pacchetto di tipo 
+\emph on
+sendText
+\emph default
+, avente come attributi il messaggio ricevuto in arrivo e lo username del
+ mittente
 \end_layout
 
 \begin_layout Subsubsection
