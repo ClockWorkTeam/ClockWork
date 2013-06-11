@@ -1774,6 +1774,74 @@ Attività svolte e dati trattati:
  nel server
 \end_layout
 
+\begin_layout Subsubsection
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe si occupa di conservare tutti i collegamenti ai messaggi differiti
+ ricevuti dall'utente
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Viene utilizzata da
+\family typewriter
+\series bold
+ 
+\series default
+mytalk.client.view.RecordMessageView
+\series bold
+ 
+\family default
+\series default
+e da 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\family typewriter
+mytalk.client.communication.NotificationCommunication
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Contiene i riferimenti alle istanze della classe
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\family typewriter
+mytalk.client.model.RecordMessageModel
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe contiene i riferimenti ai singoli model, aggregando in un'unica
+ collezione la lista di collegamenti ai messaggi ricevuti
+\end_layout
+
 \begin_layout Subsection
 Model
 \end_layout
@@ -2119,6 +2187,59 @@ mytalk.client.collection.TutorialsCollection
 Attività svolte e dati trattati:
 \series default
  la classe si occupa di conservare i dati riguardanti un singolo video tutorial
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.client.model.RecordMessageModel
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tipo, obiettivo e funzione del componente:
+\series default
+ la classe
+\family typewriter
+\series bold
+ 
+\family default
+\series default
+si occuperà della memorizzazione del collegamento ad un singolo messaggio
+ differito ricevuto dall'utente
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\series bold
+Relazioni d'uso con altre componenti:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I singoli collegamentu vengono salvati in 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\family typewriter
+mytalk.client.collection.RecordMessagesCollection
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\noindent
+
+\series bold
+Attività svolte e dati trattati:
+\series default
+ la classe si occuperà di conservare il collegamento ad un singolo messaggio
+ differito finchè l'utente non lo visualizza, non lo cancella o il messaggio
+ non scade
 \end_layout
 
 \begin_layout Standard
