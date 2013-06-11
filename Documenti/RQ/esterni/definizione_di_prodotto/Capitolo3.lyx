@@ -4629,7 +4629,11 @@ e corrispondente.
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.RecordMessageTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.RecordMessageTransfer"
@@ -4652,6 +4656,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/RecordMessageTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4675,49 +4686,111 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Utilizza:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.usermanager.UserManager
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mytalk.server.shared.RecordMessage
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
+\begin_layout Itemize
+
+\series bold
+Comunica con:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.RecordMessageCommunication
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\family typewriter
+mytalk.client.communication.NotificationCommunication
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+ metodo per la gestione dei token in arrivo.
+ in particolare si occuperà di quelli aventi come tipo:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+sendRecord
+\emph default
+: invocherà il metodo 
+\emph on
+createMessage(String, String, String, String)
+\emph default
+ per salvare il messaggio nel server, usando come parametri quelli ricevuti.
+ Successivamente invocherà il metodo 
+\emph on
+getUserConnector(String)
+\emph default
+, usando come parametro lo username presente nel token, per trovare il connettor
+e corrispondente.
+ Se è presente, gli invierà un pacchetto di tipo 
+\emph on
+record
+\emph default
+, contente le informazioni ricevute
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+removerRecord:
+\emph default
+ invocherà i metodi 
+\emph on
+getMessage(String, String, String, String) 
+\emph default
+e 
+\emph on
+removeMessage(RecordMessage) 
+\emph default
+della classe UserManager per trovare ed eliminare il messaggio dal server
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 mytalk.server.transfer.UserTransfer
 \begin_inset CommandInset label
@@ -4730,7 +4803,8 @@ name "sub:mytalk.server.transfer.UserTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe UserTransfer si occupa della...
+La classe UserTransfer si occupa della gestione delle modifiche dei dati
+ dell'utente
 \end_layout
 
 \begin_layout Standard
@@ -4742,6 +4816,13 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename img/server/transfer/pdf/UserTransfer.pdf
+	scale 90
+
+\end_inset
+
+
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -4765,48 +4846,89 @@ Relazioni d'uso con altri moduli
 \begin_layout Itemize
 
 \series bold
-La classe utilizza:
+Utilizza:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx 
+mytalk.server.usermanager.UserManager
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-La classe è utilizzata da:
+Estende:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-\series bold
-xxx
+mytalk.server.transfer.ListenerTransfer
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
 \begin_layout Itemize
-xxx
+
+\series bold
+Comunica con:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+mytalk.client.communication.ChatCommunication
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
-xxx
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent, Token):
+\series default
+ metodo per la gestione dei token in arrivo.
+ in particolare si occuperà di quelli aventi come tipo:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+checkCredentials
+\emph default
+: invocherà il metodo 
+\emph on
+checkPassword(User, String)
+\emph default
+, passandogli come parametro lo user corrispondente all'utente che ha effettuato
+ la richiesta e la password presente nel pacchetto, e invierà al client
+ la risposta ottenuta
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+changeData:
+\emph default
+ invocherà i metodi 
+\emph on
+setUserData(User, String, String) 
+\emph default
+e 
+\emph on
+setPassword(UserString) 
+\emph default
+per modificare i dati dell'utente con quelli ricevuti nel pacchetto
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
