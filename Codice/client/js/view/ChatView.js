@@ -22,7 +22,7 @@ define([
  'underscore',
  'backbone',
  'communication/ChatCommunication',
- 'text!templates/ChatTemplate.html',
+ 'text!template/ChatTemplate.html',
  'collection/TextMessagesCollection'
 ], function($, _, Backbone, ChatCommunication, ChatTemplate, TextMessagesCollection){
   var ChatView = Backbone.View.extend({
@@ -31,7 +31,7 @@ define([
      */
     events:{
       'click button#Send':'send',
-      'keyup #compose textarea':'pressEnter',
+      'keyup #compose textarea':'pressEnter'
     },
     /**
      * si occupa di legare il tasto di invia messaggio al pulsante Invio della tastiera

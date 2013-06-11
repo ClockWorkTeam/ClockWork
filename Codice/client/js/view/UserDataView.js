@@ -17,7 +17,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/UserDataTemplate.html',
+  'text!template/UserDataTemplate.html',
   'communication/UserDataCommunication'
 ], function($, _, Backbone, UserDataTemplate, UserDataCommunication){
   var UserDataView = Backbone.View.extend({
@@ -79,7 +79,7 @@ define([
 					}
         }
        };
-    },
+    }
 
 	});
   /**

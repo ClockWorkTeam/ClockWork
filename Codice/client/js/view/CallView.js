@@ -22,7 +22,7 @@ define([
  'underscore',
  'backbone',
  'communication/CallCommunication',
- 'text!templates/CallTemplate.html',
+ 'text!template/CallTemplate.html',
  'view/StatisticsView'
 ], function($, _, Backbone, CallCommunication, CallTemplate, StatisticsView){
 
@@ -31,7 +31,7 @@ define([
      * si occupa di legare gli eventi ad oggetti del DOM
      */
     events:{
-      'click button#endCall':'endCall',
+      'click button#endCall':'endCall'
     },
 
     el : $('#content'),

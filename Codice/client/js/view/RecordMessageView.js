@@ -22,7 +22,7 @@ define([
  'jquery',
  'underscore',
  'backbone',
- 'text!templates/RecordMessageTemplate.html',
+ 'text!template/RecordMessageTemplate.html',
 ], function($, _, Backbone, RecordMessageTemplate){
     var localStream=null;
     var RecordMessageView = Backbone.View.extend({

@@ -21,7 +21,7 @@ define([
  'jquery',
  'underscore',
  'backbone',
- 'text!templates/NotificationTemplate.html'
+ 'text!template/NotificationTemplate.html'
 ], function($, _, Backbone, NotificationTemplate){
   var timeout = null;
   var NotificationView = Backbone.View.extend({

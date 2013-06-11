@@ -23,7 +23,7 @@ define([
   'backbone',
   'view/SideView',
   'view/UserDataView',
-  'text!templates/AuthenticationTemplate.html',
+  'text!template/AuthenticationTemplate.html',
   'communication/AuthenticationCommunication',
   'model/UserModel'
 ], function($, _, Backbone, SideView, UserDataView, authenticationTemplate, AuthenticationCommunication, UserModel){
