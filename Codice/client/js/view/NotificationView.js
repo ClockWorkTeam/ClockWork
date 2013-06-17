@@ -93,14 +93,14 @@ define([
      */
     timeoutCall : function(){
       if(this.timeout==true)
-        this.refuse();
+        this.refuseCall();
     },
 
      /**
      * funzione che si occupa di segnalare il rifiuto di una chiamata in ingresso
      */
     refuseCall : function(){
-      this.options.NotificationCommunication.refuseCall(this.options.caller);
+      this.options.NotificationCommunication.refuse(this.options.caller);
       this.unrender();
     },
     
