@@ -80,7 +80,7 @@ chiave di lettura capitolo)
 Per quanto JavaScript sia un linguaggio debolmente tipizzato, al fine di
  descrivere meglio gli attributi si è scelto di specificare i tipi che dovranno
  assumere le variabili, una volta inizializzate.
- Questi verrano indicati fra parentesi quadre 
+ Questi verranno indicati fra parentesi quadre 
 \end_layout
 
 \begin_layout Standard
@@ -724,14 +724,14 @@ contactsView
  metodo che avvierà l'operazione di login dell'utente richiamando il metodo
  
 \emph on
-checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticatioVIe
+checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticatioVie
 w) 
 \emph default
 della classe 
 \emph on
 AuthenticationCommunication
 \emph default
- passandogli come parametri lo usenrame e la password inseriti negli appositi
+ passandogli come parametri lo username e la password inseriti negli appositi
  campi
 \end_layout
 
@@ -740,7 +740,7 @@ AuthenticationCommunication
 \series bold
 [void] disconnect():
 \series default
- metodo che si occuparà di chiudere la sessione con il server, dovrà invocare
+ metodo che si occuperà di chiudere la sessione con il server, dovrà invocare
  il metodo 
 \emph on
 logout(String)
@@ -781,7 +781,7 @@ contactsView
  
 \emph on
 signup(String, String, String, String, AuthenticationView.callBacks(), Authentica
-tioView) 
+tionView) 
 \emph default
 della classe 
 \emph on
@@ -2155,7 +2155,7 @@ render(boolean, String, ContactModel, boolean)
 \emph on
  specificando se si è il chiamante, il tipo di chiamata, il contatto con
  cui si sta comunicando e se si vuole registrare la chiamata.
- Inoltre si occuperà di manterenre la chat attiva, richiamando il metodo
+ Inoltre si occuperà di mantenere la chat attiva, richiamando il metodo
  
 \emph default
 startChat() 
@@ -2194,7 +2194,7 @@ della classe CallView
 \series bold
 [void] unrender():
 \series default
- metodo per chiudere deifinitivaessamente l'istanza, deve invocare il metodo
+ metodo per chiudere definitivamente l'istanza, deve invocare il metodo
  
 \shape italic
 unrender() 
@@ -2880,7 +2880,7 @@ sendRecordMessage(String
 \series bold
 [void] viewMessage(Event): 
 \series default
-metodo per visualizzare il videomessaggio selezionato, dovrà anche aggiornare
+metodo per visualizzare il video messaggio selezionato, dovrà anche aggiornare
  il template
 \end_layout
 
@@ -2889,7 +2889,7 @@ metodo per visualizzare il videomessaggio selezionato, dovrà anche aggiornare
 \series bold
 [void] removeMessage(Event): 
 \series default
-metodo per eliminare il videomessaggio selezionato, invocherà il metodo
+metodo per eliminare il video messaggio selezionato, invocherà il metodo
  
 \emph on
 removeRecordMessage(RecordMessageModel) 
@@ -2919,7 +2919,7 @@ name "sub:SideView"
 \end_layout
 
 \begin_layout Standard
-La classe SideView denisce la struttura, e la conseguente visualizzazione,
+La classe SideView definisce la struttura, e la conseguente visualizzazione,
  della pagina web che consente la visualizzazione della lista utenti iscritti
  al server.
  La classe è composta da una lista di ContactView
@@ -3245,7 +3245,7 @@ childViews
 \series bold
 [void] unrender():
 \series default
- metodo per chiudere la view, per fare ciò interrompera il collegamento
+ metodo per chiudere la view, per fare ciò interromperà il collegamento
  tra la 
 \emph on
 collection 
@@ -3256,7 +3256,7 @@ render()
 \emph default
 , ripristinerà il template originale e invocherà il metodo 
 \emph on
-destrotContacts()
+destroyContacts()
 \end_layout
 
 \begin_layout Itemize
@@ -3354,7 +3354,7 @@ per visualizzare la lista degli utenti da selezionare per la conferenza
 \series bold
 [void] setCall(String, String): 
 \series default
-metodo per impostare la ricezione di una chiamata, i parametri rapprentano
+metodo per impostare la ricezione di una chiamata, i parametri rappresentano
  lo username del chiamante e il tipo di chiamata.
  Invocherà la funzione 
 \shape italic
@@ -3528,7 +3528,7 @@ render()
 \shape italic
 readStatistic() 
 \emph on
-per visulizzare le stastiche a video
+per visualizzare le statistiche a video
 \end_layout
 
 \begin_layout Itemize
@@ -3552,7 +3552,7 @@ showStatistics(Event)
 \series bold
 [void] showStatistics(Event):
 \series default
- metodo che si occuperà di aggionare, con la frequenza di un secondo, la
+ metodo che si occuperà di aggiornare, con la frequenza di un secondo, la
  durata, i byte di video e audio trasmessi, la latenza e la velocità di
  trasmissione della chiamata.
  Ricaverà i dati necessari dal metodo 
@@ -4485,7 +4485,7 @@ di AuthenticationView
 \series bold
 [void] logout(String): 
 \series default
-metodo che gestisce la deautenticazione dell'utente
+metodo che gestisce la disconnessione dell'utente
 \end_layout
 
 \begin_layout Subsubsection
@@ -4907,11 +4907,11 @@ connect(boolean)
 
 \begin_deeper
 \begin_layout Itemize
-se il pacchetto conterrà comie tipo 
+se il pacchetto conterrà come tipo 
 \emph on
 offer
 \emph default
-, e sarà inviato dal chamante, imposterà 
+, e sarà inviato dal chiamante, imposterà 
 \shape italic
 localStream
 \shape default
@@ -5627,7 +5627,7 @@ nato dal tipo
 call
 \emph default
 , se l'utente non risulterà occupato in altre conversazioni verrà creata
- una istanza NotificationView e impostato il timout, in modo da terminare
+ una istanza NotificationView e impostato il timeout, in modo da terminare
  la chiamata nel caso non si risponda dopo un determinato intervallo di
  tempo.
  Se l'utente risulterà invece già in chiamata, si manderà un messaggio al
@@ -5822,7 +5822,7 @@ metodo per inviare un messaggio video/audio, per fare ciò invierà al server
 \emph on
 sendRecord 
 \emph default
-e contenente il nome del destinatario e il file audio/videoa
+e contenente il nome del destinatario e il file audio/video
 \end_layout
 
 \begin_layout Itemize
@@ -6088,7 +6088,7 @@ Metodi pubblici:
 checkCredentials
 \emph default
  e contenente lo username dell'utente e la password inserita, se il pacchetto
- di risposta, contrassegato dallo stesso tipo, sarà affermativo verrà invocato
+ di risposta, contrassegnato dallo stesso tipo, sarà affermativo verrà invocato
  il metodo 
 \shape italic
 view.callBacks.changeData(UserModel, UserDataView)
@@ -6441,7 +6441,7 @@ name "sub: RecordMessagesCollection"
 
 \begin_layout Standard
 La classe RecordMessagesCollection rappresenterà la collezione dei messaggi
- audio e video rievuti 
+ audio e video ricevuti 
 \end_layout
 
 \begin_layout Standard
@@ -7083,7 +7083,7 @@ La classe è utilizzata da:
 \begin_layout Itemize
 
 \family typewriter
-mytalk.client.view.CotactView
+mytalk.client.view.ContactView
 \end_layout
 
 \begin_layout Itemize
@@ -7163,7 +7163,7 @@ Attributi pubblici:
 \lang english
 [int] unread: 
 \series default
-numero di messaggi non ancora letti, inviti dal contatto
+numero di messaggi non ancora letti, inviati dal contatto
 \end_layout
 
 \begin_layout Subsubsection
@@ -7267,7 +7267,7 @@ Attributi pubblici:
 \series bold
 [String] contact: 
 \series default
-mittente del messagio
+mittente del messaggio
 \end_layout
 
 \begin_layout Itemize
@@ -7391,7 +7391,7 @@ Attributi pubblici:
 \series bold
 [String] contact: 
 \series default
-mittente del messagio testuale
+mittente del messaggio testuale
 \end_layout
 
 \begin_layout Itemize
@@ -7678,7 +7678,7 @@ Attributi pubblici:
 \lang english
 [String] password: 
 \series default
-password del utente
+password dell'utente
 \end_layout
 
 \begin_layout Itemize

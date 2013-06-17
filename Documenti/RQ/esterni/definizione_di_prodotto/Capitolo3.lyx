@@ -672,7 +672,7 @@ Metodi pubblici
 User login(String, String, String):
 \series default
  metodo che controllerà la correttezza dei dati inseriti da un utente per
- connettersi al sistema, e in caso affermativo reimpostera l'IP
+ connettersi al sistema, e in caso affermativo reimposterà l'IP
 \end_layout
 
 \begin_layout Itemize
@@ -835,7 +835,7 @@ User login(Stringe, String, String):
 login
 \emph default
  dell'utente.
- Dovrà controllare la correttezza dell'username e della password inseriti.
+ Dovrà controllare la correttezza dello username e della password inseriti.
  Crearà una query per verificare se esiste un utente con lo
 \emph on
  username
@@ -1821,7 +1821,7 @@ mytalk.server.shared.UserList
 \series bold
 boolean checkPassword(String, String):
 \series default
- metodo che controllerà nel database la corrispondenza dell'username passato
+ metodo che controllerà nel database la corrispondenza dello username passato
  con la password passata
 \end_layout
 
@@ -1865,42 +1865,6 @@ name "sub:Package-shared"
 \begin_layout Standard
 Il package shared contiene le classi contenenti le informazioni condivise
  fra i vari strati del server
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/server/shared/pdf/packageShared.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package shared
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -2032,7 +1996,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/RecordMessage.pdf
+	filename img/server/shared/pdf/RecordMessage.pdf
 	scale 80
 
 \end_inset
@@ -2222,8 +2186,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/Tutorials.pdf
-	scale 90
+	filename img/server/shared/pdf/Tutorials.pdf
+	scale 80
 
 \end_inset
 
@@ -2337,7 +2301,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/User.pdf
+	filename img/server/shared/pdf/User.pdf
 	scale 80
 
 \end_inset
@@ -2635,7 +2599,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/UserList.pdf
+	filename img/server/shared/pdf/UserList.pdf
 	scale 90
 
 \end_inset
@@ -2774,44 +2738,6 @@ name "sub:Package-usermanager"
 Lo strato manager del server si occupa delle funzionalità logiche del server
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/packageUsermanager.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\lang english
-Package usermanager
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Paragraph
 Relazioni d'uso con altri moduli
 \end_layout
@@ -2885,7 +2811,11 @@ reference "sub:mytalk.server.usermanager.UserManager"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.usermanager.AuthenticationManager
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.usermanager.AuthenicationManager"
@@ -2911,7 +2841,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/AuthenticationManager.pdf
+	filename img/server/usermanager/pdf/AuthenticationManager.pdf
 	scale 80
 
 \end_inset
@@ -2994,11 +2924,8 @@ Attributi privati
 \series bold
 LoginDao loginDao:
 \series default
- riferimento alla istanza della classe 
-\family typewriter
-mytalk.server.dao.LoginDaoSQL
-\family default
- contenente i dati per effettuare l'autenticazione
+ conterrà un riferimento alla istanza della classe LoginDaoSQL contenente
+ i dati per effettuare l'autenticazione
 \series bold
  
 \end_layout
@@ -3008,12 +2935,8 @@ mytalk.server.dao.LoginDaoSQL
 \series bold
 UserDao userDao:
 \series default
- riferimento alla istanza della classe 
-\family typewriter
-mytalk.server.dao.UserDaoSQL
-\family default
- contenente i dati per effettuare le operazioni di creazione e cancellazione
- dell'utente
+ conterrà un riferimento alla istanza della classe UserDaoSQL contenente
+ i dati per effettuare le operazioni di creazione e cancellazione dell'utente
 \end_layout
 
 \begin_layout Paragraph
@@ -3023,56 +2946,62 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void init(LoginDao loginDao, UserDao userDao):
+void init(LoginDao, UserDao):
 \series default
- metodo che funge da costruttore della classe che dovrà impostare il valore
+ metodo che fungerà da costruttore della classe, dovrà impostare il valore
  degli attributi secondo il valore dei parametri passati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP):
+User login(String, String, String):
 \series default
- metodo che passa i dati alla classe 
-\family typewriter
-mytalk.server.dao.LoginDaoSQL
-\series bold
- 
-\family default
-\series default
-per poter effettuare l'operazione di login.
- In caso di successo tale metodo ritorna l'oggetto User corrispondente all'usern
-ame
+ metodo che invocherà il metodo 
+\emph on
+login(String, String, String)
+\emph default
+ della classe LoginDaoSQL per effettuare l'operazione di 
+\emph on
+login
+\emph default
+.
+ In caso di successo tale metodo ritornerà l'oggetto User corrispondente
+ all'username
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean logout(User user):
+boolean logout(User):
 \series default
- metodo che effettua il logout dell'utente
+ metodo che effettuerà il 
+\emph on
+logout
+\emph default
+ dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-User createUser(String username, String password, String name, String surname,
- String IP):
+User createUser(String, String, String, String, String):
 \series default
- metodo che crea un nuovo utente nella base di dati, purché lo username
- non sia già utilizzato 
+ metodo che si occuperà di creare un nuovo utente nella base di dati, purché
+ lo username non sia già utilizzato 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username):
+boolean removeUser(String):
 \series default
- metodo che elimina un utente registrato dal database
+ metodo che eliminerà un utente registrato dal database
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.usermanager.UserManager
 \begin_inset CommandInset label
 LatexCommand label
@@ -3099,7 +3028,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename img/UserManager.pdf
+	filename img/server/usermanager/pdf/UserManager.pdf
 	scale 90
 
 \end_inset
@@ -3194,8 +3123,9 @@ Attributi privati
 \series bold
 UserDao userDao: 
 \series default
-viene utilizzato per eseguire le operazioni sull'utente e per recuperare
- la lista di tutti gli utenti registrati nel server
+conterrà un riferimento alla istanza della classe UserDaoSQL, per eseguire
+ le operazioni sull'utente e per recuperare la lista di tutti gli utenti
+ registrati nel server
 \end_layout
 
 \begin_layout Itemize
@@ -3203,7 +3133,8 @@ viene utilizzato per eseguire le operazioni sull'utente e per recuperare
 \series bold
 RecordMessageDao messageDao:
 \series default
- permette le operazioni sui messaggi registrati
+ conterrà un riferimento alla istanza della classe RecordMessageDaoSQL per
+ permettere le operazioni sui messaggi registrati
 \end_layout
 
 \begin_layout Paragraph
@@ -3213,86 +3144,85 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void init(UserDao userDao, RecordMessageDao messageDao): 
+void init(UserDao, RecordMessageDao): 
 \series default
-metodo che funge da costruttore della classe
+metodo che fungerà da costruttore della classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean checkPassword(User user, String password):
+boolean checkPassword(User, String):
 \series default
- metodo che controlla la corrispondenza dell'username passato con la password
- passata
+ metodo che controllerà la corrispondenza dello username passato con la
+ password passata
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(User user, String password): 
+boolean setPassword(User, String): 
 \series default
-metodo che modifica la password esistente con quella passata 
+metodo che modificherà la password esistente con quella passata 
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean setUserData(User user, String name, String surname): 
+boolean setUserData(User, String, String): 
 \series default
-metodo che modifica il nome e il cognome esistenti con quelli passati
+metodo che si occuperà di modificare il nome e il cognome esistenti con
+ quelli passati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-RecordMessage createMessage(String sender, String addressee, String path,
- String date): 
+RecordMessage createMessage(String, String, String, String): 
 \series default
-metodo che aggiunge un messaggio registrato destinato all'utente
+metodo che aggiungerà un messaggio registrato destinato all'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Vector<RecordMessage> getMessages(String username):
+Vector<RecordMessage> getMessages(String):
 \series default
- metodo che ritorna il vettore dei messaggi differiti che sono stati mandati
+ metodo che ritornerà il vettore dei messaggi differiti che sono stati mandati
  ad un utente.
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-RecordMessage getMessage(String sender, String addressee, String path, String
- date):
+RecordMessage getMessage(String, String, String, String):
 \series default
- metodo che ritorna il messaggio differito avente le caratteristiche richieste.
+ metodo che ritornerà il messaggio differito avente le caratteristiche richieste.
  
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message): 
+boolean removeMessage(RecordMessage): 
 \series default
-metodo che rimuove un messaggio registrato
+metodo che rimuoverà un messaggio registrato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+User getUser(String)
 \series default
-: metodo che restituisce l'utente corrispondente al dato username
+: metodo che restituirà l'utente corrispondente al dato username
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Vector<User> getAllContacts(User user): 
+Vector<User> getAllContacts(User): 
 \series default
-metodo che restituisce tutti gli utenti presenti nel server, ad eccezione
+metodo che restituirà tutti gli utenti presenti nel server, ad eccezione
  di quello dato
 \end_layout
 
@@ -3310,41 +3240,6 @@ name "sub:Package-functionmanager"
 \begin_layout Standard
 Il package functionmanager contiene tutte le classi che si occupano di convetire
  le strutture dati più complesse in stringhe per lo strato transfer
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/packageFunctionmanager.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package functionmanager
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -3403,6 +3298,8 @@ reference "sub:mytalk.server.functionmanager.Converter"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.functionmanager.Converter
 \begin_inset CommandInset label
 LatexCommand label
@@ -3428,7 +3325,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/Converter.pdf
+	filename img/server/functionmanager/pdf/Converter.pdf
 	scale 90
 
 \end_inset
@@ -3487,30 +3384,31 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-String convertUsers(Vector<User> users, String type):
+String convertUsers(Vector<User>, String):
 \series default
- metodo che converte in forma di stringa il vettore di utenti passato per
- argomento, inserendo inizialmente la stringa type e il numero di utenti
- presenti nel vettore passato
+ metodo che si occuperà di convertire in forma di stringa il vettore di
+ utenti passato per argomento, inserendo inizialmente la stringa type e
+ il numero di utenti presenti nel vettore passato
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String convertMessages(Vector<RecordMessage> mex, String type):
+String convertMessages(Vector<RecordMessage>, String):
 \series default
- metodo che converte in forma di stringa il vettore di messaggi passato
- per argomento, inserendo inizialmente la stringa type e il numero di messaggi
- presenti nel vettore
+ metodo che si occuperà di convertire in forma di stringa il vettore di
+ messaggi passato per argomento, inserendo inizialmente la stringa type
+ e il numero di messaggi presenti nel vettore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String convertTutorials(Map<String, String> tutorials, String type):
+String convertTutorials(Map<String, String>, String):
 \series default
- metodo che converte in forma di stringa i tutorials passati per argomento,
- inserendo inizialmente la stringa type e il numero di tutorials presenti
+ metodo che si occuperà di convertire in forma di stringa i tutorials passati
+ per argomento, inserendo inizialmente la stringa type e il numero di tutorials
+ presenti
 \end_layout
 
 \begin_layout Subsection
