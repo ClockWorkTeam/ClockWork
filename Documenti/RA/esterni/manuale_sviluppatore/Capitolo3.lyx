@@ -1,0 +1,307 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Configurazione Eclipse
+\end_layout
+
+\begin_layout Standard
+Il 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+ consiglia l'utilizzo di IDE Eclipse per lavorare su 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+.
+ Di seguito viene riportata una breve guida alla configurazione di questo
+ strumento per lavorare al prodotto.
+\end_layout
+
+\begin_layout Subsection
+Preparazione Eclipse
+\end_layout
+
+\begin_layout Enumerate
+Scaricare Eclipse dal sito ufficiale
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.eclipse.org/downloads/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ Si consiglia la versione per Java Developers
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questa decisione è stata presa poiché la base di sviluppo del prodotto in
+ questione è Java.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nel caso non sia presente nella versione installata, bisogna scaricare EGit
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.eclipse.org/egit/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ per gestire il repository
+\end_layout
+
+\begin_layout Enumerate
+Nel caso non sia presente nella versione installata, bisogna scaricar Junit
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://github.com/KentBeck/junit/downloads
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ per gestire i test
+\end_layout
+
+\begin_layout Subsection
+Importazione del progetto in Eclipse
+\end_layout
+
+\begin_layout Standard
+Per poter lavorare in Eclipse bisogna importare il progetto dal repository:
+\end_layout
+
+\begin_layout Enumerate
+Andare su File -> Import
+\end_layout
+
+\begin_layout Enumerate
+Nella finestra 
+\emph on
+Select
+\emph default
+ selezionare Git -> Projects from Git
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In caso di mancanza di tale opzione assicurarsi che sia installato correttamente
+ EGit.
+\end_layout
+
+\end_inset
+
+.
+ Premere 
+\emph on
+Next
+\end_layout
+
+\begin_layout Enumerate
+Nella finestra 
+\emph on
+Select Repository Source
+\emph default
+ selezionare URI.
+ Premere 
+\emph on
+Next
+\end_layout
+
+\begin_layout Enumerate
+Nella finestra 
+\emph on
+Select Repository Source
+\emph default
+ inserire nel campo URI il link necessario per effettuare lo scaricamento
+ del progetto.
+ I campi necessari una volta inserito l'URI si autocompleteranno, esclusa
+ la password che bisogna inserire manualmente.
+ Premere 
+\emph on
+Next
+\end_layout
+
+\begin_layout Enumerate
+Nella finestra 
+\emph on
+Branch Selection 
+\emph default
+selezionare 
+\emph on
+master.
+ 
+\emph default
+Premere 
+\emph on
+Next
+\end_layout
+
+\begin_layout Enumerate
+Nella finestra 
+\emph on
+Local Destination
+\emph default
+ premere il bottone 
+\emph on
+Browse
+\emph default
+ e selezionare la cartella dove risiede il vostro localhost come cartella
+ di destinazione.
+ Premere 
+\emph on
+Next
+\end_layout
+
+\begin_layout Enumerate
+Selezionare poi nella finestra
+\emph on
+ Select a wizard to use for importing project 
+\emph default
+l'opzione 
+\emph on
+Import existing project
+\emph default
+.
+ Premere 
+\emph on
+Next
+\end_layout
+
+\begin_layout Enumerate
+Controllare che sia selezionato il 
+\emph on
+Project
+\emph default
+ corretto e premere 
+\emph on
+Finish
+\end_layout
+
+\begin_layout Enumerate
+Il vostro progetto è importato in Eclipse
+\end_layout
+
+\end_body
+\end_document

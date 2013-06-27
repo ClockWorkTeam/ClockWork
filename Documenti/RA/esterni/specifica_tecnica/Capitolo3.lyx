@@ -1,0 +1,379 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\include{preface}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Design Pattern
+\end_layout
+
+\begin_layout Standard
+Presentiamo qui di seguito i design pattern che andremo ad utilizzare per
+ la rappresentazione dell'architettura del sistema.
+\end_layout
+
+\begin_layout Subsection
+Singleton
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\series default
+ tale design pattern assicura la presenza di unica istanza della classe
+ e fornisce un punto d'accesso globale a tale istanza, tramite costruttore
+ privato e puntatore alla classe stessa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Motivazione:
+\series default
+ utilizzeremo tale design pattern al fine di impedire la proliferazione
+ di copie di parti del server, e quindi interferenze
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+ verrà utilizzato dalla classe 
+\family typewriter
+server.Launcher
+\family default
+ per inizializzare correttamente le classi del nostro server
+\end_layout
+
+\begin_layout Subsection
+DAO
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/patternDao.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione DAO 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-DAO"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+tale design pattern di basa sulla possibilità di concentrare il codice per
+ l'accesso al sistema di persistenza di una classe che si occupa di gestire
+ la logica per effettuare operazioni nella base di dati 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Motivazione: 
+\series default
+utilizzeremo questo design pattern per accedere al data base ed effettuare
+ operazioni su di esso, disaccoppiando di conseguenza la logica di business
+ da quella di accesso ai dati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+ verrà utilizzato nello strato data del server per prelevare e modificare
+ dati dal database
+\end_layout
+
+\begin_layout Subsection
+MV*
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/patternMVStar.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione MV* 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-MV*"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione: 
+\series default
+tale design pattern deriva da MVC e MVP con la differenza che le funzioni
+ di controller/presenter sono integrate nella view
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Model: 
+\series default
+rappresenta le informazioni di cui necessita l'applicazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+View: 
+\series default
+contiene i metodi per visualizzare l'interfaccia grafica, composta dalle
+ informazioni richieste, e per la creazione ed assegnazione di eventi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Template: 
+\series default
+sono frammenti di codice HTML che rappresentano il layout della view
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Motivazione: 
+\series default
+utilizzeremo questo pattern in quanto è quello utilizzato da Backbone.js
+ che è il framework che andremo ad utilizzare per la realizzazione della
+ parte client perché permette lo sviluppo di applicazioni web dinamiche,
+ strutturate e modulari
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+ verrà utilizzato per l'architettura del lato client
+\end_layout
+
+\begin_layout Subsection
+Observer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/patternObserver.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rappresentazione Observer 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rappresentazione-Observer"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione:
+\series default
+ tale design pattern definisce la struttura che consente agli oggetti di
+ una classe di 
+\begin_inset Quotes eld
+\end_inset
+
+osservare
+\begin_inset Quotes erd
+\end_inset
+
+ altri oggetti delle classi soggette a controlli.
+ Inoltre, permette l'aggiornamento degli oggetti osservatori quando lo stato
+ di un oggetto soggetto viene modificato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Motivazione:
+\series default
+ questo design pattern riflette in tempo reale sui dati visibili all'utente
+ qualsiasi modifica avvenga sui dati presenti nel database, indipendente
+ dal numero di oggetti dipendenti, mantenendo un alto livello di consistenza
+ fra classi correlate, e contemporaneamente cercando di tenere il più basso
+ possibile il livello di accoppiamento.
+ Questo design pattern è già implementato dal framework Backbone.js
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contesto applicativo:
+\series default
+ verrà utilizzato, nel lato client, per la manutenibilità della lista utenti
+ registrati (connessione e disconnessione degli utenti) o nel caso nuovi
+ utenti si registrino, e per l'invio e ricezione dei messaggi testuali
+\end_layout
+
+\end_body
+\end_document

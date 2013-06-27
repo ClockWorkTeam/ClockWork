@@ -1,0 +1,290 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Ciclo di vita
+\end_layout
+
+\begin_layout Standard
+Tra i vari 
+\bar under
+cicli di vita
+\bar default
+ esistenti, per lo sviluppo del prodotto 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+, si è deciso di utilizzare il modello
+\series bold
+ incrementale
+\series default
+ (nello standard ISO/IEC 12207 sono definiti i processi istanziabili).
+\end_layout
+
+\begin_layout Standard
+Le caratteristiche principali che il modello scelto ha sono:
+\end_layout
+
+\begin_layout Itemize
+Le attività di analisi e progettazione architetturale ad alto livello sono
+ svolte solo una volta: una volta identificati e fissati completamente i
+ requisiti macroscopici è possibile definire l'architettura di sistema
+\end_layout
+
+\begin_layout Itemize
+Le continue attività di controllo e valutazione della parte di realizzazione
+ a dettaglio sono rese percepibili dalla possibilità di effettuare degli
+ incrementi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ciclo_di_vita_incrementale.png
+	scale 65
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Modello di ciclo di vita incrementale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il ciclo di vita incrementale stabilisce una 
+\bar under
+baseline
+\bar default
+ sulla quale ammette aggiunte.
+\end_layout
+
+\begin_layout Standard
+Si è scelto tale modello poiché rilascia un prototipo che non soddisfa tutte
+ le aspettative richieste dall'utente, al quale verranno aggiunte le funzionalit
+à non incluse in tempi diversi.
+\end_layout
+
+\begin_layout Standard
+Inoltre, tale modello permetterà al
+ 
+\lang italian
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+ di:
+\end_layout
+
+\begin_layout Itemize
+Anticipare un insieme di funzionalità al proponente:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ogni incremento corrisponde al rilascio di una parte delle funzionalità
+\end_layout
+
+\begin_layout Itemize
+I requisiti obbligatori (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+AdR}
+\end_layout
+
+\end_inset
+
+, sez.
+ 4), quelli a più alta priorità per il proponente, vengono rilasciati per
+ primi
+\end_layout
+
+\begin_layout Itemize
+Rischio del completo fallimento del progetto ridotto
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Testing più esaustivo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Il rilascio iniziale viene utilizzato come prototipo e consente di isolare
+ requisiti per gli incrementi successivi
+\end_layout
+
+\begin_layout Itemize
+I servizi obbligatori sono quelli che saranno testati maggiormente
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Considerando i rischi valutati nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Analisi_dei_rischi"
+
+\end_inset
+
+ di questo documento, si potranno avere dei piccoli cicli di vita
+\series bold
+ iterativi
+\series default
+ per poter risolvere i problemi dovuti alle modifiche apportate alla tecnologia.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Per poter svolgere le attività di
+\emph on
+ Progettazione in Dettaglio e Codifica
+\emph default
+ il più linearmente possibile, si è deciso di focalizzare il lavoro, durante
+ le attività di
+\emph on
+ Analisi
+\emph default
+ e
+\emph on
+ Progettazione Architetturale
+\emph default
+, sulla più possibile attenta e precisa realizzazione dei documenti e progettazi
+one.
+ 
+\end_layout
+
+\begin_layout Standard
+Per il nostro progetto crediamo che avere un prototipo, nonostante sia un
+ costo, sia un valore aggiunto in quanto il Proponente potrà esporci il
+ prima possibile se è presente qualche funzione inadatta o consigliarci
+ una funzione desiderabile.
+\end_layout
+
+\begin_layout Standard
+Per restare dentro alle ore e ai costi preventivati, e per aggiungere al
+ prodotto funzionalità non basilari al fine del funzionamento ma che possono
+ essere un valore aggiunto per noi o il proponente, si prevedono almeno
+ 2 iterazioni di incremento.
+\end_layout
+
+\begin_layout Standard
+Il prototipo offrirà gran parte delle funzionalità basilari soddisfando
+ vari requisiti obbligatori (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+AdR}
+\end_layout
+
+\end_inset
+
+, sez.
+ 4).
+\end_layout
+
+\end_body
+\end_document
