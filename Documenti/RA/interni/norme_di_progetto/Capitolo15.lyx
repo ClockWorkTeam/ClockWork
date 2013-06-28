@@ -1,0 +1,311 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Analisi dei Requisiti 
+\begin_inset CommandInset label
+LatexCommand label
+name "Analisi-dei-Requisiti"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'Analisi dei Requisiti sarà redatta dagli analisti.
+\end_layout
+
+\begin_layout Standard
+\noindent
+In tale documento dovranno comparire ordinatamente tutti i requisiti rilevati
+ dal Capitolato e/o dagli incontri effettuati col proponente.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ogni requisito dovrà essere il più completo e chiaro possibile.
+ Per tale motivo si richiede che per ogni requisito siano specificati:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fonti
+\series default
+: ovvero da che luogo è emerso il requisito
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classificazione
+\series default
+: ovvero raggruppare i requisiti in insiemi coerenti in modo da poter definire
+ una segnatura specifica, univoca e gerarchica secondo il seguente formalismo:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+R{AMBITO}{TIPO_REQUISITO}{PRIORITÀ} {GERARCHIA}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+dove:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+AMBITO: distinguerà l'ambito per cui sarà definito il requisito:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+U
+\series default
+ indicherà qualsiasi tipo di 
+\bar under
+utente
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+G
+\series default
+ indicherà un requisito generale di sistema
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+TIPO_REQUISITO: distinguerà la tipologia del requisito:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+F
+\series default
+ indica un requisito funzionale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Q 
+\series default
+indica un requisito di qualità
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+V
+\series default
+ indica un requisito di vincolo
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+PRIORITÀ: distinguerà la priorità associata al requisito:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+O
+\series default
+ indicherà un requisito obbligatorio, ossia un requisito la cui implementazione
+ è fondamentale per la riuscita dell'applicazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+D 
+\series default
+indicherà un requisito desiderabile, ossia un requisito la cui implementazione
+ è gradita ma non fondamentale e la cui realizzazione è da intendersi di
+ importanza secondaria rispetto ai requisiti facoltativi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+F
+\series default
+ indicherà un requisito facoltativo, ossia un requisito la cui implementazione
+ non è da ritenersi vincolante per la riuscita del progetto: saranno requisiti
+ ricavati dal capitolato o dal proponente e che il gruppo si impegnerà ad
+ implementare qualora le risorse disponibili saranno sufficienti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+GERARCHIA: distinguerà la gerarchia presente tra i vari requisiti
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Descrizione grafica
+\series default
+: utilizzare il formalismo di UML per creare diagrammi di 
+\bar under
+casi d'uso
+\bar default
+ che facilitino la comprensione di tali requisiti.
+ I diagrammi dei casi d'uso utilizzeranno una nomenclatura simile alla precedent
+e: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+UC{GERARCHIA}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+dove:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GERARCHIA: distinguerà la gerarchia presente tra i vari casi d'uso
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Descrizione didascalica
+\series default
+: si dovrà accompagnare ogni diagramma di caso d'uso con una descrizione
+ dove dovranno comparire le seguenti informazioni:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Attori coinvolti
+\end_layout
+
+\begin_layout Itemize
+Scopo e descrizione del requisito
+\end_layout
+
+\begin_layout Itemize
+Precondizione
+\end_layout
+
+\begin_layout Itemize
+Postcondizione
+\end_layout
+
+\begin_layout Itemize
+Flusso principale degli eventi
+\end_layout
+
+\begin_layout Itemize
+Scenari alternativi
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

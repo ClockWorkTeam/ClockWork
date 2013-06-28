@@ -60,6 +60,7 @@ define([
      * funzione che effettua la scrittura della struttura della pagina
      */
     render: function(){
+      
     /**
      * se si è già in chiamata con la persona selezionata si carica direttamente la vista della
      * CallView senza caricare quella della FunctionView altrimenti si andrà a generare quest'ultima
@@ -123,6 +124,7 @@ define([
      * si occupa di gestire la vista della chiamata nel caso se ne effettui una o si accetti quella in ingresso
      */
     call:function(isCaller,type){
+      console.log("sto per chiamare");
       //if(NotificationCommunication.getStatus() && isCaller!=false){
       //  alert("hai già una chiamata attiva");
       //}
@@ -172,6 +174,7 @@ define([
      * venga terminata
      */
     closeViewCall : function(){
+      this.delegateEvents();
       this.callView=undefined;
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));

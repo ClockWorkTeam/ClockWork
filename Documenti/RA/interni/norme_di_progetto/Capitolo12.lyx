@@ -1,0 +1,206 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Norme per i Test
+\end_layout
+
+\begin_layout Subsection
+Identificazione dei test
+\end_layout
+
+\begin_layout Standard
+Si seguiranno tali formalismi per indicare i test:
+\end_layout
+
+\begin_layout Itemize
+TS: test di sistema, seguito dal nome del requisito a cui si riferisce.
+ Se un requisito necessita di più test differenti, verranno differenziati
+ aggiungendo una lettera, in ordine alfabetico
+\end_layout
+
+\begin_layout Itemize
+TI: test di integrazione, seguito da un elenco puntato di numeri interi
+ del tipo 
+\emph on
+a.b.c...n
+\emph default
+, dove la profondità 
+\emph on
+n
+\emph default
+ è arbitraria a seconda del caso.
+ La posizione dei numeri indica il livello di integrazione che il test deve
+ andare a verificare, il suo valore ne indica l'identificativo
+\end_layout
+
+\begin_layout Itemize
+TU: test di unità, seguito da una coppia di valori 
+\emph on
+x.y
+\emph default
+, ove
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+X: rappresenta l'identificativo dell'unità sottoposta a test
+\end_layout
+
+\begin_layout Itemize
+Y: identifica il caso di test
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Alpha-test
+\end_layout
+
+\begin_layout Standard
+Quando dovrà essere eseguito l'
+\bar under
+alpha-test
+\bar default
+, tutti i membri del gruppo dovranno essere presenti
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ogni assenza deve essere fortemente giustificata al Responsabile.
+\end_layout
+
+\end_inset
+
+.
+ I Verificatori dovranno eseguire i test di sistema descritti nel 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+ e sono tenuti ad individuare ogni malfunzionamento e, tramite un ticket
+ che descriva il malfunzionamento e la porzione di codice dove è stato rilevato
+ il malfunzionamento, segnalarlo ai Programmatori responsabili della codifica
+ delle unità software difettose.
+\end_layout
+
+\begin_layout Standard
+L'alpha-test deve essere supervisionato dal Responsabile, che annoterà i
+ lavori richiesti per correggere gli errori riscontrati.
+\end_layout
+
+\begin_layout Subsection
+Beta-test
+\end_layout
+
+\begin_layout Standard
+Poiché al beta-test devono essere presenti tutti i membri del gruppo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ogni assenza deve essere fortemente giustificata al Responsabile.
+\end_layout
+
+\end_inset
+
+ e i proponenti, la data e il luogo del beta-test saranno decisi dal Responsabil
+e di Progetto, accordandosi coi proponenti.
+\end_layout
+
+\begin_layout Standard
+Al beta-test verrà chiesto ai proponenti di effettuare i test di sistema
+ definiti nel 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+.
+ Ai proponenti verranno descritti gli obiettivi e i risultati attesi dei
+ test, e saranno fornite le istruzioni basilari per l'utilizzo del software.
+\end_layout
+
+\begin_layout Standard
+Un membro del gruppo verrà nominato per annotare i commenti riguardo l'uso
+ del prodotto o di eventuali malfunzionamenti rilevati dal proponente.
+ Al termine del test tale membro dovrà redigere il verbale della giornata
+ dedicata al beta-test e dovrà aprire un ticket per ogni malfunzionamento
+ riscontrato, assegnandolo al Programmatore responsabile.
+\end_layout
+
+\end_body
+\end_document

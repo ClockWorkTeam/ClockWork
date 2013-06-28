@@ -1,0 +1,621 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<uml version="6">
+  <argo version="6">
+    <documentation>
+      <authorname></authorname>
+      <authoremail></authoremail>
+      <version>0.34</version>
+      <description>
+        
+      </description>
+    </documentation>
+    <settings>
+      <notationlanguage>UML 1.4</notationlanguage>
+      <showboldnames>false</showboldnames>
+      <useguillemots>false</useguillemots>
+      <showassociationnames>true</showassociationnames>
+      <showvisibility>false</showvisibility>
+      <showmultiplicity>false</showmultiplicity>
+      <showinitialvalue>false</showinitialvalue>
+      <showproperties>false</showproperties>
+      <showtypes>true</showtypes>
+      <showstereotypes>false</showstereotypes>
+      <showsingularmultiplicities>true</showsingularmultiplicities>
+      <defaultshadowwidth>1</defaultshadowwidth>
+      <hidebidirectionalarrows>true</hidebidirectionalarrows>    
+      <fontname>Dialog</fontname>
+      <fontsize>12</fontsize>
+      <defaultstereotypeview>0</defaultstereotypeview>
+      <activediagram>Diagramma di Classe</activediagram>
+    </settings>
+    <searchpath href="PROJECT_DIR" />
+    <members>
+      <member type="profile"
+              name="UserDaoSQL_profile.profile" />
+      <member type="xmi"
+              name="UserDaoSQL.xmi" />
+      <member type="pgml"
+              name="UserDaoSQL_DiagrammadiClasse.pgml"
+              diagramclass="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram"
+              diagramname="Diagramma di Classe" />
+      <member type="pgml"
+              name="UserDaoSQL_DiagrammadeiCasidUso.pgml"
+              diagramclass="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram"
+              diagramname="Diagramma dei Casi d&apos;Uso" />
+      <member type="todo"
+              name="UserDaoSQL.todo" />
+    </members>
+    <historyfile name="" />
+  </argo>
+<profile>
+		<plugin>
+			UML 1.4
+		</plugin>
+		<plugin>
+			GoodPractices
+		</plugin>
+		<plugin>
+			CodeGeneration
+		</plugin>
+</profile>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 17:38:43 CEST 2013'>
+  <XMI.header>    <XMI.documentation>
+      <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
+      <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
+    </XMI.documentation>
+    <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
+  <XMI.content>
+    <UML:Model xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA7'
+      name = 'Modello Senza Nome' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+      isAbstract = 'false'>
+      <UML:Namespace.ownedElement>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA8'
+          name = 'UserDaoSQL' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <UML:Classifier.feature>
+            <UML:Attribute xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA9'
+              name = '-connection' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAA'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAB'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAC'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Attribute xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAD'
+              name = '-userList' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAE'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAF'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EB0'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001960'
+              name = '+UserDaoSQL' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001961'
+                  name = 'return' isSpecification = 'false' kind = 'return'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001962'
+                  name = 'JavaConnectionSQLite' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001963'
+                  name = 'UserList' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001964'
+              name = '+createUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001965'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EBC'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001966'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001967'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001968'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001969'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000196A'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000196B'
+              name = '+removeUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000196C'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EC0'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000196D'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000196E'
+              name = '+setPassword' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000196F'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EC0'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001970'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001971'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001972'
+              name = '+setName' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001973'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EC0'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001974'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001975'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001976'
+              name = '+setSurame' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001977'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EC0'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001978'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001979'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000197A'
+              name = '+getUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000197B'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EBC'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000197C'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000197D'
+              name = '+checkPassword' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000197E'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EC0'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000197F'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001980'
+                  name = 'String' isSpecification = 'false' kind = 'in'/>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001981'
+              name = '+getAllUsers' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001982'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000ED6'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001983'
+              name = '-getUsersFromDB' visibility = 'private' isSpecification = 'false'
+              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
+              isLeaf = 'false' isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000001984'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000ED9'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+          </UML:Classifier.feature>
+        </UML:Class>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EAC'
+          name = 'JavaConnectionSQLite' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EB0'
+          name = 'UserList' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EBC'
+          name = 'User' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EC0'
+          name = 'boolean' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000ED6'
+          name = 'Vector&lt;User&gt;' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000ED9'
+          name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+      </UML:Namespace.ownedElement>
+    </UML:Model>
+  </XMI.content>
+</XMI>
+<pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA7"
+      name="Diagramma di Classe"
+>
+  <group name="Fig0"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[0, 16, 311, 232]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA8"
+       fill="1"
+       fillcolor="255 255 200"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+    </private>
+    
+    <rectangle name="Fig0.0"
+      x="0"
+      y="16"
+      width="311"
+      height="232"
+      fill="1"
+      fillcolor="255 255 200"
+      stroke="1"
+      strokecolor="black"
+    />
+    <text name="Fig0.1"
+      x="1"
+      y="17"
+      width="309"
+      height="22"
+      fill="0"
+      fillcolor="255 255 200"
+      stroke="0"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="false"
+      textsize="12"
+      justification="Center"
+    >UserDaoSQL</text>
+    <group name="Fig0.2"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1, 17, 309, 0]"
+         href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA8"
+         fill="0"
+         fillcolor="255 255 200"
+         stroke="0"
+         strokecolor="black"
+         visibility="0"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.2.0"
+        x="1"
+        y="17"
+        width="309"
+        height="0"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+    <rectangle name="Fig0.3"
+      x="0"
+      y="39"
+      width="311"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig0.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[1, 40, 309, 40]"
+         href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA8"
+         fill="0"
+         fillcolor="255 255 200"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.4.0"
+        x="1"
+        y="40"
+        width="309"
+        height="40"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <text name="Fig0.4.1"
+        x="1"
+        y="40"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >-connection : JavaConnectionSQLite</text>
+      <text name="Fig0.4.2"
+        x="1"
+        y="56"
+        width="309"
+        height="22"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >-userList : UserList</text>
+    </group>
+    <rectangle name="Fig0.5"
+      x="0"
+      y="79"
+      width="311"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig0.6"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[1, 80, 309, 168]"
+         href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA8"
+         fill="0"
+         fillcolor="255 255 200"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.6.0"
+        x="1"
+        y="80"
+        width="309"
+        height="168"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <text name="Fig0.6.1"
+        x="1"
+        y="80"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+UserDaoSQL(JavaConnectionSQLite,UserList)</text>
+      <text name="Fig0.6.2"
+        x="1"
+        y="96"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+createUser(String,String,String,String,String) : User</text>
+      <text name="Fig0.6.3"
+        x="1"
+        y="112"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+removeUser(String) : boolean</text>
+      <text name="Fig0.6.4"
+        x="1"
+        y="128"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+setPassword(String,String) : boolean</text>
+      <text name="Fig0.6.5"
+        x="1"
+        y="144"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+setName(String,String) : boolean</text>
+      <text name="Fig0.6.6"
+        x="1"
+        y="160"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+setSurame(String,String) : boolean</text>
+      <text name="Fig0.6.7"
+        x="1"
+        y="176"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getUser(String) : User</text>
+      <text name="Fig0.6.8"
+        x="1"
+        y="192"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+checkPassword(String,String) : boolean</text>
+      <text name="Fig0.6.9"
+        x="1"
+        y="208"
+        width="309"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getAllUsers() : Vector&lt;User&gt;</text>
+      <text name="Fig0.6.10"
+        x="1"
+        y="224"
+        width="309"
+        height="22"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >-getUsersFromDB() : void</text>
+    </group>
+  </group>
+</pgml>
+<pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000EA7"
+      name="Diagramma dei Casi d&apos;Uso"
+>
+</pgml>
+<todo>
+<todolist>
+</todolist>
+<resolvedcritics>
+</resolvedcritics>
+</todo>
+</uml>

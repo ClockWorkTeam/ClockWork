@@ -1,0 +1,185 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Attività di Progettazione Architetturale
+\end_layout
+
+\begin_layout Standard
+Al fine di diminuire il livello di rischio dovuto da una progettazione errata
+ e prevenire incongruenze logiche, l'attività di progettazione deve essere
+ effettuata tenendo conto delle seguenti linee guida:
+\end_layout
+
+\begin_layout Itemize
+Decomposizione modulare: una buona progettazione identifica componenti indipende
+nti tra loro riducendo il grado di accoppiamento complessivo del sistema,
+ aumentando così la coesione
+\end_layout
+
+\begin_layout Itemize
+Information hiding: al fine di ridurre la complessità del contratto della
+ classe e aumentare il grado di protezione, bisognerà nascondere i dettagli
+ organizzativi tramite metodi e attributi privati e protetti.
+ Al fine di abbassare il rischio di incorrere in errori logici, si cercherà
+ di isolare al singolo componente la gestione del proprio funzionamento
+\end_layout
+
+\begin_layout Itemize
+Componenti terminali: per evitare di esporre esternamente dettagli implementativ
+i, che causerebbero eccessivo accoppiamento, e abbattere costi e tempi già
+ dalle prime fasi, bisogna riconoscere subito i componenti che non necessitano
+ di ulteriori scomposizioni
+\end_layout
+
+\begin_layout Itemize
+Accoppiamento e coesione dei componenti: al fine di attenuare la probabilità
+ del rischio legato alla introduzione di complessità inutile, aumentare
+ la manutenibilità del sistema e abbassare i costi per l'aggiunta di componenti
+ future, bisognerà mantenere un indicatore dei parametri di questi parametri
+ in corso d'opera
+\end_layout
+
+\begin_layout Itemize
+Grado elevato di coesione e basso di accoppiamento: al fine di garantire
+ una corretta separazione logica e una buona caratterizzazione dei componenti
+\end_layout
+
+\begin_layout Itemize
+Principio di astrazione: al fine di definire la radice della gerarchia delle
+ classi, bisognerà individuare le caratteristiche comuni tra le componenti.
+ Quello che si differenzia dall'insieme di funzionalità iniziale andrà definito
+ tramite specializzazione
+\end_layout
+
+\begin_layout Itemize
+Astrazione e concretizzazioni: ogni astrazione corrisponde ad una o più
+ concretizzazioni come ad esempio nel caso dei template, o delle classi
+ derivate
+\end_layout
+
+\begin_layout Itemize
+Componenti astratte: dovranno rispettare tali vincoli:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sufficienza: il livello di astrazione è sufficiente a caratterizzare l'entità
+ desiderata
+\end_layout
+
+\begin_layout Itemize
+Completezza: l'astrazione fornita comprende tutte le caratteristiche di
+ interesse del suo utente
+\end_layout
+
+\begin_layout Itemize
+Atomicità: l'utilità dell'astrazione non migliora se scomposta ulteriormente
+ in astrazioni più elementari
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Integrità concettuale: adoperare uno stile uniforme per la modellazione
+ delle componenti, da applicare in ogni parte del sistema
+\end_layout
+
+\begin_layout Itemize
+Complessità delle componenti e delle iterazioni: bisogna cercare di trovare
+ un compromesso per non complicare il modo in cui una classe comunica col
+ resto del sistema, ed avere una semplice modellazione di tale classe
+\end_layout
+
+\begin_layout Itemize
+Design Patterns: individuare i casi in cui si dovranno utilizzare, ed applicarli
+ di conseguenza
+\end_layout
+
+\begin_layout Itemize
+Enforce intention: rendere non ambiguo il confine dei moduli e non lasciare
+ spazio nella fase si codifica:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rendere immutabile tutto ciò che non è destinato a subire variazioni nel
+ tempo
+\end_layout
+
+\begin_layout Itemize
+Usare l'information hiding ogni volta sia possibile impostando la visibilità
+ di metodi e attributi privati e protetti
+\end_layout
+
+\begin_layout Itemize
+Per le classi che richiedono una singola istanza si utilizzerà il design
+ pattern Singleton
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Raggiungere un livello di dettaglio tale da permettere una parallelizzazione
+ della codifica
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,497 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Strumenti Utilizzati
+\end_layout
+
+\begin_layout Subsection
+Java
+\end_layout
+
+\begin_layout Standard
+L'utilizzo di Java è legato ai requisiti di capitolato, verrà utilizzato
+ per la parte server.
+ È stato deciso di utilizzare la versione 7.0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Multipiattaforma: 
+\series default
+grazie alla presenza della 
+\bar under
+JVM
+\bar default
+ si ha la sicurezza che il programma sarà eseguibile indipendentemente dal
+ sistema operativo installato sulla macchina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Indipendenza della risorse:
+\series default
+ per lo stesso motivo sopra elencato l'utilizzo delle risorse fisiche sarà
+ indipendente dal sistema operativo installato
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nessun svantaggio rilevato
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+SQLite
+\end_layout
+
+\begin_layout Standard
+Considerando la complessità relativamente limitata del database che occorrerà
+ per la gestione degli utenti abbiamo deciso di utilizzare SQLite, invece
+ del più potente MySQL, poiché lo riteniamo più adatto ai nostri scopi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conoscenza da parte dei componenti del gruppo del linguaggio SQL
+\end_layout
+
+\begin_layout Itemize
+Gestibile attraverso il package 
+\family typewriter
+java.sql
+\family default
+ di Java
+\end_layout
+
+\begin_layout Itemize
+È multipiattaforma
+\end_layout
+
+\begin_layout Itemize
+Non richiede installazione di un server
+\end_layout
+
+\begin_layout Itemize
+Leggero e veloce
+\end_layout
+
+\begin_layout Itemize
+Maggior semplicità di impostazione
+\end_layout
+
+\begin_layout Itemize
+Ha transizioni atomiche, consistenti, isolate e durabili, anche in caso
+ di crash di sistema o blackout
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se il volume di dati diventasse molto ampio l'efficienza della base di dati
+ ne risentirebbe
+\end_layout
+
+\begin_layout Itemize
+Non possiede una vera gestione della concorrenza: in caso di necessità bisognerà
+ implementarla
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Differenze tra SQLite e MySQL
+\end_layout
+
+\begin_layout Itemize
+SQLite, nella sua semplicità, permette un’installazione molto veloce ed
+ è quasi privo di esigenze di manutenzione e configurazione, contrariamente
+ a MySQL che richiede una installazione ed una configurazione complessa
+\end_layout
+
+\begin_layout Itemize
+Attualmente il limite di dimensione massima è 2TB per database SQLite mentre
+ per database MySQL è pari a 64TB
+\end_layout
+
+\begin_layout Itemize
+Il limite di RAM utilizzata per SQLite è pari a 16 MB mentre MySQL richiede
+ almeno 384 MB
+\end_layout
+
+\begin_layout Subsection
+HTML5 e CSS3
+\end_layout
+
+\begin_layout Standard
+L'utilizzo di HTML5 è legato ai requisiti di capitolato e andrà a costituire
+ insieme a CSS3 l'interfaccia web del prodotto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HTML5 supporta le ultime tecnologie riguardanti la creazione di applicazioni
+ web
+\end_layout
+
+\begin_layout Itemize
+Grafica più leggera e valida evitando l'utilizzo di tecnologia Flash
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HTML5 e CSS3 non attualmente standard
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+JavaScript
+\end_layout
+
+\begin_layout Standard
+L'utilizzo di JavaScript è legato ai requisiti di capitolato.
+ Lo andremo ad utilizzare per la parte client e in particolare per l'utilizzo
+ di WebRTC e quindi per la comunicazione tra gli utenti.
+\end_layout
+
+\begin_layout Subsection
+Backbone.js
+\end_layout
+
+\begin_layout Standard
+Per la gestione del lato client abbiamo deciso di utilizzare il framework
+ Backbone.js, che risulta comodo ed efficiente per la gestione di applicazioni
+ che utilizzino pesantemente il linguaggio JavaScript.
+\end_layout
+
+\begin_layout Standard
+Backbone.js ha una architettura MV*, in quanto implementa Model e View, delegando
+ a quest'ultima i compiti di una componente Controller tradizionale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Maggiore facilità nella gestione del lato client e nella sua programmazione
+\end_layout
+
+\begin_layout Itemize
+Backbone.js è un progetto open source
+\end_layout
+
+\begin_layout Itemize
+Struttura già data dal framework
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Non supporta l'architettura MVP
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+WebSocket
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:WebSocket"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per la gestione delle comunicazioni tra client e server utilizziamo il protocoll
+o WebSocket, come richiesto dal proponente.
+\end_layout
+
+\begin_layout Standard
+La tecnologia WebSocket fornisce un canale che permette la comunicazione,
+ in entrambi i versi, attraverso una singola connessione ed è ideale per
+ le comunicazioni client-server, mentre non è ottimale per le comunicazioni
+ client-client.
+ Tale protocollo è indipendente dal protocollo TCP, e grazie alla metodologia
+ standard di inviare messaggi tra browser e server tenendo la connessione
+ aperta, permette maggiore interazione tra browser e server, facilitando
+ la creazione di applicazioni che forniscono contenuti in tempo reale.
+ 
+\end_layout
+
+\begin_layout Standard
+Il protocollo in questione è supportato da numerosi browser, come Internet
+ Explorer, Google Chrome, Firefox, Safari ed Opera.
+\end_layout
+
+\begin_layout Subsection
+WebRTC
+\end_layout
+
+\begin_layout Standard
+Per la gestione delle comunicazioni tra client e client utilizziamo la tecnologi
+a WebRTC, come richiesto dal proponente.
+\end_layout
+
+\begin_layout Standard
+La tecnologia WebRTC è sviluppata per fornire metodi di comunicazione, tramite
+ chiamate vocali, videochiamate e condivisione di file, tra due o più utenti
+ senza caricare il server, che si occupa solo dell'inizializzazione del
+ canale, inoltre non richiede l'installazione di plugin.
+ Tale tecnologia è basata sul HTML5 e JavaScript.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+QUnit
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Framework per creare e svolgere i test di unità JavaScript
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Ha già implementate delle asserzioni
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Nessun svantaggio rilevato
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\lang english
+RequireJs 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Framework per creare e svolgere i test di unità in ambiente modulare
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Permette di effettuare test di unità su Backbone.js modulare
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Compatibile con altri framework per svolgere test di unità (come QUnit)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Nessun svantaggio rilevato
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+
+\lang english
+SinonJs
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Framework che fornisce 
+\emph on
+spies
+\emph default
+, 
+\emph on
+stubs
+\emph default
+ e 
+\emph on
+mocks 
+\emph default
+per creare e svolgere i test di unità Javascript
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+Vantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Compatibile con altri framework per svolgere test di unità (come QUnit)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+Svantaggi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Non è naturalmente adattato a WebSocket
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

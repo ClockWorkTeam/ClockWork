@@ -1,0 +1,1422 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Visione generale delle strategie di verifica
+\end_layout
+
+\begin_layout Subsection
+Organizzazione e responsabilità
+\end_layout
+
+\begin_layout Standard
+Al fine di sviluppare un prodotto di qualità il 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+ si impegna ad applicare il processo di verifica e validazione per ogni
+ attività del progetto, sia sul prodotto software che sui documenti.
+ All’interno del gruppo i ruoli destinati all’attuazione del processo di
+ verifica e di validazione sono i Verificatori, gli Sviluppatori
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Per Sviluppatore si intende sia redattore di un documento che programmatore.
+\end_layout
+
+\end_inset
+
+, il Responsabile:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verificatore:
+\series default
+ ha il compito di applicare le tecniche di verifica descritte successivamente
+ per ogni fase del ciclo di vita.
+ Il Verificatore deve accertare che la documentazione prodotta sia corretta,
+ a livello grammaticale, sintattico e semantico e che rispetti le norme
+ descritte nelle Norme di Progetto.
+ Inoltre deve effettuare un controllo concettuale del documento e, se emergerann
+o irregolarità, verranno segnalate tramite un apposito 
+\bar under
+ticket
+\bar default
+ allo Sviluppatore.
+ Alla conclusione di tale processo il Verificatore dovrà segnalarlo al Responsab
+ile per l'approvazione finale
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sviluppatore:
+\series default
+ ha il compito di risolvere le irregolarità quando riceve un ticket dal
+ Verificatore.
+ Una volta terminate le correzioni dovrà assegnare il label 
+\begin_inset Quotes eld
+\end_inset
+
+completato
+\begin_inset Quotes erd
+\end_inset
+
+ al ticket per far accertare al Verificatore che le modifiche apportate
+ siano corrette
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Responsabile:
+\series default
+ ha il dovere di coordinare e gestire l’attuazione del processo di validazione
+ e verifica.
+ È il solo a poter approvare o meno la correttezza di un documento
+\end_layout
+
+\begin_layout Standard
+Al fine di garantire un costante riscontro dell’evoluzione del lavoro, ogni
+ singolo membro del gruppo è tenuto a cronometrare le proprie ore di lavoro
+ dedicate al progetto, per ogni ruolo che sta adempiendo, e renderlo noto
+ al Responsabile, per effettuare un controllo sulle ore di lavoro preventivate
+ e di conseguenza agire per la pianificazione delle attività che seguono.
+ Inoltre tutti i membri del gruppo hanno l’obbligo di controllare quotidianament
+e l’emanazione dei ticket.
+\end_layout
+
+\begin_layout Standard
+I documenti prodotti devono essere forniti di un diario delle modifiche,
+ questo consentirà di agevolare la verifica sugli stessi.
+ La conformità alle norme definite nel documento Norme di Progetto consentirà
+ di ridurre gli errori dovuti a incomprensioni che possono nascere durante
+ lo sviluppo del progetto.
+\end_layout
+
+\begin_layout Standard
+Per evitare la propagazione incontrollata degli errori si utilizzerà il
+ 
+\series bold
+Broken Window Theory
+\series default
+ secondo il quale non appena viene riscontrato un errore, sarà segnalato
+ e corretto il prima possibile.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pianificazione Strategica e Temporale
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Pianificazione-Strategica-e-Temporale"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una verifica continua sui processi e sui prodotti, attuata in modo preventivo
+ e non retrospettivo, può garantire un alto livello di qualità al fine di
+ rispettare le aspettative del cliente e il pieno soddisfacimento dei requisiti
+ richiesti dal Capitolato d’Appalto, minimizzando i rischi di fallimento
+ prematuro del progetto e riducendo i costi di correzione degli eventuali
+ errori.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\noindent
+Il Responsabile di Progetto si impegna a definire le attività di verifica
+ finalizzate al collaudo di sistema, e le relative scadenze, assegnandole
+ ai verificatori in modo che ciascuno dei singoli elementi software, documentali
+ o di altro genere, vengano verificati durante i processi realizzativi ed
+ entro le scadenze previste.
+\end_layout
+
+\begin_layout Standard
+I processi di revisione adottati saranno di due tipi:
+\end_layout
+
+\begin_layout Itemize
+Revisioni formali condotte dal cliente e con effetto sanzionatorio (corrisponden
+ti all’Audit Process di ISO/IEC 12207)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Revisione dei Requisiti (RR): 2013/01/09
+\end_layout
+
+\begin_layout Itemize
+Revisione di Accettazione (RA): da destinarsi, ipotizzata al 2013/07/22
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Revisioni informali di revisione interna (di progresso) con il coinvolgimento
+ del cliente (corrispondenti al Joint Review Process di ISO/IEC 12207)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Revisione di Progettazione (RP): 2013/02/05
+\end_layout
+
+\begin_layout Itemize
+Revisione di Qualifica (RQ): 2013/06/17
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Come indicato nel Piano di Progetto il modello di 
+\bar under
+ciclo di vita
+\bar default
+ adottato per lo sviluppo del software è di tipo incrementale.
+ In base a questo modello di ciclo di vita vengono definite le strategie
+ di verifica per ogni fase del ciclo di vita.
+\end_layout
+
+\begin_layout Subsubsection
+Verifica generale dei documenti
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Indipendentemente dall'attività che si sta svolgendo, la verifica dei documenti
+ ha la stessa base, e il Verificatore deve controllare che:
+\end_layout
+
+\begin_layout Itemize
+Siano conformi alle norme descritte nel documento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+I termini ambigui siano sottolineati alla loro prima occorrenza e inseriti
+ nel Glossario
+\end_layout
+
+\begin_layout Itemize
+Un documento sia sintatticamente, semanticamente e ortograficamente corretto
+\end_layout
+
+\begin_layout Itemize
+La struttura e i contenuti devono essere conformi agli standard a cui si
+ fa riferimento
+\end_layout
+
+\begin_layout Itemize
+I riferimenti e le etichette riguardanti figure, tabelle e sezioni siano
+ puntuali e corretti
+\end_layout
+
+\begin_layout Subsubsection
+Attività di Analisi
+\end_layout
+
+\begin_layout Standard
+I Verificatori hanno il compito di controllare che il documento riguardante
+ l'Analisi dei Requisiti, oltre a soddisfare gli obiettivi qualitativi descritti
+ nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, deve rispettare le seguenti caratteristiche
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Per una più precisa descrizione delle qualità elencate si rimanda a IEEE
+ 830-1998.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Privo di ambiguità:
+\series default
+ il documento non è ambiguo se e solo se ogni requisito ha solo una interpretazi
+one.
+ Il Verificatore per controllare questa qualità dovrà procedere alla lettura
+ del singolo requisito, non è un processo automatizzabile
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Corretto:
+\series default
+ il documento è corretto se e solo se un requisito rilevato è un requisito
+ che il software deve avere.
+ Il Verificatore per controllare questa qualità deve avere una buona conoscenza
+ dei documenti forniti dal proponente, inoltre questo controllo sarà agevolato
+ da un corretto tracciamento dei requisiti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Completo:
+\series default
+ il documento è completo se e solo se include tutti i requisiti fondamentali
+ e definisce come reagisce il software agli input.
+ Il Verificatore dovrà quindi procedere a una lettura attenta del documento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verificabile:
+\series default
+ il documento è verificabile se e solo se per ogni suo requisito è definito
+ il modo con cui si possa verificare che il software soddisfi tale requisito,
+ ovvero che sia tracciabile e atomico, in quanto i requisiti non atomici
+ sono difficilmente verificabili.
+ Questa attività non è automatizzabile, pertanto si richiede una attenta
+ lettura
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consistente:
+\series default
+ il documento è consistente se non genera contraddizioni al suo interno
+ e con documenti di più alto livello.
+ Si richiede una attenta lettura da parte del Verificatore dell’intero documento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modificabile:
+\series default
+ il documento è modificabile se la sua struttura consente di effettuare
+ delle modifiche facilmente e in modo consistente.
+ La conformità delle norme facilita il raggiungimento di questa qualità
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tracciabile:
+\series default
+ il documento è tracciabile se ogni requisito ha una fonte chiara e se il
+ documento definisce il modo con cui riferirsi al requisito.
+ Il Verificatore, nella tabella riassuntiva dei requisiti, dovrà controllare
+ che per ogni requisito sia stata definita la sua provenienza
+\end_layout
+
+\begin_layout Standard
+Per la verifica del documento principalmente sarà usata la tecnica 
+\bar under
+walkthrough
+\bar default
+, inoltre, se possibile, verrà utilizzata la tecnica 
+\bar under
+inspection
+\bar default
+ per individuare errori, o non conformità, già riscontrati dal committente
+ nelle versioni precedenti del documento.
+ Le tipologie di tecniche sono descritte nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tecniche"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Inoltre i Verificatori rispetto ai diagrammi 
+\bar under
+UML
+\bar default
+ dovranno accertare che essi siano:
+\end_layout
+
+\begin_layout Itemize
+Tracciabili
+\end_layout
+
+\begin_layout Itemize
+Atomici
+\end_layout
+
+\begin_layout Itemize
+Corretti ortograficamente e sintatticamente
+\end_layout
+
+\begin_layout Standard
+Ci si aspetta che una buona progettazione e verifica individuino i requisiti
+ necessari al raggiungimento delle seguenti qualità:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sufficienza:
+\series default
+ i portatori di interesse si aspettano che il software sia capace di soddisfare
+ tutti i requisiti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Comprensibilità:
+\series default
+ il software deve essere facilmente comprensibile ai portatori di interesse,
+ qualità raggiunta se individuati completamente i requisiti, in particolare
+ anche quelli mirati alla usabilità
+\end_layout
+
+\begin_layout Subsubsection
+Attività di Progettazione
+\end_layout
+
+\begin_layout Standard
+Oltre agli obiettivi qualitativi generali descritti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, si dovrà accertare che ogni requisito scoperto nelle attività di Analisi
+ venga correttamente tradotto nell’architettura del sistema software, descritta
+ nella Specifica Tecnica.
+\end_layout
+
+\begin_layout Standard
+Verrà accertato che la progettazione effettuata rispetti i principi di:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Disaccoppiamento:
+\series default
+ le classi definite devono essere il più possibile indipendenti
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Packaging:
+\series default
+ le classi devono essere raggruppate per criterio logico
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Coesione: 
+\series default
+le classi devono contenere solo il necessario per raggiungere gli obiettivi
+\end_layout
+
+\begin_layout Standard
+Ciò sarà agevolato da un corretto tracciamento dei requisiti.
+ Una buona progettazione e verifica porterà al raggiungimento delle seguenti
+ qualità:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modularità:
+\series default
+ poiché è richiesto che il software sia migliorabile deve essere diviso
+ in parti chiare e distinte.
+ I Verificatori dovranno quindi verificare il livello di disaccoppiamento
+ e di incapsulamento delle classi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Semplicità:
+\series default
+ l’architettura del software deve contenere solo il necessario, niente di
+ superfluo
+\end_layout
+
+\begin_layout Standard
+Dato che tale verifica non è automatizzabile, i Verificatori porranno la
+ massima attenzione.
+\end_layout
+
+\begin_layout Subsubsection
+Attività di Codifica
+\end_layout
+
+\begin_layout Standard
+Oltre al soddisfacimento degli obiettivi qualitativi descritti nella sezione
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, si dovranno esaminare le unità di codice prodotte per accertarsi che non
+ contengano errori di programmazione.
+ Si deve controllare che ogni requisito sia tradotto in unità di codice
+ e che non ci sia codice non associato ad alcun requisito
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Questo sarà possibile tramite un buon tracciamento dei requisiti.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Poiché il modello di ciclo di vita deciso è quello 
+\emph on
+incrementale
+\emph default
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Ciclo di vita), si avranno degli incrementi i quali hanno lo scopo di sviluppar
+e unità software che verranno successivamente integrate tra loro.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+La priorità di sviluppo delle varie unità sarà determinata da una visione
+ “bottom-up”, ovvero si seguirà questa procedura:
+\end_layout
+
+\begin_layout Enumerate
+Prodotte principalmente le unità di codice con livello minore di dipendenza
+ dalle altre, per ridurre la produzione di 
+\bar under
+driver
+\bar default
+ per l'attività di test
+\end_layout
+
+\begin_layout Enumerate
+Ogni unità dovrà compilare correttamente
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Le unità in questione non dovranno provocare warning.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ogni unità deve essere sottoposta ad analisi statica (vedasi sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tecniche"
+
+\end_inset
+
+) mediante i software che si è deciso di adottare (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Ambiente di verifica e validazione)
+\end_layout
+
+\begin_layout Enumerate
+Se richiesta l'esecuzione di prova, si effettueranno i test funzionali (
+\bar under
+black-box
+\bar default
+) 
+\end_layout
+
+\begin_layout Enumerate
+Se richiesto, si effettueranno test strutturali (
+\bar under
+white-box
+\bar default
+) (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Analisi dinamica), supportati dagli strumenti che si è deciso di adottare
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Ambiente di verifica e validazione)
+\end_layout
+
+\begin_layout Standard
+\noindent
+Nel caso si riscontrino malfunzionamenti dopo una integrazione sarà necessario:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Individuare l’unità responsabile del malfunzionamento
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Ripristinare l’ultima versione stabile del sistema, avvisando il Programmatore
+ che ha introdotto il problema e il Responsabile
+\end_layout
+
+\begin_layout Itemize
+\noindent
+Se il compilatore non genera errori dopo l'integrazione di una nuova unità,
+ si effettueranno test di integrazione descritti nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Test-di-Integrazione"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ci si aspetta che, dall’attuazione di una buona codifica, associata a un
+ buon metodo di verifica, il software raggiunga le seguenti qualità:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Robustezza:
+\series default
+ poiché il software è destinato anche a persone con limitate conoscenze
+ informatiche, deve essere capace di sopportare ingressi errati.
+ Mediante i test, si dovrà verificare che il software resti stabile anche
+ con input errati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Efficienza:
+\series default
+ per dare un riscontro veloce con l’utente, per migliorarne l’usabilità,
+ il software deve essere efficiente in termini di tempo.
+ I Verificatori valuteranno questa qualità tramite l’uso di test automatizzati
+\end_layout
+
+\begin_layout Subsubsection
+Attività di Collaudo
+\end_layout
+
+\begin_layout Standard
+Oltre a dover soddisfare gli obiettivi qualitativi generali definiti nella
+ sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verifica-generale-dei-documenti"
+
+\end_inset
+
+, si effettueranno dei test di accettazione sui requisiti definiti nella
+ appendice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Pianificazione-ed-esecuzione"
+
+\end_inset
+
+, e ci si assicurerà che non si presentino malfunzionamenti durante l’utilizzo
+ del prodotto.
+\end_layout
+
+\begin_layout Standard
+La strategia di verifica adottata è descritta nella sezione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tecniche"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Verranno testati:
+\end_layout
+
+\begin_layout Itemize
+Il corretto funzionamento del programma 
+\end_layout
+
+\begin_layout Itemize
+La facilità da parte dell’utente di compiere le operazioni per cui il software
+ si è posto il compito
+\end_layout
+
+\begin_layout Standard
+Tramite i giudizi degli utenti valuteremo l’usabilità del prodotto 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Per il soddisfacimento dei requisiti di qualità definiti nel documento Analisi
+ dei Requisiti, si adotteranno tecniche di walkthrough e inspection.
+ 
+\end_layout
+
+\begin_layout Standard
+Per il soddisfacimento dei vincoli sarà effettuata una prova ad hoc.
+ Una volta terminato il 
+\bar under
+beta-test
+\bar default
+ si passerà alla Revisione di Accettazione.
+ 
+\end_layout
+
+\begin_layout Standard
+La buona riuscita di questa attività porterà al raggiungimento della seguente
+ qualità:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Affidabilità:
+\series default
+ i portatori di interesse si aspettano che il software funzioni correttamente.
+ I Verificatori valuteranno questa caratteristica eseguendo personalmente
+ le funzionalità del prodotto
+\end_layout
+
+\begin_layout Subsection
+Risorse necessarie e risorse disponibili
+\end_layout
+
+\begin_layout Standard
+Tali risorse serviranno per la realizzazione del progetto, esse sono distinte
+ in risorse umane e risorse tecnologiche.
+ Le risorse umane sono costituite dalle figure di Responsabile, Responsabile
+ standard, Amministratore, Analista, Progettista, Verificatore, Programmatore
+\family typewriter
+ (
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Ruoli).
+ Le risorse tecnologiche che serviranno per lo sviluppo del progetto sono
+ i 
+\bar under
+pc
+\bar default
+ dei singoli componenti del gruppo, dotati della strumentazione software
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Ambiente di verifica e validazione).
+ 
+\end_layout
+
+\begin_layout Subsection
+Strumenti
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Strumenti"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I software che si utilizzeranno per facilitare e automatizzare l’attività
+ di Verifica e Validazione sono descritti nel documento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Ambiente di verifica e validazione.
+\end_layout
+
+\begin_layout Subsection
+Tecniche
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Tecniche"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I Verificatori dovranno adottare le seguenti tecniche di analisi dove è
+ richiesto:
+\end_layout
+
+\begin_layout Itemize
+Analisi statica (vedasi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Analisi-statica"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Analisi dinamica (vedasi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Analisi-dinamica"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+Analisi statica
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Analisi-statica"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tipologia di analisi che non richiede l’esecuzione del codice e si può applicare
+ ad ogni prodotto, non solo al codice.
+\end_layout
+
+\begin_layout Standard
+Per la verifica di prodotti semplici si può ricorrere ai metodi di lettura
+ (desk check), distinti in: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inspection
+\series default
+: lettura mirata all’individuazione di un errore presupposto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Walkthrough
+\series default
+: lettura a largo spettro per rilevamento di errori non presupposti
+\end_layout
+
+\begin_layout Standard
+Per effettuare analisi statica sulle unità di codice si ricorre a metodi
+ formali
+\family typewriter
+ (
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Analisi statica), che dimostrano una certa proprietà del prodotto.
+\end_layout
+
+\begin_layout Standard
+Nelle prime fasi del progetto si adotterà principalmente la tecnica walkthrough.
+ 
+\end_layout
+
+\begin_layout Standard
+Gli errori rilevati più frequentemente, dai Verificatori e dal committente,
+ forniranno al gruppo esperienza, per consentire successivamente, nelle
+ attività di verifica, di utilizzare una tecnica di inspection per l’individuazi
+one di tali errori.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Analisi dinamica 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Analisi-dinamica"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tipologia di analisi che richiede l’esecuzione del codice, che si distingue
+ in:
+\end_layout
+
+\begin_layout Itemize
+Unità
+\end_layout
+
+\begin_layout Itemize
+Aggregato
+\end_layout
+
+\begin_layout Itemize
+Sistema completo
+\end_layout
+
+\begin_layout Standard
+Le esecuzioni che applicano analisi dinamica sono denominate test o prove.
+ 
+\end_layout
+
+\begin_layout Standard
+Le tecniche che si utilizzeranno per svolgere i test sono le seguenti:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Test di unità
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Test di integrazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Test di regressione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Test di sistema e collaudo
+\end_layout
+
+\begin_layout Standard
+Per ulteriori chiarimenti riguardanti i test consultare il documento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Analisi dinamica.
+\end_layout
+
+\begin_layout Standard
+Si inizierà col effettuare test sulle singole unità del sistema, e, una
+ volta che tali test non riscontrano problematiche, saranno integrate per
+ svolgerne altri che verificheranno le interazioni tra queste unità.
+ 
+\end_layout
+
+\begin_layout Standard
+Infine, si eseguiranno una serie di test di accettazione per accertare il
+ soddisfacimento dei requisiti utente.
+\end_layout
+
+\begin_layout Standard
+Sono previste due modalità di esecuzione:
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+Alpha-test
+\bar default
+: effettuato da persone interne al gruppo.
+ Consiste nella verifica finale del tracciamento dei requisiti, inoltre
+ verrà effettuata una prova di esecuzione che ha come scopo la verifica
+ del corretto funzionamento delle funzionalità del prodotto
+\end_layout
+
+\begin_layout Enumerate
+Beta-test: effettuato da persone esterne al gruppo, consiste nella verifica
+ della funzionalità e fruizione del prodotto
+\end_layout
+
+\begin_layout Standard
+Il processo di test del software ha due obiettivi: 
+\end_layout
+
+\begin_layout Itemize
+Dimostrare allo sviluppatore che il software soddisfa i requisiti 
+\end_layout
+
+\begin_layout Itemize
+Scoprire errori e/o difetti nel software
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ovvero dove il comportamento del software è errato, indesiderato o non conforme
+ alle sue specifiche.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Procedure dei test
+\end_layout
+
+\begin_layout Standard
+I passi per effettuare test sono:
+\end_layout
+
+\begin_layout Enumerate
+Definizione del test sul componente 
+\end_layout
+
+\begin_layout Enumerate
+Preparazione del caso di prova
+\end_layout
+
+\begin_layout Enumerate
+Esecuzione del test sul componente
+\end_layout
+
+\begin_layout Enumerate
+Analisi dei risultati ottenuti con quelli attesi 
+\end_layout
+
+\begin_layout Enumerate
+Verifica dei risultati
+\end_layout
+
+\begin_layout Paragraph
+Definizione del test sul componente
+\end_layout
+
+\begin_layout Itemize
+Se è un componente attivo, e non sono state ancora prodotte le componenti
+ passive pilotate da tale componente, il test dovrà definire gli 
+\bar under
+stub
+\bar default
+ necessari
+\end_layout
+
+\begin_layout Itemize
+Se è un componente passivo e non sono state ancora prodotte le componenti
+ attive che pilotano il componente soggetto a test, il test dovrà definire
+ i driver necessari 
+\end_layout
+
+\begin_layout Subsubsection*
+Preparazione del caso di prova
+\end_layout
+
+\begin_layout Standard
+L’esecuzione del test deve avvenire in un definito ambiente, con dati in
+ ingresso controllati, e devono essere definiti gli output attesi.
+\end_layout
+
+\begin_layout Standard
+I dati in input devono essere distinti in 3 classi di equivalenza:
+\end_layout
+
+\begin_layout Itemize
+Interni al dominio
+\end_layout
+
+\begin_layout Itemize
+Al limite del dominio 
+\end_layout
+
+\begin_layout Itemize
+Al di fuori del dominio
+\end_layout
+
+\begin_layout Paragraph
+Verifica dei risultati
+\end_layout
+
+\begin_layout Itemize
+Se i risultati ottenuti differiscono da quelli attesi, si comunicheranno
+ gli errori tramite i ticket, successivamente si correggeranno gli errori
+ e si dovrà rieseguire il test
+\end_layout
+
+\begin_layout Itemize
+Se i risultati ottenuti non differiscono da quelli attesi, si procederà
+ con la registrazione dei risultati
+\end_layout
+
+\begin_layout Subsection
+Metodi
+\end_layout
+
+\begin_layout Standard
+Poter garantire un software di qualità, capace quindi di soddisfare le proprietà
+ richieste, è un obiettivo di fondamentale importanza, reso possibile allocando
+ risorse per effettuare controllo sul prodotto.
+ 
+\end_layout
+
+\begin_layout Standard
+Tuttavia le risorse sono limitate e comportano dei costi, e quindi è importante
+ saperle gestire in modo da mantenere un buon rapporto fra qualità del prodotto
+ e risorse necessarie.
+\end_layout
+
+\begin_layout Standard
+Pertanto, in base alla complessità del prodotto, e alle caratteristiche
+ che esso deve avere, il 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NOMEGRUPPO}
+\end_layout
+
+\end_inset
+
+ adotterà le seguenti tipologie di analisi statica:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi di flusso di controllo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi di flusso dei dati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi di flusso di informazione
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Verifica formale del codice
+\end_layout
+
+\begin_layout Standard
+Tali metodologie vengono definite nel documento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Analisi statica.
+\end_layout
+
+\begin_layout Subsection
+Misure e metriche
+\end_layout
+
+\begin_layout Standard
+Le misure rilevate dal processo di verifica, che permettono di ottenere
+ informazioni quantitative relative ai prodotti di ogni processo produttivo
+ (sia esso progettuale o di codifica), devono essere stabilite a priori
+ quando si hanno sufficienti conoscenze dell'argomento.
+\end_layout
+
+\begin_layout Standard
+Qualora ci fossero metriche, ancora incerte e approssimative, si dovrà cercare
+ di stabilirle il più precisamente possibile durante il corso della progettazion
+e e realizzazione del prodotto, attraverso l'analisi di ciò che sarà stato
+ realizzato fino a quel momento.
+ Le tipologie di metriche che adotteremo sono:
+\end_layout
+
+\begin_layout Itemize
+Complessità ciclomatica
+\end_layout
+
+\begin_layout Itemize
+Numero di parametri
+\end_layout
+
+\begin_layout Itemize
+Volume di Halstead
+\end_layout
+
+\begin_layout Itemize
+Numero di livelli di annidamento
+\end_layout
+
+\begin_layout Itemize
+Numero di variabili locali
+\end_layout
+
+\begin_layout Itemize
+Grado di accoppiamento
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Indice di utilità
+\end_layout
+
+\begin_layout Itemize
+Indice di dipendenza
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Tali metriche, con corrispettive misurazioni, vengono definite nel documento
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+NdP}
+\end_layout
+
+\end_inset
+
+, sez.
+ Metriche.
+\end_layout
+
+\end_body
+\end_document

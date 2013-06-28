@@ -1,0 +1,87 @@
+%% NON MODIFICARE QUESTE IMPOSTAZIONI
+\date{}
+\usepackage[latin9]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{ucs}
+\usepackage{lastpage}
+\usepackage{longtable}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[labelfont=bf, tableposition=below]{caption}
+
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\setcounter{table}{-2}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\setlength{\parindent}{0pt}
+
+\fancypagestyle{frontmatter}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{.4pt}% Header rule
+  \renewcommand{\footrulewidth}{.4pt}% Footer rule
+
+  \lhead{\setlength{\unitlength}{1mm}
+    \begin{picture}(0,0)
+      \put(5,0){\includegraphics[scale=0.20]{img/logoBW}}
+    \end{picture}
+  }
+  \rhead{\PROGETTO}
+  \lfoot{\DOCUMENTO  \VERSIONE}
+}
+\fancypagestyle{mainmatter}{
+  \clearpage
+  \rfoot{\thepage\ di \pageref{LastPage}}
+  \setcounter{page}{1}
+}
+
+%%Comandi particolari per i nomi delle figure. Chiamare come una funzione LaTeX
+\newcommand{\PROGETTO}{\bf{MyTalk}}
+\newcommand{\NOMEGRUPPO}{gruppo \emph{Clockwork}}
+\newcommand{\PROPONENTIPROG}{Zucchetti SPA}
+\newcommand{\COMMITENTIPROG}{Prof. Tullio Vardanega}
+\newcommand{\SUBTITLE}{Sofware di comunicazione tra utenti senza requisiti di installazione}
+\newcommand{\MAIL}{clockworkTeam7@gmail.com}
+
+\newcommand{\GIACOMO}{Bain Giacomo}
+\newcommand{\MARCO}{Ceseracciu Marco}
+\newcommand{\VALENTINO}{Furlan Valentino}
+\newcommand{\JESSICA}{Gavagnin Jessica}
+\newcommand{\AGOSTINO}{La Bruna Agostino}
+\newcommand{\MARIA}{Palmisano Maria Antonietta}
+\newcommand{\PARDIS}{Zohouri Haghian Pardis}
+
+
+\newcommand{\NdP}{\texttt{Norme\_di\_Progetto\_v3.0.pdf}}
+\newcommand{\SdF}{\texttt{Studio\_di\_Fattibilità\_v1.0.pdf}}
+\newcommand{\AdR}{\texttt{Analisi\_dei\_Requisiti\_v3.0.pdf}}
+\newcommand{\Gl}{\texttt{Glossario\_v2.0.pdf}}
+\newcommand{\PdP}{\texttt{Piano\_di\_Progetto\_v3.0.pdf}}
+\newcommand{\PdQ}{\texttt{Piano\_di\_Qualifica\_v3.0.pdf}}
+\newcommand{\ST}{\texttt{Specifica\_Tecnica\_v2.0.pdf}}
+\newcommand{\DdP}{\texttt{Definizione\_di\_Prodotto\_v1.0.pdf}}
+
+
+%%DA QUI IN POI POTETE MODIFICARE
+
+\newcommand{\DOCUMENTO}{Esito dei Test }
+\newcommand{\CREAZIONE}{2013/04/15}	%data di creazione
+\newcommand{\ULTIMAMOD}{2013/06/03}	%data di ultima modifica
+\newcommand{\USODOC}{Esterno}		%Interno, Esterno
+\newcommand{\VERSIONE}{v 1.0 }
+
+\newcommand{\REDATTORI}{\MARIA \\ \JESSICA \\ \MARCO \\}
+\newcommand{\VERIFICATORI}{\PARDIS \\ \AGOSTINO \\}
+\newcommand{\APPROVATORE}{\GIACOMO}
+
+
+%%INSERIRE LA LISTA DI DISTRIBUZIONE DEL DOCUMENTO 
+\newcommand{\LISTADISTRIB}{ \NOMEGRUPPO \\ \PROPONENTIPROG \\ \COMMITENTIPROG }
+
+%%INSERIRE IL SOMMARIO DEL DOCUMENTO
+\newcommand{\SOMMARIO}{Questo documento raggruppa i risultati della campagna di test sul prodotto {\PROGETTO}.}

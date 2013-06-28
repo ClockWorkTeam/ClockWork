@@ -1,0 +1,180 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Attività di Codifica
+\end_layout
+
+\begin_layout Standard
+Si dovranno seguire tali norme per aiutare l'attività di verifica del codice:
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Iterazioni:
+\series default
+ ove si useranno, si imporrà un limite superiore statico
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Allocazioni di memoria: 
+\series default
+non si useranno dopo l'inizializzazione
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Sottoprogrammi/sottoprocedure:
+\series default
+ non dovranno superare le 60 righe di codice
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Tali righe saranno contate escludendo la riga di comando e la riga di dichiarazi
+one.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Asserzioni: 
+\series default
+si utilizzeranno almeno 2 asserzioni per sottoprogramma
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Data hiding: 
+\series default
+si utilizzerà il massimo livello
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Variabili globali:
+\series default
+ non si utilizzeranno
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Lettura di variabili:
+\series default
+ sarà effettuata solo tramite metodi 
+\emph on
+get
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Scrittura di variabili:
+\series default
+ sarà effettuata solo dai metodi 
+\emph on
+set
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Parametri in input e output:
+\series default
+ ad ogni livello bisognerà verificare che i parametri siano validi, in caso
+ contrario, agire di conseguenza
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Compilazione:
+\series default
+ i file devono essere subito compilati; non dovranno esservi presenti warning,
+ e utilizzeranno la pratica del 
+\emph on
+continuous integration
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Return:
+\series default
+ nei metodi dovrà essere presente un solo return
+\end_layout
+
+\end_body
+\end_document
