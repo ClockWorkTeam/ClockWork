@@ -290,7 +290,13 @@ Svantaggi:
 
 \begin_deeper
 \begin_layout Itemize
-Non supporta l'architettura MVP
+Rimuovendo una vista viene rimosso anche il relativo elemento nel DOM, rendendo
+ necessario il reinserimento manuale
+\end_layout
+
+\begin_layout Itemize
+Le viste, anche se rimosse, non vengono deallocate se non vengono rimossi
+ anche gli eventi collegati ad esse
 \end_layout
 
 \end_deeper
