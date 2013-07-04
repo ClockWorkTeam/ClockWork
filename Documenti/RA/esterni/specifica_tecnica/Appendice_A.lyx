@@ -1,0 +1,881 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\start_of_appendix
+Backbone.js
+\end_layout
+
+\begin_layout Standard
+Backbone.js nasce come libreria di sviluppo per DocumentCloud, un servizio
+ di condivisione e analisi di documenti, e viene rilasciata come progetto
+ standalone verso la fine del 2010.
+\end_layout
+
+\begin_layout Standard
+Fin da subito gli obiettivi principali di Jeremy Ashkenas, lo sviluppatore
+ principale, sono di realizzare una libreria minimale in grado di fornire
+ degli strumenti di base per organizzare le proprie applicazioni e di poterla
+ usare sia in ambiente browser che server (principalmente con Node.js).
+\end_layout
+
+\begin_layout Standard
+Backbone si focalizza nel fornire metodi utili per manipolare e visualizzare
+ i dati presenti nell'applicazione.
+\end_layout
+
+\begin_layout Standard
+Per la sua architettura, Backbone.js rientra nella categoria delle librerie
+ MV*, in quanto implementa Model e View, ma non ha un componente Controller
+ tradizionale, delegandone i compiti alle View.
+ Questo approccio è abbastanza diffuso in ambito JavaScript, dove la diversa
+ e più complessa gestione dell’interazione utente e dello stato dell’applicazion
+e non si adattano bene ai compiti di un controller.
+\end_layout
+
+\begin_layout Standard
+I componenti base di Backbone.js sono:
+\end_layout
+
+\begin_layout Itemize
+Backbone.Model: modelli 
+\end_layout
+
+\begin_layout Itemize
+Backbone.Collection: liste di modelli 
+\end_layout
+
+\begin_layout Itemize
+Backbone.View: view 
+\end_layout
+
+\begin_layout Itemize
+Backbone.Router: routing e gestione centralizzata dello stato dell’applicazione
+ 
+\end_layout
+
+\begin_layout Standard
+È inoltre disponibile un’interfaccia PubSub con Backbone.Events nonché un
+ sistema basilare di templating.
+\end_layout
+
+\begin_layout Subsection
+Backbone.Model
+\end_layout
+
+\begin_layout Standard
+Il Model di Backbone.js rappresenta un oggetto discreto contenente una serie
+ di dati sotto forma di attributi.
+\end_layout
+
+\begin_layout Standard
+In una comune applicazione non strutturata, le interazioni dell’utente (ad
+ esempio la digitazione e l’invio dei dati) di solito coinvolgono direttamente
+ l’interfaccia e quindi, solo quando necessario, chiamano in causa un qualche
+ layer di validazione e salvataggio dei dati.
+ In un’applicazione Backbone.js, invece, l’interazione modifica prima lo
+ stato di un model scatenando quindi la reazione della view che si aggiorna
+ di conseguenza.
+\end_layout
+
+\begin_layout Standard
+Il metodo extend() accetta un oggetto di proprietà e funzioni con il quale
+ sovrascrivere le funzionalità di base.
+ Ad esempio potremmo impostare degli attributi di default, la funzione di
+ inizializzazione, e un paio di metodi personalizzati:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var Todo = Backbone.Model.extend({ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  //attributi di default del model 
+\end_layout
+
+\begin_layout Plain Layout
+
+  defaults: { 
+\end_layout
+
+\begin_layout Plain Layout
+
+    content: "todo vuoto...", 
+\end_layout
+
+\begin_layout Plain Layout
+
+    done: false 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  initialize: function() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (!this.get("content")) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+      //assicuriamoci che il todo abbia un contenuto
+\end_layout
+
+\begin_layout Plain Layout
+
+      this.set({"content": this.defaults.content}); 
+\end_layout
+
+\begin_layout Plain Layout
+
+    } 
+\end_layout
+
+\begin_layout Plain Layout
+
+  },
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  toggle: function() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+    var currentDone = this.get("done"); 
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.set({done: !currentDone});
+\end_layout
+
+\begin_layout Plain Layout
+
+  }, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  clear: function() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+    //distrugge il model 
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.destroy(); 
+\end_layout
+
+\begin_layout Plain Layout
+
+  } 
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il metodo extend() permette di aggiungere proprietà e metodi personalizzati
+ al costrutture del modello.
+ Alcune chiavi sono tuttavia speciali e vengono distinte dalle altre.
+ Ad esempio .defaults, è un oggetto con la lista degli attributi accettati
+ e i rispettivi valori predefiniti.
+\end_layout
+
+\begin_layout Subsection
+Backbone.Collection
+\end_layout
+
+\begin_layout Standard
+Una collection è un oggetto contenente una raccolta di modelli dello stesso
+ tipo, attraverso il quale è possibile, ordinare, filtrare e manipolare
+ i modelli contenuti.
+\end_layout
+
+\begin_layout Standard
+Come per Backbone.Model, il costruttore può essere esteso con metodi e proprietà
+ personalizzati.
+ Solitamente basta indicare il model di riferimento e l’URL con la quale
+ Backbone.js comunicherà per le operazioni di CRUD con il server.
+ Nel nostro caso abbiamo usato '#' per disabilitare completamente la funzionalit
+à.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var TodoList = Backbone.Collection.extend({ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  //model di riferimento   
+\end_layout
+
+\begin_layout Plain Layout
+
+  model: Todo,  
+\end_layout
+
+\begin_layout Plain Layout
+
+  url: '#', 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Backbone.View
+\end_layout
+
+\begin_layout Standard
+A differenza di quanto potremmo pensare, le view in Backbone.js non contengono
+ markup HTML, bensì fungono da tramite fra l’interfaccia ed i modelli, definendo
+ne la logica di interazione.
+ La parte di templating vero e proprio è demandata ad un sistema esterno.
+\end_layout
+
+\begin_layout Standard
+Per realizzare la view di un singolo todo, estenderemo Backbone.View.
+ Ecco il codice necessario:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var TodoView = Backbone.View.extend({    
+\end_layout
+
+\begin_layout Plain Layout
+
+  //il tag creato dalla vista  
+\end_layout
+
+\begin_layout Plain Layout
+
+  tagName:  "li",
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  el: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  // ID dello script che contiene la vista    
+\end_layout
+
+\begin_layout Plain Layout
+
+  template: '#item-template',  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  // Gli eventi e gli elementi collegati.
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+  events: {      
+\end_layout
+
+\begin_layout Plain Layout
+
+    "click .check"              : "toggleDone",  
+\end_layout
+
+\begin_layout Plain Layout
+
+    "click span.todo-destroy"   : "clear"     
+\end_layout
+
+\begin_layout Plain Layout
+
+  },
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  initialize: function() {         
+\end_layout
+
+\begin_layout Plain Layout
+
+    //precompilo il template     
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.template = _.template($(this.template).html());   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    //forzo il contesto di questi metodi della view
+\end_layout
+
+\begin_layout Plain Layout
+
+    _.bindAll(this, 'render', 'remove');   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    //resto in ascolto per cambiamenti dell'attributo done
+\end_layout
+
+\begin_layout Plain Layout
+
+    //se cambia, ristampo il template del modello  
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.model.bind('change:done', this.render); 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }, 
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+  //metodo che stampa l'HTML della view     
+\end_layout
+
+\begin_layout Plain Layout
+
+  render: function() {         
+\end_layout
+
+\begin_layout Plain Layout
+
+    //estraggo gli attributi del modello         
+\end_layout
+
+\begin_layout Plain Layout
+
+    var data = this.model.toJSON();           
+\end_layout
+
+\begin_layout Plain Layout
+
+    //li inietto nell'elemento della view  
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.$el.html(this.template());
+\end_layout
+
+\begin_layout Plain Layout
+
+    //restituisco this per permettere 
+\end_layout
+
+\begin_layout Plain Layout
+
+    //la concatenazione dei metodi                   
+\end_layout
+
+\begin_layout Plain Layout
+
+    return this;     
+\end_layout
+
+\begin_layout Plain Layout
+
+  },
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  //metodo lanciato quando clicco     
+\end_layout
+
+\begin_layout Plain Layout
+
+  //sul checkbox con classe .check     
+\end_layout
+
+\begin_layout Plain Layout
+
+  toggleDone: function() {         
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.model.toggle();     
+\end_layout
+
+\begin_layout Plain Layout
+
+  },
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\end_layout
+
+\begin_layout Plain Layout
+
+  //metodo lanciato quando clicco      
+\end_layout
+
+\begin_layout Plain Layout
+
+  //sul pulsante con classe .todo-destroy     
+\end_layout
+
+\begin_layout Plain Layout
+
+  clear: function() {         
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.model.clear();     
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+});   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//inizializzo la vista 
+\end_layout
+
+\begin_layout Plain Layout
+
+var todoVista = new TodoView({     
+\end_layout
+
+\begin_layout Plain Layout
+
+  model : todoSpesa 
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anzitutto abbiamo definito un tag contenitore per il template con .tagName.
+ Quindi abbiamo definito una serie di eventi DOM con .events: l’oggetto ha
+ come chiave l’evento da ascoltare ed eventualmente il selettore CSS sul
+ quale dev’essere applicato, mentre come valore ha un metodo della view.
+\end_layout
+
+\begin_layout Standard
+La maggior parte del lavoro avviene nel metodo .initialize().
+ Qui anzitutto precompiliamo il template, andando a leggere il contenuto
+ di un tag script presente nel documento ma non interpretato dal browser
+ avendo un attributo type impostato su 'text/template'.
+ A questo punto utilizziamo _.bindAll() di Underscore, per assicurarci che
+ il contesto dei metodi .render() e .remove() della vista non vengano persi.
+ I contesti dei metodi delegati con .events sono forzati automaticamente.
+\end_layout
+
+\begin_layout Standard
+Il metodo .render() è responsabile della conversione in HTML dei dati del
+ modello.
+ Per fare questo, esportiamo gli attributi in un oggetto JSON, li passiamo
+ al template precompilato in precedenza ed iniettiamo il risultato nel tag
+ contenitore.
+\end_layout
+
+\begin_layout Standard
+Gli altri due metodi, .toggleDone() e .clear() servono da tramite fra gli
+ eventi dell’interfaccia e il modello.
+ Da notare che, contrariamente a quanto potremmo pensare, non modificano
+ direttamente la view.
+\end_layout
+
+\begin_layout Subsection
+Backbone.Router
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Dato che, da capitolato, ci è chiesto di creare un'applicazione su una singola
+ pagina web i Router di Backbone.js non verranno utilizzati in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+PROGETTO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il Router di Backbone.js ci permette di ottenere un’applicazione che risiede
+ completamente in una singola pagina, ma che tuttavia da la possibilità
+ di navigare fra le proprie viste come si farebbe con un’applicazione web
+ tradizionale.
+\end_layout
+
+\begin_layout Standard
+Oltre all’indubbio vantaggio di eliminare i tempi di attesa durante il caricamen
+to della pagina e di dare più scorrevolezza all’interazione, un’applicazione
+ di questo tipo simula anche il cambiamento di pagina aggiornando l’URL
+ della pagina nella barra degli indirizzi.
+ 
+\end_layout
+
+\begin_layout Standard
+Vediamo un esempio:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var TodoRoute = Backbone.Router.extend({       
+\end_layout
+
+\begin_layout Plain Layout
+
+  routes : {
+\end_layout
+
+\begin_layout Plain Layout
+
+ //questa è la route corrispondente all'home dell'applicazione
+\end_layout
+
+\begin_layout Plain Layout
+
+    '' : 'defaultPage',
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    //una route parametrica
+\end_layout
+
+\begin_layout Plain Layout
+
+    'todo/:id' : anotherPage(id) {   
+\end_layout
+
+\begin_layout Plain Layout
+
+      //id può essere utilizzato
+\end_layout
+
+\begin_layout Plain Layout
+
+      //per ricavare un todo particolare dal database
+\end_layout
+
+\begin_layout Plain Layout
+
+    }     
+\end_layout
+
+\begin_layout Plain Layout
+
+  },       
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  defaultPage : function () {
+\end_layout
+
+\begin_layout Plain Layout
+
+   //qui la funzione di         
+\end_layout
+
+\begin_layout Plain Layout
+
+  //inizializzazione dell'applicazione     
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+jQuery(function ($) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  var todoRoute = new TodoRoute();
+\end_layout
+
+\begin_layout Plain Layout
+
+  Backbone.history.start({ pushState : true}); 
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+todoRoute.navigate('todo/1');
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con il codice qui sopra abbiamo realizzato un router con due percorsi: la
+ home con la lista completa dei todo, ed una pagina in cui mostrare un singolo
+ record, identificato dal parametro id.
+\end_layout
+
+\begin_layout Standard
+Dopo aver inizializzato il router, abbiamo abilitato la gestione delle routes
+ e della navigazione con Backbone.history.start() che ci permette di navigare
+ fra le pagine dell’applicazione.
+ Il parametro {pushStart : true}, infine, abilita HTML5 History nei browser
+ che lo supportano.
+\end_layout
+
+\begin_layout Standard
+A questo punto per navigare nell’applicazione potremo sia utilizzare i normali
+ attributi href dei link, oppure navigare sfruttare il metodo .navigate()
+ del router.
+\end_layout
+
+\begin_layout Subsection
+Backbone.Events
+\end_layout
+
+\begin_layout Standard
+Backbone mette a disposizione un sistema che consente di legare un oggetto
+ ad uno o più eventi, in modo da poter lanciare delle funzioni quando questi
+ si verificano.
+\end_layout
+
+\end_body
+\end_document
