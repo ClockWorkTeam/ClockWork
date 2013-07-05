@@ -61,35 +61,145 @@
 \begin_body
 
 \begin_layout Section
-Attività di Progettazione in Dettaglio 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Attività-di-Progettazione"
+Norme per i Test
+\end_layout
 
-\end_inset
-
-
+\begin_layout Subsection
+Identificazione dei test
 \end_layout
 
 \begin_layout Standard
-L'attività di progettazione in dettaglio deve essere effettuata tenendo
- conto delle seguenti linee guida:
+Si seguiranno tali formalismi per indicare i test:
 \end_layout
 
 \begin_layout Itemize
-Definizione dei moduli: il carico di lavoro per lo sviluppo di un modulo
- deve essere realizzabile per un singolo programmatore
+TS: test di sistema, seguito dal nome del requisito a cui si riferisce.
+ Se un requisito necessita di più test differenti, verranno differenziati
+ aggiungendo una lettera, in ordine alfabetico
 \end_layout
 
 \begin_layout Itemize
-Ogni modulo deve essere un sottosistema definito, completo di tipi, dati
- e funzionalità fornite
+TI: test di integrazione, seguito da un elenco puntato di numeri interi
+ del tipo 
+\emph on
+a.b.c...n
+\emph default
+, dove la profondità 
+\emph on
+n
+\emph default
+ è arbitraria a seconda del caso.
+ La posizione dei numeri indica il livello di integrazione che il test deve
+ andare a verificare, il suo valore ne indica l'identificativo
 \end_layout
 
 \begin_layout Itemize
-Ogni modulo deve essere associato ad uno o più requisiti.
- Questo è possibile tracciando i moduli coi rispettivi componenti definiti
- nel documento di Specifica Tecnica
+TU: test di unità, seguito da una coppia di valori 
+\emph on
+x.y
+\emph default
+, ove
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+X: rappresenta l'identificativo dell'unità sottoposta a test
+\end_layout
+
+\begin_layout Itemize
+Y: identifica il caso di test
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Alpha-test
+\end_layout
+
+\begin_layout Standard
+Quando dovrà essere eseguito l'
+\bar under
+alpha-test
+\bar default
+, tutti i membri del gruppo dovranno essere presenti
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ogni assenza deve essere giustificata al Responsabile.
+\end_layout
+
+\end_inset
+
+.
+ I Verificatori dovranno eseguire i test di sistema descritti nel 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+ e sono tenuti ad individuare ogni malfunzionamento e, tramite un ticket
+ che descriva il malfunzionamento e la porzione di codice dove è stato rilevato
+ il malfunzionamento, segnalarlo ai Programmatori responsabili della codifica
+ delle unità software difettose.
+\end_layout
+
+\begin_layout Standard
+L'alpha-test deve essere supervisionato dal Responsabile, che annoterà i
+ lavori richiesti per correggere gli errori riscontrati.
+\end_layout
+
+\begin_layout Subsection
+Beta-test
+\end_layout
+
+\begin_layout Standard
+Poiché al beta-test devono essere presenti tutti i membri del gruppo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ogni assenza deve essere giustificata al Responsabile.
+\end_layout
+
+\end_inset
+
+ e i proponenti, la data e il luogo del beta-test saranno decisi dal Responsabil
+e di Progetto, accordandosi coi proponenti.
+\end_layout
+
+\begin_layout Standard
+Al beta-test verrà chiesto ai proponenti di effettuare i test di sistema
+ definiti nel 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+.
+ Ai proponenti verranno descritti gli obiettivi e i risultati attesi dei
+ test, e saranno fornite le istruzioni basilari per l'utilizzo del software.
+\end_layout
+
+\begin_layout Standard
+Un membro del gruppo verrà nominato per annotare i commenti riguardo l'uso
+ del prodotto o di eventuali malfunzionamenti rilevati dal proponente.
+ Al termine del test tale membro dovrà redigere il verbale della giornata
+ dedicata al beta-test e dovrà aprire un ticket per ogni malfunzionamento
+ riscontrato, assegnandolo al Programmatore responsabile.
 \end_layout
 
 \end_body
