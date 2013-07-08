@@ -103,7 +103,7 @@ Servizi di comunicazione
 \end_layout
 
 \begin_layout Subsection
-Server
+Database
 \end_layout
 
 \begin_layout Standard
@@ -122,40 +122,54 @@ PROGETTO}
 
  è iniziato, era richiesto un database leggero, di conseguenza è stato utilizzat
 o SQLite.
-\end_layout
-
-\begin_layout Standard
-Si è deciso dunque di implementare nel package mytalk.server.dao la classe
+ Si è deciso dunque di implementare nel package mytalk.server.dao la classe
  JavaConnectionSQLite, in maniera da accedere al database solamente da una
- classe.
+ classe, tuttavia nel caso si dovesse adottare un database diverso da SQLite
+ basterà sostituire la classe JavaConnectionSQLite con un altra classe che
+ possa connettersi al nuovo database scelto.
 \end_layout
 
 \begin_layout Standard
-Infatti in caso di un futuro cambiamento del database, dovuto a nuove necessità,
- basterà adattare la classe JavaConnectionSQLite per connettersi al nuovo
- database.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/patternDao.pdf
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Estensione database
 \end_layout
 
-\begin_layout Subsubsection
-Gestione dati
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Servizi di comunicazione
 \end_layout
 
 \begin_layout Standard
-La gestione dei dati presenti nel database è effettuata dalle classi presenti
- nel package mytalk.server.dao.
-\end_layout
-
-\begin_layout Standard
-In caso di necessità di apportare dei cambiamenti alla gestione dei dati
- non servirà modificare gli strati superiori, in quanto è stata realizzata
- una interfaccia per ogni classe, così da evitare di dover riadattare tutti
- i moduli con cui il dao interagisce.
-\end_layout
-
-\begin_layout Standard
-La natura multipiattaforma, e la precisa volontà da parte degli sviluppatori
- della tecnologia WebRTC di progettare dei protocolli per farli diventare
- standard rendono 
+Durante la fase di progettazione si è deciso di creare per ogni funzione
+ prevista da 
 \begin_inset ERT
 status open
 
@@ -168,8 +182,146 @@ PROGETTO}
 
 \end_inset
 
- facilmente estensibile, purché si resti all'interno dei limiti delle funzionali
-tà supportate.
+ una classe nel package 
+\family typewriter
+\series bold
+mytalk.client.view
+\family default
+\series default
+ che si occupa di gestire a livello visivo l'operazione, una classe nel
+ package 
+\family typewriter
+\series bold
+mytalk.client.communication
+\family default
+\series default
+ che si occupa di gestire la comunicazione tra cllient e server, ed una
+ classe nel package 
+\family typewriter
+\series bold
+mytalk.server.transfer 
+\family default
+\series default
+che si occupa di gestire la richiesta del client a cui invia una risposta.
+ Se si vuole aggiungere nuove operazioni al progetto 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+ basterà semplicemente aggiungere una classe per ogni package precedentemente
+ elencato.
+ Le figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Aggiunta-funzionalità-al-client"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Aggiunta-funzionalità-al-server"
+
+\end_inset
+
+ illustrano come aggiungere nuove funzionalità al 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+PROGETTO}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Aggiunta funzionalità al client 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Aggiunta-funzionalità-al-client"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Aggiunta funzionalità al server 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Aggiunta-funzionalità-al-server"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
