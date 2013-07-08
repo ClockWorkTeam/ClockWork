@@ -61,200 +61,119 @@
 \begin_body
 
 \begin_layout Section
-Definizione di Prodotto
+Attività di Codifica
 \end_layout
 
 \begin_layout Standard
-Tale documento deve contenere i risultati della progettazione di dettaglio
- (vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Attività-di-Progettazione"
-
-\end_inset
-
-), effettuata sulla base dettata dal documento Specifica Tecnica.
+Si dovranno seguire tali norme per aiutare l'attività di verifica del codice:
+ 
 \end_layout
 
-\begin_layout Standard
-Lo scopo della Definizione di Prodotto deve definire l'architettura di dettaglio
-, individuando i moduli del sistema affinché raggiungano una dimensione,
- complessità, accoppiamento e coesione adeguati allo sviluppo del singolo
- Programmatore.
+\begin_layout Enumerate
+
+\series bold
+Iterazioni:
+\series default
+ ove si useranno, si imporrà un limite superiore statico
 \end_layout
 
-\begin_layout Subsection
-Tracciamento relazione package - componenti - classi 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Tracciamento-relazione-package"
+\begin_layout Enumerate
 
-\end_inset
-
-
+\series bold
+Allocazioni di memoria: 
+\series default
+non si useranno dopo l'inizializzazione
 \end_layout
 
-\begin_layout Standard
-Il tracciamento consiste nell'associare ogni package definito nel nostro
- sistema coi rispettivi componenti di sistema (vedasi 
-\begin_inset ERT
-status open
+\begin_layout Enumerate
 
-\begin_layout Plain Layout
-
-{
-\backslash
-ST}
-\end_layout
-
-\end_inset
-
-, sez.
- Architettura Generale).
- Ad ogni componente deve essere associato l'elenco delle classi che realizzano
- tale componente.
-\end_layout
-
-\begin_layout Subsection
-Struttura del documento
-\end_layout
-
-\begin_layout Standard
-Il documento Definizione di Prodotto dovrà seguire questo schema
+\series bold
+Sottoprogrammi/sottoprocedure:
+\series default
+ non dovranno superare le 60 righe di codice
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Sarà da tenere in considerazione anche delle norme descritte nella sezione
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Documenti"
-
-\end_inset
-
-.
+Tali righe saranno contate escludendo la riga di comando e la riga di dichiarazi
+one.
 \end_layout
 
 \end_inset
 
-:
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Server: 
+Asserzioni: 
 \series default
-sarà suddiviso in:
+si utilizzeranno almeno 2 asserzioni per sottoprogramma
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Package transfer: 
+Data hiding: 
 \series default
-in questa sezione verranno descritte le unità relative al package transfer
+si utilizzerà il massimo livello
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Package usermanager: 
+Variabili globali:
 \series default
-in questa sezione verranno descritte le unità relative al package usermanager
+ non si utilizzeranno
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Package functionmanager: 
+Lettura di variabili:
 \series default
-in questa sezione verranno descritte le unità relative al package functionmanage
-r
+ sarà effettuata solo tramite metodi 
+\emph on
+get
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Package dao: 
+Scrittura di variabili:
 \series default
-in questa sezione verranno descritte le unità relative al package dao
+ sarà effettuata solo dai metodi 
+\emph on
+set
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Package shared: 
+Parametri in input e output:
 \series default
-in questa sezione verranno descritte le unità relative al package shared
+ ad ogni livello bisognerà verificare che i parametri siano validi, in caso
+ contrario, agire di conseguenza
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Client:
+Compilazione:
 \series default
- sarà suddiviso in:
+ i file devono essere subito compilati; non dovranno esservi presenti warning,
+ e utilizzeranno la pratica del 
+\emph on
+continuous integration
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 
 \series bold
-Package communication:
+Return:
 \series default
- in questa sezione verranno descritte le unità relative al package communication
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Package model:
-\series default
- in questa sezione verranno descritte le unità relative al package model
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Package collection:
-\series default
- in questa sezione verranno descritte le unità relative al package collection
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Package view: 
-\series default
-in questa sezione verranno descritte le unità relative al package view
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Diagrammi di sequenza: in questa sezione andranno inseriti i diagrammi di
- sequenza nello standard UML per descrivere particolari interazioni del
- sistema
-\end_layout
-
-\begin_layout Itemize
-Codice sorgente: in questa sezione verrà reso disponibile il codice sorgente
- prodotto
-\end_layout
-
-\begin_layout Itemize
-Tracciamenti: in questa sezione verrà presentato il tracciamento requisiti
- descritto nella sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Tracciamento-relazione-package"
-
-\end_inset
-
-
+ nei metodi dovrà essere presente un solo return
 \end_layout
 
 \end_body
