@@ -61,131 +61,42 @@
 \begin_body
 
 \begin_layout Section
-Ambiente di progetto
-\begin_inset CommandInset label
-LatexCommand label
-name "Ambiente-di-progetto"
-
-\end_inset
-
-
+Attività di Codifica
 \end_layout
 
 \begin_layout Standard
-Nella seguente sezione verrà descritto in dettaglio l'ambiente di sviluppo
- che il 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-NOMEGRUPPO}
-\end_layout
-
-\end_inset
-
- andrà ad utilizzare per lo svolgimento del progetto.
-\end_layout
-
-\begin_layout Subsection
-Ambiente generale
-\end_layout
-
-\begin_layout Standard
-Questa sezione è dedicata a caratteristiche dell'ambiente di progetto che
- si ripercuotono su tutti gli altri ambienti.
-\end_layout
-
-\begin_layout Subsubsection
-Sistema operativo
-\end_layout
-
-\begin_layout Standard
-Il sistema operativo utilizzato durante lo sviluppo del progetto non è vincolant
-e, i vari membri del gruppo avranno libertà di scelta sulla piattaforma
- di sviluppo.
- Inoltre l'utilizzo di SO diversi permetterà di verificare la portabilità
- su più SO.
-\end_layout
-
-\begin_layout Subsection
-Ambientale documentale
-\end_layout
-
-\begin_layout Subsubsection
-Scrittura documenti
-\end_layout
-
-\begin_layout Standard
-Avverrà tramite codice 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-LaTeX
-\end_layout
-
-\end_inset
-
-  utilizzando l'editor LyX (
-\begin_inset Formula $\geqslant2.0$
-\end_inset
-
-), (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.lyx.org
-\end_layout
-
-\end_inset
-
-).
- Verrà creato un documento per ogni capitolo di ogni documento.
- Tali capitoli saranno uniti tramite LyX (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Formattazione-e-copertina"
-
-\end_inset
-
-) generando un  documento in formato PDF.
-\end_layout
-
-\begin_layout Subsubsection
-Verifica ortografica
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Verifica-ortografica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Per la verifica ortografica dei documenti si utilizzeranno
-\series bold
+Si dovranno seguire tali norme per aiutare l'attività di verifica del codice:
  
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Iterazioni:
 \series default
-Hunspell
+ ove si useranno, si imporrà un limite superiore statico
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Allocazioni di memoria: 
+\series default
+non si useranno dopo l'inizializzazione
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Sottoprogrammi/sottoprocedure:
+\series default
+ non dovranno superare le 60 righe di codice
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://hunspell.sourceforge.net/
+Tali righe saranno contate escludendo la riga di comando e la riga di dichiarazi
+one.
 \end_layout
 
 \end_inset
@@ -193,738 +104,76 @@ http://hunspell.sourceforge.net/
 
 \end_layout
 
-\end_inset
+\begin_layout Enumerate
 
- (
 \series bold
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
+Asserzioni: 
 \series default
-1.3.2-4build1) e Enchant
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://abisource.com/projects/enchant/
+si utilizzeranno almeno 2 asserzioni per sottoprogramma
 \end_layout
 
-\end_inset
+\begin_layout Enumerate
 
-
-\end_layout
-
-\end_inset
-
- (
 \series bold
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
+Data hiding: 
 \series default
-1.6.0-7build1), l'utilizzo dei quali avverrà tramite apposito plugin per LyX.
+si utilizzerà il massimo livello
 \end_layout
 
-\begin_layout Standard
-Questa verifica verrà effettuata per ogni capitolo.
+\begin_layout Enumerate
+
+\series bold
+Variabili globali:
+\series default
+ non si utilizzeranno
 \end_layout
 
-\begin_layout Subsubsection
-Pianificazione
-\end_layout
+\begin_layout Enumerate
 
-\begin_layout Standard
-Come supporto alla pianificazione del progetto e realizzazione dei diagrammi
- di Gantt si utilizzerà il software proprietario Microsoft Project 2010.
- Il software, fornito dal servizio 
-\bar under
-MSDNAA
-\bar default
- di Microsoft in collaborazione con l'Università degli studi di Padova,
- permette la pianificazione delle attività legate allo sviluppo del prodotto
- e la gestione delle risorse.
- Tale strumento è compatibile solo con sistemi operativi Windows; in caso
- di necessità si potrà utilizzare una macchina virtuale Windows XP (fornita
- dalla MSDNAA) con installato il programma.
-\end_layout
-
-\begin_layout Subsubsection
-Diagrammi UML
-\end_layout
-
-\begin_layout Standard
-Per la definizione dei grafici UML sarà utilizzato il software ArgoUML (
-\begin_inset Formula $\geqslant0.34$
-\end_inset
-
-), che è stato scelto poiché è open source, multipiattaforma ed è in grado
- di esportare i diagrammi in formato vettoriale.
- 
-\end_layout
-
-\begin_layout Standard
-Si ricorda che ArgoUML non supporta ufficialmente lo standard UML2, dunque
- verrà prestata attenzione nell'espressione delle notazioni grafiche affinché
- rispettino le specifiche 2.0.
-\end_layout
-
-\begin_layout Subsubsection
-Mockup
-\end_layout
-
-\begin_layout Standard
-Per la realizzazione di mockup dell'interfaccia grafica si è scelto di utilizzar
-e il software open source Pencil (
-\begin_inset Formula $\geqslant2.0.3$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsubsection
-Documentazione semi-automatica
-\end_layout
-
-\begin_layout Standard
-Si userà Javadoc (
-\begin_inset Formula $\geqslant1.5$
-\end_inset
-
-), funzionalità di 
-\bar under
-Java
-\bar default
- che permette di creare documentazione relativa ad una porzione di codice
- partendo dai commenti.
-\end_layout
-
-\begin_layout Subsection
-Ambiente di sviluppo
-\end_layout
-
-\begin_layout Subsubsection
-Strumenti di versionamento
-\end_layout
-
-\begin_layout Standard
-Si è deciso di adoperare Git, perché risulta veloce da utilizzare e di facile
- apprendimento.
- Ci appoggeremo al servizio Github (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/
-\end_layout
-
-\end_inset
-
-) che fornisce un repository 
+\series bold
+Lettura di variabili:
+\series default
+ sarà effettuata solo tramite metodi 
 \emph on
-\bar under
-git
-\emph default
-\bar default
-, e gli strumenti utili alla collaborazione fra più persone, come i servizi
- di 
+get
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Scrittura di variabili:
+\series default
+ sarà effettuata solo dai metodi 
 \emph on
-ticket
-\emph default
-, 
+set
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Parametri in input e output:
+\series default
+ ad ogni livello bisognerà verificare che i parametri siano validi, in caso
+ contrario, agire di conseguenza
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Compilazione:
+\series default
+ i file devono essere subito compilati; non dovranno esservi presenti warning,
+ e utilizzeranno la pratica del 
 \emph on
-wiki 
-\emph default
-e 
-\emph on
-milestone.
-
-\emph default
- Per quanto riguarda l'uso di
-\emph on
- git 
-\emph default
-e 
-\emph on
-Github
-\emph default
- sui computer di sviluppo, si è deciso l'uso della versione ufficiale rilasciata
- dal team di sviluppo di 
-\emph on
-git
-\emph default
- (
-\begin_inset Formula $\geqslant1.7.8$
-\end_inset
-
-) e le interfacce grafiche per i rispettivi sistemi operativi:
+continuous integration
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 
-\emph on
-Github for Windows 
-\emph default
-(
-\begin_inset Formula $\geqslant1.0$
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Github for Mac 
-\emph default
-(
-\begin_inset Formula $\geqslant$
-\end_inset
-
-The Snappy, Actually)
-\emph on
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Git-Cola 
-\emph default
-(
-\begin_inset Formula $\geqslant1.4.3.5-1$
-\end_inset
-
-) (Linux)
-\end_layout
-
-\begin_layout Subsubsection
-Ambiente di codifica
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Ambiente-di-codifica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Si userà
 \series bold
- 
+Return:
 \series default
-Geany (
-\begin_inset Formula $\geqslant0.21$
-\end_inset
-
-) per la scrittura del codice HTML5, CSS3 e 
-\bar under
-Javascript.
-
-\bar default
- 
-\end_layout
-
-\begin_layout Standard
-Si utilizzerà l'
-\bar under
-IDE
-\bar default
- multi-linguaggio e multi-piattaforma, Eclipse(
-\series bold
-
-\begin_inset Formula $\geqslant3.8.0$
-\end_inset
-
-
-\series default
-) per Java, che fornisce, nella versione base, alcune funzionalità utili
- di debugging, come l'esecuzione del codice 
-\bar under
-step-by-step
-\bar default
-, l'impostazione di 
-\bar under
-breakpoint
-\bar default
-, visualizzazione dei valori di variabili e strutture dati durante l'esecuzione,
- sospensione e riavvio di 
-\bar under
-thread
-\bar default
- in esecuzione, ecc.
- (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.eclipse.org/
-\end_layout
-
-\end_inset
-
-).
- 
-\end_layout
-
-\begin_layout Subsection
-Ambiente di verifica e validazione 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Ambiente-di-verifica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Di seguito vengono elencati gli strumenti scelti per la verifica e la validazion
-e.
-\end_layout
-
-\begin_layout Standard
-Il gruppo potrà avvalersi dei seguenti strumenti per effettuare i processi
- di verifica:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Hunspell (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-1.3.2-4build1):
-\series default
- vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Verifica-ortografica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Enchant (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-1.6.0-7build1):
-\series default
- vedasi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Verifica-ortografica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Yasca (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-2.1): 
-\series default
-programma open source che permette l'analisi statica del codice HTML (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.scovetta.com/yasca.html
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Chromedriver (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-23.0.1240.0):
-\series default
- plugin per Google Chrome esegue test direttamente sul browser (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://code.google.com/p/chromedriver
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Firebug Lite
-\series default
- 
-\series bold
-(
-\begin_inset Formula $\geqslant\mathbf{1.4}$
-\end_inset
-
-): 
-\series default
-plugin per Google Chrome per l'analisi dinamica (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://getfirebug.com/releases/lite/chrome
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Eclipse (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-3.8.0):
-\series default
- vedasi sezione
-\series bold
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Ambiente-di-codifica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-FindBugs (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-2.0.0): 
-\series default
-plugin per Eclipse, in grado di individuare ed evidenziare staticamente,
- nel codice sorgente, alcuni tra i più comuni errori nella scrittura di
- codice Java (come l'uso di 
-\bar under
-worst practice
-\bar default
-).
- Ogni errore riscontrato verrà analizzato e discusso per valutarne l'eventuale
- modifica correttiva (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://findbugs.sourceforge.net/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-EclEmma (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-2.2.0):
-\series default
- plugin per Eclipse, in grado di verificare automaticamente la copertura
- del codice, sia durante la normale esecuzione, sia durante l'analisi dinamica
- tramite test.
- I test devono coprire il codice sorgente per intero (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.eclemma.org/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Metrics Plugin for Eclipse (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
- 
-\series bold
-1.3.6):
-\series default
- plugin per Eclipse che fornisce informazioni riguardanti le misure statiche
- del codice (vedi sezione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Analisi-statica"
-
-\end_inset
-
- per chiarimenti) come:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Complessità ciclomatica
-\end_layout
-
-\begin_layout Itemize
-Peso delle classi 
-\end_layout
-
-\begin_layout Itemize
-Numero di parametri 
-\end_layout
-
-\begin_layout Itemize
-Numero di campi dati per classe
-\end_layout
-
-\begin_layout Itemize
-Numero livelli di annidamento
-\end_layout
-
-\begin_layout Itemize
-Indice di utilità
-\end_layout
-
-\begin_layout Itemize
-Indice di dipendenza
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-(
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://metrics.sourceforge.net/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Strumenti di validazione 
-\bar under
-W3C
-\bar default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Markup Validation Service:
-\series default
- per effettuare test su tutte le pagine navigabili del sistema e verificare
- l'aderenza HTML5 (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://validator.w3.org/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-CSS Validation Service:
-\series default
- per effettuare test sui fogli di stile di tutte le pagine del sistema e
- verificare l'aderenza allo standard 
-\bar under
-CSS
-\bar default
- versione 3 (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://jigsaw.w3.org/css-validator/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Speed Tracer (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
-
-\series bold
-2.4):
-\series default
- plugin per Google Chrome che permette di verificare l'efficienza di un'applicaz
-ione web durante la sua esecuzione (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http: //code.google.com/intl/it-IT/webtoolkit/speedtracer/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-JUnit (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
-
-\series bold
-4.11):
-\series default
- 
-\bar under
-framework
-\bar default
- per effettuare test di unità per il linguaggio di programmazione Java (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.junit.org/
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-QUnit (
-\series default
-
-\begin_inset Formula $\geqslant$
-\end_inset
-
-
-\series bold
-1.11.0):
-\series default
- framework per effettuare test di unità per il linguaggio di programmazione
- JavaScript (
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://qunitjs.com/
-\end_layout
-
-\end_inset
-
-)
+ nei metodi dovrà essere presente un solo return
 \end_layout
 
 \end_body
