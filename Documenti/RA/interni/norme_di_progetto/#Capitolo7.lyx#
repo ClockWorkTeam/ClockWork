@@ -119,7 +119,7 @@ no della cartella /root/Documenti/Modelli.
 \series bold
 Frontpage:
 \series default
- ogni documento, dovrà includere inizialmente il file 
+ ogni documento LyX, dovrà includere come primo oggetto il file 
 \family typewriter
 frontpage.lyx
 \family default
@@ -128,14 +128,21 @@ frontpage.lyx
 status open
 
 \begin_layout Plain Layout
-Il percorso del file fornito a LyX non dovrà essere assoluto, ma relativo.
+Il percorso del file fornito a LyX non dovrà essere assoluto, ma relativo
+ ( ../../../Modelli/frontpage.lyx).
 \end_layout
 
 \end_inset
 
 .
- Nel file sono presenti la copertina e la pagina con le informazioni sul
- documento
+ Il file non dovrà essere spostato dalla sua posizione iniziale in quanto
+ sarà LyX, assieme alle impostazioni contenute nel file
+\family typewriter
+ preface.tex
+\family default
+, a modificare automaticamente il contenuto del file.
+ Nel file sono presenti le pagine di copertina e un'altra contenente le
+ informazioni sul documento
 \end_layout
 
 \begin_layout Itemize
@@ -148,10 +155,11 @@ Diario delle modifiche:
 diario_modifiche.lyx
 \family default
 .
- Il file sarà copiato ed incollato all'interno della cartella del documento
- in lavorazione ed incluso nel documento dopo il frontpage.
- Verrà costantemente aggiornato per mostrare correttamente il diario delle
- modifiche del documento
+ Questo file dovrà essere copiato ed incollato all'interno della cartella
+ del proprio documento in lavorazione e incluso, all'interno del documento,
+ subito dopo il frontpage.
+ Inoltre dovrà essere modificato (la copia “locale”) per mostrare correttamente
+ il diario delle modifiche del documento
 \end_layout
 
 \begin_layout Itemize
@@ -176,14 +184,18 @@ LaTeX
 \series bold
 ”:
 \series default
- il file 
+ le impostazioni che dovranno essere applicate ad ogni documento è possibile
+ trovarle all'interno del file 
 \family typewriter
 preface.tex
 \family default
- si dovrà copiare-incollare all'interno della cartella del documento in
- lavorazione.
- All'interno di LyX, si dovrà andare in Documento ->Impostazioni, selezionare
- nell'elenco di sinistra la voce Preambolo di 
+.
+ Questo file dovrà essere copiato-incollato all'interno della cartella del
+ proprio documento in lavorazione.
+ Inoltre dovrà essere modificato (la copia “locale”) secondo quanto scritto
+ al suo interno.
+ All'interno di LyX, invece, si dovrà andare in Documento ->Impostazioni,
+ selezionare nell'elenco di sinistra la voce Preambolo di 
 \begin_inset ERT
 status open
 
@@ -246,8 +258,9 @@ name "sub:Stile-del-testo"
 \series bold
 Grassetto:
 \series default
- sarà utilizzato per evidenziare passaggi estremamente importanti o per
- evidenziare l'oggetto trattato nel paragrafo negli elenchi
+ il grassetto è da utilizzare con parsimonia, prevalentemente per evidenziare
+ passaggi estremamente importanti o da utilizzare come elemento immediatamente
+ seguente agli elenchi per evidenziare l'oggetto trattato nel paragrafo
 \end_layout
 
 \begin_layout Itemize
@@ -255,9 +268,9 @@ Grassetto:
 \series bold
 Corsivo:
 \series default
- sarà utilizzato per evidenziare passaggi o parole estremamente significativi
- a cui si vuole dare particolare enfasi e per riportare passaggi provenienti
- da fonti esterne 
+ il corsivo deve essere utilizzato per evidenziare passaggi o parole estremament
+e significativi a cui si vuole dare particolare enfasi e per riportare passaggi
+ provenienti da fonti esterne 
 \end_layout
 
 \begin_layout Itemize
@@ -265,8 +278,8 @@ Corsivo:
 \series bold
 Sottolineato:
 \series default
- termini contenuti nel glossario, se il termine figura più volte nel documento
- sarà sottolineata solo la prima occorrenza
+ termini contenuti nel glossario, se lo stesso termine figura più volte
+ nel documento viene sottolineato solo alla prima occorrenza
 \begin_inset Foot
 status open
 
@@ -285,8 +298,12 @@ Non si considerano valide come occorrenze le parole all'interno dei titoli
 \series bold
 Monospace:
 \series default
- indicherà un passaggio utile alla definizione di un formato, di uno standard
- adottato o per inserire del codice all'interno del documento 
+ il carattere 
+\bar under
+monospace
+\bar default
+ dovrà indicare un passaggio utile alla definizione di un formato, di uno
+ standard adottato o per inserire del codice all'interno del documento 
 \end_layout
 
 \begin_layout Itemize
@@ -318,8 +335,8 @@ Punteggiatura
 \series bold
 Punteggiatura:
 \series default
- non dovrà mai seguire un carattere di spaziatura, ma sarà seguito da un
- carattere di spazio.
+ qualsiasi segno di punteggiatura non deve mai seguire un carattere di spaziatur
+a, ma deve essere seguito da un carattere di spazio.
  Si ricorda che la lettera maiuscola segue esclusivamente il punto, il punto
  esclamativo ed il punto di domanda 
 \end_layout
@@ -329,8 +346,8 @@ Punteggiatura:
 \series bold
 Parentesi:
 \series default
- qualsiasi frase racchiusa fra parentesi non dovrà e finire con un carattere
- di spaziatura e di punteggiatura
+ qualsiasi frase racchiusa fra parentesi non deve iniziare e finire con
+ un carattere di spaziatura e di punteggiatura
 \end_layout
 
 \begin_layout Subsubsection
@@ -354,7 +371,7 @@ Eccezione fatta solo nel caso in cui sia il nome di un file e/o cartella.
 \end_inset
 
 .
- La fine di ogni paragrafo sarà priva di punteggiatura 
+ La fine di ogni paragrafo deve essere priva di punteggiatura 
 \end_layout
 
 \begin_layout Itemize
@@ -529,8 +546,8 @@ Nomi ricorrenti:
 \emph on
 Ruoli di progetto
 \emph default
-: avranno la prima lettera maiuscola per ogni parola che non sia una preposizion
-e (es: Responsabile di Progetto)
+: andranno formattati utilizzando la prima lettera maiuscola per ogni parola
+ che non sia una preposizione (es: Responsabile di Progetto)
 \end_layout
 
 \begin_layout Itemize
@@ -538,8 +555,8 @@ e (es: Responsabile di Progetto)
 \emph on
 Nomi dei documenti
 \emph default
-: avranno la prima lettera maiuscola per ogni parola che non sia una preposizion
-e (es: Norme di Progetto)
+: andranno formattati utilizzando la prima lettera maiuscola per ogni parola
+ che non sia una preposizione (es: Norme di Progetto)
 \end_layout
 
 \begin_layout Itemize
@@ -614,7 +631,7 @@ PROPONENTIPROG}
 
 \end_inset
 
-” o “proponente”
+” o con “proponente”
 \end_layout
 
 \begin_layout Itemize
@@ -644,8 +661,9 @@ PROGETTO}
 \series bold
 Sigle:
 \series default
- le sigle dei documenti saranno utilizzate esclusivamente all'interno di
- diagrammi o tabelle secondo il seguente formalismo:
+ le sigle dei documenti dovranno essere utilizzate esclusivamente all'interno
+ di diagrammi o tabelle (in modo da risparmiare spazio) secondo il seguente
+ formalismo:
 \end_layout
 
 \begin_deeper
@@ -706,8 +724,8 @@ Immagini
 \end_layout
 
 \begin_layout Standard
-Tutte le immagini utilizzate all'interno dei documenti dovranno essere in
- formato PDF, 
+Tutte le immagini utilizzate all'interno dei documenti dovranno rigorosamente
+ essere in formato PDF, 
 \bar under
 PNG
 \bar default
@@ -715,7 +733,8 @@ PNG
 \bar under
 EPS
 \bar default
- e dovranno avere una breve didascalia, vedasi sezione 
+.
+ Ogni immagine dovrà avere una breve didascalia, si veda sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Didascalie"
@@ -738,7 +757,7 @@ Istruzioni e regole per la creazione delle tabelle:
 \series bold
 Struttura
 \series default
-: saranno tutte longtable.
+: saranno essere tutte longtable.
  Si posizionerà il cursore in una cella e si andrà su Edit/Table Settings/Longta
 ble e spuntare 
 \begin_inset Quotes eld
@@ -815,7 +834,7 @@ endlastfoot
 \series bold
 Contenuto
 \series default
-: in ogni cella il testo dovrà iniziare con la lettera maiuscola
+: all'interno di ogni cella il testo dovrà iniziare con la lettera maiuscola
 \end_layout
 
 \begin_layout Subsubsection
@@ -834,7 +853,8 @@ Ogni didascalia deve avere le seguenti caratteristiche:
 \end_layout
 
 \begin_layout Itemize
-Numero identificativo incrementabile, in grassetto
+Numero identificativo incrementabile, in grassetto, per la tracciabilità
+ all'interno del documento
 \end_layout
 
 \begin_layout Itemize
@@ -857,8 +877,8 @@ name "sub:Versionamento"
 \end_layout
 
 \begin_layout Standard
-Il formalismo utilizzato per esprimere l'avanzamento di versione sarà il
- seguente: 
+Il formalismo utilizzato per esprimere l'avanzamento di versione dei vari
+ documenti sarà il seguente: 
 \begin_inset ERT
 status open
 
@@ -971,8 +991,9 @@ A piè di pagina a seguire il nome dei documenti: Nome del Documento v X.Y
 \end_layout
 
 \begin_layout Itemize
-All'interno di ogni documento in cui si nomina un altro documento: Nome
- del Documento vX.Y
+All'interno di ogni documento in cui si nomina un altro documento, ma solo
+ la prima volta in cui quel documento verrà riferito: Nome del Documento
+ vX.Y
 \end_layout
 
 \begin_layout Subsubsection
@@ -1340,8 +1361,8 @@ Sommario
 \series bold
 Diario delle modifiche
 \series default
-: tabella che riporta le varie modifiche apportare al documento per giungere
- alla versione finale.
+ ovvero una tabella che riporti le varie modifiche apportare al documento
+ per giungere alla versione finale.
  Si tratta di una tabella ordinata in maniera decrescente: la prima riga
  dovrà contenere le informazioni riguardanti le ultime modifiche, mentre
  l'ultima riga dovrà contenere le informazioni riguardanti le prime modifiche
@@ -1355,7 +1376,8 @@ Diario delle modifiche
 \emph on
 Autore
 \emph default
-: nominativo di chi ha apportato la modifica in oggetto 
+: dovrà contenere il nominativo di chi ha apportato la modifica in oggetto
+ 
 \begin_inset Foot
 status open
 
@@ -1380,7 +1402,7 @@ reference "sub:Formati-ricorrenti"
 \emph on
 Descrizione
 \emph default
-: descrizione dei cambiamenti apportati
+: breve descrizione dei cambiamenti apportati
 \end_layout
 
 \begin_layout Itemize
@@ -1414,7 +1436,7 @@ reference "sub:Formati-ricorrenti"
 \emph on
 Versione
 \emph default
-: numero della versione corrispondente al documento in cui è stata applicata
+: il numero della versione corrispondente al documento in cui è stata applicata
  la modifica 
 \end_layout
 
@@ -1491,10 +1513,10 @@ name "Verbali incontri"
 \begin_layout Standard
 Per Verbali degli Incontri si intendono quei documenti redatti dal Responsabile
  di Progetto in occasione di incontri esterni.
- Per tali documenti è prevista una sola stesura come promemoria dell'incontro
- avvenuto e tematiche trattate: per tale motivo non è previsto versionamento.
- Nei verbali non sono presenti Diario delle modifiche e indice.
- Il documento sarà denominato secondo il seguente criterio: 
+ Per tali documenti è prevista una sola stesura in quanto promemoria dell'incont
+ro avvenuto e tematiche trattate: per tale motivo non è previsto versionamento.
+ Nei verbali non sono presenti il diario delle modifiche e l'indice.
+ Il documento dovrà essere denominato secondo il seguente criterio: 
 \begin_inset ERT
 status open
 
@@ -1536,19 +1558,20 @@ end{center}
 \begin_layout Standard
 \noindent
 \align left
-Le pagine copertina e informazioni del documento devono sottostare alle
- regole descritte nella formattazione del documento
+Le pagine copertina e informazioni del documento, di ogni verbale, devono
+ sottostare alle regole descritte nella formattazione del documento
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Ad eccezione del versionamento.
+Ad eccezione, ovviamente, del versionamento.
 \end_layout
 
 \end_inset
 
 .
- Saranno presenti le seguenti informazioni dell'incontro:
+ A seguire dovrà essere presente una pagina con le informazioni logistiche
+ dell'incontro, in particolare dovranno essere presenti:
 \end_layout
 
 \begin_layout Itemize
@@ -1789,8 +1812,8 @@ Documenti informali
 
 \begin_layout Standard
 Tutti i documenti non approvati dal Responsabile di Progetto saranno considerati
- informali.
- Verranno raccolti nel repository secondo la struttura definita alla sezione
+ documenti informali.
+ Saranno raccolti nel repository secondo la struttura definita alla sezione
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1811,9 +1834,9 @@ Tutti i documenti approvati dal Responsabile di Progetto si riterranno formali
  e pronti per essere distribuiti alla loro lista di distribuzione.Ogni volta
  che si appone una modifica ad un documento già approvato, si inserirà tale
  modifica nel diario delle modifiche, avvisando il Responsabile di Progetto
- che provvederà a riapprovare il documento e rilasciare una nuova versione
- formale.
- Verranno raccolti nel repository secondo la struttura definita alla sezione
+ che provvederà, nel caso non siano necessarie ulteriori modifiche, a riapprovar
+e il documento e rilasciare una nuova versione formale di esso.
+ Saranno raccolti nel repository secondo la struttura definita alla sezione
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1829,11 +1852,12 @@ Procedura di formalizzazione dei documenti
 \end_layout
 
 \begin_layout Standard
-Ogni volta che i redattori considereranno pronto un documento, avviseranno
- il Responsabile, che lo assegnerà ai verificatori.
- Se il documento dovesse rispettare tutte le norme, il Responsabile di Progetto
- potrà approvare il documento, o rimandarlo ai redattori per correzioni
- non normative.
+Ogni volta che i redattori considereranno pronto un documento, dovranno
+ avvisare il Responsabile di Progetto, il quale assegnerà tale documento
+ ai verificatori.
+ Se il documento dovesse rispettare tutte le norme ivi descritte, il Responsabil
+e di Progetto potrà approvare o meno il documento, oppure rimandarlo ai
+ redattori per correzioni non normative.
 \end_layout
 
 \begin_layout Subsection
@@ -1907,8 +1931,16 @@ Incompatibilità
 \end_layout
 
 \begin_layout Standard
-Nel caso in cui si presenteranno incompatibilità fra ruoli, vengono poste
- le seguenti norme: 
+Nel caso in cui si presenterà Durante le varie fasi del progetto potrebbero
+ emergere problematiche riguardanti le incompatibilità fra ruoli, ovvero
+ redattori che verificano i documenti scritti da loro stessi piuttosto che
+ documenti approvati da chi ha verificato o contribuito alla redazione dei
+ documenti stessi.
+ Per questo motivo vengono poste le seguenti norme che serviranno a specificare
+ sia le norme per l'assegnazione del personale di redazione, verifica e
+ approvazione di un documento, sia le procedure da adottare nel caso ci
+ siano conflitti e/o incompatibilità.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -1916,13 +1948,13 @@ Nel caso in cui si presenteranno incompatibilità fra ruoli, vengono poste
 \series bold
 Redattori-verificatori:
 \series default
- i redattori di una versione di un documento non possono esserne anche i
- verificatori
+ i redattori di una determinata versione di un documento non possono esserne
+ anche i verificatori della stessa versione
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Potranno verificare versioni future del documento.
+Potranno tuttavia verificare versioni future del documento.
 \end_layout
 
 \end_inset
@@ -1936,8 +1968,11 @@ Potranno verificare versioni future del documento.
 \series bold
 Mancanza di verificatori:
 \series default
- verranno nominati più verificatori dal Responsabile, ai quali verranno
- assegnate la verifica delle parti del documento non redatti da essi
+ nel caso in cui non sia possibile assicurare che i documenti vengano verificati
+ da persone che non abbiano contribuito alla redazione del documento, il
+ Responsabile di Progetto procederà alla nomina di più verificatori controllando
+ il Diario delle modifiche del suddetto documento e attribuendo loro la
+ verifica delle parti del documento non redatti da essi
 \end_layout
 
 \end_deeper
