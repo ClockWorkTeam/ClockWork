@@ -27,31 +27,29 @@ import server.shared.User;
 import server.shared.UserList;
 
 public class UserDaoSQLTest {
-
-	private JavaConnectionSQLite connection;
-	private UserList userList;
 	private UserDaoSQL userDaoSQL;
-	
+	private JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
 	public void init() {
-		connection =new JavaConnectionSQLite();
-		userList=new UserList();
-		userDaoSQL=new UserDaoSQL(connection, userList);	
+		userDaoSQL=UserDaoSQL.getInstance();	
 	}
-
+	
+/* @Test
+	public void resetTable(){
+	 init();
+	 
+	 connection.executeUpdate("DELETE FROM UserDataSQL");	
+	}
+*/
 	/**
 	 * Nota il test per la creazione e la rimozione di un utente deve essere eseguito in un unico metodo, poichè i test lavorano in parallelo
 	 * per cui se si creano 2 test, uno di creazione e uno di eliminazione si alternerebbe la loro correttezza
 	 * @throws SQLException
 	 */
 	@Test
-	public void testCreateAndRemoveUser() throws SQLException {
+	public void testAddAndRemoveUser() throws SQLException {
 		init();
-		User user =userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		assertTrue("Inserimento nella lista non eseguito", user!=null);
-		assertTrue("Username non inserito correttamente", user.getUsername().equals("ClockWork7"));
-		assertTrue("Nome non inserito correttamente", user.getName().equals("Clock Work"));
-		assertTrue("Cognome non inserito correttamente", user.getSurname().equals("Team"));
-		assertTrue("IP non inserito correttamente", user.getIP().equals("7"));
+		User user = new User("ClockWork7", "Clock Work", "Team", "7"); 
+		assertTrue("Operazione di inserimento nel DB fallita", userDaoSQL.addUser(user, "password"));
 		
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
 	    assertTrue("User non inserito nel database",!rs.isAfterLast());
@@ -62,41 +60,24 @@ public class UserDaoSQLTest {
 		assertTrue("IP non inserito correttamente nel db", rs.getString("IP").equals("7"));
 		
 		assertTrue("",userDaoSQL.removeUser("ClockWork7"));
-		assertTrue("Utente cancellato dalla lista", userList.getUser("ClockWork7")==null);
 		rs = connection.select("UserDataSQL","*","username='ClockWork7'","");
 	    assertTrue("Utente cancellato dal database", rs.isAfterLast());
 	}
 
 	@Test
-	public void testGetUser() {
+	public void testGetUser() throws SQLException {
 		init();
-		assertTrue("Presente un user falso", userList.getUser("falso")==null);
-		userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		assertTrue("User non trovato", userList.getUser("ClockWork7")!=null);
+		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
+		userDaoSQL.addUser(new User("ClockWork7", "Clock Work", "Team", "7"), "password");
+	    ResultSet rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("User non inserito nel database",!rs.isAfterLast());
+
+		assertTrue("User non trovato", userDaoSQL.getUser("ClockWork7")!=null);
 		userDaoSQL.removeUser("ClockWork7");
 	}
 	
-	@Test
-	public void testGetAllUsers() {
-		init();
-		assertTrue("Non dovrebbero essere presenti utenti", userList.getAllUsers().size()==0);
-		userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		assertTrue("Numero utenti presenti errato", userList.getAllUsers().size()==1);
-		userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		assertTrue("Numero utenti presenti errato", userList.getAllUsers().size()==1);
-		userDaoSQL.removeUser("ClockWork7");
-		assertTrue("Numero utenti presenti errato", userList.getAllUsers().size()==0);
-		
-		userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		userDaoSQL.createUser("ClockWork", "password", "Clock Work", "Team", "7");
-		assertTrue("Numero utenti presenti errato", userList.getAllUsers().size()==2);
-		userDaoSQL.removeUser("ClockWork7");
-		assertTrue("Numero utenti presenti errato", userList.getAllUsers().size()==1);
-		userDaoSQL.removeUser("ClockWork");
-		assertTrue("Numero utenti presenti errato", userList.getAllUsers().size()==0);
-	}
 	
-	@Test
+		/*@Test
 	public void testSetPassword() throws SQLException {
 		init();
 		User user =userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
@@ -129,5 +110,5 @@ public class UserDaoSQLTest {
 	    assertTrue("Cognome non cambiato nel db", rs.getString("surname").equals(nuovoCognome));
 		userDaoSQL.removeUser("ClockWork7");
 	}
-
+*/
 }

@@ -30,21 +30,16 @@ import server.dao.*;
 import server.shared.User;
 import server.shared.RecordMessage;
 
-/**
- * Classe che si occupa di gestire le operazioni dell'utente
- *
- */
-
 public class UserManager{
 
   private UserDao userDao;
-  private RecordMessageDao messageDao;
+  private RecordMessageDao recordMessageDao;
   /** Costruttore con parametri della classe UserDataManager
    * @param access riferimento alla classe che implementa l'interfaccia DAOLogin
    */
-  public void init(UserDao userDao, RecordMessageDao messageDao){
-		this.userDao = userDao;
-		this.messageDao=messageDao;
+  public UserManager(){
+	this.userDao = UserDaoSQL.getInstance();
+	this.recordMessageDao=RecordMessageDaoSQL.getInstance();
   }
 
   /**Metodo che controlla la corrispondenza tra l'username e la password
@@ -52,8 +47,8 @@ public class UserManager{
    * @param password
    * @return boolean
    */
-  public boolean checkPassword(User user, String password){
-	return this.userDao.checkPassword(user.getUsername(), password);
+  public boolean checkPassword(String username, String password){
+	return userDao.checkPassword(username, password);
   }
 
   /**Metodo che setta il campo password di un User
@@ -61,8 +56,8 @@ public class UserManager{
    * @param password la stringa della nuova password del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */
-  public boolean setPassword(User user, String password){
-	  return userDao.setPassword(user.getUsername(), password);
+  public boolean setPassword(String username, String password){
+	return userDao.setPassword(username, password);
   }
 
   /**Metodo che setta il campo name e cognome di un User
@@ -71,33 +66,61 @@ public class UserManager{
    * @param surname
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
    */
-	public boolean setUserData(User user, String name, String surname){
-		boolean n = userDao.setName(user.getUsername(), name);
-		boolean s = userDao.setSurname(user.getUsername(), surname);
+  public boolean setUserData(String username, String name, String surname){
+	User user= userDao.getUser(username);
+	if(user!=null){
+	  User userS=null;
+	  if(!user.getName().equals(name)){
+		userDao.setName(username, name);
+		userS=userList.
+	  }
+		boolean s = userDao.setSurname(username, surname);
 		return (n & s);
-	}
+	}return false;
+  }
 
-	public RecordMessage createMessage(String sender, String addressee, String path, String date){
-		return messageDao.createMessage(sender, addressee, path, date);
-	}
-
-	public Vector<RecordMessage> getMessages(String username){
-		return messageDao.getAllMessages(username);
-	}
-
-	public RecordMessage getMessage(String sender, String addressee, String path, String date){
-		return messageDao.getMessage(sender, addressee, path, date);
-	}
-	public boolean removeMessage(RecordMessage message){
-		return messageDao.removeMessage(message);
-	}
-
-  public User getUser(String username){
+  public User getUserData(String username){
 	  return userDao.getUser(username);
   }
-  public Vector<User> getAllContacts(User user){
-	  Vector<User> contacts = new Vector<User>(userDao.getAllUsers());
-	  contacts.remove(user);
-	  return contacts;
+  /** Metodo che crea il messaggio in differita, e se l'utente destinatario è online restituisce RecordMessage
+   * 
+   * @param sender
+   * @param addressee
+   * @param path
+   * @param date
+   * @return
+   * @throws Exception 
+   */
+  public RecordMessage createMessage(String sender, String addressee, String path, String date) throws Exception{
+	RecordMessage message = new RecordMessage(sender, addressee, path, date);
+	if( recordMessageDao.addMessage(message)){
+	  if(userDao.getUser(addressee).getIP()!="0"){
+		return message;
+	  }else{
+		return null;
+	  }
+	}else throw new Exception ("errore nella registrazione del messaggio");
   }
+
+  /** Metodo che trova i messaggi inviati all'user
+   * @param user Oggetto User ricevente dei messagi
+   * @return vettore dei messaggi inviati all'user
+   */
+  public Vector<RecordMessage> getMessages(String username){
+	return recordMessageDao.getAllMessages(username);
+  }
+
+  /** Metodo che elimina un dato messaggio
+   * 
+   * @param sender
+   * @param addressee
+   * @param path
+   * @param date
+   * @return
+   */
+  public boolean removeMessage(String sender, String addressee, String path, String date){
+	RecordMessage message = new RecordMessage(sender, addressee, path, date);
+	return recordMessageDao.removeMessage(message);
+  }
+
 }

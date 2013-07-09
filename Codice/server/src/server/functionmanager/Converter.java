@@ -53,15 +53,15 @@ public class Converter{
 	*   ........
 	*  }
 	*/
-	public String convertMessages(Vector<RecordMessage> mex, String type){
-		String messages="{"+type+" \"size\": \""+mex.size()+"\"";
-		for(int i=0; i<mex.size(); i++){
-			messages+=", \"sender"+i+"\": \""+mex.get(i).getSender() +
-				"\", \"path"+i+"\": \""+mex.get(i).getPath()+
-				"\", \"date"+i+"\": \""+mex.get(i).getDate()+"\"";
+	public String convertMessages(Vector<RecordMessage> messages, String type){
+		String result="{"+type+" \"size\": \""+messages.size()+"\"";
+		for(int i=0; i<messages.size(); i++){
+			result+=", \"sender"+i+"\": \""+messages.get(i).getSender() +
+				"\", \"path"+i+"\": \""+messages.get(i).getPath()+
+				"\", \"date"+i+"\": \""+messages.get(i).getDate()+"\"";
 		}
-		messages+="}";
-		return messages;
+		result+="}";
+		return result;
 	}
 /**metodo che genera la stringa dei tutorial seguendo questo schema:
 	*  { size: N,

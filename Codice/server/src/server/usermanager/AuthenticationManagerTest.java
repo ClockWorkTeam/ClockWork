@@ -21,8 +21,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import server.dao.JavaConnectionSQLite;
-import server.dao.LoginDao;
-import server.dao.LoginDaoSQL;
 import server.dao.UserDao;
 import server.dao.UserDaoSQL;
 import server.shared.User;
@@ -31,13 +29,14 @@ import server.shared.UserList;
 public class AuthenticationManagerTest {
 	private AuthenticationManager authenticationManager;
 	private UserDao userDao;
+	private UserList userList;
+	
 	public void init() {
 		this.authenticationManager= new AuthenticationManager();
 		JavaConnectionSQLite connection= new JavaConnectionSQLite();
 		UserList userList=new UserList();
-		LoginDao loginDao=new LoginDaoSQL(connection, userList);
 		userDao=new UserDaoSQL(connection, userList);
-		this.authenticationManager.init(loginDao, userDao);
+		this.authenticationManager.init(userDao, userList);
 	}
 
 	@Test

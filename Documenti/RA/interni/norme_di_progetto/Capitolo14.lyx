@@ -85,9 +85,9 @@ Decomposizione modulare
 Componenti terminali
 \series default
 : per evitare di esporre esternamente dettagli implementativi, che causerebbero
- eccessivo accoppiamento, e abbattere costi e tempi già dalle prime fasi,
- bisogna riconoscere subito i componenti che non necessitano di ulteriori
- scomposizioni
+ eccessivo accoppiamento, bisogna riconoscere subito i componenti che non
+ necessitano di ulteriori scomposizioni ottenendo un abbattimento di costi
+ e tempi già dalle prime fasi
 \end_layout
 
 \begin_layout Itemize
@@ -96,9 +96,9 @@ Componenti terminali
 Accoppiamento e coesione dei componenti
 \series default
 : per attenuare la probabilità del rischio legato alla introduzione di complessi
-tà inutile, aumentare la manutenibilità del sistema e abbassare i costi
- per l'aggiunta di componenti future, bisognerà mantenere un indicatore
- dei parametri di questi parametri in corso d'opera
+tà inutile, quindi aumentare la manutenibilità del sistema e abbassare i
+ costi per l'aggiunta di componenti future, bisognerà mantenere un indicatore
+ dei parametri in corso d'opera
 \end_layout
 
 \begin_layout Itemize
@@ -126,8 +126,7 @@ Principio di astrazione
 \series bold
 Astrazione e concretizzazioni
 \series default
-: ogni astrazione corrisponde ad una o più concretizzazioni come ad esempio
- nel caso dei template, o delle classi derivate
+: ogni astrazione corrisponde ad una o più concretizzazioni
 \end_layout
 
 \begin_layout Itemize
@@ -135,37 +134,10 @@ Astrazione e concretizzazioni
 \series bold
 Componenti astratte
 \series default
-: dovranno rispettare tali vincoli:
+: dovranno essere sufficienti nella caratterizzazione dell'entita desiderata,
+ completi nell'elencare le caratteristiche di interesse dell'utente ed atomiche
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Sufficienza
-\series default
-: il livello di astrazione è sufficiente a caratterizzare l'entità desiderata
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Completezza
-\series default
-: l'astrazione fornita comprende tutte le caratteristiche di interesse del
- suo utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Atomicità
-\series default
-: l'utilità dell'astrazione non migliora se scomposta ulteriormente in astrazion
-i più elementari
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -199,21 +171,11 @@ Design Patterns
 Enforce intention
 \series default
 : rendere non ambiguo il confine dei moduli e non lasciare spazio nella
- fase si codifica:
+ fase di codifica, rendendo immutabile ciò che non subisce variazioni nel
+ tempo e utilizzando il design pattern Singleton per le classi con una sola
+ istanza
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Rendere immutabile tutto ciò che non è destinato a subire variazioni nel
- tempo
-\end_layout
-
-\begin_layout Itemize
-Per le classi che richiedono una singola istanza si utilizzerà il design
- pattern Singleton
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
