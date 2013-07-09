@@ -82,18 +82,6 @@ Decomposizione modulare
 \begin_layout Itemize
 
 \series bold
-Information hiding
-\series default
-: al fine di ridurre la complessità del contratto della classe e aumentare
- il grado di protezione, bisognerà nascondere i dettagli organizzativi tramite
- metodi e attributi privati e protetti.
- Al fine di abbassare il rischio di incorrere in errori logici, si cercherà
- di isolare al singolo componente la gestione del proprio funzionamento
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 Componenti terminali
 \series default
 : per evitare di esporre esternamente dettagli implementativi, che causerebbero
@@ -114,63 +102,104 @@ Accoppiamento e coesione dei componenti
 \end_layout
 
 \begin_layout Itemize
-Grado elevato di coesione e basso di accoppiamento: al fine di garantire
- una corretta separazione logica e una buona caratterizzazione dei componenti
+
+\series bold
+Grado elevato di coesione e basso di accoppiamento
+\series default
+: al fine di garantire una corretta separazione logica e una buona caratterizzaz
+ione dei componenti
 \end_layout
 
 \begin_layout Itemize
-Principio di astrazione: al fine di definire la radice della gerarchia delle
- classi, bisognerà individuare le caratteristiche comuni tra le componenti.
+
+\series bold
+Principio di astrazione
+\series default
+: al fine di definire la radice della gerarchia delle classi, bisognerà
+ individuare le caratteristiche comuni tra le componenti.
  Quello che si differenzia dall'insieme di funzionalità iniziale andrà definito
  tramite specializzazione
 \end_layout
 
 \begin_layout Itemize
-Astrazione e concretizzazioni: ogni astrazione corrisponde ad una o più
- concretizzazioni come ad esempio nel caso dei template, o delle classi
- derivate
+
+\series bold
+Astrazione e concretizzazioni
+\series default
+: ogni astrazione corrisponde ad una o più concretizzazioni come ad esempio
+ nel caso dei template, o delle classi derivate
 \end_layout
 
 \begin_layout Itemize
-Componenti astratte: dovranno rispettare tali vincoli:
+
+\series bold
+Componenti astratte
+\series default
+: dovranno rispettare tali vincoli:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Sufficienza: il livello di astrazione è sufficiente a caratterizzare l'entità
- desiderata
+
+\series bold
+Sufficienza
+\series default
+: il livello di astrazione è sufficiente a caratterizzare l'entità desiderata
 \end_layout
 
 \begin_layout Itemize
-Completezza: l'astrazione fornita comprende tutte le caratteristiche di
- interesse del suo utente
+
+\series bold
+Completezza
+\series default
+: l'astrazione fornita comprende tutte le caratteristiche di interesse del
+ suo utente
 \end_layout
 
 \begin_layout Itemize
-Atomicità: l'utilità dell'astrazione non migliora se scomposta ulteriormente
- in astrazioni più elementari
+
+\series bold
+Atomicità
+\series default
+: l'utilità dell'astrazione non migliora se scomposta ulteriormente in astrazion
+i più elementari
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Integrità concettuale: adoperare uno stile uniforme per la modellazione
- delle componenti, da applicare in ogni parte del sistema
+
+\series bold
+Integrità concettuale
+\series default
+: adoperare uno stile uniforme per la modellazione delle componenti, da
+ applicare in ogni parte del sistema
 \end_layout
 
 \begin_layout Itemize
-Complessità delle componenti e delle iterazioni: bisogna cercare di trovare
- un compromesso per non complicare il modo in cui una classe comunica col
- resto del sistema, ed avere una semplice modellazione di tale classe
+
+\series bold
+Complessità delle componenti e delle iterazioni
+\series default
+: bisogna cercare di trovare un compromesso per non complicare il modo in
+ cui una classe comunica col resto del sistema, ed avere una semplice modellazio
+ne di tale classe
 \end_layout
 
 \begin_layout Itemize
-Design Patterns: individuare i casi in cui si dovranno utilizzare, ed applicarli
- di conseguenza
+
+\series bold
+Design Patterns
+\series default
+: individuare i casi in cui si dovranno utilizzare, ed applicarli di conseguenza
 \end_layout
 
 \begin_layout Itemize
-Enforce intention: rendere non ambiguo il confine dei moduli e non lasciare
- spazio nella fase si codifica:
+
+\series bold
+Enforce intention
+\series default
+: rendere non ambiguo il confine dei moduli e non lasciare spazio nella
+ fase si codifica:
 \end_layout
 
 \begin_deeper
@@ -180,18 +209,17 @@ Rendere immutabile tutto ciò che non è destinato a subire variazioni nel
 \end_layout
 
 \begin_layout Itemize
-Usare l'information hiding ogni volta sia possibile impostando la visibilità
- di metodi e attributi privati e protetti
-\end_layout
-
-\begin_layout Itemize
 Per le classi che richiedono una singola istanza si utilizzerà il design
  pattern Singleton
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Raggiungere un livello di dettaglio tale da permettere una parallelizzazione
+
+\series bold
+Parallelizzazione
+\series default
+: raggiungere un livello di dettaglio tale da permettere una parallelizzazione
  della codifica
 \end_layout
 
