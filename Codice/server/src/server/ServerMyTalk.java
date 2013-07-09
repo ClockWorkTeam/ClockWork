@@ -45,12 +45,12 @@ public class ServerMyTalk {
             JWebSocketFactory.start();
             tokenServer = (TokenServer) JWebSocketFactory.getServer("ts0");
             if (tokenServer != null) {
-            	Launcher.getServer();
+            	Launcher launcher = Launcher.getInstance();
                 System.out.println("server was found");
-                AuthenticationTransfer authentication =new AuthenticationTransfer(Launcher.getAuthenticationManager(), Launcher.getUserManager(), Launcher.getTutorials());
-                UserTransfer user= new UserTransfer(Launcher.getUserManager());
+                AuthenticationTransfer authentication =new AuthenticationTransfer(launcher.getAuthenticationManager(), launcher.getUserManager(), launcher.getTutorials());
+                UserTransfer user= new UserTransfer(launcher.getUserManager());
                 CallTransfer call =new CallTransfer();
-                RecordMessageTransfer recordMessage= new RecordMessageTransfer(Launcher.getUserManager());
+                RecordMessageTransfer recordMessage= new RecordMessageTransfer(launcher.getUserManager());
                 ChatTransfer chat = new ChatTransfer();
 
                 tokenServer.addListener(authentication);

@@ -9,6 +9,9 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
+* |   |             | + addMessage invece di createMessage        |
+* |   |             | + cancellato getMessage         |
+* +---------+---------------+--------------------------+
 * |  130403 |     JG        | + getAllMessages         |
 * |         |               | + getMessage             |
 * |         |               | + removeMessage          |
@@ -42,16 +45,7 @@ public interface RecordMessageDao{
    * @param date
    * @return RecordMessage creato, o null se l'operazione non ha avuto buon esito
    */
-  public RecordMessage createMessage(String sender, String addressee, String path, String date);
-
-  /** Metodo che resituisce un dato messaggio
-   * @param sender
-   * @param addressee
-   * @param path
-   * @param date
-   * @return RecordMessage trovato, o null se l'operazione non ha avuto buon esito
-   */
-  public RecordMessage getMessage(String sender, String addressee, String path, String date);
+  public boolean addMessage(RecordMessage message);
 
   /** Metodo che elimina un dato messaggio
    * @param message Oggetto RecordMessage da eliminare

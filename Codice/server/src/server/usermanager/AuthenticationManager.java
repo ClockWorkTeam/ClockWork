@@ -9,6 +9,8 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
+* |   |           | + modifiche successive alle modifiche di DAO             |
+* +---------+---------------+--------------------------+
 * |  130517 |     ZHP       | + removeUser             |
 * |         |               | + logout                 |
 * |         |               | + login                  |
@@ -21,20 +23,16 @@
 */
 
 package server.usermanager;
-import server.dao.*;
-import server.shared.User;
+import java.util.Vector;
 
-/**
- * Classe che si occupa di gestire i login nel sistema
- *
- * @author
- * @version
- */
+import server.dao.UserDao;
+import server.dao.UserDaoSQL;
+import server.shared.User;
+import server.shared.UserList;
 
 public class AuthenticationManager{
-  private LoginDao loginDao;
   private UserDao userDao;
-
+  private UserList userList;
 
   /** Costruttore con parametri della classe AuthenticationManager
    * @param connection riferimento alla classe che si occupa della connessione con il db
@@ -43,9 +41,9 @@ public class AuthenticationManager{
    * @param loginDao riferimento alla classe che implementa l'interfaccia LoginDao
    * @param userDaoriferimento alla classe che implementa l'interfaccia UserDao
    */
-  public void init(LoginDao loginDao, UserDao userDao){
-	  this.loginDao=loginDao;
-	  this.userDao=userDao;
+  public AuthenticationManager(){
+	this.userDao=UserDaoSQL.getInstance();
+	this.userList=UserList.getInstance();
   }
 
   /** Metodo per il login, se ha buon esito carica anche i messaggi dell'utente
@@ -53,36 +51,73 @@ public class AuthenticationManager{
    * @param password
    * @param IP
    * @return user esito operazione di login
+ * @throws Exception 
    */
-  public User login(String username, String password, String IP){
-	  User user = loginDao.login(username, password, IP);
-	  return user;
+  public User login(String username, String password, String IP) throws Exception{
+	User user= userDao.getUser(username);
+	if(user!=null){
+	  if(userDao.checkPassword(username, password)){
+		userDao.setIP(username, IP);
+		User userTmp=userList.getUser(username);
+		if(userTmp==null){
+		  userList.addUser(user);
+		  userTmp=user;
+		}
+		userTmp.setIP(IP);
+		return userTmp;
+	  }else throw new Exception("Password errata"); 
+	}else throw new Exception("Username errato");
   }
 
   /** Metodo per segnalare al sistema il logout di un dipendente
    * @param user user del dipendente che ha effettuato il logout
    */
-  public boolean logout(User user){
-		return loginDao.logout(user);
+  public void logout(String username){
+	userDao.setIP(username, "0");
+	userList.getUser(username).setIP("0");
   }
 
-	/**Metodo che invoca il metodo di UserDao per creare un nuovo user
-	 * @param username
-	 * @param password
-	 * @param name
-	 * @param surname
-	 * @param IP
-	 * @return l'oggetto User se l'operazione ha buon fine, altrimenti null
-	 */
-	public User createUser(String username, String password, String name, String surname, String IP){
-		return userDao.createUser(username, password, name, surname, IP);
+  /**Metodo che invoca il metodo di UserDao per creare un nuovo user
+   * @param username
+   * @param password
+   * @param name
+   * @param surname
+   * @param IP
+   * @return boolean
+ * @throws Exception 
+   */
+  public User createUser(String username, String password, String name, String surname, String IP) throws Exception{
+	if(userDao.getUser(username)!=null){
+	  User user = new User(username, name, surname, IP);
+	  boolean result = userDao.addUser(user, password);
+	  if(result){
+		userList.addUser(user);
+	    return user;
+	  }else{
+		  throw new Exception("Errore nell'inserimento dell'utente nel database");
+	  }
+	}else{
+	  throw new Exception("Username già presente");
 	}
+  }
 
-	/**Metodo che invoca il metodo di UserDao per eliminare uno user
-	 * @param username
-	 * @return boolean operazione ha avuto buon esito o no
-	 */
-	public boolean removeUser(String username){
-		return userDao.removeUser(username);
-	}
+  /**Metodo che invoca il metodo di UserDao per eliminare uno user
+   * @param username
+   * @return boolean operazione ha avuto buon esito o no
+   */
+  public boolean removeUser(String username){
+    if(userDao.getUser(username)!=null){
+	  boolean result = userDao.removeUser(username);
+	  if(result){
+	    userList.removeUser(userList.getUser(username));
+	  }
+	  return result;
+    }else return true;
+  }
+  
+  public Vector<User> getAllContacts(String username){
+	Vector<User> contacts = new Vector<User>(userList.getAllUsers());
+	contacts.remove(userList.getUser(username));
+	return contacts;
+  }
 }
