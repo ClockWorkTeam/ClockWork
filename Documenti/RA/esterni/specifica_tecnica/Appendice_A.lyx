@@ -279,7 +279,7 @@ var Todo = Backbone.Model.extend({
 
 \begin_layout Standard
 Il metodo extend() permette di aggiungere proprietà e metodi personalizzati
- al costrutture del modello.
+ al costruttore del modello.
  Alcune chiavi sono tuttavia speciali e vengono distinte dalle altre.
  Ad esempio .defaults, è un oggetto con la lista degli attributi accettati
  e i rispettivi valori predefiniti.
@@ -382,15 +382,6 @@ var TodoView = Backbone.View.extend({
 \begin_layout Plain Layout
 
   tagName:  "li",
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  el: 
 \end_layout
 
 \begin_layout Plain Layout
@@ -643,35 +634,36 @@ var todoVista = new TodoView({
 \end_layout
 
 \begin_layout Standard
-Anzitutto abbiamo definito un tag contenitore per il template con .tagName.
- Quindi abbiamo definito una serie di eventi DOM con .events: l’oggetto ha
- come chiave l’evento da ascoltare ed eventualmente il selettore CSS sul
- quale dev’essere applicato, mentre come valore ha un metodo della view.
+Per prima cosa viene definito un tag contenitore per il template con .tagName
+ e una serie di eventi DOM con .events: l’oggetto ha come chiave l’evento
+ da ascoltare ed eventualmente il selettore CSS sul quale dev’essere applicato,
+ mentre come valore ha un metodo della view.
 \end_layout
 
 \begin_layout Standard
 La maggior parte del lavoro avviene nel metodo .initialize().
- Qui anzitutto precompiliamo il template, andando a leggere il contenuto
- di un tag script presente nel documento ma non interpretato dal browser
- avendo un attributo type impostato su 'text/template'.
- A questo punto utilizziamo _.bindAll() di Underscore, per assicurarci che
- il contesto dei metodi .render() e .remove() della vista non vengano persi.
+ Qui viene precompilato il template, andando a leggere il contenuto di un
+ tag script presente nel documento ma non interpretato dal browser avendo
+ un attributo type impostato su 'text/template'.
+ A questo punto viene utilizzato _.bindAll() di Underscore, per assicurarsi
+ che il contesto dei metodi .render() e .remove() della vista non vengano
+ persi.
  I contesti dei metodi delegati con .events sono forzati automaticamente.
 \end_layout
 
 \begin_layout Standard
 Il metodo .render() è responsabile della conversione in HTML dei dati del
  modello.
- Per fare questo, esportiamo gli attributi in un oggetto JSON, li passiamo
- al template precompilato in precedenza ed iniettiamo il risultato nel tag
+ Per fare questo, si esportano gli attributi in un oggetto JSON, si passano
+ al template precompilato in precedenza e si inietta il risultato nel tag
  contenitore.
 \end_layout
 
 \begin_layout Standard
 Gli altri due metodi, .toggleDone() e .clear() servono da tramite fra gli
  eventi dell’interfaccia e il modello.
- Da notare che, contrariamente a quanto potremmo pensare, non modificano
- direttamente la view.
+ Da notare che, contrariamente a quanto si èuò pensare, non modificano direttame
+nte la view.
 \end_layout
 
 \begin_layout Subsection
@@ -848,23 +840,22 @@ todoRoute.navigate('todo/1');
 \end_layout
 
 \begin_layout Standard
-Con il codice qui sopra abbiamo realizzato un router con due percorsi: la
- home con la lista completa dei todo, ed una pagina in cui mostrare un singolo
- record, identificato dal parametro id.
+Con questo codice viene realizzato un router con due percorsi: la home con
+ la lista completa dei todo, ed una pagina in cui mostrare un singolo record,
+ identificato dal parametro id.
 \end_layout
 
 \begin_layout Standard
-Dopo aver inizializzato il router, abbiamo abilitato la gestione delle routes
- e della navigazione con Backbone.history.start() che ci permette di navigare
+Dopo aver inizializzato il router, viene abilitata la gestione delle routes
+ e della navigazione con Backbone.history.start() che permette di navigare
  fra le pagine dell’applicazione.
  Il parametro {pushStart : true}, infine, abilita HTML5 History nei browser
  che lo supportano.
 \end_layout
 
 \begin_layout Standard
-A questo punto per navigare nell’applicazione potremo sia utilizzare i normali
- attributi href dei link, oppure navigare sfruttare il metodo .navigate()
- del router.
+A questo punto è possibile navigare nell’applicazione utilizzando i normali
+ attributi href dei link, oppure attraverso il metodo .navigate() del router.
 \end_layout
 
 \begin_layout Subsection
@@ -875,6 +866,103 @@ Backbone.Events
 Backbone mette a disposizione un sistema che consente di legare un oggetto
  ad uno o più eventi, in modo da poter lanciare delle funzioni quando questi
  si verificano.
+\end_layout
+
+\begin_layout Standard
+Vediamo un esempio di come la View di Backbone svolge il ruolo di un controller:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var Test = Backbone.View.extend({     
+\end_layout
+
+\begin_layout Plain Layout
+
+  events: {         
+\end_layout
+
+\begin_layout Plain Layout
+
+    'click button#start' : 'start',         
+\end_layout
+
+\begin_layout Plain Layout
+
+    'click .field' : 'score',         
+\end_layout
+
+\begin_layout Plain Layout
+
+    'click button#reset' : 'reset'     
+\end_layout
+
+\begin_layout Plain Layout
+
+  }, 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  // Event handling functions     
+\end_layout
+
+\begin_layout Plain Layout
+
+  start: function() { ...
+ },     
+\end_layout
+
+\begin_layout Plain Layout
+
+  score: function(event) { ...
+ },     
+\end_layout
+
+\begin_layout Plain Layout
+
+  reset: function() { ...
+ }
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+fEach event describes the event, the selector to listen to, and the callback
+ function.
+ In the case of the first event, the button element with the start id is
+ listening for a click event.
+ When it gets that event, it runs the start function located in the view.
+ This and all future function example are contained within the Test view,
+ although that’s not expressly shown.
+\end_layout
+
+\begin_layout Standard
+Ogni evento descrive l'evento, il selettore da ascoltare e il callback di
+ una funzione.
+ Nel caso del primo evento, l'elemento bottone con l'id start resta in ascolto
+ di un evento di tipo click.
+ Quando riceve questo evento, ritorna la funzione start situata nella view.
+ Tutte le funzioni legate agli eventi della view Test sono contenute all'interno
+ della stessa.
 \end_layout
 
 \end_body

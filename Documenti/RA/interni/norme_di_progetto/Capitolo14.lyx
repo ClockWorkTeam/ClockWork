@@ -61,253 +61,128 @@
 \begin_body
 
 \begin_layout Section
-Studio di fattibilità 
-\begin_inset CommandInset label
-LatexCommand label
-name "Studio-di-fattibilità"
-
-\end_inset
-
-
+Attività di Progettazione Architetturale
 \end_layout
 
 \begin_layout Standard
-In questo documento si richiede lo studio di ogni capitolato analizzando
- i seguenti punti:
+Al fine di diminuire il livello di rischio dovuto da una progettazione errata
+ e prevenire incongruenze logiche, l'attività di progettazione deve essere
+ effettuata tenendo conto delle seguenti linee guida:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Fattibilità tecnica
+Decomposizione modulare
 \series default
-: comprende la valutazione dei rischi legati alle tecnologie richieste per
- soddisfare i requisiti e alla difficoltà stimata da parte del gruppo di
- apprendere l'utilizzo delle stesse
+: si identificheranno componenti indipendenti tra loro riducendo il grado
+ di accoppiamento del sistema e aumentando la coesione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Fattibilità socioeconomica
+Componenti terminali
 \series default
-: comprende la valutazione dei rischi legati agli aspetti socioeconomici
- del progetto come, ad esempio, i costi da affrontare e la concorrenza di
- altri fornitori
+: per evitare di esporre esternamente dettagli implementativi, che causerebbero
+ eccessivo accoppiamento, bisogna riconoscere subito i componenti che non
+ necessitano di ulteriori scomposizioni ottenendo un abbattimento di costi
+ e tempi già dalle prime fasi
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Fattibilità implementativa
+Accoppiamento e coesione dei componenti
 \series default
-: comprende la valutazione dei rischi legati alla soddisfacibilità dei requisiti
- del capitolato e quindi la stima della capacità del gruppo di completare
- le richieste obbligatorie, desiderabili e opzionali
+: per attenuare la probabilità del rischio legato alla introduzione di complessi
+tà inutile, quindi aumentare la manutenibilità del sistema e abbassare i
+ costi per l'aggiunta di componenti future, bisognerà mantenere un indicatore
+ dei parametri in corso d'opera
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Altro
+Grado elevato di coesione e basso di accoppiamento
 \series default
-: qualsiasi altro fattore di rischio stimato dagli analisti non compreso
- nei casi precedenti
-\end_layout
-
-\begin_layout Subsection
-Rischi
-\end_layout
-
-\begin_layout Standard
-Per ogni fattore enunciato precedentemente dovranno essere catalogati i
- rischi come viene descritto nel seguente protocollo:
+: al fine di garantire una corretta separazione logica e una buona caratterizzaz
+ione dei componenti
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Nome del rischio
+Principio di astrazione
 \series default
-: sintetizza il rischio individuato con un nome significativo
+: al fine di definire la radice della gerarchia delle classi, bisognerà
+ individuare le caratteristiche comuni tra le componenti.
+ Quello che si differenzia dall'insieme di funzionalità iniziale andrà definito
+ tramite specializzazione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Descrizione del rischio
+Astrazione e concretizzazioni
 \series default
-: descrive brevemente il rischio individuato
+: ogni astrazione corrisponde ad una o più concretizzazioni
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Stima di probabilità
+Componenti astratte
 \series default
-: l'analista indica la probabilità che si verifichi la situazione di rischio
- in esame con un parametro compreso nell'insieme {
-\emph on
-Certa, Alta, Media, Bassa, Nulla
-\emph default
-}
+: dovranno essere sufficienti nella caratterizzazione dell'entita desiderata,
+ completi nell'elencare le caratteristiche di interesse dell'utente ed atomiche
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Stima di incidenza
+Integrità concettuale
 \series default
-: l'analista indica quanto ritiene grave il verificarsi della situazione
- di rischio in esame con un parametro compreso nell'insieme {
-\emph on
-Catastrofica, Alta, Media, Bassa, Trascurabile
-\emph default
-}
+: adoperare uno stile uniforme per la modellazione delle componenti, da
+ applicare in ogni parte del sistema
 \end_layout
 
 \begin_layout Itemize
-\noindent
 
 \series bold
-Giustificazione della stima
+Complessità delle componenti e delle iterazioni
 \series default
-: l'analista spiega le motivazioni dell'assegnamento alle stime di probabilità
- e di incidenza assegnate
+: bisogna cercare di trovare un compromesso per non complicare il modo in
+ cui una classe comunica col resto del sistema, ed avere una semplice modellazio
+ne di tale classe
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Analista
+Design Patterns
 \series default
-: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
- dal Verificatore per conto del Responsabile di Progetto) nel caso in cui
- le valutazioni appaiano inesatte o poco giustificate
+: individuare i casi in cui si dovranno utilizzare, ed applicarli di conseguenza
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Riferimenti
+Enforce intention
 \series default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Questo punto è facoltativo.
-\end_layout
-
-\end_inset
-
-: elenco puntato di tutte le fonti utilizzate, per consentire una futura
- verifica delle fonti 
-\end_layout
-
-\begin_layout Subsection
-Vantaggi
-\end_layout
-
-\begin_layout Standard
-Per ogni fattore enunciato precedentemente dovranno essere catalogati i
- vantaggi come viene descritto nel seguente protocollo:
+: rendere non ambiguo il confine dei moduli e non lasciare spazio nella
+ fase di codifica, rendendo immutabile ciò che non subisce variazioni nel
+ tempo e utilizzando il design pattern Singleton per le classi con una sola
+ istanza
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Nome del vantaggio
+Parallelizzazione
 \series default
-: sintetizza il vantaggio individuato con un nome significativo
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione del vantaggio
-\series default
-: descrive brevemente il vantaggio individuato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Stima di incidenza
-\series default
-: indica quanto l'analista ritiene incidente nella valutazione del vantaggio
- complessivo il vantaggio in esame con un parametro compreso nell'insieme
- {
-\emph on
-Ottimale, Alta, Media, Bassa, Trascurabile
-\emph default
-}
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Giustificazione della stima
-\series default
-: l'analista spiega le motivazioni dell'assegnamento alla stima di incidenza
- assegnata
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Analista
-\series default
-: nome dell'analista che sarà contattato dal Responsabile di Progetto (o
- dal Verificatore per conto del Responsabile) nel caso in cui le valutazioni
- appaiano inesatte o poco giustificate
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Riferimenti
-\series default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Questo punto è facoltativo.
-\end_layout
-
-\end_inset
-
-: elenco puntato di tutte le fonti utilizzate, per consentire una futura
- verifica delle fonti
-\end_layout
-
-\begin_layout Standard
-Una volta terminato lo studio di fattibilità di tutti i capitolati, l'analista
- redattore del documento finale dovrà inserire una conclusione in cui si
- esporrà:
-\end_layout
-
-\begin_layout Itemize
-Una 
-\series bold
-valutazione complessiva 
-\series default
-dei rischi e dei vantaggi di ciascun capitolato
-\end_layout
-
-\begin_layout Itemize
-Il 
-\series bold
-capitolato scelto
-\end_layout
-
-\begin_layout Itemize
-Un'
-\series bold
-analisi sintetica
-\series default
- di vantaggi e rischi di ciascun capitolato
+: raggiungere un livello di dettaglio tale da permettere una parallelizzazione
+ della codifica
 \end_layout
 
 \end_body

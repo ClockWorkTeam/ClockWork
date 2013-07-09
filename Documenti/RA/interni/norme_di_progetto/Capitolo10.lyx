@@ -61,42 +61,80 @@
 \begin_body
 
 \begin_layout Section
-Attività di Codifica
+Norme per i Test
+\end_layout
+
+\begin_layout Subsection
+Identificazione dei test
 \end_layout
 
 \begin_layout Standard
-Si dovranno seguire tali norme per aiutare l'attività di verifica del codice:
- 
+Si seguiranno tali formalismi per indicare i test:
+\end_layout
+
+\begin_layout Itemize
+TS: test di sistema, seguito dal nome del requisito a cui si riferisce.
+ Se un requisito necessita di più test differenti, verranno differenziati
+ aggiungendo una lettera, in ordine alfabetico
+\end_layout
+
+\begin_layout Itemize
+TI: test di integrazione, seguito da un elenco puntato di numeri interi
+ del tipo 
+\emph on
+a.b.c...n
+\emph default
+, dove la profondità 
+\emph on
+n
+\emph default
+ è arbitraria a seconda del caso.
+ La posizione dei numeri indica il livello di integrazione che il test deve
+ andare a verificare, il suo valore ne indica l'identificativo
+\end_layout
+
+\begin_layout Itemize
+TU: test di unità, seguito da una coppia di valori 
+\emph on
+x.y
+\emph default
+, ove
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+X: rappresenta l'identificativo dell'unità sottoposta a test
+\end_layout
+
+\begin_layout Itemize
+Y: identifica il caso di test
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Alpha-test
+\end_layout
+
+\begin_layout Standard
+Quando dovrà essere eseguito l'
+\bar under
+alpha-test
+\bar default
+:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Iterazioni:
-\series default
- ove si useranno, si imporrà un limite superiore statico
+L'alpha-test sarà supervisionato dal Responsabile, che annoterà i lavori
+ richiesti per correggere gli errori riscontrati
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Allocazioni di memoria: 
-\series default
-non si useranno dopo l'inizializzazione
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Sottoprogrammi/sottoprocedure:
-\series default
- non dovranno superare le 60 righe di codice
+Tutti i membri del gruppo saranno presenti
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Tali righe saranno contate escludendo la riga di comando e la riga di dichiarazi
-one.
+Ogni assenza deve essere giustificata al Responsabile.
 \end_layout
 
 \end_inset
@@ -105,75 +143,96 @@ one.
 \end_layout
 
 \begin_layout Enumerate
+I Verificatori dovranno eseguire i test di sistema descritti nel 
+\begin_inset ERT
+status open
 
-\series bold
-Asserzioni: 
-\series default
-si utilizzeranno almeno 2 asserzioni per sottoprogramma
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
+Se individuato un malfunzionamento, il verificatore aprirà un ticket destinato
+ al Programmatore responsabile della unità, descrivendo il malfunzionamento
+ e dove si presenta
+\end_layout
 
-\series bold
-Data hiding: 
-\series default
-si utilizzerà il massimo livello
+\begin_layout Subsection
+Beta-test
+\end_layout
+
+\begin_layout Standard
+Quando dovrà essere eseguito il 
+\bar under
+beta-test
+\bar default
+:
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Variabili globali:
-\series default
- non si utilizzeranno
+La data e il luogo saranno decisi dal Responsabile accordandosi coi proponenti
 \end_layout
 
 \begin_layout Enumerate
+Tutti i membri del gruppo saranno presenti
+\begin_inset Foot
+status open
 
-\series bold
-Lettura di variabili:
-\series default
- sarà effettuata solo tramite metodi 
-\emph on
-get
+\begin_layout Plain Layout
+Ogni assenza deve essere giustificata al Responsabile.
+\end_layout
+
+\end_inset
+
+e i proponenti
 \end_layout
 
 \begin_layout Enumerate
+Verrà chiesto ai proponenti di effettuare i test di sistema definiti nel
+ 
+\begin_inset ERT
+status open
 
-\series bold
-Scrittura di variabili:
-\series default
- sarà effettuata solo dai metodi 
-\emph on
-set
+\begin_layout Plain Layout
+
+{
+\backslash
+PdQ}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-Parametri in input e output:
-\series default
- ad ogni livello bisognerà verificare che i parametri siano validi, in caso
- contrario, agire di conseguenza
+Verranno descritti obiettivi e risultati dei test ai proponenti, e saranno
+ fornite le istruzioni basilari per l'utilizzo del software
 \end_layout
 
 \begin_layout Enumerate
+Verrà nominato un membro del gruppo per annotare commenti ed eventuali malfunzio
+namenti del software rilevati dal proponente.
+ Al termine del test tale componente redigerà un verbale e aprirà un ticket
+ per ogni malfunzionamento riscontrato
+\begin_inset Foot
+status open
 
-\series bold
-Compilazione:
-\series default
- i file devono essere subito compilati; non dovranno esservi presenti warning,
- e utilizzeranno la pratica del 
-\emph on
-continuous integration
+\begin_layout Plain Layout
+Tale ticket verrà assegnato al Programmatore responsabile
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
 
-\series bold
-Return:
-\series default
- nei metodi dovrà essere presente un solo return
+
 \end_layout
 
 \end_body
