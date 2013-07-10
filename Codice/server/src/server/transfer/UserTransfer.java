@@ -48,19 +48,26 @@ metodo per la gestione dei token
    	  sendPacket(wspacket, event.getConnector());
    	}
    	else if(type.equals("changeData")){
-   	  boolean answerData= userManager.setUserData(token.getString("username"), token.getString("name"), token.getString("surname"));
-   	  boolean answerPassword=true;
-   	  if(!(token.getString("password").equals(""))){
-   		answerPassword = userManager.setPassword(token.getString("username"), token.getString("password"));
-   	  }
-   	  if(answerData & answerPassword){
-   		wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"true\"}");
-   		java.util.Vector<User> newUser = new java.util.Vector<User>();
-   		newUser.add(userManager.getUserData(token.getString("username")));
-   		WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-  		broadcastToAll(wspacket2);
-   	  }else if (!answerData & !answerPassword){
-   		wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"false\"}");
+   	  try{
+   	    boolean answerData= userManager.setUserData(token.getString("username"), token.getString("name"), token.getString("surname"));
+   	    boolean answerPassword=true;
+   	    if(!(token.getString("password").equals(""))){
+   		  answerPassword = userManager.setPassword(token.getString("username"), token.getString("password"));
+   	    }
+   	  
+   	    if(answerData & answerPassword){
+   		  wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"true\"}");
+   		  java.util.Vector<User> newUser = new java.util.Vector<User>();
+   		  newUser.add(userManager.getUserData(token.getString("username")));
+   		  WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
+  		  broadcastToAll(wspacket2);
+   	    }else if (!answerData){
+   	      wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}");
+   	    }else if(!answerPassword){
+   	      wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica della password\"}");
+   	    }
+   	  }catch(Exception e){
+  		wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
    	  }
    	  sendPacket(wspacket, event.getConnector());
    	}
