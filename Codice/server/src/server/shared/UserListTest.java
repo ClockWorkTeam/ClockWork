@@ -6,12 +6,15 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
-* |         |               |                          |
-* +---------+---------------+--------------------------+
+* +---------+---------------+------------------------------------------+
+* | Data    | Programmatore |         Modifiche                        |
+* +---------+---------------+------------------------------------------+
+* |  130305 |     ZHP       | + creazione documento	                   |
+* |  130710 |     VF        | + modificata inizializzazione dei test   |
+* |         |               | + modificato testGetAllUsers             |
+* |         |               | + modificato testRemoveUsers             |
+* |         |               |                                          |
+* +---------+---------------+------------------------------------------+
 *
 */
 
@@ -19,18 +22,18 @@ package server.shared;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.*;
 
 public class UserListTest {
 	UserList userList;
 	
-	private void init(){
+	@Before
+	public void init(){
 		userList=new UserList();
 	}
 
 	@Test
 	public void testAddUser() {
-		init();
 		User user= new User("ClockWork7","Clock Work", "Team", "7");
 		assertTrue("Aggiunta non riuscita",userList.addUser(user));
 		assertFalse("Aggiunti due user con lo stesso username", userList.addUser(user));
@@ -38,7 +41,6 @@ public class UserListTest {
 
 	@Test
 	public void testGetUser() {
-		init();
 		User user= new User("ClockWork7","Clock Work", "Team", "7");
 		assertFalse("User presente erroneamente", userList.getUser(user.getUsername())==user );
 		userList.addUser(user);
@@ -47,18 +49,21 @@ public class UserListTest {
 
 	@Test
 	public void testGetAllUsers() {
-		testAddUser();
-		assertTrue("Numero user presenti corretto", userList.getAllUsers().size()==1 );
-		User user= new User("ClockWork","Clock Work", "Team", "7");
+		User user= new User("ClockWork7","Clock Work", "Team", "7");
+		User user2= new User("ClockWork","Clock Work", "Team", "7");
 		userList.addUser(user);
+		userList.addUser(user2);
+		assertTrue("Numero user presenti corretto", userList.getAllUsers().size()==2 );
 		assertTrue("User non presente", userList.getAllUsers().contains(user) );
+		assertTrue("User non presente", userList.getAllUsers().contains(user2) );
 	}
 
 	@Test
 	public void testRemoveUser() {
 		testAddUser();
-		assertTrue("Rimozione riuscita", userList.removeUser("ClockWork7"));
-		assertTrue("Risultato corretto",userList.getAllUsers().size()==0);
+		assertTrue("Rimozione non riuscita", userList.removeUser("ClockWork7"));
+		assertTrue("Risultato non corretto",userList.getAllUsers().size()==0);
+		assertFalse("Rimozione riuscita", userList.removeUser("ClockWork7"));
 	}
 
 }

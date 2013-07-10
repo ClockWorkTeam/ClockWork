@@ -6,51 +6,49 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
-* |         |               |                          |
-* +---------+---------------+--------------------------+
+* +---------+---------------+------------------------------------------+
+* | Data    | Programmatore |         Modifiche                        |
+* +---------+---------------+------------------------------------------+
+* |  130305 |     ZHP       | + creazione documento	                   |
+* |  130710 |     VF        | + modificata inizializzazione dei test   |
+* |         |               |                                          |
+* +---------+---------------+------------------------------------------+
 *
 */ 
 package server.shared;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.*;
 
 public class RecordMessageTest {
 	RecordMessage recordMessage;
 	
+	@Before
 	public void init() {
 		recordMessage= new RecordMessage("ClockWork","ClockWork7","prova", "2013-01-01 10:03:02");
 	}
 
 	@Test
 	public void testGetSender() {
-		init();
 		assertTrue("Sender non è quello atteso", recordMessage.getSender() == "ClockWork");
 		assertFalse("Sender non è quello atteso", recordMessage.getSender() == "Clock Work");
 	}
 
 	@Test
 	public void testGetAddressee() {
-		init();
 		assertTrue("Password non è quella attesa", recordMessage.getAddressee() == "ClockWork7");
 		assertFalse("Password non è quella attesa", recordMessage.getAddressee() == "ClockWork");
 	}
 
 	@Test
 	public void testGetPath() {
-		init();
 		assertTrue("Path non è quello atteso", recordMessage.getPath() == "prova");
 		assertFalse("Path non è quello atteso", recordMessage.getPath() == "sbagliato");
 	}
 
 	@Test
 	public void testGetDate() {
-		init();
 		assertTrue("Data non è quella attesa", recordMessage.getDate() == "2013-01-01 10:03:02");
 		assertFalse("Data non è quella attesa", recordMessage.getDate() == "2013-01-01");
 	}
