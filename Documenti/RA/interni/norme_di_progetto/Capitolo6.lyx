@@ -78,11 +78,11 @@ ticketing
 \bar default
  offerto da GitHub
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Questo servizio sarà usato anche per le comunicazioni fra membri singoli
- come descritto nella sezione 
+Servizio usato anche per le comunicazioni fra membri singoli, vedasi sezione
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Comunicazioni-interne"
@@ -94,13 +94,13 @@ reference "sub:Comunicazioni-interne"
 
 \end_inset
 
- in quanto, assieme al servizio di milestone si può tenere facilmente traccia
+ poiché, assieme al servizio di milestone si può tenere facilmente traccia
  dello stato di avanzamento dei lavori.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Questi strumenti saranno utilizzati come dice il seguente protocollo:
+Questi strumenti seguiranno tale protocollo:
 \end_layout
 
 \begin_layout Enumerate
@@ -108,37 +108,13 @@ Questi strumenti saranno utilizzati come dice il seguente protocollo:
 \series bold
 Creazione milestone
 \series default
-: sarà il Responsabile di Progetto a creare una milestone
+: il Responsabile creerà la milestone
 \emph on
  
 \emph default
-per la successiva revisione a cui il 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-NOMEGRUPPO}
-\end_layout
-
-\end_inset
-
- ha intenzione di partecipare.
- Lo stato di avanzamento si potrà vedere dal numero di ticket completati
- rispetto al numero di ticket aperti.
- Per fare ciò, bisogna accedere al repository, andare su Issues -> Milestones
- -> Create a new milestone
-\emph on
-.
-
-\emph default
- La milestone
-\emph on
- 
-\emph default
-dovrà contenere le seguenti informazioni:
+per la successiva revisione a cui il gruppo intende di partecipare.
+ L'avanzamento si vedrà dal numero di ticket completati.
+ La milestone avrà le seguenti informazioni:
 \end_layout
 
 \begin_deeper
@@ -154,28 +130,14 @@ Nome del Responsabile
 Data di conclusione della milestone
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
 
 \series bold
 Creazione di un ticket
 \series default
-: il Responsabile dovrà creare un ticket per ogni compito che dovrà essere
- assegnato ad un membro del 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-NOMEGRUPPO}
-\end_layout
-
-\end_inset
-
-.
- Le segnalazioni di 
+: il Responsabile creerà un ticket per ogni compito assegnato ad un membro
+ del gruppo.
+ Altri ticket possono essere creati da qualsiasi membro per segnalare 
 \emph on
 Anomalie
 \emph default
@@ -201,15 +163,10 @@ PdQ}
 \end_inset
 
 , sez.
- Comunicazione e risoluzione di anomalia) sono altri casi previsti per la
- creazione di un ticket, e queste possono essere fatte da un qualsiasi membro
- del gruppo.
- Per creare un ticket bisogna accedere al repository, andare su Issues ->
- New Issue.
- La creazione di un ticket va fatta definendo obbligatoriamente i campi:
+ Comunicazione e risoluzione di anomalia).
+ Il ticket avrà obbligatoriamente i seguenti campi definiti:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -223,7 +180,7 @@ Title
 \series bold
 Assegnee
 \series default
-: colui che dovrà concludere il ticket
+: colui che svolgerà il compito
 \end_layout
 
 \begin_layout Itemize
@@ -247,8 +204,7 @@ per la quale il compito dovrà essere terminato
 \series bold
 Label
 \series default
-: impostate a seconda di precisi argomenti nella fase di progettazione,
- alla creazione del ticket andrà scelta quella più appropriata
+: si imposterà a seconda dell'argomento
 \end_layout
 
 \begin_layout Itemize
@@ -256,30 +212,13 @@ Label
 \series bold
 Text
 \series default
-: dovrà contenere le seguenti informazioni:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione del compito affidato
-\end_layout
-
-\begin_layout Itemize
-Data di inizio prevista
-\end_layout
-
-\begin_layout Itemize
-Data di fine prevista
-\end_layout
-
-\begin_layout Itemize
-Collega
+: dovrà contenere la descrizione del compito, la data di inizio e di fine
+ previste ed il collega
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Questo campo solo se uno stesso compito è affidato a più di un componente
- del gruppo, dunque è facoltativo.
+Campo facoltativo.
 \end_layout
 
 \end_inset
@@ -288,16 +227,14 @@ Questo campo solo se uno stesso compito è affidato a più di un componente
 \end_layout
 
 \end_deeper
-\end_deeper
 \begin_layout Enumerate
 
 \series bold
 Esecuzione compito e risoluzione di un ticket
 \series default
-: ogni membro del gruppo dovrà visionare i ticket a lui assegnati e inserire
- un nuovo commento per ogni aggiornamento sullo stato del ticket.
- Ogni volta che viene concluso il compito, si dovrà aggiungere l'apposita
- label 
+: ogni membro del gruppo visionerà i ticket assegnategli e li aggiornerà
+ sullo stato.
+ Quando il compito sarà finito, si assegnerà la label 
 \begin_inset Quotes eld
 \end_inset
 
@@ -309,14 +246,12 @@ Completato
 \begin_inset Quotes erd
 \end_inset
 
- e menzionare il ticket nel relativo 
+ e si menzionerà il ticket nel relativo 
 \bar under
 commit
 \bar default
 .
- Sarà il Responsabile di Progetto che dovrà confermare l'effettiva chiusura
- del ticket solo se il compito è stato eseguito.
- La label aiuta il Responsabile di Progetto ad individuare i ticket da chiudere
+ Il Responsabile confermerà l'effettiva chiusura del ticket.
 \end_layout
 
 \begin_layout Enumerate
@@ -339,8 +274,7 @@ Chiusura milestone
 \emph on
  
 \emph default
-viene conclusa, il Responsabile di Progetto dovrà ripartire dal punto numero
- uno di questa procedura
+viene conclusa, il Responsabile ripartirà dal punto 1 di tale procedura
 \end_layout
 
 \end_body
