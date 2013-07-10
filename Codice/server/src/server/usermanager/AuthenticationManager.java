@@ -72,9 +72,13 @@ public class AuthenticationManager{
   /** Metodo per segnalare al sistema il logout di un dipendente
    * @param user user del dipendente che ha effettuato il logout
    */
-  public void logout(String username){
-	userDao.setIP(username, "0");
-	userList.getUser(username).setIP("0");
+  public User logout(String username){
+	User user= userDao.getUser(username);
+	if(user!=null){
+	  userDao.setIP(username, "0");
+	  userList.getUser(username).setIP("0");
+	}
+	return user;
   }
 
   /**Metodo che invoca il metodo di UserDao per creare un nuovo user
