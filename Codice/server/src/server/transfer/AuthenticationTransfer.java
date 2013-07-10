@@ -58,16 +58,16 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	  sendPacket(wspacket, event.getConnector());
    	}
    	else if(type.equals("signUp")){
-   	  User user = authenticationManager.createUser(token.getString("username"),token.getString("password"), token.getString("name"), token.getString("surname"), event.getConnector().getRemoteHost().toString());
-   	  if(user==null){
-   		wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"false\"}");
-   	  }else{
+   	  try{
+   	    User user = authenticationManager.createUser(token.getString("username"),token.getString("password"), token.getString("name"), token.getString("surname"), event.getConnector().getRemoteHost().toString());
    		event.getConnector().setUsername(user.getUsername());
 		wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"true\"}");
 		java.util.Vector<User> newUser = new java.util.Vector<User>();
 		newUser.add(user);
 		WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
 		broadcastToAll(wspacket2);
+	  }catch(Exception e){
+	    wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
 	  }
    	  sendPacket(wspacket, event.getConnector());
    	}
@@ -76,15 +76,16 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	  sendPacket(wspacket, event.getConnector());
    	}
    	else if(type.equals("logout")){
-   	  authenticationManager.logout(token.getString("username"));
+   	  User user = authenticationManager.logout(token.getString("username"));
    	  event.getConnector().removeUsername();
-   	  User user=userManager.getUserData(token.getString("username"));
    	  wspacket = new RawPacket("{\"type\":\"logout\",\"answer\":\"true\"}");
-   	  java.util.Vector<User> newUser = new java.util.Vector<User>();
-   	  newUser.add(user);
-   	  WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-  	  broadcastToAll(wspacket2);
    	  sendPacket(wspacket, event.getConnector());
+   	  if(user!=null){
+   	    java.util.Vector<User> newUser = new java.util.Vector<User>();
+   	    newUser.add(user);
+   	    WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
+  	    broadcastToAll(wspacket2);
+   	  }
     }
   }
 
@@ -110,5 +111,4 @@ public class AuthenticationTransfer extends ListenerTransfer{
     }
     connectedUsers.remove(event.getConnector());
   }
-
 }
