@@ -29,6 +29,7 @@ import java.util.Vector;
 import server.dao.*;
 import server.shared.User;
 import server.shared.RecordMessage;
+import server.shared.UserList;
 
 public class UserManager{
 
@@ -55,9 +56,12 @@ public class UserManager{
    * @param utente che vuole eseguire l'operazione
    * @param password la stringa della nuova password del User
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
+ * @throws Exception 
    */
-  public boolean setPassword(String username, String password){
-	return userDao.setPassword(username, password);
+  public boolean setPassword(String username, String password) throws Exception{
+	if(userDao.getUser(username)!=null){
+		return userDao.setPassword(username, password);
+	}else throw new Exception("Username errato");
   }
 
   /**Metodo che setta il campo name e cognome di un User
@@ -65,18 +69,30 @@ public class UserManager{
    * @param name la stringa del nuovo name del User
    * @param surname
    * @return boolean che indica se l'operazione e' andata o meno a buon fine
+ * @throws Exception 
    */
-  public boolean setUserData(String username, String name, String surname){
-	User user= userDao.getUser(username);
-	if(user!=null){
-	  User userS=null;
-	  if(!user.getName().equals(name)){
-		userDao.setName(username, name);
-		userS=userList.
+  public boolean setUserData(String username, String name, String surname) throws Exception{
+	User userTmp= userDao.getUser(username);
+	if(userTmp!=null){
+	  if((userTmp.getName().equals(name))&&(userTmp.getSurname().equals(surname))){
+		return true;
 	  }
-		boolean s = userDao.setSurname(username, surname);
-		return (n & s);
-	}return false;
+	  UserList userList=UserList.getInstance();
+	  User user = userList.getUser(username);
+	  if(user==null){
+		user=userTmp;
+	  	userList.addUser(user);
+	  }
+	  boolean ans =userDao.setName(username, name);
+	  if(ans){
+		user.setName(name);  
+		ans = userDao.setSurname(username, surname);
+		if(ans){
+		  user.setSurname(surname);
+		}
+	  }
+	  return ans;
+	}else throw new Exception("Username errato");
   }
 
   public User getUserData(String username){
@@ -99,7 +115,7 @@ public class UserManager{
 	  }else{
 		return null;
 	  }
-	}else throw new Exception ("errore nella registrazione del messaggio");
+	}else throw new Exception ("Errore nella registrazione del messaggio");
   }
 
   /** Metodo che trova i messaggi inviati all'user
@@ -122,5 +138,4 @@ public class UserManager{
 	RecordMessage message = new RecordMessage(sender, addressee, path, date);
 	return recordMessageDao.removeMessage(message);
   }
-
 }
