@@ -24,21 +24,18 @@ import org.jwebsocket.listener.WebSocketServerTokenEvent;
 import org.jwebsocket.token.Token;
 
 public class ChatTransfer extends ListenerTransfer {
-
-    public void processToken(WebSocketServerTokenEvent event, Token token) {
-   		String type= token.getString("type");
-  		WebSocketPacket wspacket=null;
-  		if(type.equals("sendText")){
-   			WebSocketConnector connector = getUserConnector(token.getString("username"));
-   			if(connector!=null){
-   				wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"username\":\""+event.getConnector().getUsername()+"\"}");
-   			}else{
-   				wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"username\":\""+token.getString("username")+"\"}");
-   				connector= event.getConnector();
-   			}
-   			sendPacket(wspacket,connector);
-   		}
-
-    }
-
+  public void processToken(WebSocketServerTokenEvent event, Token token) {
+    String type= token.getString("type");
+  	WebSocketPacket wspacket=null;
+  	if(type.equals("sendText")){
+   	  WebSocketConnector connector = getUserConnector(token.getString("username"));
+   	  if(connector!=null){
+   		wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"username\":\""+event.getConnector().getUsername()+"\"}");
+   	  }else{
+   		wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"username\":\""+token.getString("username")+"\"}");
+   		connector= event.getConnector();
+   	  }
+   	  sendPacket(wspacket,connector);
+   	}
+  }
 }
