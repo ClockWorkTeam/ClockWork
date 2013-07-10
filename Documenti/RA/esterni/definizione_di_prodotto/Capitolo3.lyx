@@ -2247,7 +2247,13 @@ setIP
 \series bold
 User logout(String username):
 \series default
- invoca i metodi 
+ controlla l'esistenza dello username nella base di dati, utilizzando il
+ metodo 
+\emph on
+getUser
+\emph default
+ della classe UserDaoSQL.
+ Se l'utente è presente invoca i metodi 
 \emph on
 setIP 
 \emph default
@@ -2256,7 +2262,8 @@ delle classi UserDaoSQL e UserList per modificare l'inidirzzo IP ad una
 \emph on
 0
 \emph default
-, che rappresenta un'utente non connesso
+, che rappresenta un'utente non connesso.
+ Infine restiuisce l'utente ottenuto dalla prima operazione
 \end_layout
 
 \begin_layout Itemize
@@ -2453,7 +2460,7 @@ boolean checkPassword(String username, String password):
 \emph on
 checkPassword 
 \emph default
-della classe UserDao
+della classe UserDaoSQL
 \end_layout
 
 \begin_layout Itemize
@@ -2466,7 +2473,7 @@ inizialmente controlla la presenza dello username nel database, invocando
 \emph on
 getUser
 \emph default
- della classe Username.
+ della classe UserDaoSQL.
  Se l'utente non è presente, e quindi il metodo ha restituito 
 \emph on
 null
