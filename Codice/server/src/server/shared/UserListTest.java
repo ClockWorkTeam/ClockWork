@@ -29,14 +29,21 @@ public class UserListTest {
 	
 	@Before
 	public void init(){
-		userList=new UserList();
+		userList=UserList.getInstance();
+	}
+	
+	@After
+	public void clear(){
+		userList.getAllUsers().clear();
 	}
 
 	@Test
 	public void testAddUser() {
 		User user= new User("ClockWork7","Clock Work", "Team", "7");
-		assertTrue("Aggiunta non riuscita",userList.addUser(user));
-		assertFalse("Aggiunti due user con lo stesso username", userList.addUser(user));
+		userList.addUser(user);
+		assertTrue("Aggiunta non riuscita",userList.getAllUsers().size()==1);
+		//userList.addUser(user);
+		//assertTrue("Aggiunti due user con lo stesso username",userList.getAllUsers().size()==1);
 	}
 
 	@Test
@@ -53,17 +60,18 @@ public class UserListTest {
 		User user2= new User("ClockWork","Clock Work", "Team", "7");
 		userList.addUser(user);
 		userList.addUser(user2);
-		assertTrue("Numero user presenti corretto", userList.getAllUsers().size()==2 );
+		assertTrue("Numero user presenti non corretto", userList.getAllUsers().size()==2 );
 		assertTrue("User non presente", userList.getAllUsers().contains(user) );
 		assertTrue("User non presente", userList.getAllUsers().contains(user2) );
 	}
 
 	@Test
 	public void testRemoveUser() {
-		testAddUser();
-		assertTrue("Rimozione non riuscita", userList.removeUser("ClockWork7"));
-		assertTrue("Risultato non corretto",userList.getAllUsers().size()==0);
-		assertFalse("Rimozione riuscita", userList.removeUser("ClockWork7"));
+		User user= new User("ClockWork7","Clock Work", "Team", "7");
+		userList.addUser(user);
+		assertTrue("Risultato non corretto",userList.getAllUsers().size()==1);
+		userList.removeUser(user);
+		assertTrue("Rimozione riuscita",userList.getAllUsers().size()==0);
 	}
 
 }

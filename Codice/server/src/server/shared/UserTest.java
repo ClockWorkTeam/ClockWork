@@ -19,8 +19,6 @@ package server.shared;
 
 import static org.junit.Assert.*;
 
-import java.util.Vector;
-
 import org.junit.*;
 
 public class UserTest {
@@ -77,40 +75,5 @@ public class UserTest {
 		assertTrue("IP non è quello atteso", user.getIP().equals("0"));
 		assertFalse("IP non è quello atteso", user.getIP().equals("7"));
 	}
-
-	@Test
-	public void testGetMessages() {
-		assertTrue("Il numero di messaggi inizialmente dovrebbe essere 0", user.getMessages().size()==0);
-		user.setMessage(new RecordMessage("ClockWork","ClockWork7","prova", "2013-01-01 10:03:02"));
-		assertTrue("Il numero di messaggi dovrebbe essere 1", user.getMessages().size()==1);
-	}
-	
-	@Test
-	public void testSetMessage() {
-		int num_mex=(user.getMessages()).size();
-		user.setMessage(new RecordMessage("ClockWork","ClockWork7","prova", "2013-01-01 10:03:02"));
-		assertTrue("Il messaggio non è stato aggiunto", user.getMessages().size()==(num_mex+1));
-	}
-
-	@Test
-	public void testSetMessages() {
-		Vector<RecordMessage> messages= new Vector<RecordMessage>();
-		messages.add(new RecordMessage("ClockWork","ClockWork7","prova", "2013-01-01 10:03:02"));
-		messages.add(new RecordMessage("ClockWork","ClockWork7","prova2", "2013-01-01 11:03:02"));
-		user.setMessages(messages);
-		assertTrue("I messaggi non sono stati aggiunti", user.getMessages().size()==2);
-		assertFalse("I messaggi non sono stati aggiunti", user.getMessages().size()==0);
-	}
-
-
-	@Test
-	public void testRemoveMessage() {
-		testSetMessages();
-		assertTrue("Il numero di messaggi inizialmente dovrebbe essere 2", user.getMessages().size()==2);
-		RecordMessage message= user.getMessages().get(0);
-		user.removeMessage(message);
-		assertTrue("Il messaggio non è stato tolto", user.getMessages().size()==1);		
-	}
-
 
 }
