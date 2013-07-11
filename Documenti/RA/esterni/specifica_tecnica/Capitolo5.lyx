@@ -128,7 +128,7 @@ mytalk.server.functionmanager.Converter
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="41" columns="5">
+<lyxtabular version="3" rows="43" columns="5">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1191,7 +1191,7 @@ FileTransfer
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1205,6 +1205,112 @@ RecordMessageCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+\emph on
+sendRecord
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+contact, path, date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+RecordMessageTransfer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+removeRecord
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+contact, path, date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1227,7 +1333,7 @@ RecordMessageCommunication
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2415,6 +2521,9 @@ RecordMessageTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+(
 \begin_inset Quotes eld
 \end_inset
 
@@ -2422,7 +2531,8 @@ saveMessage
 \begin_inset Quotes erd
 \end_inset
 
-
+) non esiste...
+ io l'ho chiamato sendRecord nei documenti
 \end_layout
 
 \end_inset
@@ -2432,6 +2542,8 @@ saveMessage
 
 \begin_layout Plain Layout
 answer
+\series bold
+, error
 \end_layout
 
 \end_inset
@@ -2441,6 +2553,17 @@ answer
 
 \begin_layout Plain Layout
 
+\series bold
+Se answer è 
+\emph on
+false
+\emph default
+ viene inviato un error contenente il testo
+\series default
+ 
+\series bold
+\emph on
+Errore nella registrazione del messaggio
 \end_layout
 
 \end_inset
@@ -2450,6 +2573,8 @@ answer
 
 \begin_layout Plain Layout
 
+\series bold
+RecordMessageCommunication
 \end_layout
 
 \end_inset
@@ -2469,6 +2594,9 @@ answer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+(
 \begin_inset Quotes eld
 \end_inset
 
@@ -2476,7 +2604,7 @@ removeMessage
 \begin_inset Quotes erd
 \end_inset
 
-
+) non esiste si chiama removeRecord
 \end_layout
 
 \end_inset
@@ -2504,6 +2632,8 @@ answer
 
 \begin_layout Plain Layout
 
+\series bold
+RecordMessageCommunication
 \end_layout
 
 \end_inset
