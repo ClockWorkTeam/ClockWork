@@ -9,10 +9,13 @@
  * +--------+---------------+-------------------------+
  * | Data   | Programmatore |     Modifiche           |
  * +--------+---------------+-------------------------+
- * | 130523 |    FV         | + metodo che inizializza|
- * |        |               |   la chat               |
+ * | 130710 |    BG         | + creazione metodo      | 
+ * |        |               |   conference            | 
  * +--------+---------------+-------------------------+
- * | 130520 |    FV         | + creazione documento   |
+ * | 130523 |    FV         | + metodo che inizializza| 
+ * |        |               |   la chat               | 
+ * +--------+---------------+-------------------------+ 
+ * | 130520 |    FV         | + creazione documento   | 
 
  */
 
@@ -36,7 +39,8 @@ define([
       'click button#sendVideoText':'sendVideoText',
       'click button#call':'audiocall',
       'click button#video':'videocall',
-      'click input#record' : 'record'
+      'click input#record' : 'record',
+      'click button#startConference' : 'conference',
     },
 
     el : $('#content'),
@@ -190,6 +194,27 @@ define([
      */
     viewDataContact:function(){
       alert('vedi dettaglio');
+    },
+    
+    conference : function(){
+      console.log("Prova");
+      var contatti=[];
+      alert('vedi dettaglio');
+      for(var i=0;i<document.getElementsByTagName('input').length;i++){
+        if(document.getElementsByTagName('input')[i].type=='checkbox' && document.getElementsByTagName('input')[i].checked){
+          contatti.push(document.getElementsByTagName('input')[i].name);
+        }
+      }
+      if(this.callView){
+        this.forceClose();
+      }
+      this.callView=new CallView({FunctionsView:this});
+      if(isCaller==false){
+        this.callView.conference(false, 'video',contatti);
+      }else{
+        this.callView.conference(true,'video',contatti);
+      }
+      $('#main').prepend(this.callView.el);
     }
 
   });

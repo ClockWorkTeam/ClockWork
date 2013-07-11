@@ -244,9 +244,6 @@ reference "fig:Aggiunta-funzionalità-al-server"
 \end_inset
 
  illustrano come aggiungere nuove funzionalità al 
-progetto
-\lang italian
-
 \begin_inset ERT
 status open
 
@@ -309,7 +306,7 @@ name "fig:Aggiunta-funzionalità-al-client"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -382,22 +379,18 @@ define(['jquery',
 
 \begin_layout Plain Layout
 
-'underscore',
+		'underscore',
 \end_layout
 
 \begin_layout Plain Layout
 
-'backbone',
+		'backbone',
 \end_layout
 
 \begin_layout Plain Layout
 
-'communication/NewFunctionCommunication' ],
-\end_layout
-
-\begin_layout Plain Layout
-
-function($, _, Backbone, SideView, NewFunctionCommunication){
+		'communication/NewFunctionCommunication' ], function($, _, Backbone, SideView,
+ NewFunctionCommunication){
 \end_layout
 
 \end_inset
@@ -432,8 +425,8 @@ Scrivere il codice della nuova vista
 \end_layout
 
 \begin_layout Enumerate
-Inserire se necessario, nelle viste appropriate, il punto in cui la nuova
- vista viene usata
+Inserire, nelle viste appropriate, il punto in cui la nuova vista creata
+ viene richiamata
 \end_layout
 
 \begin_layout Subsubsection
@@ -454,7 +447,8 @@ mytalk.client.communication
 \end_layout
 
 \begin_layout Enumerate
-Inserire subito la seguente linea di codice:
+Inserire subito la seguente linea di codice, allo scopo di poter comuniare
+ con il server
 \end_layout
 
 \begin_deeper
@@ -470,28 +464,13 @@ define(['connection'], function(Connection){
 
 \end_inset
 
- Questo permettera la comunicazione con il server con il seguente comando
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-Connection.send(Messaggio da inviare);
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Se necessario creare variabili visibili all'interno di tutto il codice della
- classe, farlo appena eseguito il punto 1
+Se necessario creare variabile visibile all'interno di tutto il codice della
+ classe communication appena eseguito il punto 1
 \end_layout
 
 \begin_layout Enumerate
@@ -528,85 +507,6 @@ return{
 \end_deeper
 \begin_layout Subsubsection
 Istruzioni per la creazione di una classe in 
-\family typewriter
-\series bold
-mytalk.server.transfer
-\end_layout
-
-\begin_layout Standard
-Per poter realizzare una nuova classe nel package 
-\family typewriter
-\series bold
-mytalk.server.transfer
-\family default
-\series default
- si deve:
-\end_layout
-
-\begin_layout Enumerate
-Importare le seguenti librerie
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-import org.jwebsocket.api.WebSocketPacket; 
-\end_layout
-
-\begin_layout Plain Layout
-
-import org.jwebsocket.kit.RawPacket;
-\end_layout
-
-\begin_layout Plain Layout
-
-import org.jwebsocket.kit.WebSocketServerEvent;
-\end_layout
-
-\begin_layout Plain Layout
-
-import org.jwebsocket.listener.WebSocketServerTokenEvent; 
-\end_layout
-
-\begin_layout Plain Layout
-
-import org.jwebsocket.token.Token;
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Creare una nuova classe che estende da ListenerTransfer
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-public class NewFunctionTransfer extends ListenerTransfer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Scrivere il codice della nuova classe
 \end_layout
 
 \end_body
