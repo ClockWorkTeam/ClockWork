@@ -65,31 +65,12 @@ Specifica Client
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-NOTA
-\series default
- (
-\series bold
-chiave di lettura capitolo)
-\series default
-:
-\end_layout
-
-\begin_layout Itemize
-Per quanto JavaScript sia un linguaggio debolmente tipizzato, al fine di
- descrivere meglio gli attributi si è scelto di specificare i tipi che dovranno
- assumere le variabili, una volta inizializzate.
- Questi verranno indicati fra parentesi quadre 
-\end_layout
-
-\begin_layout Standard
 \align center
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -111,10 +92,6 @@ Architettura del client
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -207,41 +184,9 @@ mytalk.client.view
  web usufruibile dagli utenti mediante pagine web.
  Diversamente da uno schema di tipo MVC il package view contiene non solo
  le parti di interfaccia ma anche parti logiche, come previsto dal framework
- Backbone.js, che prevede uno schema di tipo MV*
+ Backbone.js, che prevede uno schema di tipo MV*.
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Il package utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -444,7 +389,7 @@ name "sub:AuthenticationView"
 \begin_layout Standard
 La classe AuthenticationView deve definire la struttura, e la conseguente
  visualizzazione, della parte della pagina web che consente di effettuare
- la registrazione, l'accesso e la disconnessione dal sistema
+ la registrazione, l'accesso e la disconnessione dal sistema.
 \end_layout
 
 \begin_layout Standard
@@ -486,66 +431,6 @@ Classe AuthenticationView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.AuthenticationCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.UserModel
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.UserDataView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.SideView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.AuthenticationTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -554,7 +439,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -566,7 +451,7 @@ SideView
 \series bold
  contactsView:
 \series default
- conterrà il riferimento alla classe SideView
+ riferimento alla classe SideView
 \end_layout
 
 \begin_layout Itemize
@@ -574,7 +459,7 @@ SideView
 \series bold
 [UserDataView] userDataView:
 \series default
- conterrà il riferimento alla classe UserDataView
+ riferimento alla classe UserDataView
 \end_layout
 
 \begin_layout Itemize
@@ -582,7 +467,7 @@ SideView
 \series bold
 [UserModel] userModel: 
 \series default
-conterrà il riferimento alla classe UserModel
+riferimento alla classe UserModel
 \end_layout
 
 \begin_layout Itemize
@@ -590,7 +475,7 @@ conterrà il riferimento alla classe UserModel
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Standard
@@ -670,7 +555,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
+ metodo per inizializzare l'oggetto, si occupa di inizializzare 
 \emph on
 contactsView 
 \emph default
@@ -693,7 +578,7 @@ late
 \series bold
 [doLogin()] callBacks():
 \series default
- metodo che permetterà ad altre classi di usufruire del metodo 
+ metodo che permette ad altre classi di usufruire del metodo 
 \emph on
 doLogin(String, String, String[], AuthenticationView) 
 \end_layout
@@ -702,11 +587,12 @@ doLogin(String, String, String[], AuthenticationView)
 \begin_layout Itemize
 
 \series bold
-[void] doLogin(String, String, String[], AuthenticationView)
+[void] doLogin([String] username, [String] password, [String[]] result,
+ [AuthenticationView] view)
 \series default
-: metodo che effettuerà l'operazione di login.
- Si occuperà di creare il model corrispondente all'utente, aggiornare il
- template e invocare il metodo 
+: metodo che effettua l'operazione di login.
+ Si occupa di creare il model corrispondente all'utente, aggiornare il template
+ e invocare il metodo 
 \emph on
 getContacts(AuthenticationView) 
 \emph default
@@ -721,7 +607,7 @@ contactsView
 \series bold
 [void] connect():
 \series default
- metodo che avvierà l'operazione di login dell'utente richiamando il metodo
+ metodo che avvia l'operazione di login dell'utente richiamando il metodo
  
 \emph on
 checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticatioVie
@@ -740,8 +626,8 @@ AuthenticationCommunication
 \series bold
 [void] disconnect():
 \series default
- metodo che si occuperà di chiudere la sessione con il server, dovrà invocare
- il metodo 
+ metodo che si occupa di chiudere la sessione con il server, invocando il
+ metodo 
 \emph on
 logout(String)
 \emph default
@@ -753,7 +639,7 @@ AuthenticationCommunication
 \emph on
  
 \emph default
-aggiornare il template e deallocare 
+aggiornando il template e deallocando 
 \emph on
 userDataView 
 \emph default
@@ -767,7 +653,7 @@ contactsView
 \series bold
 [void] viewSignup():
 \series default
- metodo che permetterà la visualizzazione del form di registrazione
+ metodo che permette la visualizzazione del form di registrazione
 \end_layout
 
 \begin_layout Itemize
@@ -775,10 +661,9 @@ contactsView
 \series bold
 [void] signup():
 \series default
- metodo che avvierà l'operazione di registrazione dell'utente.
- Dovrà controllare che i campi obbligatori siano compilati e che la password
- e quella di conferma coincidano, in caso affermativo invocherà il metodo
- 
+ metodo che avvia l'operazione di registrazione dell'utente.
+ Controlla che i campi obbligatori siano compilati e che la password e quella
+ di conferma coincidano, in caso affermativo invocha il metodo 
 \emph on
 signup(String, String, String, String, AuthenticationView.callBacks(), Authentica
 tionView) 
@@ -787,7 +672,7 @@ della classe
 \emph on
 AuthenticationCommunication
 \emph default
- altrimenti mostrerà l'avviso di errore
+ altrimenti mostra l'avviso di errore
 \end_layout
 
 \begin_layout Itemize
@@ -804,13 +689,13 @@ AuthenticationCommunication
 \series bold
 [void] editProfile()
 \series default
-: metodo che avvierà l'operazione di modifica dati, inizializzando 
+: metodo che avvia l'operazione di modifica dati, inizializzando 
 \emph on
 userDataView.
  
 \emph default
-Prima di effettuare l'operazione dovrà controllare che tutte le view presenti
- nel content siano state chiuse
+Prima di effettuare l'operazione controlla che tutte le view presenti nel
+ content siano state chiuse
 \end_layout
 
 \begin_layout Subsubsection
@@ -870,68 +755,6 @@ Classe CallView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.CallCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.StatisticsView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.CallTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -940,7 +763,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -948,7 +771,7 @@ Attributi pubblici:
 \series bold
 [StatisticsView] statisticsView:
 \series default
- conterrà il riferimento alla classe StatisticsView
+ riferimento alla classe StatisticsView
 \end_layout
 
 \begin_layout Itemize
@@ -956,7 +779,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -964,7 +787,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [boolean] calling: 
 \series default
-indicherà se l'utente è occupato in una chiamata o no
+variabile che indica se l'utente è occupato in una chiamata o no
 \end_layout
 
 \begin_layout Standard
@@ -994,7 +817,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare 
+ metodo per inizializzare l'oggetto, si occupa di inizializzare 
 \emph on
 statisticsView 
 \emph default
@@ -1009,8 +832,8 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template CallTemplate
- e che verificherà che sia in corso una chiamata e, in caso affermativo,
- invocherà il metodo 
+ e che verificha che sia in corso una chiamata e, in caso affermativo, invoca
+ il metodo 
 \shape italic
 recoverCall()
 \shape default
@@ -1019,7 +842,7 @@ recoverCall()
 render()
 \shape default
  di StatisticsView.
- Altrimenti, a seconda che l'utente sia il chiamato o il chiamante, invocherà
+ Altrimenti, a seconda che l'utente sia il chiamato o il chiamante, invoca
  i metodi 
 \shape italic
 sendAnswer(String, ContactModel, CallView)
@@ -1028,7 +851,7 @@ sendAnswer(String, ContactModel, CallView)
 \shape italic
 sendCall(String, ContactModel, CallView)
 \shape default
- di CallCommunication e assegnerà a 
+ di CallCommunication e assegna a 
 \emph on
 calling 
 \emph default
@@ -1038,9 +861,9 @@ lo stato di chiamata
 \begin_layout Itemize
 
 \series bold
-[void] endcall(boolean): 
+[void] endcall([boolean] isEnding): 
 \series default
-metodo che terminerà la chiamata in corso richiamando i metodi 
+metodo che termina la chiamata in corso richiamando i metodi 
 \shape italic
 closeViewCall()
 \shape default
@@ -1053,8 +876,8 @@ close()
 close() 
 \emph default
 della classe StatisticsView.
- Inoltre nel caso il metodo venga invocato dall'utente che ha deciso di
- chiudere la chiamata, verrà invocato anche il metodo 
+ Inoltre nel caso il metodo sia invocato dall'utente che ha deciso di chiudere
+ la chiamata, viene invocato anche il metodo 
 \emph on
 endCall()
 \emph default
@@ -1066,7 +889,7 @@ endCall()
 \series bold
 [void] close():
 \series default
- metodo che chiuderà l'istanza della classe creata
+ metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1126,68 +949,6 @@ Classe ChatView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.ChatCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.TextMessagesCollection
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.ChatTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -1196,7 +957,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -1204,7 +965,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -1212,7 +973,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [TextMessagesCollection] collection:
 \series default
- conterrà il riferimento alla classe TextMessagesCollection
+ riferimento alla classe TextMessagesCollection
 \end_layout
 
 \begin_layout Standard
@@ -1242,7 +1003,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, collegherà il metodo 
+ metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
 render()
 \emph default
@@ -1256,7 +1017,7 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template ChatTemplate
- inoltre, invocherà il metodo 
+ inoltre, invoca il metodo 
 \shape italic
 putMessages() 
 \emph on
@@ -1268,11 +1029,11 @@ per visualizzare i messaggi scambiati fino ad ora
 \series bold
 [void] putMessages()
 \series default
-: metodo che si occuperà di prelevare dalla 
+: metodo che si occupa di prelevare dalla 
 \shape italic
 collection
 \shape default
- tutti i messaggi di testo della conversazione scelta, e invocherà la funzione
+ tutti i messaggi di testo della conversazione scelta, e invoca la funzione
  
 \shape italic
 putMessage(TextMessageModel)
@@ -1283,9 +1044,9 @@ putMessage(TextMessageModel)
 \begin_layout Itemize
 
 \series bold
-[void] putMessage(TextMessageModel)
+[void] putMessage([TextMessageModel] message)
 \series default
-: metodo che si occuperà della scrittura di un messaggio di testo, presente
+: metodo che si occupa della scrittura di un messaggio di testo, presente
  nella 
 \emph on
 collection,
@@ -1298,14 +1059,14 @@ collection,
 \series bold
 [void] send(): 
 \series default
-metodo per inviare un messaggio al contatto, per fare ciò invocherà il metodo
+metodo per inviare un messaggio al contatto, per fare ciò invoca il metodo
  
 \shape italic
 send(String, string)
 \shape default
  della classe ChatCommunication, con parametri lo username del contatto
  e il testo del messaggio.
- Provvederà anche ad aggiungere il messaggio a 
+ Provvede anche ad aggiungere il messaggio a 
 \shape italic
 collection
 \end_layout
@@ -1315,11 +1076,11 @@ collection
 \series bold
 [void] unrender():
 \series default
- metodo per chiudere l'istanza, per fare ciò rimuoverà da 
+ metodo per chiudere l'istanza, per fare ciò rimuove da 
 \shape italic
 collection
 \shape default
- la conversazione con l'utente e invocherà il metodo 
+ la conversazione con l'utente e invoca il metodo 
 \shape italic
 close() 
 \end_layout
@@ -1329,7 +1090,7 @@ close()
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata
+metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1389,66 +1150,6 @@ Classe ContactView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.ContactModel
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.ContactTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.SideView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -1457,7 +1158,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -1465,7 +1166,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -1473,7 +1174,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [FunctionsView] currentFunctions: 
 \series default
-conterrà il riferimento alla classe FunctionsView
+riferimento alla classe FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -1481,7 +1182,7 @@ conterrà il riferimento alla classe FunctionsView
 \series bold
 [ContactModel] model:
 \series default
- conterrà il model del contatto visualizzato
+ riferimento al model del contatto visualizzato
 \end_layout
 
 \begin_layout Standard
@@ -1511,7 +1212,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, collegherà il metodo 
+ metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
 render()
 \emph default
@@ -1532,8 +1233,8 @@ render()
 \series bold
 [void] view():
 \series default
- metodo che si occuperà di avviare la FunctionsView relativa al contatto.
- Prima di fare ciò invocherà il metodo 
+ metodo che si occupa di avviare la FunctionsView relativa al contatto.
+ Prima di fare ciò invoca il metodo 
 \shape italic
 closeOtherContacts(Strings)
 \shape default
@@ -1544,9 +1245,9 @@ closeOtherContacts(Strings)
 \begin_layout Itemize
 
 \series bold
-[void] createCall(String):
+[void] createCall([String] type):
 \series default
- metodo che verrà chiamato quando si accetterà una chiamata in arrivo; invocherà
+ metodo che viene chiamato quando si accetta una chiamata in arrivo; invoca
  il metodo 
 \shape italic
 closeOtherContacts(String)
@@ -1571,7 +1272,7 @@ audiocall(boolean)
 \series bold
 [void] close():
 \series default
- metodo che chiuderà l'istanza della classe creata invocando il metodo 
+ metodo che chiude l'istanza della classe creata invocando il metodo 
 \shape italic
 unrender() 
 \emph on
@@ -1636,62 +1337,6 @@ Classe FileView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.FileCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.FileTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -1700,7 +1345,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -1708,7 +1353,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Standard
@@ -1738,8 +1383,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di richiamare il metodo
- 
+ metodo per inizializzare l'oggetto, si occupa di richiamare il metodo 
 \emph on
 render()
 \end_layout
@@ -1757,8 +1401,7 @@ render()
 \series bold
 [void] sendFile():
 \series default
- metodo che invierà il file al server, attraverso l'utilizzo del metodo
- 
+ metodo che invia il file al server, attraverso l'utilizzo del metodo 
 \emph on
 sendFile(String, File) 
 \emph default
@@ -1770,7 +1413,7 @@ di FileCommunication
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata
+metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -1830,89 +1473,6 @@ Classe FunctionsView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.CallView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.RecordMessageView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FileView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.ContactModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-m
-\series default
-ytalk.client.view.ContactView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.SideView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -1921,7 +1481,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -1929,7 +1489,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -1937,7 +1497,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [CallView] callView: 
 \series default
-conterrà il riferimento alla classe CallView
+riferimento alla classe CallView
 \end_layout
 
 \begin_layout Itemize
@@ -1945,7 +1505,7 @@ conterrà il riferimento alla classe CallView
 \series bold
 [ChatView] chatView:
 \series default
- conterrà il riferimento alla classe ChatView
+ riferimento alla classe ChatView
 \end_layout
 
 \begin_layout Itemize
@@ -1953,7 +1513,7 @@ conterrà il riferimento alla classe CallView
 \series bold
 [RecordMessageView] recordMessageView:
 \series default
- conterrà il riferimento alla classe RecordMessageView
+ riferimento alla classe RecordMessageView
 \end_layout
 
 \begin_layout Itemize
@@ -1961,7 +1521,7 @@ conterrà il riferimento alla classe CallView
 \series bold
 [FileView] fileView:
 \series default
- conterrà il riferimento alla classe FileView
+ riferimento alla classe FileView
 \end_layout
 
 \begin_layout Standard
@@ -2031,7 +1591,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, collegherà il metodo 
+ metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
 render()
 \emph default
@@ -2045,9 +1605,8 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template FunctionsTemplate,
- per fare ciò dovrà controllare se l'istanza è stata creata da SideView
- o da ContactView e se esiste già una chiamata in corso, nel qual caso si
- mostrerà la chiamata.
+ per fare ciò controlla se l'istanza è stata creata da SideView o da ContactView
+ e se esiste già una chiamata in corso, nel qual caso mostra la chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -2056,11 +1615,11 @@ render()
 [void] startChat():
 \series default
  metodo per avviare una comunicazione testuale con il contatto, per fare
- ciò inizializzerà 
+ ciò inizializza 
 \emph on
 chatView
 \emph default
-, se non è già esistente, e invocherà il metodo 
+, se non è già esistente, e invoca il metodo 
 \shape italic
 render() 
 \emph on
@@ -2073,11 +1632,11 @@ della classe ChatView
 [void] sendVideoText():
 \series default
  metodo per inizializzare la vista per la registrazione di un messaggio,
- per fare ciò inizializzerà 
+ per fare ciò inizializza 
 \shape italic
 recordMessageView
 \shape default
-, se non è già esistente, e invocherà il metodo 
+, se non è già esistente, e invoca il metodo 
 \shape italic
 render() 
 \emph on
@@ -2093,11 +1652,11 @@ della classe RecordMessageView
 [void] sendFile():
 \series default
  metodo per inizializzare la vista per l'invio di un file, per fare ciò
- inizializzerà 
+ inizializza 
 \shape italic
 fileView
 \shape default
-, se non è già esistente, e invocherà il metodo 
+, se non è già esistente, e invoca il metodo 
 \shape italic
 render() 
 \emph on
@@ -2110,10 +1669,9 @@ della classe fileView
 \begin_layout Itemize
 
 \series bold
-[void] audiocall(boolean):
+[void] audiocall([boolean] isCaller):
 \series default
- metodo per avviare una chiamata audio, per fare ciò invocherà il metodo
- 
+ metodo per avviare una chiamata audio, per fare ciò invoca il metodo 
 \shape italic
 call(boolean, String), 
 \emph on
@@ -2126,10 +1684,9 @@ passando come parametri quello di audiocall e la stringa
 \begin_layout Itemize
 
 \series bold
-[void] videocall(boolean): 
+[void] videocall([boolean] isCaller): 
 \series default
-metodo per avviare una chiamata audio, per fare ciò invocherà il metodo
- 
+metodo per avviare una chiamata audio, per fare ciò invoca il metodo 
 \shape italic
 call(boolean, String), 
 \emph on
@@ -2142,21 +1699,20 @@ passando come parametri quello di videocall e la stringa
 \begin_layout Itemize
 
 \series bold
-[void] call(boolean, String):
+[void] call([boolean] isCaller, [String] type):
 \series default
- metodo per gestire l'inizializzazione di una chiamata, per fare ciò inizializze
-rà 
+ metodo per gestire l'inizializzazione di una chiamata, per fare ciò inizializza
+ 
 \emph on
 callView 
 \emph default
-e invocherà il metodo 
+e invoca il metodo 
 \shape italic
 render(boolean, String, ContactModel, boolean)
 \emph on
  specificando se si è il chiamante, il tipo di chiamata, il contatto con
  cui si sta comunicando e se si vuole registrare la chiamata.
- Inoltre si occuperà di mantenere la chat attiva, richiamando il metodo
- 
+ Inoltre si occupa di mantenere la chat attiva, richiamando il metodo 
 \emph default
 startChat() 
 \end_layout
@@ -2166,7 +1722,7 @@ startChat()
 \series bold
 [void] forceClose():
 \series default
- metodo che forzerà la chiusura di una chiamata invocando 
+ metodo che forza la chiusura di una chiamata invocando 
 \shape italic
 endcall() 
 \emph on
@@ -2178,7 +1734,7 @@ della classe CallView
 \series bold
 [void] closeViewCall():
 \series default
- metodo che, a chiamata terminata, ripristinerà la vista
+ metodo che, a chiamata terminata, ripristina la vista
 \end_layout
 
 \begin_layout Itemize
@@ -2186,7 +1742,7 @@ della classe CallView
 \series bold
 [void] viewDataContact():
 \series default
- metodo che mostrerà i dati dell'utente selezionato
+ metodo che mostra i dati dell'utente selezionato
 \end_layout
 
 \begin_layout Itemize
@@ -2194,8 +1750,7 @@ della classe CallView
 \series bold
 [void] unrender():
 \series default
- metodo per chiudere definitivamente l'istanza, deve invocare il metodo
- 
+ metodo per chiudere definitivamente l'istanza, invoca il metodo 
 \shape italic
 unrender() 
 \emph on
@@ -2214,7 +1769,7 @@ close()
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata e invoca il metodo 
+metodo che chiude l'istanza della classe creata e invoca il metodo 
 \shape italic
 close()
 \emph on
@@ -2278,56 +1833,6 @@ Classe NotificationView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.NotificationTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.NotificationCommunication
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -2336,7 +1841,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -2344,7 +1849,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -2352,8 +1857,8 @@ conterrà il riferimento al template utilizzato
 \series bold
 [boolean] timeout:
 \series default
- variabile booleana che segnalerà quando non si risponderà in tempo ad una
- notifica 
+ variabile booleana che segnala quando non si risponde in tempo ad una notifica
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2439,7 +1944,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare la variabile
+ metodo per inizializzare l'oggetto, si occupa di inizializzare la variabile
  
 \shape italic
 timeout
@@ -2467,7 +1972,7 @@ te
 \series bold
 [void] unrender():
 \series default
- metodo per rimuovere la vista delle notifiche, invocherà il metodo 
+ metodo per rimuovere la vista delle notifiche, invoca il metodo 
 \shape italic
 close()
 \end_layout
@@ -2477,11 +1982,11 @@ close()
 \series bold
 [void] acceptCall():
 \series default
- metodo per accettare una chiamata in arrivo, invocherà il metodo 
+ metodo per accettare una chiamata in arrivo, invoca il metodo 
 \shape italic
 unrender()
 \shape default
- e assegnerà a 
+ e assegna a 
 \emph on
 timeout
 \emph default
@@ -2489,7 +1994,7 @@ timeout
 \emph on
 false, 
 \emph default
-infine invierà un evento di tipo 
+infine invia un evento di tipo 
 \emph on
 acceptCall
 \emph default
@@ -2506,11 +2011,11 @@ acceptCall
 \emph on
 timeout
 \emph default
- risulterà 
+ risulta 
 \emph on
 false
 \emph default
- chiamerà il metodo 
+ chiama il metodo 
 \shape italic
 refuseCall()
 \end_layout
@@ -2520,7 +2025,7 @@ refuseCall()
 \series bold
 [void] refuseCall(): 
 \series default
-metodo per rifiutare una chiamata, per fare ciò invocherà il metodo
+metodo per rifiutare una chiamata, per fare ciò invoca il metodo
 \shape italic
  refuseCall(String)
 \shape default
@@ -2536,16 +2041,16 @@ della classe stessa
 \series bold
 [void] viewMessage(): 
 \series default
-metodo per visualizzare il messaggio video/audio ricevuto, invocherà il
- metodo 
+metodo per visualizzare il messaggio video/audio ricevuto, invoca il metodo
+ 
 \shape italic
 unrender()
 \shape default
- e invierà un evento di tipo 
+ e invia un evento di tipo 
 \emph on
 viewMessage 
 \emph default
-che sarà catturato da SideView
+che viene catturato da SideView
 \end_layout
 
 \begin_layout Itemize
@@ -2554,7 +2059,7 @@ che sarà catturato da SideView
 [void] ignoreMessage(): 
 \series default
 metodo per ignorare la visualizzazione del messaggio video/audio ricevuto,
- invocherà il metodo 
+ invoca il metodo 
 \shape italic
 unrender()
 \shape default
@@ -2566,8 +2071,8 @@ unrender()
 \series bold
 [void] acceptFile():
 \series default
- metodo per accettare la ricezione di un file in arrivo, scaricherà il file
- e invocherà il metodo 
+ metodo per accettare la ricezione di un file in arrivo, scarica il file
+ e invoca il metodo 
 \shape italic
 unrender()
 \shape default
@@ -2579,7 +2084,7 @@ unrender()
 \series bold
 [void] refuseFile(): 
 \series default
-metodo per rifiutare la ricezione di un file in arrivo, per fare ciò invocherà
+metodo per rifiutare la ricezione di un file in arrivo, per fare ciò invoca
  il metodo
 \shape italic
  refuseFile(String)
@@ -2596,7 +2101,7 @@ della classe stessa
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata
+metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -2657,68 +2162,6 @@ Classe RecordMessageView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.RecordMessageCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.RecordMessageTemplate
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.RecordMessagesCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -2727,7 +2170,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -2735,7 +2178,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -2743,7 +2186,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [MediaStream] localstream: 
 \series default
-conterrà lo stream audio/video locale
+stream audio/video locale
 \end_layout
 
 \begin_layout Standard
@@ -2813,7 +2256,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di inizializzare la variabile
+ metodo per inizializzare l'oggetto, si occupa di inizializzare la variabile
  
 \shape italic
 localstream
@@ -2837,7 +2280,7 @@ ate
 \series bold
 [void] startRecording():
 \series default
- metodo per avviare la registrazione del messaggio, inizializzerà la variabile
+ metodo per avviare la registrazione del messaggio, inizializza la variabile
  
 \shape italic
 localStream 
@@ -2845,7 +2288,7 @@ localStream
 e
 \shape default
 \emph default
- inoltre sostituirà il pulsante per avviare la registrazione con il pulsante
+ inoltre sostituisce il pulsante per avviare la registrazione con il pulsante
  per fermarla
 \end_layout
 
@@ -2854,7 +2297,7 @@ e
 \series bold
 [void] stopRecording(): 
 \series default
-metodo per fermare la registrazione del messaggio, sostituirà il pulsante
+metodo per fermare la registrazione del messaggio, sostituisce il pulsante
  per terminare la registrazione con i pulsanti per riavviarla e per inviare
  il messaggio
 \end_layout
@@ -2864,7 +2307,7 @@ metodo per fermare la registrazione del messaggio, sostituirà il pulsante
 \series bold
 [void] sendRecordMessage():
 \series default
- metodo per inviare il messaggio, farà ciò invocando il metodo 
+ metodo per inviare il messaggio, invocando il metodo 
 \emph on
 sendRecordMessage(String
 \emph default
@@ -2878,19 +2321,18 @@ sendRecordMessage(String
 \begin_layout Itemize
 
 \series bold
-[void] viewMessage(Event): 
+[void] viewMessage([Event] event): 
 \series default
-metodo per visualizzare il video messaggio selezionato, dovrà anche aggiornare
- il template
+metodo per visualizzare il video messaggio selezionato, si occupa anche
+ di aggiornare il template
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] removeMessage(Event): 
+[void] removeMessage([Event] event): 
 \series default
-metodo per eliminare il video messaggio selezionato, invocherà il metodo
- 
+metodo per eliminare il video messaggio selezionato, invoca il metodo 
 \emph on
 removeRecordMessage(RecordMessageModel) 
 \emph default
@@ -2902,7 +2344,7 @@ della classe RecordMessageCommunication
 \series bold
 [void] close():
 \series default
- metodo che chiuderà l'istanza della classe creata
+ metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -2964,86 +2406,6 @@ Classe SideView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.ContactView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.ContactsCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.SideTemplate
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.ContactsCollection
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.UserModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.AuthenticationView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -3052,7 +2414,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -3060,7 +2422,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -3068,7 +2430,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [ContactsCollection] collection:
 \series default
- conterrà il riferimento alla classe ContactsCollection
+ riferimento alla classe ContactsCollection
 \end_layout
 
 \begin_layout Itemize
@@ -3076,7 +2438,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [UserModel] myModel:
 \series default
- conterrà il riferimento alla classe UserModel
+ riferimento alla classe UserModel
 \end_layout
 
 \begin_layout Itemize
@@ -3084,7 +2446,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [AuthenticationView] authenticationView:
 \series default
- conterrà il riferimento alla classe AuthenticationView
+ riferimento alla classe AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -3092,7 +2454,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [ContactView[] ] childViews: 
 \series default
-conterrà i riferimenti alle istanze della classe ContactView
+riferimenti alle istanze della classe ContactView
 \end_layout
 
 \begin_layout Itemize
@@ -3100,7 +2462,7 @@ conterrà i riferimenti alle istanze della classe ContactView
 \series bold
 [FunctionsView] currentFunctions: 
 \series default
-conterrà il riferimento alla classe FunctionsView
+riferimento alla classe FunctionsView
 \end_layout
 
 \begin_layout Standard
@@ -3140,7 +2502,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, collegherà il metodo 
+ metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
 render()
 \emph default
@@ -3149,7 +2511,7 @@ render()
 collection
 \emph default
  in modo da richiamarlo ogni qual volta si aggiunga un elemento a quest'ultima.
- Predisporrà le funzioni 
+ Predispone le funzioni 
 \shape italic
 acceptCall(Event)
 \shape default
@@ -3169,17 +2531,17 @@ acceptCall
 viewMessage 
 \emph default
 inviati da NotificationView.
- Infine effettuerà la scrittura, nella pagina, del template SideTemplate
- con lo stato dell'utente impostato come disconnesso
+ Infine effettua la scrittura, nella pagina, del template SideTemplate con
+ lo stato dell'utente impostato come disconnesso
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
-[void] acceptCall(Event): 
+[void] acceptCall([Event] event): 
 \series default
-metodo che invocherà il metodo 
+metodo che invoca il metodo 
 \shape italic
 setCall(String, String) 
 \emph on
@@ -3195,10 +2557,10 @@ il tipo di chiamata
 \begin_layout Itemize
 
 \series bold
-[void] getContacts(AuthenticationView):
+[void] getContacts([AuthenticationView] view):
 \series default
- metodo che aggiornerà la classe dopo l'autenticazione dell'utente, inizializzan
-do 
+ metodo che aggiorna la classe dopo l'autenticazione dell'utente, inizializzando
+ 
 \emph on
 myModel 
 \emph default
@@ -3207,7 +2569,7 @@ e
 authenticationView
 \emph default
  e aggiornando il template con lo stato dell'utente impostato a connesso.
- Inoltre invocherà il metodo 
+ Inoltre invoca il metodo 
 \shape italic
 fetchContacts(String)
 \shape default
@@ -3221,7 +2583,7 @@ i al server
 [void] render():
 \series default
  metodo per visualizzare l'ultimo utente aggiunto nella collection, per
- fare ciò invocherà il metodo 
+ fare ciò invoca il metodo 
 \emph on
 viewContact(ContactModel)
 \end_layout
@@ -3229,11 +2591,11 @@ viewContact(ContactModel)
 \begin_layout Itemize
 
 \series bold
-[void] viewContact(ContactModel):
+[void] viewContact([ContactModel] contact):
 \series default
  metodo per visualizzare un contatto.
- Si occuperà di creare una ContactView corrispondente al contatto, di aggiungerl
-a a 
+ Si occupa di creare una ContactView corrispondente al contatto, di aggiungerla
+ a 
 \emph on
 childViews
 \emph default
@@ -3245,8 +2607,8 @@ childViews
 \series bold
 [void] unrender():
 \series default
- metodo per chiudere la view, per fare ciò interromperà il collegamento
- tra la 
+ metodo per chiudere la view, per fare ciò interrompe il collegamento tra
+ la 
 \emph on
 collection 
 \emph default
@@ -3254,7 +2616,7 @@ e il metodo
 \emph on
 render()
 \emph default
-, ripristinerà il template originale e invocherà il metodo 
+, ripristina il template originale e invoca il metodo 
 \emph on
 destroyContacts()
 \end_layout
@@ -3279,12 +2641,12 @@ collection
 [void] callIP():
 \series default
  metodo per effettuare una comunicazione attraverso indirizzo IP, per fare
- ciò inizialmente invocherà il metodo 
+ ciò inizialmente invoca il metodo 
 \shape italic
 closeOtherContacts(Strings)
 \shape default
 , per controllare che tutte le view presenti nel content siano state chiuse,
- e inizializzerà 
+ e inizializza 
 \emph on
 currentFunctions 
 \emph default
@@ -3303,12 +2665,12 @@ IP
 [void] startConference():
 \series default
  metodo per effettuare una videoconferenza, , per fare ciò inizialmente
- invocherà il metodo 
+ invoca il metodo 
 \shape italic
 closeOtherContacts(Strings)
 \shape default
 , per controllare che tutte le view presenti nel content siano state chiuse,
- e inizializzerà 
+ e inizializza 
 \emph on
 currentFunctions 
 \emph default
@@ -3321,7 +2683,7 @@ From
 Conference.
  
 \emph default
-Inoltre invocherà il metodo 
+Inoltre invoca il metodo 
 \emph on
 listContacts(ContactModel) 
 \emph default
@@ -3331,19 +2693,19 @@ per visualizzare la lista degli utenti da selezionare per la conferenza
 \begin_layout Itemize
 
 \series bold
-[void] listContacts(ContactModel):
+[void] listContacts([ContactModel] contact):
 \series default
  metodo per gestire la lista degli utenti da selezionare per una conferenza,
- se l'utente risulta connesso si creerà un ContactView corrispondente all'utente
- e si appenderà nella lista degli utenti da selezionare
+ se l'utente risulta connesso si crea un ContactView corrispondente all'utente
+ e si appende nella lista degli utenti da selezionare
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] closeOtherContacts(String):
+[void] closeOtherContacts([String] contact):
 \series default
- metodo che si occuperà di chiudere le istanze di FunctionsView e UserDataView
+ metodo che si occupa di chiudere le istanze di FunctionsView e UserDataView
  aperte, in modo da garantire che solo una view sia presente nel content.
  Se il metodo è invocato da un'istanza di ContactView, viene passato come
  parametro lo username relativo al contatto
@@ -3352,11 +2714,11 @@ per visualizzare la lista degli utenti da selezionare per la conferenza
 \begin_layout Itemize
 
 \series bold
-[void] setCall(String, String): 
+[void] setCall([String] contact, [String] type): 
 \series default
 metodo per impostare la ricezione di una chiamata, i parametri rappresentano
  lo username del chiamante e il tipo di chiamata.
- Invocherà la funzione 
+ Invoca la funzione 
 \shape italic
 createCall(String) 
 \emph on
@@ -3425,56 +2787,6 @@ Classe StatisticsView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.StatisticsTemplate
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.CallView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -3483,7 +2795,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -3491,7 +2803,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -3499,7 +2811,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [RTCPeerConnection] peerConnection:
 \series default
- conterrà il flusso dati della chiamata
+ flusso dati della chiamata
 \end_layout
 
 \begin_layout Paragraph
@@ -3513,7 +2825,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, inoltre richiamerà il metodo 
+ metodo per inizializzare l'oggetto, inoltre richiama il metodo 
 \emph on
 render()
 \end_layout
@@ -3524,7 +2836,7 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template StatisticsTemplate
- ed invocherà il metodo 
+ ed invoca il metodo 
 \shape italic
 readStatistic() 
 \emph on
@@ -3537,7 +2849,7 @@ per visualizzare le statistiche a video
 [void] readStatistic():
 \series default
  metodo per la gestione delle statistiche delle chiamate audio/video.
- Per fare ciò istanzierà un listener per gli eventi di tipo 
+ Per fare ciò istanzia un listener per gli eventi di tipo 
 \shape italic
 setPeerConn,
 \shape default
@@ -3550,12 +2862,12 @@ showStatistics(Event)
 \begin_layout Itemize
 
 \series bold
-[void] showStatistics(Event):
+[void] showStatistics([Event] event):
 \series default
- metodo che si occuperà di aggiornare, con la frequenza di un secondo, la
+ metodo che si occupa di aggiornare, con la frequenza di un secondo, la
  durata, i byte di video e audio trasmessi, la latenza e la velocità di
  trasmissione della chiamata.
- Ricaverà i dati necessari dal metodo 
+ Ricave i dati necessari dal metodo 
 \emph on
 getStats() 
 \emph default
@@ -3563,7 +2875,7 @@ dell'oggetto
 \emph on
 peerConnection
 \emph default
- e utilizzerà il metodo 
+ e utilizza il metodo 
 \shape italic
 setInterval()
 \emph on
@@ -3576,7 +2888,7 @@ setInterval()
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata 
+metodo che chiude l'istanza della classe creata 
 \end_layout
 
 \begin_layout Subsubsection
@@ -3650,54 +2962,6 @@ Classe TutorialView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.TutorialCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.TutorialTemplate
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.TutorialsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -3706,7 +2970,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -3714,7 +2978,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -3722,7 +2986,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [TutorialModel] currentTutorial:
 \series default
- utilizzato per tenere traccia del tutorial corrente
+ riferimento al tutorial corrente
 \end_layout
 
 \begin_layout Standard
@@ -3772,11 +3036,11 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, richiamerà il metodo 
+ metodo per inizializzare l'oggetto, richiama il metodo 
 \emph on
 getTutorials() 
 \emph default
-della classe TutorialCommunication e collegherà il metodo 
+della classe TutorialCommunication e collega il metodo 
 \emph on
 render()
 \emph default
@@ -3799,11 +3063,11 @@ collection
 \begin_layout Itemize
 
 \series bold
-[void] viewTutorial(String):
+[void] viewTutorial([String] tutorial):
 \series default
  metodo per visualizzare il tutorial selezionato, indicato attraverso il
- parametro, per fare ciò dovrà aggiornare il template.
- Inoltre assegnerà ad 
+ parametro, per fare ciò aggiorna il template.
+ Inoltre assegna ad 
 \emph on
 currentTutorial 
 \emph default
@@ -3815,8 +3079,7 @@ il tutorial selezionato
 \series bold
 [void] next():
 \series default
- metodo per passare al video successivo, si occuperà anche di aggiornare
- 
+ metodo per passare al video successivo, si occupa anche di aggiornare 
 \emph on
 currentTutorial
 \end_layout
@@ -3826,8 +3089,7 @@ currentTutorial
 \series bold
 [void] prev(): 
 \series default
-metodo per passare al video precedente, si occuperà anche di aggiornare
- 
+metodo per passare al video precedente, si occupa anche di aggiornare 
 \emph on
 currentTutorial
 \end_layout
@@ -3837,7 +3099,7 @@ currentTutorial
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata
+metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
@@ -3898,68 +3160,6 @@ Classe UserDataView
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.UserDataCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.template.UserDataTemplate
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.UserModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.AuthenticationView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da
-\series default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.View
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -3968,7 +3168,7 @@ Attributi pubblici:
 \series bold
 [DOM element] el:
 \series default
- conterrà l'elemento DOM al quale è legata la classe
+ elemento DOM al quale è legata la classe
 \end_layout
 
 \begin_layout Itemize
@@ -3976,7 +3176,7 @@ Attributi pubblici:
 \series bold
 [Template] template: 
 \series default
-conterrà il riferimento al template utilizzato
+riferimento al template utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -3984,7 +3184,7 @@ conterrà il riferimento al template utilizzato
 \series bold
 [UserModel] model: 
 \series default
-conterrà il riferimento alla classe UserModel
+riferimento alla classe UserModel
 \end_layout
 
 \begin_layout Standard
@@ -4034,8 +3234,7 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, si occuperà di richiamare il metodo
- 
+ metodo per inizializzare l'oggetto, si occupa di richiamare il metodo 
 \emph on
 render()
 \end_layout
@@ -4054,8 +3253,7 @@ render()
 \series bold
 [void] unrender():
 \series default
- metodo per rimuovere la vista dei dati dell'utente, invocherà il metodo
- 
+ metodo per rimuovere la vista dei dati dell'utente, invoca il metodo 
 \shape italic
 close()
 \end_layout
@@ -4065,8 +3263,8 @@ close()
 \series bold
 [void] checkPassword(): 
 \series default
-metodo che provvederà a controllare la correttezza della password, per fare
- ciò invocherà il metodo 
+metodo che provvede a controllare la correttezza della password, per fare
+ ciò invoca il metodo 
 \emph on
 checkPassword(UserModel, String, UserDataView)
 \emph default
@@ -4078,7 +3276,7 @@ checkPassword(UserModel, String, UserDataView)
 \series bold
 [changeData()] callBacks():
 \series default
- metodo che permetterà ad altre classi di usufruire del metodo 
+ metodo che permette ad altre classi di usufruire del metodo 
 \shape italic
 changeData(UserModel, 
 \shape default
@@ -4096,17 +3294,23 @@ UserDataView
 [void] changeData(
 \shape italic
 \emph on
-UserModel
+[UserModel
 \series default
 \shape default
+\emph default
+] 
+\series bold
+user
+\series default
+\emph on
 , 
 \series bold
 \emph default
-UserDataView):
+[UserDataView] view):
 \series default
  metodo per modificare i dati dell'utente.
  Per fare ciò, inizialmente, deve verificare che la nuova password, se esistente
-, coincida con quella di verifica, se supera il controllo invocherà il metodo
+, coincida con quella di verifica, se supera il controllo invoca il metodo
  
 \shape italic
 changeData(UserModel, String, String, String, UserDataView)
@@ -4120,7 +3324,7 @@ changeData(UserModel, String, String, String, UserDataView)
 \series bold
 [void] close(): 
 \series default
-metodo che chiuderà l'istanza della classe creata
+metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsection
@@ -4142,54 +3346,6 @@ mytalk.client.communication
  sono presenti le classi che effettuano la comunicazione con il server.
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Il package utilizzata: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Il package è utilizzato da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Il package comunica con: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -4389,67 +3545,32 @@ Classe AuthenticationCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.AuthenticationView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.AuthenticationTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] checkCredentials(String,
+[void] checkCredentials([String] username,
 \series default
  
 \series bold
-String, AuthenticationView.function(), AuthenticationView):
+[String] password, [AuthenticationView.function()] callBacks, [AuthenticationView
+] view):
 \series default
- metodo che si occuperà di controllare la correttezza dello username e della
+ metodo che si occupa di controllare la correttezza dello username e della
  password inserite.
- Per fare ciò invierà al server un pacchetto, contenente username e password
+ Per fare ciò invia al server un pacchetto, contenente username e password
  e avente come parametro aggiuntivo il tipo 
 \emph on
 login, 
 \emph default
-e attenderà il messaggio di risposta, anch'esso con tipo 
+e attende il messaggio di risposta, anch'esso con tipo 
 \emph on
 login.
  
 \emph default
-Se il messaggio sarà positivo invocherà il metodo 
+Se il messaggio risulta positivo invoca il metodo 
 \emph on
 callBacks.doLogin 
 \emph default
@@ -4459,21 +3580,22 @@ di AuthenticationView
 \begin_layout Itemize
 
 \series bold
-[void] signup(String, String, String, String, AuthenticationView.function(),
- AuthenticationView): 
+[void] signup([String] username, [String] password, [String] name, [String]
+ password, [AuthenticationView.function()] callBacks, [AuthenticationView]
+ view): 
 \series default
-metodo che si occuperà della registrazione dell'utente.
- Per fare ciò invierà al server un pacchetto contenente tutte le credenziali
+metodo che si occupa della registrazione dell'utente.
+ Per fare ciò invia al server un pacchetto contenente tutte le credenziali
  e avente tipo 
 \emph on
 signUp
 \emph default
-, e attenderà il messaggio di risposta contrassegnato con il tipo 
+, e attende il messaggio di risposta contrassegnato con il tipo 
 \emph on
 signUp
 \emph default
 .
- Se il messaggio sarà positivo invocherà il metodo 
+ Se il messaggio risulta positivo invoca il metodo 
 \emph on
 callBacks.doLogin 
 \emph default
@@ -4483,7 +3605,7 @@ di AuthenticationView
 \begin_layout Itemize
 
 \series bold
-[void] logout(String): 
+[void] logout([String] username): 
 \series default
 metodo che gestisce la disconnessione dell'utente
 \end_layout
@@ -4545,56 +3667,6 @@ Classe CallCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.ContactsModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.CallView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.CallTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -4603,7 +3675,7 @@ Attributi pubblici:
 \series bold
 [MediaStream] localStream:
 \series default
- conterrà lo stream audio/video dell'utente locale
+ stream audio/video dell'utente locale
 \end_layout
 
 \begin_layout Itemize
@@ -4611,7 +3683,7 @@ Attributi pubblici:
 \series bold
 [MediaStream] remoteStream:
 \series default
- conterrà lo stream audio/video dell'utente con cui si starà comunicando
+ stream audio/video dell'utente con cui si stà comunicando
 \end_layout
 
 \begin_layout Itemize
@@ -4619,8 +3691,7 @@ Attributi pubblici:
 \series bold
 [RTCPeerConnection] peerConnection:
 \series default
- conterrà il canale attraverso cui scorrerà il flusso della chiamata tra
- due utenti
+ canale attraverso cui scorre il flusso della chiamata tra due utenti
 \end_layout
 
 \begin_layout Itemize
@@ -4628,8 +3699,8 @@ Attributi pubblici:
 \series bold
 [ContactModel] recipent:
 \series default
- conterrà il riferimento alla classe ContactModel riguardante l'utente con
- cui si starà comunicando
+ riferimento alla classe ContactModel riguardante l'utente con cui si stà
+ comunicando
 \end_layout
 
 \begin_layout Itemize
@@ -4637,7 +3708,7 @@ Attributi pubblici:
 \series bold
 [HTMLVideoElement] remotevid:
 \series default
- conterrà l'elemento HTMLVideoElement dell'utente con cui si starà comunicando
+ elemento HTMLVideoElement dell'utente con cui si stà comunicando
 \end_layout
 
 \begin_layout Itemize
@@ -4645,7 +3716,7 @@ Attributi pubblici:
 \series bold
 [HTMLVideoElement] sourcevid: 
 \series default
-conterrà l'elemento HTMLVideoElement dell'utente locale
+elemento HTMLVideoElement dell'utente locale
 \end_layout
 
 \begin_layout Itemize
@@ -4653,7 +3724,7 @@ conterrà l'elemento HTMLVideoElement dell'utente locale
 \series bold
 [boolean] readyToSend:
 \series default
- variabile booleana che indicherà se è possibile o meno l'invio di 
+ variabile booleana che indica se è possibile o meno l'invio di 
 \shape italic
 candidates
 \end_layout
@@ -4663,8 +3734,8 @@ candidates
 \series bold
 [boolean] messageReceived:
 \series default
- variabile booleana che indicherà se l'utente con cui si vorrà comunicare
- sarà pronto ad accettare 
+ variabile booleana che indica se l'utente con cui si vuole comunicare è
+ pronto ad accettare 
 \shape italic
 candidates
 \shape default
@@ -4692,16 +3763,16 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[void] sendCall(String, ContactModel, CallView):
+[void] sendCall([String] tyecall, [ContactModel] contact, [CallView] view):
 \series default
- metodo per inizializzare la chiamata, dovrà avere come parametri il tipo
+ metodo per inizializzare la chiamata, deve avere come parametri il tipo
  d chiamata, l'istanza della classe ContactModel relativa al contatto e
  una riferimento a CallView.
- Lancerà l'evento 
+ Lancia l'evento 
 \shape italic
 setOnCall,
 \shape default
- che NotificationCommunication raccoglierà per impostare la variabile 
+ che NotificationCommunication raccoglie per impostare la variabile 
 \emph on
 onCalling
 \emph default
@@ -4709,12 +3780,12 @@ onCalling
 \emph on
 true
 \emph default
-, e invierà al server un package di tipo 
+, e invia al server un package di tipo 
 \emph on
 call 
 \emph default
 contenente il tipo di chiamata e il contatto che si vuole chiamare.
- Infine inizializzerà il listener che si occuperà di attendere la risposta
+ Infine inizializza il listener che si occuperà di attendere la risposta
  del chiamato e invocare 
 \shape italic
 onAnswer(Event)
@@ -4724,24 +3795,24 @@ onAnswer(Event)
 \begin_layout Itemize
 
 \series bold
-[void] onAnswer(Event):
+[void] onAnswer([Event] event):
 \series default
- metodo che gestirà la risposta inviata dall'utente che si vuole chiamare,
+ metodo che gestisce la risposta inviata dall'utente che si vuole chiamare,
  identificato dal tipo 
 \emph on
 answeredCall
 \emph default
-; se la risposta sarà affermativa invocherà il metodo 
+; se la risposta risulta affermativa invoca il metodo 
 \shape italic
 startCall(boolean, String, CallCommunication, CallView)
 \shape default
 , avente come parametri se l'utente è il chiamante, quindi in questo caso
- verrà inviato true, il tipo di chiamata e i riferimenti alle due classi,
- altrimenti lancerà l'evento 
+ viene inviato true, il tipo di chiamata e i riferimenti alle due classi,
+ altrimenti lancia l'evento 
 \shape italic
 setOnCall,
 \shape default
- che NotificationCommunication raccoglierà per impostare la variabile 
+ che NotificationCommunication raccoglie per impostare la variabile 
 \emph on
 onCalling
 \emph default
@@ -4749,14 +3820,15 @@ onCalling
 \emph on
 false
 \emph default
-, e comunicherà all'utente il motivo della non inizializzazione della chiamata
+, e comunica all'utente il motivo della non inizializzazione della chiamata
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-[void] sendAnswer(String, ContactModel, CallView): 
+[void] sendAnswer([String] tyecall, [ContactModel] contact, [CallView] view):
+ 
 \series default
 metodo per inviare all'utente che ha effettuato la chiamata una risposta
  positiva e per invocare il metodo 
@@ -4764,7 +3836,7 @@ metodo per inviare all'utente che ha effettuato la chiamata una risposta
 startCall(boolean,String, CallCommunication, CallView)
 \shape default
 , avente come parametri se l'utente è il chiamante, quindi in questo caso
- verrà inviato false, il tipo di chiamata e i riferimenti alle due classi
+ viene inviato false, il tipo di chiamata e i riferimenti alle due classi
 \end_layout
 
 \begin_layout Itemize
@@ -4784,7 +3856,7 @@ peerConnection
 \begin_layout Itemize
 
 \series bold
-[void] onRemoteStreamAdded(Event):
+[void] onRemoteStreamAdded([Event] event):
 \series default
  metodo per impostare 
 \shape italic
@@ -4794,13 +3866,13 @@ remoteStream
 \shape italic
 setPeerConn
 \shape default
- che verrà raccolto e gestito dalla classe StatisticsView
+ che viene raccolto e gestito dalla classe StatisticsView
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] onRemoteStreamRemoved(Event):
+[void] onRemoteStreamRemoved([Event] event):
 \series default
  metodo per rimuovere 
 \shape italic
@@ -4817,7 +3889,7 @@ peerConnection
 \begin_layout Itemize
 
 \series bold
-[void] connect(boolean):
+[void] connect([boolean] started):
 \series default
  metodo per inizializzare una RTCPeerConnection invocando il metodo 
 \shape italic
@@ -4844,10 +3916,10 @@ createOffer(RTCSessionDescriptionCallback)
 [void] gotDescription(
 \shape italic
 \emph on
-RTCSessionDescription
+[RTCSessionDescription
 \shape default
 \emph default
-): 
+] description): 
 \series default
 metodo per impostare il proprio sdp tramite il metodo 
 \shape italic
@@ -4860,24 +3932,25 @@ setLocalDescription(RTCSessionDescription)
 \begin_layout Itemize
 
 \series bold
-[void] onIceCandidate(Event): 
+[void] onIceCandidate([Event] event): 
 \series default
 metodo per generare i candidati e memorizzarli in 
 \shape italic
 candidates
 \shape default
- e, una volta salvati tutti, inviarli all'utente remoto se sarà pronto a
- riceverli, altrimenti invierà al server un messaggio che indichi la disponibili
-tà a ricevere candidati
+ e, una volta salvati tutti, inviarli all'utente remoto se è pronto a riceverli,
+ altrimenti invia al server un messaggio che indica la disponibilità a ricevere
+ candidati
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] startCall(boolean, String, CallCommunication, CallView): 
+[void] startCall([boolean] isCaller, [String] typecall, [CallCommunication]
+ call, [CallView] view): 
 \series default
 metodo per avviare la comunicazione tra due utenti.
- Imposterà 
+ Imposta 
 \shape italic
 sourcevid
 \shape default
@@ -4885,12 +3958,12 @@ sourcevid
 \shape italic
 remotevid
 \shape default
-, inizializzerà il listener 
+, inizializza il listener 
 \shape italic
 onMessage(Event)
 \shape default
- e nel caso l'utente sia il chiamante imposterà lo stream audio o audio/video
- e invocherà il metodo 
+ e nel caso l'utente sia il chiamante imposta lo stream audio o audio/video
+ e invoca il metodo 
 \shape italic
 connect(boolean)
 \end_layout
@@ -4899,44 +3972,44 @@ connect(boolean)
 \begin_layout Itemize
 
 \series bold
-[void] onMessage(Event):
+[void] onMessage([Event] event):
 \series default
- metodo per gestire messaggi dal server, in base al pacchetto ricevuto effettuer
-à una determinata serie di azioni:
+ metodo per gestire messaggi dal server, in base al pacchetto ricevuto effettua
+ una determinata serie di azioni:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-se il pacchetto conterrà come tipo 
+se il pacchetto contiene come tipo 
 \emph on
 offer
 \emph default
-, e sarà inviato dal chiamante, imposterà 
+, ed è inviato dal chiamante, imposta 
 \shape italic
 localStream
 \shape default
-, inizializzerà 
+, inizializza 
 \shape italic
 peerConnection
 \shape default
- ed imposterà il 
+ ed imposta il 
 \shape italic
 \emph on
 RTCSessionDescription
 \shape default
 \emph default
- ricevuto e invierà il proprio
+ ricevuto e invia il proprio
 \shape italic
 \emph on
  RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto sarà di tipo 
+se il pacchetto è di tipo 
 \emph on
 answer
 \emph default
-, e sarà inviato dal chiamato, imposterà in 
+, ed è inviato dal chiamato, imposta in 
 \shape italic
 peerConnection
 \shape default
@@ -4950,11 +4023,11 @@ RTCSessionDescription
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà il tipo 
+se il pacchetto contiene il tipo 
 \emph on
 candidateready
 \emph default
- imposterà a 
+ imposta a 
 \emph on
 true
 \emph default
@@ -4970,39 +4043,39 @@ readyToSend
 \emph on
 true
 \emph default
- invierà 
+ invia 
 \shape italic
 candidates
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà il tipo 
+se il pacchetto contiene il tipo 
 \emph on
 candidate
 \emph default
- preleverà il RTCIceCandidate e imposterà in 
+ preleva il RTCIceCandidate e imposta in 
 \shape italic
 peerConnection
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto conterrà il tipo 
+se il pacchetto contiene il tipo 
 \emph on
 endcall
 \emph default
- interromperà 
+ interrompe 
 \shape italic
 localStream
 \shape default
-, chiuderà 
+, chiude 
 \shape italic
 peerConnection
 \shape default
- e lancerà l'evento 
+ e lancia l'evento 
 \shape italic
 setOnCall,
 \shape default
- che NotificationCommunication raccoglierà per impostare la variabile 
+ che NotificationCommunication raccoglie per impostare la variabile 
 \emph on
 onCalling
 \emph default
@@ -5010,7 +4083,7 @@ onCalling
 \emph on
 false
 \emph default
-, e invocherà il metodo 
+, e invoca il metodo 
 \emph on
 endCall(bool)
 \emph default
@@ -5033,19 +4106,19 @@ endCall(bool)
 \series bold
 [void] endCall():
 \series default
- metodo che interromperà 
+ metodo che interrompe 
 \shape italic
 localStream
 \shape default
-, chiuderà 
+, chiude 
 \shape italic
 peerConnection
 \shape default
- e lancerà l'evento 
+ e lancia l'evento 
 \shape italic
 setOnCall,
 \shape default
- che NotificationCommunication raccoglierà per impostare la variabile 
+ che NotificationCommunication raccoglie per impostare la variabile 
 \emph on
 onCalling
 \emph default
@@ -5053,7 +4126,7 @@ onCalling
 \emph on
 false, 
 \emph default
-infine invierà al server un pacchetto, contrassegnato dal tipo 
+infine invia al server un pacchetto, contrassegnato dal tipo 
 \emph on
 endcall
 \emph default
@@ -5074,8 +4147,8 @@ name "sub:ChatCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe ChatCommunication si occuperà di comunicare con il server per
- quanto riguarda il trasferimento e la gestione di messaggi testuali
+La classe ChatCommunication si occupa di comunicare con il server per quanto
+ riguarda il trasferimento e la gestione di messaggi testuali
 \end_layout
 
 \begin_layout Standard
@@ -5117,65 +4190,15 @@ Classe ChatCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.TextMessagesCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.ChatView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.ChatTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] send(String, String):
+[void] send([String] username, [String] message):
 \series default
- metodo che si occuperà di inviare un pacchetto al server, contrassegnato
+ metodo che si occupa di inviare un pacchetto al server, contrassegnato
  con il tipo 
 \emph on
 sendText
@@ -5187,21 +4210,21 @@ sendText
 \begin_layout Itemize
 
 \series bold
-[void] onReceived(Event):
+[void] onReceived([Event] event):
 \series default
  metodo di tipo listener per la ricezione e la gestione di segnali riguardanti
- i messaggi testuali; se il segnale significherà l'arrivo di un nuovo messaggio,
- sarà quindi caratterizzati dal tipo 
+ i messaggi testuali; se il segnale significa l'arrivo di un nuovo messaggio,
+ è quindi caratterizzati dal tipo 
 \emph on
 sendText,
 \emph default
- lo aggiungerà alla collezione di tipo TextMessagesCollection, mentre se
- indicherà errori nella consegna del testo, tipo 
+ lo aggiunge alla collezione di tipo TextMessagesCollection, mentre se indica
+ errori nella consegna del testo, tipo 
 \emph on
 notDelivered
 \emph default
-, avviserà l'utente e imposterà lo stato del messaggio, presente nella collectio
-n, come 
+, avvisa l'utente e imposta lo stato del messaggio, presente nella collection,
+ come 
 \emph on
 notsent
 \end_layout
@@ -5220,8 +4243,8 @@ name "sub:ContactsCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe ContactsCommunication si occuperà di prelevare la lista degli
- utenti presenti nel server e di aggiornarla nel caso di cambiamenti
+La classe ContactsCommunication si occupa di prelevare la lista degli utenti
+ presenti nel server e di aggiornarla nel caso di cambiamenti
 \end_layout
 
 \begin_layout Standard
@@ -5263,77 +4286,25 @@ Classe ContactsCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.ContactsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.ChatView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.AuthenticationTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] fetchContacts(String):
+[void] fetchContacts([String] username):
 \series default
  metodo per prelevare dal server la lista dei contatti registrati, per fare
- ciò invierà al server un pacchetto di tipo 
+ ciò invia al server un pacchetto di tipo 
 \emph on
 getContacts
 \emph default
- contenente lo username dell'utente ed attenderà la risposta, che consisterà
+ contenente lo username dell'utente ed attende la risposta, che consiste
  in un pacchetto, contrassegnato con lo stesso tipo, contenente il numero
  di contatti e la lista con i loro dati.
- Per ogni contatto controllerà che esso non sia già presente nella lista
- utenti, se affermativo aggiungerà il contatto nella collection, altrimenti
- aggiornerà l'attributo 
+ Per ogni contatto controlla che esso non sia già presente nella lista utenti,
+ se affermativo aggiunge il contatto nella collection, altrimenti aggiorna
+ l'attributo 
 \emph on
 IP
 \emph default
@@ -5358,8 +4329,8 @@ name "sub:FileCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe FileCommunication si occuperà di gestire l'invio di file ad un
- altro utente e la ricezione
+La classe FileCommunication si occupa di gestire l'invio di file ad un altro
+ utente e la ricezione
 \end_layout
 
 \begin_layout Standard
@@ -5401,51 +4372,15 @@ Classe FileCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FileView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.FileTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] sendFile(String, File):
+[void] sendFile([String] username, [File] file):
 \series default
- metodo per inviare un file salvato in locale, invierà al server un pacchetto,
+ metodo per inviare un file salvato in locale, invia al server un pacchetto,
  caratterizzato dal tipo 
 \emph on
 file, 
@@ -5510,60 +4445,6 @@ Classe NotificationCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.RecordMessagesCollection
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.NotificationView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.CallTransfer
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.FileTransfer
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.RecordMessageTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -5572,7 +4453,7 @@ Attributi pubblici:
 \series bold
 [boolean] onCalling:
 \series default
- variabile che indicherà se l'utente avrà una chiamata in corso
+ variabile che indica se l'utente ha una chiamata in corso
 \end_layout
 
 \begin_layout Paragraph
@@ -5601,7 +4482,7 @@ in arrivo
 \begin_layout Itemize
 
 \series bold
-[void] SetOnCall[Event] 
+[void] SetOnCall([Event] event) 
 \series default
 imposta 
 \emph on
@@ -5613,7 +4494,7 @@ a seconda del tipo racchiuso nel parametro passatogli
 \begin_layout Itemize
 
 \series bold
-[void] onNotification(String):
+[void] onNotification([String] str):
 \series default
  metodo per gestire le notifiche in ingresso, che potranno essere chiamate,
  messaggi video o file.
@@ -5621,17 +4502,16 @@ a seconda del tipo racchiuso nel parametro passatogli
 
 \begin_deeper
 \begin_layout Itemize
-Se si tratta di una chiamata in arrivo, quindi il pacchetto risulterà contrasseg
-nato dal tipo 
+Se si tratta di una chiamata in arrivo, quindi il pacchetto risulta contrassegna
+to dal tipo 
 \emph on
 call
 \emph default
-, se l'utente non risulterà occupato in altre conversazioni verrà creata
- una istanza NotificationView e impostato il timeout, in modo da terminare
- la chiamata nel caso non si risponda dopo un determinato intervallo di
- tempo.
- Se l'utente risulterà invece già in chiamata, si manderà un messaggio al
- server, di tipo 
+, se l'utente non risulta occupato in altre conversazioni viene creata una
+ istanza NotificationView e impostato il timeout, in modo da terminare la
+ chiamata nel caso non si risponda dopo un determinato intervallo di tempo.
+ Se l'utente risulta invece già in chiamata, si manda un messaggio al server,
+ di tipo 
 \emph on
 busy
 \emph default
@@ -5639,12 +4519,12 @@ busy
 \end_layout
 
 \begin_layout Itemize
-Se si tratta della terminazione di una chiamata, quindi il pacchetto risulterà
+Se si tratta della terminazione di una chiamata, quindi il pacchetto risulta
  contrassegnato dal tipo 
 \emph on
 endcall
 \emph default
-, si assegnerà 
+, si assegna 
 \emph on
 false
 \emph default
@@ -5666,7 +4546,7 @@ Se si tratta di un messaggio video in arrivo, pacchetto contrassegnato dal
 \emph on
 record, 
 \emph default
-verrà creato ed aggiunto il messaggio alla collection, successivamente verrà
+viene creato ed aggiunto il messaggio alla collection, successivamente viene
  creata e avviata una istanza di NotificationView con i relativi dati
 \end_layout
 
@@ -5675,7 +4555,7 @@ verrà creato ed aggiunto il messaggio alla collection, successivamente verrà
 \begin_layout Itemize
 
 \series bold
-[void] refuseCall(String): 
+[void] refuseCall([String] username): 
 \series default
 metodo per rispondere ad una richiesta di chiamata con un rifiuto, inviando
  un pacchetto con tipo 
@@ -5688,10 +4568,10 @@ refuseCall
 \begin_layout Itemize
 
 \series bold
-[void] refuseFile(String):
+[void] refuseFile([String] username):
 \series default
- metodo per rifiutare la ricezione di un file, invierà un pacchetto con
- tipo 
+ metodo per rifiutare la ricezione di un file, invia un pacchetto con tipo
+ 
 \emph on
 refuse
 \emph default
@@ -5712,8 +4592,8 @@ name "sub:RecordMessageCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe RecordMessageCommunication si occuperà di registrare, inviare
- e ricevere i messaggi registrati
+La classe RecordMessageCommunication si occupa di registrare, inviare e
+ ricevere i messaggi registrati
 \end_layout
 
 \begin_layout Standard
@@ -5755,69 +4635,15 @@ Classe RecordMessageCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.RecordMessageCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.RecordMessageView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.RecordMessageTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] sendRecordMessage(String, Blob): 
+[void] sendRecordMessage([String] username, [Blob] message): 
 \series default
-metodo per inviare un messaggio video/audio, per fare ciò invierà al server
+metodo per inviare un messaggio video/audio, per fare ciò invia al server
  un pacchetto con tipo 
 \emph on
 sendRecord 
@@ -5828,14 +4654,14 @@ e contenente il nome del destinatario e il file audio/video
 \begin_layout Itemize
 
 \series bold
-[void] removeRecordMessage(RecordMessageModel): 
+[void] removeRecordMessage([RecordMessageModel] message): 
 \series default
-metodo per eliminare un messaggio video/audio, invierà al server la richiesta,
+metodo per eliminare un messaggio video/audio, invia al server la richiesta,
  con tipo 
 \emph on
 removeRecord, 
 \emph default
-ed eliminerà il messaggio dalla collection
+ed elimina il messaggio dalla collection
 \end_layout
 
 \begin_layout Subsubsection
@@ -5852,8 +4678,8 @@ name "sub:TutorialCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe TutorialCommunication si occuperà di comunicare con il server
- per il prelievo dei tutorial video
+La classe TutorialCommunication si occupa di comunicare con il server per
+ il prelievo dei tutorial video
 \end_layout
 
 \begin_layout Standard
@@ -5895,58 +4721,6 @@ Classe TutorialCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.TutorialsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.TutorialView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.AuthenticationTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
@@ -5955,13 +4729,13 @@ Metodi pubblici:
 \series bold
 [void] getTutorials():
 \series default
- metodo per prelevare dal server la lista dei tutorial registrati, rappresenterà
+ metodo per prelevare dal server la lista dei tutorial registrati, rappresenta
  un listener che riceverà un pacchetto, contrassegnato dal tipo 
 \emph on
 tutorials
 \emph default
-, contenente la lista dei tutorial, infine aggiungerà ciascuno di questi
- nella collection
+, contenente la lista dei tutorial, infine aggiunge ciascuno di questi nella
+ collection
 \end_layout
 
 \begin_layout Subsubsection
@@ -5978,8 +4752,8 @@ name "sub:UserDataCommunication"
 \end_layout
 
 \begin_layout Standard
-La classe UserDataCommunication si occuperà di comunicare con il server
- per la modifica dei dati dell'utente
+La classe UserDataCommunication si occupa di comunicare con il server per
+ la modifica dei dati dell'utente
 \end_layout
 
 \begin_layout Standard
@@ -6021,98 +4795,48 @@ Classe UserDataCommunication
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.UserDataModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.UserDataView
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe comunica con:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.server.transfer.UserDataTransfer
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Metodi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] checkPassword(UserModel, String, UserDataView):
+[void] checkPassword([UserModel] model, [String] password, [UserDataView]
+ view):
 \series default
  metodo per controllare che la password di verifica inserita dall'utente
  corrisponda a quella salvata nella base di dati.
- Per fare ciò invierà al server un pacchetto, contrassegnato dal tipo 
+ Per fare ciò invia al server un pacchetto, contrassegnato dal tipo 
 \emph on
 checkCredentials
 \emph default
  e contenente lo username dell'utente e la password inserita, se il pacchetto
- di risposta, contrassegnato dallo stesso tipo, sarà affermativo verrà invocato
+ di risposta, contrassegnato dallo stesso tipo, è affermativo viene invocato
  il metodo 
 \shape italic
 view.callBacks.changeData(UserModel, UserDataView)
 \shape default
-, altrimenti mostrerà un messaggio di errore
+, altrimenti mostra un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[void] changeData(UserModel, String, String, String, UserDataView):
+[void] changeData([UserModel] model, [String] name, [String] surname, [String]
+ password, [UserDataView] view):
 \series default
- metodo che invierà i dati aggiornati al server, racchiudendoli in un pacchetto
+ metodo che invia i dati aggiornati al server, racchiudendoli in un pacchetto
  di tipo 
 \emph on
 changeData
 \emph default
- ed attenderà la risposta.
- Se il pacchetto di risposta, contrassegnato dallo stesso tipo, sarà affermativo
- si aggiorneranno i dati del model e si chiamerà il metodo 
+ ed attende la risposta.
+ Se il pacchetto di risposta, contrassegnato dallo stesso tipo, è affermativo
+ si aggiorneranno i dati del model e si chiama il metodo 
 \shape italic
 render()
 \shape default
- di UserDataView, altrimenti verrà mostrato un messaggio di errore
+ di UserDataView, altrimenti viene mostrato un messaggio di errore
 \end_layout
 
 \begin_layout Subsection
@@ -6131,92 +4855,11 @@ Nel package
 \family typewriter
 mytalk.client.collection
 \family default
- saranno presenti le classi che conterranno le liste di oggetti di tipo
- Model.
- Non sarà presente una classe del package Collection per ogni classe del
- package Model 
+ sono presenti le classi che conterranno le liste di oggetti di tipo Model.
+ Non è presente una classe del package Collection per ogni classe del package
+ Model 
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/collection/pdf/packageCollection.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package collection
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -6297,7 +4940,7 @@ name "sub: ContactsCollection"
 \end_layout
 
 \begin_layout Standard
-La classe ContactsCollection rappresenterà la collezione dei contatti registrati
+La classe ContactsCollection rappresenta la collezione dei contatti registrati
 \end_layout
 
 \begin_layout Standard
@@ -6339,68 +4982,6 @@ Classe ContactsCollection
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.ContactModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-m
-\series default
-ytalk.client.view.SideView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-m
-\series default
-ytalk.client.communication.ContactsCommunication
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Collection
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -6409,7 +4990,7 @@ Attributi pubblici:
 \series bold
 [ContactModel] model: 
 \series default
-conterrà il riferimento alla classe ContactModel
+riferimento alla classe ContactModel
 \end_layout
 
 \begin_layout Paragraph
@@ -6440,7 +5021,7 @@ name "sub: RecordMessagesCollection"
 \end_layout
 
 \begin_layout Standard
-La classe RecordMessagesCollection rappresenterà la collezione dei messaggi
+La classe RecordMessagesCollection rappresenta la collezione dei messaggi
  audio e video ricevuti 
 \end_layout
 
@@ -6483,86 +5064,15 @@ Classe RecordMessagesCollection
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.RecordMessageModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-m
-\series default
-ytalk.client.view.RecordMessageView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-m
-\series default
-ytalk.client.communication.NotificationCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\series bold
-m
-\series default
-ytalk.client.communication.RecordMessageCommunication
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Collection
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-[RecordMessageModel] model: 
+[RecordMessageModel] model:
 \series default
-conterrà il riferimento alla classe RecordMessageModel
+ riferimento alla classe RecordMessageModel
 \end_layout
 
 \begin_layout Paragraph
@@ -6574,7 +5084,7 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[RecordMessageModel[]] getMessages(String): 
+[RecordMessageModel[]] getMessages([String] username): 
 \series default
 metodo per restituire un array contenente i RecordMessageModel della collezione,
  avente come mittente lo username passato per parametro
@@ -6594,7 +5104,7 @@ name "sub: TextMessagesCollection"
 \end_layout
 
 \begin_layout Standard
-La classe TextMessagesCollection rappresenterà la collezione dei messaggi
+La classe TextMessagesCollection rappresenta la collezione dei messaggi
  di testo di una singola conversazione
 \end_layout
 
@@ -6637,64 +5147,6 @@ Classe TextMessagesCollection
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.TextMessageModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.ChatCommunication
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Collection
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -6703,7 +5155,7 @@ Attributi pubblici:
 \series bold
 [TextMessageModel] model: 
 \series default
-conterrà il riferimento alla classe TextMessageModel
+riferimento alla classe TextMessageModel
 \end_layout
 
 \begin_layout Paragraph
@@ -6715,10 +5167,10 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[TextMessagesCollection] chatSession(String): 
+[TextMessagesCollection] chatSession([String] username): 
 \series default
 metodo per restituire l'intera conversazione con l'utente il cui username
- sarà parametro della funzione
+ è parametro della funzione
 \end_layout
 
 \begin_layout Subsubsection
@@ -6735,7 +5187,7 @@ name "sub:TutorialsCollection"
 \end_layout
 
 \begin_layout Standard
-La classe TutorialsCollection rappresenterà la collezione dei tutorial video
+La classe TutorialsCollection rappresenta la collezione dei tutorial video
  disponibili all'utente
 \end_layout
 
@@ -6778,62 +5230,6 @@ Classe TutorialsCollection
 \begin_layout Paragraph
 
 \series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe utilizza:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.model.TutorialModel
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.TutorialView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.TutorialCommunication
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Collection
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-
-\series bold
 Attributi pubblici:
 \end_layout
 
@@ -6842,7 +5238,7 @@ Attributi pubblici:
 \series bold
 [TutorialModel] model: 
 \series default
-conterrà il riferimento alla classe TutorialModel
+riferimento alla classe TutorialModel
 \end_layout
 
 \begin_layout Subsection
@@ -6861,78 +5257,10 @@ Il package
 \family typewriter
 mytalk.client.model
 \family default
- costituirà la parte del sistema dedita alla permanenza ed alla gestione
+ costituisce la parte del sistema dedita alla permanenza ed alla gestione
  dei dati 
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/Documents/GitHub/ClockWork/Documenti/RQ/esterni/definizione_di_prodotto/img/client/model/pdf/packageModel.pdf
-	scale 90
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Package model
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Il package viene utilizzato da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -7028,7 +5356,7 @@ name "sub:ContactModel"
 \end_layout
 
 \begin_layout Standard
-La classe ContactModel rappresenterà un singolo contatto registrato
+La classe ContactModel rappresenta un singolo contatto registrato
 \end_layout
 
 \begin_layout Standard
@@ -7067,58 +5395,6 @@ Classe ContactModel
 
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.ContactView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.FunctionsView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.CallCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.ContactsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Model
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -7180,7 +5456,7 @@ name "sub:RecordMessageModel "
 \end_layout
 
 \begin_layout Standard
-La classe RecordMessageModel rappresenterà un messaggio video/audio inviato
+La classe RecordMessageModel rappresenta un messaggio video/audio inviato
  all'utente
 \end_layout
 
@@ -7220,42 +5496,6 @@ Classe RecordMessageModel
 
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.RecordMessagesCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Model
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -7304,7 +5544,7 @@ name "sub:TextMessageModel"
 \end_layout
 
 \begin_layout Standard
-La classe TextMessageModel rappresenterà un messaggio testuale inviato tra
+La classe TextMessageModel rappresenta un messaggio testuale inviato tra
  due utenti
 \end_layout
 
@@ -7344,42 +5584,6 @@ Classe TextMessageModel
 
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.TextMessagesCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Model
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -7448,7 +5652,7 @@ name "sub:TutorialModel"
 \end_layout
 
 \begin_layout Standard
-La classe TutorialModel rappresenterà il collegamento ad un video tutorial
+La classe TutorialModel rappresenta il collegamento ad un video tutorial
 \end_layout
 
 \begin_layout Standard
@@ -7487,42 +5691,6 @@ Classe TutorialModel
 
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.collection.TutorialsCollection
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Model
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold
@@ -7565,7 +5733,7 @@ name "sub:UserModel"
 \end_layout
 
 \begin_layout Standard
-La classe UserModel rappresenterà i dati dell'utente attivo
+La classe UserModel rappresenta i dati dell'utente attivo.
 \end_layout
 
 \begin_layout Standard
@@ -7604,60 +5772,6 @@ Classe UserModel
 
 \end_layout
 
-\begin_layout Paragraph
-
-\series bold
-Relazione d'uso con altri moduli
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-La classe è utilizzata da:
-\series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.AuthenticationView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.SideView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.view.UserDataView
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.communication.UserDataCommunication
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-La classe deriva da:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-mytalk.client.Backbone.Model
-\end_layout
-
-\end_deeper
 \begin_layout Paragraph
 
 \series bold

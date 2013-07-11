@@ -9,6 +9,8 @@
 * +---------+---------------+--------------------------+
 * | Data    | Programmatore |         Modifiche        |
 * +---------+---------------+--------------------------+
+* |         |               | + tolto messages         |
+* +---------+---------------+--------------------------+
 * |  130410 |      GJ       | + removeMessage          |
 * |         |               | + setMessages            |
 * |         |               | + getMessages            |
@@ -24,11 +26,9 @@
 * |         |               | + creazione documento	   |
 * |         |               |                          |
 * +---------+---------------+--------------------------+
-*
 */
 
 package server.shared;
-import java.util.Vector;
 
 /**
  * classe che rappresenta la struttura dati User del server
@@ -39,10 +39,8 @@ public class User {
   private String name;
   private String surname;
   private String IP;
-  private Vector<RecordMessage> messages;
 
-
-  /**Costruttore di User con tutti i parametri (tranne password e messaggi)
+  /**Costruttore di User 
    * @param username
    * @param name
    * @param surname
@@ -53,8 +51,8 @@ public class User {
 	this.name=name;
 	this.surname=surname;
 	this.IP=IP;
-	this.messages= new Vector<RecordMessage>();
   }
+  
 //metodi get
   public String getUsername(){
     return this.username;
@@ -63,10 +61,10 @@ public class User {
 	return this.name;
   }
   public String getSurname(){
-	  return this.surname;
+	return this.surname;
   }
   public String getIP(){
-	  return this.IP;
+	return this.IP;
   }
 
 //metodi set
@@ -77,21 +75,6 @@ public class User {
 	this.surname=surname;
   }
   public void setIP(String IP){
-	  this.IP=IP;
-  }
-
-//metodi dei messaggi
-  public Vector<RecordMessage> getMessages(){
-	  return messages;
-  }
-  public void setMessages(Vector<RecordMessage> messagesNew){
-	  this.messages=messagesNew;
-  }
-  public void setMessage(RecordMessage message){
-		 this.messages.add(message);
-  }
-
-  public void removeMessage(RecordMessage message){
-	  this.messages.remove(message);
+	this.IP=IP;
   }
 }

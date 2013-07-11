@@ -22,15 +22,18 @@ import java.sql.SQLException;
 import org.junit.Test;
 //PRECONDIZIONE: Il database non contenga nessun valore
 public class JavaConnectionSQLiteTest {
-	JavaConnectionSQLite connection;
+	JavaConnectionSQLite connection=JavaConnectionSQLite.getInstance();
 	
-	private void init(){
-		connection= new JavaConnectionSQLite();
-	}
-	
+/*	 @Test
+	public void resetTable(){
+	 
+	 connection.executeUpdate("DELETE FROM UserDataSQL");	
+	 connection.executeUpdate("DELETE FROM TutorialDataSQL");
+	 connection.executeUpdate("DELETE FROM RecordMessageDataSQL");
+	 }
+*/
 	@Test
 	public void testDBUser() throws SQLException {
-		init();
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
 	    assertTrue("Tabella UserDataSQL dovrebbe essere vuota", rs.isAfterLast());
 
@@ -50,7 +53,6 @@ public class JavaConnectionSQLiteTest {
 	
 	@Test
 	public void testDBRecordMessage() throws SQLException {
-		init();
 	    ResultSet rs = connection.select("RecordMessageDataSQL","*","","");
 	    assertTrue("Tabella RecordMessageDataSQL dovrebbe essere vuota", rs.isAfterLast());
 	    
@@ -69,7 +71,6 @@ public class JavaConnectionSQLiteTest {
 	
 	@Test
 	public void testDBTutorial() throws SQLException {
-		init();
 	    ResultSet rs = connection.select("TutorialDataSQL","*","","");
 	    assertTrue("TabellaTutorialDataSQL dovrebbe essere vuota", rs.isAfterLast());
 	    
@@ -83,4 +84,5 @@ public class JavaConnectionSQLiteTest {
 	    rs = connection.select("TutorialDataSQL","*","","");
 	    assertTrue("Tabella TutorialDataSQL dovrebbe essere vuota", rs.isAfterLast());
 	}
+
 }
