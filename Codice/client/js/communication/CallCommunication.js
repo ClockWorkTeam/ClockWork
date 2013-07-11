@@ -56,7 +56,7 @@ define(['connection'], function(Connection){
   return {
 	
     /**
-     * funzione che inoltra la richiesta di chiamata al server e attende una risposta
+     * funzione che inoltra la richiesta di chiamata ad un unico utente al server e attende una risposta
      */
     sendCall: function (typecall, contact, callView){
       /**
@@ -116,6 +116,87 @@ define(['connection'], function(Connection){
             }
           }
           Connection.removeEventListener('message',onAnswer,false);
+        }
+      }
+    },
+    /**
+     * funzione che inoltra la richiesta di chiamata al server a più utenti e attende una risposta
+     */
+    sendCallConference: function (typecall, contact, callView){
+      /**
+       * imposto che sto chiamando e sono quindi occupato
+       */
+      var event=new CustomEvent('setOnCall',{
+        detail:{
+          type:true
+        },
+        bubbles:true,
+        cancelable:true
+      });
+      document.dispatchEvent(event);
+      recipient=contact;
+      Connection.addEventListener('message', onAnswer, false);
+      var message;
+      for(var i=0;i<recipient.length;i++){
+        console.log(recipient[i]);
+        message= { contact: recipient[i] , type:'call', calltype:typecall};
+        Connection.send(JSON.stringify(message));
+      }
+      /**
+       * aggiunta del listener per la ricezione della risposta dell'utente chiamato
+       */
+      
+      /**
+       * viene impostata questa variabile per poter tener traccia della funzione stessa
+       */
+      var call=this;
+      
+      /**
+       * metodo per la gestione della risposta ricevuta dall'utente chiamato
+       */
+      var answerReceived=0;
+      var confirmReceived=0;
+      function onAnswer(evt){
+        var response = JSON.parse(evt.data);
+        if(response.type==='answeredCallConference'){
+          /**
+           * controllo la risposta del chiamato, se positiva avvio la chiamata
+           * altrimenti imposto nuovamente la disponibilità a ricevere la chiamata
+           * e chiudo la vista
+           */
+          answerReceived++;
+          if(response.answer==='true'){
+            confirmReceived++;
+            callView.addVideoConference(response.user)
+            if(confirmReceived==1){
+              var isCaller=true;
+              call.startCallConference(isCaller, typecall, call, callView,response.user)
+            }else{
+              call.addCallConference(isCaller,typecall,call,callView,response.user);
+            }
+          }else{
+            if(answerReceived==recipient.length && confirmReceived==0){
+              var event=new CustomEvent('setOnCall',{
+                detail:{
+                  type:false
+                },
+                bubbles:true,
+                cancelable:true
+              });
+              document.dispatchEvent(event);
+              callView.endCall(false);
+            }
+            if(response.answer==='false'){
+              alert('chiamata a '+ response.user +'rifiutata');
+            }else if(response.answer==='busy'){
+              alert('utente '+ response.user +' occupato');    
+            }else if(response.answer==='error'){
+              alert('errore durante la chiamata con '+ response.user);
+            }
+          }
+          if(answerReceived==recipient.length){
+            Connection.removeEventListener('message',onAnswer,false);
+          }
         }
       }
     },

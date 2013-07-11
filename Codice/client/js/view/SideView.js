@@ -7,13 +7,16 @@
  *
  * Modifiche:
  * +--------+---------------+-----------------------+
- * | Data   | Programmatore |     Modifiche         |
+ * | Data   | Programmatore |     Modifiche         | 
  * +--------+---------------+-----------------------+
- * | 130524 |      FV       | + metodo che chiude le|
- * |        |               |   viste di ogni       |
- * |        |               |   contatto presente   |
+ * | 130710 |    BG         | + modifica  metodo    | 
+ * |        |               |   StartConference     | 
  * +--------+---------------+-----------------------+
- * | 130512 |    PMA        | + creazione documento |
+ * | 130524 |      FV       | + metodo che chiude le| 
+ * |        |               |   viste di ogni       | 
+ * |        |               |   contatto presente   | 
+ * +--------+---------------+-----------------------+
+ * | 130512 |    PMA        | + creazione documento | 
  */
  
  
@@ -128,15 +131,15 @@ define([
      * si occupa di effettuare conferenze
      */
     StartConference: function(){
-	  _.each(this.childViews, function(view){view.close();});
-	  if(this.currentFunctions){
-        this.currentFunctions.close();
-      }
-	  this.currentFunctions = new FunctionsView({From: 'Conf'});
-	  this.currentFunctions.render();
-	  $('#main').prepend(this.currentFunctions.el);
-	  this.collection.each(this.listContacts);
-	},
+      _.each(this.childViews, function(view){view.close();});
+      if(this.currentFunctions){
+          this.currentFunctions.close();
+        }
+      this.currentFunctions = new FunctionsView({From: 'Conf'});
+      this.currentFunctions.render();
+      $('#main').prepend(this.currentFunctions.el);
+      this.collection.each(this.listContacts);
+    },
 
     /**
      * si occupa di gestire la lista dei contatti da selezionare per una videoconferenza
