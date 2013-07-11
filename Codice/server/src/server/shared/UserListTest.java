@@ -73,5 +73,10 @@ public class UserListTest {
 		userList.removeUser(user);
 		assertTrue("Rimozione riuscita",userList.getAllUsers().size()==0);
 	}
+	
+	@Test
+	public void testGetInstance() {
+		assertTrue("Rimozione riuscita",userList.equals(UserList.getInstance()));
+	}
 
 }
