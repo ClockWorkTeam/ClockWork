@@ -70,10 +70,10 @@ abstract class ListenerTransfer implements WebSocketServerTokenListener{
    * @param ip del connettore da cercare
    * @return ultimo connettore presente in lista tra quelli con ip uguale a quello dato, null se non � presente
    */
-  public WebSocketConnector getIpConnector(String ip){
+  public WebSocketConnector getIpConnector(String IP){
   	WebSocketConnector connector=null;
    	for (WebSocketConnector lConnector : connectedUsers) {
-	  if(lConnector.getRemoteHost().toString().equals(ip))
+	  if(lConnector.getRemoteHost().toString().equals(IP))
 	  	connector = lConnector;
     }
     return connector;
