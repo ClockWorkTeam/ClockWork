@@ -3,16 +3,20 @@
  * Package: View
  * Autore: Palmisano Maria Antonietta
  * Data: 2013/05/17
- * Versione: 1.0
+ * Versione: 2.0
  *
  * Modifiche:
- * +--------+---------------+-----------------------+
- * | Data   | Programmatore |     Modifiche         |
- * +--------+---------------+-----------------------+
- * | 130518 |    PMA        | + metodo che chiude la|
- * |        |               |   chiamata            |
- * +--------+---------------+-----------------------+
- * | 130517 |    PMA        | + creazione documento |
+ * +--------+---------------+-----------------------------+
+ * | Data   | Programmatore |     Modifiche               | 
+ * +--------+---------------+-----------------------------+
+ * | 130710 |    BG         | + metodo conference         | 
+ * |        |               | + metodo addVideoConference | 
+ * +--------+---------------+-----------------------------+ 
+ * | 130518 |    PMA        | + metodo che chiude la      | 
+ * |        |               |   chiamata                  | 
+ * +--------+---------------+-----------------------------+ 
+ * | 130517 |    PMA        | + creazione documento       | 
+ * +--------+---------------+-----------------------------+
 
  */
 
@@ -100,8 +104,24 @@ define([
       this.close();
       this.options.FunctionsView.closeViewCall();
       this.statisticsView.close();
-    }
+    },
+    
+    conference:function(isCaller,type,contatti){
+      if(!document.getElementById('content')){
+        $('#main').prepend(this.el);
+      }
+      $(this.el).html(this.template());
+      if(isCaller==true){
+        CallCommunication.sendCallConference(type,contatti,this);
+      }else{
+        CallCommunication.sendAnswerConference(type,contatti,this);
+      }
+    },
 
+    addVideoConference:function(nameCaller){
+      var video="<video id='"+nameCaller+"' autoplay></video>";
+      $(this.el).append(video);
+    }
   });
 
   CallView.prototype.close = function(){
