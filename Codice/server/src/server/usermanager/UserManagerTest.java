@@ -18,125 +18,122 @@ package server.usermanager;
 
 import static org.junit.Assert.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Vector;
 
-import org.junit.Test;
+import org.junit.*;
 
 import server.dao.JavaConnectionSQLite;
-import server.dao.RecordMessageDao;
-import server.dao.RecordMessageDaoSQL;
-import server.dao.UserDao;
-import server.dao.UserDaoSQL;
 import server.shared.RecordMessage;
 import server.shared.User;
 import server.shared.UserList;
 
 public class UserManagerTest {
 	UserManager userManager;
-	JavaConnectionSQLite connection;
+	JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
 	UserList userList;
+	ResultSet rs;
+	
+	@Before
 	public void init() {
 		userManager=new UserManager();
-		connection =new JavaConnectionSQLite();
-		userList=new UserList();
-		UserDao userDao= new UserDaoSQL(connection, userList);
-		RecordMessageDao recordMessageDao = new RecordMessageDaoSQL(connection, userList);
-		userManager.init(userDao, recordMessageDao);
+		connection.executeUpdate("DELETE FROM UserDataSQL;");
+		connection.executeUpdate("DELETE FROM RecordMessageDataSQL;");
 	}
 
 	@Test
-	public void testSetPassword() throws SQLException {
-		init();
+	public void testSetPassword() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		userList.addUser(new User("ClockWork","Clock Work","Team", "0"));
-
-		assertTrue("Operazione di cambio password fallita",userManager.setPassword(userList.getUser("ClockWork"), "newPassword"));
-		ResultSet rs= connection.select("UserDataSQL","*","","");
+		
+		assertTrue("Operazione di cambio password fallita",userManager.setPassword("ClockWork", "newPassword"));
+		rs= connection.select("UserDataSQL","*","","");
 		assertTrue("Password non modificata", rs.getString("password").equals("newPassword"));
-		
-		userList.removeUser("ClockWork");
-		connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork';");
 	}
 
 	@Test
-	public void testSetName() throws SQLException {
-		init();
+	public void testCheckPassword() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		userList.addUser(new User("ClockWork","Clock Work","Team", "0"));
-
-		assertTrue("Operazione di cambio nome fallita", userManager.setName(userList.getUser("ClockWork"), "Clockwork"));
-		assertTrue("Nome non modificato nel contatto in shared",userList.getUser("ClockWork").getName().equals("Clockwork"));
-		ResultSet rs= connection.select("UserDataSQL","*","","");
-		assertTrue("Nome non modificato nel contatto in db", rs.getString("name").equals("Clockwork"));
 		
-		userList.removeUser("ClockWork");
-		connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork';");
-
+		rs= connection.select("UserDataSQL","*","password='password'","");
+		assertTrue("Password non modificata", !rs.isAfterLast());
+		
+		assertTrue("Operazione di controllo password fallita",userManager.checkPassword("ClockWork", "password"));	
 	}
-
+	
 	@Test
-	public void testSetSurname() throws SQLException {
-		init();
+	public void testSetUserData() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		userList.addUser(new User("ClockWork","Clock Work","Team", "0"));
-
-		assertTrue("Operazione di cambio nome fallita", userManager.setSurname(userList.getUser("ClockWork"), "Clockwork"));
-		assertTrue("Nome non modificato nel contatto in shared",userList.getUser("ClockWork").getSurname().equals("Clockwork"));
-		ResultSet rs= connection.select("UserDataSQL","*","","");
-		assertTrue("Nome non modificato nel contatto in db", rs.getString("surname").equals("Clockwork"));
 		
-		userList.removeUser("ClockWork");
-		connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork';");
+		assertTrue("Operazione di settaggio fallita",userManager.setUserData("ClockWork", "ClockWork","Team7"));
+		
+		rs= connection.select("UserDataSQL","*","","");
+		assertTrue("Password non modificata", !rs.isAfterLast());
+		assertTrue("Password non modificata", rs.getString("username").equals("ClockWork"));
+		assertTrue("Password non modificata", rs.getString("name").equals("ClockWork"));
+		assertTrue("Password non modificata", rs.getString("surname").equals("Team7"));
+		
+		connection.executeUpdate("DELETE FROM UserDataSQL;");
+		
+		try{
+			assertTrue("Operazione di settaggio fallita",userManager.setUserData("ClockWork", "ClockWork","Team7"));
+		}
+		catch(Exception e){ System.out.println("Username errato"); }
 	}
-
+	
 	@Test
-	public void testCreateMessage_GetMessage_GetMessages_RemoveMessage() {
-		init();
+	public void testGetUserData() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		userList.addUser(new User("ClockWork","Clock Work","Team", "0"));
 		
-		java.util.Date dt = new java.util.Date();
-		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		assertTrue("Creazione messaggio fallita", userManager.createMessage("sender","ClockWork" ,"Prova",  sdf.format(dt))!=null);
-		RecordMessage message = userManager.getMessage("sender","ClockWork" ,"Prova",  sdf.format(dt));
-		assertTrue("Messaggio non esistente", message!=null);
-		assertTrue("Numero messaggi errato",userManager.getMessages("ClockWork").size()==1);
-		assertTrue("Errore nella rimozione del messaggio", userManager.removeMessage("sender","ClockWork" ,"Prova",  sdf.format(dt)));
-		assertTrue("Numero messaggi errato",userManager.getMessages("ClockWork").size()==0);
+		User user=userManager.getUserData("ClockWork");
 		
-		userList.removeUser("ClockWork");
-		connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork';");
+		assertTrue("Password non modificata", user.getUsername().equals("ClockWork"));
+		assertTrue("Password non modificata", user.getName().equals("Clock Work"));
+		assertTrue("Password non modificata", user.getSurname().equals("Team"));
 	}
-
+	
 	@Test
-	public void testGetUser() {
-		init();
+	public void testCreateMessage() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		userList.addUser(new User("ClockWork","Clock Work","Team", "0"));
-
-		assertTrue("Utente errato", userList.getUser("ClockWork")==userManager.getUser("ClockWork"));
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team', '7');");
 		
-		userList.removeUser("ClockWork");
-		connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork';");
+		RecordMessage message=userManager.createMessage("sender", "ClockWork7", "prova", "");
+		assertTrue("Password non modificata", message.getSender().equals("sender"));
+		assertTrue("Password non modificata", message.getAddressee().equals("ClockWork7"));
+		assertTrue("Password non modificata", message.getPath().equals("prova"));
+		assertTrue("Password non modificata", message.getDate().equals(""));
 		
-		assertTrue("Utente non rimosso", userManager.getUser("ClockWork")==null);
+		try{
+			message=userManager.createMessage("sender", "ClockWork777", "prova", "");
+		}
+		catch(Exception e){System.out.println("Addressee errato");}
 	}
-
+	
 	@Test
-	public void testGetAllContacts() {
-		init();
-		assertTrue("numero contatti errato", userManager.getAllContacts(null).size()==0);
+	public void testGetMessages() throws Exception {
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('sender','ClockWork7','prova','');");
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('sender','ClockWork7','ciao','');");
 		
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		userList.addUser(new User("ClockWork","Clock Work","Team", "0"));
-
-		assertTrue("numero contatti errato", userManager.getAllContacts(null).size()==1);
-		assertTrue("numero contatti errato", userManager.getAllContacts(userManager.getUser("ClockWork")).size()==0);
-		
-		userList.removeUser("ClockWork");
-		connection.executeUpdate("DELETE FROM UserDataSQL WHERE username='ClockWork';");
-		assertTrue("numero contatti errato", userManager.getAllContacts(null).size()==0);		
+		Vector<RecordMessage> message=userManager.getMessages("ClockWork7");
+		assertTrue("Password non modificata", message.size()==2);
 	}
-
+	
+	@Test
+	public void testRemoveMessage() throws Exception {
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('sender','ClockWork7','prova','');");
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('sender','ClockWork7','ciao','');");
+		
+		rs= connection.select("RecordMessageDataSQL","count(*) as num","","");
+		assertTrue("Password non modificata", rs.getString("num").equals("2"));
+		
+		userManager.removeMessage("sender", "ClockWork7", "prova", "");
+		
+		rs= connection.select("RecordMessageDataSQL","count(*) as num","","");
+		assertTrue("Password non modificata", rs.getString("num").equals("1"));
+		
+		userManager.removeMessage("sender", "ClockWork7", "ciao", "");
+		
+		rs= connection.select("RecordMessageDataSQL","count(*) as num","","");
+		assertTrue("Password non modificata", rs.getString("num").equals("0"));
+	}
+	
 }
