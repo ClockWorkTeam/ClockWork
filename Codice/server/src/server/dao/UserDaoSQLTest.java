@@ -22,93 +22,159 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.junit.Test;
+import org.junit.*;
+
 import server.shared.User;
-import server.shared.UserList;
 
 public class UserDaoSQLTest {
 	private UserDaoSQL userDaoSQL;
 	private JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
-	public void init() {
-		userDaoSQL=UserDaoSQL.getInstance();	
-	}
+	ResultSet rs;
 	
-/* @Test
-	public void resetTable(){
-	 init();
-	 
+	@Before
+	public void init(){
+	 userDaoSQL=UserDaoSQL.getInstance();
 	 connection.executeUpdate("DELETE FROM UserDataSQL");	
 	}
-*/
-	/**
-	 * Nota il test per la creazione e la rimozione di un utente deve essere eseguito in un unico metodo, poichè i test lavorano in parallelo
-	 * per cui se si creano 2 test, uno di creazione e uno di eliminazione si alternerebbe la loro correttezza
-	 * @throws SQLException
-	 */
+
 	@Test
-	public void testAddAndRemoveUser() throws SQLException {
-		init();
+	public void testAddUser() throws SQLException {
+		
 		User user = new User("ClockWork7", "Clock Work", "Team", "7"); 
+		
+		rs = connection.select("UserDataSQL","*","","");
+		assertTrue("Database non vuoto",rs.getRow()==0);
+		
 		assertTrue("Operazione di inserimento nel DB fallita", userDaoSQL.addUser(user, "password"));
 		
-	    ResultSet rs = connection.select("UserDataSQL","*","","");
-	    assertTrue("User non inserito nel database",!rs.isAfterLast());
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("User non inserito nel database",rs.getRow()==1);
 		assertTrue("Username non inserito correttamente nel db", rs.getString("username").equals("ClockWork7"));
 		assertTrue("Password non inserita correttamente nel db", rs.getString("password").equals("password"));
 		assertTrue("Nome non inserito correttamente nel db", rs.getString("name").equals("Clock Work"));
 		assertTrue("Cognome non inserito correttamente nel db", rs.getString("surname").equals("Team"));
 		assertTrue("IP non inserito correttamente nel db", rs.getString("IP").equals("7"));
+	}
+	
+	@Test
+	public void testRemoveUser() throws SQLException {
+		
+		rs = connection.select("UserDataSQL","*","","");
+		assertTrue("Database non vuoto",rs.getRow()==0);
+		
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
+
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("User non inserito nel database",rs.getRow()==1);
 		
 		assertTrue("",userDaoSQL.removeUser("ClockWork7"));
+		
 		rs = connection.select("UserDataSQL","*","username='ClockWork7'","");
-	    assertTrue("Utente cancellato dal database", rs.isAfterLast());
+	    assertTrue("Utente non cancellato dal database", rs.isAfterLast());
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("Database non vuoto",rs.getRow()==0);
 	}
+
 
 	@Test
 	public void testGetUser() throws SQLException {
-		init();
+		
 		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
-		userDaoSQL.addUser(new User("ClockWork7", "Clock Work", "Team", "7"), "password");
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
 	    assertTrue("User non inserito nel database",!rs.isAfterLast());
 
-		assertTrue("User non trovato", userDaoSQL.getUser("ClockWork7")!=null);
-		userDaoSQL.removeUser("ClockWork7");
+	    User user = userDaoSQL.getUser("ClockWork7");
+	    
+	    assertTrue("Username non corretto", user.getUsername().equals("ClockWork7"));
+		assertTrue("Nome non corretto", user.getName().equals("Clock Work"));
+		assertTrue("Cognome non corretto", user.getSurname().equals("Team"));
+		assertTrue("IP non corretto", user.getIP().equals("7"));
 	}
 	
-	
-		/*@Test
-	public void testSetPassword() throws SQLException {
-		init();
-		User user =userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		assertTrue("Operazione di cambio password fallita",userDaoSQL.setPassword(user.getUsername(), "nuova_password"));
+	@Test
+	public void testCheckPassword() throws SQLException {
+		
+		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
-	    assertTrue("Password non cambiata nel db", rs.getString("password").equals("nuova_password"));
-		userDaoSQL.removeUser("ClockWork7");
-	}
+	    assertTrue("User non inserito nel database",!rs.isAfterLast());
 
+	    assertTrue("Controllo password fallito", userDaoSQL.checkPassword("ClockWork7","password"));
+	    assertFalse("Controllo password fallito", userDaoSQL.checkPassword("ClockWork","password"));
+	    assertFalse("Controllo password fallito", userDaoSQL.checkPassword("ClockWork7","password7"));
+	}
+	
+	@Test
+	public void testSetPassword() throws SQLException {
+		
+		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
+	    ResultSet rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("User non inserito nel database",!rs.isAfterLast());
+	    
+	    assertTrue("Password non cambiata nel db", userDaoSQL.setPassword("ClockWork7","password7"));
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("Password sbagliata", rs.getString("password").equals("password7"));
+	    
+	    assertTrue("Controllo password fallito", userDaoSQL.setPassword("ClockWork","password7"));
+	    rs = connection.select("UserDataSQL","*","username='ClockWork'","");
+	    assertTrue("Password sbagliata", rs.isAfterLast());
+	}
+	
 	@Test
 	public void testSetName() throws SQLException {
-		init();
-		User user =userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		String nuovoNome="ClockWork";
-		assertTrue("Operazione di cambio nome fallita",userDaoSQL.setName(user.getUsername(), nuovoNome));
-		assertTrue("Nome non cambiato nella lista", userList.getUser(user.getUsername()).getName().equals(nuovoNome));
+		
+		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
-	    assertTrue("Nome non cambiato nel db", rs.getString("name").equals(nuovoNome));
-		userDaoSQL.removeUser("ClockWork7");
+	    assertTrue("User non inserito nel database",!rs.isAfterLast());
+	    
+	    assertTrue("Nome non cambiato nel db", userDaoSQL.setName("ClockWork7","ClockWork"));
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("Nome sbagliato", rs.getString("name").equals("ClockWork"));
+	    
+	    assertTrue("Controllo password fallito", userDaoSQL.setName("ClockWork","ClockWork"));
+	    rs = connection.select("UserDataSQL","*","username='ClockWork'","");
+	    assertTrue("Nome sbagliato", rs.isAfterLast());
 	}
-
+	
 	@Test
 	public void testSetSurname() throws SQLException {
-		init();
-		User user =userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
-		String nuovoCognome="ClockWorkTeam";
-		assertTrue("Operazione di cambio nome fallita",userDaoSQL.setSurname(user.getUsername(), nuovoCognome));
-		assertTrue("Cognome non cambiato nella lista", userList.getUser(user.getUsername()).getSurname().equals(nuovoCognome));
+		
+		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
 	    ResultSet rs = connection.select("UserDataSQL","*","","");
-	    assertTrue("Cognome non cambiato nel db", rs.getString("surname").equals(nuovoCognome));
-		userDaoSQL.removeUser("ClockWork7");
+	    assertTrue("User non inserito nel database",!rs.isAfterLast());
+	    
+	    assertTrue("Nome non cambiato nel db", userDaoSQL.setSurname("ClockWork7","team"));
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("Nome sbagliato", rs.getString("surname").equals("team"));
+	    
+	    assertTrue("Controllo password fallito", userDaoSQL.setSurname("ClockWork","team"));
+	    rs = connection.select("UserDataSQL","*","username='ClockWork'","");
+	    assertTrue("Nome sbagliato", rs.isAfterLast());
 	}
-*/
+	
+	@Test
+	public void testSetIP() throws SQLException {
+		
+		assertTrue("Presente un user falso", userDaoSQL.getUser("falso")==null);
+		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
+	    ResultSet rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("User non inserito nel database",!rs.isAfterLast());
+	    
+	    assertTrue("Nome non cambiato nel db", userDaoSQL.setIP("ClockWork7","77"));
+	    rs = connection.select("UserDataSQL","*","","");
+	    assertTrue("Nome sbagliato", rs.getString("IP").equals("77"));
+	    
+	    assertTrue("Controllo password fallito", userDaoSQL.setIP("ClockWork","77"));
+	    rs = connection.select("UserDataSQL","*","username='ClockWork'","");
+	    assertTrue("Nome sbagliato", rs.isAfterLast());
+	}
+	
+	@Test
+	public void testGetInstance() {
+		assertTrue("Rimozione riuscita",userDaoSQL.equals(UserDaoSQL.getInstance()));
+	}
 }
