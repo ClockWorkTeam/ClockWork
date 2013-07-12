@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jul 02 17:17:16 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jul 12 13:57:17 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -243,7 +243,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A8E'
-                  name = 'ServerMyTalk' isSpecification = 'false' kind = 'in'/>
+                  name = 'server' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--e6d2b3b:13f20476a8e:-8000:0000000000000879'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A84'
@@ -258,7 +262,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A8F'
-                  name = 'WebSocketPacket' isSpecification = 'false' kind = 'in'/>
+                  name = 'packet' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--e6d2b3b:13f20476a8e:-8000:000000000000088A'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A86'
@@ -273,7 +281,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A90'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A88'
@@ -288,7 +300,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A91'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'IP' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A8A'
@@ -303,9 +319,17 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A92'
-                  name = 'WebSocketConnector' isSpecification = 'false' kind = 'in'/>
+                  name = 'packet' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--e6d2b3b:13f20476a8e:-8000:000000000000088A'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A93'
-                  name = 'WebSocketConnector' isSpecification = 'false' kind = 'in'/>
+                  name = 'connector' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--e6d2b3b:13f20476a8e:-8000:0000000000000882'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -318,7 +342,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[8, 32, 407, 200]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[8, 32, 512, 197]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A76"
        fill="1"
        fillcolor="255 255 200"
@@ -331,8 +355,8 @@
     <rectangle name="Fig0.0"
       x="8"
       y="32"
-      width="407"
-      height="200"
+      width="512"
+      height="197"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -341,7 +365,7 @@
     <text name="Fig0.1"
       x="9"
       y="33"
-      width="405"
+      width="510"
       height="43"
       fill="0"
       fillcolor="255 255 200"
@@ -355,7 +379,7 @@
       justification="Center"
     >ListenerTransfer</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[9, 33, 405, 20]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[9, 33, 510, 20]"
          href="127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A76"
          fill="0"
          fillcolor="255 255 200"
@@ -368,7 +392,7 @@
       <rectangle name="Fig0.2.0"
         x="9"
         y="33"
-        width="405"
+        width="510"
         height="20"
         fill="0"
         fillcolor="255 255 200"
@@ -378,7 +402,7 @@
       <text name="Fig0.2.1"
         x="9"
         y="33"
-        width="405"
+        width="510"
         height="18"
         fill="0"
         fillcolor="255 255 200"
@@ -395,7 +419,7 @@
     <rectangle name="Fig0.3"
       x="8"
       y="76"
-      width="407"
+      width="512"
       height="1"
       fill="1"
       fillcolor="black"
@@ -403,7 +427,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[9, 77, 405, 59]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[9, 77, 510, 59]"
          href="127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A76"
          fill="0"
          fillcolor="255 255 200"
@@ -416,7 +440,7 @@
       <rectangle name="Fig0.4.0"
         x="9"
         y="77"
-        width="405"
+        width="510"
         height="59"
         fill="0"
         fillcolor="white"
@@ -426,7 +450,7 @@
       <text name="Fig0.4.1"
         x="9"
         y="77"
-        width="405"
+        width="510"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -442,7 +466,7 @@
       <text name="Fig0.4.2"
         x="9"
         y="94"
-        width="405"
+        width="510"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -458,7 +482,7 @@
       <text name="Fig0.4.3"
         x="9"
         y="111"
-        width="405"
+        width="510"
         height="23"
         fill="0"
         fillcolor="255 255 200"
@@ -474,8 +498,8 @@
     </group>
     <rectangle name="Fig0.5"
       x="8"
-      y="136"
-      width="407"
+      y="135"
+      width="512"
       height="1"
       fill="1"
       fillcolor="black"
@@ -483,7 +507,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[9, 137, 405, 93]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[9, 136, 510, 93]"
          href="127-0-0-1-62e75d75:13f9fe13ce3:-8000:0000000000000A76"
          fill="0"
          fillcolor="255 255 200"
@@ -495,8 +519,8 @@
       
       <rectangle name="Fig0.6.0"
         x="9"
-        y="137"
-        width="405"
+        y="136"
+        width="510"
         height="93"
         fill="0"
         fillcolor="white"
@@ -505,8 +529,8 @@
       />
       <text name="Fig0.6.1"
         x="9"
-        y="137"
-        width="405"
+        y="136"
+        width="510"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -518,11 +542,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+setTokenServer(ServerMyTalk) : void</text>
+      >+setTokenServer(server : ServerMyTalk) : void</text>
       <text name="Fig0.6.2"
         x="9"
-        y="154"
-        width="405"
+        y="153"
+        width="510"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -534,11 +558,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+broadcastToAll(WebSocketPacket) : void</text>
+      >+broadcastToAll(packet : WebSocketPacket) : void</text>
       <text name="Fig0.6.3"
         x="9"
-        y="171"
-        width="405"
+        y="170"
+        width="510"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -550,11 +574,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+getUserConnector(String) : WebSocketConnector</text>
+      >+getUserConnector(username : String) : WebSocketConnector</text>
       <text name="Fig0.6.4"
         x="9"
-        y="188"
-        width="405"
+        y="187"
+        width="510"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -566,11 +590,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+getIpConnector(String) : WebSocketConnector</text>
+      >+getIpConnector(IP : String) : WebSocketConnector</text>
       <text name="Fig0.6.5"
         x="9"
-        y="205"
-        width="405"
+        y="204"
+        width="510"
         height="23"
         fill="0"
         fillcolor="255 255 200"
@@ -582,7 +606,7 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+sendPacket(WebSocketConnector,WebSocketConnector) : void</text>
+      >+sendPacket(packet : WebSocketPacket,connector : WebSocketConnector) : void</text>
     </group>
   </group>
 </pgml>

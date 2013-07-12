@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 14:27:00 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 19:41:30 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -182,7 +182,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002029'
-                  name = 'AuthenticationView' isSpecification = 'false' kind = 'in'/>
+                  name = 'view' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002015'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000202C'
@@ -210,7 +214,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002033'
-                  name = 'ContactModel' isSpecification = 'false' kind = 'in'/>
+                  name = 'contact' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--704b7b79:13fc9942df8:-8000:0000000000001B79'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002034'
@@ -277,7 +285,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203E'
-                  name = 'ContactModel' isSpecification = 'false' kind = 'in'/>
+                  name = 'contact' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--704b7b79:13fc9942df8:-8000:0000000000001B79'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000203F'
@@ -292,7 +304,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002041'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'contact' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002042'
@@ -307,9 +323,17 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002044'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'contact' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002045'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'type' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Attribute xmi.id = '10-1-124-1-42ffba4f:13f3305eb55:-8000:0000000000001B7D'
@@ -350,6 +374,9 @@
         <UML:Class xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:000000000000201F'
           name = 'FunctionsView' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '127-0-0-1--704b7b79:13fc9942df8:-8000:0000000000001B79'
+          name = 'ContactModel' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -358,7 +385,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[32, 8, 286, 347]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[32, 8, 303, 347]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
        fill="1"
        fillcolor="255 255 200"
@@ -371,7 +398,7 @@
     <rectangle name="Fig0.0"
       x="32"
       y="8"
-      width="286"
+      width="303"
       height="347"
       fill="1"
       fillcolor="255 255 200"
@@ -381,7 +408,7 @@
     <text name="Fig0.1"
       x="33"
       y="9"
-      width="284"
+      width="301"
       height="23"
       fill="0"
       fillcolor="255 255 200"
@@ -420,7 +447,7 @@
     <rectangle name="Fig0.3"
       x="32"
       y="32"
-      width="286"
+      width="303"
       height="1"
       fill="1"
       fillcolor="black"
@@ -428,7 +455,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[33, 33, 284, 127]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[33, 33, 301, 127]"
          href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
          fill="0"
          fillcolor="255 255 200"
@@ -441,7 +468,7 @@
       <rectangle name="Fig0.4.0"
         x="33"
         y="33"
-        width="284"
+        width="301"
         height="127"
         fill="0"
         fillcolor="white"
@@ -451,7 +478,7 @@
       <text name="Fig0.4.1"
         x="33"
         y="33"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -467,7 +494,7 @@
       <text name="Fig0.4.2"
         x="33"
         y="50"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -483,7 +510,7 @@
       <text name="Fig0.4.3"
         x="33"
         y="67"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -499,7 +526,7 @@
       <text name="Fig0.4.4"
         x="33"
         y="84"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -515,7 +542,7 @@
       <text name="Fig0.4.5"
         x="33"
         y="101"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -531,7 +558,7 @@
       <text name="Fig0.4.6"
         x="33"
         y="118"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -547,7 +574,7 @@
       <text name="Fig0.4.7"
         x="33"
         y="135"
-        width="284"
+        width="301"
         height="23"
         fill="0"
         fillcolor="255 255 200"
@@ -564,7 +591,7 @@
     <rectangle name="Fig0.5"
       x="32"
       y="159"
-      width="286"
+      width="303"
       height="1"
       fill="1"
       fillcolor="black"
@@ -572,7 +599,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[33, 160, 284, 195]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[33, 160, 301, 195]"
          href="10-1-124-1-7a142cd:13f2d73ce44:-8000:0000000000000D84"
          fill="0"
          fillcolor="255 255 200"
@@ -585,7 +612,7 @@
       <rectangle name="Fig0.6.0"
         x="33"
         y="160"
-        width="284"
+        width="301"
         height="195"
         fill="0"
         fillcolor="white"
@@ -595,7 +622,7 @@
       <text name="Fig0.6.1"
         x="33"
         y="160"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -611,7 +638,7 @@
       <text name="Fig0.6.2"
         x="33"
         y="177"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -623,11 +650,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+getContacts(AuthenticationView) : void</text>
+      >+getContacts(view : AuthenticationView) : void</text>
       <text name="Fig0.6.3"
         x="33"
         y="194"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -643,7 +670,7 @@
       <text name="Fig0.6.4"
         x="33"
         y="211"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -655,11 +682,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+viewContact(ContactModel) : void</text>
+      >+viewContact(contact : ContactModel) : void</text>
       <text name="Fig0.6.5"
         x="33"
         y="228"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -675,7 +702,7 @@
       <text name="Fig0.6.6"
         x="33"
         y="245"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -691,7 +718,7 @@
       <text name="Fig0.6.7"
         x="33"
         y="262"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -707,7 +734,7 @@
       <text name="Fig0.6.8"
         x="33"
         y="279"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -723,7 +750,7 @@
       <text name="Fig0.6.9"
         x="33"
         y="296"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -735,11 +762,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+listContacts(ContactModel) : void</text>
+      >+listContacts(contact : ContactModel) : void</text>
       <text name="Fig0.6.10"
         x="33"
         y="313"
-        width="284"
+        width="301"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -751,11 +778,11 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+closeOtherContacts(String) : void</text>
+      >+closeOtherContacts(contact : String) : void</text>
       <text name="Fig0.6.11"
         x="33"
         y="330"
-        width="284"
+        width="301"
         height="23"
         fill="0"
         fillcolor="255 255 200"
@@ -767,7 +794,7 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+setCall(String,String) : void</text>
+      >+setCall(contact : String,type : String) : void</text>
     </group>
   </group>
 </pgml>

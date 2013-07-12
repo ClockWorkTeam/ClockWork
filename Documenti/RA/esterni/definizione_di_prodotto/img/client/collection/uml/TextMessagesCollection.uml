@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 15:58:45 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 20:23:08 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -100,7 +100,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000970'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -119,7 +123,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[12, 4, 279, 75]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[12, 4, 347, 75]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000969"
        fill="1"
        fillcolor="255 255 200"
@@ -132,7 +136,7 @@
     <rectangle name="Fig0.0"
       x="12"
       y="4"
-      width="279"
+      width="347"
       height="75"
       fill="1"
       fillcolor="255 255 200"
@@ -142,7 +146,7 @@
     <text name="Fig0.1"
       x="13"
       y="5"
-      width="277"
+      width="345"
       height="22"
       fill="0"
       fillcolor="255 255 200"
@@ -156,7 +160,7 @@
       justification="Center"
     >TextMessagesCollection</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[13, 5, 271, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[13, 5, 277, 0]"
          href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000969"
          fill="0"
          fillcolor="255 255 200"
@@ -170,7 +174,7 @@
       <rectangle name="Fig0.2.0"
         x="13"
         y="5"
-        width="271"
+        width="277"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -181,7 +185,7 @@
     <rectangle name="Fig0.3"
       x="12"
       y="27"
-      width="279"
+      width="347"
       height="1"
       fill="1"
       fillcolor="black"
@@ -189,7 +193,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[13, 28, 277, 24]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[13, 28, 345, 24]"
          href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000969"
          fill="0"
          fillcolor="255 255 200"
@@ -202,7 +206,7 @@
       <rectangle name="Fig0.4.0"
         x="13"
         y="28"
-        width="277"
+        width="345"
         height="24"
         fill="0"
         fillcolor="white"
@@ -212,7 +216,7 @@
       <text name="Fig0.4.1"
         x="13"
         y="28"
-        width="277"
+        width="345"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -229,7 +233,7 @@
     <rectangle name="Fig0.5"
       x="12"
       y="52"
-      width="279"
+      width="347"
       height="1"
       fill="1"
       fillcolor="black"
@@ -237,7 +241,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[13, 53, 277, 24]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[13, 53, 345, 24]"
          href="10-1--83-1--251af049:13d5f6950c2:-8000:0000000000000969"
          fill="0"
          fillcolor="255 255 200"
@@ -250,7 +254,7 @@
       <rectangle name="Fig0.6.0"
         x="13"
         y="53"
-        width="277"
+        width="345"
         height="24"
         fill="0"
         fillcolor="white"
@@ -260,7 +264,7 @@
       <text name="Fig0.6.1"
         x="13"
         y="53"
-        width="277"
+        width="345"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -272,7 +276,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+chatSession(String) : TextMessagesCollection</text>
+      >+chatSession(username : String) : TextMessagesCollection</text>
     </group>
   </group>
 </pgml>

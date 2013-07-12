@@ -17,9 +17,10 @@ package server.dao;
 
 import static org.junit.Assert.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import org.junit.Test;
+import java.sql.*;
+
+import org.junit.*;
+
 //PRECONDIZIONE: Il database non contenga nessun valore
 public class JavaConnectionSQLiteTest {
 	JavaConnectionSQLite connection=JavaConnectionSQLite.getInstance();
@@ -83,6 +84,11 @@ public class JavaConnectionSQLiteTest {
 	    connection.executeUpdate("DELETE FROM TutorialDataSQL WHERE title='prova';");
 	    rs = connection.select("TutorialDataSQL","*","","");
 	    assertTrue("Tabella TutorialDataSQL dovrebbe essere vuota", rs.isAfterLast());
+	}
+	
+	@Test
+	public void testGetInstance() {
+		assertTrue("Rimozione riuscita",connection.equals(JavaConnectionSQLite.getInstance()));
 	}
 
 }

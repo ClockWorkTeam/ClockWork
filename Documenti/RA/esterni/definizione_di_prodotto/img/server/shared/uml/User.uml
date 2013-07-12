@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 23:53:10 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 16:48:17 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -133,21 +133,6 @@
                 <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
               </UML:StructuralFeature.type>
             </UML:Attribute>
-            <UML:Attribute xmi.id = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000873'
-              name = '-messages' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              changeability = 'changeable' targetScope = 'instance'>
-              <UML:StructuralFeature.multiplicity>
-                <UML:Multiplicity xmi.id = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000874'>
-                  <UML:Multiplicity.range>
-                    <UML:MultiplicityRange xmi.id = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000875'
-                      lower = '1' upper = '1'/>
-                  </UML:Multiplicity.range>
-                </UML:Multiplicity>
-              </UML:StructuralFeature.multiplicity>
-              <UML:StructuralFeature.type>
-                <UML:Class xmi.idref = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000893'/>
-              </UML:StructuralFeature.type>
-            </UML:Attribute>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003923'
               name = '+User' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
@@ -156,13 +141,29 @@
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003924'
                   name = 'return' isSpecification = 'false' kind = 'return'/>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003925'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003926'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'name' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003927'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'surname' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003928'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'IP' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003929'
@@ -217,19 +218,6 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003931'
-              name = '+getMessages' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003932'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000893'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003933'
               name = '+setName' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
@@ -242,7 +230,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003935'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'name' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003936'
@@ -257,7 +249,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003938'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'surname' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003939'
@@ -272,52 +268,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000393B'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000393C'
-              name = '+setMessages' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000393D'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  name = 'IP' isSpecification = 'false' kind = 'in'>
                   <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000898'/>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000393E'
-                  name = 'Vector&lt;RecordMessage&gt;' isSpecification = 'false' kind = 'in'/>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:000000000000393F'
-              name = '+setMessage' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003940'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000898'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003941'
-                  name = 'RecordMessage' isSpecification = 'false' kind = 'in'/>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003942'
-              name = '+removeMessage' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003943'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000898'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003944'
-                  name = 'RecordMessage' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -342,7 +297,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[96, 80, 282, 312]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[8, 32, 395, 232]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -353,19 +308,19 @@
     </private>
     
     <rectangle name="Fig0.0"
-      x="96"
-      y="80"
-      width="282"
-      height="312"
+      x="8"
+      y="32"
+      width="395"
+      height="232"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
       strokecolor="black"
     />
     <text name="Fig0.1"
-      x="97"
-      y="81"
-      width="280"
+      x="9"
+      y="33"
+      width="393"
       height="22"
       fill="0"
       fillcolor="255 255 200"
@@ -379,7 +334,7 @@
       justification="Center"
     >User</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[97, 81, 387, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[9, 33, 281, 0]"
          href="10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -391,9 +346,9 @@
       </private>
       
       <rectangle name="Fig0.2.0"
-        x="97"
-        y="81"
-        width="387"
+        x="9"
+        y="33"
+        width="281"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -402,9 +357,9 @@
       />
     </group>
     <rectangle name="Fig0.3"
-      x="96"
-      y="103"
-      width="282"
+      x="8"
+      y="55"
+      width="395"
       height="1"
       fill="1"
       fillcolor="black"
@@ -412,7 +367,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[97, 104, 280, 88]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[9, 56, 393, 72]"
          href="10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -423,19 +378,19 @@
       </private>
       
       <rectangle name="Fig0.4.0"
-        x="97"
-        y="104"
-        width="280"
-        height="88"
+        x="9"
+        y="56"
+        width="393"
+        height="72"
         fill="0"
         fillcolor="white"
         stroke="0"
         strokecolor="black"
       />
       <text name="Fig0.4.1"
-        x="97"
-        y="104"
-        width="280"
+        x="9"
+        y="56"
+        width="393"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -449,9 +404,9 @@
         justification="Left"
       >-username : String</text>
       <text name="Fig0.4.2"
-        x="97"
-        y="120"
-        width="280"
+        x="9"
+        y="72"
+        width="393"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -465,9 +420,9 @@
         justification="Left"
       >-name : String</text>
       <text name="Fig0.4.3"
-        x="97"
-        y="136"
-        width="280"
+        x="9"
+        y="88"
+        width="393"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -481,10 +436,10 @@
         justification="Left"
       >-surname : String</text>
       <text name="Fig0.4.4"
-        x="97"
-        y="152"
-        width="280"
-        height="16"
+        x="9"
+        y="104"
+        width="393"
+        height="22"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -496,10 +451,154 @@
         textsize="12"
         justification="Left"
       >-IP : String</text>
-      <text name="Fig0.4.5"
-        x="97"
-        y="168"
-        width="280"
+    </group>
+    <rectangle name="Fig0.5"
+      x="8"
+      y="127"
+      width="395"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig0.6"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[9, 128, 393, 136]"
+         href="10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000866"
+         fill="0"
+         fillcolor="255 255 200"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.6.0"
+        x="9"
+        y="128"
+        width="393"
+        height="136"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <text name="Fig0.6.1"
+        x="9"
+        y="128"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+User(username : String,name : String,surname : String,IP : String)</text>
+      <text name="Fig0.6.2"
+        x="9"
+        y="144"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getUsername() : String</text>
+      <text name="Fig0.6.3"
+        x="9"
+        y="160"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getName() : String</text>
+      <text name="Fig0.6.4"
+        x="9"
+        y="176"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getSurname() : String</text>
+      <text name="Fig0.6.5"
+        x="9"
+        y="192"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getIP() : String</text>
+      <text name="Fig0.6.6"
+        x="9"
+        y="208"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+setName(name : String) : void</text>
+      <text name="Fig0.6.7"
+        x="9"
+        y="224"
+        width="393"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+setSurname(surname : String) : void</text>
+      <text name="Fig0.6.8"
+        x="9"
+        y="240"
+        width="393"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -511,231 +610,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >-messages : Vector&lt;RecordMessage&gt;</text>
-    </group>
-    <rectangle name="Fig0.5"
-      x="96"
-      y="191"
-      width="282"
-      height="1"
-      fill="1"
-      fillcolor="black"
-      stroke="1"
-      strokecolor="black"
-    />
-    <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[97, 192, 280, 200]"
-         href="10-1-66-1--190ccf62:13d68968ec9:-8000:0000000000000866"
-         fill="0"
-         fillcolor="255 255 200"
-         stroke="0"
-         strokecolor="black"
-    >
-      <private>
-      </private>
-      
-      <rectangle name="Fig0.6.0"
-        x="97"
-        y="192"
-        width="280"
-        height="200"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-      />
-      <text name="Fig0.6.1"
-        x="97"
-        y="192"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+User(String,String,String,String)</text>
-      <text name="Fig0.6.2"
-        x="97"
-        y="208"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+getUsername() : String</text>
-      <text name="Fig0.6.3"
-        x="97"
-        y="224"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+getName() : String</text>
-      <text name="Fig0.6.4"
-        x="97"
-        y="240"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+getSurname() : String</text>
-      <text name="Fig0.6.5"
-        x="97"
-        y="256"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+getIP() : String</text>
-      <text name="Fig0.6.6"
-        x="97"
-        y="272"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+getMessages() : Vector&lt;RecordMessage&gt;</text>
-      <text name="Fig0.6.7"
-        x="97"
-        y="288"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+setName(String) : void</text>
-      <text name="Fig0.6.8"
-        x="97"
-        y="304"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+setSurname(String) : void</text>
-      <text name="Fig0.6.9"
-        x="97"
-        y="320"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+setIP(String) : void</text>
-      <text name="Fig0.6.10"
-        x="97"
-        y="336"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+setMessages(Vector&lt;RecordMessage&gt;) : void</text>
-      <text name="Fig0.6.11"
-        x="97"
-        y="352"
-        width="280"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+setMessage(RecordMessage) : void</text>
-      <text name="Fig0.6.12"
-        x="97"
-        y="368"
-        width="280"
-        height="22"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+removeMessage(RecordMessage) : void</text>
+      >+setIP(IP : String) : void</text>
     </group>
   </group>
 </pgml>

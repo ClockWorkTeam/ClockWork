@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 22:46:21 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 12:38:40 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -88,28 +88,30 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010AB'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010AC'
-              name = '+createMessage' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
+              name = '+addMessage' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010AD'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000876'/>
+                    <UML:Class xmi.idref = '10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000878'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010AE'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010AF'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B0'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B1'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'message' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000876'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B2'
@@ -124,28 +126,11 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B4'
-                  name = 'RecordMessage' isSpecification = 'false' kind = 'in'/>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B5'
-              name = '+getMessage' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B6'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  name = 'message' isSpecification = 'false' kind = 'in'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000876'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B7'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B8'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010B9'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000010BA'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -178,7 +163,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[24, 16, 361, 136]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[24, 16, 376, 120]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -191,8 +176,8 @@
     <rectangle name="Fig0.0"
       x="24"
       y="16"
-      width="361"
-      height="136"
+      width="376"
+      height="120"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -201,7 +186,7 @@
     <text name="Fig0.1"
       x="25"
       y="17"
-      width="359"
+      width="374"
       height="41"
       fill="0"
       fillcolor="255 255 200"
@@ -215,7 +200,7 @@
       justification="Center"
     >RecordMessageDao</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[25, 17, 359, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[25, 17, 374, 19]"
          href="10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -228,7 +213,7 @@
       <rectangle name="Fig0.2.0"
         x="25"
         y="17"
-        width="359"
+        width="374"
         height="19"
         fill="0"
         fillcolor="255 255 200"
@@ -238,7 +223,7 @@
       <text name="Fig0.2.1"
         x="25"
         y="17"
-        width="359"
+        width="374"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -255,7 +240,7 @@
     <rectangle name="Fig0.3"
       x="24"
       y="58"
-      width="361"
+      width="376"
       height="1"
       fill="1"
       fillcolor="black"
@@ -263,7 +248,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[25, 59, 359, 21]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[25, 59, 374, 21]"
          href="10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -276,7 +261,7 @@
       <rectangle name="Fig0.4.0"
         x="25"
         y="59"
-        width="359"
+        width="374"
         height="21"
         fill="0"
         fillcolor="white"
@@ -287,7 +272,7 @@
     <rectangle name="Fig0.5"
       x="24"
       y="79"
-      width="361"
+      width="376"
       height="1"
       fill="1"
       fillcolor="black"
@@ -295,7 +280,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[25, 80, 359, 72]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[25, 80, 374, 56]"
          href="10-1-66-1-7305ddd1:13d68b96983:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -308,8 +293,8 @@
       <rectangle name="Fig0.6.0"
         x="25"
         y="80"
-        width="359"
-        height="72"
+        width="374"
+        height="56"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -318,10 +303,10 @@
       <text name="Fig0.6.1"
         x="25"
         y="80"
-        width="359"
+        width="374"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -330,14 +315,14 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+getAllMessages(String) : Vector&lt;RecordMessage&gt;</text>
+      >+getAllMessages(username : String) : Vector&lt;RecordMessage&gt;</text>
       <text name="Fig0.6.2"
         x="25"
         y="96"
-        width="359"
+        width="374"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -346,30 +331,14 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+createMessage(String,String,String,String) : RecordMessage</text>
+      >+addMessage(message : RecordMessage) : boolean</text>
       <text name="Fig0.6.3"
         x="25"
         y="112"
-        width="359"
-        height="16"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+removeMessage(RecordMessage) : boolean</text>
-      <text name="Fig0.6.4"
-        x="25"
-        y="128"
-        width="359"
+        width="374"
         height="22"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -378,7 +347,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+getMessage(String,String,String,String) : RecordMessage</text>
+      >+removeMessage(message : RecordMessage) : boolean</text>
     </group>
   </group>
 </pgml>
