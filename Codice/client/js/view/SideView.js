@@ -81,7 +81,7 @@ define([
 		getContacts:function(view){
 			this.myModel=view.userModel;
 			this.authenticationView=view;
-			ContactsCommunication.fetchContacts(this.myModel.toJSON().username);
+			ContactsCommunication.fetchContacts();
 			this.$el.html(this.template({logged: true}));
 		},
 
