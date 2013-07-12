@@ -91,7 +91,7 @@ public class AuthenticationManager{
  * @throws Exception 
    */
   public User createUser(String username, String password, String name, String surname, String IP) throws Exception{
-	if(userDao.getUser(username)!=null){
+	if(userDao.getUser(username)==null){
 	  User user = new User(username, name, surname, IP);
 	  boolean result = userDao.addUser(user, password);
 	  if(result){

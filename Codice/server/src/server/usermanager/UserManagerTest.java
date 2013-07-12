@@ -6,12 +6,19 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130306 |     ZHP       | + creazione documento	   |
-* |         |               |                          |
-* +---------+---------------+--------------------------+
+* +---------+---------------+-------------------------------------------+
+* | Data    | Programmatore |         Modifiche       					|
+* +---------+---------------+-------------------------------------------+
+* |  130306 |     ZHP       | + creazione documento	  					|
+* |  130712 |     VF        | + modificata inizializzazione dei test	|
+* |         |               | + creato testSetPassword                  |
+* |         |               | + creato testRemoveMessage               	|
+* |         |               | + creato testGetMessage                   |
+* |         |               | + creato testCreateMessage            	|
+* |         |               | + creato testSetUserData              	|
+* |         |               | + creato testGetUserData                  |
+* |         |               | + creato testCheckPassword           		|
+* +---------+---------------+-------------------------------------------+
 *
 */ 
 package server.usermanager;
