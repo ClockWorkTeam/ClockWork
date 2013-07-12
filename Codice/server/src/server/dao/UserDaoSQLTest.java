@@ -6,12 +6,21 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130305 |     ZHP       | + creazione documento	   |
-* |         |               |                          |
-* +---------+---------------+--------------------------+
+* +---------+---------------+-------------------------------------------+
+* | Data    | Programmatore |         Modifiche       					|
+* +---------+---------------+-------------------------------------------+
+* |  130305 |     ZHP       | + creazione documento	  					|
+* |  130712 |     VF        | + modificata inizializzazione dei test	|
+* |         |               | + creato testAddUser                      |
+* |         |               | + creato testRemoveUser                  	|
+* |         |               | + creato testGetUser                      |
+* |         |               | + creato testCheckPassword              	|
+* |         |               | + creato testSetPassword              	|
+* |         |               | + creato testSetName                      |
+* |         |               | + creato testSetSurname                	|
+* |         |               | + creato testIP                    		|
+* |         |               |                          					|
+* +---------+---------------+-------------------------------------------+
 *
 */
 
