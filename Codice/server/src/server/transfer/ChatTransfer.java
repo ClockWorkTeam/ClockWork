@@ -32,7 +32,7 @@ public class ChatTransfer extends ListenerTransfer {
    	  if(connector!=null){
    		wspacket=new RawPacket("{\"type\":\"sendText\", \"message\":\""+token.getString("message")+"\", \"contact\":\""+event.getConnector().getUsername()+"\"}");
    	  }else{
-   		wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"contact\":\""+token.getString("username")+"\"}");
+   		wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"contact\":\""+token.getString("contact")+"\"}");
    		connector= event.getConnector();
    	  }
    	  sendPacket(wspacket,connector);
