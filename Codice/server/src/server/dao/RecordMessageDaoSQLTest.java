@@ -6,12 +6,16 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130306 |     ZHP       | + creazione documento	   |
-* |         |               |                          |
-* +---------+---------------+--------------------------+
+* +---------+---------------+-------------------------------------------+
+* | Data    | Programmatore |         Modifiche        					|
+* +---------+---------------+-------------------------------------------+
+* |  130306 |     ZHP       | + creazione documento	 					|
+* |  130712 |     VF        | + modificata inizializzazione dei test	|
+* |         |               | + creato testAddMessage                 	|
+* |         |               | + creato testRemoveMessage           		|
+* |         |               | + creato testGetAllMessages              	|
+* |         |               |                          					|
+* +---------+---------------+-------------------------------------------+
 *
 */ 
 
@@ -19,78 +23,85 @@ package server.dao;
 
 import static org.junit.Assert.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
-import org.junit.Test;
+import org.junit.*;
 
 import server.shared.RecordMessage;
-import server.shared.UserList;
 
 public class RecordMessageDaoSQLTest {
-	private JavaConnectionSQLite connection;;
-	private UserDaoSQL userDaoSQL;
 	private RecordMessageDaoSQL recordMessageDaoSQL;
+	private JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
+	ResultSet rs;
 	
-	public void init() {
-		connection =new JavaConnectionSQLite();
-		UserList userList= new UserList();
-		userDaoSQL= new UserDaoSQL(connection, userList);
-		recordMessageDaoSQL=new RecordMessageDaoSQL(connection,userList);
+	@Before
+	public void init(){
+		recordMessageDaoSQL=RecordMessageDaoSQL.getInstance();
+		connection.executeUpdate("DELETE FROM RecordMessageDataSQL");	
 	}
 	
 	@Test
-	public void testCreateMessage_and_RemoveMessage_and_GetMessage() throws SQLException{
-		init();
-		userDaoSQL.createUser("ClockWork7", "password", "Clock Work", "Team", "7");
+	public void testAddMessage() throws SQLException {
 		java.util.Date dt = new java.util.Date();
 		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		assertTrue("Destinatario non presente", recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt))==null);
-
-		userDaoSQL.createUser("ClockWork", "password", "Clock Work", "Team", "7");
-		assertTrue("Destinatario presente", recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt))!=null);
+		String data=sdf.format(dt);
+		RecordMessage m=new RecordMessage("ClockWork7", "ClockWork", "prova", data);
 		
-		assertTrue("Messaggio già presente", recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt))==null);
-		assertTrue("Messaggio inserito tra i messaggi del destinatario",recordMessageDaoSQL.getAllMessages("ClockWork").size()==1);
-		assertTrue("Messaggio inserito erroneamente nella lista del mittente",recordMessageDaoSQL.getAllMessages("ClockWork7").size()==0);
-
-		RecordMessage messaggioSalvato=recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt));
-		assertTrue("Messaggio inserito erroneamente", messaggioSalvato!=null);
-		ResultSet rs = connection.select("RecordMessageDataSQL","*","","");		
-		assertTrue("Messaggio inserito nel database", !rs.isAfterLast());
-	
-		assertTrue("Mittente inserito erroneamente nel database", messaggioSalvato.getSender().equals(rs.getString("sender")));
-		assertTrue("Destinatario inserito erroneamente nel database", messaggioSalvato.getAddressee().equals(rs.getString("addressee")));
-		assertTrue("Path inserito erroneamente nel database", messaggioSalvato.getPath().equals(rs.getString("record_message")));
-		assertTrue("Data creazione inserita erroneamente nel database", messaggioSalvato.getDate().equals(rs.getString("creation")));
+		rs = connection.select("RecordMessageDataSQL","*","","");
+		assertTrue("Database non vuoto",rs.getRow()==0);
 		
-		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt)));
+		assertTrue("Operazione di inserimento nel DB fallita", recordMessageDaoSQL.addMessage(m));
 		
-		userDaoSQL.removeUser("ClockWork7");
-		userDaoSQL.removeUser("ClockWork");
+	    rs = connection.select("RecordMessageDataSQL","*","","");
+	    assertTrue("Messaggio non inserito nel database",rs.getRow()==1);
+		assertTrue("Sender non inserito correttamente nel db", rs.getString("sender").equals("ClockWork7"));
+		assertTrue("Addressee non inserita correttamente nel db", rs.getString("addressee").equals("ClockWork"));
+		assertTrue("Sender non inserito correttamente nel db", rs.getString("record_message").equals("prova"));
+		assertTrue("Addressee non inserita correttamente nel db", rs.getString("creation").equals(data));
 	}
-
+	
 	@Test
-	public void testGetAllMessages() {
-		init();
-		userDaoSQL.createUser("ClockWork", "password", "Clock Work", "Team", "7");
+	public void testRemoveMessage() throws SQLException {
 		java.util.Date dt = new java.util.Date();
 		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==0);
-		recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt));
-		assertTrue("Messaggio inserito tra i messaggi del destinatario",recordMessageDaoSQL.getAllMessages("ClockWork").size()==1);
-		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt)));
-		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==0);
+		String data=sdf.format(dt);
+		RecordMessage m=new RecordMessage("ClockWork7", "ClockWork", "prova", data);
 		
-		recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt));
-		recordMessageDaoSQL.createMessage("ClockWork7", "ClockWork", "ciao", sdf.format(dt));
+		rs = connection.select("RecordMessageDataSQL","*","","");
+		assertTrue("Database non vuoto",rs.getRow()==0);
+		
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','"+data+"');");
+		rs = connection.select("RecordMessageDataSQL","*","","");
+		assertTrue("Database non vuoto",rs.getRow()==1);
+		
+		assertTrue("Operazione di inserimento nel DB fallita", recordMessageDaoSQL.removeMessage(m));
+		rs = connection.select("RecordMessageDataSQL","*","","");
+		assertTrue("Database non vuoto",rs.getRow()==0);
+	}
+	
+	@Test
+	public void testGetAllMessages() throws SQLException {
+		java.util.Date dt = new java.util.Date();
+		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String data=sdf.format(dt);
+
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','"+data+"');");
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','ciao','"+data+"');");
+		rs = connection.select("RecordMessageDataSQL","*","","");
+		int cont=0;
+		if(rs!=null){
+			do{
+				 cont++;
+			}while( rs.next());
+		}
+		assertTrue("Numero messaggi errato",cont==2);
 		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==2);
-		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "prova", sdf.format(dt)));
-		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==1);
-		recordMessageDaoSQL.removeMessage(recordMessageDaoSQL.getMessage("ClockWork7", "ClockWork", "ciao", sdf.format(dt)));
-		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==0);		
-		userDaoSQL.removeUser("ClockWork");
 	}
 
 
+	@Test
+	public void testGetInstance() {
+		assertTrue("Rimozione riuscita",recordMessageDaoSQL.equals(RecordMessageDaoSQL.getInstance()));
+	}
+	
 }

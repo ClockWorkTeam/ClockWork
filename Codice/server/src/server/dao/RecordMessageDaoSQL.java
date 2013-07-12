@@ -56,7 +56,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
    */
   public Vector<RecordMessage> getAllMessages(String username){
 	Vector<RecordMessage> messages=new Vector<RecordMessage>();
-	ResultSet rs = connection.select("RecordMessageDataSQL","*", "adressee='"+username+"'","");
+	ResultSet rs = connection.select("RecordMessageDataSQL","*", "addressee='"+username+"'","");
 	if(rs!=null){
 	  String path, sender, addressee, date;
 	  try{
