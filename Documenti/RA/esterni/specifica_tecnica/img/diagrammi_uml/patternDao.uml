@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jun 05 14:03:52 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Jul 11 15:12:59 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -108,10 +108,18 @@
             </UML:Dependency>
             <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871'
               name = 'UserDaoSQL ' visibility = 'public' isSpecification = 'false' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+              isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:ModelElement.clientDependency>
+                <UML:Abstraction xmi.idref = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F31'/>
+              </UML:ModelElement.clientDependency>
+            </UML:Class>
             <UML:Class xmi.id = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F'
               name = 'RecordMessageDaoSQL   ' visibility = 'public' isSpecification = 'false'
-              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+              isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+              <UML:ModelElement.clientDependency>
+                <UML:Abstraction xmi.idref = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F33'/>
+              </UML:ModelElement.clientDependency>
+            </UML:Class>
             <UML:Stereotype xmi.id = '10-1-3-1--c2bc13e:13f0f60b93e:-8000:0000000000000AA3'
               name = 'realize' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
@@ -174,6 +182,30 @@
                 </UML:AssociationEnd>
               </UML:Association.connection>
             </UML:Association>
+            <UML:Abstraction xmi.id = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F31'
+              isSpecification = 'false'>
+              <UML:ModelElement.stereotype>
+                <UML:Stereotype xmi.idref = '10-1-3-1--c2bc13e:13f0f60b93e:-8000:0000000000000AA3'/>
+              </UML:ModelElement.stereotype>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Interface xmi.idref = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F2F'/>
+              </UML:Dependency.supplier>
+            </UML:Abstraction>
+            <UML:Abstraction xmi.id = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F33'
+              isSpecification = 'false'>
+              <UML:ModelElement.stereotype>
+                <UML:Stereotype xmi.idref = '10-1-3-1--c2bc13e:13f0f60b93e:-8000:0000000000000AA3'/>
+              </UML:ModelElement.stereotype>
+              <UML:Dependency.client>
+                <UML:Class xmi.idref = '10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F'/>
+              </UML:Dependency.client>
+              <UML:Dependency.supplier>
+                <UML:Interface xmi.idref = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F30'/>
+              </UML:Dependency.supplier>
+            </UML:Abstraction>
           </UML:Namespace.ownedElement>
         </UML:Package>
         <UML:Comment xmi.id = '10-1--38-1-4aaaf18c:13db577db15:-8000:0000000000000A75'
@@ -188,6 +220,12 @@
           isAbstract = 'false'>
           <UML:Stereotype.baseClass>Class</UML:Stereotype.baseClass>
         </UML:Stereotype>
+        <UML:Interface xmi.id = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F2F'
+          name = 'UserDao' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false'/>
+        <UML:Interface xmi.id = '127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F30'
+          name = 'RecordMessageDao' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -197,16 +235,16 @@
 >
   <rectangle name="Fig0"
     x="152"
-    y="640"
+    y="632"
     width="440"
-    height="328"
+    height="336"
     fill="1"
     fillcolor="white"
     stroke="1"
     strokecolor="black"
   />
   <group name="Fig1"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[320, 880, 159, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[304, 880, 159, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086B"
        fill="1"
        fillcolor="white"
@@ -214,11 +252,10 @@
        strokecolor="black"
   >
     <private>
-      enclosingFig="LAYER_NULL"
     </private>
     
     <rectangle name="Fig1.0"
-      x="320"
+      x="304"
       y="880"
       width="159"
       height="68"
@@ -228,7 +265,7 @@
       strokecolor="black"
     />
     <text name="Fig1.1"
-      x="321"
+      x="305"
       y="881"
       width="157"
       height="22"
@@ -244,7 +281,7 @@
       justification="Center"
     >JavaConnectionSQLite   </text>
     <group name="Fig1.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[321, 881, 279, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[305, 881, 279, 0]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086B"
          fill="0"
          fillcolor="white"
@@ -256,7 +293,7 @@
       </private>
       
       <rectangle name="Fig1.2.0"
-        x="321"
+        x="305"
         y="881"
         width="279"
         height="0"
@@ -267,7 +304,7 @@
       />
     </group>
     <rectangle name="Fig1.3"
-      x="320"
+      x="304"
       y="903"
       width="159"
       height="1"
@@ -277,7 +314,7 @@
       strokecolor="black"
     />
     <group name="Fig1.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[321, 904, 157, 21]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[305, 904, 157, 21]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086B"
          fill="0"
          fillcolor="white"
@@ -288,7 +325,7 @@
       </private>
       
       <rectangle name="Fig1.4.0"
-        x="321"
+        x="305"
         y="904"
         width="157"
         height="21"
@@ -299,7 +336,7 @@
       />
     </group>
     <rectangle name="Fig1.5"
-      x="320"
+      x="304"
       y="925"
       width="159"
       height="1"
@@ -309,7 +346,7 @@
       strokecolor="black"
     />
     <group name="Fig1.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[321, 926, 157, 21]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[305, 926, 157, 21]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086B"
          fill="0"
          fillcolor="white"
@@ -320,7 +357,7 @@
       </private>
       
       <rectangle name="Fig1.6.0"
-        x="321"
+        x="305"
         y="926"
         width="157"
         height="21"
@@ -332,132 +369,6 @@
     </group>
   </group>
   <group name="Fig2"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[464, 768, 98, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
-       href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086D"
-       fill="1"
-       fillcolor="white"
-       stroke="1"
-       strokecolor="black"
-  >
-    <private>
-      enclosingFig="LAYER_NULL"
-    </private>
-    
-    <rectangle name="Fig2.0"
-      x="464"
-      y="768"
-      width="98"
-      height="68"
-      fill="1"
-      fillcolor="white"
-      stroke="1"
-      strokecolor="black"
-    />
-    <text name="Fig2.1"
-      x="465"
-      y="769"
-      width="96"
-      height="22"
-      fill="0"
-      fillcolor="white"
-      stroke="0"
-      strokecolor="black"
-      textcolor="black"
-      font="Dialog"
-      italic="false"
-      bold="true"
-      textsize="12"
-      justification="Center"
-    >LoginDaoSQL </text>
-    <group name="Fig2.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[465, 769, 218, 0]"
-         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086D"
-         fill="0"
-         fillcolor="white"
-         stroke="0"
-         strokecolor="black"
-         visibility="0"
-    >
-      <private>
-      </private>
-      
-      <rectangle name="Fig2.2.0"
-        x="465"
-        y="769"
-        width="218"
-        height="0"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-      />
-    </group>
-    <rectangle name="Fig2.3"
-      x="464"
-      y="791"
-      width="98"
-      height="1"
-      fill="1"
-      fillcolor="black"
-      stroke="1"
-      strokecolor="black"
-    />
-    <group name="Fig2.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[465, 792, 96, 21]"
-         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086D"
-         fill="0"
-         fillcolor="white"
-         stroke="0"
-         strokecolor="black"
-    >
-      <private>
-      </private>
-      
-      <rectangle name="Fig2.4.0"
-        x="465"
-        y="792"
-        width="96"
-        height="21"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-      />
-    </group>
-    <rectangle name="Fig2.5"
-      x="464"
-      y="813"
-      width="98"
-      height="1"
-      fill="1"
-      fillcolor="black"
-      stroke="1"
-      strokecolor="black"
-    />
-    <group name="Fig2.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[465, 814, 96, 21]"
-         href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086D"
-         fill="0"
-         fillcolor="white"
-         stroke="0"
-         strokecolor="black"
-    >
-      <private>
-      </private>
-      
-      <rectangle name="Fig2.6.0"
-        x="465"
-        y="814"
-        width="96"
-        height="21"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-      />
-    </group>
-  </group>
-  <group name="Fig3"
        description="org.argouml.uml.diagram.static_structure.ui.FigClass[184, 768, 167, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F"
        fill="1"
@@ -466,10 +377,9 @@
        strokecolor="black"
   >
     <private>
-      enclosingFig="LAYER_NULL"
     </private>
     
-    <rectangle name="Fig3.0"
+    <rectangle name="Fig2.0"
       x="184"
       y="768"
       width="167"
@@ -479,7 +389,7 @@
       stroke="1"
       strokecolor="black"
     />
-    <text name="Fig3.1"
+    <text name="Fig2.1"
       x="185"
       y="769"
       width="165"
@@ -495,7 +405,7 @@
       textsize="12"
       justification="Center"
     >RecordMessageDaoSQL   </text>
-    <group name="Fig3.2"
+    <group name="Fig2.2"
          description="org.argouml.uml.diagram.ui.FigStereotypesGroup[185, 769, 287, 0]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F"
          fill="0"
@@ -507,7 +417,7 @@
       <private>
       </private>
       
-      <rectangle name="Fig3.2.0"
+      <rectangle name="Fig2.2.0"
         x="185"
         y="769"
         width="287"
@@ -518,7 +428,7 @@
         strokecolor="black"
       />
     </group>
-    <rectangle name="Fig3.3"
+    <rectangle name="Fig2.3"
       x="184"
       y="791"
       width="167"
@@ -528,7 +438,7 @@
       stroke="1"
       strokecolor="black"
     />
-    <group name="Fig3.4"
+    <group name="Fig2.4"
          description="org.argouml.uml.diagram.ui.FigAttributesCompartment[185, 792, 165, 21]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F"
          fill="0"
@@ -539,7 +449,7 @@
       <private>
       </private>
       
-      <rectangle name="Fig3.4.0"
+      <rectangle name="Fig2.4.0"
         x="185"
         y="792"
         width="165"
@@ -550,7 +460,7 @@
         strokecolor="black"
       />
     </group>
-    <rectangle name="Fig3.5"
+    <rectangle name="Fig2.5"
       x="184"
       y="813"
       width="167"
@@ -560,7 +470,7 @@
       stroke="1"
       strokecolor="black"
     />
-    <group name="Fig3.6"
+    <group name="Fig2.6"
          description="org.argouml.uml.diagram.ui.FigOperationsCompartment[185, 814, 165, 21]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:000000000000086F"
          fill="0"
@@ -571,7 +481,7 @@
       <private>
       </private>
       
-      <rectangle name="Fig3.6.0"
+      <rectangle name="Fig2.6.0"
         x="185"
         y="814"
         width="165"
@@ -583,8 +493,8 @@
       />
     </group>
   </group>
-  <group name="Fig4"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[360, 768, 91, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+  <group name="Fig3"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[456, 768, 91, 68]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871"
        fill="1"
        fillcolor="white"
@@ -592,11 +502,10 @@
        strokecolor="black"
   >
     <private>
-      enclosingFig="LAYER_NULL"
     </private>
     
-    <rectangle name="Fig4.0"
-      x="360"
+    <rectangle name="Fig3.0"
+      x="456"
       y="768"
       width="91"
       height="68"
@@ -605,8 +514,8 @@
       stroke="1"
       strokecolor="black"
     />
-    <text name="Fig4.1"
-      x="361"
+    <text name="Fig3.1"
+      x="457"
       y="769"
       width="89"
       height="22"
@@ -621,8 +530,8 @@
       textsize="12"
       justification="Center"
     >UserDaoSQL </text>
-    <group name="Fig4.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[361, 769, 211, 0]"
+    <group name="Fig3.2"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[457, 769, 211, 0]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871"
          fill="0"
          fillcolor="white"
@@ -633,8 +542,8 @@
       <private>
       </private>
       
-      <rectangle name="Fig4.2.0"
-        x="361"
+      <rectangle name="Fig3.2.0"
+        x="457"
         y="769"
         width="211"
         height="0"
@@ -644,8 +553,8 @@
         strokecolor="black"
       />
     </group>
-    <rectangle name="Fig4.3"
-      x="360"
+    <rectangle name="Fig3.3"
+      x="456"
       y="791"
       width="91"
       height="1"
@@ -654,8 +563,8 @@
       stroke="1"
       strokecolor="black"
     />
-    <group name="Fig4.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[361, 792, 89, 21]"
+    <group name="Fig3.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[457, 792, 89, 21]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871"
          fill="0"
          fillcolor="white"
@@ -665,8 +574,8 @@
       <private>
       </private>
       
-      <rectangle name="Fig4.4.0"
-        x="361"
+      <rectangle name="Fig3.4.0"
+        x="457"
         y="792"
         width="89"
         height="21"
@@ -676,8 +585,8 @@
         strokecolor="black"
       />
     </group>
-    <rectangle name="Fig4.5"
-      x="360"
+    <rectangle name="Fig3.5"
+      x="456"
       y="813"
       width="91"
       height="1"
@@ -686,8 +595,8 @@
       stroke="1"
       strokecolor="black"
     />
-    <group name="Fig4.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[361, 814, 89, 21]"
+    <group name="Fig3.6"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[457, 814, 89, 21]"
          href="10-1-66-1--3ef1ae1c:13dab8549e7:-8000:0000000000000871"
          fill="0"
          fillcolor="white"
@@ -697,8 +606,8 @@
       <private>
       </private>
       
-      <rectangle name="Fig4.6.0"
-        x="361"
+      <rectangle name="Fig3.6.0"
+        x="457"
         y="814"
         width="89"
         height="21"
@@ -709,301 +618,7 @@
       />
     </group>
   </group>
-  <ellipse name="Fig5"
-    x="264"
-    y="716"
-    rx="12"
-    ry="12"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  />
-  <text name="Fig6"
-    x="208"
-    y="656"
-    width="114"
-    height="15"
-    fill="0"
-    fillcolor="white"
-    stroke="0"
-    strokecolor="black"
-    textcolor="black"
-    font="Dialog"
-    italic="false"
-    bold="false"
-    textsize="12"
-    justification="Center"
-  >RecordMessageDao</text>
-  <path name="Fig7"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="200"
-            y="680" />
-    <lineto x="328"
-            y="680" />
-  </path>
-  <path name="Fig8"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="200"
-            y="696" />
-    <lineto x="328"
-            y="696" />
-  </path>
-  <text name="Fig9"
-    x="376"
-    y="656"
-    width="49"
-    height="15"
-    fill="0"
-    fillcolor="white"
-    stroke="0"
-    strokecolor="black"
-    textcolor="black"
-    font="Dialog"
-    italic="false"
-    bold="false"
-    textsize="12"
-    justification="Center"
-  >UserDao</text>
-  <text name="Fig10"
-    x="488"
-    y="656"
-    width="53"
-    height="15"
-    fill="0"
-    fillcolor="white"
-    stroke="0"
-    strokecolor="black"
-    textcolor="black"
-    font="Dialog"
-    italic="false"
-    bold="false"
-    textsize="12"
-    justification="Center"
-  >LoginDao</text>
-  <path name="Fig11"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="368"
-            y="680" />
-    <lineto x="432"
-            y="680" />
-  </path>
-  <path name="Fig12"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="368"
-            y="696" />
-    <lineto x="432"
-            y="696" />
-  </path>
-  <path name="Fig13"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="480"
-            y="680" />
-    <lineto x="544"
-            y="680" />
-  </path>
-  <path name="Fig14"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="480"
-            y="696" />
-    <lineto x="544"
-            y="696" />
-  </path>
-  <ellipse name="Fig15"
-    x="402"
-    y="716"
-    rx="12"
-    ry="12"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  />
-  <ellipse name="Fig16"
-    x="513"
-    y="716"
-    rx="12"
-    ry="12"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  />
-  <path name="Fig17"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="265"
-            y="768" />
-    <lineto x="265"
-            y="736" />
-  </path>
-  <path name="Fig18"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="257"
-            y="736" />
-    <lineto x="272"
-            y="736" />
-  </path>
-  <path name="Fig19"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="257"
-            y="736" />
-    <lineto x="265"
-            y="728" />
-  </path>
-  <path name="Fig20"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="272"
-            y="736" />
-    <lineto x="264"
-            y="728" />
-  </path>
-  <path name="Fig21"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="401"
-            y="736" />
-    <lineto x="401"
-            y="768" />
-  </path>
-  <path name="Fig22"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="410"
-            y="736" />
-    <lineto x="402"
-            y="728" />
-  </path>
-  <path name="Fig23"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="401"
-            y="728" />
-    <lineto x="393"
-            y="736" />
-  </path>
-  <path name="Fig24"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="393"
-            y="736" />
-    <lineto x="409"
-            y="736" />
-  </path>
-  <path name="Fig25"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="512"
-            y="736" />
-    <lineto x="512"
-            y="768" />
-  </path>
-  <path name="Fig26"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="512"
-            y="728" />
-    <lineto x="504"
-            y="736" />
-  </path>
-  <path name="Fig27"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="512"
-            y="728" />
-    <lineto x="520"
-            y="736" />
-  </path>
-  <path name="Fig28"
-    description="org.argouml.gefext.ArgoFigLine"
-    fill="1"
-    fillcolor="white"
-    stroke="1"
-    strokecolor="black"
-  >
-    <moveto x="504"
-            y="736" />
-    <lineto x="520"
-            y="736" />
-  </path>
-  <group name="Fig29"
+  <group name="Fig4"
        description="org.argouml.uml.diagram.ui.FigAssociation"
        href="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9D"
        sourceConnector="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9E"
@@ -1012,51 +627,51 @@
        strokecolor="black"
   >
     <private>
-      sourcePortFig="Fig3"
+      sourcePortFig="Fig2"
       destPortFig="Fig1"
-      sourceFigNode="Fig3"
+      sourceFigNode="Fig2"
       destFigNode="Fig1"
-      <argouml:pathitem figname="Fig29.1"
+      <argouml:pathitem figname="Fig4.1"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigTextGroup"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9D"
                         angle="-80.0"
                         offset="41" />
-      <argouml:pathitem figname="Fig29.2"
+      <argouml:pathitem figname="Fig4.2"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9E"
                         angle="315.0"
                         offset="5" />
-      <argouml:pathitem figname="Fig29.3"
+      <argouml:pathitem figname="Fig4.3"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9E"
                         angle="45.0"
                         offset="5" />
-      <argouml:pathitem figname="Fig29.4"
+      <argouml:pathitem figname="Fig4.4"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9F"
                         angle="225.0"
                         offset="5" />
-      <argouml:pathitem figname="Fig29.5"
+      <argouml:pathitem figname="Fig4.5"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000A9F"
                         angle="135.0"
                         offset="5" />
     </private>
-    <path name="Fig29.0"
+    <path name="Fig4.0"
       description="org.argouml.gefext.ArgoFigPoly"
       fill="0"
       fillcolor="white"
       stroke="1"
       strokecolor="black"
     >
-      <moveto x="280"
+      <moveto x="264"
               y="835" />
-      <lineto x="280"
+      <lineto x="264"
               y="856" />
       <lineto x="344"
               y="856" />
@@ -1064,7 +679,7 @@
               y="880" />
     </path>
   </group>
-  <group name="Fig30"
+  <group name="Fig5"
        description="org.argouml.uml.diagram.ui.FigAssociation"
        href="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA0"
        sourceConnector="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA1"
@@ -1073,113 +688,334 @@
        strokecolor="black"
   >
     <private>
-      sourcePortFig="Fig4"
+      sourcePortFig="Fig3"
       destPortFig="Fig1"
-      sourceFigNode="Fig4"
+      sourceFigNode="Fig3"
       destFigNode="Fig1"
-      <argouml:pathitem figname="Fig30.1"
+      <argouml:pathitem figname="Fig5.1"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigTextGroup"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA0"
                         angle="270.0"
                         offset="25" />
-      <argouml:pathitem figname="Fig30.2"
+      <argouml:pathitem figname="Fig5.2"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA1"
                         angle="-43.0"
                         offset="27" />
-      <argouml:pathitem figname="Fig30.3"
+      <argouml:pathitem figname="Fig5.3"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA1"
                         angle="45.0"
                         offset="5" />
-      <argouml:pathitem figname="Fig30.4"
+      <argouml:pathitem figname="Fig5.4"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA2"
                         angle="225.0"
                         offset="5" />
-      <argouml:pathitem figname="Fig30.5"
+      <argouml:pathitem figname="Fig5.5"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
                         ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA2"
                         angle="135.0"
                         offset="5" />
     </private>
-    <path name="Fig30.0"
+    <path name="Fig5.0"
       description="org.argouml.gefext.ArgoFigPoly"
       fill="0"
       fillcolor="white"
       stroke="1"
       strokecolor="black"
     >
-      <moveto x="404"
+      <moveto x="504"
               y="835" />
-      <lineto x="404"
+      <lineto x="504"
+              y="856" />
+      <lineto x="424"
+              y="856" />
+      <lineto x="424"
               y="880" />
     </path>
   </group>
-  <group name="Fig31"
-       description="org.argouml.uml.diagram.ui.FigAssociation"
-       href="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA3"
-       sourceConnector="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA4"
-       destConnector="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA5"
+  <group name="Fig6"
+       description="org.argouml.uml.diagram.static_structure.ui.FigInterface[448, 648, 98, 64]pathVisible=false;stereotypeView=0;operationsVisible=true;operationsVisible=true"
+       href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F2F"
+       fill="1"
+       fillcolor="white"
        stroke="1"
        strokecolor="black"
   >
     <private>
-      sourcePortFig="Fig2"
-      destPortFig="Fig1"
-      sourceFigNode="Fig2"
-      destFigNode="Fig1"
-      <argouml:pathitem figname="Fig31.1"
+    </private>
+    
+    <rectangle name="Fig6.0"
+      x="448"
+      y="648"
+      width="98"
+      height="64"
+      fill="1"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+    <text name="Fig6.1"
+      x="449"
+      y="649"
+      width="96"
+      height="41"
+      fill="0"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="true"
+      textsize="12"
+      justification="Center"
+    >UserDao</text>
+    <group name="Fig6.2"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[449, 649, 96, 19]"
+         href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F2F"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig6.2.0"
+        x="449"
+        y="649"
+        width="96"
+        height="19"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <text name="Fig6.2.1"
+        x="449"
+        y="649"
+        width="96"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Center"
+      >&lt;&lt;interface&gt;&gt;</text>
+    </group>
+    <rectangle name="Fig6.3"
+      x="448"
+      y="690"
+      width="98"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig6.4"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[449, 691, 96, 21]"
+         href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F2F"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig6.4.0"
+        x="449"
+        y="691"
+        width="96"
+        height="21"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+  </group>
+  <group name="Fig7"
+       description="org.argouml.uml.diagram.static_structure.ui.FigInterface[184, 648, 155, 64]pathVisible=false;stereotypeView=0;operationsVisible=true;operationsVisible=true"
+       href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F30"
+       fill="1"
+       fillcolor="white"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+    </private>
+    
+    <rectangle name="Fig7.0"
+      x="184"
+      y="648"
+      width="155"
+      height="64"
+      fill="1"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+    <text name="Fig7.1"
+      x="185"
+      y="649"
+      width="153"
+      height="41"
+      fill="0"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="black"
+      textcolor="black"
+      font="Dialog"
+      italic="false"
+      bold="true"
+      textsize="12"
+      justification="Center"
+    >RecordMessageDao</text>
+    <group name="Fig7.2"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[185, 649, 153, 19]"
+         href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F30"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig7.2.0"
+        x="185"
+        y="649"
+        width="153"
+        height="19"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <text name="Fig7.2.1"
+        x="185"
+        y="649"
+        width="153"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Center"
+      >&lt;&lt;interface&gt;&gt;</text>
+    </group>
+    <rectangle name="Fig7.3"
+      x="184"
+      y="690"
+      width="155"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig7.4"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[185, 691, 153, 21]"
+         href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F30"
+         fill="0"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig7.4.0"
+        x="185"
+        y="691"
+        width="153"
+        height="21"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+    </group>
+  </group>
+  <group name="Fig8"
+       description="org.argouml.uml.diagram.ui.FigAbstraction"
+       href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F31"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+      sourcePortFig="Fig3.0"
+      destPortFig="Fig6.0"
+      sourceFigNode="Fig3"
+      destFigNode="Fig6"
+      <argouml:pathitem figname="Fig8.1"
                         classname="org.argouml.uml.diagram.ui.PathItemPlacement"
                         figclassname="org.argouml.uml.diagram.ui.FigTextGroup"
-                        ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA3"
+                        ownerhref="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F31"
                         angle="270.0"
                         offset="25" />
-      <argouml:pathitem figname="Fig31.2"
-                        classname="org.argouml.uml.diagram.ui.PathItemPlacement"
-                        figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"
-                        ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA4"
-                        angle="315.0"
-                        offset="5" />
-      <argouml:pathitem figname="Fig31.3"
-                        classname="org.argouml.uml.diagram.ui.PathItemPlacement"
-                        figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
-                        ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA4"
-                        angle="37.0"
-                        offset="35" />
-      <argouml:pathitem figname="Fig31.4"
-                        classname="org.argouml.uml.diagram.ui.PathItemPlacement"
-                        figclassname="org.argouml.uml.diagram.ui.FigMultiplicity"
-                        ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA5"
-                        angle="225.0"
-                        offset="5" />
-      <argouml:pathitem figname="Fig31.5"
-                        classname="org.argouml.uml.diagram.ui.PathItemPlacement"
-                        figclassname="org.argouml.uml.diagram.ui.FigAssociationEndAnnotation"
-                        ownerhref="10-1-39-1-4fa413e9:13f13d95dfc:-8000:0000000000000AA5"
-                        angle="135.0"
-                        offset="5" />
     </private>
-    <path name="Fig31.0"
-      description="org.argouml.gefext.ArgoFigPoly"
+    <path name="Fig8.0"
+      description="org.tigris.gef.presentation.FigPoly"
       fill="0"
       fillcolor="white"
       stroke="1"
       strokecolor="black"
     >
-      <moveto x="512"
-              y="835" />
-      <lineto x="512"
-              y="856" />
-      <lineto x="456"
-              y="856" />
-      <lineto x="456"
-              y="880" />
+      <moveto x="500"
+              y="768" />
+      <lineto x="500"
+              y="711" />
+    </path>
+  </group>
+  <group name="Fig9"
+       description="org.argouml.uml.diagram.ui.FigAbstraction"
+       href="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F33"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+      sourcePortFig="Fig2.0"
+      destPortFig="Fig7.0"
+      sourceFigNode="Fig2"
+      destFigNode="Fig7"
+      <argouml:pathitem figname="Fig9.1"
+                        classname="org.argouml.uml.diagram.ui.PathItemPlacement"
+                        figclassname="org.argouml.uml.diagram.ui.FigTextGroup"
+                        ownerhref="127-0-0-1-64c88bc9:13fcdd339da:-8000:0000000000000F33"
+                        angle="270.0"
+                        offset="25" />
+    </private>
+    <path name="Fig9.0"
+      description="org.tigris.gef.presentation.FigPoly"
+      fill="0"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    >
+      <moveto x="264"
+              y="768" />
+      <lineto x="264"
+              y="711" />
     </path>
   </group>
 </pgml>
