@@ -127,24 +127,23 @@ mytalk.server.functionmanager.Converter
 \end_layout
 
 \begin_layout Subsection*
-Pacchetti scambiati tra AuthenticationComunication e AuthenticationTransfer
+Comunicazione tra AuthenticationComunication e AuthenticationTransfer
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Scambio1:
+Autenticazione:
 \end_layout
 
 \begin_layout Standard
-AuthenticationComunication invia a AuthenticationTransfer un pacchetto contenent
-e:
+AuthenticationComunication invia a AuthenticationTransfer una stringa avente:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-tipo
+type
 \series default
 : 
 \emph on
@@ -156,19 +155,18 @@ login
 \series bold
 altri attributi: 
 \series default
-username, password.
- 
+username, password
 \end_layout
 
 \begin_layout Standard
-AuthenticationTensfer risponde inviando a AuthenticationComunication un
- pacchetto contenente:
+AuthenticationTensfer risponde inviando a AuthenticationComunication una
+ stringa avente:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-tipo
+type
 \series default
 : 
 \emph on
@@ -180,8 +178,7 @@ login
 \series bold
 altri attributi: 
 \series default
-answer, ( name, surname | error ).
- 
+answer, ( name, surname | error )
 \end_layout
 
 \begin_deeper
@@ -205,22 +202,21 @@ Username errato
 \begin_layout Standard
 
 \series bold
-Scambio2:
+Registrazione:
 \end_layout
 
 \begin_layout Standard
-AuthenticationComunication invia a AuthenticationTransfer un pacchetto contenent
-e:
+AuthenticationComunication invia a AuthenticationTransfer una stringa avente:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-tipo
+type
 \series default
 : 
 \emph on
-singUp
+signUp
 \end_layout
 
 \begin_layout Itemize
@@ -232,18 +228,18 @@ username, password, name, surname
 \end_layout
 
 \begin_layout Standard
-AuthenticationTensfer risponde inviando a AuthenticationComunication un
- pacchetto contenente:
+AuthenticationTensfer risponde inviando a AuthenticationComunication una
+ stringa avente:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-tipo
+type
 \series default
 : 
 \emph on
-singUp
+signUp
 \end_layout
 
 \begin_layout Itemize
@@ -263,12 +259,11 @@ altri attributi:
 \color none
 \lang english
 answer, (error)
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Descrizione attributi: Se answer risulta 
+Descrizione attributi: se answer risulta 
 \emph on
 false 
 \emph default
@@ -288,18 +283,17 @@ Username già presente
 \begin_layout Standard
 
 \series bold
-Scambio3:
+Disconnessione:
 \end_layout
 
 \begin_layout Standard
-AuthenticationComunication invia a AuthenticationTransfer un pacchetto contenent
-e:
+AuthenticationComunication invia a AuthenticationTransfer una stringa avente:
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-tipo
+type
 \series default
 : 
 \emph on
@@ -307,7 +301,575 @@ logout
 \end_layout
 
 \begin_layout Subsection*
+Comunicazione tra CallComunication e CallTransfer
+\end_layout
 
+\begin_layout Standard
+
+\series bold
+Instaurazione chiamata, utente non connesso:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+call
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact,
+\series bold
+ 
+\series default
+callType
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: callType conterrà il tipo di chiamata, 
+\emph on
+video
+\emph default
+ o 
+\emph on
+audio
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+answeredCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+answer, error
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: answer contiene la stringa 
+\emph on
+false
+\emph default
+, error contiene la stringa 
+\emph on
+Utente non connesso al server
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Accettazione di una chiamata:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+answeredCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+answeredCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+answer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: answer contiene la stringa 
+\emph on
+true
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Protocollo della descrizione della sessione:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+sdp
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact, description
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+offer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NOTA: la stringa non è altro che la stringa contenuta nel attributo description
+ passato precedentemente
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+CallComunication risponde inviando a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+sdp
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact, description
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NOTA: la stringa contenuta in description è diversa da quella inviata nel
+ primo passaggio, infatti mentre nel primo caso la stringa proveniva dal
+ chiamante, in questo caso proviene dal chiamato
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+answer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NOTA: la stringa non è altro che la stringa contenuta nel attributo description
+ passato precedentemente
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Invio dei candidati per la configurazione della chiamata
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+candidateReady
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+candidateReady
+\end_layout
+
+\begin_layout Standard
+CallComunication risponde inviando a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+candidate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact, candidate
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+candidate
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NOTA: la stringa non è altro che la stringa contenuta nel attributo candidate
+ passato precedentemente
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Terminazione di una chiamata:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+endCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+endCall
+\end_layout
+
+\begin_layout Subsection*
+Comunicazione tra ChatComunication e ChatTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Invio riuscito di un messaggio:
+\end_layout
+
+\begin_layout Standard
+ChatComunication invia a ChatTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+sendText
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi:
+\series default
+ contact
+\series bold
+,
+\series default
+ message
+\end_layout
+
+\begin_layout Standard
+ChatTransfer risponde inviando a ChatComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+sendText
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+message, contact
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Invio non riuscito di un messaggio:
+\end_layout
+
+\begin_layout Standard
+ChatComunication invia a ChatTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+sendText
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi:
+\series default
+ contact
+\series bold
+,
+\series default
+ message
+\end_layout
+
+\begin_layout Standard
+ChatTransfer risponde inviando a ChatComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+notDelivered
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+message, contact
+\end_layout
+
+\begin_layout Subsection*
+Comunicazione tra ContactsComunication e AuthenticationTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Richiesta degli utenti presenti nel server:
+\end_layout
+
+\begin_layout Standard
+ContactsComunication invia invia a AuthenticationTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+getContacts
+\end_layout
+
+\begin_layout Standard
+AuthenticationTransferrisponde inviando a ContactsComunication una stringa
+ avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+getContacts
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+size, username
+\shape slanted
+i, 
+\shape default
+name
+\shape slanted
+i, 
+\shape default
+surname
+\shape slanted
+i, IPi
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi:username
+\shape slanted
+i, 
+\shape default
+name
+\shape slanted
+i, 
+\shape default
+surname
+\shape slanted
+i, IPi
+\shape default
+ vengono ripetuti per il numero di utenti presenti nel server, 
+\emph on
+i 
+\emph default
+parte da 0 e arriva al numero di utenti-1
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+NOTA: AuthenticationTransfer invia a ContactsComunication la stringa anche
+ nei casi di ricezzione di stringe 
+\emph on
+login, signUp, logout 
+\emph default
+dalla classe AuthenticationCommunication e
+\emph on
+ changeData 
+\emph default
+dalla classe UserDataCommunication.
+ In questi casi tuttavia non invia tutta la lista di utanti ma un solo utente.
 \end_layout
 
 \begin_layout Standard
@@ -444,6 +1006,7 @@ AuthenticationTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 signUp
 \end_layout
@@ -454,6 +1017,8 @@ signUp
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 username, password, name, surname
 \end_layout
 
@@ -495,6 +1060,7 @@ Gli attributi username, password, name e surname conterranno i dati inseriti
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 logout
 \end_layout
@@ -544,6 +1110,7 @@ CallCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 call
 \end_layout
@@ -604,6 +1171,7 @@ CallTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 answeredCall
 \end_layout
@@ -653,8 +1221,9 @@ contact
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
-offer
+sdp
 \end_layout
 
 \end_inset
@@ -702,6 +1271,7 @@ contact, description
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 candidate
 \end_layout
@@ -755,6 +1325,7 @@ candidate
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 candidateReady
 \end_layout
@@ -804,6 +1375,7 @@ contact
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 endCall
 \end_layout
@@ -853,6 +1425,7 @@ ChatCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 sendText
 \end_layout
@@ -906,6 +1479,7 @@ ContactsCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 getContacts
 \end_layout
@@ -957,7 +1531,7 @@ FileCommunication
 
 \begin_layout Plain Layout
 
-\series bold
+\emph on
 file
 \end_layout
 
@@ -1774,8 +2348,6 @@ contact, callType
 
 \begin_layout Plain Layout
 
-\series bold
-stesso problema della parte client
 \end_layout
 
 \end_inset
