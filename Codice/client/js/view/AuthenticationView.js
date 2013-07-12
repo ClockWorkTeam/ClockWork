@@ -104,7 +104,7 @@ define([
      * funzione che si occupa di chiudere la sessione con il server
      */
     disconnect: function(){
-      AuthenticationCommunication.logout(this.userModel.toJSON().username);
+      AuthenticationCommunication.logout();
       $(this.el).html(this.template({authenticated: false, signup: false}));
       this.contactsView.unrender();
       if(this.userDataView){

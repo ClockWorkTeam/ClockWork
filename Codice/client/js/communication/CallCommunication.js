@@ -80,7 +80,7 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
-      var message = { contact: recipient.toJSON().username , type:'call', calltype:typecall};
+      var message = { type:'call', contact: recipient.toJSON().username, callType:typecall};
       Connection.send(JSON.stringify(message));
       /**
        * aggiunta del listener per la ricezione della risposta dell'utente chiamato
@@ -116,13 +116,7 @@ define(['connection'], function(Connection){
             document.dispatchEvent(event);
             callView.endCall(false);
             
-            if(response.answer==='false'){
-              alert('chiamata rifiutata');
-            }else if(response.answer==='busy'){
-              alert('utente occupato');    
-            }else if(response.answer==='error'){
-              alert('errore durante la chiamata');
-            }
+            alert(response.error);
           }
           Connection.removeEventListener('message',onAnswer,false);
         }
@@ -150,7 +144,7 @@ define(['connection'], function(Connection){
       var message;
       for(var i=0;i<recipient.length;i++){
         console.log(recipient[i]);
-        message= { contact: recipient[i] , type:'callConference', calltype:typecall};
+        message= {type:'callConference', contact: recipient[i] ,  callType:typecall};
         Connection.send(JSON.stringify(message));
       }
       /**
@@ -197,13 +191,16 @@ define(['connection'], function(Connection){
               document.dispatchEvent(event);
               callView.endCall(false);
             }
-            if(response.answer==='false'){
+
+alert(response.error);
+/*           if(response.answer==='false'){
               alert('chiamata a '+ response.user +'rifiutata');
             }else if(response.answer==='busy'){
               alert('utente '+ response.user +' occupato');    
             }else if(response.answer==='error'){
               alert('errore durante la chiamata con '+ response.user);
             }
+            */
           }
           if(answerReceived==recipient.length){
             Connection.removeEventListener('message',onAnswer,false);
@@ -217,7 +214,7 @@ define(['connection'], function(Connection){
      */
     sendAnswer: function (typecall, contact, callView){
       recipient=contact;
-      var message = { response: true, contact: recipient.toJSON().username, type:'answeredCall' };
+      var message = {type:'answeredCall', contact: recipient.toJSON().username};
       Connection.send(JSON.stringify(message));
       this.startCall(false, typecall, this, callView);
     },
@@ -229,7 +226,7 @@ define(['connection'], function(Connection){
       recipient=contact;
       remotevid=[];
       callView.addVideoConference(contact);
-      var message = { response: true, contact: recipient.toJSON().username, type:'answeredCallConference' };
+      var message = {type:'answeredCallConference', contact: recipient.toJSON().username};
       Connection.send(JSON.stringify(message));
       this.startCallConference(false, typecall, this, callView,contact);
     },
@@ -354,11 +351,11 @@ define(['connection'], function(Connection){
       if(lastPeerConnection==null){
         peerConnection.setLocalDescription(desc);
         var response=JSON.stringify(desc);
-        var credentials={description: response, contact: recipient.toJSON().username, type: 'offer'};
+        var credentials={type: 'offer', description: response, contact: recipient.toJSON().username};
       }else{
         peerConnection[lastPeerConnection].setLocalDescription(desc);  
         var response=JSON.stringify(desc);
-        var credentials={description: response, contact: recipient[lastPeerConnection], type: 'offer'};
+        var credentials={type: 'offer', description: response, contact: recipient[lastPeerConnection]};
       }
       Connection.send(JSON.stringify(credentials));
     },
@@ -376,7 +373,7 @@ define(['connection'], function(Connection){
           id: event.candidate.sdpMid,
           candidate: event.candidate.candidate
         });
-        var message = JSON.stringify({cand: candidate, contact: recipient.toJSON().username, type: 'candidate'});
+        var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient.toJSON().username});
         candidates.push(message);
       }else{
         console.log('End of candidates.');
@@ -392,7 +389,7 @@ define(['connection'], function(Connection){
             }
           );
         }
-        var message = JSON.stringify({contact: recipient.toJSON().username, type: 'candidateready'});
+        var message = JSON.stringify({type: 'candidateReady', contact: recipient.toJSON().username});
         Connection.send(message);
       }
     },
@@ -470,7 +467,7 @@ define(['connection'], function(Connection){
          * si occupa di gestire la chiusura chiamata una volta ricevutone il segnale
          * dall'altro utente
          */
-        if (response.type ==='endcall') {
+        if (response.type ==='endCall') {
           if(peerConnection!=null){
             localStream.stop();
             peerConnection.removeStream(localStream);
@@ -496,7 +493,7 @@ define(['connection'], function(Connection){
         /**
          * riconosce il fatto che l'utente remoto è pronto a ricevere candidati
          */ 
-        if (response.type ==='candidateready') {
+        if (response.type ==='candidateReady') {
           messageReceived=true;
           console.log("pronto ad inviare");
           if(readyToSend){
@@ -607,7 +604,7 @@ define(['connection'], function(Connection){
          * si occupa di gestire la chiusura chiamata una volta ricevutone il segnale
          * dall'altro utente
          */
-        if (response.type ==='endcall') {
+        if (response.type ==='endCall') {
           if(peerConnection!=null){
             localStream.stop();
             peerConnection.removeStream(localStream);
@@ -633,7 +630,7 @@ define(['connection'], function(Connection){
         /**
          * riconosce il fatto che l'utente remoto è pronto a ricevere candidati
          */ 
-        if (response.type ==='candidateready') {
+        if (response.type ==='candidateReady') {
           messageReceived=true;
           console.log("pronto ad inviare");
           if(readyToSend){
@@ -701,7 +698,7 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      var message={contact: recipient.toJSON().username , type : 'endcall'};
+      var message={type : 'endCall', contact: recipient.toJSON().username};
       Connection.send(JSON.stringify(message));
       Connection.removeEventListener('message', onMessaggeListener, false);
     }
