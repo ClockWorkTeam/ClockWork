@@ -126,9 +126,193 @@ mytalk.server.functionmanager.Converter
  
 \end_layout
 
+\begin_layout Subsection*
+Pacchetti scambiati tra AuthenticationComunication e AuthenticationTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Scambio1:
+\end_layout
+
+\begin_layout Standard
+AuthenticationComunication invia a AuthenticationTransfer un pacchetto contenent
+e:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+tipo
+\series default
+: 
+\emph on
+login
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+username, password.
+ 
+\end_layout
+
+\begin_layout Standard
+AuthenticationTensfer risponde inviando a AuthenticationComunication un
+ pacchetto contenente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+tipo
+\series default
+: 
+\emph on
+login
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+answer, ( name, surname | error ).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione attributi: se answer è 
+\emph on
+true
+\emph default
+ nel pacchetto vengono inseriti il nome e il cognome relativi al dato username,
+ presenti nella base di dati.
+ Altrimenti viene inserito error che può assumere come valori: 
+\emph on
+Password errata 
+\emph default
+o 
+\emph on
+Username errato
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Scambio2:
+\end_layout
+
+\begin_layout Standard
+AuthenticationComunication invia a AuthenticationTransfer un pacchetto contenent
+e:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+tipo
+\series default
+: 
+\emph on
+singUp
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+username, password, name, surname
+\end_layout
+
+\begin_layout Standard
+AuthenticationTensfer risponde inviando a AuthenticationComunication un
+ pacchetto contenente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+tipo
+\series default
+: 
+\emph on
+singUp
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+answer, (error)
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione attributi: Se answer risulta 
+\emph on
+false 
+\emph default
+viene inserito error che può assumere come valori:
+\series bold
+ 
+\series default
+\emph on
+Errore nell'inserimento dell'utente nel database 
+\emph default
+o 
+\emph on
+Username già presente
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Scambio3:
+\end_layout
+
+\begin_layout Standard
+AuthenticationComunication invia a AuthenticationTransfer un pacchetto contenent
+e:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+tipo
+\series default
+: 
+\emph on
+logout
+\end_layout
+
+\begin_layout Subsection*
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="43" columns="5">
+<lyxtabular version="3" rows="42" columns="5">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -153,15 +337,7 @@ Classe
 \begin_layout Plain Layout
 
 \series bold
-Campo 
-\begin_inset Quotes eld
-\end_inset
-
-type
-\begin_inset Quotes erd
-\end_inset
-
-
+Campo type
 \end_layout
 
 \end_inset
@@ -214,14 +390,10 @@ AuthenticationCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\series bold
+\emph on
 login
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -230,6 +402,8 @@ login
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 username, password
 \end_layout
 
@@ -239,23 +413,8 @@ username, password
 \begin_inset Text
 
 \begin_layout Plain Layout
-Gli attributi 
-\begin_inset Quotes eld
-\end_inset
-
-username
-\begin_inset Quotes erd
-\end_inset
-
- e 
-\begin_inset Quotes eld
-\end_inset
-
-password
-\begin_inset Quotes erd
-\end_inset
-
- conterranno i dati inseriti dall'utente per effettuare l'autenticazione
+Gli attributi username e password conterranno i dati inseriti dall'utente
+ per effettuare l'autenticazione
 \end_layout
 
 \end_inset
@@ -264,8 +423,6 @@ password
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 AuthenticationTransfer
 \end_layout
 
@@ -286,14 +443,9 @@ AuthenticationTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 signUp
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -311,56 +463,9 @@ username, password, name, surname
 \begin_inset Text
 
 \begin_layout Plain Layout
-Gli attributi 
-\begin_inset Quotes eld
-\end_inset
-
-username
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-password
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-name
-\begin_inset Quotes erd
-\end_inset
-
- e 
-\begin_inset Quotes eld
-\end_inset
-
-surname
-\begin_inset Quotes erd
-\end_inset
-
- conterranno i dati inseriti dall'utente per effettuare la registrazione,
- i campi 
-\begin_inset Quotes eld
-\end_inset
-
-name
-\begin_inset Quotes erd
-\end_inset
-
- e 
-\begin_inset Quotes eld
-\end_inset
-
-surname
-\begin_inset Quotes erd
-\end_inset
-
- possono eventualmente essere vuoti
+Gli attributi username, password, name e surname conterranno i dati inseriti
+ dall'utente per effettuare la registrazione, i campi name e surname possono
+ eventualmente essere vuoti
 \end_layout
 
 \end_inset
@@ -389,14 +494,18 @@ surname
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 logout
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
-
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -406,31 +515,6 @@ logout
 
 \begin_layout Plain Layout
 
-\series bold
-username
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-L'attributo 
-\begin_inset Quotes eld
-\end_inset
-
-username
-\begin_inset Quotes erd
-\end_inset
-
- conterrà lo username dell'utente che sta tentando la disconnessione
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Username non serve perchè il connector ha lo username corrispondente
 \end_layout
 
 \end_inset
@@ -459,14 +543,9 @@ CallCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 call
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -475,59 +554,27 @@ call
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, 
+contact,
 \series bold
-calltype
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-L'attributo 
-\begin_inset Quotes eld
-\end_inset
-
-contact
-\begin_inset Quotes erd
-\end_inset
-
- conterrà lo username dell'utente che si sta tentando di chiamare e l'attributo
  
-\begin_inset Quotes eld
-\end_inset
-
-calltype
-\begin_inset Quotes erd
-\end_inset
-
- conterrà il tipo di chiamata.
- Questo potrà essere 
-\begin_inset Quotes eld
-\end_inset
-
-video
-\begin_inset Quotes erd
-\end_inset
-
- per una chiamata video oppure 
-\begin_inset Quotes eld
-\end_inset
-
-audio
-\begin_inset Quotes erd
-\end_inset
-
- per una chiamata audio
+\series default
+callType
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
-\series bold
-Scegliere se callType o typeCall, e cmq la seconda parola deve iniziare
- in maiuscolo
+\begin_layout Plain Layout
+L'attributo contact conterrà lo username dell'utente che si sta tentando
+ di chiamare e l'attributo callType conterrà il tipo di chiamata, 
+\emph on
+video
+\emph default
+ o 
+\emph on
+audio
 \end_layout
 
 \end_inset
@@ -536,8 +583,6 @@ Scegliere se callType o typeCall, e cmq la seconda parola deve iniziare
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 CallTransfer
 \end_layout
 
@@ -558,14 +603,9 @@ CallTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 answeredCall
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -574,9 +614,7 @@ answeredCall
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, 
-\series bold
-response
+contact
 \end_layout
 
 \end_inset
@@ -586,16 +624,6 @@ response
 
 \begin_layout Plain Layout
 
-\series bold
-o sono rinstupidita (possibile) o response è sempre true...
- perchè il type answeredCall è inviato solo da qui e dalla parte server
- nn gli interessa response...
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-se è così direi che va tolto
 \end_layout
 
 \end_inset
@@ -624,14 +652,9 @@ se è così direi che va tolto
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 offer
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -678,14 +701,9 @@ contact, description
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 candidate
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -694,9 +712,11 @@ candidate
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, 
+contact,
 \series bold
-cand
+ 
+\series default
+candidate
 \end_layout
 
 \end_inset
@@ -706,8 +726,6 @@ cand
 
 \begin_layout Plain Layout
 
-\series bold
-io metterei candidate, xk cand non è un nome di variabile k indichi cos'è
 \end_layout
 
 \end_inset
@@ -736,18 +754,9 @@ io metterei candidate, xk cand non è un nome di variabile k indichi cos'è
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
-
-\series bold
-candidateready
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-
+\emph on
+candidateReady
 \end_layout
 
 \end_inset
@@ -766,8 +775,6 @@ contact
 
 \begin_layout Plain Layout
 
-\series bold
-Stesso discorso, seguendo le norme metterei candidateReady
 \end_layout
 
 \end_inset
@@ -796,18 +803,9 @@ Stesso discorso, seguendo le norme metterei candidateReady
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
-
-\series bold
-endcall
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-
+\emph on
+endCall
 \end_layout
 
 \end_inset
@@ -826,8 +824,6 @@ contact
 
 \begin_layout Plain Layout
 
-\series bold
-vedi sopra, endCall
 \end_layout
 
 \end_inset
@@ -856,14 +852,9 @@ ChatCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 sendText
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -872,9 +863,9 @@ sendText
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+contact
 \series bold
-username,
+,
 \series default
  message
 \end_layout
@@ -886,8 +877,6 @@ username,
 
 \begin_layout Plain Layout
 
-\series bold
-Metterei contact come per chiamata x chiarire k è lo username del contatto
 \end_layout
 
 \end_inset
@@ -896,8 +885,6 @@ Metterei contact come per chiamata x chiarire k è lo username del contatto
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 ChatTransfer
 \end_layout
 
@@ -918,14 +905,9 @@ ContactsCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 getContacts
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -936,7 +918,7 @@ getContacts
 \begin_layout Plain Layout
 
 \series bold
-username
+-
 \end_layout
 
 \end_inset
@@ -946,8 +928,6 @@ username
 
 \begin_layout Plain Layout
 
-\series bold
-Username non serve perchè il connector ha lo username corrispondente
 \end_layout
 
 \end_inset
@@ -956,8 +936,6 @@ Username non serve perchè il connector ha lo username corrispondente
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 AuthenticationTransfer
 \end_layout
 
@@ -980,7 +958,6 @@ FileCommunication
 \begin_layout Plain Layout
 
 \series bold
-\emph on
 file
 \end_layout
 
@@ -1034,14 +1011,9 @@ NotificationCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 busy
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1068,8 +1040,6 @@ contact
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 CallTransfer
 \end_layout
 
@@ -1091,17 +1061,8 @@ CallTransfer
 
 \begin_layout Plain Layout
 
-\series bold
-\begin_inset Quotes eld
-\end_inset
-
-refusecall
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-
+\emph on
+refuseCall
 \end_layout
 
 \end_inset
@@ -1120,8 +1081,6 @@ contact
 
 \begin_layout Plain Layout
 
-\series bold
-refuseCall
 \end_layout
 
 \end_inset
@@ -1152,7 +1111,6 @@ refuseCall
 \begin_layout Plain Layout
 
 \series bold
-\emph on
 refuseFile
 \end_layout
 
@@ -1206,7 +1164,6 @@ RecordMessageCommunication
 \begin_layout Plain Layout
 
 \series bold
-\emph on
 sendRecord
 \end_layout
 
@@ -1260,7 +1217,6 @@ RecordMessageTransfer
 \begin_layout Plain Layout
 
 \series bold
-\emph on
 removeRecord
 \end_layout
 
@@ -1359,6 +1315,7 @@ TutorialCommunication
 \begin_layout Plain Layout
 
 \series bold
+\emph on
 -
 \end_layout
 
@@ -1412,6 +1369,8 @@ UserDataCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 \begin_inset Quotes eld
 \end_inset
 
@@ -1466,6 +1425,8 @@ username, password
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 \begin_inset Quotes eld
 \end_inset
 
@@ -1567,23 +1528,9 @@ AuthenticationTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 login
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-answer, ( name, surname | error )
 \end_layout
 
 \end_inset
@@ -1593,25 +1540,15 @@ answer, ( name, surname | error )
 
 \begin_layout Plain Layout
 
-\series bold
-Se answer è 
-\emph on
-true
-\emph default
- nel pacchetto vengono inseriti il nome e il cognome relativi al dato username,
- presenti nella base di dati.
 \end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
 
-\series bold
-Altrimenti viene inserito error che può assumere come valori: 
-\emph on
-Password errata 
-\emph default
-o 
-\emph on
-Username errato
 \end_layout
 
 \end_inset
@@ -1620,8 +1557,6 @@ Username errato
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 AuthenticationCommunication
 \end_layout
 
@@ -1642,14 +1577,9 @@ AuthenticationCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 getContacts
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1686,8 +1616,6 @@ i, IPi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 ContactsCommunication
 \end_layout
 
@@ -1708,14 +1636,9 @@ ContactsCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 signUp
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1733,16 +1656,14 @@ answer, (error)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 Se answer risulta 
 \emph on
 false 
 \emph default
 viene inserito error che può assumere come valori:
-\series default
- 
 \series bold
+ 
+\series default
 \emph on
 Errore nell'inserimento dell'utente nel database 
 \emph default
@@ -1757,8 +1678,6 @@ Username già presente
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 AuthenticationCommunication
 \end_layout
 
@@ -1780,76 +1699,8 @@ AuthenticationCommunication
 
 \begin_layout Plain Layout
 
-\series bold
-\begin_inset Quotes eld
-\end_inset
-
-logout
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-answer
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Se al client non serve la risposta posso evitare di mandarla, perchè detto
- tra me e te restituisce sempre answer=true....
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-AuthenticationCommunication
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
+\emph on
 tutorials
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1882,8 +1733,6 @@ i,
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 TutorialCommunication
 \end_layout
 
@@ -1904,14 +1753,9 @@ CallTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 call
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1920,9 +1764,7 @@ call
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, 
-\series bold
-typecall
+contact, callType
 \end_layout
 
 \end_inset
@@ -1962,14 +1804,9 @@ stesso problema della parte client
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 answeredCall
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1978,9 +1815,7 @@ answeredCall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
-answer(error, true, false, busy)
+answer,(error)
 \end_layout
 
 \end_inset
@@ -1989,24 +1824,29 @@ answer(error, true, false, busy)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Se answer risulta 
+\emph on
+false 
+\emph default
+viene inserito error che può assumere come valori:
 \series bold
-per renderlo conforme metterei answer, error o information o status...
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Come con gli altri answer
+ 
+\series default
+\emph on
+Utente non connesso al server, Chiamata rifiutata 
+\emph default
+o 
+\emph on
+Utente occupato in un'altra conversazione
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+CallCommunication
 \end_layout
 
 \end_inset
@@ -2026,14 +1866,9 @@ Come con gli altri answer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 offer
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2056,7 +1891,7 @@ creato da WebRTC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2080,14 +1915,9 @@ creato da WebRTC
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 candidate
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2110,67 +1940,7 @@ creato da WebRTC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-endcall
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Anche qui metterei endCall per conformità alle norme...
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2195,17 +1965,8 @@ Anche qui metterei endCall per conformità alle norme...
 
 \begin_layout Plain Layout
 
-\series bold
-\begin_inset Quotes eld
-\end_inset
-
-candidateready
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-
+\emph on
+endCall
 \end_layout
 
 \end_inset
@@ -2224,13 +1985,60 @@ candidateready
 
 \begin_layout Plain Layout
 
-\series bold
-vedi su
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+candidateReady
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2254,14 +2062,9 @@ ChatTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 sendText
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2270,9 +2073,7 @@ sendText
 \begin_inset Text
 
 \begin_layout Plain Layout
-message, 
-\series bold
-username
+message, contact
 \end_layout
 
 \end_inset
@@ -2282,17 +2083,15 @@ username
 
 \begin_layout Plain Layout
 
-\series bold
-Metterei contact come per chiamata x chiarire k è lo username del contatto
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+ChatCommunication
 \end_layout
 
 \end_inset
@@ -2312,14 +2111,9 @@ Metterei contact come per chiamata x chiarire k è lo username del contatto
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
+\emph on
 notDelivered
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2328,9 +2122,7 @@ notDelivered
 \begin_inset Text
 
 \begin_layout Plain Layout
-message, 
-\series bold
-username
+message, contact
 \end_layout
 
 \end_inset
@@ -2340,13 +2132,11 @@ username
 
 \begin_layout Plain Layout
 
-\series bold
-Metterei contact come per chiamata x chiarire k è lo username del contatto
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2474,6 +2264,8 @@ ListenerTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 -
 \end_layout
 
@@ -2523,6 +2315,7 @@ RecordMessageTransfer
 \begin_layout Plain Layout
 
 \series bold
+\emph on
 (
 \begin_inset Quotes eld
 \end_inset
@@ -2596,6 +2389,7 @@ RecordMessageCommunication
 \begin_layout Plain Layout
 
 \series bold
+\emph on
 (
 \begin_inset Quotes eld
 \end_inset
@@ -2653,6 +2447,8 @@ UserTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 \begin_inset Quotes eld
 \end_inset
 
@@ -2707,14 +2503,12 @@ answer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 \begin_inset Quotes eld
 \end_inset
 
 changeData
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
