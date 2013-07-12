@@ -80,7 +80,6 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
-      alert(typecall);
       var message = { type:'call', contact: recipient.toJSON().username, callType:typecall};
       Connection.send(JSON.stringify(message));
       /**
