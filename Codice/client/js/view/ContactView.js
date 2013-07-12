@@ -6,10 +6,13 @@
  * Versione: 1.0
  *
  * Modifiche:
-* +--------+---------------+-----------------------+
- * | Data   | Programmatore |     Modifiche         |
- * +--------+---------------+-----------------------+
- * | 130520 |    PMA        | + creazione documento |
+* +--------+---------------+---------------------------------+
+ * | Data   | Programmatore |     Modifiche                  | 
+ * +--------+---------------+--------------------------------+
+ * | 130713 |    BG         | + Metodo  createCallConference | 
+ * +--------+---------------+--------------------------------+
+ * | 130520 |    PMA        | + creazione documento          | 
+ * -----------------------------------------------------------
 
  */
 
@@ -84,6 +87,20 @@ define([
       }else{
         this.currentFunctions.audiocall(false);
       }
+      $('#main').prepend(this.currentFunctions.el);
+    },
+    
+    createCallConference : function(type){
+      /**
+       * condizione messa per evitare di chiudere functionview non ancora create
+       */
+      if(!this.currentFunctions){
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+      }else{
+        this.currentFunctions.render();
+      }
+      this.options.callback.closeOtherContacts(this.model.toJSON().username);
+      this.currentFunctions.conference(false);
       $('#main').prepend(this.currentFunctions.el);
     }
   });

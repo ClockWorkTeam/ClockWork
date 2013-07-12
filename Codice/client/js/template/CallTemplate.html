@@ -19,8 +19,10 @@
 -->
 
 <div id='callTemplate'>
-  <h2><%= username %></h2>
-  <video id='remotevid' autoplay></video>
+  <% if(typeof username !='undefined'){ %>
+    <h2><%= username %></h2>
+    <video id='remotevid' autoplay></video>
+  <% }%>
   <video id='sourcevid' autoplay></video>
   <button id='endCall'>Termina chiamata</button>
 </div>

@@ -128,11 +128,12 @@ mytalk.server.functionmanager.Converter
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="39" columns="4">
+<lyxtabular version="3" rows="43" columns="5">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="15page%">
 <column alignment="center" valignment="top" width="15page%">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -176,13 +177,24 @@ Altri attributi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
 Descrizione
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Classe che gestisce il pacchetto
 \end_layout
 
 \end_inset
@@ -223,7 +235,7 @@ username, password
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -244,6 +256,17 @@ password
 \end_inset
 
  conterranno i dati inseriti dall'utente per effettuare l'autenticazione
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+AuthenticationTransfer
 \end_layout
 
 \end_inset
@@ -284,7 +307,7 @@ username, password, name, surname
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -342,6 +365,15 @@ surname
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -373,12 +405,14 @@ logout
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 username
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -391,6 +425,21 @@ username
 \end_inset
 
  conterrà lo username dell'utente che sta tentando la disconnessione
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Username non serve perchè il connector ha lo username corrispondente
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -426,12 +475,14 @@ call
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, calltype
+contact, 
+\series bold
+calltype
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -472,6 +523,24 @@ audio
  per una chiamata audio
 \end_layout
 
+\begin_layout Plain Layout
+
+\series bold
+Scegliere se callType o typeCall, e cmq la seconda parola deve iniziare
+ in maiuscolo
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+CallTransfer
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -505,12 +574,33 @@ answeredCall
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, response
+contact, 
+\series bold
+response
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+o sono rinstupidita (possibile) o response è sempre true...
+ perchè il type answeredCall è inviato solo da qui e dalla parte server
+ nn gli interessa response...
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+se è così direi che va tolto
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -555,7 +645,16 @@ contact, description
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -595,12 +694,25 @@ candidate
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, cand
+contact, 
+\series bold
+cand
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+io metterei candidate, xk cand non è un nome di variabile k indichi cos'è
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -627,7 +739,11 @@ contact, cand
 \begin_inset Quotes eld
 \end_inset
 
+
+\series bold
 candidateready
+\series default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -645,7 +761,18 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Stesso discorso, seguendo le norme metterei candidateReady
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -672,7 +799,11 @@ contact
 \begin_inset Quotes eld
 \end_inset
 
+
+\series bold
 endcall
+\series default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -690,7 +821,18 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+vedi sopra, endCall
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -730,7 +872,22 @@ sendText
 \begin_inset Text
 
 \begin_layout Plain Layout
-username, message
+
+\series bold
+username,
+\series default
+ message
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Metterei contact come per chiamata x chiarire k è lo username del contatto
 \end_layout
 
 \end_inset
@@ -740,6 +897,8 @@ username, message
 
 \begin_layout Plain Layout
 
+\series bold
+ChatTransfer
 \end_layout
 
 \end_inset
@@ -775,7 +934,20 @@ getContacts
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 username
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Username non serve perchè il connector ha lo username corrispondente
 \end_layout
 
 \end_inset
@@ -785,13 +957,15 @@ username
 
 \begin_layout Plain Layout
 
+\series bold
+AuthenticationTransfer
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -805,6 +979,9 @@ FileCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+\emph on
+file
 \end_layout
 
 \end_inset
@@ -814,6 +991,19 @@ FileCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+file, contact
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+invia il file
 \end_layout
 
 \end_inset
@@ -823,6 +1013,8 @@ FileCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+FileTransfer
 \end_layout
 
 \end_inset
@@ -863,7 +1055,78 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+CallTransfer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Quotes eld
+\end_inset
+
+refusecall
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+contact
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+refuseCall
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -887,14 +1150,10 @@ contact
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
 
-refusecall
-\begin_inset Quotes erd
-\end_inset
-
-
+\series bold
+\emph on
+refuseFile
 \end_layout
 
 \end_inset
@@ -903,7 +1162,18 @@ refusecall
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 contact
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -913,13 +1183,15 @@ contact
 
 \begin_layout Plain Layout
 
+\series bold
+FileTransfer
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -933,6 +1205,20 @@ RecordMessageCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+\emph on
+sendRecord
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+contact, path, date
 \end_layout
 
 \end_inset
@@ -946,7 +1232,108 @@ RecordMessageCommunication
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+RecordMessageTransfer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+removeRecord
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+contact, path, date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -971,6 +1358,8 @@ TutorialCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+-
 \end_layout
 
 \end_inset
@@ -980,6 +1369,19 @@ TutorialCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+-
 \end_layout
 
 \end_inset
@@ -989,6 +1391,8 @@ TutorialCommunication
 
 \begin_layout Plain Layout
 
+\series bold
+-
 \end_layout
 
 \end_inset
@@ -1025,6 +1429,15 @@ checkCredentials
 
 \begin_layout Plain Layout
 username, password
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1074,6 +1487,15 @@ username, name, surname, password
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -1085,6 +1507,15 @@ username, name, surname, password
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
@@ -1157,11 +1588,41 @@ answer, ( name, surname | error )
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Se answer è 
+\emph on
+true
+\emph default
+ nel pacchetto vengono inseriti il nome e il cognome relativi al dato username,
+ presenti nella base di dati.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Altrimenti viene inserito error che può assumere come valori: 
+\emph on
+Password errata 
+\emph default
+o 
+\emph on
+Username errato
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\series bold
+AuthenticationCommunication
 \end_layout
 
 \end_inset
@@ -1212,11 +1673,22 @@ i, IPi
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\series bold
+ContactsCommunication
 \end_layout
 
 \end_inset
@@ -1257,11 +1729,37 @@ answer, (error)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Se answer risulta 
+\emph on
+false 
+\emph default
+viene inserito error che può assumere come valori:
+\series default
+ 
+\series bold
+\emph on
+Errore nell'inserimento dell'utente nel database 
+\emph default
+o 
+\emph on
+Username già presente
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\series bold
+AuthenticationCommunication
 \end_layout
 
 \end_inset
@@ -1281,6 +1779,8 @@ answer, (error)
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 \begin_inset Quotes eld
 \end_inset
 
@@ -1297,7 +1797,21 @@ logout
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 answer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Se al client non serve la risposta posso evitare di mandarla, perchè detto
+ tra me e te restituisce sempre answer=true....
 \end_layout
 
 \end_inset
@@ -1307,6 +1821,8 @@ answer
 
 \begin_layout Plain Layout
 
+\series bold
+AuthenticationCommunication
 \end_layout
 
 \end_inset
@@ -1353,11 +1869,22 @@ i,
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\series bold
+TutorialCommunication
 \end_layout
 
 \end_inset
@@ -1393,7 +1920,20 @@ call
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact, typecall
+contact, 
+\series bold
+typecall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+stesso problema della parte client
 \end_layout
 
 \end_inset
@@ -1438,7 +1978,26 @@ answeredCall
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 answer(error, true, false, busy)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+per renderlo conforme metterei answer, error o information o status...
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Come con gli altri answer
 \end_layout
 
 \end_inset
@@ -1488,6 +2047,15 @@ creato da WebRTC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -1533,6 +2101,15 @@ creato da WebRTC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -1560,7 +2137,11 @@ creato da WebRTC
 \begin_inset Quotes eld
 \end_inset
 
+
+\series bold
 endcall
+\series default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1578,6 +2159,17 @@ endcall
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Anche qui metterei endCall per conformità alle norme...
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -1602,10 +2194,14 @@ endcall
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 \begin_inset Quotes eld
 \end_inset
 
 candidateready
+\series default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1619,6 +2215,17 @@ candidateready
 
 \begin_layout Plain Layout
 -
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+vedi su
 \end_layout
 
 \end_inset
@@ -1663,7 +2270,20 @@ sendText
 \begin_inset Text
 
 \begin_layout Plain Layout
-message, username
+message, 
+\series bold
+username
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Metterei contact come per chiamata x chiarire k è lo username del contatto
 \end_layout
 
 \end_inset
@@ -1708,7 +2328,20 @@ notDelivered
 \begin_inset Text
 
 \begin_layout Plain Layout
-message, username
+message, 
+\series bold
+username
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Metterei contact come per chiamata x chiarire k è lo username del contatto
 \end_layout
 
 \end_inset
@@ -1724,7 +2357,7 @@ message, username
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1738,6 +2371,9 @@ FileTransfer
 
 \begin_layout Plain Layout
 
+\series bold
+\emph on
+file
 \end_layout
 
 \end_inset
@@ -1747,6 +2383,69 @@ FileTransfer
 
 \begin_layout Plain Layout
 
+\series bold
+file, contact
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+fileRefused
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+contact
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+informa
 \end_layout
 
 \end_inset
@@ -1789,6 +2488,15 @@ ListenerTransfer
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -1813,6 +2521,9 @@ RecordMessageTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+(
 \begin_inset Quotes eld
 \end_inset
 
@@ -1820,7 +2531,8 @@ saveMessage
 \begin_inset Quotes erd
 \end_inset
 
-
+) non esiste...
+ io l'ho chiamato sendRecord nei documenti
 \end_layout
 
 \end_inset
@@ -1830,6 +2542,28 @@ saveMessage
 
 \begin_layout Plain Layout
 answer
+\series bold
+, error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Se answer è 
+\emph on
+false
+\emph default
+ viene inviato un error contenente il testo
+\series default
+ 
+\series bold
+\emph on
+Errore nella registrazione del messaggio
 \end_layout
 
 \end_inset
@@ -1839,6 +2573,8 @@ answer
 
 \begin_layout Plain Layout
 
+\series bold
+RecordMessageCommunication
 \end_layout
 
 \end_inset
@@ -1858,6 +2594,9 @@ answer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+(
 \begin_inset Quotes eld
 \end_inset
 
@@ -1865,7 +2604,7 @@ removeMessage
 \begin_inset Quotes erd
 \end_inset
 
-
+) non esiste si chiama removeRecord
 \end_layout
 
 \end_inset
@@ -1879,11 +2618,22 @@ answer
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\series bold
+RecordMessageCommunication
 \end_layout
 
 \end_inset
@@ -1920,6 +2670,15 @@ checkCredentials
 
 \begin_layout Plain Layout
 answer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1969,7 +2728,7 @@ answer, error
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2023,6 +2782,15 @@ false
 \end_inset
 
  e conterrà una descrizione dell'errore avvenuto
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

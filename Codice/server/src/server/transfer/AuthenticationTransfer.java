@@ -72,14 +72,12 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	  sendPacket(wspacket, event.getConnector());
    	}
    	else if(type.equals("getContacts")){
-   	  wspacket = new RawPacket(converter.convertUsers(authenticationManager.getAllContacts(token.getString("username")),"\"type\":\"getContacts\","));
+   	  wspacket = new RawPacket(converter.convertUsers(authenticationManager.getAllContacts(event.getConnector().getUsername()),"\"type\":\"getContacts\","));
    	  sendPacket(wspacket, event.getConnector());
    	}
    	else if(type.equals("logout")){
-   	  User user = authenticationManager.logout(token.getString("username"));
+   	  User user = authenticationManager.logout(event.getConnector().getUsername());
    	  event.getConnector().removeUsername();
-   	  wspacket = new RawPacket("{\"type\":\"logout\",\"answer\":\"true\"}");
-   	  sendPacket(wspacket, event.getConnector());
    	  if(user!=null){
    	    java.util.Vector<User> newUser = new java.util.Vector<User>();
    	    newUser.add(user);

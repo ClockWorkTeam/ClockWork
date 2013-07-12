@@ -24,8 +24,7 @@ define(['connection','collection/ContactsCollection'], function(Connection, cont
      */
     fetchContacts: function(username) {
       var request = {
-        type: 'getContacts',
-        username: username
+        type: 'getContacts'
       };
       Connection.send(JSON.stringify(request));
       /**
