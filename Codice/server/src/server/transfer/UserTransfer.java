@@ -39,7 +39,7 @@ metodo per la gestione dei token
    	String type= token.getString("type");
    	WebSocketPacket wspacket=null;
    	if(type.equals("checkCredentials")){
-   	  boolean answer= userManager.checkPassword(token.getString("username"),token.getString("password"));
+   	  boolean answer= userManager.checkPassword(event.getConnector().getUsername(),token.getString("password"));
    	  if(answer){
    		wspacket = new RawPacket("{\"type\":\"checkCredentials\",\"answer\":\"true\"}");
    	  }else{
@@ -49,16 +49,15 @@ metodo per la gestione dei token
    	}
    	else if(type.equals("changeData")){
    	  try{
-   	    boolean answerData= userManager.setUserData(token.getString("username"), token.getString("name"), token.getString("surname"));
+   	    boolean answerData= userManager.setUserData(event.getConnector().getUsername(), token.getString("name"), token.getString("surname"));
    	    boolean answerPassword=true;
    	    if(!(token.getString("password").equals(""))){
-   		  answerPassword = userManager.setPassword(token.getString("username"), token.getString("password"));
+   		  answerPassword = userManager.setPassword(event.getConnector().getUsername(), token.getString("password"));
    	    }
-   	  
    	    if(answerData & answerPassword){
    		  wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"true\"}");
    		  java.util.Vector<User> newUser = new java.util.Vector<User>();
-   		  newUser.add(userManager.getUserData(token.getString("username")));
+   		  newUser.add(userManager.getUserData(event.getConnector().getUsername()));
    		  WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
   		  broadcastToAll(wspacket2);
    	    }else if (!answerData){
