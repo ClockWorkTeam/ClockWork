@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 17:31:18 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 14:55:09 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -104,22 +104,33 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F4'
-              name = '+TutorialsDaoSQL' visibility = 'public' isSpecification = 'false'
+              name = '-TutorialsDaoSQL' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F5'
                   name = 'return' isSpecification = 'false' kind = 'return'/>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F6'
-                  name = 'JavaConnectionSQLite' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F7'
-              name = '+getTutorials' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+getInstance' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F8'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000866'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F9'
+              name = '+getTutorials' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014FA'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:000000000000086E'/>
@@ -127,12 +138,27 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014F9'
+            <UML:Attribute xmi.id = '127-0-0-1-23fec973:13fc7fe60d1:-8000:00000000000014E6'
+              name = '-tutorialsDaoSQL' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '127-0-0-1-23fec973:13fc7fe60d1:-8000:00000000000014E7'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '127-0-0-1-23fec973:13fc7fe60d1:-8000:00000000000014E8'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000866'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Operation xmi.id = '127-0-0-1-23fec973:13fc7fe60d1:-8000:00000000000014E9'
               name = '-getTutorialsFromDB' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000014FA'
+                <UML:Parameter xmi.id = '127-0-0-1-23fec973:13fc7fe60d1:-8000:00000000000014EA'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000876'/>
@@ -159,7 +185,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[64, 40, 248, 120]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[64, 40, 248, 152]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -173,7 +199,7 @@
       x="64"
       y="40"
       width="248"
-      height="120"
+      height="152"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -229,7 +255,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[65, 64, 246, 40]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[65, 64, 246, 56]"
          href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -243,7 +269,7 @@
         x="65"
         y="64"
         width="246"
-        height="40"
+        height="56"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -269,54 +295,6 @@
         x="65"
         y="80"
         width="246"
-        height="22"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >-tutorials : Tutorials</text>
-    </group>
-    <rectangle name="Fig0.5"
-      x="64"
-      y="103"
-      width="248"
-      height="1"
-      fill="1"
-      fillcolor="black"
-      stroke="1"
-      strokecolor="black"
-    />
-    <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[65, 104, 246, 56]"
-         href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000866"
-         fill="0"
-         fillcolor="255 255 200"
-         stroke="0"
-         strokecolor="black"
-    >
-      <private>
-      </private>
-      
-      <rectangle name="Fig0.6.0"
-        x="65"
-        y="104"
-        width="246"
-        height="56"
-        fill="0"
-        fillcolor="white"
-        stroke="0"
-        strokecolor="black"
-      />
-      <text name="Fig0.6.1"
-        x="65"
-        y="104"
-        width="246"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -328,8 +306,56 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+TutorialsDaoSQL(JavaConnectionSQLite)</text>
-      <text name="Fig0.6.2"
+      >-tutorials : Tutorials</text>
+      <text name="Fig0.4.3"
+        x="65"
+        y="96"
+        width="246"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >-tutorialsDaoSQL : TutorialsDaoSQL</text>
+    </group>
+    <rectangle name="Fig0.5"
+      x="64"
+      y="119"
+      width="248"
+      height="1"
+      fill="1"
+      fillcolor="black"
+      stroke="1"
+      strokecolor="black"
+    />
+    <group name="Fig0.6"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[65, 120, 246, 72]"
+         href="-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000866"
+         fill="0"
+         fillcolor="255 255 200"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.6.0"
+        x="65"
+        y="120"
+        width="246"
+        height="72"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <text name="Fig0.6.1"
         x="65"
         y="120"
         width="246"
@@ -344,14 +370,46 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+getTutorials() : Tutorials</text>
-      <text name="Fig0.6.3"
+      >-TutorialsDaoSQL()</text>
+      <text name="Fig0.6.2"
         x="65"
         y="136"
         width="246"
-        height="22"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getInstance() : TutorialsDaoSQL</text>
+      <text name="Fig0.6.3"
+        x="65"
+        y="152"
+        width="246"
+        height="16"
+        fill="0"
+        fillcolor="255 255 200"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+getTutorials() : Tutorials</text>
+      <text name="Fig0.6.4"
+        x="65"
+        y="168"
+        width="246"
+        height="22"
+        fill="0"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -363,6 +421,46 @@
       >-getTutorialsFromDB() : void</text>
     </group>
   </group>
+  <text name="Fig1"
+    x="272"
+    y="96"
+    width="39"
+    height="19"
+    fill="0"
+    fillcolor="white"
+    stroke="0"
+    strokecolor="black"
+    textcolor="black"
+    font="Dialog"
+    italic="false"
+    bold="false"
+    textsize="12"
+    justification="Center"
+  >= null</text>
+  <path name="Fig2"
+    description="org.argouml.gefext.ArgoFigLine"
+    fill="1"
+    fillcolor="white"
+    stroke="1"
+    strokecolor="black"
+  >
+    <moveto x="68"
+            y="112" />
+    <lineto x="308"
+            y="112" />
+  </path>
+  <path name="Fig3"
+    description="org.argouml.gefext.ArgoFigLine"
+    fill="1"
+    fillcolor="white"
+    stroke="1"
+    strokecolor="black"
+  >
+    <moveto x="68"
+            y="152" />
+    <lineto x="260"
+            y="152" />
+  </path>
 </pgml>
 <pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|-64--88-56-1-6b05344a:13f1eb12d63:-8000:0000000000000865"
       name="Diagramma dei Casi d&apos;Uso"

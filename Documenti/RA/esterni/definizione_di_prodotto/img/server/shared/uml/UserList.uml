@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 17:51:01 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 17:02:43 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -89,7 +89,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A56'
-              name = '+UserList' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '-UserList' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -97,62 +97,102 @@
                   name = 'return' isSpecification = 'false' kind = 'return'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A58'
+            <UML:Attribute xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001309'
+              name = '-userList' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:000000000000130A'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:000000000000130B'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A41'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Operation xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:000000000000130C'
+              name = '+getInstance' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:000000000000130D'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A41'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:000000000000130F'
               name = '+addUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A59'
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001310'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
-                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A4C'/>
+                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A4B'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A5A'
-                  name = 'User' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001311'
+                  name = 'user' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A50'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A5B'
+            <UML:Operation xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001312'
+              name = '+removeUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <UML:BehavioralFeature.parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001313'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A4B'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001314'
+                  name = 'user' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A50'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+              </UML:BehavioralFeature.parameter>
+            </UML:Operation>
+            <UML:Operation xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001315'
               name = '+getUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A5C'
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001316'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A50'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A5D'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001317'
+                  name = 'username' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A5E'
+            <UML:Operation xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001318'
               name = '+getAllUsers' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A5F'
+                <UML:Parameter xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000001319'
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A45'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A60'
-              name = '+removeUser' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A61'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A4C'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A62'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -177,7 +217,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 32, 201, 143]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 32, 227, 177]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A41"
        fill="1"
        fillcolor="255 255 200"
@@ -190,8 +230,8 @@
     <rectangle name="Fig0.0"
       x="48"
       y="32"
-      width="201"
-      height="143"
+      width="227"
+      height="177"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -200,7 +240,7 @@
     <text name="Fig0.1"
       x="49"
       y="33"
-      width="199"
+      width="225"
       height="23"
       fill="0"
       fillcolor="255 255 200"
@@ -239,7 +279,7 @@
     <rectangle name="Fig0.3"
       x="48"
       y="56"
-      width="201"
+      width="227"
       height="1"
       fill="1"
       fillcolor="black"
@@ -247,7 +287,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 57, 199, 25]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 57, 225, 42]"
          href="127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A41"
          fill="0"
          fillcolor="255 255 200"
@@ -260,8 +300,8 @@
       <rectangle name="Fig0.4.0"
         x="49"
         y="57"
-        width="199"
-        height="25"
+        width="225"
+        height="42"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -270,8 +310,8 @@
       <text name="Fig0.4.1"
         x="49"
         y="57"
-        width="199"
-        height="23"
+        width="225"
+        height="17"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -283,11 +323,27 @@
         textsize="13"
         justification="Left"
       >-users : Vector&lt;User&gt;</text>
+      <text name="Fig0.4.2"
+        x="49"
+        y="74"
+        width="225"
+        height="23"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >-userList : UserList</text>
     </group>
     <rectangle name="Fig0.5"
       x="48"
-      y="81"
-      width="201"
+      y="98"
+      width="227"
       height="1"
       fill="1"
       fillcolor="black"
@@ -295,7 +351,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 82, 199, 93]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 99, 225, 110]"
          href="127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A41"
          fill="0"
          fillcolor="255 255 200"
@@ -307,9 +363,9 @@
       
       <rectangle name="Fig0.6.0"
         x="49"
-        y="82"
-        width="199"
-        height="93"
+        y="99"
+        width="225"
+        height="110"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -317,8 +373,8 @@
       />
       <text name="Fig0.6.1"
         x="49"
-        y="82"
-        width="199"
+        y="99"
+        width="225"
         height="17"
         fill="0"
         fillcolor="255 255 200"
@@ -330,14 +386,14 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+UserList()</text>
+      >-UserList()</text>
       <text name="Fig0.6.2"
         x="49"
-        y="99"
-        width="199"
+        y="116"
+        width="225"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -346,14 +402,14 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+addUser(User) : boolean</text>
+      >+getInstance() : UserList</text>
       <text name="Fig0.6.3"
         x="49"
-        y="116"
-        width="199"
+        y="133"
+        width="225"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -362,14 +418,46 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+getUser(String) : User</text>
+      >+addUser(user : User) : void</text>
       <text name="Fig0.6.4"
         x="49"
-        y="133"
-        width="199"
+        y="150"
+        width="225"
         height="17"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+removeUser(user : User) : void</text>
+      <text name="Fig0.6.5"
+        x="49"
+        y="167"
+        width="225"
+        height="17"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Lucida Grande"
+        italic="false"
+        bold="false"
+        textsize="13"
+        justification="Left"
+      >+getUser(username : String) : User</text>
+      <text name="Fig0.6.6"
+        x="49"
+        y="184"
+        width="225"
+        height="23"
+        fill="0"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -379,24 +467,48 @@
         textsize="13"
         justification="Left"
       >+getAllUsers() : Vector&lt;User&gt;</text>
-      <text name="Fig0.6.5"
-        x="49"
-        y="150"
-        width="199"
-        height="23"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Lucida Grande"
-        italic="false"
-        bold="false"
-        textsize="13"
-        justification="Left"
-      >+removeUser(String) : boolean</text>
     </group>
   </group>
+  <text name="Fig1"
+    x="171"
+    y="74"
+    width="38"
+    height="20"
+    fill="0"
+    fillcolor="white"
+    stroke="0"
+    strokecolor="black"
+    textcolor="black"
+    font="Lucida Grande"
+    italic="false"
+    bold="false"
+    textsize="13"
+    justification="Center"
+  >=null</text>
+  <path name="Fig2"
+    description="org.argouml.gefext.ArgoFigLine"
+    fill="1"
+    fillcolor="white"
+    stroke="1"
+    strokecolor="black"
+  >
+    <moveto x="56"
+            y="90" />
+    <lineto x="208"
+            y="90" />
+  </path>
+  <path name="Fig3"
+    description="org.argouml.gefext.ArgoFigLine"
+    fill="1"
+    fillcolor="white"
+    stroke="1"
+    strokecolor="black"
+  >
+    <moveto x="54"
+            y="134" />
+    <lineto x="206"
+            y="134" />
+  </path>
 </pgml>
 <pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|127-0-0-1--56a0face:13f2fce45e4:-8000:0000000000003A40"
       name="Diagramma dei Casi d&apos;Uso"

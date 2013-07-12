@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Jun 11 17:13:52 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 18:34:02 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -85,9 +85,17 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000005D62'
-                  name = 'WebSocketServerTokenEvent' isSpecification = 'false' kind = 'in'/>
+                  name = 'event' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1-3709c8b2:13f203f4bae:-8000:000000000000086A'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000005D63'
-                  name = 'Token' isSpecification = 'false' kind = 'in'/>
+                  name = 'token' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1-3709c8b2:13f203f4bae:-8000:000000000000086E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -112,7 +120,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[8, 24, 377, 71]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[8, 24, 471, 71]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="127-0-0-1-3709c8b2:13f203f4bae:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -125,7 +133,7 @@
     <rectangle name="Fig0.0"
       x="8"
       y="24"
-      width="377"
+      width="471"
       height="71"
       fill="1"
       fillcolor="255 255 200"
@@ -135,7 +143,7 @@
     <text name="Fig0.1"
       x="9"
       y="25"
-      width="375"
+      width="469"
       height="23"
       fill="0"
       fillcolor="255 255 200"
@@ -174,7 +182,7 @@
     <rectangle name="Fig0.3"
       x="8"
       y="48"
-      width="377"
+      width="471"
       height="1"
       fill="1"
       fillcolor="black"
@@ -182,7 +190,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[9, 49, 375, 21]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[9, 49, 469, 21]"
          href="127-0-0-1-3709c8b2:13f203f4bae:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -195,7 +203,7 @@
       <rectangle name="Fig0.4.0"
         x="9"
         y="49"
-        width="375"
+        width="469"
         height="21"
         fill="0"
         fillcolor="white"
@@ -206,7 +214,7 @@
     <rectangle name="Fig0.5"
       x="8"
       y="69"
-      width="377"
+      width="471"
       height="1"
       fill="1"
       fillcolor="black"
@@ -214,7 +222,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[9, 70, 375, 25]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[9, 70, 469, 25]"
          href="127-0-0-1-3709c8b2:13f203f4bae:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -227,7 +235,7 @@
       <rectangle name="Fig0.6.0"
         x="9"
         y="70"
-        width="375"
+        width="469"
         height="25"
         fill="0"
         fillcolor="white"
@@ -237,7 +245,7 @@
       <text name="Fig0.6.1"
         x="9"
         y="70"
-        width="375"
+        width="469"
         height="23"
         fill="0"
         fillcolor="255 255 200"
@@ -249,7 +257,7 @@
         bold="false"
         textsize="13"
         justification="Left"
-      >+processToken(WebSocketServerTokenEvent,Token) : void</text>
+      >+processToken(event : WebSocketServerTokenEvent,token : Token) : void</text>
     </group>
   </group>
 </pgml>

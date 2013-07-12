@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Mon Jun 10 23:43:35 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 16:43:09 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -93,7 +93,11 @@
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000036EB'
                   name = 'return' isSpecification = 'false' kind = 'return'/>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000036EC'
-                  name = 'int' isSpecification = 'false' kind = 'in'/>
+                  name = 'num' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000000ECD'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000036ED'
@@ -108,9 +112,17 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000036EF'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'title' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
                 <UML:Parameter xmi.id = '127-0-0-1--56a0face:13f2fce45e4:-8000:00000000000036F0'
-                  name = 'String' isSpecification = 'false' kind = 'in'/>
+                  name = 'url' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
           </UML:Classifier.feature>
@@ -124,6 +136,9 @@
         <UML:Class xmi.id = '-64--88-56-1-78099f3:13f1ec96193:-8000:0000000000000B8C'
           name = 'void' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '127-0-0-1--556665ed:13fc8dcf575:-8000:0000000000000ECD'
+          name = 'int' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -132,7 +147,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[38, 32, 208, 112]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[38, 32, 228, 112]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="-64--88-56-1-78099f3:13f1ec96193:-8000:0000000000000B77"
        fill="1"
        fillcolor="255 255 200"
@@ -145,7 +160,7 @@
     <rectangle name="Fig0.0"
       x="38"
       y="32"
-      width="208"
+      width="228"
       height="112"
       fill="1"
       fillcolor="255 255 200"
@@ -155,7 +170,7 @@
     <text name="Fig0.1"
       x="39"
       y="33"
-      width="206"
+      width="226"
       height="22"
       fill="0"
       fillcolor="255 255 200"
@@ -169,7 +184,7 @@
       justification="Center"
     >Tutorials</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[39, 33, 220, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[39, 33, 206, 0]"
          href="-64--88-56-1-78099f3:13f1ec96193:-8000:0000000000000B77"
          fill="0"
          fillcolor="255 255 200"
@@ -183,7 +198,7 @@
       <rectangle name="Fig0.2.0"
         x="39"
         y="33"
-        width="220"
+        width="206"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -194,7 +209,7 @@
     <rectangle name="Fig0.3"
       x="38"
       y="55"
-      width="208"
+      width="228"
       height="1"
       fill="1"
       fillcolor="black"
@@ -202,7 +217,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[39, 56, 206, 35]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[39, 56, 226, 35]"
          href="-64--88-56-1-78099f3:13f1ec96193:-8000:0000000000000B77"
          fill="0"
          fillcolor="255 255 200"
@@ -215,7 +230,7 @@
       <rectangle name="Fig0.4.0"
         x="39"
         y="56"
-        width="206"
+        width="226"
         height="35"
         fill="0"
         fillcolor="white"
@@ -225,7 +240,7 @@
       <text name="Fig0.4.1"
         x="39"
         y="56"
-        width="206"
+        width="226"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -242,7 +257,7 @@
     <rectangle name="Fig0.5"
       x="38"
       y="91"
-      width="208"
+      width="228"
       height="1"
       fill="1"
       fillcolor="black"
@@ -250,7 +265,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[39, 92, 206, 51]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[39, 92, 226, 51]"
          href="-64--88-56-1-78099f3:13f1ec96193:-8000:0000000000000B77"
          fill="0"
          fillcolor="255 255 200"
@@ -263,7 +278,7 @@
       <rectangle name="Fig0.6.0"
         x="39"
         y="92"
-        width="206"
+        width="226"
         height="51"
         fill="0"
         fillcolor="white"
@@ -273,10 +288,10 @@
       <text name="Fig0.6.1"
         x="39"
         y="92"
-        width="206"
+        width="226"
         height="16"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -285,14 +300,14 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+Tutorials(int)</text>
+      >+Tutorials(num : int)</text>
       <text name="Fig0.6.2"
         x="39"
         y="108"
-        width="206"
+        width="226"
         height="22"
         fill="0"
-        fillcolor="white"
+        fillcolor="255 255 200"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -301,14 +316,14 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+insert(String,String) : void</text>
+      >+insert(title : String,url : String) : void</text>
     </group>
   </group>
   <text name="Fig1"
-    x="40"
+    x="44"
     y="126"
-    width="207"
-    height="19"
+    width="203"
+    height="15"
     fill="0"
     fillcolor="white"
     stroke="0"
