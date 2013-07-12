@@ -6,14 +6,18 @@
  * Versione: 1.0
  *
  * Modifiche:
-* +--------+---------------+-----------------------+
- * | Data   | Programmatore |     Modifiche         |
- * +--------+---------------+-----------------------+
- * | 130518 |    FV         | + metodo che segnala  |
- * |        |               |   il rifiuto della    |
- * |        |               |   chiamata            |
- * +--------+---------------+-----------------------+
- * | 130517 |    PMA        | + creazione documento |
+* +-----------+---------------+------------------------+
+ * | Data     | Programmatore |     Modifiche          | 
+ * +----------+---------------+------------------------+
+ * | 130712   |    FV         | # gestione conferenza  |  
+ * |          |               |   in acceptCall        |  
+ * +----------+---------------+------------------------+
+ * | 130518   |    FV         | + metodo che segnala   | 
+ * |          |               |   il rifiuto della     | 
+ * |          |               |   chiamata             | 
+ * +----------+---------------+------------------------+
+ * | 1/0517   |    PMA        | + creazione documento  | 
+ * -----------------------------------------------------
 
  */
 
@@ -76,14 +80,26 @@ define([
     acceptCall : function(){
       this.timeout=false;
       this.unrender();
-      var event=new CustomEvent('acceptCall',{
-        detail:{
-          type:this.options.typeCall,
-          contact:this.options.caller
-        },
-        bubbles:true,
-        cancelable:true
+      if(!this.options.Conference){
+        var event=new CustomEvent('acceptCall',{
+          detail:{
+            type:this.options.typeCall,
+            contact:this.options.caller
+          },
+          bubbles:true,
+          cancelable:true
         });
+        
+      }else{
+        var event=new CustomEvent('acceptCallConference',{
+          detail:{
+            type:this.options.typeCall,
+            contact:this.options.caller
+          },
+          bubbles:true,
+          cancelable:true
+        });
+      }
       document.dispatchEvent(event);
     },
 

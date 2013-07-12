@@ -7,7 +7,10 @@
  * 
  * Modifiche:
  * +---------+---------------+-------------------------------------+
- * | Data    | Programmatore |        Modifiche                    | 
+ * | Data    | Programmatore |        Modifiche                    |
+ * +---------+---------------+-------------------------------------+
+ * |13/07/12 |    BG         | # Gestione conferenza nel metodo    | 
+ * |         |               |   onNotification                    | 
  * +---------+---------------+-------------------------------------+
  * |13/04/09 |    LBA        | + variabile onCalling per capire se | 
  * |         |               |   occupato o meno con altri utenti  | 
@@ -54,6 +57,20 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
           if(onCalling==false){
             onCalling=true;
             notificationView= new NotificationView({caller: response.contact, typeCall: response.typecall, NotificationCommunication:Notification});
+            setTimeout(function(){notificationView.timeoutCall()},5000);
+          }else{
+            var message = {
+              contact: response.contact,
+              type:'busy'
+            };
+            Connection.send(JSON.stringify(message));
+          }
+        }
+        
+         if (response.type === 'callConference'){
+          if(onCalling==false){
+            onCalling=true;
+            notificationView= new NotificationView({caller: response.contact, typeCall: response.typecall, Conference:true, NotificationCommunication:Notification});
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{
             var message = {

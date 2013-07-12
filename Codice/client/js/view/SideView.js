@@ -6,17 +6,23 @@
  * Versione: 1.0
  *
  * Modifiche:
- * +--------+---------------+-----------------------+
- * | Data   | Programmatore |     Modifiche         | 
- * +--------+---------------+-----------------------+
- * | 130710 |    BG         | + modifica  metodo    | 
- * |        |               |   StartConference     | 
- * +--------+---------------+-----------------------+
- * | 130524 |      FV       | + metodo che chiude le| 
- * |        |               |   viste di ogni       | 
- * |        |               |   contatto presente   | 
- * +--------+---------------+-----------------------+
- * | 130512 |    PMA        | + creazione documento | 
+ * +--------+---------------+---------------------------+
+ * | Data   | Programmatore |     Modifiche             | 
+ * +--------+---------------+---------------------------+
+ * | 130712 |    BG         | + Medoto setCallConference| 
+ * |        |               | # Aggiunto in initialize  | 
+ * |        |               |   il listener             | 
+ * |        |               |   acceptCallConference    | 
+ * +--------+---------------+---------------------------+
+ * | 130710 |    BG         | + modifica  metodo        | 
+ * |        |               |   StartConference         | 
+ * +--------+---------------+---------------------------+
+ * | 130524 |    FV         | + metodo che chiude le    | 
+ * |        |               |   viste di ogni           | 
+ * |        |               |   contatto presente       | 
+ * +--------+---------------+---------------------------+
+ * | 130512 |    PMA        | + creazione documento     | 
+ * ------------------------------------------------------
  */
  
  
@@ -60,6 +66,9 @@ define([
 			var sideBarView=this;
  			function acceptCall(event){
 				sideBarView.setCall(event.detail.contact,event.detail.type);
+			};
+      function acceptCallConference(event){
+				sideBarView.setCallConference(event.detail.contact,event.detail.type);
 			};
 			this.$el.html(this.template({logged: false}));
 			this.childViews = [];
@@ -179,7 +188,8 @@ define([
     },
 
     /**
-     * metodo invoca allo scopo di capire quale utente sta chiamando
+     * metodo invocato allo scopo di capire quale utente sta chiamando
+     * e generare una chiamata con esso
      */
 
     setCall : function(contact,type){
@@ -187,6 +197,19 @@ define([
       function(view){
         if(view.model.toJSON().username==contact){
           view.createCall(type);
+        }
+      });
+    },
+    
+    /**
+     * metodo invocato allo scopo di capire quale utente sta chiamando
+     * e generare una conferenza con esso
+     */
+    setCallConference : function(contact,type){
+      _.each(this.childViews,
+      function(view){
+        if(view.model.toJSON().username==contact){
+          view.createConference(type);
         }
       });
     }

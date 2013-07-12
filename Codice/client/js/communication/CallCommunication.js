@@ -80,6 +80,7 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
+      alert(typecall);
       var message = { type:'call', contact: recipient.toJSON().username, callType:typecall};
       Connection.send(JSON.stringify(message));
       /**
@@ -191,9 +192,8 @@ define(['connection'], function(Connection){
               document.dispatchEvent(event);
               callView.endCall(false);
             }
-
-alert(response.error);
-/*           if(response.answer==='false'){
+            alert(response.error);
+        /*  if(response.answer==='false'){
               alert('chiamata a '+ response.user +'rifiutata');
             }else if(response.answer==='busy'){
               alert('utente '+ response.user +' occupato');    
@@ -419,6 +419,7 @@ alert(response.error);
          */
         if (response.type==='offer' && !isCaller){	
           started = true;
+          alert("Prova"+typecall);
           if(typecall==='video'){				
             navigator.webkitGetUserMedia({video:true, audio:true},
             function(stream) {
