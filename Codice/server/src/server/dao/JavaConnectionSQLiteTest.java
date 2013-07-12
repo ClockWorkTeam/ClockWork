@@ -6,10 +6,13 @@
 * Versione: 1.0
 *
 * Modifiche:
-* +---------+---------------+--------------------------+
-* | Data    | Programmatore |         Modifiche        |
-* +---------+---------------+--------------------------+
-* |  130308 |     ZHP       | + TEST "UNITA'" 	   	   |
+* +---------+---------------+-------------------------------------------+
+* | Data    | Programmatore |         Modifiche     				    |
+* +---------+---------------+-------------------------------------------+
+* |  130305 |     ZHP       | + creazione documento	  					|
+* |  130712 |     VF        | + modificata inizializzazione dei test	|
+* |         |               |                          					|
+* +---------+---------------+-------------------------------------------+
 *
 */ 
 
@@ -23,19 +26,21 @@ import org.junit.*;
 
 //PRECONDIZIONE: Il database non contenga nessun valore
 public class JavaConnectionSQLiteTest {
-	JavaConnectionSQLite connection=JavaConnectionSQLite.getInstance();
+	JavaConnectionSQLite connection;
+	ResultSet rs;
 	
-/*	 @Test
-	public void resetTable(){
-	 
-	 connection.executeUpdate("DELETE FROM UserDataSQL");	
-	 connection.executeUpdate("DELETE FROM TutorialDataSQL");
-	 connection.executeUpdate("DELETE FROM RecordMessageDataSQL");
-	 }
-*/
+	
+	@Before
+	public void init(){
+		connection=JavaConnectionSQLite.getInstance();
+		connection.executeUpdate("DELETE FROM UserDataSQL;");
+		connection.executeUpdate("DELETE FROM RecordMessageDataSQL;");
+		connection.executeUpdate("DELETE FROM TutorialDataSQL;");
+	}
+	
 	@Test
 	public void testDBUser() throws SQLException {
-	    ResultSet rs = connection.select("UserDataSQL","*","","");
+	    rs = connection.select("UserDataSQL","*","","");
 	    assertTrue("Tabella UserDataSQL dovrebbe essere vuota", rs.isAfterLast());
 
 	    connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team', '7');");
@@ -54,7 +59,7 @@ public class JavaConnectionSQLiteTest {
 	
 	@Test
 	public void testDBRecordMessage() throws SQLException {
-	    ResultSet rs = connection.select("RecordMessageDataSQL","*","","");
+	    rs = connection.select("RecordMessageDataSQL","*","","");
 	    assertTrue("Tabella RecordMessageDataSQL dovrebbe essere vuota", rs.isAfterLast());
 	    
 	    connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','2013-03-10 10:30:00');");
@@ -72,7 +77,7 @@ public class JavaConnectionSQLiteTest {
 	
 	@Test
 	public void testDBTutorial() throws SQLException {
-	    ResultSet rs = connection.select("TutorialDataSQL","*","","");
+	    rs = connection.select("TutorialDataSQL","*","","");
 	    assertTrue("TabellaTutorialDataSQL dovrebbe essere vuota", rs.isAfterLast());
 	    
 	    connection.executeUpdate("INSERT INTO TutorialDataSQL VALUES ('www.prova.it','prova');");
