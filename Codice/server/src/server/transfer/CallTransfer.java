@@ -49,7 +49,7 @@ public class CallTransfer extends ListenerTransfer {
   	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
       wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente occupato in un'altra conversazione\"}");
       sendPacket(wspacket,connector);
-	}else if(type.equals("offer")){
+	}else if(type.equals("sdp")){
   	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
    	  wspacket=new RawPacket(token.getString("description"));
    	  sendPacket(wspacket,connector);
@@ -67,6 +67,21 @@ public class CallTransfer extends ListenerTransfer {
    	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
       wspacket=new RawPacket("{\"type\":\"candidateReady\"}");
    	  sendPacket(wspacket,connector);
+	}
+   	else if(type.equals("callConference")){
+	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+	  if(connector!=null){
+		wspacket=new RawPacket("{\"type\":\"callConference\", \"contact\":\""+event.getConnector().getUsername()+"\",\"callType\":\""+token.getString("callType")+"\"}");
+	  }else{
+		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente non connesso al server\"}");
+		connector=event.getConnector();
+	  }
+	  sendPacket(wspacket,connector);
+	}
+   	else if(type.equals("answeredCallConference")){
+	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+	  wspacket=new RawPacket("{\"type\":\"answeredCallConference\", \"user\":\"" +token.getString("user")+"\", \"answer\":\"true\"}");
+	  sendPacket(wspacket,connector);
 	}
   }
 }
