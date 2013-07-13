@@ -56,13 +56,13 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
-            alert("Notification Communication"+response);
+            alert('Notification Communication'+response);
             notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, NotificationCommunication:Notification});
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{
             var message = {
-              contact: response.contact,
-              type:'busy'
+							type:'busy',
+              contact: response.contact
             };
             Connection.send(JSON.stringify(message));
           }
@@ -75,8 +75,8 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{
             var message = {
-              contact: response.contact,
-              type:'busy'
+							type:'busy',
+              contact: response.contact              
             };
             Connection.send(JSON.stringify(message));
           }
@@ -84,7 +84,7 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         /**
          * segnala la presenza di chiusura chiamata ancora prima che quest'ultima inizi
          */
-        if (response.type === 'endcall'){
+        if (response.type === 'endCall'){
           onCalling=false;
           if(notificationView != null){
             notificationView.unrender();
@@ -99,8 +99,8 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
     refuse : function(caller){
       onCalling=false;
       var message = {
-        contact: caller,
-        type:'refusecall'
+        type:'refusecall',
+        contact: caller
       };
       Connection.send(JSON.stringify(message));
     }

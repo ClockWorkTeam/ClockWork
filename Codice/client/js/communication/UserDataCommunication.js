@@ -28,7 +28,6 @@ define(['connection'], function(Connection){
     checkPassword: function(model, password, view) {
       var message = {
         type: 'checkCredentials',
-        username: model.toJSON().username,
         password: password
       };
       Connection.send(JSON.stringify(message));
@@ -53,7 +52,6 @@ define(['connection'], function(Connection){
     changeData: function(model, name, surname, password, view){
       var credentials ={
         type: 'changeData',
-        username: model.toJSON().username,
         name:name,
         surname: surname,
         password: password
@@ -74,7 +72,7 @@ define(['connection'], function(Connection){
           view.render();
           alert('Operazione riuscita');		
           }else if(response.answer === 'false'){
-            alert('Operazione fallita');		
+            alert(response.error);		
           }
         }
       }

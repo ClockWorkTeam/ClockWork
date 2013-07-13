@@ -22,12 +22,12 @@ define(['connection', 'collection/ContactsCollection', 'collection/TextMessagesC
   /**
    * ascoltatore di messaggi testuali in ingresso
    */
-  Connection.addEventListener("message", onReceived, false);
+  Connection.addEventListener('message', onReceived, false);
   function onReceived(str){
     var response = JSON.parse(str.data);
     if (response.type === 'sendText'){
       TextMessagesCollection.add({contact:response.contact, message:response.message ,source:'received'});
-      var currentUnread = ContactsCollection.where({username: response.contact})[0].get("unread");
+      var currentUnread = ContactsCollection.where({username: response.contact})[0].get('unread');
       if (currentUnread > -1){
         ContactsCollection.where({username: response.contact})[0].set({unread: currentUnread + 1});
       }
