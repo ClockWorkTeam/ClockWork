@@ -443,6 +443,50 @@ true
 \begin_layout Standard
 
 \series bold
+Rifiuto di una chiamata:
+\end_layout
+
+\begin_layout Standard
+CallTransfer invia a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+answeredCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+answer, error
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: answer contiene la stringa 
+\emph on
+false, 
+\emph default
+error contiene il motivo di rifiuto, scelto tra 
+\emph on
+Utente non connesso al server, Chiamata rifiutata 
+\emph default
+o 
+\emph on
+Utente occupato in un'altra conversazione
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
 Protocollo della descrizione della sessione:
 \end_layout
 
@@ -790,7 +834,7 @@ Richiesta degli utenti presenti nel server:
 \end_layout
 
 \begin_layout Standard
-ContactsComunication invia invia a AuthenticationTransfer una stringa avente:
+ContactsComunication invia a AuthenticationTransfer una stringa avente:
 \end_layout
 
 \begin_layout Itemize
@@ -804,7 +848,7 @@ getContacts
 \end_layout
 
 \begin_layout Standard
-AuthenticationTransferrisponde inviando a ContactsComunication una stringa
+AuthenticationTransfer risponde inviando a ContactsComunication una stringa
  avente:
 \end_layout
 
@@ -848,13 +892,17 @@ i,
 \shape default
 surname
 \shape slanted
-i, IPi
+i,
+\emph on
+ IP
+\emph default
+i
 \shape default
  vengono ripetuti per il numero di utenti presenti nel server, 
 \emph on
 i 
 \emph default
-parte da 0 e arriva al numero di utenti-1
+quindi parte da 0 e arriva a size-1
 \end_layout
 
 \end_deeper
@@ -872,6 +920,391 @@ dalla classe UserDataCommunication.
  In questi casi tuttavia non invia tutta la lista di utanti ma un solo utente.
 \end_layout
 
+\begin_layout Subsection*
+Comunicazione tra FileComunication e FileTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Invio di un file:
+\end_layout
+
+\begin_layout Standard
+FileComunication invia a FileTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+file, contact
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avviso del rifiuto di un file da parte del destinatario:
+\end_layout
+
+\begin_layout Standard
+FileTransfer invia a FileComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+fileRefused
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Subsection*
+Comunicazione tra NotificationComunication e CallTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avviso di chiamata:
+\end_layout
+
+\begin_layout Standard
+CallTransfer invia a NotificationComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+call
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact, callType
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avviso di utente chiamato occupato:
+\end_layout
+
+\begin_layout Standard
+NotificationComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+busy
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Rifiuto di una chiamata:
+\end_layout
+
+\begin_layout Standard
+NotificationComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+refuseCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Subsection*
+Comunicazione tra NotificationComunication e FileTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Avviso di ricezione di un file:
+\end_layout
+
+\begin_layout Standard
+FileTransfer invia a NotificationComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+file
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi:
+\series default
+ file, contact
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Rifiuto di un file:
+\end_layout
+
+\begin_layout Standard
+NotificationComunication invia a FileTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+refuseFile
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Subsection*
+Comunicazione tra TutorialComunication e AuthenticationTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Rifiuto di un file:
+\end_layout
+
+\begin_layout Standard
+AuthenticationTransfer invia a TutorialComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+tutorials
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+size, title
+\shape slanted
+i, 
+\shape default
+path
+\shape slanted
+i
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: title
+\shape slanted
+i, 
+\shape default
+path
+\shape slanted
+i
+\shape default
+ vengono ripetuti per il numero di tutorial presenti nel server, 
+\emph on
+i 
+\emph default
+quindi parte da 0 e arriva a size-1
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Comunicazione tra UserDataComunication e UserTransfer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Controllo credenziali:
+\end_layout
+
+\begin_layout Standard
+UserDataCommunication invia a UserTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+checkCredentials
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+password
+\end_layout
+
+\begin_layout Standard
+UserTransfer risponde inviando a UserDataCommunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+checkCredentials
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+answer
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Cambio dati, credenziali corrette:
+\end_layout
+
+\begin_layout Standard
+UserDataCommunication invia a UserTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+changeData
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+name, surname, password
+\end_layout
+
+\begin_layout Standard
+UserTransfer risponde inviando a UserDataCommunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+changeData
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+answer, (error)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: se answer contiene il valore 
+\emph on
+false
+\emph default
+, allora error conterrà il tipo di errore, cioè una stringa tra 
+\emph on
+Errore nell'operazione di modifica del nome e del cognome, Errore nell'operazion
+e di modifica della password 
+\emph default
+o 
+\emph on
+Username errato
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="42" columns="5">
@@ -1531,6 +1964,7 @@ FileCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 file
 \end_layout
@@ -1586,6 +2020,7 @@ NotificationCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 busy
 \end_layout
@@ -1635,6 +2070,7 @@ CallTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 refuseCall
 \end_layout
@@ -1685,6 +2121,7 @@ contact
 \begin_layout Plain Layout
 
 \series bold
+\emph on
 refuseFile
 \end_layout
 
@@ -1736,8 +2173,6 @@ RecordMessageCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 sendRecord
 \end_layout
 
@@ -1789,8 +2224,6 @@ RecordMessageTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 removeRecord
 \end_layout
 
@@ -1840,7 +2273,7 @@ contact, path, date
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+getRecords
 \end_layout
 
 \end_inset
@@ -1944,15 +2377,9 @@ UserDataCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
-\begin_inset Quotes eld
-\end_inset
-
 checkCredentials
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1961,7 +2388,7 @@ checkCredentials
 \begin_inset Text
 
 \begin_layout Plain Layout
-username, password
+password
 \end_layout
 
 \end_inset
@@ -2001,14 +2428,7 @@ username, password
 \begin_layout Plain Layout
 
 \emph on
-\begin_inset Quotes eld
-\end_inset
-
 changeData
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2017,7 +2437,7 @@ changeData
 \begin_inset Text
 
 \begin_layout Plain Layout
-username, name, surname, password
+name, surname, password
 \end_layout
 
 \end_inset
@@ -2103,6 +2523,7 @@ AuthenticationTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 login
 \end_layout
@@ -2152,6 +2573,7 @@ AuthenticationCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 getContacts
 \end_layout
@@ -2211,6 +2633,7 @@ ContactsCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 signUp
 \end_layout
@@ -2273,6 +2696,7 @@ AuthenticationCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 tutorials
 \end_layout
@@ -2328,6 +2752,7 @@ CallTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 call
 \end_layout
@@ -2377,6 +2802,7 @@ contact, callType
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 answeredCall
 \end_layout
@@ -2439,6 +2865,7 @@ CallCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 offer
 \end_layout
@@ -2488,6 +2915,7 @@ creato da WebRTC
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 candidate
 \end_layout
@@ -2537,6 +2965,7 @@ creato da WebRTC
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 endCall
 \end_layout
@@ -2586,6 +3015,7 @@ endCall
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 candidateReady
 \end_layout
@@ -2635,6 +3065,7 @@ ChatTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 sendText
 \end_layout
@@ -2684,6 +3115,7 @@ ChatCommunication
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 notDelivered
 \end_layout
@@ -2744,8 +3176,6 @@ file
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 file, contact
 \end_layout
 
@@ -2796,8 +3226,6 @@ fileRefused
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 contact
 \end_layout
 
@@ -2886,7 +3314,6 @@ RecordMessageTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 (
 \begin_inset Quotes eld
@@ -2960,7 +3387,6 @@ RecordMessageCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 (
 \begin_inset Quotes eld
@@ -3020,15 +3446,9 @@ UserTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
-\begin_inset Quotes eld
-\end_inset
-
 checkCredentials
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -3076,10 +3496,8 @@ answer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
-\begin_inset Quotes eld
-\end_inset
-
 changeData
 \end_layout
 
