@@ -90,7 +90,7 @@ define([
       $('#main').prepend(this.currentFunctions.el);
     },
     
-    createCallConference : function(type){
+    createCallConference : function(type,contact){
       /**
        * condizione messa per evitare di chiudere functionview non ancora create
        */
@@ -100,7 +100,7 @@ define([
         this.currentFunctions.render();
       }
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
-      this.currentFunctions.conference(false);
+      this.currentFunctions.conference(false,contact);
       $('#main').prepend(this.currentFunctions.el);
     }
   });

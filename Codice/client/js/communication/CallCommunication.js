@@ -7,7 +7,11 @@
  * 
  * Modifiche:
  * +---------+---------------+------------------------------------------+
- * | Data    | Programmatore |        Modifiche                         | 
+ * | Data    | Programmatore |        Modifiche                         |
+ * +---------+---------------+------------------------------------------+ 
+ * |130712   |    BG         | # Inserito controllo onIceCandidate      | 
+ * |         |               |   allo scopo di verificare se è una      | 
+ * |         |               |   videoconferenza o meno
  * +---------+---------------+------------------------------------------+
  * |13/07/11 |    BG         | + Medoto sendCallConference              | 
  * |         |               | + Medoto sendAnswerConference            | 
@@ -172,7 +176,7 @@ define(['connection'], function(Connection){
           answerReceived++;
           if(response.answer==='true'){
             confirmReceived++;
-            callView.addVideoConference(response.user)
+            callView.addVideoConference("jack2")
             if(confirmReceived==1){
               var isCaller=true;
               call.startCallConference(isCaller, typecall, call, callView,response.user)
@@ -222,10 +226,13 @@ define(['connection'], function(Connection){
      * funzione che invia al server la risposta dell'utente chiamato e avvia la videoconferenza con più utenti
      */
     sendAnswerConference: function (typecall, contact, callView){
-      recipient=contact;
+      recipient=[];
+      recipient.push(contact);
       remotevid=[];
-      callView.addVideoConference(contact);
-      var message = {type:'answeredCallConference', contact: recipient.toJSON().username};
+      peerConnection=[];
+      callView.addVideoConference("jack2");
+      console.log(recipient);
+      var message = {type:'answeredCallConference', contact: contact};
       Connection.send(JSON.stringify(message));
       this.startCallConference(false, typecall, this, callView,contact);
     },
@@ -296,7 +303,7 @@ define(['connection'], function(Connection){
        */
       function onRemoteStreamAdded(event) {
         console.log("Added remote stream");
-        remotevid.src = window.webkitURL.createObjectURL(event.stream);
+        remotevid[lastPeerConnection].src = window.webkitURL.createObjectURL(event.stream);
         remoteStream=event.stream;
         var event=new CustomEvent("setPeerConn",{
           detail:{
@@ -323,6 +330,7 @@ define(['connection'], function(Connection){
       try {
         console.log("Creating peer connection");
         peerConnection.push(new webkitRTCPeerConnection(pcConfig));
+        console.log("PeerConnection usati "+peerConnection.length);
         peerConnection[lastPeerConnection].onicecandidate = this.onIceCandidate;
       }catch (e) {
         console.log('Failed to create peerConnection, exception: ' + e.message);
@@ -347,6 +355,7 @@ define(['connection'], function(Connection){
      * all'altro utente
      */
     gotDescription : function(desc){
+      console.log(lastPeerConnection);
       if(lastPeerConnection==null){
         peerConnection.setLocalDescription(desc);
         var response=JSON.stringify(desc);
@@ -372,7 +381,11 @@ define(['connection'], function(Connection){
           id: event.candidate.sdpMid,
           candidate: event.candidate.candidate
         });
-        var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient.toJSON().username});
+        if(lastPeerConnection==null){
+          var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient.toJSON().username});
+        }else{
+          var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient[lastPeerConnection]});
+        }
         candidates.push(message);
       }else{
         console.log('End of candidates.');
@@ -388,7 +401,11 @@ define(['connection'], function(Connection){
             }
           );
         }
-        var message = JSON.stringify({type: 'candidateReady', contact: recipient.toJSON().username});
+        if(lastPeerConnection==null){
+          var message = JSON.stringify({type: 'candidateReady', contact: recipient.toJSON().username});
+        }else{
+          var message = JSON.stringify({type: 'candidateReady', contact: recipient[lastPeerConnection]});
+        }
         Connection.send(message);
       }
     },
@@ -418,7 +435,6 @@ define(['connection'], function(Connection){
          */
         if (response.type==='offer' && !isCaller){	
           started = true;
-          alert("Prova"+typecall);
           if(typecall==='video'){				
             navigator.webkitGetUserMedia({video:true, audio:true},
             function(stream) {
@@ -533,10 +549,9 @@ define(['connection'], function(Connection){
     
     
     startCallConference: function (isCaller, typecall, call, callView,contact){
-      lastPeerConnection=0;
-      console.log('sono su startCallConference' + contact);
+      lastPeerConnection=-1;
       sourcevid = document.getElementById('sourcevid');
-      remotevid.push(document.getElementById(contact));
+      remotevid.push(document.getElementById("jack2"));
       candidates=[];
       
       var started = false;
@@ -554,30 +569,21 @@ define(['connection'], function(Connection){
          * la creazione dello stream del chiamato che potrà essere video
          * o solo audio, inoltre imposto nella peerconnection lo sdp del remoto
          */
-        if (response.type==='offer' && !isCaller){	
+        if (response.type==='offer' && !isCaller){
+          lastPeerConnection++;	
           started = true;
           if(typecall==='video'){				
             navigator.webkitGetUserMedia({video:true, audio:true},
             function(stream) {
               sourcevid.src = window.webkitURL.createObjectURL(stream);
-              call.createPeerConnection();
+              call.createPeerConnectionConference();
               localStream=stream;
-              peerConnection.addStream(localStream);
-              peerConnection.setRemoteDescription(new RTCSessionDescription(response));
-              peerConnection.createAnswer(call.gotDescription);
+              console.log(peerConnection[0]);
+              peerConnection[lastPeerConnection].addStream(localStream);
+              peerConnection[lastPeerConnection].setRemoteDescription(new RTCSessionDescription(response));
+              peerConnection[lastPeerConnection].createAnswer(call.gotDescription);
             });
-          }
-          if(typecall==='audio'){
-            navigator.webkitGetUserMedia({video:false, audio:true},
-            function(stream) {
-              sourcevid.src = window.webkitURL.createObjectURL(stream);
-              call.createPeerConnection();
-              localStream=stream;
-              peerConnection.addStream(localStream);
-              peerConnection.setRemoteDescription(new RTCSessionDescription(response));
-              peerConnection.createAnswer(call.gotDescription);
-            });
-          }           
+          }       
         }
         
         /**
@@ -586,7 +592,7 @@ define(['connection'], function(Connection){
          */
         if (response.type==='answer' && isCaller){
           started=true;
-          peerConnection.setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[lastPeerConnection].setRemoteDescription(new RTCSessionDescription(response));
         }
         
         /**
@@ -597,7 +603,7 @@ define(['connection'], function(Connection){
           console.log('Adding candidate...');
           var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
           candidate:response.candidate});
-          peerConnection.addIceCandidate(candidate);
+          peerConnection[lastPeerConnection].addIceCandidate(candidate);
         }
         
         /**
@@ -655,6 +661,7 @@ define(['connection'], function(Connection){
           localStream=stream;		
           call.connectConference(started);
         });
+         console.log(peerConnection[0]);
       }
       onMessaggeListener=onMessage;
     },

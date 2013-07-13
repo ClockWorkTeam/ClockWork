@@ -196,7 +196,8 @@ define([
       alert('vedi dettaglio');
     },
     
-    conference : function(){
+    conference : function(isCaller,contact){
+      console.log("Sono in functionview");
       console.log("Prova");
       var contatti=[];
       alert('vedi dettaglio');
@@ -210,7 +211,7 @@ define([
       }
       this.callView=new CallView({FunctionsView:this});
       if(isCaller==false){
-        this.callView.conference(false, 'video',contatti);
+        this.callView.conference(false, 'video',contact);
       }else{
         this.callView.conference(true,'video',contatti);
       }

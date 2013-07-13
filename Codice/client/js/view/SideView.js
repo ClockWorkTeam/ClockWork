@@ -63,10 +63,12 @@ define([
 			_.bindAll(this, 'render', 'unrender', 'viewContact');
 			this.listenTo(this.collection, 'add', this.render);
 			document.addEventListener('acceptCall',acceptCall,false);
+      document.addEventListener('acceptCallConference',acceptCallConference,false);
 			var sideBarView=this;
  			function acceptCall(event){
 				sideBarView.setCall(event.detail.contact,event.detail.type);
 			};
+      console.log("Evvai");
       function acceptCallConference(event){
 				sideBarView.setCallConference(event.detail.contact,event.detail.type);
 			};
@@ -206,10 +208,11 @@ define([
      * e generare una conferenza con esso
      */
     setCallConference : function(contact,type){
+      console.log("Sono in sideview");
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
-          view.createConference(type);
+          view.createCallConference(type,contact);
         }
       });
     }

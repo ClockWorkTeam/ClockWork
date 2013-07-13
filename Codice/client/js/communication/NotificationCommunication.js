@@ -57,7 +57,7 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
           if(onCalling==false){
             onCalling=true;
             alert("Notification Communication"+response);
-            notificationView= new NotificationView({caller: response.contact, typeCall: response.typecall, NotificationCommunication:Notification});
+            notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, NotificationCommunication:Notification});
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{
             var message = {

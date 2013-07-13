@@ -91,6 +91,7 @@ define([
         });
         
       }else{
+        console.log("Iniziamo la conferenza");
         var event=new CustomEvent('acceptCallConference',{
           detail:{
             type:this.options.typeCall,

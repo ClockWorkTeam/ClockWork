@@ -107,6 +107,7 @@ define([
     },
     
     conference:function(isCaller,type,contatti){
+      console.log("Sono in callview");
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
