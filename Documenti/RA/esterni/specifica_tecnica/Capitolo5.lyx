@@ -126,1194 +126,14 @@ mytalk.server.functionmanager.Converter
  
 \end_layout
 
-\begin_layout Subsection*
-Comunicazione tra AuthenticationComunication e AuthenticationTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Autenticazione:
-\end_layout
-
-\begin_layout Standard
-AuthenticationComunication invia a AuthenticationTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-login
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-username, password
-\end_layout
-
-\begin_layout Standard
-AuthenticationTensfer risponde inviando a AuthenticationComunication una
- stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-login
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-answer, ( name, surname | error )
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione attributi: se answer è 
-\emph on
-true
-\emph default
- nel pacchetto vengono inseriti il nome e il cognome relativi al dato username,
- presenti nella base di dati.
- Altrimenti viene inserito error che può assumere come valori: 
-\emph on
-Password errata 
-\emph default
-o 
-\emph on
-Username errato
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Registrazione:
-\end_layout
-
-\begin_layout Standard
-AuthenticationComunication invia a AuthenticationTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-signUp
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-username, password, name, surname
-\end_layout
-
-\begin_layout Standard
-AuthenticationTensfer risponde inviando a AuthenticationComunication una
- stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-signUp
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang english
-answer, (error)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione attributi: se answer risulta 
-\emph on
-false 
-\emph default
-viene inserito error che può assumere come valori:
-\series bold
- 
-\series default
-\emph on
-Errore nell'inserimento dell'utente nel database 
-\emph default
-o 
-\emph on
-Username già presente
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Disconnessione:
-\end_layout
-
-\begin_layout Standard
-AuthenticationComunication invia a AuthenticationTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-logout
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra CallComunication e CallTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Instaurazione chiamata, utente non connesso:
-\end_layout
-
-\begin_layout Standard
-CallComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-call
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact,
-\series bold
- 
-\series default
-callType
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi: callType conterrà il tipo di chiamata, 
-\emph on
-video
-\emph default
- o 
-\emph on
-audio
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-answeredCall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-answer, error
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi: answer contiene la stringa 
-\emph on
-false
-\emph default
-, error contiene la stringa 
-\emph on
-Utente non connesso al server
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Accettazione di una chiamata:
-\end_layout
-
-\begin_layout Standard
-CallComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-answeredCall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-answeredCall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-answer
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi: answer contiene la stringa 
-\emph on
-true
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Rifiuto di una chiamata:
-\end_layout
-
-\begin_layout Standard
-CallTransfer invia a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-answeredCall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-answer, error
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi: answer contiene la stringa 
-\emph on
-false, 
-\emph default
-error contiene il motivo di rifiuto, scelto tra 
-\emph on
-Utente non connesso al server, Chiamata rifiutata 
-\emph default
-o 
-\emph on
-Utente occupato in un'altra conversazione
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Protocollo della descrizione della sessione:
-\end_layout
-
-\begin_layout Standard
-CallComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-sdp
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact, description
-\end_layout
-
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-offer
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-NOTA: la stringa non è altro che la stringa contenuta nel attributo description
- passato precedentemente
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-CallComunication risponde inviando a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-sdp
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact, description
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-NOTA: la stringa contenuta in description è diversa da quella inviata nel
- primo passaggio, infatti mentre nel primo caso la stringa proveniva dal
- chiamante, in questo caso proviene dal chiamato
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-answer
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-NOTA: la stringa non è altro che la stringa contenuta nel attributo description
- passato precedentemente
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Invio dei candidati per la configurazione della chiamata
-\end_layout
-
-\begin_layout Standard
-CallComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-candidateReady
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-candidateReady
-\end_layout
-
-\begin_layout Standard
-CallComunication risponde inviando a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-candidate
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact, candidate
-\end_layout
-
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-candidate
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-NOTA: la stringa non è altro che la stringa contenuta nel attributo candidate
- passato precedentemente
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\series bold
-Terminazione di una chiamata:
-\end_layout
-
-\begin_layout Standard
-CallComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-endCall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Standard
-CallTransfer risponde inviando a CallComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-endCall
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra ChatComunication e ChatTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Invio riuscito di un messaggio:
-\end_layout
-
-\begin_layout Standard
-ChatComunication invia a ChatTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-sendText
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi:
-\series default
- contact
-\series bold
-,
-\series default
- message
-\end_layout
-
-\begin_layout Standard
-ChatTransfer risponde inviando a ChatComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-sendText
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-message, contact
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Invio non riuscito di un messaggio:
-\end_layout
-
-\begin_layout Standard
-ChatComunication invia a ChatTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-sendText
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi:
-\series default
- contact
-\series bold
-,
-\series default
- message
-\end_layout
-
-\begin_layout Standard
-ChatTransfer risponde inviando a ChatComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-notDelivered
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-message, contact
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra ContactsComunication e AuthenticationTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Richiesta degli utenti presenti nel server:
-\end_layout
-
-\begin_layout Standard
-ContactsComunication invia a AuthenticationTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-getContacts
-\end_layout
-
-\begin_layout Standard
-AuthenticationTransfer risponde inviando a ContactsComunication una stringa
- avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-getContacts
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-size, username
-\shape slanted
-i, 
-\shape default
-name
-\shape slanted
-i, 
-\shape default
-surname
-\shape slanted
-i, IPi
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi:username
-\shape slanted
-i, 
-\shape default
-name
-\shape slanted
-i, 
-\shape default
-surname
-\shape slanted
-i,
-\emph on
- IP
-\emph default
-i
-\shape default
- vengono ripetuti per il numero di utenti presenti nel server, 
-\emph on
-i 
-\emph default
-quindi parte da 0 e arriva a size-1
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-NOTA: AuthenticationTransfer invia a ContactsComunication la stringa anche
- nei casi di ricezzione di stringe 
-\emph on
-login, signUp, logout 
-\emph default
-dalla classe AuthenticationCommunication e
-\emph on
- changeData 
-\emph default
-dalla classe UserDataCommunication.
- In questi casi tuttavia non invia tutta la lista di utanti ma un solo utente.
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra FileComunication e FileTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Invio di un file:
-\end_layout
-
-\begin_layout Standard
-FileComunication invia a FileTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-file
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-file, contact
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Avviso del rifiuto di un file da parte del destinatario:
-\end_layout
-
-\begin_layout Standard
-FileTransfer invia a FileComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-fileRefused
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra NotificationComunication e CallTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Avviso di chiamata:
-\end_layout
-
-\begin_layout Standard
-CallTransfer invia a NotificationComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-call
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact, callType
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Avviso di utente chiamato occupato:
-\end_layout
-
-\begin_layout Standard
-NotificationComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-busy
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Rifiuto di una chiamata:
-\end_layout
-
-\begin_layout Standard
-NotificationComunication invia a CallTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-refuseCall
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra NotificationComunication e FileTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Avviso di ricezione di un file:
-\end_layout
-
-\begin_layout Standard
-FileTransfer invia a NotificationComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-file
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi:
-\series default
- file, contact
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Rifiuto di un file:
-\end_layout
-
-\begin_layout Standard
-NotificationComunication invia a FileTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-refuseFile
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-contact
-\end_layout
-
-\begin_layout Subsection*
-Comunicazione tra TutorialComunication e AuthenticationTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Rifiuto di un file:
-\end_layout
-
-\begin_layout Standard
-AuthenticationTransfer invia a TutorialComunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-tutorials
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-size, title
-\shape slanted
-i, 
-\shape default
-path
-\shape slanted
-i
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi: title
-\shape slanted
-i, 
-\shape default
-path
-\shape slanted
-i
-\shape default
- vengono ripetuti per il numero di tutorial presenti nel server, 
-\emph on
-i 
-\emph default
-quindi parte da 0 e arriva a size-1
-\end_layout
-
-\end_deeper
-\begin_layout Subsection*
-Comunicazione tra UserDataComunication e UserTransfer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Controllo credenziali:
-\end_layout
-
-\begin_layout Standard
-UserDataCommunication invia a UserTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-checkCredentials
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-password
-\end_layout
-
-\begin_layout Standard
-UserTransfer risponde inviando a UserDataCommunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-checkCredentials
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-answer
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Cambio dati, credenziali corrette:
-\end_layout
-
-\begin_layout Standard
-UserDataCommunication invia a UserTransfer una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-changeData
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-name, surname, password
-\end_layout
-
-\begin_layout Standard
-UserTransfer risponde inviando a UserDataCommunication una stringa avente:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-type
-\series default
-: 
-\emph on
-changeData
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-altri attributi: 
-\series default
-answer, (error)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Descrizione degli attributi: se answer contiene il valore 
-\emph on
-false
-\emph default
-, allora error conterrà il tipo di errore, cioè una stringa tra 
-\emph on
-Errore nell'operazione di modifica del nome e del cognome, Errore nell'operazion
-e di modifica della password 
-\emph default
-o 
-\emph on
-Username errato
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="42" columns="5">
+<lyxtabular version="3" rows="44" columns="4">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="15page%">
-<column alignment="center" valignment="top" width="15page%">
+<column alignment="left" valignment="top" width="15page%">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1348,18 +168,7 @@ Altri attributi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Descrizione
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1386,7 +195,6 @@ AuthenticationCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 login
 \end_layout
@@ -1397,19 +205,7 @@ login
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 username, password
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Gli attributi username e password conterranno i dati inseriti dall'utente
- per effettuare l'autenticazione
 \end_layout
 
 \end_inset
@@ -1439,7 +235,6 @@ AuthenticationTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 signUp
 \end_layout
@@ -1450,25 +245,12 @@ signUp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 username, password, name, surname
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Gli attributi username, password, name e surname conterranno i dati inseriti
- dall'utente per effettuare la registrazione, i campi name e surname possono
- eventualmente essere vuoti
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1493,7 +275,6 @@ Gli attributi username, password, name e surname conterranno i dati inseriti
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 logout
 \end_layout
@@ -1509,16 +290,7 @@ logout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1543,7 +315,6 @@ CallCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 call
 \end_layout
@@ -1559,22 +330,6 @@ contact,
  
 \series default
 callType
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-L'attributo contact conterrà lo username dell'utente che si sta tentando
- di chiamare e l'attributo callType conterrà il tipo di chiamata, 
-\emph on
-video
-\emph default
- o 
-\emph on
-audio
 \end_layout
 
 \end_inset
@@ -1604,7 +359,6 @@ CallTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 answeredCall
 \end_layout
@@ -1620,16 +374,7 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1654,7 +399,6 @@ contact
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 sdp
 \end_layout
@@ -1670,16 +414,7 @@ contact, description
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1704,7 +439,6 @@ contact, description
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 candidate
 \end_layout
@@ -1724,16 +458,7 @@ candidate
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1758,7 +483,6 @@ candidate
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 candidateReady
 \end_layout
@@ -1774,16 +498,7 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1808,7 +523,6 @@ contact
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 endCall
 \end_layout
@@ -1824,16 +538,7 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1858,7 +563,6 @@ ChatCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 sendText
 \end_layout
@@ -1878,16 +582,7 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1912,7 +607,6 @@ ContactsCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 getContacts
 \end_layout
@@ -1930,16 +624,7 @@ getContacts
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1964,7 +649,6 @@ FileCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 file
 \end_layout
@@ -1975,30 +659,15 @@ file
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 file, contact
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
-invia il file
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
 FileTransfer
 \end_layout
 
@@ -2020,7 +689,6 @@ NotificationCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 busy
 \end_layout
@@ -2032,15 +700,6 @@ busy
 
 \begin_layout Plain Layout
 contact
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2070,7 +729,6 @@ CallTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 refuseCall
 \end_layout
@@ -2086,16 +744,7 @@ contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2120,7 +769,6 @@ contact
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 refuseFile
 \end_layout
@@ -2131,28 +779,15 @@ refuseFile
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 contact
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
 FileTransfer
 \end_layout
 
@@ -2173,6 +808,8 @@ RecordMessageCommunication
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 sendRecord
 \end_layout
 
@@ -2182,18 +819,7 @@ sendRecord
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 contact, path, date
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2202,8 +828,6 @@ contact, path, date
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 RecordMessageTransfer
 \end_layout
 
@@ -2224,6 +848,8 @@ RecordMessageTransfer
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\emph on
 removeRecord
 \end_layout
 
@@ -2233,70 +859,12 @@ removeRecord
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 contact, path, date
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-getRecords
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2339,18 +907,7 @@ TutorialCommunication
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2377,7 +934,6 @@ UserDataCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 checkCredentials
 \end_layout
@@ -2393,20 +949,11 @@ password
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+UserTransfer
 \end_layout
 
 \end_inset
@@ -2442,16 +989,7 @@ name, surname, password
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2489,16 +1027,7 @@ name, surname, password
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2523,7 +1052,6 @@ AuthenticationTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 login
 \end_layout
@@ -2534,21 +1062,12 @@ login
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+answer, (name,surname| error)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2573,7 +1092,92 @@ AuthenticationCommunication
 
 \begin_layout Plain Layout
 
-\series bold
+\emph on
+signUp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+answer, (error)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+tutorials
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+size, title
+\shape slanted
+i, 
+\shape default
+path
+\shape slanted
+i
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TutorialCommunication
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \emph on
 getContacts
 \end_layout
@@ -2599,139 +1203,11 @@ i, IPi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 ContactsCommunication
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\emph on
-signUp
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-answer, (error)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Se answer risulta 
-\emph on
-false 
-\emph default
-viene inserito error che può assumere come valori:
-\series bold
- 
-\series default
-\emph on
-Errore nell'inserimento dell'utente nel database 
-\emph default
-o 
-\emph on
-Username già presente
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-AuthenticationCommunication
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\emph on
-tutorials
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-size, title
-\shape slanted
-i, 
-\shape default
-path
-\shape slanted
-i,
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TutorialCommunication
 \end_layout
 
 \end_inset
@@ -2752,7 +1228,6 @@ CallTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 call
 \end_layout
@@ -2768,20 +1243,11 @@ contact, callType
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+NotificationCommunication
 \end_layout
 
 \end_inset
@@ -2802,7 +1268,6 @@ contact, callType
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 answeredCall
 \end_layout
@@ -2814,28 +1279,6 @@ answeredCall
 
 \begin_layout Plain Layout
 answer,(error)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Se answer risulta 
-\emph on
-false 
-\emph default
-viene inserito error che può assumere come valori:
-\series bold
- 
-\series default
-\emph on
-Utente non connesso al server, Chiamata rifiutata 
-\emph default
-o 
-\emph on
-Utente occupato in un'altra conversazione
 \end_layout
 
 \end_inset
@@ -2865,7 +1308,6 @@ CallCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 offer
 \end_layout
@@ -2881,7 +1323,7 @@ creato da WebRTC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2890,7 +1332,38 @@ creato da WebRTC
 
 \end_inset
 </cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+answer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+creato da WebRTC
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2915,7 +1388,6 @@ creato da WebRTC
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 candidate
 \end_layout
@@ -2931,16 +1403,7 @@ creato da WebRTC
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2965,57 +1428,6 @@ creato da WebRTC
 
 \begin_layout Plain Layout
 
-\series bold
-\emph on
-endCall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
 \emph on
 candidateReady
 \end_layout
@@ -3031,7 +1443,7 @@ candidateReady
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3040,11 +1452,80 @@ candidateReady
 
 \end_inset
 </cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+endCall
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NotificationCommunication
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CallCommunication
 \end_layout
 
 \end_inset
@@ -3065,7 +1546,6 @@ ChatTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 sendText
 \end_layout
@@ -3077,15 +1557,6 @@ sendText
 
 \begin_layout Plain Layout
 message, contact
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -3115,7 +1586,6 @@ ChatCommunication
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 notDelivered
 \end_layout
@@ -3131,16 +1601,7 @@ message, contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3165,7 +1626,6 @@ FileTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 file
 \end_layout
@@ -3181,20 +1641,11 @@ file, contact
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+NotifiactionCommunication
 \end_layout
 
 \end_inset
@@ -3215,7 +1666,6 @@ file, contact
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 fileRefused
 \end_layout
@@ -3226,25 +1676,16 @@ fileRefused
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact
+contact, error
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-informa
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+FileCommunication
 \end_layout
 
 \end_inset
@@ -3265,6 +1706,7 @@ ListenerTransfer
 
 \begin_layout Plain Layout
 
+\series bold
 \emph on
 -
 \end_layout
@@ -3280,20 +1722,11 @@ ListenerTransfer
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+-
 \end_layout
 
 \end_inset
@@ -3315,16 +1748,7 @@ RecordMessageTransfer
 \begin_layout Plain Layout
 
 \emph on
-(
-\begin_inset Quotes eld
-\end_inset
-
-saveMessage
-\begin_inset Quotes erd
-\end_inset
-
-) non esiste...
- io l'ho chiamato sendRecord nei documenti
+getRecords
 \end_layout
 
 \end_inset
@@ -3333,40 +1757,29 @@ saveMessage
 \begin_inset Text
 
 \begin_layout Plain Layout
-answer
-\series bold
-, error
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Se answer è 
+size, 
+\shape slanted
 \emph on
-false
+sender
 \emph default
- viene inviato un error contenente il testo
-\series default
- 
-\series bold
+i, 
 \emph on
-Errore nella registrazione del messaggio
+message
+\emph default
+i, 
+\emph on
+dateCreation
+\emph default
+i
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
-RecordMessageCommunication
+NotificationCommunication
 \end_layout
 
 \end_inset
@@ -3388,15 +1801,7 @@ RecordMessageCommunication
 \begin_layout Plain Layout
 
 \emph on
-(
-\begin_inset Quotes eld
-\end_inset
-
-removeMessage
-\begin_inset Quotes erd
-\end_inset
-
-) non esiste si chiama removeRecord
+removeRecord
 \end_layout
 
 \end_inset
@@ -3405,27 +1810,56 @@ removeMessage
 \begin_inset Text
 
 \begin_layout Plain Layout
-answer
+answer, (error)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
 RecordMessageCommunication
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+sendRecord
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+answer,(error)
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3446,7 +1880,6 @@ UserTransfer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 checkCredentials
 \end_layout
@@ -3462,20 +1895,11 @@ answer
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+UserDataCommunication
 \end_layout
 
 \end_inset
@@ -3496,7 +1920,6 @@ answer
 
 \begin_layout Plain Layout
 
-\series bold
 \emph on
 changeData
 \end_layout
@@ -3512,65 +1935,7 @@ answer, error
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-L'attributo 
-\begin_inset Quotes eld
-\end_inset
-
-answer
-\begin_inset Quotes erd
-\end_inset
-
- potrà avere valore 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- o 
-\begin_inset Quotes eld
-\end_inset
-
-false
-\begin_inset Quotes erd
-\end_inset
-
-.
- L'attributo 
-\begin_inset Quotes eld
-\end_inset
-
-error
-\begin_inset Quotes erd
-\end_inset
-
- sarà presente solo nel caso in cui 
-\begin_inset Quotes eld
-\end_inset
-
-answer
-\begin_inset Quotes erd
-\end_inset
-
- abbia valore 
-\begin_inset Quotes eld
-\end_inset
-
-false
-\begin_inset Quotes erd
-\end_inset
-
- e conterrà una descrizione dell'errore avvenuto
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
