@@ -76,8 +76,10 @@ public class AuthenticationManager{
 	User user= userDao.getUser(username);
 	if(user!=null){
 	  userDao.setIP(username, "0");
-	  userList.getUser(username).setIP("0");
+	  user = userList.getUser(username);
+	  user.setIP("0");
 	}
+	System.out.println(user.getIP());
 	return user;
   }
 

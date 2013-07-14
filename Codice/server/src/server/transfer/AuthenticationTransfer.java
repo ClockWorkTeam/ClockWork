@@ -45,7 +45,8 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	WebSocketPacket wspacket=null;
    	if(type.equals("login")){
    	  WebSocketConnector connector = getUserConnector(token.getString("username"));
-      if(connector!=null){
+      if(connector==null){
+    	  System.out.println("login");
    	      User user=null;
 		  try {
 			user = authenticationManager.login(token.getString("username"),token.getString("password"),event.getConnector().getRemoteHost().toString());
@@ -59,6 +60,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
 			wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
 		  }
       }else{
+    	  System.out.println("già loggato");
     	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente già autenticato su un'altro dispositivo\"}");
       }
    	  sendPacket(wspacket, event.getConnector());
@@ -106,7 +108,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
     if(event.getConnector().getUsername()!=null){
       User user= userManager.getUserData(event.getConnector().getUsername());
       if(!user.getIP().equals("0")){
-        authenticationManager.logout(user.getUsername());
+        user=authenticationManager.logout(user.getUsername());
     	java.util.Vector<User> newUser = new java.util.Vector<User>();
     	newUser.add(user);
     	WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
