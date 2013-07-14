@@ -59,7 +59,7 @@ metodo per la gestione dei token
    		  java.util.Vector<User> newUser = new java.util.Vector<User>();
    		  newUser.add(userManager.getUserData(event.getConnector().getUsername()));
    		  WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-  		  broadcastToAll(wspacket2);
+   		  broadcast(wspacket2, event.getConnector());
    	    }else if (!answerData){
    	      wspacket = new RawPacket("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}");
    	    }else if(!answerPassword){

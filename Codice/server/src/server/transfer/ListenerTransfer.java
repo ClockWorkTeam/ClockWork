@@ -45,9 +45,11 @@ abstract class ListenerTransfer implements WebSocketServerTokenListener{
    *
    * @param packet Pacchetto da inviare
    */
-  public void broadcastToAll(WebSocketPacket packet) {
+  public void broadcast(WebSocketPacket packet, WebSocketConnector from) {
   	for (WebSocketConnector lConnector : connectedUsers) {
-      tokenServer.sendPacket(lConnector, packet);
+  	  if(!lConnector.equals(from)){
+  		tokenServer.sendPacket(lConnector, packet);
+  	  }
     }
   }
 

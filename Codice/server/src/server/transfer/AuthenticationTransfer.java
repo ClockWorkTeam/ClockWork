@@ -51,7 +51,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
 	   	java.util.Vector<User> newUser = new java.util.Vector<User>();
 	   	newUser.add(user);
 	   	WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-	  	broadcastToAll(wspacket2);
+	  	broadcast(wspacket2, event.getConnector());
 	  }catch (Exception e){
 		wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
 	  }
@@ -65,7 +65,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
 		java.util.Vector<User> newUser = new java.util.Vector<User>();
 		newUser.add(user);
 		WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-		broadcastToAll(wspacket2);
+		broadcast(wspacket2, event.getConnector());
 	  }catch(Exception e){
 	    wspacket = new RawPacket("{\"type\":\"signUp\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
 	  }
@@ -82,7 +82,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	    java.util.Vector<User> newUser = new java.util.Vector<User>();
    	    newUser.add(user);
    	    WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-  	    broadcastToAll(wspacket2);
+   	    broadcast(wspacket2, event.getConnector());
    	  }
     }
   }
@@ -104,7 +104,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
     	java.util.Vector<User> newUser = new java.util.Vector<User>();
     	newUser.add(user);
     	WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-    	broadcastToAll(wspacket2);
+    	broadcast(wspacket2, event.getConnector());
       }
     }
     connectedUsers.remove(event.getConnector());
