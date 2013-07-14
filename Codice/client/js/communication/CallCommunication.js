@@ -359,11 +359,11 @@ define(['connection'], function(Connection){
       if(lastPeerConnection==null){
         peerConnection.setLocalDescription(desc);
         var response=JSON.stringify(desc);
-        var credentials={type: 'offer', description: response, contact: recipient.toJSON().username};
+        var credentials={type: 'sdp', description: response, contact: recipient.toJSON().username};
       }else{
         peerConnection[lastPeerConnection].setLocalDescription(desc);  
         var response=JSON.stringify(desc);
-        var credentials={type: 'offer', description: response, contact: recipient[lastPeerConnection]};
+        var credentials={type: 'sdp', description: response, contact: recipient[lastPeerConnection]};
       }
       Connection.send(JSON.stringify(credentials));
     },
@@ -570,6 +570,7 @@ define(['connection'], function(Connection){
          * o solo audio, inoltre imposto nella peerconnection lo sdp del remoto
          */
         if (response.type==='offer' && !isCaller){
+          console.log("Prova SDP");
           lastPeerConnection++;	
           started = true;
           if(typecall==='video'){				

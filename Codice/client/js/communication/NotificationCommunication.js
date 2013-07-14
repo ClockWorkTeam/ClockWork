@@ -56,7 +56,6 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
-            alert('Notification Communication'+response);
             notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, NotificationCommunication:Notification});
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{
@@ -99,7 +98,7 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
     refuse : function(caller){
       onCalling=false;
       var message = {
-        type:'refusecall',
+        type:'refuseCall',
         contact: caller
       };
       Connection.send(JSON.stringify(message));
