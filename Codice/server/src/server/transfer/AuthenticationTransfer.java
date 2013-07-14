@@ -19,6 +19,7 @@
 */
 package server.transfer;
 
+import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
 import org.jwebsocket.kit.RawPacket;
 import org.jwebsocket.kit.WebSocketServerEvent;
@@ -43,18 +44,23 @@ public class AuthenticationTransfer extends ListenerTransfer{
     String type= token.getString("type");
    	WebSocketPacket wspacket=null;
    	if(type.equals("login")){
-   	  User user=null;
-	  try {
-		user = authenticationManager.login(token.getString("username"),token.getString("password"),event.getConnector().getRemoteHost().toString());
-	    event.getConnector().setUsername(user.getUsername());
-	   	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"true\", \"name\":\""+user.getName()+"\", \"surname\":\""+user.getSurname()+"\"}");
-	   	java.util.Vector<User> newUser = new java.util.Vector<User>();
-	   	newUser.add(user);
-	   	WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
-	  	broadcast(wspacket2, event.getConnector());
-	  }catch (Exception e){
-		wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
-	  }
+   	  WebSocketConnector connector = getUserConnector(token.getString("username"));
+      if(connector!=null){
+   	      User user=null;
+		  try {
+			user = authenticationManager.login(token.getString("username"),token.getString("password"),event.getConnector().getRemoteHost().toString());
+		    event.getConnector().setUsername(user.getUsername());
+		   	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"true\", \"name\":\""+user.getName()+"\", \"surname\":\""+user.getSurname()+"\"}");
+		   	java.util.Vector<User> newUser = new java.util.Vector<User>();
+		   	newUser.add(user);
+		   	WebSocketPacket wspacket2=new RawPacket(converter.convertUsers(newUser, "\"type\":\"getContacts\","));
+		  	broadcast(wspacket2, event.getConnector());
+		  }catch (Exception e){
+			wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
+		  }
+      }else{
+    	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente già autenticato su un'altro dispositivo\"}");
+      }
    	  sendPacket(wspacket, event.getConnector());
    	}
    	else if(type.equals("signUp")){
