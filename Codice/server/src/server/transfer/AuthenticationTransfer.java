@@ -61,7 +61,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
 		  }
       }else{
     	  System.out.println("già loggato");
-    	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente già autenticato su un'altro dispositivo\"}");
+    	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}");
       }
    	  sendPacket(wspacket, event.getConnector());
    	}
