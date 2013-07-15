@@ -5783,7 +5783,7 @@ Attributi pubblici:
 \series bold
 [String] username
 \series default
-: username del utente
+: username dell' utente
 \end_layout
 
 \begin_layout Itemize
@@ -5800,7 +5800,7 @@ password dell'utente
 \series bold
 [String] name
 \series default
-: nome del utente
+: nome dell' utente
 \end_layout
 
 \begin_layout Itemize
@@ -5808,7 +5808,7 @@ password dell'utente
 \series bold
 [String] surname
 \series default
-: cognome del utente
+: cognome dell' utente
 \end_layout
 
 \begin_layout Subsection
@@ -5822,8 +5822,9 @@ template
 \family typewriter
 mytalk.client.template
 \family default
- costituisce la parte del sistema che implementa l'interfaccia web usufruibile
+ costituisce la parte del sistema che definisce ed implementa l'interfaccia web usufruibile
  dagli utenti mediante pagine web, visualizzata in base alle esigenze.
+ Viene utilizzato il sistema di template fornito da Underscore.js, verso il quale Backbone.js ha una dipendenza
 \end_layout
 
 \begin_layout Subsubsection
@@ -5834,8 +5835,7 @@ mytalk.client.template.AuthenticationTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che l'utente visualizzerà necessari per effettuare le operazioni di 
+ necessari per effettuare le operazioni di 
 \emph on
 login
 \emph default
@@ -5857,7 +5857,6 @@ mytalk.client.view.AuthenticationView
 \begin_layout Standard
 
 \series bold
-\lang english
 Visualizzazione della pagina:
 \end_layout
 
@@ -5875,7 +5874,7 @@ Utente non autenticato:
 \lang english
 input#user:
 \series default
- input di tipo text, in cui l'utente dovrà inserire il proprio username
+ input con tipo text ed id user, in cui l'utente deve inserire il proprio username
  per effettuare l'accesso
 \end_layout
 
@@ -5885,7 +5884,7 @@ input#user:
 \lang english
 input#password: 
 \series default
-input di tipo password, in cui l'utente dovrà inserire la propria password
+input con tipo password ed id password, in cui l'utente deve inserire la propria password
  per effettuare l'accesso
 \end_layout
 
@@ -5895,9 +5894,14 @@ input di tipo password, in cui l'utente dovrà inserire la propria password
 \lang english
 button#login: 
 \series default
-bottone per effettuare la 
+pulsante con id login per effettuare il 
 \emph on
 login 
+\emph default
+tramite il metodo 
+\family typewriter
+mytalk.client.view.AuthenticationView.connect()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -5906,14 +5910,13 @@ login
 \lang english
 button#signup: 
 \series default
-bottone per visualizzare il modulo di registrazione
+pulsante con id signup per visualizzare il modulo di registrazione
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-\lang english
 Registrazione:
 \end_layout
 
@@ -5924,7 +5927,7 @@ Registrazione:
 \lang english
 input#user:
 \series default
- input di tipo text, in cui l'utente dovrà inserire il proprio username
+ input con tipo text ed id user, in cui l'utente deve inserire lo username desiderato
  per effettuare la registrazione 
 \end_layout
 
@@ -5934,7 +5937,7 @@ input#user:
 \lang english
 input#password: 
 \series default
-input di tipo password, in cui l'utente dovrà inserire la propria password
+input con tipo password ed id password, in cui l'utente deve inserire la password desiderata
  per effettuare la registrazione
 \end_layout
 
@@ -5944,9 +5947,8 @@ input di tipo password, in cui l'utente dovrà inserire la propria password
 \lang english
 input#password2: 
 \series default
-input di tipo password, in cui l'utente dovrà inserire nuovamente la propria
- password per controllare che quella inserita precedentemente sia quella
- desiderata
+input con tipo password ed id password2, in cui l'utente deve inserire nuovamente la propria
+ password per controllare che non ci siano errori in quella inserita precedentemente 
 \end_layout
 
 \begin_layout Itemize
@@ -5955,7 +5957,7 @@ input di tipo password, in cui l'utente dovrà inserire nuovamente la propria
 \lang english
 input#name: 
 \series default
-input di tipo text, in cui l'utente potrà inserire il proprio nome
+input con tipo text ed id name, in cui l'utente può inserire il proprio nome
 \end_layout
 
 \begin_layout Itemize
@@ -5964,7 +5966,7 @@ input di tipo text, in cui l'utente potrà inserire il proprio nome
 \lang english
 input#surname: 
 \series default
-input di tipo text, in cui l'utente potrà inserire il proprio cognome
+input con tipo text ed id surname, in cui l'utente può inserire il proprio cognome
 \end_layout
 
 \begin_layout Itemize
@@ -5973,7 +5975,10 @@ input di tipo text, in cui l'utente potrà inserire il proprio cognome
 \lang english
 button#sign: 
 \series default
-bottone per effettuare la registrazione
+pulsante con id sign per effettuare la registrazione invocando il metodo
+\family typewriter
+mytalk.client.view.AuthenticationView.signUp()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -5982,7 +5987,10 @@ bottone per effettuare la registrazione
 \lang english
 button#deny: 
 \series default
-bottone per annullare la registrazione, e chiudere il modulo di registrazione
+pulsante con id deny per annullare la registrazione e chiudere il modulo di registrazione invocando il metodo
+\family typewriter
+mytalk.client.view.AuthenticationView.deny()
+\family default
 \end_layout
 
 \end_deeper
@@ -6000,9 +6008,14 @@ Utente autenticato:
 \lang english
 button#logout: 
 \series default
-bottone per effettuare la 
+pulsante con id logout per effettuare il 
 \emph on
 logout
+\emph default
+invocando il metodo
+\family typewriter
+mytalk.client.view.AuthenticationView.disconnect()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -6011,7 +6024,10 @@ logout
 \lang english
 button#edit: 
 \series default
-bottone che farà accedere alla sezione per modificare i propri dati
+pulsante con id edit per accedere alla sezione di modifica dei propri dati, ovvero a
+\family typewriter
+mytalk.client.template.UserDataTemplate
+\family default
 \end_layout
 
 \end_deeper
@@ -6023,8 +6039,7 @@ mytalk.client.template.CallTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che visualizzerà l'utente durante una chiamata in corso.
+ che l'utente vede durante una chiamata.
 \end_layout
 
 \begin_layout Itemize
@@ -6049,7 +6064,7 @@ Chiamata avviata:
 \lang english
 video#remotevid: 
 \series default
-video di tipologia autoplay, corrisponderà al video remoto
+video con tipologia autoplay ed id remotevid, corrisponde al video dell' utente con cui si sta dialogando
 \end_layout
 
 \begin_layout Itemize
@@ -6058,7 +6073,7 @@ video di tipologia autoplay, corrisponderà al video remoto
 \lang english
 video#sourcevid:
 \series default
- video di tipologia autoplay, corrisponderà al video locale 
+ video con tipologia autoplay ed id sourcevid, corrisponde al video locale 
 \end_layout
 
 \begin_layout Itemize
@@ -6067,7 +6082,10 @@ video#sourcevid:
 \lang english
 button#endCall: 
 \series default
-bottone che terminerà la chiamata
+pulsante con id endCall che termina la chiamata invocando il metodo
+\family typewriter
+mytalk.client.view.CallView.endCall()
+\family default
 \end_layout
 
 \end_deeper
@@ -6079,8 +6097,7 @@ mytalk.client.template.ChatTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che l'utente visualizzerà quando la chat è attiva.
+ che l'utente visualizza quando la chat è attiva.
 \end_layout
 
 \begin_layout Itemize
@@ -6104,7 +6121,7 @@ Chat attivata:
 \series bold
 textarea#compose: 
 \series default
-area testuale per la scrittura dei messaggi testuali
+area testuale di input con id compose per la scrittura dei messaggi testuali
 \end_layout
 
 \begin_layout Itemize
@@ -6113,7 +6130,10 @@ area testuale per la scrittura dei messaggi testuali
 \lang english
 button#Send: 
 \series default
-bottone che invierà il messaggio testuale
+pulsante con id Send per inviare il messaggio tramite il metodo
+\family typewriter
+mytalk.client.view.ChatView.send()
+\family default
 \end_layout
 
 \end_deeper
@@ -6124,11 +6144,9 @@ mytalk.client.template.ContactTemplate
 \end_layout
 
 \begin_layout Standard
-Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- dove l'utente visualizzerà la separazione degli utenti online da quelli
- offline nella lista degli utenti, e quando richiederà di avviare una video
- conferenza, mostrerà la possibilità di scegliere gli utenti partecipanti
+Questo template crea gli elementi dell'interfaccia grafica tramite cui
+ l'utente visualizza gli username dei contatti e se tali contatti siano online od offline,
+ e gli elementi per selezionare un contatto da contattare tramite videoconferenza 
 \end_layout
 
 \begin_layout Itemize
@@ -6149,10 +6167,8 @@ Utente autenticato:
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-verrà verificato l'indirizzo ip per ogni utente registrato al server e,
- se un utente è connesso verrà visto nella sidebar 
+viene verificato l'indirizzo ip per ogni utente registrato al server e,
+ se un utente è connesso viene mostrato 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6175,7 +6191,6 @@ offline
 \begin_layout Itemize
 
 \series bold
-\lang english
 Richiesta di video conferenza:
 \end_layout
 
@@ -6186,8 +6201,8 @@ Richiesta di video conferenza:
 \lang english
 input#username: 
 \series default
-input di tipo checkbox, dove l'utente decide i partecipanti alla video conferenz
-a
+input con tipo checkbox ed id username, con cui l'utente seleziona i partecipanti alla video
+ conferenza
 \end_layout
 
 \end_deeper
@@ -6199,10 +6214,8 @@ mytalk.client.template.FunctionsTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che l'utente visualizzerà necessari per effettuare le operazioni che si
- possono compiere dopo aver contattato un utente inserendo l'indirizzo IP,
- oppure selezionandolo dalla lista degli utenti.
+ necessari per effettuare le operazioni che si possono compiere 
+ dopo aver selezionato un utente tramite ip o dalla lista dei contatti.
 \end_layout
 
 \begin_layout Itemize
@@ -6217,7 +6230,6 @@ Il template è utilizzato da:
 \begin_layout Itemize
 
 \series bold
-\lang english
 Contatto tramite l'inserimento dell'indirizzo IP: 
 \end_layout
 
@@ -6228,8 +6240,8 @@ Contatto tramite l'inserimento dell'indirizzo IP:
 \lang english
 input#ip:
 \series default
- input di tipo text dove l'utente dovrà inserire l'indirizzo ip che vorrà
- contattare
+ input di tipo text ed id ip, in cui l'utente deve inserire l'indirizzo ip dell' utente
+ che vuole contattare
 \end_layout
 
 \begin_layout Itemize
@@ -6238,7 +6250,10 @@ input#ip:
 \lang english
 button#StartChat: 
 \series default
-button che avvierà la chat
+pulsante con id StartChat che avvia la chat creando una nuova
+\family typewriter
+mytalk.client.view.ChatView
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -6247,7 +6262,10 @@ button che avvierà la chat
 \lang english
 button#call: 
 \series default
-bottone che avvierà la chiamata
+pulsante con id call che avvia la chiamata tramite il metodo
+\family typewriter
+mytalk.client.view.FunctionsView.audiocall()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -6256,7 +6274,10 @@ bottone che avvierà la chiamata
 \lang english
 button#video: 
 \series default
-bottone che avvierà la video chiamata
+pulsante con id video che avvia la video chiamata tramite il metodo
+\family typewriter
+mytalk.client.view.FunctionsView.videocall()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -6265,14 +6286,16 @@ bottone che avvierà la video chiamata
 \lang english
 input#record: 
 \series default
-input di tipo checkbox che registrerà la chiamata
+input con tipo checkbox e id record per registrare la chiamata invocando il metodo 
+\family typewriter
+mytalk.client.view.FunctionsView.record()
+\family default
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-\lang english
 Utente offline:
 \end_layout
 
@@ -6283,7 +6306,10 @@ Utente offline:
 \lang english
 button#dataContact: 
 \series default
-bottone che farà visualizzare i dettagli del contatto
+pulsante con id dataContact che mostra i dettagli del contatto tramite il metodo
+\family typewriter
+mytalk.client.view.FunctionView.viewDataContact()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -6292,14 +6318,13 @@ bottone che farà visualizzare i dettagli del contatto
 \lang english
 button#sendVideoText:
 \series default
- bottone che farà visualizzare le opzioni per registrare un video messaggio
+pulsante con id sendVideoText che mostra le opzioni per registrare un video messaggio
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-\lang english
 Utente online:
 \end_layout
 
@@ -6310,7 +6335,10 @@ Utente online:
 \lang english
 button#call: 
 \series default
-bottone che avvierà la chiamata
+pulsante con id call che avvia la chiamata tramite il metodo
+\family typewriter
+mytalk.client.view.FunctionsView.audiocall()
+\family default
 \end_layout
 
 \begin_layout Itemize
@@ -6319,16 +6347,22 @@ bottone che avvierà la chiamata
 \lang english
 button#video: 
 \series default
-bottone che avvierà la video chiamata
+pulsante con id video che avvia la video chiamata tramite il metodo
+\family typewriter
+mytalk.client.view.FunctionsView.videocall()
+\family default
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 \lang english
-input#record:
+input#record: 
 \series default
- bottone che registrerà la chiamata
+input con tipo checkbox e id record per registrare la chiamata invocando il metodo 
+\family typewriter
+mytalk.client.view.FunctionsView.record()
+\family default
 \end_layout
 
 \end_deeper
@@ -6340,9 +6374,7 @@ mytalk.client.template.NotificationTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che farà visualizzare all'utente destinatario necessari per accettare o
- rifiutare una chiamata dal mittente
+ necessari per accettare o rifiutare una chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -6358,7 +6390,6 @@ myTalk.client.view.NotificationView
 \begin_layout Itemize
 
 \series bold
-\lang english
 Notifica della ricezione di una chiamata:
 \end_layout
 
@@ -6369,7 +6400,9 @@ Notifica della ricezione di una chiamata:
 \lang english
 button#acceptCall: 
 \series default
-bottone che avvierà la chiamata
+pulsante con id acceptCall che accetta la chiamata invocando il metodo
+\family typewriter
+myTalk.client.view.NotificationView.acceptCall()
 \end_layout
 
 \begin_layout Itemize
@@ -6378,7 +6411,9 @@ bottone che avvierà la chiamata
 \lang english
 button#refuseCall: 
 \series default
-bottone che rifiuterà la chiamata
+pulsante con id refuseCall che rifiuta la chiamata invocando il metodo
+\family typewriter
+myTalk.client.view.NotificationView.refuseCall()
 \end_layout
 
 \end_deeper
@@ -6390,8 +6425,7 @@ mytalk.client.template.RecordMessageTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che l'utente visualizzerà quando vorrà registrare un video messaggio
+necessari per registrare un video messaggio
 \end_layout
 
 \begin_layout Itemize
@@ -6407,7 +6441,6 @@ myTalk.client.view.RecordMessageView
 \begin_layout Itemize
 
 \series bold
-\lang english
 Registra un video messaggio:
 \end_layout
 
@@ -6418,8 +6451,8 @@ Registra un video messaggio:
 \lang english
 video#live_video:
 \series default
- video di tipologia autoplay e controls, così l'utente in maniera tale da
- poter fermare la registrazione quando lo si desidera
+ video con tipologia autoplay controls ed id live_video, affinché l'utente possa fermare 
+ la registrazione quando lo desidera
 \end_layout
 
 \end_deeper
@@ -6430,27 +6463,25 @@ mytalk.client.template.SideTemplate
 \end_layout
 
 \begin_layout Standard
-
+Questo template crea gli elementi dell'interfaccia grafica
+ necessari per la visualizzazione della 
 \lang english
-Questo template 
-\lang italian
-creerà gli elementi dell'interfaccia grafica
-\lang english
- che l'utente visualizzerà nella sidebar
+sidebar
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 Il template è utilizzato da:
-\family typewriter
 \series default
+\family typewriter
  myTalk.client.view.SideView
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+\lang english
 Sidebar:
 \end_layout
 
@@ -6461,7 +6492,9 @@ Sidebar:
 \lang english
 button#callIP:
 \series default
- bottone che permette di contattare una persona tramite l'indirizzo IP
+ pulsante con id callIP che permette di contattare una persona tramite l'indirizzo IP invocando il metodo
+\family typewriter
+ myTalk.client.view.SideView.callIP()
 \end_layout
 
 \begin_layout Itemize
@@ -6470,7 +6503,9 @@ button#callIP:
 \lang english
 ul#contacts:
 \series default
- lista degli utenti registrati presso il server
+ lista con id contacts, rappresenta gli utenti registrati presso il server, ciascuno di essi viene mostrato tramite 
+\family typewriter
+myTalk.client.template.ContactTemplate
 \end_layout
 
 \begin_layout Itemize
@@ -6479,8 +6514,7 @@ ul#contacts:
 \lang english
 button#conference: 
 \series default
-bottone che permetterà all'utente di selezionare i partecipanti alla video
- conferenza
+pulsante con id conference che permette all'utente di selezionare i partecipanti alla conferenza
 \end_layout
 
 \end_deeper
@@ -6492,8 +6526,7 @@ mytalk.client.template.StatisticsTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- riguardanti le statistiche che l'utente visualizzerà durante una chiamata
+ riguardanti le statistiche che l'utente visualizza durante una chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -6509,38 +6542,27 @@ myTalk.client.view.StatisticsView
 \begin_layout Itemize
 
 \series bold
-\lang english
 Statistiche:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-Durata della chiamata: tempo di durata della chiamata dall'avvio della chiamata
+Durata della chiamata: durata della chiamata mostrata in formato ore:minuti:secondi
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Byte audio trasmessi: KB trasmessi dall'avvio della chiamata
+Byte audio trasmessi: KB trasmessi dall'avvio della chiamata solo audio
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Byte video trasmessi: KB trasmessi dall'avvio della chiamata
+Byte video trasmessi: KB trasmessi dall'avvio della video chiamata
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Latenza: tempo di latenza in ms
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Velocità di trasmissione: KB/s trasmessi
 \end_layout
 
@@ -6553,9 +6575,7 @@ mytalk.client.template.UserDataTemplate
 
 \begin_layout Standard
 Questo template crea gli elementi dell'interfaccia grafica
-\lang english
- che l'utente visualizzerà quando accederà alla sezione per modificare i
- propri dati
+ necessari per la modifica dei propri dati salvati nella base di dati
 \end_layout
 
 \begin_layout Itemize
@@ -6571,7 +6591,6 @@ myTalk.client.view.UserDataView
 \begin_layout Itemize
 
 \series bold
-\lang english
 Modifica dati:
 \end_layout
 
@@ -6582,7 +6601,7 @@ Modifica dati:
 \lang english
 input#name: 
 \series default
-input di tipo text, dove l'utente potrà inserire il proprio nome
+input con tipo text ed id name, in cui l'utente può inserire il proprio nome
 \end_layout
 
 \begin_layout Itemize
@@ -6591,7 +6610,7 @@ input di tipo text, dove l'utente potrà inserire il proprio nome
 \lang english
 input#surname: 
 \series default
-input di tipo text, dove l'utente potrà inserire il poprio cognome
+input con tipo text ed id surname, in cui l'utente può inserire il poprio cognome
 \end_layout
 
 \begin_layout Itemize
@@ -6600,7 +6619,7 @@ input di tipo text, dove l'utente potrà inserire il poprio cognome
 \lang english
 input#password: 
 \series default
-input di tipo password, dove l'utente potrà inserire la nuova password
+input con tipo password ed id password, in cui l'utente può inserire la nuova password
 \end_layout
 
 \begin_layout Itemize
@@ -6609,8 +6628,8 @@ input di tipo password, dove l'utente potrà inserire la nuova password
 \lang english
 input#password2: 
 \series default
-input di tipo password, dove l'utente dovrà inserire la conferma della nuova
- password
+input con tipo password ed id password2, in cui l'utente deve inserire nuovamente la nuova
+ password, nel caso in cui l' abbia inserita nel campo precedente
 \end_layout
 
 \begin_layout Itemize
@@ -6619,7 +6638,7 @@ input di tipo password, dove l'utente dovrà inserire la conferma della nuova
 \lang english
 input#oldPassword: 
 \series default
-input di tipo password, dove l'utente dovrà inserire la password attuale
+input con tipo password ed id oldPassword, in cui l'utente deve inserire la password attuale per attuare le eventuali modifiche
 \end_layout
 
 \begin_layout Itemize
@@ -6628,7 +6647,9 @@ input di tipo password, dove l'utente dovrà inserire la password attuale
 \lang english
 button#submitChange: 
 \series default
-bottone che confermerà le modifiche
+pulsante con id submitChange per confermare le modifiche, invoca il metodo
+\family typewriter
+mytalk.client.view.UserDataView.checkPassword()
 \end_layout
 
 \begin_layout Itemize
@@ -6637,7 +6658,9 @@ bottone che confermerà le modifiche
 \lang english
 button#reset: 
 \series default
-bottone che resetterà gli input del modulo di modifica dei dati 
+pulsante con id reset che cancella quanto scritto in tutti i campi dati del template invocando il metodo
+\family typewriter
+mytalk.client.view.UserDataView.render()
 \end_layout
 
 \begin_layout Itemize
@@ -6646,8 +6669,10 @@ bottone che resetterà gli input del modulo di modifica dei dati
 \lang english
 button#denyChange: 
 \series default
-bottone che annullerà le modifiche e chiuderà il modulo di modifica dei
- dati
+pulsante con id denyChange che annulla le modifiche e chiude il modulo di modifica dei
+ dati invocando il metodo 
+\family typewriter
+mytalk.client.view.UserDataView.unrender()
 \end_layout
 
 \end_deeper
