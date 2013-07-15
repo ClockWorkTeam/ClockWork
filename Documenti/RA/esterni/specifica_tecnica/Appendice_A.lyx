@@ -63,6 +63,13 @@
 \begin_layout Section
 \start_of_appendix
 Backbone.js
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Backbone.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -72,10 +79,10 @@ Backbone.js nasce come libreria di sviluppo per DocumentCloud, un servizio
 \end_layout
 
 \begin_layout Standard
-Fin da subito gli obiettivi principali di Jeremy Ashkenas, lo sviluppatore
- principale, sono di realizzare una libreria minimale in grado di fornire
- degli strumenti di base per organizzare le proprie applicazioni e di poterla
- usare sia in ambiente browser che server (principalmente con Node.js).
+Gli obiettivi principali dello sviluppatore sono di realizzare una libreria
+ minimale in grado di fornire degli strumenti di base per organizzare le
+ proprie applicazioni e di poterla usare sia in ambiente browser che server
+ (principalmente con Node.js).
 \end_layout
 
 \begin_layout Standard
@@ -86,36 +93,54 @@ Backbone si focalizza nel fornire metodi utili per manipolare e visualizzare
 \begin_layout Standard
 Per la sua architettura, Backbone.js rientra nella categoria delle librerie
  MV*, in quanto implementa Model e View, ma non ha un componente Controller
- tradizionale, delegandone i compiti alle View.
- Questo approccio è abbastanza diffuso in ambito JavaScript, dove la diversa
- e più complessa gestione dell’interazione utente e dello stato dell’applicazion
-e non si adattano bene ai compiti di un controller.
+ tradizionale, delegandone i compiti alle View ed ai Router.
+ Questo approccio è abbastanza diffuso in ambito JavaScript, a causa della
+ diversa e più complessa gestione dell’interazione utente e dello stato
+ dell’applicazione.
 \end_layout
 
 \begin_layout Standard
-I componenti base di Backbone.js sono:
+I principali componenti di Backbone.js sono:
 \end_layout
 
 \begin_layout Itemize
-Backbone.Model: modelli 
+Backbone.Model
 \end_layout
 
 \begin_layout Itemize
-Backbone.Collection: liste di modelli 
+Backbone.Collection
 \end_layout
 
 \begin_layout Itemize
-Backbone.View: view 
+Backbone.View
 \end_layout
 
 \begin_layout Itemize
-Backbone.Router: routing e gestione centralizzata dello stato dell’applicazione
- 
+Backbone.Router
+\end_layout
+
+\begin_layout Itemize
+Backbone.Events
+\end_layout
+
+\begin_layout Subsubsection
+Dipendenze
 \end_layout
 
 \begin_layout Standard
-È inoltre disponibile un’interfaccia PubSub con Backbone.Events nonché un
- sistema basilare di templating.
+Per il suo funzionamento Backbone.js si appoggia ad alcune librerie esterne:
+\end_layout
+
+\begin_layout Itemize
+Underscore.js ( ≥ 1.4.3): è una libreria di utility per JavaScript che aggiunge
+ supporto funzionale per collezioni, array e funzioni.
+ Inoltre rende disponibile un sistema di templating HTML che è possibile
+ usare congiuntamente alle View di Backbone.js
+\end_layout
+
+\begin_layout Itemize
+jQuery ( ≥ 1.7.0): è una libreria che facilita la manipolazione del DOM in
+ JavaScript
 \end_layout
 
 \begin_layout Subsection
