@@ -80,7 +80,7 @@ public class CallTransfer extends ListenerTransfer {
 	}
    	else if(type.equals("answeredCallConference")){
 	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
-	  wspacket=new RawPacket("{\"type\":\"answeredCallConference\", \"user\":\"" +token.getString("user")+"\", \"answer\":\"true\"}");
+	  wspacket=new RawPacket("{\"type\":\"answeredCallConference\", \"user\":\"" +event.getConnector().getUsername()+"\", \"answer\":\"true\"}");
 	  sendPacket(wspacket,connector);
 	}
   }

@@ -134,7 +134,7 @@ define(['connection'], function(Connection){
        * imposto che sto chiamando e sono quindi occupato
        */
       remotevid=[];
-      peerConnection=[];
+      peerConnection=new Array();
       var event=new CustomEvent('setOnCall',{
         detail:{
           type:true
@@ -144,13 +144,21 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
-      Connection.addEventListener('message', onAnswer, false);
+      
       var message;
-      for(var i=0;i<recipient.length;i++){
-        console.log(recipient[i]);
-        message= {type:'callConference', contact: recipient[i] ,  callType:typecall};
-        Connection.send(JSON.stringify(message));
-      }
+      sourcevid = document.getElementById('sourcevid');
+      navigator.webkitGetUserMedia({video:true, audio:true},
+      function(stream) {
+        sourcevid.src = window.webkitURL.createObjectURL(stream);
+        localStream=stream;	
+        Connection.addEventListener('message', onAnswer, false);
+        for(var i=0;i<recipient.length;i++){
+          console.log(recipient[i]);
+          message= {type:'callConference', contact: recipient[i] ,  callType:typecall};
+          Connection.send(JSON.stringify(message));
+        }
+      });
+
       /**
        * aggiunta del listener per la ricezione della risposta dell'utente chiamato
        */
@@ -165,6 +173,7 @@ define(['connection'], function(Connection){
        */
       var answerReceived=0;
       var confirmReceived=0;
+      
       function onAnswer(evt){
         var response = JSON.parse(evt.data);
         if(response.type==='answeredCallConference'){
@@ -227,13 +236,14 @@ define(['connection'], function(Connection){
      * funzione che invia al server la risposta dell'utente chiamato e avvia la videoconferenza con più utenti
      */
     sendAnswerConference: function (typecall, contact, callView){
+      sourcevid = document.getElementById('sourcevid');
       recipient=[];
       recipient.push(contact);
       remotevid=[];
-      peerConnection=[];
+      peerConnection=new Array();
       callView.addVideoConference(contact);
       console.log(recipient);
-      var message = {type:'answeredCallConference', contact: contact};
+      var message = {type:'answeredCallConference',contact: contact};
       Connection.send(JSON.stringify(message));
       this.startCallConference(false, typecall, this, callView,contact);
     },
@@ -298,13 +308,14 @@ define(['connection'], function(Connection){
       }
     },
     
-    createPeerConnectionConference : function() {
+    createPeerConnectionConference : function(user) {
       /**
        * ascoltatore che capisce quando viene inserito all'interno di una peerconnection uno stream da un utente remoto
        */
+      console.log("Utente in createPeerConnectionConference "+user);
       function onRemoteStreamAdded(event) {
         console.log("Added remote stream");
-        remotevid[lastPeerConnection].src = window.webkitURL.createObjectURL(event.stream);
+        remotevid[user].src = window.webkitURL.createObjectURL(event.stream);
         remoteStream=event.stream;
         var event=new CustomEvent("setPeerConn",{
           detail:{
@@ -323,29 +334,31 @@ define(['connection'], function(Connection){
        */
       function onRemoteStreamRemoved(event) {
         console.log("Removed remote stream");
-        peerConnection[lastPeerConnection].removeStream(this.localStream);
-        peerConnection[lastPeerConnection].close();
+        peerConnection[user].removeStream(this.localStream);
+        peerConnection[user].close();
       }
 
       var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
       try {
         console.log("Creating peer connection");
-        peerConnection.push(new webkitRTCPeerConnection(pcConfig));
+        console.log(user);
+        peerConnection[user]=new webkitRTCPeerConnection(pcConfig);
         console.log("PeerConnection usati "+peerConnection.length);
-        peerConnection[lastPeerConnection].onicecandidate = this.onIceCandidate;
+        peerConnection[user].onicecandidate = this.onIceCandidate;
       }catch (e) {
         console.log('Failed to create peerConnection, exception: ' + e.message);
       }
-      peerConnection[lastPeerConnection].addEventListener("addstream", onRemoteStreamAdded, false);
-      peerConnection[lastPeerConnection].addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+      peerConnection[user].addEventListener("addstream", onRemoteStreamAdded, false);
+      peerConnection[user].addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
     },
     
-    connectConference : function(started) {
+    connectConference : function(started,user) {
       if (!started && localStream ) {	  
-        this.createPeerConnectionConference();	  
-        peerConnection[lastPeerConnection].addStream(localStream);
+        this.createPeerConnectionConference(user);	  
+        peerConnection[user].addStream(localStream);
+         console.log('Adding local stream...'+user);
         console.log('Adding local stream...');
-        peerConnection[lastPeerConnection].createOffer(this.gotDescription);
+        peerConnection[user].createOffer(this.gotDescription);
       }else {
         alert('Local stream not running yet.');
       }
@@ -356,15 +369,15 @@ define(['connection'], function(Connection){
      * all'altro utente
      */
     gotDescription : function(desc){
-      console.log(lastPeerConnection);
       if(lastPeerConnection==null){
         peerConnection.setLocalDescription(desc);
         var response=JSON.stringify(desc);
         var credentials={type: 'sdp', description: response, contact: recipient.toJSON().username};
       }else{
-        peerConnection[lastPeerConnection].setLocalDescription(desc);  
+        console.log("Utente "+ recipient[0]);
+        peerConnection[recipient[0]].setLocalDescription(desc);  
         var response=JSON.stringify(desc);
-        var credentials={type: 'sdp', description: response, contact: recipient[lastPeerConnection]};
+        var credentials={type: 'sdp', description: response, contact: recipient[0]};
       }
       Connection.send(JSON.stringify(credentials));
     },
@@ -385,7 +398,7 @@ define(['connection'], function(Connection){
         if(lastPeerConnection==null){
           var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient.toJSON().username});
         }else{
-          var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient[lastPeerConnection]});
+          var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient[0]});
         }
         candidates.push(message);
       }else{
@@ -405,7 +418,7 @@ define(['connection'], function(Connection){
         if(lastPeerConnection==null){
           var message = JSON.stringify({type: 'candidateReady', contact: recipient.toJSON().username});
         }else{
-          var message = JSON.stringify({type: 'candidateReady', contact: recipient[lastPeerConnection]});
+          var message = JSON.stringify({type: 'candidateReady', contact: recipient[0]});
         }
         Connection.send(message);
       }
@@ -551,10 +564,9 @@ define(['connection'], function(Connection){
     
     startCallConference: function (isCaller, typecall, call, callView,contact){
       lastPeerConnection=-1;
-      sourcevid = document.getElementById('sourcevid');
-      remotevid.push(document.getElementById(contact));
+      remotevid[contact]=document.getElementById(contact);
       candidates=[];
-      
+      console.log("Conference");
       var started = false;
       var description=null;
       Connection.addEventListener('message', onMessage, false);
@@ -577,12 +589,13 @@ define(['connection'], function(Connection){
             navigator.webkitGetUserMedia({video:true, audio:true},
             function(stream) {
               sourcevid.src = window.webkitURL.createObjectURL(stream);
-              call.createPeerConnectionConference();
+              console.log("Utente in start conference "+contact);
+              call.createPeerConnectionConference(contact);
               localStream=stream;
               console.log(peerConnection[0]);
-              peerConnection[lastPeerConnection].addStream(localStream);
-              peerConnection[lastPeerConnection].setRemoteDescription(new RTCSessionDescription(response));
-              peerConnection[lastPeerConnection].createAnswer(call.gotDescription);
+              peerConnection[contact].addStream(localStream);
+              peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+              peerConnection[contact].createAnswer(call.gotDescription);
             });
           }       
         }
@@ -593,7 +606,7 @@ define(['connection'], function(Connection){
          */
         if (response.type==='answer' && isCaller){
           started=true;
-          peerConnection[lastPeerConnection].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
         }
         
         /**
@@ -604,7 +617,7 @@ define(['connection'], function(Connection){
           console.log('Adding candidate...');
           var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
           candidate:response.candidate});
-          peerConnection[lastPeerConnection].addIceCandidate(candidate);
+          peerConnection[contact].addIceCandidate(candidate);
         }
         
         /**
@@ -650,20 +663,14 @@ define(['connection'], function(Connection){
         }
         console.log('Processing signaling message...');
       }
-      
+      if(isCaller && typecall=='video'){
+        lastPeerConnection++;
+        console.log("Utente in start conference "+contact);
+        call.connectConference(started,contact);
+      }
       /** 
        * se sono il chiamante inizializzo lo stream video
        */ 
-      if(isCaller && typecall=='video'){
-        lastPeerConnection++;
-        navigator.webkitGetUserMedia({video:true, audio:true},
-        function(stream) {
-          sourcevid.src = window.webkitURL.createObjectURL(stream);
-          localStream=stream;		
-          call.connectConference(started);
-        });
-         console.log(peerConnection[0]);
-      }
       onMessaggeListener=onMessage;
     },
     
@@ -709,6 +716,7 @@ define(['connection'], function(Connection){
       var message={type : 'endCall', contact: recipient.toJSON().username};
       Connection.send(JSON.stringify(message));
       Connection.removeEventListener('message', onMessaggeListener, false);
+      
     }
 
   
