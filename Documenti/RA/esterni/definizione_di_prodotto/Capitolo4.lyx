@@ -5786,9 +5786,7 @@ pulsante con id login per effettuare il
 \emph on
 login 
 \emph default
-tramite il metodo 
-\family typewriter
-mytalk.client.view.AuthenticationView.connect()
+tramite il metodo connect() della classe AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -5858,9 +5856,7 @@ input con tipo text ed id surname, in cui l'utente può inserire il proprio
 \series bold
 button#sign: 
 \series default
-pulsante con id sign per effettuare la registrazione invocando il metodo
-\family typewriter
-mytalk.client.view.AuthenticationView.signUp()
+pulsante con id sign per effettuare la registrazione invocando il metodo signUp() di AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -5869,9 +5865,7 @@ mytalk.client.view.AuthenticationView.signUp()
 button#deny: 
 \series default
 pulsante con id deny per annullare la registrazione e chiudere il modulo
- di registrazione invocando il metodo
-\family typewriter
-mytalk.client.view.AuthenticationView.deny()
+ di registrazione invocando il metodo deny() di AuthenticationView
 \end_layout
 
 \end_deeper
@@ -5891,9 +5885,7 @@ pulsante con id logout per effettuare il
 \emph on
 logout
 \emph default
-invocando il metodo
-\family typewriter
-mytalk.client.view.AuthenticationView.disconnect()
+invocando il metodo disconnect() di AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -5923,8 +5915,8 @@ Questo template crea gli elementi dell'interfaccia grafica che l'utente
 
 \series bold
 Il template è utilizzato da: 
-\family typewriter
 \series default
+\family typewriter
 myTalk.client.view.CallView
 \end_layout
 
@@ -5958,9 +5950,7 @@ video#sourcevid:
 \series bold
 button#endCall: 
 \series default
-pulsante con id endCall che termina la chiamata invocando il metodo
-\family typewriter
-mytalk.client.view.CallView.endCall()
+pulsante con id endCall che termina la chiamata invocando il metodo endCall() di CallView
 \end_layout
 
 \end_deeper
@@ -6004,9 +5994,7 @@ area testuale di input con id compose per la scrittura dei messaggi testuali
 \series bold
 button#Send: 
 \series default
-pulsante con id Send per inviare il messaggio tramite il metodo
-\family typewriter
-mytalk.client.view.ChatView.send()
+pulsante con id Send per inviare il messaggio tramite il metodo send() di ChatView
 \end_layout
 
 \end_deeper
@@ -6112,7 +6100,7 @@ Contatto tramite l'inserimento dell'indirizzo IP:
 \series bold
 input#ip:
 \series default
- input di tipo text ed id ip, in cui l'utente deve inserire l'indirizzo
+ input con tipo text ed id ip, in cui l'utente deve inserire l'indirizzo
  ip dell' utente che vuole contattare
 \end_layout
 
@@ -6121,9 +6109,7 @@ input#ip:
 \series bold
 button#StartChat: 
 \series default
-pulsante con id StartChat che avvia la chat creando una nuova
-\family typewriter
-mytalk.client.view.ChatView
+pulsante con id StartChat che avvia la chat creando una nuova ChatView
 \end_layout
 
 \begin_layout Itemize
@@ -6131,9 +6117,7 @@ mytalk.client.view.ChatView
 \series bold
 button#call: 
 \series default
-pulsante con id call che avvia la chiamata tramite il metodo
-\family typewriter
-mytalk.client.view.FunctionsView.audiocall()
+pulsante con id call che avvia la chiamata tramite il metodo audiocall() di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6141,9 +6125,7 @@ mytalk.client.view.FunctionsView.audiocall()
 \series bold
 button#video: 
 \series default
-pulsante con id video che avvia la video chiamata tramite il metodo
-\family typewriter
-mytalk.client.view.FunctionsView.videocall()
+pulsante con id video che avvia la video chiamata tramite il metodo videocall() di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6152,9 +6134,7 @@ mytalk.client.view.FunctionsView.videocall()
 input#record: 
 \series default
 input con tipo checkbox e id record per registrare la chiamata invocando
- il metodo 
-\family typewriter
-mytalk.client.view.FunctionsView.record()
+ il metodo record() di FunctionsView
 \end_layout
 
 \end_deeper
@@ -6171,9 +6151,7 @@ Utente offline:
 button#dataContact: 
 \series default
 pulsante con id dataContact che mostra i dettagli del contatto tramite il
- metodo
-\family typewriter
-mytalk.client.view.FunctionView.viewDataContact()
+ metodo viewDataContact() di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6198,9 +6176,7 @@ Utente online:
 \series bold
 button#call: 
 \series default
-pulsante con id call che avvia la chiamata tramite il metodo
-\family typewriter
-mytalk.client.view.FunctionsView.audiocall()
+pulsante con id call che avvia la chiamata tramite il metodo audiocall() di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6208,9 +6184,7 @@ mytalk.client.view.FunctionsView.audiocall()
 \series bold
 button#video: 
 \series default
-pulsante con id video che avvia la video chiamata tramite il metodo
-\family typewriter
-mytalk.client.view.FunctionsView.videocall()
+pulsante con id video che avvia la video chiamata tramite il metodo videocall() di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6219,9 +6193,7 @@ mytalk.client.view.FunctionsView.videocall()
 input#record: 
 \series default
 input con tipo checkbox e id record per registrare la chiamata invocando
- il metodo 
-\family typewriter
-mytalk.client.view.FunctionsView.record()
+ il metodo record() di FunctionsView
 \end_layout
 
 \end_deeper
@@ -6258,9 +6230,7 @@ Notifica della ricezione di una chiamata:
 \series bold
 button#acceptCall: 
 \series default
-pulsante con id acceptCall che accetta la chiamata invocando il metodo
-\family typewriter
-myTalk.client.view.NotificationView.acceptCall()
+pulsante con id acceptCall che accetta la chiamata invocando il metodo acceptCall() di NotificationView
 \end_layout
 
 \begin_layout Itemize
@@ -6268,9 +6238,7 @@ myTalk.client.view.NotificationView.acceptCall()
 \series bold
 button#refuseCall: 
 \series default
-pulsante con id refuseCall che rifiuta la chiamata invocando il metodo
-\family typewriter
-myTalk.client.view.NotificationView.refuseCall()
+pulsante con id refuseCall che rifiuta la chiamata invocando il metodo refuseCall() di NotificationView
 \end_layout
 
 \end_deeper
@@ -6281,7 +6249,7 @@ mytalk.client.template.RecordMessageTemplate
 \end_layout
 
 \begin_layout Standard
-Questo template crea gli elementi dell'interfaccia graficanecessari per
+Questo template crea gli elementi dell'interfaccia grafica necessari per
  registrare un video messaggio
 \end_layout
 
@@ -6308,7 +6276,7 @@ Registra un video messaggio:
 video#live_video:
 \series default
  video con tipologia autoplay controls ed id live_video, affinché l'utente
- possa fermare  la registrazione quando lo desidera
+ possa interrompere la registrazione quando lo desidera
 \end_layout
 
 \end_deeper
@@ -6327,8 +6295,8 @@ Questo template crea gli elementi dell'interfaccia grafica necessari per
 
 \series bold
 Il template è utilizzato da:
-\family typewriter
 \series default
+\family typewriter
  myTalk.client.view.SideView
 \end_layout
 
@@ -6345,9 +6313,7 @@ Sidebar:
 button#callIP:
 \series default
  pulsante con id callIP che permette di contattare una persona tramite l'indiriz
-zo IP invocando il metodo
-\family typewriter
- myTalk.client.view.SideView.callIP()
+zo IP invocando il metodo callIP() di SideView
 \end_layout
 
 \begin_layout Itemize
@@ -6356,9 +6322,7 @@ zo IP invocando il metodo
 ul#contacts:
 \series default
  lista con id contacts, rappresenta gli utenti registrati presso il server,
- ciascuno di essi viene mostrato tramite 
-\family typewriter
-myTalk.client.template.ContactTemplate
+ ciascuno di essi viene mostrato tramite ContactTemplate
 \end_layout
 
 \begin_layout Itemize
@@ -6499,9 +6463,8 @@ input con tipo password ed id oldPassword, in cui l'utente deve inserire
 \series bold
 button#submitChange: 
 \series default
-pulsante con id submitChange per confermare le modifiche, invoca il metodo
-\family typewriter
-mytalk.client.view.UserDataView.checkPassword()
+pulsante con id submitChange per confermare le modifiche, invoca il 
+ metodo checkPassword() di UserDataView
 \end_layout
 
 \begin_layout Itemize
@@ -6510,9 +6473,7 @@ mytalk.client.view.UserDataView.checkPassword()
 button#reset: 
 \series default
 pulsante con id reset che cancella quanto scritto in tutti i campi dati
- del template invocando il metodo
-\family typewriter
-mytalk.client.view.UserDataView.render()
+ del template invocando il metodo render() di UserDataView
 \end_layout
 
 \begin_layout Itemize
@@ -6521,9 +6482,7 @@ mytalk.client.view.UserDataView.render()
 button#denyChange: 
 \series default
 pulsante con id denyChange che annulla le modifiche e chiude il modulo di
- modifica dei dati invocando il metodo 
-\family typewriter
-mytalk.client.view.UserDataView.unrender()
+ modifica dei dati invocando il metodo unrender() di UserDataView
 \end_layout
 
 \end_deeper
