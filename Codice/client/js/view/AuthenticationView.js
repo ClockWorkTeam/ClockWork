@@ -34,6 +34,9 @@ define([
      */
     events: {
       'keyup input#password:last-of-type':'pressEnter',
+      'keyup input#password2':'pressEnter',
+      'keyup input#name':'pressEnter',  
+      'keyup input#surname':'pressEnter',  
       'click button#login': 'connect',
       'click button#logout': 'disconnect',
       'click button#signup': 'viewSignup',
@@ -46,7 +49,11 @@ define([
      */
     pressEnter:function(event){
       if(event.keyCode == 13){
-        this.connect();
+				if(event.target.id==='password'){
+					this.connect();
+				}else if((event.target.id==='password2')||(event.target.id==='name')||(event.target.id==='surname')){
+					this.signup();
+				}
       }
     },
     el: $('#authentication'),
@@ -136,22 +143,29 @@ define([
        * se tutti i campi sono stai riempiti
        */
       if(user != '' && pass != ''){
-        /**
-         * controllo se la password e la sua conferma corrispondono
+				/**
+         * controllo username valida
          */
-        if(pass == pass2){
-          //var authentication_communication = new AuthenticationCommunication();
-          /**
-           * invio la richiesta di registrazione al server
-           * se lo username non è già presente nel sistema procedo all'autenticazione
-           */
-          AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
-        }else{
-          /**
-           * errore nel caso la password e la sua conferma non corrispondano
-           */
-          alert('Le password inserite non coincidono');
-        }
+				if(user.match(/[^\w]/)){
+					/**
+					 * controllo se la password e la sua conferma corrispondono
+					 */
+					if(pass == pass2){
+						//var authentication_communication = new AuthenticationCommunication();
+						/**
+						 * invio la richiesta di registrazione al server
+						 * se lo username non è già presente nel sistema procedo all'autenticazione
+						 */
+						AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
+					}else{
+						/**
+						* errore nel caso la password e la sua conferma non corrispondano
+						*/
+						alert('Le password inserite non coincidono');
+					}
+				}else{
+					alert('Username può contenere solo lettere, numeri e underscore');
+				}
       }else{
          /**
           * errore nel caso in cui manchino dei campi obbligatori
