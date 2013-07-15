@@ -176,13 +176,14 @@ define(['connection'], function(Connection){
           answerReceived++;
           if(response.answer==='true'){
             confirmReceived++;
-            callView.addVideoConference("jack2")
-            if(confirmReceived==1){
+            console.log("Utente responsabile " +response.user);
+            callView.addVideoConference(response.user)
+           // if(confirmReceived==1){
               var isCaller=true;
               call.startCallConference(isCaller, typecall, call, callView,response.user)
-            }else{
-              call.addCallConference(isCaller,typecall,call,callView,response.user);
-            }
+         //   }else{
+         //     call.addCallConference(isCaller,typecall,call,callView,response.user);
+        //    }
           }else{
             if(answerReceived==recipient.length && confirmReceived==0){
               var event=new CustomEvent('setOnCall',{
@@ -230,7 +231,7 @@ define(['connection'], function(Connection){
       recipient.push(contact);
       remotevid=[];
       peerConnection=[];
-      callView.addVideoConference("jack2");
+      callView.addVideoConference(contact);
       console.log(recipient);
       var message = {type:'answeredCallConference', contact: contact};
       Connection.send(JSON.stringify(message));
@@ -551,7 +552,7 @@ define(['connection'], function(Connection){
     startCallConference: function (isCaller, typecall, call, callView,contact){
       lastPeerConnection=-1;
       sourcevid = document.getElementById('sourcevid');
-      remotevid.push(document.getElementById("jack2"));
+      remotevid.push(document.getElementById(contact));
       candidates=[];
       
       var started = false;
@@ -570,7 +571,6 @@ define(['connection'], function(Connection){
          * o solo audio, inoltre imposto nella peerconnection lo sdp del remoto
          */
         if (response.type==='offer' && !isCaller){
-          console.log("Prova SDP");
           lastPeerConnection++;	
           started = true;
           if(typecall==='video'){				
@@ -710,6 +710,7 @@ define(['connection'], function(Connection){
       Connection.send(JSON.stringify(message));
       Connection.removeEventListener('message', onMessaggeListener, false);
     }
+
   
   };
 	

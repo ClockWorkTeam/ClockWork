@@ -200,7 +200,6 @@ define([
       console.log("Sono in functionview");
       console.log("Prova");
       var contatti=[];
-      alert('vedi dettaglio');
       for(var i=0;i<document.getElementsByTagName('input').length;i++){
         if(document.getElementsByTagName('input')[i].type=='checkbox' && document.getElementsByTagName('input')[i].checked){
           contatti.push(document.getElementsByTagName('input')[i].name);
