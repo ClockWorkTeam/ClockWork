@@ -120,6 +120,7 @@ define([
     },
 
     addVideoConference:function(nameCaller){
+      console.log("Nome caller "+nameCaller);
       var video="<video id='"+nameCaller+"' autoplay></video>";
       $(this.el).append(video);
     }
