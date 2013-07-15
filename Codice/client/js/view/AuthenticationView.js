@@ -34,6 +34,9 @@ define([
      */
     events: {
       'keyup input#password:last-of-type':'pressEnter',
+      'keyup input#password2':'pressEnter',
+      'keyup input#name':'pressEnter',  
+      'keyup input#surname':'pressEnter',  
       'click button#login': 'connect',
       'click button#logout': 'disconnect',
       'click button#signup': 'viewSignup',
@@ -46,7 +49,11 @@ define([
      */
     pressEnter:function(event){
       if(event.keyCode == 13){
-        this.connect();
+				if(event.target.id==='password'){
+					this.connect();
+				}else if((event.target.id==='password2')||(event.target.id==='name')||(event.target.id==='surname')){
+					this.signup();
+				}
       }
     },
     el: $('#authentication'),
