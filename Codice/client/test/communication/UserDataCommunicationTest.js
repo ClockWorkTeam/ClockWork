@@ -56,6 +56,29 @@ module('About UserDataCommunication.checkPassword', {
       stub.restore();
      
   });
+
+  test('Wrong type.', function() {
+      expect( 3 );
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      var spy = this.spy();
+      var view = { callBacks: function(){ return {changeData: spy}} }
+      
+      UserDataCommunication.checkPassword( this.model, '1234', view );
+      
+      var data = JSON.stringify({"type":"wrong","answer":"true"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendStub.callCount, 1, 'Connection.send called.');
+      
+      equal( stub.callCount, 0, 'No alert displayed');
+      equal( spy.callCount, 0, "Wrong type." );
+      
+      stub.restore();
+     
+  });
  
  module('About UserDataCommunication.ChangeData', {
   setup: function() {
@@ -97,7 +120,7 @@ module('About UserDataCommunication.checkPassword', {
       
       UserDataCommunication.changeData( this.model, 'john', 'doe', '1234', this.view );
       
-      var data = JSON.stringify({"type":"changeData","answer":"false"});
+      var data = JSON.stringify({"type":"changeData","answer":"false","error":"Operazione fallita"});
       var event = document.createEvent('MessageEvent');
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
       this.Connection.dispatchEvent(event);
@@ -106,6 +129,26 @@ module('About UserDataCommunication.checkPassword', {
       
       equal( stub.callCount, 1, 'response.answer === "false"');
       equal( stub.getCall(0).args[0], 'Operazione fallita', "Alert correctly displayed." );
+      
+      stub.restore();
+     
+  });
+  
+  test('Wrong type.', function() {
+      expect( 2 );
+      
+      var stub = this.stub(window, 'alert', function(msg) { return false; } );
+      
+      UserDataCommunication.changeData( this.model, 'john', 'doe', '1234', this.view );
+      
+      var data = JSON.stringify({"type":"wrong","answer":"false","error":"Operazione fallita"});
+      var event = document.createEvent('MessageEvent');
+      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+      this.Connection.dispatchEvent(event);
+      
+      equal(this.sendStub.callCount, 1, 'Connection.send called.');
+      
+      equal( stub.callCount, 0, 'Wrong type');
       
       stub.restore();
      

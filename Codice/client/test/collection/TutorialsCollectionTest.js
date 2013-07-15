@@ -1,14 +1,11 @@
 //Wait for relevant code bits to load before starting any tests
 define(['../js/collection/TutorialsCollection','../js/model/TutorialModel'], function( TutorialsCollection, TutorialModel) {
 
-
-
-
 module('Test Collection', {
 	setup: function() {	
         this.tutorialsCollection = TutorialsCollection;
         this.tutorialModelOne=new TutorialModel();
-        this.tutorialModelTwo=new TutorialModel({title: 'Introduzione', description: 'utile', url: 'video.avi'});
+        this.tutorialModelTwo=new TutorialModel({title: 'Introduzione', url: 'video.avi'});
         this.tutorialsCollection.add(this.tutorialModelOne);
         this.tutorialsCollection.add(this.tutorialModelTwo);
     },
@@ -20,9 +17,11 @@ module('Test Collection', {
 });
 
 test('Has the TutorialModel model', function() {
-	expect( 1 );
+	expect( 3 );
 	
-	ok(this.tutorialsCollection.model);
+  ok(this.tutorialsCollection.at(0).has('title'), 'Has title');
+  ok(this.tutorialsCollection.at(0).has('url'), 'Has url');
+  ok(this.tutorialsCollection.at(0).has('OtherAttributes') == false, 'Collection doesn\'t have other attributes');
   
 });
 
@@ -48,20 +47,27 @@ test('control of add method', function() {
 	
 });
 
-/*
-test('returns an array of TutorialModel that has username', function() {
-    expect( 3 );
-   
-    equal(this.tutorialsCollection.record()[0],this.tutorialModelOne);
-    equal(this.tutorialsCollection.record()[1],this.tutorialModelTwo);
-    equal(this.tutorialsCollection.record().length,2);
-	
+test('Fires events when the models change.', function() {
+    expect(4);
+
+    var addModelCallback = this.spy();
+    var removeModelCallback = this.spy();
+
+    this.tutorialsCollection.bind('add', addModelCallback);
+    this.tutorialsCollection.bind('remove', removeModelCallback);
+
+    this.tutorialModelThree=new TutorialModel({title: 'Chiamata', url:'video2.avi' });
+
+    this.tutorialsCollection.add(this.tutorialModelThree);
+
+    ok(addModelCallback.called, 'addModelCallback called');
+    ok(removeModelCallback.notCalled, 'removeModelCallback not called');
+
+    this.tutorialsCollection.remove(this.tutorialModelThree);
+
+    ok(removeModelCallback.called, 'removeModelCallback called');
+    ok(addModelCallback.calledOnce, 'addModelCallback not called again');
+
 });
-*/
-
-
-
-
-
 
 });

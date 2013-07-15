@@ -41,12 +41,12 @@ define([ '../js/communication/ChatCommunication' , '../js/model/TextMessageModel
     }
   });
     
-  test('Listener of text messages in input with wrong credentials.', function() {
+  test('Text message not delivered.', function() {
     expect( 4 );
         
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
         
-    var data = JSON.stringify({"type":"notDelivered","username":"johndoe","message":"hello"});
+    var data = JSON.stringify({"type":"notDelivered","contact":"johndoe","message":"hello"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
@@ -61,7 +61,7 @@ define([ '../js/communication/ChatCommunication' , '../js/model/TextMessageModel
        
   });
     
-  test('Listener of text messages in input with valid credentials.', function() {
+  test('Text message delivered.', function() {
     expect( 3 );
         
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -75,6 +75,25 @@ define([ '../js/communication/ChatCommunication' , '../js/model/TextMessageModel
     equal(this.contactsCollectionStub.callCount, 2, 'ContactsCollection.where called twice.');
         
     equal( stub.callCount, 0, 'response.type === "sendText"');
+        
+    stub.restore();
+       
+  });
+  
+  test('Wrong type.', function() {
+    expect( 3 );
+        
+    var stub = this.stub(window, 'alert', function(msg) { return false; } );
+        
+    var data = JSON.stringify({"type":"wrong","username":"johndoe","message":"hello"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+    this.Connection.dispatchEvent(event);
+        
+    equal(this.textMessagesCollectionStubAdd.callCount, 0, 'TextMessagesCollection.add not called.');
+    equal(this.contactsCollectionStub.callCount, 0, 'ContactsCollection.where not called.');
+        
+    equal( stub.callCount, 0, 'wrong type');
         
     stub.restore();
        
