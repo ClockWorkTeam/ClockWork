@@ -149,24 +149,8 @@ Backbone.Model
 
 \begin_layout Standard
 Il Model di Backbone.js rappresenta un oggetto discreto contenente una serie
- di dati sotto forma di attributi.
-\end_layout
-
-\begin_layout Standard
-In una comune applicazione non strutturata, le interazioni dell’utente (ad
- esempio la digitazione e l’invio dei dati) di solito coinvolgono direttamente
- l’interfaccia e quindi, solo quando necessario, chiamano in causa un qualche
- layer di validazione e salvataggio dei dati.
- In un’applicazione Backbone.js, invece, l’interazione modifica prima lo
- stato di un model scatenando quindi la reazione della view che si aggiorna
- di conseguenza.
-\end_layout
-
-\begin_layout Standard
-Il metodo extend() accetta un oggetto di proprietà e funzioni con il quale
- sovrascrivere le funzionalità di base.
- Ad esempio potremmo impostare degli attributi di default, la funzione di
- inizializzazione, e un paio di metodi personalizzati:
+ di dati sotto forma di attributi, si tratta quindi di un singolo record.
+ I Model vengono aggregati dalle Collection
 \end_layout
 
 \begin_layout Standard
@@ -178,7 +162,7 @@ status open
 
 \begin_layout Plain Layout
 
-var Todo = Backbone.Model.extend({ 
+var Example = Backbone.Model.extend({ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -197,12 +181,17 @@ var Todo = Backbone.Model.extend({
 
 \begin_layout Plain Layout
 
-    content: "todo vuoto...", 
+    content: "description", //attributo di tipo stringa
 \end_layout
 
 \begin_layout Plain Layout
 
-    done: false 
+    read: false, //attributo di tipo booleano
+\end_layout
+
+\begin_layout Plain Layout
+
+    number: 12 //attributo numerico
 \end_layout
 
 \begin_layout Plain Layout
@@ -212,6 +201,11 @@ var Todo = Backbone.Model.extend({
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+  //funzione di inizializzazione
 \end_layout
 
 \begin_layout Plain Layout
@@ -250,17 +244,22 @@ var Todo = Backbone.Model.extend({
 
 \begin_layout Plain Layout
 
+  //funzioni definite dall'utente
+\end_layout
+
+\begin_layout Plain Layout
+
   toggle: function() { 
 \end_layout
 
 \begin_layout Plain Layout
 
-    var currentDone = this.get("done"); 
+    var currentRead = this.get("read"); 
 \end_layout
 
 \begin_layout Plain Layout
 
-    this.set({done: !currentDone});
+    this.set({read: !currentRead});
 \end_layout
 
 \begin_layout Plain Layout
@@ -304,10 +303,20 @@ var Todo = Backbone.Model.extend({
 
 \begin_layout Standard
 Il metodo extend() permette di aggiungere proprietà e metodi personalizzati
- al costruttore del modello.
- Alcune chiavi sono tuttavia speciali e vengono distinte dalle altre.
- Ad esempio .defaults, è un oggetto con la lista degli attributi accettati
- e i rispettivi valori predefiniti.
+ all'istanza del modello ed eventualmente di aggiungere direttamente al
+ costruttore proprietà relative alla classe inoltre imposta in modo corretto
+ la catena di prototipizzazione in modo da poter estendere ulteriormente
+ classi derivate.
+\end_layout
+
+\begin_layout Standard
+L'attributo defaults è un oggetto con la lista degli attributi predefiniti
+ con i rispettivi valori.
+\end_layout
+
+\begin_layout Standard
+La funzione initialize() viene invocata quando viene creato il model e può
+ essere usata al posto di ridefinire il costruttore.
 \end_layout
 
 \begin_layout Subsection
