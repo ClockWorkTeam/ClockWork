@@ -22,7 +22,7 @@ define([
 
     model: RecordMessageModel,
 
-    localStorage: new Storage('contacts'),
+    localStorage: new Storage('recordMessages'),
 
     record: function(username) {
         return this.where({sender: username});
