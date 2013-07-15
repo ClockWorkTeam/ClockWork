@@ -62,7 +62,7 @@ module('About CallCommunication.sendCall', {
       var callView = { endCall: this.spy() };
       CallCommunication.sendCall('audio', contact, callView);
       
-      var data = JSON.stringify({"type":"answeredCall","answer":"false"});
+      var data = JSON.stringify({"type":"answeredCall","answer":"false", "error":"chiamata rifiutata"});
       var event = document.createEvent('MessageEvent');
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
       window.Connection.dispatchEvent(event);
@@ -85,7 +85,7 @@ module('About CallCommunication.sendCall', {
       var callView = { endCall: this.spy() };
       CallCommunication.sendCall('audio', contact, callView);
       
-      var data = JSON.stringify({"type":"answeredCall","answer":"busy"});
+      var data = JSON.stringify({"type":"answeredCall","answer":"busy","error":"utente occupato"});
       var event = document.createEvent('MessageEvent');
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
       window.Connection.dispatchEvent(event);
@@ -108,7 +108,7 @@ module('About CallCommunication.sendCall', {
       var callView = { endCall: this.spy() };
       CallCommunication.sendCall('audio', contact, callView);
       
-      var data = JSON.stringify({"type":"answeredCall","answer":"error"});
+      var data = JSON.stringify({"type":"answeredCall","answer":"error","error":"errore durante la chiamata"});
       var event = document.createEvent('MessageEvent');
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
       window.Connection.dispatchEvent(event);

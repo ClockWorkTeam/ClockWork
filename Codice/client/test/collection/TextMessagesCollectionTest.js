@@ -20,13 +20,16 @@ module('Test Collection', {
 });
 
 test('Has the TextMessageModel model', function() {
-	expect( 1 );
+	expect( 4 );
 	
-	ok(this.textMessagesCollection.model);
+  ok(this.textMessagesCollection.at(0).has('contact'), 'Has contact');
+  ok(this.textMessagesCollection.at(0).has('message'), 'Has message');
+  ok(this.textMessagesCollection.at(0).has('source'), 'Has source');
+  ok(this.textMessagesCollection.at(0).has('OtherAttributes') == false, 'Collection doesn\'t have other attributes');
   
 });
 
-test('control of remove method', function() {
+test('Checking removal of models.', function() {
 	expect( 1 );
    
 	this.textMessagesCollection.remove(this.textMessageModelOne);
@@ -36,7 +39,7 @@ test('control of remove method', function() {
 	
 });
 
-test('control of add method', function() {
+test('Checking addiction of models.', function() {
 	expect( 1 );
 	
 	this.textMessagesCollection.remove(this.textMessageModelOne);
@@ -49,7 +52,7 @@ test('control of add method', function() {
 });
 
 
-test('returns an array of TextMessageModel that has username', function() {
+test('Checking chat_session method.', function() {
 	expect( 2 );
 	
 	equal(this.textMessagesCollection.chat_session('pippo')[0],this.textMessageModelTwo);
@@ -57,10 +60,27 @@ test('returns an array of TextMessageModel that has username', function() {
 	
 });
 
+test('Fires events when the models change.', function() {
+    expect(4);
 
+    var addModelCallback = this.spy();
+    var removeModelCallback = this.spy();
 
+    this.textMessagesCollection.bind('add', addModelCallback);
+    this.textMessagesCollection.bind('remove', removeModelCallback);
 
+    this.textMessageModelThree=new TextMessageModel({contact: 'johndoe', message: 'ciao', source: 'sent'});
 
+    this.textMessagesCollection.add(this.textMessageModelThree);
 
+    ok(addModelCallback.called, 'addModelCallback called');
+    ok(removeModelCallback.notCalled, 'removeModelCallback not called');
+
+    this.textMessagesCollection.remove(this.textMessageModelThree);
+
+    ok(removeModelCallback.called, 'removeModelCallback called');
+    ok(addModelCallback.calledOnce, 'addModelCallback not called again');
+
+});
 
 });

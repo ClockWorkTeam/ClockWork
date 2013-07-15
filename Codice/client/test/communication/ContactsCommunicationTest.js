@@ -9,17 +9,24 @@ define([ '../js/communication/ContactsCommunication' , '../js/model/ContactModel
       this.sendStub = sinon.stub(this.Connection, 'send' );
       this.contactsCollection = require('collection/ContactsCollection');
       
+      this.contactModel=new ContactModel({ username: 'johndoe'});
+      this.contactModelStub = sinon.stub(this.contactModel, 'set' );
+      this.contactsCollectionStubAdd = sinon.stub(this.contactsCollection, 'add' );
+      
     },
     teardown: function() {  
       this.sendStub.restore();
+      
+			this.contactsCollectionStubAdd.restore();
+			this.contactModelStub.restore(); 
+      
     }
   });
 
-  test('fetchContacts with with contact not found in ContacsCollection.', function() {
-      expect( 3 );
+  test('fetchContacts with contact not found in ContacsCollection.', function() {
+      expect( 4 );
       
       this.contactsCollectionStubFind = sinon.stub(this.contactsCollection, 'find' );
-      this.contactsCollectionStubAdd = sinon.stub(this.contactsCollection, 'add' );
       
       ContactsCommunication.fetchContacts( 'johndoe' );
       
@@ -31,17 +38,16 @@ define([ '../js/communication/ContactsCommunication' , '../js/model/ContactModel
       equal(this.sendStub.callCount, 1, 'Connection.send called.');
       equal(this.contactsCollectionStubFind.callCount, 1, 'contactsCollection.find called.');
       equal(this.contactsCollectionStubAdd.callCount, 1, 'contactsCollection.add called.');
+      equal(this.contactModelStub.callCount, 0, 'contactModel.set not called.');
 
 			this.contactsCollectionStubFind.restore();
-			this.contactsCollectionStubAdd.restore();
+
   });
   
   test('fetchContacts with with contact found in ContacsCollection.', function() {
-      expect( 3 );
+      expect( 4 );
       
-      this.contactModel=new ContactModel({ username: 'johndoe'});
       this.contactsCollectionStubFind = sinon.stub(this.contactsCollection, 'find' ).returns(this.contactModel);
-      this.contactModelStub = sinon.stub(this.contactModel, 'set' );
       
       ContactsCommunication.fetchContacts( 'johndoe' );
       
@@ -53,9 +59,10 @@ define([ '../js/communication/ContactsCommunication' , '../js/model/ContactModel
       equal(this.sendStub.callCount, 1, 'Connection.send called.');
       equal(this.contactsCollectionStubFind.callCount, 1, 'contactsCollection.find called.');
       equal(this.contactModelStub.callCount, 1, 'contactModel.set called.');
+      equal(this.contactsCollectionStubAdd.callCount, 0, 'contactsCollection.add not called.');
 
 			this.contactsCollectionStubFind.restore();
-			this.contactModelStub.restore(); 
+
   });
     
 });

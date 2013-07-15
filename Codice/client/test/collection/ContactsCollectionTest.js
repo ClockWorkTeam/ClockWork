@@ -16,14 +16,19 @@ module('Test Collection', {
     }
 });
 
-test('Has the ContactModel model', function() {
-    expect( 1 );
-	
-    ok(this.contactsCollection.model);
+test('Has the ContactModel model.', function() {
+    expect( 6 );
+	 
+    ok(this.contactsCollection.at(0).has('username'), 'Has username');
+    ok(this.contactsCollection.at(0).has('name'), 'Has name');
+    ok(this.contactsCollection.at(0).has('surname'), 'Has surname');
+    ok(this.contactsCollection.at(0).has('IP'), 'Has IP');
+    ok(this.contactsCollection.at(0).has('unread'), 'Has unread');
+    ok(this.contactsCollection.at(0).has('OtherAttributes') == false, 'Collection doesn\'t have other attributes');
   
 });
 
-test('control of remove method', function() {
+test('Checking removal of models.', function() {
     expect( 1 );
    
     this.contactsCollection.remove(this.contactModelOne);
@@ -33,7 +38,7 @@ test('control of remove method', function() {
 	
 });
 
-test('control of add method', function() {
+test('Checking addiction of models.', function() {
     expect( 1 );
     
     this.contactsCollection.remove(this.contactModelOne);
@@ -45,7 +50,7 @@ test('control of add method', function() {
 	
 });
 
-test('returns an array of ContactModel that has username', function() {
+test('Checking record method.', function() {
     expect( 3 );
    
     equal(this.contactsCollection.record()[0],this.contactModelOne);
@@ -54,5 +59,27 @@ test('returns an array of ContactModel that has username', function() {
 	
 });
 
+test('Fires events when the models change.', function() {
+    expect(4);
+
+    var addModelCallback = this.spy();
+    var removeModelCallback = this.spy();
+
+    this.contactsCollection.bind('add', addModelCallback);
+    this.contactsCollection.bind('remove', removeModelCallback);
+
+    this.contactModelThree=new ContactModel({username:'janedoe', name:'jane', surname:'doe', IP:'4.3.2.1', unread:0});
+
+    this.contactsCollection.add(this.contactModelThree);
+
+    ok(addModelCallback.called, 'addModelCallback called');
+    ok(removeModelCallback.notCalled, 'removeModelCallback not called');
+
+    this.contactsCollection.remove(this.contactModelThree);
+
+    ok(removeModelCallback.called, 'removeModelCallback called');
+    ok(addModelCallback.calledOnce, 'addModelCallback not called again');
+
+});
 
 });

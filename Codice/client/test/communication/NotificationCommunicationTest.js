@@ -5,38 +5,34 @@ define([ '../js/communication/NotificationCommunication'],
 module('About NotificationCommunication.listenNotification', {
     setup: function() {
       this.Connection = require('connection');
-      //this.notificationView = require('view/NotificationView');
-      //this.view = new this.notificationView();
       this.sendStub = sinon.stub(this.Connection, 'send' );
-      //this.viewStub = sinon.spy(NotificationCommunication.listenNotification, 'notificationView' );
-      //this.notificationViewStub = sinon.stub(this.view, 'unrender');
-      //this.renderStub = sinon.stub(this.view, 'render' );
+      this.addEventListenerStub = sinon.stub(this.Connection, 'addEventListener' );
 
     },
     teardown: function() {  
       this.sendStub.restore();
-      //this.viewStub.restore();
+      this.addEventListenerStub.restore();
       clearTimeout();
-      //this.notificationViewStub.restore();
-      //this.renderStub.restore();
     }
   });
 
   test('Show a notification for an incoming call', function() {
-    expect( 1 );
+    expect( 2 );
     
     NotificationCommunication.listenNotification();
     var data = JSON.stringify({"type":"call","contact":"johndoe","typecall":"video"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
+    equal(this.addEventListenerStub.callCount, 1, 'Connection.addEventListener called.');
     equal(this.sendStub.callCount, 0, 'Showing notification View');
   
   });
 
   test('Already calling', function() {
     expect( 1 );
-    
+
+    NotificationCommunication.listenNotification();
     var event=new CustomEvent('setOnCall', {detail:{type:true}, bubbles:true, cancelable:true} ); 
     document.dispatchEvent(event);
     
@@ -45,7 +41,23 @@ module('About NotificationCommunication.listenNotification', {
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
     
-    equal(this.sendStub.callCount, 1, 'Another call is in progress.');
+    equal(this.sendStub.called, false, 'Another call is in progress.');
+        
+  });
+  
+  test('Wrong type', function() {
+    expect( 1 );
+
+    NotificationCommunication.listenNotification();
+    var event=new CustomEvent('setOnCall', {detail:{type:true}, bubbles:true, cancelable:true} ); 
+    document.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"wrong","contact":"johndoe","typecall":"video"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+    this.Connection.dispatchEvent(event);
+    
+    equal(this.sendStub.called, 0, 'Wrong type.');
         
   });
 

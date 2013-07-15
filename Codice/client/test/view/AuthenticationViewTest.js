@@ -76,7 +76,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.sendStub.restore();
   });
   
-  test('Can wire up view_signup method to DOM element.', function() {
+  test('Can wire up viewSignup method to DOM element.', function() {
     expect( 1 );
 
     this.viewSignupSpy = sinon.spy();

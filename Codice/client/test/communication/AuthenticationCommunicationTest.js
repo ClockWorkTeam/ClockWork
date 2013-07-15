@@ -22,7 +22,7 @@ module('About AuthenticationCommunication.checkCredentials', {
       
       AuthenticationCommunication.checkCredentials( 'johndoe', '1234', callBacks, view );
       
-      var data = JSON.stringify({"type":"login","answer":"false"});
+      var data = JSON.stringify({"type":"login","answer":"false","error":"Login e username errate"});
       var event = document.createEvent('MessageEvent');
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
       this.Connection.dispatchEvent(event);
@@ -86,7 +86,7 @@ module('About AuthenticationCommunication.signup', {
       
       AuthenticationCommunication.signup( 'johndoe', '1234', 'john', 'doe', callBacks, view );
       
-      var data = JSON.stringify({"type":"signUp","answer":"false"});
+      var data = JSON.stringify({"type":"signUp","answer":"false","error":"Username non disponibile"});
       var event = document.createEvent('MessageEvent');
       event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
       this.Connection.dispatchEvent(event);
@@ -139,47 +139,15 @@ module('About AuthenticationCommunication.logout', {
     this.sendStub.restore();
   }
 });
-
-  test('Logout with wrong credentials.', function() {
-      expect( 4 );
-      
-      var user = this.spy();
-      
-      var stub = this.stub(window, 'alert', function(msg) { return false; } );
-      
-      AuthenticationCommunication.logout( user );
-      
-      var data = JSON.stringify({"type":"logout","answer":"false"});
-      var event = document.createEvent('MessageEvent');
-      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
-      this.Connection.dispatchEvent(event);
-      
-      equal(this.sendSpy.callCount, 1, 'Connection.send called.');
-      equal(user.callCount, 0, 'callBacks not called.');
-
-      equal( stub.callCount, 1, 'response.answer === "false"');
-      equal( stub.getCall(0).args[0], 'Logout fallito', "Alert correctly displayed." );
-      
-      stub.restore();
-     
-  });
   
-  test('Logout with valid credentials.', function() {
-      expect( 3 );
-      
-      var user = this.spy();
+  test('Logout.', function() {
+      expect( 2 );
       
       var stub = this.stub(window, 'alert', function(msg) { return false; } );
       
-      AuthenticationCommunication.logout( user );
-      
-      var data = JSON.stringify({"type":"logout","answer":"true"});
-      var event = document.createEvent('MessageEvent');
-      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
-      this.Connection.dispatchEvent(event);
+      AuthenticationCommunication.logout();
       
       equal(this.sendSpy.callCount, 1, 'Connection.send called.');
-      equal(user.callCount, 0, 'response.answer === "true"');
 
       equal( stub.callCount, 0, 'No alert displayed.');
       
