@@ -138,9 +138,17 @@ define([
       this.startChat();
       this.callView=new CallView({FunctionsView:this});
       if(isCaller==false){
-        this.callView.render(false, type ,this.model);
+				if(!this.options.From){
+					this.callView.render(false, type ,this.model.toJSON().username);
+				}else if(this.options.From=='IP'){
+					this.callView.render(false, type ,this.$("#ip").val());
+				}
       }else{
-        this.callView.render(true,type,this.model);
+				if(!this.options.From){
+					this.callView.render(true,type,this.model.toJSON().username);
+				}else if(this.options.From=='IP'){
+					this.callView.render(false, type ,this.$("#ip").val());
+				}
       }
       $('#main').prepend(this.callView.el);
     },

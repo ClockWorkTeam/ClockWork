@@ -29,42 +29,86 @@ public class CallTransfer extends ListenerTransfer {
    	String type= token.getString("type");
   	WebSocketPacket wspacket=null;
    	if(type.equals("call")){
-  	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
-  	  if(connector!=null){
-  		wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector().getUsername()+"\",\"callType\":\""+token.getString("callType")+"\"}");
-  	  }else{
+  	  WebSocketConnector connector = null;
+  	  if(token.getString("contact").contains(".")){//indirizzo IP
+  		connector= getIpConnector(token.getString("contact"));
+  		if(connector!=null){
+  			wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector()+"\",\"callType\":\""+token.getString("callType")+"\"}");
+  		}
+  	  }else{ //username
+  		connector=getUserConnector(token.getString("contact"));
+  	    if(connector!=null){
+  		  wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector().getUsername()+"\",\"callType\":\""+token.getString("callType")+"\"}");
+  	    }
+  	  }
+  	  if(connector==null){
   		wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente non connesso al server\"}");
   		connector=event.getConnector();
   	  }
       sendPacket(wspacket,connector);
    	}else if(type.equals("answeredCall")){
-  	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+  	  WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+    	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+    	connector=getUserConnector(token.getString("contact"));
+      }
    	  wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"true\"}");
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("refuseCall")){
-  	  WebSocketConnector connector =  getUserConnector(token.getString("contact"));
+      WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+      	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+      	connector=getUserConnector(token.getString("contact"));
+      }
    	  wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Chiamata rifiutata\"}");
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("busy")){
-  	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+	  WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+      	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+        connector=getUserConnector(token.getString("contact"));
+      }
       wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente occupato in un'altra conversazione\"}");
       sendPacket(wspacket,connector);
 	}else if(type.equals("sdp")){
-  	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+  	  WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+    	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+    	connector=getUserConnector(token.getString("contact"));
+	  }
    	  wspacket=new RawPacket(token.getString("description"));
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("candidate")){
-  	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+      WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+        connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+        connector=getUserConnector(token.getString("contact"));
+      }
    	  wspacket=new RawPacket(token.getString("candidate"));
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("endCall")){
-   	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+   	  WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+       	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+       	connector=getUserConnector(token.getString("contact"));
+      }
    	  if(connector!=null){
    		wspacket=new RawPacket("{\"type\":\"endCall\"}");
    		sendPacket(wspacket,connector);
    	  }
    	}else if(type.equals("candidateReady")){
-   	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+   	  WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+       	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+       	connector=getUserConnector(token.getString("contact"));
+      }
       wspacket=new RawPacket("{\"type\":\"candidateReady\"}");
    	  sendPacket(wspacket,connector);
 	}

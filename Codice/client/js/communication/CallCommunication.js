@@ -84,7 +84,7 @@ define(['connection'], function(Connection){
       });
       document.dispatchEvent(event);
       recipient=contact;
-      var message = { type:'call', contact: recipient.toJSON().username, callType:typecall};
+      var message = { type:'call', contact: recipient, callType:typecall};
       Connection.send(JSON.stringify(message));
       /**
        * aggiunta del listener per la ricezione della risposta dell'utente chiamato
@@ -227,7 +227,7 @@ define(['connection'], function(Connection){
      */
     sendAnswer: function (typecall, contact, callView){
       recipient=contact;
-      var message = {type:'answeredCall', contact: recipient.toJSON().username};
+      var message = {type:'answeredCall', contact: recipient};
       Connection.send(JSON.stringify(message));
       this.startCall(false, typecall, this, callView);
     },
@@ -372,7 +372,7 @@ define(['connection'], function(Connection){
       if(lastPeerConnection==null){
         peerConnection.setLocalDescription(desc);
         var response=JSON.stringify(desc);
-        var credentials={type: 'sdp', description: response, contact: recipient.toJSON().username};
+        var credentials={type: 'sdp', description: response, contact: recipient};
       }else{
         console.log("Utente "+ recipient[0]);
         peerConnection[recipient[0]].setLocalDescription(desc);  
@@ -396,7 +396,7 @@ define(['connection'], function(Connection){
           candidate: event.candidate.candidate
         });
         if(lastPeerConnection==null){
-          var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient.toJSON().username});
+          var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient});
         }else{
           var message = JSON.stringify({type: 'candidate', candidate: candidate, contact: recipient[0]});
         }
@@ -416,7 +416,7 @@ define(['connection'], function(Connection){
           );
         }
         if(lastPeerConnection==null){
-          var message = JSON.stringify({type: 'candidateReady', contact: recipient.toJSON().username});
+          var message = JSON.stringify({type: 'candidateReady', contact: recipient});
         }else{
           var message = JSON.stringify({type: 'candidateReady', contact: recipient[0]});
         }
@@ -713,7 +713,7 @@ define(['connection'], function(Connection){
         cancelable:true
       });
       document.dispatchEvent(event);
-      var message={type : 'endCall', contact: recipient.toJSON().username};
+      var message={type : 'endCall', contact: recipient};
       Connection.send(JSON.stringify(message));
       Connection.removeEventListener('message', onMessaggeListener, false);
       

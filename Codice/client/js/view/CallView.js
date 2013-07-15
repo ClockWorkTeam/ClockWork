@@ -65,7 +65,7 @@ define([
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
-      $(this.el).html(this.template({ username: contact.toJSON().username }));
+      $(this.el).html(this.template({ username: contact }));
       if(!document.getElementById('statistics'))
         $('#main').insertBefore($('#statistics'), $('#chat'));
 
