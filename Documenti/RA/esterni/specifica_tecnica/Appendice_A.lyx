@@ -93,7 +93,7 @@ Backbone si focalizza nel fornire metodi utili per manipolare e visualizzare
 \begin_layout Standard
 Per la sua architettura, Backbone.js rientra nella categoria delle librerie
  MV*, in quanto implementa Model e View, ma non ha un componente Controller
- tradizionale, delegandone i compiti alle View ed ai Router.
+ tradizionale, delegandone i compiti alle View ed al Router.
  Questo approccio è abbastanza diffuso in ambito JavaScript, a causa della
  diversa e più complessa gestione dell’interazione utente e dello stato
  dell’applicazione.
@@ -150,7 +150,9 @@ Backbone.Model
 \begin_layout Standard
 Il Model di Backbone.js rappresenta un oggetto discreto contenente una serie
  di dati sotto forma di attributi, si tratta quindi di un singolo record.
- I Model vengono aggregati dalle Collection
+ I Model vengono aggregati dalle Collection.
+ É inoltre possibile definire funzioni personalizzate per eseguire operazioni
+ sui dati.
 \end_layout
 
 \begin_layout Standard
@@ -162,7 +164,7 @@ status open
 
 \begin_layout Plain Layout
 
-var Example = Backbone.Model.extend({ 
+var ExampleModel = Backbone.Model.extend({ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -330,22 +332,13 @@ Una collection è un oggetto contenente una raccolta di modelli dello stesso
 \end_layout
 
 \begin_layout Standard
-Come per Backbone.Model, il costruttore può essere esteso con metodi e proprietà
- personalizzati.
- Solitamente basta indicare il model di riferimento e l’URL con la quale
- Backbone.js comunicherà per le operazioni di CRUD con il server.
- Nel nostro caso abbiamo usato '#' per disabilitare completamente la funzionalit
-à.
-\end_layout
-
-\begin_layout Standard
 \begin_inset listings
 inline false
 status open
 
 \begin_layout Plain Layout
 
-var TodoList = Backbone.Collection.extend({ 
+var ExampleCollection = Backbone.Collection.extend({ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -360,12 +353,7 @@ var TodoList = Backbone.Collection.extend({
 
 \begin_layout Plain Layout
 
-  model: Todo,  
-\end_layout
-
-\begin_layout Plain Layout
-
-  url: '#', 
+  model: ExampleModel
 \end_layout
 
 \begin_layout Plain Layout
@@ -382,20 +370,25 @@ var TodoList = Backbone.Collection.extend({
 
 \end_layout
 
+\begin_layout Standard
+Come per i Model il metodo extend() permette di aggiungere proprietà e metodi
+ personalizzati alla Collection ed imposta in modo corretto la catena di
+ prototipizzazione.
+\end_layout
+
+\begin_layout Standard
+L'attributo model contiente il modello di riferimenti i cui oggetti sono
+ aggregati dalla Collection.
+\end_layout
+
 \begin_layout Subsection
 Backbone.View
 \end_layout
 
 \begin_layout Standard
-A differenza di quanto potremmo pensare, le view in Backbone.js non contengono
- markup HTML, bensì fungono da tramite fra l’interfaccia ed i modelli, definendo
-ne la logica di interazione.
- La parte di templating vero e proprio è demandata ad un sistema esterno.
-\end_layout
-
-\begin_layout Standard
-Per realizzare la view di un singolo todo, estenderemo Backbone.View.
- Ecco il codice necessario:
+Le View in Backbone.js non contengono markup HTML, bensì fungono da tramite
+ fra l’interfaccia ed i modelli, definendone la logica di interazione.
+ La parte di templating vero e proprio è demandata a librerie esterne.
 \end_layout
 
 \begin_layout Standard
@@ -405,17 +398,12 @@ status open
 
 \begin_layout Plain Layout
 
-var TodoView = Backbone.View.extend({    
+var ExampleView = Backbone.View.extend({
 \end_layout
 
 \begin_layout Plain Layout
 
-  //il tag creato dalla vista  
-\end_layout
-
-\begin_layout Plain Layout
-
-  tagName:  "li",
+  tagName: "li",
 \end_layout
 
 \begin_layout Plain Layout
@@ -424,12 +412,7 @@ var TodoView = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-  // ID dello script che contiene la vista    
-\end_layout
-
-\begin_layout Plain Layout
-
-  template: '#item-template',  
+  className: "document-row",
 \end_layout
 
 \begin_layout Plain Layout
@@ -438,28 +421,7 @@ var TodoView = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-  // Gli eventi e gli elementi collegati.
-    
-\end_layout
-
-\begin_layout Plain Layout
-
-  events: {      
-\end_layout
-
-\begin_layout Plain Layout
-
-    "click .check"              : "toggleDone",  
-\end_layout
-
-\begin_layout Plain Layout
-
-    "click span.todo-destroy"   : "clear"     
-\end_layout
-
-\begin_layout Plain Layout
-
-  },
+  template: _.template(exampleTemplate),
 \end_layout
 
 \begin_layout Plain Layout
@@ -468,105 +430,22 @@ var TodoView = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-  initialize: function() {         
+  events: {
 \end_layout
 
 \begin_layout Plain Layout
 
-    //precompilo il template     
+    "click .icon":          "open",
 \end_layout
 
 \begin_layout Plain Layout
 
-    this.template = _.template($(this.template).html());   
+    "click .button.edit":   "openEditDialog",
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    //forzo il contesto di questi metodi della view
-\end_layout
-
-\begin_layout Plain Layout
-
-    _.bindAll(this, 'render', 'remove');   
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    //resto in ascolto per cambiamenti dell'attributo done
-\end_layout
-
-\begin_layout Plain Layout
-
-    //se cambia, ristampo il template del modello  
-\end_layout
-
-\begin_layout Plain Layout
-
-    this.model.bind('change:done', this.render); 
-\end_layout
-
-\begin_layout Plain Layout
-
-  }, 
-\end_layout
-
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-  //metodo che stampa l'HTML della view     
-\end_layout
-
-\begin_layout Plain Layout
-
-  render: function() {         
-\end_layout
-
-\begin_layout Plain Layout
-
-    //estraggo gli attributi del modello         
-\end_layout
-
-\begin_layout Plain Layout
-
-    var data = this.model.toJSON();           
-\end_layout
-
-\begin_layout Plain Layout
-
-    //li inietto nell'elemento della view  
-\end_layout
-
-\begin_layout Plain Layout
-
-    this.$el.html(this.template());
-\end_layout
-
-\begin_layout Plain Layout
-
-    //restituisco this per permettere 
-\end_layout
-
-\begin_layout Plain Layout
-
-    //la concatenazione dei metodi                   
-\end_layout
-
-\begin_layout Plain Layout
-
-    return this;     
+    "click .button.delete": "destroy"
 \end_layout
 
 \begin_layout Plain Layout
@@ -580,22 +459,12 @@ var TodoView = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-  //metodo lanciato quando clicco     
+  initialize: function() {
 \end_layout
 
 \begin_layout Plain Layout
 
-  //sul checkbox con classe .check     
-\end_layout
-
-\begin_layout Plain Layout
-
-  toggleDone: function() {         
-\end_layout
-
-\begin_layout Plain Layout
-
-    this.model.toggle();     
+    this.listenTo(this.model, "change", this.render);
 \end_layout
 
 \begin_layout Plain Layout
@@ -605,37 +474,21 @@ var TodoView = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-      
 \end_layout
 
 \begin_layout Plain Layout
 
-  //metodo lanciato quando clicco      
+  render: function() {
 \end_layout
 
 \begin_layout Plain Layout
 
-  //sul pulsante con classe .todo-destroy     
+    this.$el.html(this.template(this.model.attributes));
 \end_layout
 
 \begin_layout Plain Layout
 
-  clear: function() {         
-\end_layout
-
-\begin_layout Plain Layout
-
-    this.model.clear();     
-\end_layout
-
-\begin_layout Plain Layout
-
-  }
-\end_layout
-
-\begin_layout Plain Layout
-
-});   
+  },
 \end_layout
 
 \begin_layout Plain Layout
@@ -644,17 +497,29 @@ var TodoView = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-//inizializzo la vista 
+  open: function() {},
 \end_layout
 
 \begin_layout Plain Layout
 
-var todoVista = new TodoView({     
 \end_layout
 
 \begin_layout Plain Layout
 
-  model : todoSpesa 
+  openEditDialog: function() {},
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  destroy: function() {}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -668,36 +533,34 @@ var todoVista = new TodoView({
 \end_layout
 
 \begin_layout Standard
-Per prima cosa viene definito un tag contenitore per il template con .tagName
- e una serie di eventi DOM con .events: l’oggetto ha come chiave l’evento
- da ascoltare ed eventualmente il selettore CSS sul quale dev’essere applicato,
- mentre come valore ha un metodo della view.
+Gli attributi tagName e className servono a definire la proprietà el della
+ vista, che identifica l'elemento del DOM a cui è legata e in cui verrà
+ visualizzata.
+ Altri attributi che possono essere usati per definirla sono id e attributes
+ o, in alternativa, la si può specificare in modo esplicito.
 \end_layout
 
 \begin_layout Standard
-La maggior parte del lavoro avviene nel metodo .initialize().
- Qui viene precompilato il template, andando a leggere il contenuto di un
- tag script presente nel documento ma non interpretato dal browser avendo
- un attributo type impostato su 'text/template'.
- A questo punto viene utilizzato _.bindAll() di Underscore, per assicurarsi
- che il contesto dei metodi .render() e .remove() della vista non vengano
- persi.
- I contesti dei metodi delegati con .events sono forzati automaticamente.
+L'attributo template contiene il frammento HTML riguardante il layout vero
+ e proprio della vista.
+ In questo esempio si utilizza il sistema di templating di Underscore.js
+ attraverso la sua funzione _.template().
 \end_layout
 
 \begin_layout Standard
-Il metodo .render() è responsabile della conversione in HTML dei dati del
- modello.
- Per fare questo, si esportano gli attributi in un oggetto JSON, si passano
- al template precompilato in precedenza e si inietta il risultato nel tag
- contenitore.
+Nell'array events vengono associati gli eventi generati dal DOM alle funzioni
+ atte a gestirli.
 \end_layout
 
 \begin_layout Standard
-Gli altri due metodi, .toggleDone() e .clear() servono da tramite fra gli
- eventi dell’interfaccia e il modello.
- Da notare che, contrariamente a quanto si èuò pensare, non modificano direttame
-nte la view.
+La funzione initialize() viene invocata alla creazione della vista.
+\end_layout
+
+\begin_layout Standard
+Nella sua implementazione di default la funzione render() non compie nessuna
+ operazione.
+ Questa funzione va ridefinita al fine di visualizzare correttamente la
+ vista nella pagina web, includendo eventualmente i dati presi dai modelli.
 \end_layout
 
 \begin_layout Subsection
@@ -736,15 +599,10 @@ Il Router di Backbone.js ci permette di ottenere un’applicazione che risiede
 \end_layout
 
 \begin_layout Standard
-Oltre all’indubbio vantaggio di eliminare i tempi di attesa durante il caricamen
-to della pagina e di dare più scorrevolezza all’interazione, un’applicazione
+Oltre al vantaggio di eliminare i tempi di attesa durante il caricamento
+ della pagina e di dare più scorrevolezza all’interazione, un’applicazione
  di questo tipo simula anche il cambiamento di pagina aggiornando l’URL
  della pagina nella barra degli indirizzi.
- 
-\end_layout
-
-\begin_layout Standard
-Vediamo un esempio:
 \end_layout
 
 \begin_layout Standard
@@ -754,56 +612,32 @@ status open
 
 \begin_layout Plain Layout
 
-var TodoRoute = Backbone.Router.extend({       
+var Workspace = Backbone.Router.extend({
 \end_layout
 
 \begin_layout Plain Layout
 
-  routes : {
+  routes: {
 \end_layout
 
 \begin_layout Plain Layout
 
- //questa è la route corrispondente all'home dell'applicazione
+    "help":                 "help",    // #help
 \end_layout
 
 \begin_layout Plain Layout
 
-    '' : 'defaultPage',
+    "search/:query":        "search",  // #search/kiwis
 \end_layout
 
 \begin_layout Plain Layout
 
+    "search/:query/p:page": "search"   // #search/kiwis/p7
 \end_layout
 
 \begin_layout Plain Layout
 
-    //una route parametrica
-\end_layout
-
-\begin_layout Plain Layout
-
-    'todo/:id' : anotherPage(id) {   
-\end_layout
-
-\begin_layout Plain Layout
-
-      //id può essere utilizzato
-\end_layout
-
-\begin_layout Plain Layout
-
-      //per ricavare un todo particolare dal database
-\end_layout
-
-\begin_layout Plain Layout
-
-    }     
-\end_layout
-
-\begin_layout Plain Layout
-
-  },       
+  },
 \end_layout
 
 \begin_layout Plain Layout
@@ -812,17 +646,38 @@ var TodoRoute = Backbone.Router.extend({
 
 \begin_layout Plain Layout
 
-  defaultPage : function () {
+  //funzioni di gestione delle Routes
 \end_layout
 
 \begin_layout Plain Layout
 
-   //qui la funzione di         
+  help: function() {
 \end_layout
 
 \begin_layout Plain Layout
 
-  //inizializzazione dell'applicazione     
+    ...
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+  },
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  search: function(query, page) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    ...
+   
 \end_layout
 
 \begin_layout Plain Layout
@@ -832,40 +687,11 @@ var TodoRoute = Backbone.Router.extend({
 
 \begin_layout Plain Layout
 
-});
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-jQuery(function ($) {
-\end_layout
-
-\begin_layout Plain Layout
-
-  var todoRoute = new TodoRoute();
-\end_layout
-
-\begin_layout Plain Layout
-
-  Backbone.history.start({ pushState : true}); 
 \end_layout
 
 \begin_layout Plain Layout
 
 });
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-todoRoute.navigate('todo/1');
 \end_layout
 
 \end_inset
@@ -874,22 +700,8 @@ todoRoute.navigate('todo/1');
 \end_layout
 
 \begin_layout Standard
-Con questo codice viene realizzato un router con due percorsi: la home con
- la lista completa dei todo, ed una pagina in cui mostrare un singolo record,
- identificato dal parametro id.
-\end_layout
-
-\begin_layout Standard
-Dopo aver inizializzato il router, viene abilitata la gestione delle routes
- e della navigazione con Backbone.history.start() che permette di navigare
- fra le pagine dell’applicazione.
- Il parametro {pushStart : true}, infine, abilita HTML5 History nei browser
- che lo supportano.
-\end_layout
-
-\begin_layout Standard
-A questo punto è possibile navigare nell’applicazione utilizzando i normali
- attributi href dei link, oppure attraverso il metodo .navigate() del router.
+L'array routes gli URL con parametri a funzioni, in modo simile all'array
+ events delle View
 \end_layout
 
 \begin_layout Subsection
@@ -900,10 +712,8 @@ Backbone.Events
 Backbone mette a disposizione un sistema che consente di legare un oggetto
  ad uno o più eventi, in modo da poter lanciare delle funzioni quando questi
  si verificano.
-\end_layout
-
-\begin_layout Standard
-Vediamo un esempio di come la View di Backbone svolge il ruolo di un controller:
+ Oltre a poter gestire eventi del DOM possiamo legare eventi personalizzati
+ che avvengono su oggetti.
 \end_layout
 
 \begin_layout Standard
@@ -948,7 +758,7 @@ var Test = Backbone.View.extend({
 
 \begin_layout Plain Layout
 
-  // Event handling functions     
+  //funzioni di gestione degli eventi   
 \end_layout
 
 \begin_layout Plain Layout
@@ -974,29 +784,166 @@ var Test = Backbone.View.extend({
 });
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//dichiaro un oggetto
+\end_layout
+
+\begin_layout Plain Layout
+
+var object = {};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//estendo Backbone.Events
+\end_layout
+
+\begin_layout Plain Layout
+
+_.extend(object, Backbone.Events);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//specifico cosa fare se un evento avviene
+\end_layout
+
+\begin_layout Plain Layout
+
+object.on("alert", function(msg) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  alert("Triggered " + msg);
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//lancio l'evento
+\end_layout
+
+\begin_layout Plain Layout
+
+object.trigger("alert", "an event");
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Underscore.js Templates
+\end_layout
+
+\begin_layout Standard
+Underscore.js implementa un sistema di templating che permette di includere
+ comandi e variabili all'interno di frammenti HTML in modo da generare pagine
+ HTML che si adattino al contesto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var compiled = _.template("hello: <%= name %>");
+\end_layout
+
+\begin_layout Plain Layout
+
+compiled({name : 'moe'});
+\end_layout
+
+\begin_layout Plain Layout
+
+=> "hello: moe"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+var list = "<% _.each(people, function(name) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  %> <li><%= name %></li> <%
+\end_layout
+
+\begin_layout Plain Layout
+
+}); %>";
+\end_layout
+
+\begin_layout Plain Layout
+
+_.template(list, {people : ['moe', 'curly', 'larry']});
+\end_layout
+
+\begin_layout Plain Layout
+
+=> "<li>moe</li><li>curly</li><li>larry</li>"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+var template = _.template("<b><%- value %></b>");
+\end_layout
+
+\begin_layout Plain Layout
+
+template({value : '<script>'});
+\end_layout
+
+\begin_layout Plain Layout
+
+=> "<b>&lt;script&gt;</b>"
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-fEach event describes the event, the selector to listen to, and the callback
- function.
- In the case of the first event, the button element with the start id is
- listening for a click event.
- When it gets that event, it runs the start function located in the view.
- This and all future function example are contained within the Test view,
- although that’s not expressly shown.
+I simboli <% e %> racchiudono le istruzioni non HTML.
 \end_layout
 
 \begin_layout Standard
-Ogni evento descrive l'evento, il selettore da ascoltare e il callback di
- una funzione.
- Nel caso del primo evento, l'elemento bottone con l'id start resta in ascolto
- di un evento di tipo click.
- Quando riceve questo evento, ritorna la funzione start situata nella view.
- Tutte le funzioni legate agli eventi della view Test sono contenute all'interno
- della stessa.
+<%= name %> verrà sostituito dal valore della variabile name.
 \end_layout
 
 \end_body
