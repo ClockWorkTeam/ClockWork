@@ -84,12 +84,19 @@ public class CallTransfer extends ListenerTransfer {
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("candidate")){
       WebSocketConnector connector=null;
+      String contact;
       if(token.getString("contact").contains(".")){//indirizzo IP
         connector= getIpConnector(token.getString("contact"));
+        contact=event.getConnector().getRemoteHost().toString();
       }else{ //username
         connector=getUserConnector(token.getString("contact"));
+        contact= event.getConnector().getUsername();
       }
-   	  wspacket=new RawPacket(token.getString("candidate"));
+      String tokenToSend =token.getString("candidate");
+      tokenToSend= tokenToSend.substring(0,tokenToSend.length()-1);
+      
+      tokenToSend+=",\"contact\":\""+contact+"\"}";
+   	  wspacket=new RawPacket(tokenToSend);
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("endCall")){
    	  WebSocketConnector connector=null;
@@ -111,8 +118,7 @@ public class CallTransfer extends ListenerTransfer {
       }
       wspacket=new RawPacket("{\"type\":\"candidateReady\"}");
    	  sendPacket(wspacket,connector);
-	}
-   	else if(type.equals("callConference")){
+	}else if(type.equals("callConference")){
 	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
 	  if(connector!=null){
 		wspacket=new RawPacket("{\"type\":\"callConference\", \"contact\":\""+event.getConnector().getUsername()+"\",\"callType\":\""+token.getString("callType")+"\"}");
@@ -121,10 +127,17 @@ public class CallTransfer extends ListenerTransfer {
 		connector=event.getConnector();
 	  }
 	  sendPacket(wspacket,connector);
-	}
-   	else if(type.equals("answeredCallConference")){
+	}else if(type.equals("answeredCallConference")){
 	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
 	  wspacket=new RawPacket("{\"type\":\"answeredCallConference\", \"user\":\"" +event.getConnector().getUsername()+"\", \"answer\":\"true\"}");
+	  sendPacket(wspacket,connector);
+	}else if(type.equals("addConferenceCaller")){
+	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+	  wspacket=new RawPacket("{\"type\":\"addConferenceCaller\", \"user\":\"" +token.getString("user")+"\"}");
+	  sendPacket(wspacket,connector);
+	}else if(type.equals("addConferenceAnswer")){
+	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
+	  wspacket=new RawPacket("{\"type\":\"addConferenceAnswer\", \"user\":\"" +token.getString("user")+"\"}");
 	  sendPacket(wspacket,connector);
 	}
   }

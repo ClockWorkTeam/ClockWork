@@ -131,10 +131,9 @@ define([
      */
     callIP:function(){
       _.each(this.childViews, function(view){view.close();});
-      if(this.currentFunctions){
-        this.currentFunctions.render();
+      if(!this.currentFunctions){
+        this.currentFunctions = new FunctionsView({From: 'IP'});
       }
-      this.currentFunctions = new FunctionsView({From: 'IP'});
       this.currentFunctions.render();
       $('#main').prepend(this.currentFunctions.el);
     },
