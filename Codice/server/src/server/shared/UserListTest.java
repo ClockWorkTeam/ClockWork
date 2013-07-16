@@ -30,13 +30,9 @@ public class UserListTest {
 	@Before
 	public void init(){
 		userList=UserList.getInstance();
-	}
-	
-	@After
-	public void clear(){
 		userList.getAllUsers().clear();
 	}
-
+	
 	@Test
 	public void testAddUser() {
 		User user= new User("ClockWork7","Clock Work", "Team", "7");
