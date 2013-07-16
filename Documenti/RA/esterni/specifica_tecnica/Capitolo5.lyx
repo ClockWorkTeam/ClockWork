@@ -88,16 +88,6 @@ type
  Questo campo è particolarmente importante in quanto consente l'identificazione
  del messaggio da parte del metodo ricevente, che controllerà che il messaggio
  sia del tipo corretto prima di procedere alla sua elaborazione.
- a presenza di un campo 
-\begin_inset Quotes eld
-\end_inset
-
-type
-\begin_inset Quotes erd
-\end_inset
-
- che indicherà il tipo di messaggio che stiamo inviando e permetterà una
- gestione corretta, da parte del server, del messaggio ricevuto.
  Nei metodi del client gli array dovranno essere convertiti in stringhe
  JSON tramite l'utilizzo del metodo 
 \begin_inset Quotes eld
@@ -127,11 +117,28 @@ mytalk.server.functionmanager.Converter
 \end_layout
 
 \begin_layout Standard
+Nella Tabella 1 vengono riportati i messaggi JSON con i rispettivi mittenti
+ e destinatari.
+ Il simbolo 
+\emph on
+i 
+\emph default
+indica che verrà passato un numero di elementi pari a size.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="44" columns="4">
+<lyxtabular version="3" rows="45" columns="4">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -573,11 +580,7 @@ sendText
 \begin_inset Text
 
 \begin_layout Plain Layout
-contact
-\series bold
-,
-\series default
- message
+contact, message
 \end_layout
 
 \end_inset
@@ -1062,7 +1065,7 @@ login
 \begin_inset Text
 
 \begin_layout Plain Layout
-answer, (name,surname| error)
+answer, ((name, surname) | error)
 \end_layout
 
 \end_inset
@@ -1143,11 +1146,14 @@ tutorials
 
 \begin_layout Plain Layout
 size, title
+\emph on
+i
 \shape slanted
-i, 
+\emph default
+, 
 \shape default
 path
-\shape slanted
+\emph on
 i
 \end_layout
 
@@ -1189,16 +1195,28 @@ getContacts
 
 \begin_layout Plain Layout
 size, username
+\emph on
+i
 \shape slanted
-i, 
+\emph default
+, 
 \shape default
 name
+\emph on
+i
 \shape slanted
-i, 
+\emph default
+, 
 \shape default
 surname
+\emph on
+i
 \shape slanted
-i, IPi
+\emph default
+, IP
+\shape default
+\emph on
+i
 \end_layout
 
 \end_inset
@@ -1278,7 +1296,7 @@ answeredCall
 \begin_inset Text
 
 \begin_layout Plain Layout
-answer,(error)
+answer, (error)
 \end_layout
 
 \end_inset
@@ -1761,15 +1779,21 @@ size,
 \shape slanted
 \emph on
 sender
+\shape default
+i
+\shape slanted
 \emph default
-i, 
+, 
 \emph on
 message
+\shape default
+i
+\shape slanted
 \emph default
-i, 
+, 
 \emph on
 dateCreation
-\emph default
+\shape default
 i
 \end_layout
 
@@ -1850,7 +1874,7 @@ sendRecord
 \begin_inset Text
 
 \begin_layout Plain Layout
-answer,(error)
+answer, (error)
 \end_layout
 
 \end_inset
@@ -1866,7 +1890,7 @@ answer,(error)
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1895,7 +1919,7 @@ answer
 
 \end_inset
 </cell>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1936,6 +1960,65 @@ answer, error
 \end_inset
 </cell>
 <cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row caption="true">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Messaggi JSON passati tra Client e Server
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endlastfoot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout

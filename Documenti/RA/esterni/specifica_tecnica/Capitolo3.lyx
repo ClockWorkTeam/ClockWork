@@ -104,7 +104,8 @@ Contesto applicativo:
 \family typewriter
 server.Launcher
 \family default
- per inizializzare correttamente le classi del nostro server
+ per inizializzare correttamente le classi del nostro server e per UserList
+ e Dao
 \end_layout
 
 \begin_layout Subsection
@@ -158,9 +159,8 @@ name "fig:Rappresentazione-DAO"
 \series bold
 Descrizione: 
 \series default
-tale design pattern di basa sulla possibilità di concentrare il codice per
- l'accesso al sistema di persistenza di una classe che si occupa di gestire
- la logica per effettuare operazioni nella base di dati 
+tale design pattern si occupa di creare un'interfaccia di accesso alla base
+ di dati e adatta l'implementazione di tale interfaccia al database utilizzato
 \end_layout
 
 \begin_layout Itemize
@@ -260,7 +260,8 @@ contiene i metodi per visualizzare l'interfaccia grafica, composta dalle
 \series bold
 Template: 
 \series default
-sono frammenti di codice HTML che rappresentano il layout della view
+sono frammenti di codice HTML arricchiti da Underscore.js che rappresentano
+ il layout della view
 \end_layout
 
 \end_deeper
