@@ -1,21 +1,22 @@
-<!-- 
+<!--
  * Nome: StatisticsTemplate.html
  * Package: Template
  * Autore: Furlan Valentino
  * Data: 2013/04/12
  * Versione: 1.0
- * 
+ *
  * Modifiche:
  * +--------+---------------+----------------------+
- * |  Data  | Programmatore | Modifiche            | 
+ * |  Data  | Programmatore | Modifiche            |
  * +--------+---------------+----------------------+
- * |13/04/12|     FV        | + Creazione documento| 
- * |_______________________________________________| 
+ * |13/04/12|     FV        | + Creazione documento|
+ * |_______________________________________________|
  */
 -->
-
-Durata chiamata: <%= time %>
-Byte audio trasmessi: <%= sentAudio %> KB
-Byte video trasmessi: <%= sentVideo %> KB
-Latenza: <%= latency %> ms
-Velocità di trasmissione: <%= bitrate %> KB/s
+<ul class="unstyled">
+   <li>Durata chiamata: <%= time %> </li>
+   <li>Byte audio trasmessi: <%= sentAudio %> KB</li>
+   <li>Byte video trasmessi: <%= sentVideo %> KB</li>
+   <li>Latenza: <%= latency %> ms</li>
+   <li>Velocità di trasmissione: <%= bitrate %> KB/s</li>
+</ul>

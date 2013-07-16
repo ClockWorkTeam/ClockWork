@@ -1,19 +1,19 @@
-<!-- 
+<!--
  * Nome: AuthenticationTemplate.html
  * Package: Template
  * Autore: Furlan Valentino
  * Data: 2013/04/05
  * Versione: 1.0
- * 
+ *
  * Modifiche:
  * +--------+---------------+----------------------+
- * |  Data  | Programmatore | Modifiche            | 
+ * |  Data  | Programmatore | Modifiche            |
  * +--------+---------------+----------------------+
- * |13/04/06|     FV        | + Campi registrazione| 
- * |--------|---------------|----------------------| 
- * |13/04/05|     FV        | + Creazione documento| 
- * |        |               | + Campi per login    | 
- * |_______________________________________________| 
+ * |13/04/06|     FV        | + Campi registrazione|
+ * |--------|---------------|----------------------|
+ * |13/04/05|     FV        | + Creazione documento|
+ * |        |               | + Campi per login    |
+ * |_______________________________________________|
  */
 -->
 
@@ -21,22 +21,24 @@
   <% if (!signup) { %>
     <label for='user'>Username</label><input type='text' id='user' name='user' />
     <label for='password'>Password</label><input type='password' id='password' name='password' />
-    <button id='login'>Login</button>
-    <span>Non sei registrato <button id='signup'>Registrazione</button></span>
+    <button class="btn btn-small" id='login'>Login</button>
+    <span>Non sei registrato <button class="btn btn-small" id='signup'>Registrazione</button></span>
   <% } else{ %>
-    <label for='user'>Username</label><input type='text' id='user' name='user' />
-    <label for='password'>Password</label><input type='password' id='password' name='password' />
-    <label for='password2'>Conferma Password</label><input type='password' id='password2' name='password2' />
-    <label for='name'>Nome</label><input type='text' id='name' name='name' />
-    <label for='surname'>Cognome</label><input type='text' id='surname' name='surname' />
-    <button id='sign'>Conferma Registrazione</button>	
-    <button id='deny'>Annulla Registrazione</button>	
+  	  <label for='user'>Username</label><input type='text' id='user' name='user' />
+  	  <label for='password'>Password</label><input type='password' id='password' name='password' />
+  	  <label for='password2'>Conferma Password</label><input type='password' id='password2' name='password2' />
+  	  <label for='name'>Nome</label><input type='text' id='name' name='name' />
+  	  <label for='surname'>Cognome</label><input type='text' id='surname' name='surname' />
+  	  <button class="btn btn-small" id='sign'>Conferma Registrazione</button>
+  	  <button class="btn btn-small" id='deny'>Annulla Registrazione</button>
   <% } %>
 <% } %>
 
 <% if (authenticated) { %>
-  Ciao, <%= name %>
-  <button id='logout'>Logout</button>
-  <button id='edit'>Modifica dati profilo</button>
-<% } %>  
+		Ciao, <%= name %>
+		<span class="right">
+		  <button class="btn btn-small" id='logout'>Logout</button>
+		  <button class="btn btn-small" id='edit'>Modifica dati profilo</button>
+		</div>
+	<% } %>
 

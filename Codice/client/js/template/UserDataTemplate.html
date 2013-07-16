@@ -1,26 +1,28 @@
-<!-- 
+<!--
  * Nome: UserDataTemplate.html
  * Package: Template
  * Autore: Furlan Valentino
  * Data: 2013/04/12
  * Versione: 1.0
- * 
+ *
  * Modifiche:
  * +--------+---------------+----------------------+
- * |  Data  | Programmatore | Modifiche            | 
+ * |  Data  | Programmatore | Modifiche            |
  * +--------+---------------+----------------------+
- * |13/04/12|     FV        | + Creazione documento| 
- * |_______________________________________________| 
+ * |13/04/12|     FV        | + Creazione documento|
+ * |_______________________________________________|
  */
 -->
-<h2><%= username %></h2>
-<ul id ="userData">
-  <li><label for="name">Nome </label><input type="text" id="name" name="name" value="<%= name %>" /></li>
-  <li><label for="surname">Cognome </label><input type="text" id="surname" name="surname" value="<%= surname %>"/></li>
-  <li><label for="password">Nuova Password </label><input type="password" id="password" name="password" /></li>
-  <li><label for="password2">Conferma Password </label><input type="password" id="password2" name="password2" /></li>
-  <li><label for="oldPassword">Password attuale</label><input type="password" id="oldPassword" name="oldPassword" /></li>
-</ul>		
-<button id='submitChange'>Conferma</button>	
-<button id='reset'>Reset</button>
-<button id='denyChange'>Annulla</button>	
+<div class="row-fluid">
+ <h2><%= username %></h2>
+ <ul class="form-horizontal">
+   <li><div class="control-group"><label class="control-label" for="name">Nome </label><div class="controls"><input type="text" id="name" name="name" value="<%= name %>" /></div></div></li>
+   <li><div class="control-group"><label class="control-label" for="surname">Cognome </label><div class="controls"><input type="text" id="surname" name="surname" value="<%= surname %>"/></div></div></li>
+   <li><div class="control-group"><label class="control-label" for="password">Nuova Password </label><div class="controls"><input type="password" id="password" name="password" /></div></div></li>
+   <li><div class="control-group"><label class="control-label" for="password2">Conferma Password </label><div class="controls"><input type="password" id="password2" name="password2" /></div></div></li>
+   <li><div class="control-group"><label class="control-label" for="oldPassword">Password attuale</label><div class="controls"><input type="password" id="oldPassword" name="oldPassword" /></div></div></li>
+ </ul>
+   <button id='submitChange'>Conferma</button>
+   <button id='reset'>Reset</button>
+   <button id='denyChange'>Annulla</button>
+</div>

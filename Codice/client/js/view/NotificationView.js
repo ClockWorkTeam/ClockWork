@@ -7,16 +7,16 @@
  *
  * Modifiche:
 * +-----------+---------------+------------------------+
- * | Data     | Programmatore |     Modifiche          | 
+ * | Data     | Programmatore |     Modifiche          |
  * +----------+---------------+------------------------+
- * | 130712   |    FV         | # gestione conferenza  |  
- * |          |               |   in acceptCall        |  
+ * | 130712   |    FV         | # gestione conferenza  |
+ * |          |               |   in acceptCall        |
  * +----------+---------------+------------------------+
- * | 130518   |    FV         | + metodo che segnala   | 
- * |          |               |   il rifiuto della     | 
- * |          |               |   chiamata             | 
+ * | 130518   |    FV         | + metodo che segnala   |
+ * |          |               |   il rifiuto della     |
+ * |          |               |   chiamata             |
  * +----------+---------------+------------------------+
- * | 1/0517   |    PMA        | + creazione documento  | 
+ * | 1/0517   |    PMA        | + creazione documento  |
  * -----------------------------------------------------
 
  */
@@ -63,7 +63,7 @@ define([
      */
     render: function(){
       $(this.el).html(this.template({username : this.options.caller}));
-     
+      $('#myModal').modal('toggle');
     },
     /**
      * funziona che si occupa di disabilitare la vista
@@ -89,7 +89,7 @@ define([
           bubbles:true,
           cancelable:true
         });
-        
+
       }else{
         console.log("Iniziamo la conferenza");
         var event=new CustomEvent('acceptCallConference',{
@@ -120,28 +120,28 @@ define([
       this.options.NotificationCommunication.refuse(this.options.caller);
       this.unrender();
     },
-    
+
      /**
      * funzione che si occupa di visualizzare un messaggio video in arrivo
      */
     viewRecordMessage : function(){
 
     },
-    
+
      /**
      * funzione che annulla la visualizzazione di un messaggio video in arrivo
      */
     ignoreMessage: function(){
 
     },
-    
+
      /**
      * funzione che si occupa di accettare la ricezione di un file
      */
     acceptFile : function(){
 
     },
-    
+
      /**
      * funzione che si occupa di rifiutare la ricezione di un file
      */

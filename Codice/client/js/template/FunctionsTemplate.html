@@ -33,14 +33,15 @@
       <div id="empty"></div>
     <% } %>
   <% } else { %>
-    <h2><%= username %></h2>
-    <% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%>
-    <button id='dataContact'>Dettagli contatto</button>
-    <button id= "sendVideoText">Invia un videomessaggio</button>
+    <h2> <%= username %>
+    	<span id="status"> <% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%> </p>
+    </h2>
+        <button id='dataContact'>Dettagli contatto</button>
+    	<button id= "sendVideoText">Invia un videomessaggio</button>
     <% if(IP != "0"){ %>
       <button id="call">Chiama</button>
       <button id="video">Videochiama</button>
-      <input type="checkbox" name="record" id="record" >Registra la chiamata
+      <input class="checkbox" type="checkbox" name="record" id="record" >Registra la chiamata
     <% } %>
   <% } %>
 </div>
