@@ -711,7 +711,7 @@ select
 \emph default
  della classe JavaConnectionSQLite, passando come parametri 
 \emph on
-(RecordMessageDataSQL,*, adressee=username,),
+(RecordMessageDataSQL,*, addressee=username,),
 \emph default
  per trovare tutti i messaggi che come destinatario avranno l'utente con
  lo username corrispondente a quello passato per parametro.
@@ -721,7 +721,7 @@ select
 \emph on
 SQLException 
 \emph default
-viene catturata dal metodo stesso e viene restiuito 
+viene catturata dal metodo stesso e viene restituito 
 \emph on
 null
 \end_layout
@@ -736,12 +736,12 @@ boolean addMessage(RecordMessage message):
 executeUpdate 
 \emph default
 della classe JavaConnectionSQLite, passando come parametro la query per
- l'inserimento del messagio nella tabella 
+ l'inserimento del messaggio nella tabella 
 \emph on
 RecordMessageDataSQL.
 
 \emph default
- Infine restiuirà un booleano che indicherà il successo o il fallimento
+ Infine restituirà un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
 
@@ -756,12 +756,12 @@ boolean removeMessage(RecordMessage message):
 executeUpdate 
 \emph default
 della classe JavaConnectionSQLite, passando come parametro la query per
- l'eliminazione del messagio nella tabella 
+ l'eliminazione del messaggio nella tabella 
 \emph on
 RecordMessageDataSQL.
 
 \emph default
- Infine restiuirà un booleano che indicherà il successo o il fallimento
+ Infine restituirà un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
 
@@ -890,10 +890,10 @@ tutorials
 status open
 
 \begin_layout Plain Layout
-I tutorial non vengono presi direttamente dal database, perchè nel caso
+I tutorial non vengono presi direttamente dal database, perché nel caso
  di più utenti che accedono contemporaneamente si creerebbero più copie
  degli stessi dati, sprecando spazio.
- In questo modo nvece lo spazio occupato dai tutorial nel server resterà
+ In questo modo invece lo spazio occupato dai tutorial nel server resterà
  fisso, qualsiasi sia il numero degli utenti che accedono\SpecialChar \@.
 
 \end_layout
@@ -1215,7 +1215,7 @@ della classe JavaConnectionSQLite, passando come parametro la query per
 UserDataSQL.
 
 \emph default
- Infine restiuisce un booleano che indicherà il successo o il fallimento
+ Infine restituisce un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
 
@@ -1235,7 +1235,7 @@ della classe JavaConnectionSQLite, passando come parametro la query per
 UserDataSQL.
 
 \emph default
- Infine restiuisce un booleano che indicherà il successo o il fallimento
+ Infine restituisce un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
 
@@ -1260,7 +1260,7 @@ select
 \emph on
 SQLException 
 \emph default
-viene catturata dal metodo stesso e viene restiuito 
+viene catturata dal metodo stesso e viene restituito 
 \emph on
 null
 \end_layout
@@ -1290,7 +1290,7 @@ ione
 boolean setPassword(String username, String password):
 \series default
  modifica nel database la password dell'utente, avente lo username corrispondent
-e a quello passato per parametre, invocando il metodo 
+e a quello passato per parametro, invocando il metodo 
 \emph on
 executeUpdate 
 \emph default
@@ -1299,8 +1299,8 @@ della classe JavaConnectionSQLite
 .
 
 \emph default
- Restiuisce un booleano che rappresenta il successo o il fallimento dell'operazi
-one
+ Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
+ione
 \end_layout
 
 \begin_layout Itemize
@@ -1309,7 +1309,7 @@ one
 boolean setName(String username, String name):
 \series default
  modifica nel database il nome dell'utente, avente lo username corrispondente
- a quello passato per parametre, invocando il metodo 
+ a quello passato per parametro, invocando il metodo 
 \emph on
 executeUpdate 
 \emph default
@@ -1318,8 +1318,8 @@ della classe JavaConnectionSQLite
 .
 
 \emph default
- Restiuisce un booleano che rappresenta il successo o il fallimento dell'operazi
-one
+ Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
+ione
 \end_layout
 
 \begin_layout Itemize
@@ -1328,7 +1328,7 @@ one
 boolean setSurname(String username, String surname):
 \series default
  modifica nel database il cognome dell'utente, avente lo username corrispondente
- a quello passato per parametre, invocando il metodo 
+ a quello passato per parametro, invocando il metodo 
 \emph on
 executeUpdate 
 \emph default
@@ -1337,8 +1337,8 @@ della classe JavaConnectionSQLite
 .
 
 \emph default
- Restiuisce un booleano che rappresenta il successo o il fallimento dell'operazi
-one
+ Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
+ione
 \end_layout
 
 \begin_layout Itemize
@@ -1347,7 +1347,7 @@ one
 boolean setIP(String username, String IP): 
 \series default
 modifica nel database l'indirizzo IP dell'utente, avente lo username corrisponde
-nte a quello passato per parametre, invocando il metodo 
+nte a quello passato per parametro, invocando il metodo 
 \emph on
 executeUpdate 
 \emph default
@@ -1356,8 +1356,8 @@ della classe JavaConnectionSQLite
 .
 
 \emph default
- Restiuisce un booleano che rappresenta il successo o il fallimento dell'operazi
-one
+ Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
+ione
 \end_layout
 
 \begin_layout Paragraph
@@ -1717,7 +1717,7 @@ Metodi pubblici
 \series bold
 Tutorials(int num):
 \series default
- costruttore che inizializza la lista di tutorials dellla dimensione passatagli
+ costruttore che inizializza la lista di tutorials della dimensione passatagli
  dal parametro
 \end_layout
 
@@ -1914,7 +1914,7 @@ name "sub:mytalk.server.shared.UserList"
 
 \begin_layout Standard
 La classe UserList rappresenta la lista degli utenti registrati al server,
- poichè deve esistere un'unica istanza contenente tutti gli utenti, questa
+ poiché deve esistere un'unica istanza contenente tutti gli utenti, questa
  classe è strutturata come Singleton.
  
 \end_layout
@@ -2194,7 +2194,7 @@ della classe UserDaoSQL per controllare l'esistenza dell'utente nel database.
 \emph on
 Exception
 \emph default
-, avente mesaggio 
+, avente messaggio 
 \emph on
 Username errato
 \emph default
@@ -2204,8 +2204,8 @@ Username errato
 \emph on
 checkPassword
 \emph default
- della classe UserDaoSQL, se la password è errata si lancerà un'altra eccezzione
-, di tipo generico 
+ della classe UserDaoSQL, se la password è errata si lancerà un'altra eccezione,
+ di tipo generico 
 \emph on
 Exception
 \emph default
@@ -2214,7 +2214,7 @@ Exception
 Password errata
 \emph default
 .
- Altrimenti si modificherà l'inidirizzo IP dell'utente con il metodo 
+ Altrimenti si modificherà l'indirizzo IP dell'utente con il metodo 
 \emph on
 setIP
 \emph default
@@ -2257,13 +2257,13 @@ getUser
 \emph on
 setIP 
 \emph default
-delle classi UserDaoSQL e UserList per modificare l'inidirzzo IP ad una
+delle classi UserDaoSQL e UserList per modificare l'indirizzo IP ad una
  stringa contenente 
 \emph on
 0
 \emph default
 , che rappresenta un'utente non connesso.
- Infine restiuisce l'utente ottenuto dalla prima operazione
+ Infine restituisce l'utente ottenuto dalla prima operazione
 \end_layout
 
 \begin_layout Itemize
@@ -2312,7 +2312,7 @@ Errore nell'inserimento dell'utente nel database
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String usernmaer):
+boolean removeUser(String username):
 \series default
  elimina un utente registrato dal database, utilizzando i metodi 
 \emph on
@@ -2324,7 +2324,7 @@ removeUser
 \emph on
 true, 
 \emph default
-altrimente procede con l'operazione di eliminazione
+altrimenti procede con l'operazione di eliminazione
 \end_layout
 
 \begin_layout Itemize
@@ -2343,7 +2343,7 @@ getAllUsers
 status open
 
 \begin_layout Plain Layout
-Gli utenti non vengono presi direttamente dal database, perchè nel caso
+Gli utenti non vengono presi direttamente dal database, perché nel caso
  di più utenti che accedono contemporaneamente si creerebbero più copie
  degli stessi dati, sprecando spazio.
  In questo modo invece lo spazio occupato dai utenti nel server resterà
@@ -2372,7 +2372,7 @@ name "sub:mytalk.server.usermanager.UserManager"
 
 \begin_layout Standard
 La classe UserManager si occupa di gestire la modifica dei dati degli utenti
- e dei messagi differiti.
+ e dei messaggi differiti.
 \end_layout
 
 \begin_layout Standard
@@ -2482,7 +2482,7 @@ null
 \emph on
 Exception
 \emph default
-, avente mesaggio 
+, avente messaggio 
 \emph on
 Username errato
 \emph default
@@ -2515,7 +2515,7 @@ null
 \emph on
 Exception
 \emph default
-, avente mesaggio 
+, avente messaggio 
 \emph on
 Username errato
 \emph default
@@ -2535,7 +2535,7 @@ e
 setSurname 
 \emph default
 della classe UserDao.
- Infine cerca l'utente in UseList, creando un istanza locale della classe,
+ Infine cerca l'utente in UserList, creando un istanza locale della classe,
  e inizializzandola con il metodo 
 \emph on
 getInstance
@@ -2569,7 +2569,7 @@ inizialmente crea un oggetto di tipo RecordMessage con i dati passati per
 \emph on
 addMessage
 \emph default
- della classe RecordoMessageDao.
+ della classe RecordMessageDao.
  Se l'operazione fallisce lancia un'eccezione di tipo 
 \emph on
 Exception
@@ -2580,7 +2580,7 @@ Errore nella registrazione del messaggio
 \emph default
 .
  Se l'operazione di inserimento ha buon esito, controlla se il destinatario
- del messaggio è in linea, se la risposta è affermativa restituisce il messagio
+ del messaggio è in linea, se la risposta è affermativa restituisce il messaggio
  altrimenti restituisce 
 \emph on
 null
@@ -2627,8 +2627,8 @@ name "sub:Package-functionmanager"
 \end_layout
 
 \begin_layout Standard
-Il package functionmanager contiene tutte le classi che si occupano di convetire
- le strutture dati più complesse in stringhe JSON per lo strato transfer.
+Il package functionmanager contiene tutte le classi che si occupano di convertir
+e le strutture dati più complesse in stringhe JSON per lo strato transfer.
 \end_layout
 
 \begin_layout Paragraph
@@ -3395,7 +3395,7 @@ e il contatto con il nuovo indirizzo IP
 \emph on
 signUp
 \emph default
-: invocha il metodo 
+: invoca il metodo 
 \emph on
 createUser 
 \emph default
@@ -3674,7 +3674,7 @@ busy
 \emph on
 offer: 
 \emph default
-invia un pacchetto contentent l'attributo 
+invia un pacchetto contenente l'attributo 
 \emph on
 description 
 \emph default
@@ -3686,7 +3686,7 @@ passatogli dal client che ha effettuato la richiesta
 \emph on
 candidate: 
 \emph default
-invia un pacchetto contentent l'attributo 
+invia un pacchetto contenente l'attributo 
 \emph on
 cand 
 \emph default
