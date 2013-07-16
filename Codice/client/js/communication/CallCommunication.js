@@ -161,7 +161,6 @@ define(['connection'], function(Connection){
         localStream=stream;	
         Connection.addEventListener('message', onAnswer, false);
         for(var i=0;i<recipient.length;i++){
-          console.log(recipient[i]);
           message= {type:'callConference', contact: recipient[i] ,  callType:typecall};
           Connection.send(JSON.stringify(message));
         }
@@ -194,13 +193,10 @@ define(['connection'], function(Connection){
           if(response.answer==='true'){
             confirmReceived++;
             confirmedContact.push(response.user);
-            
-            console.log("Utente responsabile " +response.user);
             callView.addVideoConference(response.user)
             var isCaller=true;
             call.startCallConference(isCaller, typecall, call, callView,response.user)
             for(var i=0;i<confirmedContact.length-1;i++){
-              console.log("Contattiamo " + confirmedContact[i]);
               message= {type:'addConferenceCaller', user: confirmedContact[i], contact: response.user, callType:typecall};
               Connection.send(JSON.stringify(message));
               message= {type:'addConferenceAnswer', user: response.user, contact: confirmedContact[i], callType:typecall};
@@ -261,7 +257,6 @@ define(['connection'], function(Connection){
       confirmedContact=[];
       peerConnection=[];
       callView.addVideoConference(contact);
-      console.log(recipient);
       var call=this;
       
       navigator.webkitGetUserMedia({video:true, audio:true},
@@ -300,7 +295,6 @@ define(['connection'], function(Connection){
        * ascoltatore che capisce quando viene inserito all'interno di una peerconnection uno stream da un utente remoto
        */
       function onRemoteStreamAdded(event) {
-        console.log("Added remote stream");
         remotevid.src = window.webkitURL.createObjectURL(event.stream);
         remoteStream=event.stream;
         var event=new CustomEvent("setPeerConn",{
@@ -355,7 +349,6 @@ define(['connection'], function(Connection){
       /**
        * ascoltatore che capisce quando viene inserito all'interno di una peerconnection uno stream da un utente remoto
        */
-      console.log("Utente in createPeerConnectionConference "+user);
       function onRemoteStreamAdded(event) {
         console.log("Added remote stream");
         if(remoteStream[user]==null){
@@ -388,7 +381,6 @@ define(['connection'], function(Connection){
         console.log(user);
         peerConnection[user]=new webkitRTCPeerConnection(pcConfig);
         candidates[user]=[];
-        console.log("PeerConnection usati "+peerConnection.length);
         peerConnection[user].onicecandidate = function(event){
           if (event.candidate){
             var candidate=JSON.stringify({
@@ -430,7 +422,6 @@ define(['connection'], function(Connection){
       if (!started && localStream ) {	  
         this.createPeerConnectionConference(user);	  
         peerConnection[user].addStream(localStream);
-         console.log('Adding local stream...'+user);
         console.log('Adding local stream...');
         peerConnection[user].createOffer(function(desc){
           peerConnection[user].setLocalDescription(desc);  
@@ -494,7 +485,6 @@ define(['connection'], function(Connection){
      * funzione che si occupa di inizializzare la chiamata
      */
     startCall: function (isCaller, typecall, call, callView){
-      console.log('sono su startCall');
       sourcevid = document.getElementById('sourcevid');
       remotevid = document.getElementById('remotevid');
       candidates=[];
@@ -592,7 +582,6 @@ define(['connection'], function(Connection){
          */ 
         if (response.type ==='candidateReady') {
           messageReceived=true;
-          console.log("pronto ad inviare");
           if(readyToSend){
             candidates.forEach(
             function(candidate){
@@ -632,7 +621,6 @@ define(['connection'], function(Connection){
     startCallConference: function (isCaller, typecall, call, callView,contact){
       
       remotevid[contact]=document.getElementById(contact);
-      console.log("Conference");
       remoteStream[contact]=null;
       var started = false;
       var description=null;
@@ -655,7 +643,6 @@ define(['connection'], function(Connection){
          */
         
         if (response.type==='offer' && !isCaller && response.contact==contact){
-          console.log("un create offer");
           lastPeerConnection++;	
           started = true;
           if(typecall==='video'){				
@@ -693,7 +680,7 @@ define(['connection'], function(Connection){
         var response = JSON.parse(evt.data);
         if (response.type ==='candidate' && started && response.contact==contact) {
           console.log('STARTED TRUE');
-          console.log('Adding candidate to '+response.contact);
+          console.log('Adding candidate ');
           var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
           candidate:response.candidate});
           peerConnection[response.contact].addIceCandidate(candidate);
@@ -708,7 +695,6 @@ define(['connection'], function(Connection){
         console.log('RECEIVED: '+evt.data);
         var response = JSON.parse(evt.data);
         if (response.type ==='endCall' && response.contact==contact) {
-          console.log("Chiudi "+response.contact);
           if(peerConnection[contact]!=null){
             peerConnection[contact].removeStream(localStream);
             peerConnection[contact].close();
@@ -721,16 +707,20 @@ define(['connection'], function(Connection){
           var i=0;
           while(trovato==false){
             if(confirmedContact[i]==contact){
-              localStream.stop();
               trovato=true;
             }else{
               i++;
             }
           }
           if(trovato==true){
+            console.log("Grandezza prima "+confirmedContact.length);
             confirmedContact.splice(i,1);
+            remotevid[contact].parentNode.removeChild(remotevid[contact]);
+            remotevid.splice(i,1);
+            console.log("Grandezza dopo "+confirmedContact.length);
           }
           if(confirmedContact.length==0){
+            localStream.stop();
             var event=new CustomEvent('setOnCall',{
               detail:{
                 type:false
@@ -753,7 +743,6 @@ define(['connection'], function(Connection){
         var response = JSON.parse(evt.data);
         if (response.type ==='candidateReady' && response.contact==contact) {
           messageReceived[contact]=true;
-          console.log("pronto ad inviare");
           if(readyToSend[contact]){
             candidates[contact].forEach(
               function(candidate){
@@ -768,7 +757,6 @@ define(['connection'], function(Connection){
       }
       if(isCaller && typecall=='video'){
         lastPeerConnection++;
-        console.log("Utente in start conference "+contact);
         call.connectConference(started,contact);
       }
       /** 

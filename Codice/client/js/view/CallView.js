@@ -99,6 +99,7 @@ define([
       /**
        *  controllo che si effettua per verificare chi ha deciso di concludere la chiamata
        */
+      console.log("chiudo la finestra");
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
