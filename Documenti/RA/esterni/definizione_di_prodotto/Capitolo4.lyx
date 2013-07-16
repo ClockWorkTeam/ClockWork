@@ -604,8 +604,8 @@ contactsView
  metodo che avvia l'operazione di login dell'utente richiamando il metodo
  
 \emph on
-checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticatioVie
-w) 
+checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticationVi
+ew) 
 \emph default
 della classe 
 \emph on
@@ -657,7 +657,7 @@ contactsView
 \series default
  metodo che avvia l'operazione di registrazione dell'utente.
  Controlla che i campi obbligatori siano compilati e che la password e quella
- di conferma coincidano, in caso affermativo invocha il metodo 
+ di conferma coincidano, in caso affermativo invoca il metodo 
 \emph on
 signup(String, String, String, String, AuthenticationView.callBacks(), Authentica
 tionView) 
@@ -822,7 +822,7 @@ render()
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template CallTemplate
- e che verificha che sia in corso una chiamata e, in caso affermativo, invoca
+ e che verifica che sia in corso una chiamata e, in caso affermativo, invoca
  il metodo 
 \shape italic
 recoverCall()
@@ -2825,7 +2825,7 @@ showStatistics(Event)
  metodo che si occupa di aggiornare, con la frequenza di un secondo, la
  durata, i byte di video e audio trasmessi, la latenza e la velocità di
  trasmissione della chiamata.
- Ricave i dati necessari dal metodo 
+ Riceve i dati necessari dal metodo 
 \emph on
 getStats() 
 \emph default
@@ -3627,7 +3627,7 @@ Attributi pubblici:
 \series bold
 [MediaStream] remoteStream:
 \series default
- stream audio/video dell'utente con cui si stà comunicando
+ stream audio/video dell'utente con cui si sta comunicando
 \end_layout
 
 \begin_layout Itemize
@@ -3643,7 +3643,7 @@ Attributi pubblici:
 \series bold
 [ContactModel] recipent:
 \series default
- riferimento alla classe ContactModel riguardante l'utente con cui si stà
+ riferimento alla classe ContactModel riguardante l'utente con cui si sta
  comunicando
 \end_layout
 
@@ -3652,7 +3652,7 @@ Attributi pubblici:
 \series bold
 [HTMLVideoElement] remotevid:
 \series default
- elemento HTMLVideoElement dell'utente con cui si stà comunicando
+ elemento HTMLVideoElement dell'utente con cui si sta comunicando
 \end_layout
 
 \begin_layout Itemize
@@ -3705,7 +3705,7 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[void] sendCall([String] tyecall, [ContactModel] contact, [CallView] view):
+[void] sendCall([String] typecall, [ContactModel] contact, [CallView] view):
 \series default
  metodo per inizializzare la chiamata, deve avere come parametri il tipo
  d chiamata, l'istanza della classe ContactModel relativa al contatto e
@@ -3769,8 +3769,8 @@ false
 \begin_layout Itemize
 
 \series bold
-[void] sendAnswer([String] tyecall, [ContactModel] contact, [CallView] view):
- 
+[void] sendAnswer([String] typecall, [ContactModel] contact, [CallView]
+ view): 
 \series default
 metodo per inviare all'utente che ha effettuato la chiamata una risposta
  positiva e per invocare il metodo 
@@ -5676,7 +5676,7 @@ Attributi pubblici:
 \series bold
 [String] username
 \series default
-: username dell' utente
+: username dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -5692,7 +5692,7 @@ password dell'utente
 \series bold
 [String] name
 \series default
-: nome dell' utente
+: nome dell'utente
 \end_layout
 
 \begin_layout Itemize
@@ -5700,7 +5700,7 @@ password dell'utente
 \series bold
 [String] surname
 \series default
-: cognome dell' utente
+: cognome dell'utente
 \end_layout
 
 \begin_layout Subsection
@@ -5856,7 +5856,8 @@ input con tipo text ed id surname, in cui l'utente può inserire il proprio
 \series bold
 button#sign: 
 \series default
-pulsante con id sign per effettuare la registrazione invocando il metodo signUp() di AuthenticationView
+pulsante con id sign per effettuare la registrazione invocando il metodo
+ signUp() di AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -5885,7 +5886,7 @@ pulsante con id logout per effettuare il
 \emph on
 logout
 \emph default
-invocando il metodo disconnect() di AuthenticationView
+ invocando il metodo disconnect() di AuthenticationView
 \end_layout
 
 \begin_layout Itemize
@@ -5896,7 +5897,7 @@ button#edit:
 pulsante con id edit per accedere alla sezione di modifica dei propri dati,
  ovvero a
 \family typewriter
-mytalk.client.template.UserDataTemplate
+ mytalk.client.template.UserDataTemplate
 \end_layout
 
 \end_deeper
@@ -5915,8 +5916,8 @@ Questo template crea gli elementi dell'interfaccia grafica che l'utente
 
 \series bold
 Il template è utilizzato da: 
-\series default
 \family typewriter
+\series default
 myTalk.client.view.CallView
 \end_layout
 
@@ -5932,8 +5933,8 @@ Chiamata avviata:
 \series bold
 video#remotevid: 
 \series default
-video con tipologia autoplay ed id remotevid, corrisponde al video dell'
- utente con cui si sta dialogando
+video con tipologia autoplay ed id remotevid, corrisponde al video dell'utente
+ con cui si sta dialogando
 \end_layout
 
 \begin_layout Itemize
@@ -5950,7 +5951,8 @@ video#sourcevid:
 \series bold
 button#endCall: 
 \series default
-pulsante con id endCall che termina la chiamata invocando il metodo endCall() di CallView
+pulsante con id endCall che termina la chiamata invocando il metodo endCall()
+ di CallView
 \end_layout
 
 \end_deeper
@@ -5994,7 +5996,8 @@ area testuale di input con id compose per la scrittura dei messaggi testuali
 \series bold
 button#Send: 
 \series default
-pulsante con id Send per inviare il messaggio tramite il metodo send() di ChatView
+pulsante con id Send per inviare il messaggio tramite il metodo send() di
+ ChatView
 \end_layout
 
 \end_deeper
@@ -6101,7 +6104,7 @@ Contatto tramite l'inserimento dell'indirizzo IP:
 input#ip:
 \series default
  input con tipo text ed id ip, in cui l'utente deve inserire l'indirizzo
- ip dell' utente che vuole contattare
+ ip dell'utente che vuole contattare
 \end_layout
 
 \begin_layout Itemize
@@ -6117,7 +6120,8 @@ pulsante con id StartChat che avvia la chat creando una nuova ChatView
 \series bold
 button#call: 
 \series default
-pulsante con id call che avvia la chiamata tramite il metodo audiocall() di FunctionsView
+pulsante con id call che avvia la chiamata tramite il metodo audiocall()
+ di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6125,7 +6129,8 @@ pulsante con id call che avvia la chiamata tramite il metodo audiocall() di Func
 \series bold
 button#video: 
 \series default
-pulsante con id video che avvia la video chiamata tramite il metodo videocall() di FunctionsView
+pulsante con id video che avvia la video chiamata tramite il metodo videocall()
+ di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6176,7 +6181,8 @@ Utente online:
 \series bold
 button#call: 
 \series default
-pulsante con id call che avvia la chiamata tramite il metodo audiocall() di FunctionsView
+pulsante con id call che avvia la chiamata tramite il metodo audiocall()
+ di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6184,7 +6190,8 @@ pulsante con id call che avvia la chiamata tramite il metodo audiocall() di Func
 \series bold
 button#video: 
 \series default
-pulsante con id video che avvia la video chiamata tramite il metodo videocall() di FunctionsView
+pulsante con id video che avvia la video chiamata tramite il metodo videocall()
+ di FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -6230,7 +6237,8 @@ Notifica della ricezione di una chiamata:
 \series bold
 button#acceptCall: 
 \series default
-pulsante con id acceptCall che accetta la chiamata invocando il metodo acceptCall() di NotificationView
+pulsante con id acceptCall che accetta la chiamata invocando il metodo acceptCal
+l() di NotificationView
 \end_layout
 
 \begin_layout Itemize
@@ -6238,7 +6246,8 @@ pulsante con id acceptCall che accetta la chiamata invocando il metodo acceptCal
 \series bold
 button#refuseCall: 
 \series default
-pulsante con id refuseCall che rifiuta la chiamata invocando il metodo refuseCall() di NotificationView
+pulsante con id refuseCall che rifiuta la chiamata invocando il metodo refuseCal
+l() di NotificationView
 \end_layout
 
 \end_deeper
@@ -6295,8 +6304,8 @@ Questo template crea gli elementi dell'interfaccia grafica necessari per
 
 \series bold
 Il template è utilizzato da:
-\series default
 \family typewriter
+\series default
  myTalk.client.view.SideView
 \end_layout
 
@@ -6427,7 +6436,7 @@ input con tipo text ed id name, in cui l'utente può inserire il proprio
 \series bold
 input#surname: 
 \series default
-input con tipo text ed id surname, in cui l'utente può inserire il poprio
+input con tipo text ed id surname, in cui l'utente può inserire il proprio
  cognome
 \end_layout
 
@@ -6463,8 +6472,8 @@ input con tipo password ed id oldPassword, in cui l'utente deve inserire
 \series bold
 button#submitChange: 
 \series default
-pulsante con id submitChange per confermare le modifiche, invoca il 
- metodo checkPassword() di UserDataView
+pulsante con id submitChange per confermare le modifiche, invoca il  metodo
+ checkPassword() di UserDataView
 \end_layout
 
 \begin_layout Itemize
