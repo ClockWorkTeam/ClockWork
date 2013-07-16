@@ -64,7 +64,6 @@ public class UserDaoSQL implements UserDao{
 	String name, surname, IP;
 	try{
 	  name = rs.getString("name");
-	  System.out.println(name);
 	  surname = rs.getString("surname");
       IP = rs.getString("IP");
 	  user = new User(username, name, surname, IP);
