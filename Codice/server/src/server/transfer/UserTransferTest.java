@@ -1,54 +1,112 @@
+/**
+* Nome: UserManagerTest
+* Package: server.usermanager
+* Autore: Zohouri Haghian Pardis
+* Data: 2013/03/06
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+-------------------------------------------+
+* | Data    | Programmatore |         Modifiche       					|
+* +---------+---------------+-------------------------------------------+
+* |  130306 |     ZHP       | + creazione documento	  					|
+* |  130716 |     VF        | + creato testProcessToken           		|
+* +---------+---------------+-------------------------------------------+
+*
+*/ 
+
 package server.transfer;
 
 import static org.junit.Assert.*;
 
-import org.glassfish.grizzly.websockets.WebSocketEngine;
 import org.junit.*;
 
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
-import javolution.util.FastMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.jwebsocket.api.EngineConfiguration;
 import org.jwebsocket.api.WebSocketConnector;
 import org.jwebsocket.api.WebSocketPacket;
 import org.jwebsocket.api.WebSocketServer;
 import org.jwebsocket.config.xml.EngineConfig;
 import org.jwebsocket.connectors.BaseConnector;
 import org.jwebsocket.engines.BaseEngine;
-import org.jwebsocket.kit.RawPacket;
 import org.jwebsocket.listener.WebSocketServerTokenEvent;
 import org.jwebsocket.token.*;
 
 import server.ServerMyTalk;
-import server.usermanager.AuthenticationManager;
+import server.shared.User;
 import server.usermanager.UserManager;
 
 public class UserTransferTest {
 	private UserTransfer userTransfer;
 
 	class StubUserTransfer extends UserTransfer {
+		private WebSocketPacket packet;
 		public StubUserTransfer(UserManager userManager) {
 			super(userManager);
 			// TODO Auto-generated constructor stub
 		}
 
-		public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){}
+		public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){
+			this.packet=packet;
+		}
+		public WebSocketPacket getResult(){return packet;}
+		
 	}
 	
+	class StubUserManager extends UserManager {
+		public boolean checkPassword(String username, String password){
+			if(password.equals("prova")){
+				return true;
+			}
+			return false;
+		}
+		
+		public User getUserData(String username){
+			return new User("", "", "", "");
+		}
+		public boolean setUserData(String username, String name, String surname) throws Exception{
+			if(name.equals("name_errato") || surname.equals("surname_errato")){
+				return false;
+			}
+			if(name.equals("eccezzione") && surname.equals("eccezzione")){
+				throw new Exception("Username errato");
+			}
+			return true;
+		}
+		public boolean setPassword(String username, String password){
+			if(password.equals("prova")){
+				return true;
+			}
+			return false;
+		}
+		public void broadcast(WebSocketPacket p, WebSocketConnector c){
+			
+		}
+		
+	}
+	
+	//creazione del token
+	public MapToken createToken(String str) throws Exception{
+		MapToken token = new MapToken();
+		JSONTokener jsonTokener = new JSONTokener(str);
+		JSONObject jsonObject = new JSONObject(jsonTokener);
+		for (Iterator iterator = jsonObject.keys(); iterator.hasNext();) {
+		  String key = (String) iterator.next();
+		  String value = (String) jsonObject.get(key);
+		  token.setString(key, value);
+		}
+		return token;
+	}
 	
 	@Before
 	public void init() {
-		userTransfer=new StubUserTransfer(new UserManager());
+		userTransfer=new StubUserTransfer(new StubUserManager());
 	}
 	
 	@Test
-	public void test() throws Exception {
+	public void testProcessToken() throws Exception {
 				
 		//creazione del connector
 		Vector<String> domains= new Vector<String>();
@@ -69,50 +127,63 @@ public class UserTransferTest {
 		//creazione dell'evento da inviare
 		WebSocketServerTokenEvent event=new WebSocketServerTokenEvent(connector, aServer);
 
+		//******caso1: checkCredentials con dati corretti
 		//creazione del token
 		MapToken token = new MapToken();
-		String str = "{\"type\":\"checkCredentials\",\"password\":\"prova\"}";
-		JSONTokener jsonTokener = new JSONTokener(str);
-		JSONObject jsonObject = new JSONObject(jsonTokener);
-		for (Iterator iterator = jsonObject.keys(); iterator.hasNext();) {
-		  String key = (String) iterator.next();
-		  String value = (String) jsonObject.get(key);
-		  token.setString(key, value);
-		}
-		
+		token=createToken("{\"type\":\"checkCredentials\",\"password\":\"prova\"}");
 		
 		userTransfer.processToken(event, token);
+		WebSocketPacket packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"checkCredentials\",\"answer\":\"true\"}"));
+		
+		//******caso2: checkCredentials con dati errati
+		token=createToken("{\"type\":\"checkCredentials\",\"password\":\"prova2\"}");
+		
+		userTransfer.processToken(event, token);
+		packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"checkCredentials\",\"answer\":\"false\"}"));
+		
+		//******caso3: changeData con dati corretti
+		token=createToken("{\"type\":\"changeData\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
+		
+		userTransfer.processToken(event, token);
+		packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"true\"}"));
+		
+		//******caso4: changeData con nome errato
+		token=createToken("{\"type\":\"changeData\",\"password\":\"prova\",\"name\":\"name_errato\",\"surname\":\"surname\"}");
+		
+		userTransfer.processToken(event, token);
+		packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}"));
+		
+		//******caso5: changeData con cognome errato
+		token=createToken("{\"type\":\"changeData\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname_errato\"}");
+		
+		userTransfer.processToken(event, token);
+		packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}"));
+		
+		//******caso6: changeData con nome e cognome errati
+		token=createToken("{\"type\":\"changeData\",\"password\":\"prova\",\"name\":\"name_errato\",\"surname\":\"surname_errato\"}");
+		
+		userTransfer.processToken(event, token);
+		packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}"));
+		
+		//******caso7: changeData con eccezzione
+		token=createToken("{\"type\":\"changeData\",\"password\":\"prova\",\"name\":\"eccezzione\",\"surname\":\"eccezzione\"}");
+		
+		userTransfer.processToken(event, token);
+		packet= ((StubUserTransfer)userTransfer).getResult();
+		System.out.println(packet.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Username errato\"}"));
 	}
 
 }
-/*
-//----WebSocketServerTokenEvent(org.jwebsocket.api.WebSocketConnector aConnector, org.jwebsocket.api.WebSocketServer aServer)
-WebSocketConnector aConnector=getUserConnector("ClockWork7");
-WebSocketServer aServer=tokenServer.getServer();
-WebSocketServerTokenEvent event=new WebSocketServerTokenEvent(aConnector, aServer);
-//
-*/
-
-
-
-
-/*
-public static Token packetToToken(WebSocketPacket aDataPacket) {
-    Token lToken = new Token();
-    try {
-            String lStr = aDataPacket.getString("UTF-8");
-            JSONTokener jsonTokener = new JSONTokener(lStr);
-            JSONObject jsonObject = new JSONObject(jsonTokener);
-            for (Iterator lIterator = jsonObject.keys(); lIterator.hasNext();) {
-                    String lKey = (String) lIterator.next();
-                    lToken.put(lKey, jsonObject.get(lKey));
-            }
-    } catch (UnsupportedEncodingException ex) {
-            // TODO: process exception
-            // log.error(ex.getClass().getSimpleName() + ": " + ex.getMessage());
-    } catch (JSONException ex) {
-            // // TODO: process exception
-            // log.error(ex.getClass().getSimpleName() + ": " + ex.getMessage());
-    }
-    return lToken;
-}*/
