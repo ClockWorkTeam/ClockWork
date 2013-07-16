@@ -75,12 +75,18 @@ public class CallTransfer extends ListenerTransfer {
       sendPacket(wspacket,connector);
 	}else if(type.equals("sdp")){
   	  WebSocketConnector connector=null;
+  	  String contact;
       if(token.getString("contact").contains(".")){//indirizzo IP
     	connector= getIpConnector(token.getString("contact"));
+    	contact=event.getConnector().getRemoteHost().toString();
       }else{ //username
     	connector=getUserConnector(token.getString("contact"));
+    	contact= event.getConnector().getUsername();
 	  }
-   	  wspacket=new RawPacket(token.getString("description"));
+      String tokenToSend =token.getString("description");
+      tokenToSend= tokenToSend.substring(0,tokenToSend.length()-1);    
+      tokenToSend+=",\"contact\":\""+contact+"\"}";
+   	  wspacket=new RawPacket(tokenToSend);
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("candidate")){
       WebSocketConnector connector=null;
@@ -100,23 +106,29 @@ public class CallTransfer extends ListenerTransfer {
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("endCall")){
    	  WebSocketConnector connector=null;
+   	  String contact;
       if(token.getString("contact").contains(".")){//indirizzo IP
        	connector= getIpConnector(token.getString("contact"));
+       	contact=event.getConnector().getRemoteHost().toString();
       }else{ //username
        	connector=getUserConnector(token.getString("contact"));
+       	contact= event.getConnector().getUsername();
       }
    	  if(connector!=null){
-   		wspacket=new RawPacket("{\"type\":\"endCall\"}");
+   		wspacket=new RawPacket("{\"type\":\"endCall\",\"contact\":\""+contact+"\"}");
    		sendPacket(wspacket,connector);
    	  }
    	}else if(type.equals("candidateReady")){
    	  WebSocketConnector connector=null;
+   	  String contact;
       if(token.getString("contact").contains(".")){//indirizzo IP
        	connector= getIpConnector(token.getString("contact"));
+       	contact=event.getConnector().getRemoteHost().toString();
       }else{ //username
        	connector=getUserConnector(token.getString("contact"));
+        contact= event.getConnector().getUsername();
       }
-      wspacket=new RawPacket("{\"type\":\"candidateReady\"}");
+      wspacket=new RawPacket("{\"type\":\"candidateReady\",\"contact\":\""+contact+"\"}");
    	  sendPacket(wspacket,connector);
 	}else if(type.equals("callConference")){
 	  WebSocketConnector connector = getUserConnector(token.getString("contact"));
