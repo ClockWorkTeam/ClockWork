@@ -86,8 +86,8 @@ define([
           CallCommunication.sendAnswer(type, contact, this);
           this.calling=true;
         }else{
-        CallCommunication.sendCall(type, contact, this);
-        this.calling=true;
+          CallCommunication.sendCall(type, contact, this);
+          this.calling=true;
         }
       }
     },

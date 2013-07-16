@@ -80,7 +80,9 @@ define([
     acceptCall : function(){
       this.timeout=false;
       this.unrender();
+
       if(!this.options.Conference){
+        console.log("Chiamante " + this.options.caller);
         var event=new CustomEvent('acceptCall',{
           detail:{
             type:this.options.typeCall,

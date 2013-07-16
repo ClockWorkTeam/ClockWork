@@ -132,10 +132,13 @@ define([
       //if(NotificationCommunication.getStatus() && isCaller!=false){
       //  alert("hai già una chiamata attiva");
       //}
+
       if(this.callView){
         this.forceClose();
       }
-      this.startChat();
+    	if(!this.options.From){
+        this.startChat();
+      }
       this.callView=new CallView({FunctionsView:this});
       if(isCaller==false){
 				if(!this.options.From){
@@ -147,7 +150,7 @@ define([
 				if(!this.options.From){
 					this.callView.render(true,type,this.model.toJSON().username);
 				}else if(this.options.From=='IP'){
-					this.callView.render(false, type ,this.$("#ip").val());
+					this.callView.render(true, type ,"/"+this.$("#ip").val());
 				}
       }
       $('#main').prepend(this.callView.el);

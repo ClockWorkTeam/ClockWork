@@ -147,6 +147,8 @@ define([
          * controllo username valida
          */
 				if(user.match(/[^\w]/)){
+          	alert('Username può contenere solo lettere, numeri e underscore');
+        }else{
 					/**
 					 * controllo se la password e la sua conferma corrispondono
 					 */
@@ -163,8 +165,8 @@ define([
 						*/
 						alert('Le password inserite non coincidono');
 					}
-				}else{
-					alert('Username può contenere solo lettere, numeri e underscore');
+			
+				
 				}
       }else{
          /**

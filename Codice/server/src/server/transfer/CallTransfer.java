@@ -33,7 +33,7 @@ public class CallTransfer extends ListenerTransfer {
   	  if(token.getString("contact").contains(".")){//indirizzo IP
   		connector= getIpConnector(token.getString("contact"));
   		if(connector!=null){
-  			wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector()+"\",\"callType\":\""+token.getString("callType")+"\"}");
+  			wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector().getRemoteHost().toString()+"\",\"callType\":\""+token.getString("callType")+"\"}");
   		}
   	  }else{ //username
   		connector=getUserConnector(token.getString("contact"));

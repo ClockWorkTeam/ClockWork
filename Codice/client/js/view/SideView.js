@@ -32,10 +32,11 @@ define([
  'backbone',
  'view/ContactView',
  'view/FunctionsView',
+  'view/CallView',
  'communication/ContactsCommunication',
  'text!template/SideTemplate.html',
  'collection/ContactsCollection'
-], function($, _, Backbone, ContactView, FunctionsView, ContactsCommunication, SideTemplate, ContactsCollection){
+], function($, _, Backbone, ContactView, FunctionsView, CallView, ContactsCommunication, SideTemplate, ContactsCollection){
   var SideView = Backbone.View.extend({
 
     el: $('#sidebar'),
@@ -131,7 +132,7 @@ define([
     callIP:function(){
       _.each(this.childViews, function(view){view.close();});
       if(this.currentFunctions){
-        this.currentFunctions.close();
+        this.currentFunctions.render();
       }
       this.currentFunctions = new FunctionsView({From: 'IP'});
       this.currentFunctions.render();
@@ -195,12 +196,28 @@ define([
      */
 
     setCall : function(contact,type){
-      _.each(this.childViews,
-      function(view){
-        if(view.model.toJSON().username==contact){
-          view.createCall(type);
+      var trovato=false;
+      var j=0;
+      if(contact.charAt(0)=='/'){
+        trovato=true;
+      }
+      if(trovato==false){
+        _.each(this.childViews,
+        function(view){
+          if(view.model.toJSON().username==contact){
+            view.createCall(type);
+          }
+        });
+      }else{
+        this.closeOtherContacts();
+      
+        this.currentFunctions = new FunctionsView({From: 'IP'});  
+        this.currentFunctions.callView=new CallView({FunctionsView:this.currentFunctions});
+    
+        this.currentFunctions.callView.render(false, type ,contact);
+        
+        $('#main').prepend(this.currentFunctions.el);
         }
-      });
     },
     
     /**
