@@ -30,25 +30,23 @@ import java.util.Vector;
 
 import org.junit.*;
 
-import server.dao.JavaConnectionSQLite;
 import server.shared.RecordMessage;
 import server.shared.User;
 import server.shared.UserList;
-import server.usermanager.UserManager;
 
 public class UserManagerTest {
+	
+	
 	UserManager userManager;
-	JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
 	UserList userList;
 	ResultSet rs;
 	
 	@Before
 	public void init() {
 		userManager=new UserManager();
-		connection.executeUpdate("DELETE FROM UserDataSQL;");
-		connection.executeUpdate("DELETE FROM RecordMessageDataSQL;");
-	}
 
+	}
+/*
 	@Test
 	public void testSetPassword() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
@@ -57,17 +55,22 @@ public class UserManagerTest {
 		rs= connection.select("UserDataSQL","*","","");
 		assertTrue("Password non modificata", rs.getString("password").equals("newPassword"));
 	}
-
+*/
 	@Test
 	public void testCheckPassword() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
+		
+		assertTrue("Password errata",userManager.checkPassword("username", "password"));
+		assertFalse("Password errata",userManager.checkPassword("username_errato", "password"));
+		assertFalse("Password errata",userManager.checkPassword("username", "password_errato"));
+		assertFalse("Password errata",userManager.checkPassword("username_errato", "password_errato"));
+		/*connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
 		
 		rs= connection.select("UserDataSQL","*","password='password'","");
 		assertTrue("Password non modificata", !rs.isAfterLast());
 		
-		assertTrue("Operazione di controllo password fallita",userManager.checkPassword("ClockWork", "password"));	
+		assertTrue("Operazione di controllo password fallita",userManager.checkPassword("ClockWork", "password"));	*/
 	}
-	
+	/*
 	@Test
 	public void testSetUserData() throws Exception {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
@@ -143,5 +146,5 @@ public class UserManagerTest {
 		rs= connection.select("RecordMessageDataSQL","count(*) as num","","");
 		assertTrue("Password non modificata", rs.getString("num").equals("0"));
 	}
-	
+	*/
 }
