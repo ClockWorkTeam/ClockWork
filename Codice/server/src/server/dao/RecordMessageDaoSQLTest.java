@@ -57,7 +57,7 @@ public class RecordMessageDaoSQLTest {
 		assertTrue("Sender non inserito correttamente nel db", rs.getString("record_message").equals("prova"));
 		assertTrue("Addressee non inserita correttamente nel db", rs.getString("creation").equals(data));
 	} catch (SQLException e) {
-		System.out.println("Eccezzione del metodo addMessage della classe RecordMessageDaoSQL");
+		System.out.println("Eccezzione lanciata dall'oggetto della classe ResultSet");
 	}
 	
   }
@@ -69,47 +69,55 @@ public class RecordMessageDaoSQLTest {
 	String data=sdf.format(dt);
 	RecordMessage m=new RecordMessage("ClockWork7", "ClockWork", "prova", data);
 	connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','"+data+"');");
+	connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork2','prova','"+data+"');");
 	
 	assertTrue("Operazione di rimozzione messaggio nel DB fallita", recordMessageDaoSQL.removeMessage(m));
 	rs = connection.select("RecordMessageDataSQL","*","","");
 	try {
-		assertTrue("Database non vuoto",rs.getRow()==0);
+		assertTrue("Database non vuoto",rs.getRow()==1);
 	} catch (SQLException e) {
-		System.out.println("Eccezzione del metodo removeMessage della classe RecordMessageDaoSQL");
+		System.out.println("Eccezione lanciata dall'oggetto della classe ResultSet");
 	}
   }
 	
-	@Test
-	public void testGetAllMessages(){
-		java.util.Date dt = new java.util.Date();
-		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String data=sdf.format(dt);
+  @Test
+  public void testGetAllMessages(){
+    java.util.Date dt = new java.util.Date();
+	java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String data=sdf.format(dt);
 
-		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','"+data+"');");
-		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','ciao','"+data+"');");
-		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork2','ciao','"+data+"');");
+	connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','"+data+"');");
+	connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','ciao','"+data+"');");
+	connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork2','ciao','"+data+"');");
 		
-		int cont=0;
-		try {
-			rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork'","");
-			cont = rs.getInt("num");
-		} catch (SQLException e1) {
-			System.out.println("Eccezzione del metodo removeMessage della classe RecordMessageDaoSQL");
-		}
-		assertTrue("Numero messaggi errato",cont==2);
+	int cont=0;
+	//messaggi di un utente
+	try {
+		rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork'","");
+		cont = rs.getInt("num");
 		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==cont);
-		
-		//non ci sono messaggi per un utente
-		cont=0;
-		try {
-			rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork3'","");
-			cont = rs.getInt("num");
-		} catch (SQLException e1) {
-			System.out.println("Eccezzione del metodo removeMessage della classe RecordMessageDaoSQL");
-		}
-		assertTrue("Numero messaggi errato",cont==0);
-		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork3").size()==cont);
+	} catch (SQLException e1) {
+		System.out.println("Eccezione lanciata dall'oggetto della classe ResultSet");
 	}
+		
+	//messaggi di un'altro utente
+	try {
+		rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork2'","");
+		cont = rs.getInt("num");
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork2").size()==cont);
+	} catch (SQLException e1) {
+		System.out.println("Eccezione lanciata dall'oggetto della classe ResultSet");
+	}
+		
+	//non ci sono messaggi per un utente
+	try {
+		rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork7'","");
+		cont = rs.getInt("num");
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork7").size()==cont);
+	} catch (SQLException e1) {
+		System.out.println("Eccezione lanciata dall'oggetto della classe ResultSet");
+	}
+  }
 
 
   @Test
