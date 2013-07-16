@@ -18,11 +18,14 @@
 *
 */
 
-package server.shared;
+package test.testUnita.shared;
 
 import static org.junit.Assert.*;
 
 import org.junit.*;
+
+import server.shared.User;
+import server.shared.UserList;
 
 public class UserListTest {
 	UserList userList;

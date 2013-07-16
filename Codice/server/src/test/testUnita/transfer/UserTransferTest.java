@@ -15,7 +15,7 @@
 *
 */ 
 
-package server.transfer;
+package test.testUnita.transfer;
 
 import static org.junit.Assert.*;
 
@@ -36,6 +36,7 @@ import org.jwebsocket.token.*;
 
 import server.ServerMyTalk;
 import server.shared.User;
+import server.transfer.UserTransfer;
 import server.usermanager.UserManager;
 
 public class UserTransferTest {
