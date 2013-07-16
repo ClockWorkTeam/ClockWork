@@ -41,7 +41,7 @@ public class RecordMessageDaoSQLTest {
   }
 	
   @Test
-  public void testAddMessage() throws SQLException {
+  public void testAddMessage(){
 	java.util.Date dt = new java.util.Date();
 	java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String data=sdf.format(dt);
@@ -50,15 +50,20 @@ public class RecordMessageDaoSQLTest {
 	assertTrue("Operazione di inserimento nel DB fallita", recordMessageDaoSQL.addMessage(message));
 		
     rs = connection.select("RecordMessageDataSQL","*","","");
-    assertTrue("Messaggio non inserito nel database",rs.getRow()==1);
-	assertTrue("Sender non inserito correttamente nel db", rs.getString("sender").equals("ClockWork7"));
-	assertTrue("Addressee non inserita correttamente nel db", rs.getString("addressee").equals("ClockWork"));
-	assertTrue("Sender non inserito correttamente nel db", rs.getString("record_message").equals("prova"));
-	assertTrue("Addressee non inserita correttamente nel db", rs.getString("creation").equals(data));
+    try {
+		assertTrue("Messaggio non inserito nel database",rs.getRow()==1);
+		assertTrue("Sender non inserito correttamente nel db", rs.getString("sender").equals("ClockWork7"));
+		assertTrue("Addressee non inserita correttamente nel db", rs.getString("addressee").equals("ClockWork"));
+		assertTrue("Sender non inserito correttamente nel db", rs.getString("record_message").equals("prova"));
+		assertTrue("Addressee non inserita correttamente nel db", rs.getString("creation").equals(data));
+	} catch (SQLException e) {
+		System.out.println("Eccezzione del metodo addMessage della classe RecordMessageDaoSQL");
+	}
+	
   }
 	
   @Test
-  public void testRemoveMessage() throws SQLException {
+  public void testRemoveMessage(){
 	java.util.Date dt = new java.util.Date();
 	java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String data=sdf.format(dt);
@@ -67,26 +72,43 @@ public class RecordMessageDaoSQLTest {
 	
 	assertTrue("Operazione di rimozzione messaggio nel DB fallita", recordMessageDaoSQL.removeMessage(m));
 	rs = connection.select("RecordMessageDataSQL","*","","");
-	assertTrue("Database non vuoto",rs.getRow()==0);
+	try {
+		assertTrue("Database non vuoto",rs.getRow()==0);
+	} catch (SQLException e) {
+		System.out.println("Eccezzione del metodo removeMessage della classe RecordMessageDaoSQL");
+	}
   }
 	
 	@Test
-	public void testGetAllMessages() throws SQLException {
+	public void testGetAllMessages(){
 		java.util.Date dt = new java.util.Date();
 		java.text.SimpleDateFormat sdf =new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String data=sdf.format(dt);
 
 		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','prova','"+data+"');");
 		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork','ciao','"+data+"');");
-		rs = connection.select("RecordMessageDataSQL","*","","");
+		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('ClockWork7','ClockWork2','ciao','"+data+"');");
+		
 		int cont=0;
-		if(rs!=null){
-			do{
-				 cont++;
-			}while( rs.next());
+		try {
+			rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork'","");
+			cont = rs.getInt("num");
+		} catch (SQLException e1) {
+			System.out.println("Eccezzione del metodo removeMessage della classe RecordMessageDaoSQL");
 		}
 		assertTrue("Numero messaggi errato",cont==2);
-		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==2);
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork").size()==cont);
+		
+		//non ci sono messaggi per un utente
+		cont=0;
+		try {
+			rs = connection.select("RecordMessageDataSQL","count(*) as num","addressee='ClockWork3'","");
+			cont = rs.getInt("num");
+		} catch (SQLException e1) {
+			System.out.println("Eccezzione del metodo removeMessage della classe RecordMessageDaoSQL");
+		}
+		assertTrue("Numero messaggi errato",cont==0);
+		assertTrue("Numero messaggi errato",recordMessageDaoSQL.getAllMessages("ClockWork3").size()==cont);
 	}
 
 
