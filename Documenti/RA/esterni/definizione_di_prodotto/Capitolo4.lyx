@@ -4399,15 +4399,17 @@ Metodi pubblici:
 \series bold
 [void] listenNotification():
 \series default
- metodo di tipo listener per gestire gli eventi di tipo 
+ metodo che si occupa di aggiungere due listener in ascolto di eventi di
+ tipo 
 \emph on
 setOnCall
 \emph default
  e 
 \emph on
-message, 
+message
 \emph default
-in arrivo
+, che richiamano, rispettivamente, i metodi SetOnCall e onNotification presenti
+ nella funzione
 \end_layout
 
 \begin_deeper
@@ -4566,6 +4568,21 @@ Classe RecordMessageCommunication
 
 \begin_layout Paragraph
 Metodi pubblici:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] recordMessage([String] type)
+\series default
+: metodo per gestire la registrazione del messaggio, type conterrà il tipo
+ di messaggio, e quindi 
+\emph on
+audio
+\emph default
+ o 
+\emph on
+video
 \end_layout
 
 \begin_layout Itemize
@@ -5167,8 +5184,8 @@ Il package
 \family typewriter
 mytalk.client.model
 \family default
- costituisce la parte del sistema dedita alla permanenza ed alla gestione
- dei dati 
+ costituisce la parte del sistema dedita alla conservazione dei dati presso
+ il client, per la loro conseguente visualizzazione nell'intefaccia utente.
 \end_layout
 
 \begin_layout Paragraph
