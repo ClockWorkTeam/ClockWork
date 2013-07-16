@@ -21,7 +21,7 @@
 * +---------+---------------+-------------------------------------------+
 *
 */ 
-package server.test.testIntegrazione;
+package test.testIntegrazione;
 
 import static org.junit.Assert.*;
 

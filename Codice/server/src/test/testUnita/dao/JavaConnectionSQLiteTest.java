@@ -16,7 +16,7 @@
 *
 */ 
 
-package server.test.testUnita.dao;
+package test.testUnita.dao;
 
 import static org.junit.Assert.*;
 
