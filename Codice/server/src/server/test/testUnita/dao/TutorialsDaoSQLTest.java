@@ -17,7 +17,7 @@
 *
 */ 
 
-package server.dao;
+package server.test.testUnita.dao;
 
 import static org.junit.Assert.*;
 
@@ -25,6 +25,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.junit.*;
+
+import server.dao.JavaConnectionSQLite;
+import server.dao.TutorialsDaoSQL;
 
 public class TutorialsDaoSQLTest {
   private TutorialsDaoSQL tutorialsDaoSQL;

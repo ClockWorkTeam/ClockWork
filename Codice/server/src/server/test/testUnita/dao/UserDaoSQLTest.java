@@ -24,7 +24,7 @@
 *
 */
 
-package server.dao;
+package server.test.testUnita.dao;
 
 import static org.junit.Assert.*;
 
@@ -33,6 +33,8 @@ import java.sql.SQLException;
 
 import org.junit.*;
 
+import server.dao.JavaConnectionSQLite;
+import server.dao.UserDaoSQL;
 import server.shared.User;
 
 public class UserDaoSQLTest {

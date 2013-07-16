@@ -20,7 +20,7 @@
 * +---------+---------------+-------------------------------------------+
 *
 */ 
-package server.usermanager;
+package server.test.testIntegrazione;
 
 import static org.junit.Assert.*;
 
@@ -30,6 +30,7 @@ import org.junit.*;
 
 import server.dao.JavaConnectionSQLite;
 import server.shared.User;
+import server.usermanager.AuthenticationManager;
 
 
 public class AuthenticationManagerTest {
