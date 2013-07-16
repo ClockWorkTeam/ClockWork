@@ -21,7 +21,7 @@
 * +---------+---------------+-------------------------------------------+
 *
 */ 
-package server.usermanager;
+package test.testIntegrazione;
 
 import static org.junit.Assert.*;
 
@@ -34,6 +34,7 @@ import server.dao.JavaConnectionSQLite;
 import server.shared.RecordMessage;
 import server.shared.User;
 import server.shared.UserList;
+import server.usermanager.UserManager;
 
 public class UserManagerTest {
 	UserManager userManager;

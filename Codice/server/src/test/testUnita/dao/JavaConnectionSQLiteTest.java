@@ -16,13 +16,15 @@
 *
 */ 
 
-package server.dao;
+package test.testUnita.dao;
 
 import static org.junit.Assert.*;
 
 import java.sql.*;
 
 import org.junit.*;
+
+import server.dao.JavaConnectionSQLite;
 
 public class JavaConnectionSQLiteTest {
   JavaConnectionSQLite connection;
