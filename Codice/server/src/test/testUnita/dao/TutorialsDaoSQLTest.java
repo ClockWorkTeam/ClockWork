@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 import org.junit.*;
 
@@ -47,18 +48,25 @@ public class TutorialsDaoSQLTest {
 	 
   @Test
   public void testGetTutorialsFromDB() throws SQLException {
-		
-		rs = connection.select("TutorialDataSQL","*","","");
-		int cont=0;
-		if(rs!=null){
-			do{
-				 cont++;
-			}while( rs.next());
-		}
-		assertTrue("Numero messaggi errato",cont==3);
-		
-		assertTrue("Numero tutorial errato",tutorialsDaoSQL.getTutorials().getTutorials().size()==3);
-	}
+    int cont=0;
+	//messaggi di un utente
+	try {
+	  rs = connection.select("TutorialDataSQL","count(*) as num","","");
+	  cont = rs.getInt("num");
+	  
+	  Map<String, String> tutorials=tutorialsDaoSQL.getTutorials().getTutorials();
+	  assertTrue("Numero tutorial errato",tutorials.size()==cont);
+
+	  assertTrue("Titolo tutorial errato",tutorials.containsKey("title1"));
+	  assertTrue("Indirizzo tutorial errato",tutorials.containsValue("url1"));
+	  assertTrue("Titolo tutorial errato",tutorials.containsKey("title2"));
+	  assertTrue("Indirizzo tutorial errato",tutorials.containsValue("url2"));
+	  assertTrue("Titolo tutorial errato",tutorials.containsKey("title3"));
+	  assertTrue("Indirizzo tutorial errato",tutorials.containsValue("url3"));
+	}catch (SQLException e1) {
+	  System.out.println("Eccezione lanciata dall'oggetto della classe ResultSet");
+    }  
+  }
 	 
   @Test
   public void testGetInstance() {
