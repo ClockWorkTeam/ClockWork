@@ -67,7 +67,7 @@ public class RecordMessageDaoSQL implements RecordMessageDao{
 		  date = rs.getString("creation");
 		  messages.add(new RecordMessage(sender, addressee, path, date));
 		}while( rs.next());
-	  }catch(SQLException e){return null;}
+	  }catch(SQLException e){return messages;}
 	}
 	return messages;
   }

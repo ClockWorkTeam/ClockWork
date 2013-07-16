@@ -20,7 +20,7 @@
 * +---------+---------------+-------------------------------------------+
 *
 */ 
-package server.usermanager;
+package test.testIntegrazione;
 
 import static org.junit.Assert.*;
 
@@ -30,6 +30,7 @@ import org.junit.*;
 
 import server.dao.JavaConnectionSQLite;
 import server.shared.User;
+import server.usermanager.AuthenticationManager;
 
 
 public class AuthenticationManagerTest {
@@ -109,8 +110,8 @@ public class AuthenticationManagerTest {
 		
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', '10.01.01.01');");
 		
-		assertTrue("IP non modificata",authenticationManager.logout("username").getUsername().equals("username"));
-		assertTrue("IP non modificata",authenticationManager.logout("username").getIP().equals("0"));
+		assertTrue("Username sbagliato",authenticationManager.logout("username").getUsername().equals("username"));
+		assertTrue("IP sbagliato",authenticationManager.logout("username").getIP().equals("0"));
 	}
 
 	@Test
@@ -119,9 +120,9 @@ public class AuthenticationManagerTest {
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username2','password','name','surname', '10.01.01.01');");
 		
 		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("DB non vuoto", rs.getString("num").equals("2"));
+		int num=rs.getInt("num");
 		
-		assertTrue("IP non modificata",authenticationManager.getAllContacts("username").size()==2);
+		assertTrue("Numero contatti sbagliato",authenticationManager.getAllContacts("username").size()==num);
 	}
 	
 }

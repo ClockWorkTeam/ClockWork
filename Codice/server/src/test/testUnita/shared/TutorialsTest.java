@@ -17,11 +17,13 @@
 * +---------+---------------+------------------------------------------+
 *
 */ 
-package server.shared;
+package test.testUnita.shared;
 
 import static org.junit.Assert.*;
 
 import org.junit.*;
+
+import server.shared.Tutorials;
 
 public class TutorialsTest {
 	Tutorials tutorials;

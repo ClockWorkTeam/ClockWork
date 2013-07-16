@@ -18,11 +18,14 @@
 *
 */
 
-package server.shared;
+package test.testUnita.shared;
 
 import static org.junit.Assert.*;
 
 import org.junit.*;
+
+import server.shared.User;
+import server.shared.UserList;
 
 public class UserListTest {
 	UserList userList;
@@ -30,13 +33,9 @@ public class UserListTest {
 	@Before
 	public void init(){
 		userList=UserList.getInstance();
-	}
-	
-	@After
-	public void clear(){
 		userList.getAllUsers().clear();
 	}
-
+	
 	@Test
 	public void testAddUser() {
 		User user= new User("ClockWork7","Clock Work", "Team", "7");

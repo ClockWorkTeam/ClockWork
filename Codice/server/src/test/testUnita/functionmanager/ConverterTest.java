@@ -15,7 +15,7 @@
 * +---------+---------------+--------------------------+
 *
 */ 
-package server.functionmanager;
+package test.testUnita.functionmanager;
 
 import static org.junit.Assert.*;
 
@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Vector;
 import org.junit.Test;
 
+import server.functionmanager.Converter;
 import server.shared.RecordMessage;
 import server.shared.User;
 
