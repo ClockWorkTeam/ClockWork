@@ -69,13 +69,12 @@ public class UserDaoSQLTest {
   @Test
   public void testRemoveUser(){
 	connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team','7')");
+	connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team','7')");
 	assertTrue("Operazione di eliminazione dell'utente non riuscita",userDaoSQL.removeUser("ClockWork7"));
 
-	rs = connection.select("UserDataSQL","*","username='ClockWork7'","");
+	rs = connection.select("UserDataSQL","*","","");
 	try {
-	  assertTrue("Utente non cancellato dal database", rs.isAfterLast());
-	  rs = connection.select("UserDataSQL","*","","");
-	  assertTrue("Database non vuoto",rs.getRow()==0);
+	  assertTrue("Database non vuoto",rs.getRow()==1);
 	} catch (SQLException e) {
 	  System.out.println("Eccezione lanciata dall'oggetto della classe ResultSet");
 	}
