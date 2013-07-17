@@ -242,7 +242,7 @@ define(['connection'], function(Connection){
         },
         function(error){
           var message = {
-            type:'refuseCall',
+            type:'refuseCam',
             contact: contact
           };
           Connection.send(JSON.stringify(message));
@@ -261,7 +261,7 @@ define(['connection'], function(Connection){
           if(allow==true){
             sourcevid.src = window.webkitURL.createObjectURL(stream);
             localStream=stream;
-            var message = {type:'answeredCallConference',contact: contact};
+            var message = {type:'answeredCall',contact: contact};
             Connection.send(JSON.stringify(message));
             /**
              * avvio la chiamata con la persona che mi ha contattato
@@ -276,7 +276,7 @@ define(['connection'], function(Connection){
         },
         function(error){
           var message = {
-            type:'refuseCall',
+            type:'refuseCam',
             contact: contact
           };
           Connection.send(JSON.stringify(message));
