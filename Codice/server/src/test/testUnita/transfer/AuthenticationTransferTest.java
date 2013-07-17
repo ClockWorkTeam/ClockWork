@@ -85,6 +85,12 @@ public class AuthenticationTransferTest {
 			}
 			return new User(username,"name","surname","10");
 		}
+		public User createUser(String username, String password, String name, String surname, String IP) throws Exception{
+			if(username.equals("username_eccezione")){
+				throw new Exception("errore registrazione");
+			}
+			return new User(username,"name","surname","10");
+		}
 		
 		public User logout(String username){
 			return new User(username,"name","surname","10");
@@ -201,6 +207,28 @@ public class AuthenticationTransferTest {
 		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}"));
 
+		//******caso4: signUp già effettuato
+		token=createToken("{\"type\":\"signUp\",\"username\":\"username\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
+		System.out.println(packet.getString());
+		System.out.println(packet_broadcast.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"true\"}"));
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"10\"}"));
+		
+		//******caso5: signUp non effettuato
+		token=createToken("{\"type\":\"signUp\",\"username\":\"username_eccezione\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"false\",\"error\":\"errore registrazione\"}"));
+		
+		
 
 	}
 
