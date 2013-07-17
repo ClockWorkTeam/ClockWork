@@ -62,6 +62,7 @@ define([
       /**
       * controllo se nel DOM esiste l'elemento content, se non esiste viene reinserito nel documento
       */
+      this.delegateEvents();
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
@@ -79,16 +80,17 @@ define([
       */
       var call=this;
       if(this.calling){
+        console.log("prova ripristino");
         CallCommunication.recoverCall(call);
         this.statisticsView.render();
       }else{
         if(isCaller===false){
-          CallCommunication.sendAnswer(typeCall, contact, this,false);
+          CallCommunication.sendAnswer(typeCall, contact, this,'false');
           this.calling=true;
         }else{
           var temp=[];
           temp.push(contact);
-          CallCommunication.sendCall(typeCall, temp, this,false);
+          CallCommunication.sendCall(typeCall, temp, this,'false');
           this.calling=true;
         }
       }
@@ -115,10 +117,10 @@ define([
       
         $(this.el).html(this.template());
         if(isCaller==true){
-          CallCommunication.sendCall(typeCall,contatti,this,true);
+          CallCommunication.sendCall(typeCall,contatti,this,'true');
      //     this.calling=true
         }else{
-          CallCommunication.sendAnswer(typeCall,contatti,this,true);
+          CallCommunication.sendAnswer(typeCall,contatti,this,'true');
      //     this.calling=true
         }
       

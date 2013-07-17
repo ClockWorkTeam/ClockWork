@@ -200,13 +200,16 @@ define([
         trovato=true;
       }
       if(trovato==false){
+        console.log("sto cercando tra gli utenti");
         _.each(this.childViews,
         function(view){
+          
           if(view.model.toJSON().username==contact){
             view.createCall(type);
           }
         });
       }else{
+        console.log("sto cercando tra gli IP");
         this.closeOtherContacts();
       
         this.currentFunctions = new FunctionsView({From: 'IP'});  
@@ -223,6 +226,7 @@ define([
      * e generare una conferenza con esso
      */
     setCallConference : function(contact,type){
+      console.log("sto cercando nella conferenza");
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){

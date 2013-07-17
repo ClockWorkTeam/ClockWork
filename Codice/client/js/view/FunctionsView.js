@@ -74,7 +74,7 @@ define([
           this.forceClose();
         }else{
           this.startChat();
-          this.callView.render(null,null, this.model);
+          this.callView.render(null,null, this.model.toJSON().username);
         }
       }else{
         /**

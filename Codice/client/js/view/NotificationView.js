@@ -80,8 +80,8 @@ define([
     acceptCall : function(){
       this.timeout=false;
       this.unrender();
-
-      if(this.options.Conference==false){
+      console.log(this.options.conference);
+      if(this.options.conference=='false'){
         var event=new CustomEvent('acceptCall',{
           detail:{
             type:this.options.typeCall,
