@@ -24,9 +24,7 @@
 
 package test.testUnita.usermanager;
 import java.util.Vector;
-
 import server.dao.UserDao;
-import server.dao.UserDaoSQL;
 import server.shared.User;
 import server.shared.UserList;
 
@@ -76,10 +74,14 @@ public class AuthenticationManager{
 	User user= userDao.getUser(username);
 	if(user!=null){
 	  userDao.setIP(username, "0");
-	  user = userList.getUser(username);
-	  user.setIP("0");
+	  User userTmp=userList.getUser(username);
+	  if(userTmp==null){
+		userList.addUser(user);
+		userTmp=user;
+	  }
+	  userTmp.setIP("0");
+	  return userTmp;
 	}
-	System.out.println(user.getIP());
 	return user;
   }
 

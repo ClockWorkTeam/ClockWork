@@ -449,25 +449,21 @@ Revisione di Qualifica
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Il lavoro svolto per la fase di Revisione di Qualifica è stato valutato
  discretamente.
  Dagli errori segnalati sono stati rivisti e modificati tutti documenti;
  nelle prime pagine di tutti i documenti sono stati riportati i numeri di
  pagina con la notazione romana.
- Di seguito vengono riportate in dettaglio le operazioni di correzione.
+ Di seguito vengono riportate in dettaglio le operazioni di correzione
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 Analisi dei Requisiti: 
 \series default
-migliorate alcune parti del documento 
-\lang italian
-in particolare sono state apportate le seguenti correzioni:
+migliorate alcune parti del documento, in particolare sono state apportate
+ le seguenti correzioni:
 \end_layout
 
 \begin_deeper
@@ -480,22 +476,72 @@ Rivisto il secondo scenario alternativo di UC2
 
 \series bold
 Piano di Progetto: 
+\series default
+migliorate alcune parti del documento, in particolare sono state apportate
+ le seguenti modifiche:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Sostituito il termine 
+\begin_inset Quotes eld
+\end_inset
+
+Grafico di Gantt
+\begin_inset Quotes erd
+\end_inset
+
+ con il termine 
+\begin_inset Quotes eld
+\end_inset
+
+Diagramma di Gantt
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sostituito il termine 
+\begin_inset Quotes eld
+\end_inset
+
+Prospettivo
+\begin_inset Quotes erd
+\end_inset
+
+ nella Tabella 25 e 31 con il termine 
+\begin_inset Quotes eld
+\end_inset
+
+Preventivo
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Sistemata la stesura del preventivo a finire della Progettazione di Dettaglio
+ e Codifica
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
 Piano di Qualifica: 
 \series default
-chiarite alcune parti in particolare sono state apportate le seguenti correzioni
-:
+chiarite alcune parti, in particolare sono state apportate le seguenti correzion
+i:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Modificata la terminologia usata nella colonna relativa alla verifica ed
- elminata colonna relativa allo stato della verifica delle tabelle dei test
- di sistema 
+ eliminata colonna relativa allo stato della verifica delle tabelle dei
+ test di sistema 
 \end_layout
 
 \begin_layout Itemize
@@ -554,7 +600,7 @@ fortemente
 \begin_layout Itemize
 
 \series bold
-Speciifica Tecnica: 
+Specifica Tecnica: 
 \series default
 migliorati i contenuti e la struttura del documento, in particolare sono
  state apportate le seguenti modifiche:
@@ -566,6 +612,10 @@ Strutturate come Singleton le classi DAO
 \end_layout
 
 \begin_layout Itemize
+Sistemate le interazioni fra le componenti in modo da renderle più chiare
+\end_layout
+
+\begin_layout Itemize
 Fornito diagramma delle classi per il design pattern MV*
 \end_layout
 
@@ -574,11 +624,12 @@ Modificati svantaggi SQLite
 \end_layout
 
 \begin_layout Itemize
-Aggiunti esempi di messaggi fra client e server 
+Aggiunta tabella indicante le caratteristiche dei messaggi fra client e
+ server 
 \end_layout
 
 \begin_layout Itemize
-Desritto con maggiore dettaglio il framework Backbone e posto in appendice
+Descritto con maggiore dettaglio il framework Backbone e posto in appendice
 \end_layout
 
 \end_deeper
@@ -587,14 +638,16 @@ Desritto con maggiore dettaglio il framework Backbone e posto in appendice
 \series bold
 Definizione di Prodotto: 
 \series default
-dettagliato maggiormente l'intero documento soprattutto nella descrizione
- di alcune funzionaltà come ad esempio l'autenticazione e le chiamate.
+dettagliato maggiormente l'intero documento, soprattutto nella descrizione
+ di alcune funzionalità come ad esempio l'autenticazione e le chiamate.
+ Aggiornate le descrizioni di metodi e classi a seguito di un miglioramento
+ e ampliamento del codice.
  In particolare sono state apportate le seguenti modifiche:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Rivisti i riferimenti a Backbone e aggiunto il tracciamento?
+Rivisti i riferimenti a Backbone 
 \end_layout
 
 \begin_layout Itemize
@@ -602,11 +655,7 @@ Utilizzato il tempo presente indicativo nella descrizione delle componenti
 \end_layout
 
 \begin_layout Itemize
-Rimossa la sezione Elenco delle tabelle
-\end_layout
-
-\begin_layout Itemize
-Modificato lo scopo del documento
+Tolte le iterazioni fra le componenti di dettaglio
 \end_layout
 
 \begin_layout Itemize
@@ -625,38 +674,42 @@ Forniti i nomi dei parametri nella firma dei metodi
 \end_layout
 
 \begin_layout Itemize
-Chiarito l'utilizzo di UserList
+Modificate classi Dao e classe UserList con struttura Singleton e apportate
+ le modifiche conseguenti sulle altre classi
 \end_layout
 
 \begin_layout Itemize
-getMessage?
+Eliminata classe LoginDaoSQL e relativa interfaccia, modificato conseguentemente
+ UserDao e UserDaoSQL
 \end_layout
 
 \begin_layout Itemize
-Chiarito il funzionamento del metodo getTutorials
+Modificata gestione dei messaggi audio/video
 \end_layout
 
 \begin_layout Itemize
-getAllUsers()?
+Spiegata utilità di avere un'unica copia, sempre presente nel server, dei
+ tutorial e degli utenti presenti nel database
 \end_layout
 
 \begin_layout Itemize
-Chiarito il comportamento del metodo createUser nel caso in cui sia già
- presente un utente con il nome specificato
+Spostati controlli da package dao a package usermanager, in modo che tutti
+ i controlli necessari vengano eseguiti da quest'ultimo
 \end_layout
 
 \begin_layout Itemize
-Chiarito nelle classi di gestione dell'utente come vengono gestite le password
+Chiarito nelle classi di gestione dell'utente, sia appartenenti al server
+ che al client, come vengono gestite le password
 \end_layout
 
 \begin_layout Itemize
 Specificato il formato di stringa in cui devono essere convertiti gli oggetti
- e forniti esempi del risultato finale delle trasformazioni
+ dalla classe Converter e forniti esempi del risultato finale delle trasformazio
+ni
 \end_layout
 
 \begin_layout Itemize
-Rivisto il Par.
- 3.5.1, in particolare l'interfaccia ListenerTransfer
+Modificata immagine della classe astratta ListenerTransfer
 \end_layout
 
 \begin_layout Itemize
@@ -669,12 +722,13 @@ Chiarito il concetto di processo
 \end_layout
 
 \begin_layout Itemize
-Eliminata la NOTA de cap.
+Eliminata la nota del cap.
  4
 \end_layout
 
 \begin_layout Itemize
-RecordMessageCommunication?
+Inserito metodo di registrazione del messaggio nella classe RecordMessageCommuni
+cation
 \end_layout
 
 \begin_layout Itemize
@@ -682,12 +736,17 @@ Chiarita la specifica del metodo listenNotification
 \end_layout
 
 \begin_layout Itemize
-Charito come vengono tratte le password
+Sistemata descrizione model
 \end_layout
 
 \begin_layout Itemize
-Contestualizzati maggiormente l’utilizzo dei template (feature Backbone)
- e la notazione utilizzata per descriverli nel documento
+Aggiunto capitolo indicante le procedure, e i relativi messaggi, di comunicazion
+e fra client e server 
+\end_layout
+
+\begin_layout Itemize
+Contestualizzati maggiormente l’utilizzo dei template e la notazione utilizzata
+ per descriverli nel documento
 \end_layout
 
 \begin_layout Itemize
@@ -707,11 +766,11 @@ corretto l'intero documento, in particolare sono state apportate le seguenti
 
 \begin_deeper
 \begin_layout Itemize
-Eliminata la sezioni elenco delle tabelle 
+Eliminata la sezione elenco delle tabelle 
 \end_layout
 
 \begin_layout Itemize
-Riportato all'interno del documento un Glossario specifico NO
+Inserito Glossario specifico
 \end_layout
 
 \begin_layout Itemize

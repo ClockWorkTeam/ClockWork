@@ -26,13 +26,13 @@
 
 package test.testUnita.usermanager;
 import java.util.Vector;
-import server.dao.*;
+import server.dao.RecordMessageDao;
+import server.dao.UserDao;
 import server.shared.User;
 import server.shared.RecordMessage;
 import server.shared.UserList;
 
 public class UserManager{
-
   private UserDao userDao;
   private RecordMessageDao recordMessageDao;
   /** Costruttore con parametri della classe UserDataManager

@@ -36,6 +36,6 @@ require.config({
 
 QUnit.config.autostart = false;
  
-require(['../view/AuthenticationViewTest.js'], function(){
+require(['../integrazione/CCLI1Test.js'], function(){
   QUnit.start(); //Tests loaded, run tests
 });
