@@ -89,11 +89,18 @@ public class AuthenticationTransferTest {
 			if(username.equals("username_eccezione")){
 				throw new Exception("errore registrazione");
 			}
-			return new User(username,"name","surname","10");
+			return new User(username,"name","surname","IP");
+		}
+		
+		public Vector<User> getAllContacts(String username){
+			Vector<User> user=new Vector<User>();
+			user.add(new User(username,"name","surname","IP"));
+			user.add(new User(username,"name","surname","IP"));
+			return user;	
 		}
 		
 		public User logout(String username){
-			return new User(username,"name","surname","10");
+			return new User(username,"name","surname","IP");
 		}
 		
 	}
@@ -207,7 +214,7 @@ public class AuthenticationTransferTest {
 		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}"));
 
-		//******caso4: signUp già effettuato
+		//******caso4: signUp effettuato
 		token=createToken("{\"type\":\"signUp\",\"username\":\"username\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
 		connector.setUsername("ClockWork7");
 		
@@ -217,7 +224,7 @@ public class AuthenticationTransferTest {
 		System.out.println(packet.getString());
 		System.out.println(packet_broadcast.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"true\"}"));
-		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"10\"}"));
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
 		
 		//******caso5: signUp non effettuato
 		token=createToken("{\"type\":\"signUp\",\"username\":\"username_eccezione\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
@@ -227,6 +234,15 @@ public class AuthenticationTransferTest {
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
 		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"false\",\"error\":\"errore registrazione\"}"));
+		
+		//******caso5: getContacts
+		token=createToken("{\"type\":\"getContacts\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"getContacts\", \"size\": \"2\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\", \"username1\": \"ClockWork7\", \"name1\": \"name\", \"surname1\": \"surname\", \"IP1\": \"IP\"}"));
 		
 		
 
