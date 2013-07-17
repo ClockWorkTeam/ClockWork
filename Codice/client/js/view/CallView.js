@@ -77,9 +77,9 @@ define([
       * si invocano quindi metodi in base se si è il chiamante o il chiamato
       * della chiamata
       */
-
+      var call=this;
       if(this.calling){
-        CallCommunication.recoverCall();
+        CallCommunication.recoverCall(call);
         this.statisticsView.render();
       }else{
         if(isCaller===false){
@@ -112,12 +112,16 @@ define([
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
-      $(this.el).html(this.template());
-      if(isCaller==true){
-        CallCommunication.sendCall(typeCall,contatti,this,true);
-      }else{
-        CallCommunication.sendAnswer(typeCall,contatti,this,true);
-      }
+      
+        $(this.el).html(this.template());
+        if(isCaller==true){
+          CallCommunication.sendCall(typeCall,contatti,this,true);
+     //     this.calling=true
+        }else{
+          CallCommunication.sendAnswer(typeCall,contatti,this,true);
+     //     this.calling=true
+        }
+      
     },
 
     addVideoConference:function(nameCaller){

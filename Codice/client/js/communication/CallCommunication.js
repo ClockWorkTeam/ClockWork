@@ -59,6 +59,8 @@ define(['connection'], function(Connection){
   var onAddConferenceListener = null;
   
   var onCandidateListener = null;
+  
+  var onEndCallListener=null;
     
   var readyToSend = [];
     
@@ -180,6 +182,8 @@ define(['connection'], function(Connection){
                 bubbles:true,
                 cancelable:true
               });
+              localStream.stop();
+              
               document.dispatchEvent(event);
               callView.endCall(false);
             }
@@ -212,37 +216,78 @@ define(['connection'], function(Connection){
       sourcevid = document.getElementById('sourcevid');
       callView.addVideoConference(contact);
       var call=this;
-      
+      Connection.addEventListener('message', onAddConference, false);
+      var allow=true;
       /**
        * richiesta di accensione della telecamera
        */
       if(typeCall=='video'){
         navigator.webkitGetUserMedia({video:true, audio:true},
         function(stream) {
-          sourcevid.src = window.webkitURL.createObjectURL(stream);
-          localStream=stream;
-          var message = {type:'answeredCall',contact: contact, conference:conference};
+          if(allow==true){
+            sourcevid.src = window.webkitURL.createObjectURL(stream);
+            localStream=stream;
+
+            var message = {type:'answeredCall',contact: contact, conference:conference};
+            Connection.send(JSON.stringify(message));
+            /**
+             * avvio la chiamata con la persona che mi ha contattato
+             */
+            call.startCall(false, call, callView,contact);
+            recipient.push(contact);
+            confirmedContact.push(contact);
+          }else{
+            stream.stop();
+          }
+        },
+        function(error){
+          var message = {
+            type:'refuseCall',
+            contact: contact
+          };
           Connection.send(JSON.stringify(message));
-          /**
-           * avvio la chiamata con la persona che mi ha contattato
-           */
-          call.startCall(false, call, callView,contact);
-          confirmedContact.push(contact);
-          Connection.addEventListener('message', onAddConference, false);
+          var event=new CustomEvent('setOnCall',{
+            detail:{
+              type:false
+            },
+            bubbles:true,
+            cancelable:true
+          });
+          document.dispatchEvent(event);
         });
       }else if(typeCall=='audio'){
         navigator.webkitGetUserMedia({video:false, audio:true},
         function(stream) {
-          sourcevid.src = window.webkitURL.createObjectURL(stream);
-          localStream=stream;
-          var message = {type:'answeredCallConference',contact: contact};
+          if(allow==true){
+            sourcevid.src = window.webkitURL.createObjectURL(stream);
+            localStream=stream;
+            var message = {type:'answeredCallConference',contact: contact};
+            Connection.send(JSON.stringify(message));
+            /**
+             * avvio la chiamata con la persona che mi ha contattato
+             */
+            call.startCall(false, call, callView,contact);
+            recipient.push(contact);
+            confirmedContact.push(contact);
+          }else{
+            stream.stop();
+          }
+          
+        },
+        function(error){
+          var message = {
+            type:'refuseCall',
+            contact: contact
+          };
           Connection.send(JSON.stringify(message));
-          /**
-           * avvio la chiamata con la persona che mi ha contattato
-           */
-          call.startCall(false, call, callView,contact);
-          confirmedContact.push(contact);
-          Connection.addEventListener('message', onAddConference, false);
+          var event=new CustomEvent('setOnCall',{
+            detail:{
+              type:false
+            },
+            bubbles:true,
+            cancelable:true
+          });
+          document.dispatchEvent(event);
         });
       }
       
@@ -250,14 +295,19 @@ define(['connection'], function(Connection){
         var response = JSON.parse(evt.data);
         
         if (response.type==='addConferenceCaller'){
+          recipient.push(response.user);
           confirmedContact.push(response.user);
           callView.addVideoConference(response.user)
           call.startCall(false, typeCall, call, callView,response.user)
         }
         if (response.type==='addConferenceAnswer'){
+          recipient.push(response.user);
           confirmedContact.push(response.user);
           callView.addVideoConference(response.user)
           call.startCall(true, typeCall, call, callView,response.user)
+        }
+        if (response.type==='endCallEarly'){
+          allow=false;
         }
       }
       onAddConferenceListener=onAddConference;
@@ -282,7 +332,7 @@ define(['connection'], function(Connection){
         remoteStream[user]=event.stream;
         var event=new CustomEvent("setPeerConn",{
           detail:{
-            peercon:peerConnection
+            peercon:peerConnection[user]
           },
           bubbles:true,
           cancelable:true
@@ -383,22 +433,30 @@ define(['connection'], function(Connection){
       remoteStream[contact]=null;
       var started = false;
       var description=null;
-      Connection.addEventListener('message', onOfferSDP, false);
-      Connection.addEventListener('message', onAnswerSDP, false);
+      /**
+       * listener che si occupano di riceve i vari messaggi dal server e in base al tipo
+       * effettuare determinate azioni
+       */
+      /**
+       * si occupa di gestire il pacchetto sdp
+       */
+      if(isCaller==false){
+        Connection.addEventListener('message', onOfferSDP, false);
+      }else{
+        Connection.addEventListener('message', onAnswerSDP, false);
+      }
       Connection.addEventListener('message', onCandidate, false);
       Connection.addEventListener('message', onEndCall, false);
       Connection.addEventListener('message', onCandidateReady, false);
       
-      /**
-       * listener che si occupa di riceve i vari messaggi dal server e in base al tipo
-       * effettuare determinate azioni
-       */
+
       function onOfferSDP(evt){
         var response = JSON.parse(evt.data);
         /**
-         * una volta che il chiamante invia la su offerta (cioè il suo sdp) viene richiesta 
-         * la creazione dello stream del chiamato che potrà essere video
-         * o solo audio, inoltre imposto nella peerconnection lo sdp del remoto
+         * una volta che il chiamante invia la su offerta (cioè il suo sdp) viene creato 
+         * una nuova peerconection con chiave per ricavarla uguale al nome dell'utente
+         * con cui si sta instaurando una chiamata. Viene inoltre settato sdp e inviato il proprio
+         * sdp all'altro utente
          */
         if (response.type==='offer' && !isCaller && response.contact==contact){
           started = true;
@@ -415,10 +473,10 @@ define(['connection'], function(Connection){
         }
       }
         
-        /**
-         * una volta ricevuta la risposta (sdp del chiamato) imposto 
-         * imposto nella peerconnection lo sdp del remoto
-         */
+      /**
+        * una volta ricevuta la risposta (sdp del chiamato) imposto 
+        * nella peerconnection relativo a quell'utente lo sdp remoto
+        */
       function onAnswerSDP(evt){
         var response = JSON.parse(evt.data);
         if (response.type==='answer' && isCaller && response.contact==contact){
@@ -429,7 +487,8 @@ define(['connection'], function(Connection){
       }
         
         /**
-         * si occupa di impostare i candidati all'interno della peerconnection
+         * si occupa di impostare i candidati ricevuti da un particolare utente
+         * all'interno della peerconnection associata a quell'utente
          */
       function onCandidate(evt){
         var response = JSON.parse(evt.data);
@@ -445,8 +504,9 @@ define(['connection'], function(Connection){
       onCandidateListener=onCandidate;
         
         /**
-         * si occupa di gestire la chiusura chiamata una volta ricevutone il segnale
-         * dall'altro utente
+         * si occupa di rimuovere dalla peerconnection dell'utente che ha chiuso la chiamata e
+         * in caso non ci siano più peerconnection attive chiude il proprio localStream riportando
+         * l'utente nella schermata di functionview
          */
       function onEndCall(evt){
         console.log('RECEIVED: '+evt.data);
@@ -456,24 +516,34 @@ define(['connection'], function(Connection){
             peerConnection[contact].removeStream(localStream);
             peerConnection[contact].close();
           }
-          /**
-           * reimposto nuovamente la mia disponibilità per la disponibilità di chiamata in 
-           * ingresso
-           */
-          var trovato=false;
+          var trovatoConfirmed=false;
           var i=0;
-          while(trovato==false){
+          while(trovatoConfirmed==false){
             if(confirmedContact[i]==contact){
-              trovato=true;
+              trovatoConfirmed=true;
             }else{
               i++;
             }
           }
-          if(trovato==true){
+          var trovatoRecipient=false;
+          var j=0;
+          while(trovatoRecipient==false){
+            if(recipient[j]==contact){
+              trovatoRecipient=true;
+            }else{
+              j++;
+            }
+          }
+          if(trovatoConfirmed==true){
             confirmedContact.splice(i,1);
+            recipient.splice(j,1);
             remotevid[contact].parentNode.removeChild(remotevid[contact]);
             remotevid.splice(i,1);
           }
+          /**
+           * reimposto nuovamente la mia disponibilità per la disponibilità di chiamata in 
+           * ingresso se non ci sono più utenti con cui comunicare
+           */
           if(confirmedContact.length==0){
             localStream.stop();
             var event=new CustomEvent('setOnCall',{
@@ -491,7 +561,7 @@ define(['connection'], function(Connection){
           } 
         }
       }
-        
+      onEndCallListener=onEndCall  
         /**
          * riconosce il fatto che l'utente remoto è pronto a ricevere candidati
          */ 
@@ -523,18 +593,24 @@ define(['connection'], function(Connection){
      * ripristino la visione dello stream video ed audio o solo audio nel
      * caso durante la chiamata abbia selezionato un altro utente
      */
-    recoverCall: function () {
+    recoverCall: function (callView) {
       sourcevid = document.getElementById('sourcevid');
-      remotevid = document.getElementById('remotevid');
+      for(var i=0;i<confirmedContact.length;i++){
+        console.log("Utente ripristina "+confirmedContact[i]);
+        callView.addVideoConference(confirmedContact[i]);
+        remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
+      }
       sourcevid.src = window.webkitURL.createObjectURL(localStream);
-      remotevid.src = window.webkitURL.createObjectURL(remoteStream);
+      
       /**
        * è stato impostato un delay poichè non avveniva istantaneamente il ripristino del
        * video
        */
       setTimeout(function(){
         sourcevid.play();
-        remotevid.play();
+        for(var i=0;i<confirmedContact.length;i++){
+          remotevid[confirmedContact[i]].play();
+        }
       },1000);
     },
     
@@ -543,7 +619,8 @@ define(['connection'], function(Connection){
      * termina chiamata dal callView
      */
     endCall: function() {
-      for(var i=0;i<confirmedContact.length;i++){
+      console.log('grandezza di recipient '+recipient.length);
+      for(var i=0;i<recipient.length;i++){
         if(peerConnection[recipient[i]] != null){
           peerConnection[recipient[i]].removeStream(localStream);
           peerConnection[recipient[i]].close();
@@ -552,11 +629,14 @@ define(['connection'], function(Connection){
         }else{
           var message={type : 'endCallEarly', contact: recipient[i]};
         }
-        if(localStream!=null){
-          localStream.stop()
-        }
+        
         Connection.send(JSON.stringify(message));
       }
+      if(localStream!=null){
+        localStream.stop()
+      }
+      recipient.splice(0,recipient.length);
+      confirmedContact.splice(0,confirmedContact.length);
       var event=new CustomEvent("setOnCall",{
         detail:{
           type:false
@@ -564,8 +644,11 @@ define(['connection'], function(Connection){
         bubbles:true,
         cancelable:true
       });
+      if(onAddConferenceListener==null){
+        Connection.removeEventListener('message',onAddConferenceListener,false);
+      }
       Connection.removeEventListener('message',onCandidateListener,false);
-      Connection.removeEventListener('message',onEndCall,false);
+      Connection.removeEventListener('message',onEndCallListener,false);
       document.dispatchEvent(event);
     }
 
