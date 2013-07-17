@@ -99,7 +99,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
     java.util.Map<String, String> tut =tutorials.getTutorials();
     String tmp =converter.convertTutorials(tut, "\"type\":\"tutorials\",");
     WebSocketPacket wspacket = new RawPacket(tmp);
-    event.sendPacket(wspacket);
+    sendPacket(wspacket, event.getConnector());
   }
     
   public void processClosed(WebSocketServerEvent event) {
