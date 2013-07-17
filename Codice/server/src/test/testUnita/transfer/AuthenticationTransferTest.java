@@ -1,3 +1,22 @@
+/**
+* Nome: UserManagerTest
+* Package: server.usermanager
+* Autore: Zohouri Haghian Pardis
+* Data: 2013/03/06
+* Versione: 1.0
+*
+* Modifiche:
+* +---------+---------------+-------------------------------------------+
+* | Data    | Programmatore |         Modifiche       					|
+* +---------+---------------+-------------------------------------------+
+* |  130306 |     ZHP       | + creazione documento	  					|
+* |  130717 |     VF        | + creato testProcessToken           		|
+* |  130717 |     VF        | + creato testProcessOpened           		|
+* |  130717 |     VF        | + creato testProcessClosed           		|
+* +---------+---------------+-------------------------------------------+
+*
+*/
+
 package test.testUnita.transfer;
 
 import static org.junit.Assert.*;
@@ -24,7 +43,6 @@ import server.ServerMyTalk;
 import server.shared.Tutorials;
 import server.shared.User;
 import server.transfer.AuthenticationTransfer;
-import server.transfer.UserTransfer;
 import server.usermanager.AuthenticationManager;
 import server.usermanager.UserManager;
 
@@ -65,8 +83,7 @@ public class AuthenticationTransferTest {
 
 		public StubBaseConnector(WebSocketEngine aEngine) {
 			super(aEngine);
-		}
-		
+		}	
 		public InetAddress getRemoteHost() {
 			InetAddress ia=null;
 			try {
@@ -74,8 +91,6 @@ public class AuthenticationTransferTest {
 			} catch (UnknownHostException e) {}
             return ia;
 		}
-		
-		
 	}
 	
 	class StubAuthenticationManager extends AuthenticationManager {
@@ -85,9 +100,22 @@ public class AuthenticationTransferTest {
 			}
 			return new User(username,"name","surname","10");
 		}
+		public User createUser(String username, String password, String name, String surname, String IP) throws Exception{
+			if(username.equals("username_eccezione")){
+				throw new Exception("errore registrazione");
+			}
+			return new User(username,"name","surname","IP");
+		}
+		
+		public Vector<User> getAllContacts(String username){
+			Vector<User> user=new Vector<User>();
+			user.add(new User(username,"name","surname","IP"));
+			user.add(new User(username,"name","surname","IP"));
+			return user;	
+		}
 		
 		public User logout(String username){
-			return new User(username,"name","surname","10");
+			return new User(username,"name","surname","IP");
 		}
 		
 	}
@@ -95,6 +123,12 @@ public class AuthenticationTransferTest {
 	class StubTutorials extends Tutorials {
 		public StubTutorials(int num) {
 			super(num);
+		}
+		public Map<String,String> getTutorials(){
+			Map<String, String> tutorials=new HashMap<String,String>();
+			tutorials.put("title", "url");
+			tutorials.put("title1", "url1");
+			return tutorials;
 		}
 	}
 	
@@ -107,7 +141,7 @@ public class AuthenticationTransferTest {
 		}
 		
 		public User getUserData(String username){
-			return new User("", "", "", "");
+			return new User("username", "name", "surname", "IP");
 		}
 		public boolean setUserData(String username, String name, String surname) throws Exception{
 			if(name.equals("name_errato") || surname.equals("surname_errato")){
@@ -178,8 +212,6 @@ public class AuthenticationTransferTest {
 		authenticationTransfer.processToken(event, token);
 		WebSocketPacket packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
 		WebSocketPacket packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
-		System.out.println(packet.getString() );
-		System.out.println(packet_broadcast.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"true\", \"name\":\"name\", \"surname\":\"surname\"}"));
 		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"10\"}"));
 		
@@ -189,7 +221,6 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"errore di autenticazione\"}"));
 		
 		//******caso3: login già effettuato
@@ -198,10 +229,98 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
-		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}"));
 
+		//******caso4: signUp effettuato
+		token=createToken("{\"type\":\"signUp\",\"username\":\"username\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"true\"}"));
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
+		
+		//******caso5: signUp non effettuato
+		token=createToken("{\"type\":\"signUp\",\"username\":\"username_eccezione\",\"password\":\"prova\",\"name\":\"name\",\"surname\":\"surname\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"false\",\"error\":\"errore registrazione\"}"));
+		
+		//******caso5: getContacts
+		token=createToken("{\"type\":\"getContacts\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"getContacts\", \"size\": \"2\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\", \"username1\": \"ClockWork7\", \"name1\": \"name\", \"surname1\": \"surname\", \"IP1\": \"IP\"}"));
+		
+		//******caso6: logout
+		token=createToken("{\"type\":\"logout\"}");
+		connector.setUsername("ClockWork7");
+		
+		authenticationTransfer.processToken(event, token);
+		packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
+	}
+	
+	@Test
+	public void testProcessOpened() throws Exception {
+				
+		//creazione del connector
+		Vector<String> domains= new Vector<String>();
+		domains.add("prova");
+		Map<String, Object> aSettigns = new HashMap<String, Object>();
+		aSettigns.put("prova", null);
+		EngineConfig engineConfig=new EngineConfig("prova", "prova", "prova", 1024, 1024, "prova", "prova", "prova", "prova", 1024, 1024, domains, 1024, "prova", aSettigns);
+		BaseEngine  baseEngine=new BaseEngine (engineConfig);
+		BaseConnector connector=new StubBaseConnector(baseEngine);
+		connector.setUsername("ClockWork7");
+		((StubAuthenticationTransfer)authenticationTransfer).setConnector(connector);
+		
+		//creazione del server
+		ServerMyTalk server = new ServerMyTalk();
+		WebSocketServer aServer=server.getTokenServer();
+		authenticationTransfer.setTokenServer(server);
+		
+		//creazione dell'evento da inviare
+		WebSocketServerTokenEvent event=new WebSocketServerTokenEvent(connector, aServer);
 
+		//******caso1: login corretto
+		authenticationTransfer.processOpened(event);
+		WebSocketPacket packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"tutorials\", \"size\": \"2\", \"title0\": \"title\", \"path0\": \"url\", \"title0\": \"title1\", \"path0\": \"url1\"}"));	
+	}
+
+	@Test
+	public void testProcessClosed() throws Exception {
+				
+		//creazione del connector
+		Vector<String> domains= new Vector<String>();
+		domains.add("prova");
+		Map<String, Object> aSettigns = new HashMap<String, Object>();
+		aSettigns.put("prova", null);
+		EngineConfig engineConfig=new EngineConfig("prova", "prova", "prova", 1024, 1024, "prova", "prova", "prova", "prova", 1024, 1024, domains, 1024, "prova", aSettigns);
+		BaseEngine  baseEngine=new BaseEngine (engineConfig);
+		BaseConnector connector=new StubBaseConnector(baseEngine);
+		connector.setUsername("ClockWork7");
+		((StubAuthenticationTransfer)authenticationTransfer).setConnector(connector);
+		
+		//creazione del server
+		ServerMyTalk server = new ServerMyTalk();
+		WebSocketServer aServer=server.getTokenServer();
+		authenticationTransfer.setTokenServer(server);
+		
+		//creazione dell'evento da inviare
+		WebSocketServerTokenEvent event=new WebSocketServerTokenEvent(connector, aServer);
+
+		//******caso1: login corretto
+		authenticationTransfer.processClosed(event);
+		WebSocketPacket packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
+		System.out.println(packet_broadcast.getString());
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));	
 	}
 
 }

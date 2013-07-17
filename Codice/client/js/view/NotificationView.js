@@ -63,11 +63,16 @@ define([
      */
     render: function(){
       $(this.el).html(this.template({username : this.options.caller}));
+      this.$('#notificationModal').modal({
+	    backdrop: 'static',
+	    keyboard: false
+      });
     },
     /**
      * funziona che si occupa di disabilitare la vista
      */
     unrender:function(){
+	  this.$('#notificationModal').modal('toggle');
       this.close();
       $(this.el).html('');
       $('body').append(this.el);
