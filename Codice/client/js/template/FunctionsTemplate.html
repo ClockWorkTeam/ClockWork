@@ -17,16 +17,19 @@
  */
 -->
 
-<div id='functionsTemplate'>
+<div class="row-fluid" id='functionsTemplate'>
   <% if(typeof From !='undefined'){ %>
     <% if(From =='IP'){ %>
 
         <label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
        <span> <input type="text" name="ip" id="ip" /> </span>
-      <button id= "startChat">Inizia chat</button>
-      <button id="call">Chiama</button>
-      <button id="video">Videochiama</button>
-      <input type="checkbox" name="record" id="record" >Registra la chiamata
+       <div class="form-inline">
+         <button id= "startChat">Inizia chat</button>
+         <button id="call">Chiama</button>
+         <button id="video">Videochiama</button>
+         <br/>
+         <input class="checkbox" type="checkbox" name="record" id="record" ><label for="record" class="checkbox"> Registra la chiamata</label>
+       </div>
     <% }else if (From == "Conf") { %>
       <ul id="optionContacts"></ul>
       <button id= "startConference">Chiama contatti</button>
@@ -43,7 +46,8 @@
         <% if(IP != "0"){ %>
            <button id="call">Chiama</button>
            <button id="video">Videochiama</button>
-           <input class="checkbox" type="checkbox" name="record" id="record" >Registra la chiamata
+           <br/>
+    	   <input class="checkbox" type="checkbox" name="record" id="record" ><label for="record" class="checkbox"> Registra la chiamata</label>
         <% } %>
       </div>
   <% } %>

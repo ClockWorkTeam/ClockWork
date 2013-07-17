@@ -18,7 +18,8 @@ require.config({
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone',
     text: 'libs/require/text',
-    storage: 'libs/backbone/backbone.noStorage'
+    storage: 'libs/backbone/backbone.noStorage',
+    bootstrap: 'libs/bootstrap/bootstrap.min'
   },
 
   shim: {
@@ -28,13 +29,20 @@ require.config({
 
     backbone: {
       deps: [ 'underscore', 'jquery' ],
-      exports: 'Backbone'
+      exports: 'Backbone',
+    },
+
+  	bootstrap:{
+      deps: ['jquery']
     }
-  }
+}
+
+
 
 });
 
-require(['connection', 'view/AuthenticationView', 'collection/ContactsCollection', 'communication/NotificationCommunication'], function(Connection, AuthenticationView, ContactsCollection, NotificationCommunication){
+require(['connection', 'view/AuthenticationView', 'collection/ContactsCollection', 'communication/NotificationCommunication', 'bootstrap'],
+         function(Connection, AuthenticationView, ContactsCollection, NotificationCommunication, bootstrap){
   NotificationCommunication.listenNotification();
   var authentication_view = new AuthenticationView();
 });

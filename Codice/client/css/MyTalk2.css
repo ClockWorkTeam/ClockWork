@@ -23,12 +23,22 @@ border-bottom: 2px ridge #8999CC;
 
 #authentication input{
   width: 90px;
- height: 17px;
+  height: 17px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 #sidebar{
  border-right: 1px ridge #8999CC; 
  margin-top: 0.5em;
+}
+
+#sidebar #callIP{
+ font-size: 12px;
+}
+
+#sidebar span{
+ float:center;
 }
 
 ul{
@@ -38,11 +48,14 @@ list-style:none;
 #sidebar #contacts{
  background-color: #E8EBF8; 
  border: 2px ridge #8999CC; 
- border-top-left-radius: 10px;
- border-bottom-left-radius: 10px;
+ border-radius: 10px;
  border-right:none;
+ border-left: none;
  margin-top: 0.5em;
  margin-bottom: 0.5em;
+ margin-left: 0em;
+ margin-right: 1.7em;
+ padding-left: 0.6em;
 }
 
 .offline:before {
@@ -81,8 +94,11 @@ text-align:center;
 .sent h3,  .received h3{
  font-size:18px;
  display: inline;
- margin-top: 5px;
- margin-bottom: 5px;
+}
+
+.sent, .received {
+ margin-top: 0px;
+ margin-bottom: 0px;
 }
 
 #content #functionsTemplate #dataContact{
@@ -96,6 +112,8 @@ text-align:center;
   display: inline;
 }
 
+
+
 #content #callTemplate #remotevid{
  width:100%;
  height:100%;
@@ -106,7 +124,7 @@ text-align:center;
   width:25%;
  height:20%;
  float:right;
- margin-top: -10em;
+ margin-top: -11em;
  border:2px ridge #110560;
  }
 
@@ -135,11 +153,11 @@ text-align:center;
  padding:0.5em;
 }
 
-#main #chat li{
- height: 50%;
-}
-
 #chat #compose{
  margin: 0 auto 0 auto;
  text-align:center;
+}
+
+#chat .sender{
+ font-weight: bold;
 }

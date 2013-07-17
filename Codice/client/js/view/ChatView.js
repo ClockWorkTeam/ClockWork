@@ -83,7 +83,8 @@ define([
      */
     putMessage:function(TextMessageModel){
       var node=document.createElement("LI");
-      var name=document.createElement("H3");
+      var name=document.createElement("span");
+      name.setAttribute('class','sender');
       if(TextMessageModel.toJSON().source=='sent'){
         name.appendChild(document.createTextNode(this.options.userModel.toJSON().username+": "));
         node.setAttribute('class','sent');
