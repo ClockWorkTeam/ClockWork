@@ -56,6 +56,7 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
+            console.log(response.conference);
             notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, conference: response.conference, NotificationCommunication:Notification});
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{

@@ -33,7 +33,7 @@ public class CallTransfer extends ListenerTransfer {
   	  if(token.getString("contact").contains(".")){//indirizzo IP
   		connector= getIpConnector(token.getString("contact"));
   		if(connector!=null){
-  			wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector().getRemoteHost().toString()+"\",\"callType\":\""+token.getString("callType")+"\"}");
+  			wspacket=new RawPacket("{\"type\":\"call\", \"contact\":\""+event.getConnector().getRemoteHost().toString()+"\",\"callType\":\""+token.getString("callType")+"\",\"conference\":\""+token.getString("conference")+"\"}");
   		}
   	  }else{ //username
   		connector=getUserConnector(token.getString("contact"));
@@ -72,6 +72,15 @@ public class CallTransfer extends ListenerTransfer {
         connector=getUserConnector(token.getString("contact"));
       }
       wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente occupato in un'altra conversazione\"}");
+      sendPacket(wspacket,connector);
+	}else if(type.equals("refuseCam")){
+	  WebSocketConnector connector=null;
+      if(token.getString("contact").contains(".")){//indirizzo IP
+      	connector= getIpConnector(token.getString("contact"));
+      }else{ //username
+        connector=getUserConnector(token.getString("contact"));
+      }
+      wspacket=new RawPacket("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente rifiuta di accendere la telecamera\"}");
       sendPacket(wspacket,connector);
 	}else if(type.equals("sdp")){
   	  WebSocketConnector connector=null;

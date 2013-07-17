@@ -98,7 +98,7 @@ define(['connection'], function(Connection){
           localStream=stream;	
           Connection.addEventListener('message', onAnswer, false);
           for(var i=0;i<recipient.length;i++){
-            message= {type:'call', contact: recipient[i] ,  callType:typeCall};
+            message= {type:'call', contact: recipient[i] ,  callType:typeCall, conference:conference};
           /**
             * aggiunta del listener per la ricezione della risposta dell'utente chiamato
             */
@@ -328,8 +328,8 @@ define(['connection'], function(Connection){
          */
         if(remoteStream[user]==null){
           remotevid[user].src = window.webkitURL.createObjectURL(event.stream);
+          remoteStream[user]=event.stream;
         }
-        remoteStream[user]=event.stream;
         var event=new CustomEvent("setPeerConn",{
           detail:{
             peercon:peerConnection[user]
@@ -598,7 +598,9 @@ define(['connection'], function(Connection){
       for(var i=0;i<confirmedContact.length;i++){
         console.log("Utente ripristina "+confirmedContact[i]);
         callView.addVideoConference(confirmedContact[i]);
+        remotevid[confirmedContact[i]] = document.getElementById(confirmedContact[i]);
         remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
+        console.log(remoteStream[confirmedContact[i]]);
       }
       sourcevid.src = window.webkitURL.createObjectURL(localStream);
       
