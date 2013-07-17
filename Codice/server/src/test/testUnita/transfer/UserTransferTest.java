@@ -44,6 +44,7 @@ public class UserTransferTest {
 
 	class StubUserTransfer extends UserTransfer {
 		private WebSocketPacket packet;
+		private WebSocketPacket packet_broadcast;
 		public StubUserTransfer(UserManager userManager) {
 			super(userManager);
 			// TODO Auto-generated constructor stub
@@ -52,7 +53,11 @@ public class UserTransferTest {
 		public void sendPacket(WebSocketPacket packet, WebSocketConnector connector){
 			this.packet=packet;
 		}
+		public void broadcast(WebSocketPacket packet, WebSocketConnector connector){
+			this.packet_broadcast=packet;
+		}
 		public WebSocketPacket getResult(){return packet;}
+		public WebSocketPacket getResult_broadcast(){return packet_broadcast;}
 		
 	}
 	
@@ -65,7 +70,7 @@ public class UserTransferTest {
 		}
 		
 		public User getUserData(String username){
-			return new User("", "", "", "");
+			return new User("username", "name", "surname", "IP");
 		}
 		public boolean setUserData(String username, String name, String surname) throws Exception{
 			if(name.equals("name_errato") || surname.equals("surname_errato")){
@@ -135,7 +140,6 @@ public class UserTransferTest {
 		
 		userTransfer.processToken(event, token);
 		WebSocketPacket packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"checkCredentials\",\"answer\":\"true\"}"));
 		
 		//******caso2: checkCredentials con dati errati
@@ -143,7 +147,6 @@ public class UserTransferTest {
 		
 		userTransfer.processToken(event, token);
 		packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"checkCredentials\",\"answer\":\"false\"}"));
 		
 		//******caso3: changeData con dati corretti
@@ -151,15 +154,15 @@ public class UserTransferTest {
 		
 		userTransfer.processToken(event, token);
 		packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
+		WebSocketPacket packet_broadcast= ((StubUserTransfer)userTransfer).getResult_broadcast();
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"true\"}"));
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
 		
 		//******caso4: changeData con nome errato
 		token=createToken("{\"type\":\"changeData\",\"password\":\"prova\",\"name\":\"name_errato\",\"surname\":\"surname\"}");
 		
 		userTransfer.processToken(event, token);
 		packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}"));
 		
 		//******caso5: changeData con cognome errato
@@ -167,7 +170,6 @@ public class UserTransferTest {
 		
 		userTransfer.processToken(event, token);
 		packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}"));
 		
 		//******caso6: changeData con nome e cognome errati
@@ -175,7 +177,6 @@ public class UserTransferTest {
 		
 		userTransfer.processToken(event, token);
 		packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Errore nell'operazione di modifica del nome e del cognome\"}"));
 		
 		//******caso7: changeData con eccezzione
@@ -183,7 +184,6 @@ public class UserTransferTest {
 		
 		userTransfer.processToken(event, token);
 		packet= ((StubUserTransfer)userTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"changeData\",\"answer\":\"false\",\"error\":\"Username errato\"}"));
 	}
 
