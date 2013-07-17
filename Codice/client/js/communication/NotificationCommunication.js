@@ -4,36 +4,36 @@
  * Autore: La Bruna Agostino
  * Data: 2013/04/08
  * Versione: 1.0
- * 
+ *
  * Modifiche:
  * +---------+---------------+-------------------------------------+
  * | Data    | Programmatore |        Modifiche                    |
  * +---------+---------------+-------------------------------------+
- * |13/07/12 |    BG         | # Gestione conferenza nel metodo    | 
- * |         |               |   onNotification                    | 
+ * |13/07/12 |    BG         | # Gestione conferenza nel metodo    |
+ * |         |               |   onNotification                    |
  * +---------+---------------+-------------------------------------+
- * |13/04/09 |    LBA        | + variabile onCalling per capire se | 
- * |         |               |   occupato o meno con altri utenti  | 
- * +---------|---------------|-------------------------------------| 
- * |13/04/08 |    LBA        | + Metodo listenNotification         | 
- * |         |               | + Metodo refuse                     | 
- * |_________|_______________|_____________________________________| 
+ * |13/04/09 |    LBA        | + variabile onCalling per capire se |
+ * |         |               |   occupato o meno con altri utenti  |
+ * +---------|---------------|-------------------------------------|
+ * |13/04/08 |    LBA        | + Metodo listenNotification         |
+ * |         |               | + Metodo refuse                     |
+ * |_________|_______________|_____________________________________|
  */
 
 /**
- * classe che comunica con il server per ricezione di notifiche di chiamata 
+ * classe che comunica con il server per ricezione di notifiche di chiamata
  */
 define(['connection', 'view/NotificationView'],function(Connection, NotificationView){
-  
+
   /**
    * variabile che indica se sono già in chiamata o meno
    */
   var onCalling=false;
   return {
     //getStatus: function(){
-    //  return onCalling;  
+    //  return onCalling;
     //},
-    
+
     /**
      * funzione che si occupa di segnalare la presenza di chiamate in arrivo e avvertire l'utente
      */
@@ -56,8 +56,10 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
-            notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, conference: response.conference, NotificationCommunication:Notification});
-            setTimeout(function(){notificationView.timeoutCall()},5000);
+
+            notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, NotificationCommunication:Notification});
+            setTimeout(function(){notificationView.timeoutCall()},30000);
+
           }else{
             var message = {
 							type:'busy',
@@ -66,6 +68,7 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
             Connection.send(JSON.stringify(message));
           }
         }
+
         /**
          * segnala la presenza di chiusura chiamata ancora prima che quest'ultima inizi
          */
@@ -89,5 +92,5 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
       };
       Connection.send(JSON.stringify(message));
     }
-  };	
+  };
 });

@@ -13,9 +13,12 @@
  * |_______________________________________________|
  */
 -->
-     <h2>Chiamata da <%= username %></h2>
-   <span id="acceptOrRefuse">
-     <button id= "acceptCall">Accetta Chiamata</button>
-    <button class="btn btn-small btn-inverse" id="refuseCall">Rifiuta Chiamata</button>
-   </span>
+   <div id="notificationModal" class="modal hide fade">
+     <div class="modal-header">
+       <h2>Chiamata da <%= username %></h2>
+     </div>
+     <div id="modal-body">
+       <button id= "acceptCall">Accetta Chiamata</button>
+       <button class="btn btn-small btn-inverse" id="refuseCall">Rifiuta Chiamata</button>
+     </div>
 </div>
