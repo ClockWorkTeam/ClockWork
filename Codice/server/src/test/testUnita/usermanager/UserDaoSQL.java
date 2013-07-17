@@ -93,7 +93,7 @@ public class UserDaoSQL implements UserDao{
   }
 
   public boolean setIP(String username, String IP){
-    if(IP.equals("true")){
+    if(IP.equals("true")||IP.equals("0")){
 	  return true;
 	}else return false;
   }

@@ -23,106 +23,74 @@
 package test.testUnita.usermanager;
 
 import static org.junit.Assert.*;
-
-import java.sql.*;
-
 import org.junit.*;
 
-import server.dao.JavaConnectionSQLite;
-import server.shared.User;
-import server.usermanager.AuthenticationManager;
-
-
 public class AuthenticationManagerTest {
-	private AuthenticationManager authenticationManager;
-	JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
-	ResultSet rs;
+  private AuthenticationManager authenticationManager;
 	
-	@Before
-	public void init() {
-		authenticationManager=new AuthenticationManager();
-		connection.executeUpdate("DELETE FROM UserDataSQL;");
-	}
+  @Before
+  public void init() {
+	authenticationManager=new AuthenticationManager();
+  }
 
-	@Test
-	public void testCreateUser() throws Exception {
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("DB non vuoto", rs.getString("num").equals("0"));
-		try{
-			authenticationManager.createUser("ClockWork7", "password", "name", "surname", "IP");
-		}
-		catch(Exception e){System.out.println("Username già presente");}
-		
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("Numero utenti presenti è sbagliato", rs.getString("num").equals("1"));
-		
-		//viene testato se esite già
-		try{
-			authenticationManager.createUser("ClockWork7", "password", "name", "surname", "IP");
-		}
-		catch(Exception e){System.out.println("Username già presente");}
-		
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("Numero utenti presenti è sbagliato", rs.getString("num").equals("1"));
+  @Test
+  public void testLogin() {
+	try{
+	  authenticationManager.login("false", "password", "10.01.01.01");
+	  assertTrue("Operazione di login errata. Utente inesistente",false);
+	}catch(Exception e){
+	  assertTrue("Operazione di login errata. Utente inesistente",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username errato"));	  
 	}
-	
-	@Test
-	public void testRemoveUser() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team', '0');");
-		
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("DB non vuoto", rs.getString("num").equals("1"));
-		
-		authenticationManager.removeUser("ClockWork7");
-		
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("Numero utenti presenti è sbagliato", rs.getString("num").equals("0"));
-		
-		//viene testato se l'utente non c'è
-		authenticationManager.removeUser("ClockWork7");
-		
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		assertTrue("Numero utenti presenti è sbagliato", rs.getString("num").equals("0"));
+	try{
+	  authenticationManager.login("true", "false", "10.01.01.01");
+	  assertTrue("Operazione di login errata. Password errata",false);
+	}catch(Exception e){
+	  assertTrue("Operazione di login errata. Password errata",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Password errata"));	  
 	}
+	try{
+	  assertTrue("Operazione di login fallita",authenticationManager.login("true", "true", "10.01.01.01")!=null);
+	}catch(Exception e){
+		 assertTrue("Operazione di login fallita",false);
+	}
+  }
 
-	@Test
-	public void testLogin() throws Exception {
-		try{
-			assertTrue("Login utente inesistente",authenticationManager.login("username", "password", "10.01.01.01")==null);
-		}
-		catch(Exception e){System.out.println("Username errato");}
-		
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', '0');");
-		
-		try{
-			assertTrue("Login utente inesistente",authenticationManager.login("username", "p", "10.01.01.01")==null);
-		}
-		catch(Exception e){System.out.println("Password errata");}
-		
-		User user=authenticationManager.login("username", "password", "10.01.01.01");
-		assertTrue("IP non modificata",user.getUsername().equals("username"));
-		assertTrue("IP non modificata",user.getIP().equals("10.01.01.01"));
-	}
-	
-	@Test
-	public void testLogout() throws Exception {
-		assertTrue("Logout utente inesistente",authenticationManager.logout("username")==null);
-		
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', '10.01.01.01');");
-		
-		assertTrue("Username sbagliato",authenticationManager.logout("username").getUsername().equals("username"));
-		assertTrue("IP sbagliato",authenticationManager.logout("username").getIP().equals("0"));
-	}
+  @Test
+  public void testLogout() {
+	assertTrue("Operazione di logout errata. utente inesistente",authenticationManager.logout("false")==null);
+	assertTrue("Operazione di logout errata. utente già disconnesso",authenticationManager.logout("disconnected")!=null);
+	assertTrue("Operazione di logout fallita",authenticationManager.logout("true")!=null);
+  }
 
-	@Test
-	public void testGetAllContacts() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', '10.01.01.01');");
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username2','password','name','surname', '10.01.01.01');");
-		
-		rs= connection.select("UserDataSQL","count(*) as num","","");
-		int num=rs.getInt("num");
-		
-		assertTrue("Numero contatti sbagliato",authenticationManager.getAllContacts("username").size()==num);
+  @Test
+  public void testCreateUser() {
+	try{
+	  authenticationManager.createUser("true", "password", "name","surname", "10.01.01.01");
+	  assertTrue("Operazione di registrazione errata. Utente già esistente",false);
+	}catch(Exception e){
+	  assertTrue("Operazione di registrazione errata. Utente già esistente",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username già presente"));	  
 	}
+	try{
+	  authenticationManager.createUser("false", "password", "name","surname", "10.01.01.01");
+	  assertTrue("Operazione di registrazione errata",false);
+	}catch(Exception e){
+	  assertTrue("Operazione di registrazione errata",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Errore nell'inserimento dell'utente nel database"));	  
+	}
+	try{
+	  assertTrue("Operazione di registrazione errata",authenticationManager.createUser("false", "true", "name","surname", "10.01.01.01")!=null);
+	}catch(Exception e){
+	  assertTrue("Operazione di registrazione errata",false);
+	}
+  }
 	
+  @Test
+  public void testRemoveUser() {
+	assertTrue("Operazione di rimozzione utente fallita", authenticationManager.removeUser("false"));
+	assertTrue("Operazione di rimozzione utente fallita", authenticationManager.removeUser("true"));
+	assertFalse("Operazione di rimozzione utente fallita", authenticationManager.removeUser("error"));
+  }
+
 }
