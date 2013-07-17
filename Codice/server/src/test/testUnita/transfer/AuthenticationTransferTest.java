@@ -244,8 +244,14 @@ public class AuthenticationTransferTest {
 		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"getContacts\", \"size\": \"2\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\", \"username1\": \"ClockWork7\", \"name1\": \"name\", \"surname1\": \"surname\", \"IP1\": \"IP\"}"));
 		
+		//******caso6: logout
+		token=createToken("{\"type\":\"logout\"}");
+		connector.setUsername("ClockWork7");
 		
-
+		authenticationTransfer.processToken(event, token);
+		packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
+		System.out.println(packet_broadcast.getString() );
+		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
 	}
 
 }
