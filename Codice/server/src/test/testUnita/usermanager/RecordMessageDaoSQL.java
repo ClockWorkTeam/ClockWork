@@ -27,43 +27,52 @@
 */
 
 package test.testUnita.usermanager;
+import server.dao.RecordMessageDao;
 import server.shared.RecordMessage;
-import java.sql.ResultSet ;
-import java.sql.SQLException;
+
 import java.util.Vector;
 /**
- * Classe che definisce dei metodi per gestire i recordmessages nel DB
+ * Classe STUB
  */
 
-public class RecordMessageDaoSQL{
+public class RecordMessageDaoSQL implements RecordMessageDao{
   private static RecordMessageDaoSQL recordMessageDaoSQL=null;
   
-  private RecordMessageDaoSQL(){
-System.out.println("provaMex");
-  }
+  private RecordMessageDaoSQL(){}
 
   public static RecordMessageDaoSQL getInstance(){
 	if(recordMessageDaoSQL==null){
-		recordMessageDaoSQL= new RecordMessageDaoSQL();
+	  recordMessageDaoSQL= new RecordMessageDaoSQL();
 	}
 	return recordMessageDaoSQL;
   }
- /**
-   * Metodo che trova i messaggi inviati all'user
-   * @param user Oggetto User ricevente dei messagi
-   * @return vettore dei messaggi inviati all'user
-   */
- /* public Vector<RecordMessage> getAllMessages(String username){
 
+  public Vector<RecordMessage> getAllMessages(String username){
+	Vector<RecordMessage> messages= new Vector<RecordMessage>();
+	if(username.equals("vuoto")){
+	  return messages;
+	}else{
+	  messages.add(new RecordMessage("sender", "addressee", "path", "dateCreation"));
+	  if(username.equals("uno")){
+	    return messages;
+	  }else{
+		messages.add(new RecordMessage("sender2", "addressee", "path2", "dateCreation2"));
+		return messages;
+	  }
+	}
   }
-
 
   public boolean addMessage(RecordMessage message){
-
+	if(message.getSender().equals("true")){
+	  return true;
+	}
+	return false;
   }
 
-
   public boolean removeMessage(RecordMessage message){
-	
-  }*/
+	if(message.getSender().equals("true")){
+	  return true;
+	}
+	return false;
+  }
 }

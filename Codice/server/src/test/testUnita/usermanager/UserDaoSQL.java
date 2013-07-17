@@ -30,18 +30,13 @@
 */
 
 package test.testUnita.usermanager;
-import server.shared.UserList;
+import server.dao.UserDao;
 import server.shared.User;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class UserDaoSQL{
+public class UserDaoSQL implements UserDao{
   private static UserDaoSQL userDaoSQL=null; 
 
-  private UserDaoSQL(){
-	  System.out.println("provaUser");
-  }
+  private UserDaoSQL(){}
   
   public static UserDaoSQL getInstance(){
 	if(userDaoSQL==null){
@@ -50,43 +45,56 @@ public class UserDaoSQL{
 	return userDaoSQL;
   }
 
-  /*
   public User getUser(String username){
-
+	if(username.equals("false")){
+	  return null;
+	}else if(username.equals("true")){
+	  return new User(username,"name","surname","IP");
+	}else return new User(username,"name","surname","0");
   }
 
   public boolean addUser(User user, String password){
-
+	if(password.equals("true")){
+	  return true;
+	}
+	return false;
   }
 
   public boolean removeUser(String username){
-  }
-
- 
-  public boolean checkPassword(String username, String password){
-	  if(username.equals("username_sbagliato") || password.equals("password_sbagliato")){
-		  return false;
-	  }
+	if(username.equals("true")){
 	  return true;
+	}
+	else return false;
   }
 
+  public boolean checkPassword(String username, String password){
+	if(username.equals("true") && password.equals("true")){
+	  return true;
+	}
+	return false;
+  }
 
   public boolean setPassword(String username, String password){
+	if(password.equals("true")){
+	  return true;
+	}else return false;
   }
 
-  
   public boolean setName(String username, String name){
+	if(name.equals("true")){
+	  return true;
+	}else return false;
   }
 
- 
   public boolean setSurname(String username, String surname){
+    if(surname.equals("true")){
+	  return true;
+	}else return false;
   }
 
- 
   public boolean setIP(String username, String IP){
+    if(IP.equals("true")){
+	  return true;
+	}else return false;
   }
-
-  private void getUsersFromDB(){
-
-  }	*/
 }

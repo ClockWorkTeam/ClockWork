@@ -26,20 +26,19 @@
 
 package test.testUnita.usermanager;
 import java.util.Vector;
-
+import server.dao.RecordMessageDao;
+import server.dao.UserDao;
 import server.shared.User;
 import server.shared.RecordMessage;
 import server.shared.UserList;
 
 public class UserManager{
-
-  private UserDaoSQL userDao;
-  private RecordMessageDaoSQL recordMessageDao;
+  private UserDao userDao;
+  private RecordMessageDao recordMessageDao;
   /** Costruttore con parametri della classe UserDataManager
    * @param access riferimento alla classe che implementa l'interfaccia DAOLogin
    */
   public UserManager(){
-	  System.out.println("prova");
 	this.userDao = UserDaoSQL.getInstance();
 	this.recordMessageDao=RecordMessageDaoSQL.getInstance();
   }
