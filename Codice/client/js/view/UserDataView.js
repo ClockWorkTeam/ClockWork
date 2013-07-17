@@ -48,13 +48,15 @@ define([
      */
     render: function() {
       $(this.el).html(this.template(this.model.toJSON()));
+      this.$('#userDataModal').modal('toggle');
     },
 
     /**
      * funzione che si occupa di rimuovere la struttura della vista dalla pagina
      */
 		unrender:function(){
-			this.close();
+		  this.$('#userDataModal').modal('toggle');
+		  this.close();
       $(this.el).html('');
 			$('body').append(this.el);
 		},
