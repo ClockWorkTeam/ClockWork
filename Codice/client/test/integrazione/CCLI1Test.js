@@ -1,7 +1,63 @@
-//Wait for relevant code bits to load before starting any tests
-define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
+define(['../js/view/AuthenticationView'], function( AuthenticationView, AuthenticationCommunication ) {
 
-  module( 'About Backbone.View', {
+  module( 'About Login', {
+      setup: function() {
+        this.authenticationView = new AuthenticationView();
+        this.AuthenticationCommunication = require('communication/AuthenticationCommunication');
+        this.commSpy = sinon.spy(this.AuthenticationCommunication, 'checkCredentials');
+        this.Connection = require('connection');
+        this.sendStub = sinon.stub(this.Connection, 'send');
+        this.callBacksSpy = sinon.spy(this.authenticationView, 'callBacks');
+      },
+      teardown: function() {
+        this.callBacksSpy.restore();
+        this.sendStub.restore();
+        this.commSpy.restore();
+        this.authenticationView.remove();
+      }
+  });
+
+  test('Login successful.', function() {
+    expect( 2 );
+    
+    this.authenticationView.$("#user").val('prova');
+    this.authenticationView.$("#password").val('prova');
+    this.authenticationView.connect();
+    
+    ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
+    
+    var data = JSON.stringify({"type":"login","answer":"true"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+    this.Connection.dispatchEvent(event);
+    ok(this.authenticationView.$("#logout").length == 1, 'Login successful');
+
+  });
+ 
+  test('Login unsuccessful.', function() {
+    expect( 3 );
+    
+    var stub = this.stub(window, 'alert', function(msg) { return false; } );
+    
+    this.authenticationView.$("#user").val('prova');
+    this.authenticationView.$("#password").val('prova');
+    this.authenticationView.connect();
+    
+    ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
+    
+    var data = JSON.stringify({"type":"login","answer":"false","error":"Messaggio di errore dal server"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+    this.Connection.dispatchEvent(event);
+
+    equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert correctly displayed.');
+    ok(this.authenticationView.$("#logout").lenght == 0, 'Login unsuccessful');
+    
+    stub.restore();
+    
+  });
+  
+  module( 'About Logout', {
       setup: function() {
         this.authenticationView = new AuthenticationView();
       },
@@ -9,44 +65,8 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
         this.authenticationView.remove();
       }
   });
-
-  test('Should be tied to a DOM element when created, based off the property provided.', function() {
-    expect( 1 );
-    equal( this.authenticationView.el.id.toLowerCase(), 'authentication', 'Tied to #authentication.' );
-  });
- 
-  test('The login form is render correctly.', function() {
-    expect( 3 );
-
-    // Check the number of items rendered
-    equal(this.authenticationView.$el.find('label').length, 2, 'Two labels rendered.');
-    equal(this.authenticationView.$el.find('input').length, 2, 'Two inputs rendered.');
-    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
-  });
   
-  test('The register form is render correctly.', function() {
-    expect( 3 );
-    
-    this.authenticationView.viewSignup();
-
-    // Check the number of items rendered
-    equal(this.authenticationView.$el.find('label').length, 5, 'Five labels rendered.');
-    equal(this.authenticationView.$el.find('input').length, 5, 'Five inputs rendered.');
-    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
-    
-  });
-  
-  test('The welcome screen is render correctly.', function() {
-    expect( 1 );
-    
-    $(this.authenticationView.el).html(this.authenticationView.template({authenticated: true, name: 'johndoe'}));
-
-    // Check the number of items rendered
-    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
-    
-  });
-
-  test('Can wire up connect method to DOM element.', function() {
+  test('Logout successful.', function() {
     expect( 1 );
 
     this.connectSpy = sinon.spy();
@@ -59,95 +79,14 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     
     this.sendStub.restore();
   });
-
-  test('Can wire up disconnect method to DOM element.', function() {
-    expect( 1 );
-	
-		$(this.authenticationView.el).html(this.authenticationView.template({authenticated: true, name: 'johndoe'}));
-
-    this.disconnectSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.authenticationView, 'disconnect', this.disconnectSpy );
-    this.authenticationView.delegateEvents();
-    // Trigger the event
-    this.authenticationView.$el.find('button#logout').click();
-    // Check the done status for the model is true
-    ok( this.disconnectSpy.called );
-    
-    this.sendStub.restore();
-  });
   
-  test('Can wire up viewSignup method to DOM element.', function() {
-    expect( 1 );
-
-    this.viewSignupSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.authenticationView, 'viewSignup', this.viewSignupSpy );
-    this.authenticationView.delegateEvents();
-    // Trigger the event
-    this.authenticationView.$el.find('button#signup').click();
-    // Check the done status for the model is true
-    ok( this.viewSignupSpy.called );
-    
-    this.sendStub.restore();
+  module( 'About Signup', {
+      setup: function() {
+        this.authenticationView = new AuthenticationView();
+      },
+      teardown: function() {
+        this.authenticationView.remove();
+      }
   });
- 
-  test('Can wire up signup method to DOM element.', function() {
-    expect( 1 );
-
-    $(this.authenticationView.el).html(this.authenticationView.template({authenticated: false, signup: true}));
-
-    this.signupSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.authenticationView, 'signup', this.signupSpy );
-    this.authenticationView.delegateEvents();
-    // Trigger the event
-    this.authenticationView.$el.find('button#sign').click();
-    // Check the done status for the model is true
-    ok( this.signupSpy.called );
-    
-    this.sendStub.restore();
-  });
-   
-  test('Can wire up deny method to DOM element.', function() {
-    expect( 1 );
-
-    $(this.authenticationView.el).html(this.authenticationView.template({authenticated: false, signup: true}));
-
-    this.denySpy = sinon.spy();
-    this.sendStub = sinon.stub(this.authenticationView, 'deny', this.denySpy );
-    this.authenticationView.delegateEvents();
-    // Trigger the event
-    this.authenticationView.$el.find('button#deny').click();
-    // Check the done status for the model is true
-    ok( this.denySpy.called );
-    
-    this.sendStub.restore();
-  });
-   
-  test('Can wire up editProfile method to DOM element.', function() {
-    expect( 1 );
-
-		$(this.authenticationView.el).html(this.authenticationView.template({authenticated: true, name: 'johndoe'}));
-
-    this.editSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.authenticationView, 'editProfile', this.editSpy );
-    this.authenticationView.delegateEvents();
-    // Trigger the event
-    this.authenticationView.$el.find('button#edit').click();
-    // Check the done status for the model is true
-    ok( this.editSpy.called );
-    
-    this.sendStub.restore();
-  });
-  
-    test('Can wire up callBacks method to DOM element.', function() {
-    expect( 1 );
-
-    this.cViewSpy = this.spy();
-		var view = { contactsView: { getContacts: this.cViewSpy },template: function(){} };
-
-    this.authenticationView.callBacks().doLogin('johndoe','1234','true',view);
-
-    ok( this.cViewSpy.called );
-  });
-  
   
 });
