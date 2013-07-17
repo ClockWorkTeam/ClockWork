@@ -36,7 +36,7 @@ public class UserManagerTest {
   }
 	
   @Test
-  public void testCheckPassword() throws Exception {
+  public void testCheckPassword() {
 	assertTrue("Operazione di controllo password fallita",userManager.checkPassword("true", "true"));
 	assertFalse("Operazione di controllo password errata",userManager.checkPassword("false", "true"));
 	assertFalse("Operazione di controllo password errata",userManager.checkPassword("true", "false"));
@@ -50,6 +50,7 @@ public class UserManagerTest {
 	  assertTrue("Operazione di cambio password errata. Username errato",false);
 	} catch (Exception e) {
 	  assertTrue("Operazione di cambio password errata. Username errato",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username errato"));
 	}
 	try {
 	  assertFalse("Operazione di cambio password errata. Password errata", userManager.setPassword("true", "false"));
@@ -70,6 +71,7 @@ public class UserManagerTest {
 	  assertTrue("Operazione di cambio dati errata. Username errato",false);
 	} catch (Exception e) {
 	  assertTrue("Operazione di cambio dati errata. Username errato",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username errato"));
 	}
 	try {		  
 	  assertFalse("Operazione di cambio dati errata. Nome e cognome errati",userManager.setUserData("true", "false","false"));
@@ -107,6 +109,7 @@ public class UserManagerTest {
 	  assertTrue("Operazione di aggiunta messaggio errata",false);
 	} catch (Exception e) {
 	  assertTrue("Operazione di aggiunta messaggio errata",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Errore nella registrazione del messaggio"));
 	}
 	
 	try {
