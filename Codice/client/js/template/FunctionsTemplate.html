@@ -20,8 +20,9 @@
 <div id='functionsTemplate'>
   <% if(typeof From !='undefined'){ %>
     <% if(From =='IP'){ %>
-      <label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
-        <input type="text" name="ip" id="ip" />
+
+        <label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
+       <span> <input type="text" name="ip" id="ip" /> </span>
       <button id= "startChat">Inizia chat</button>
       <button id="call">Chiama</button>
       <button id="video">Videochiama</button>
@@ -33,14 +34,17 @@
       <div id="empty"></div>
     <% } %>
   <% } else { %>
-    <h2><%= username %></h2>
-    <% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%>
-    <button id='dataContact'>Dettagli contatto</button>
-    <button id= "sendVideoText">Invia un videomessaggio</button>
+    <h2> <%= username %>
+    	<span id="status"> <% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%> </p>
+    </h2>
+      <div class="form-inline">
+        <button id='dataContact'>Dettagli contatto</button>
+    	<button id= "sendVideoText">Invia un videomessaggio</button>
     <% if(IP != "0"){ %>
       <button id="call">Chiama</button>
       <button id="video">Videochiama</button>
-      <input type="checkbox" name="record" id="record" >Registra la chiamata
+      <input class="checkbox" type="checkbox" name="record" id="record" >Registra la chiamata
     <% } %>
+       </div>
   <% } %>
 </div>
