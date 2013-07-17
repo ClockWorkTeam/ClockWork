@@ -191,8 +191,6 @@ public class AuthenticationTransferTest {
 		authenticationTransfer.processToken(event, token);
 		WebSocketPacket packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
 		WebSocketPacket packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
-		System.out.println(packet.getString() );
-		System.out.println(packet_broadcast.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"true\", \"name\":\"name\", \"surname\":\"surname\"}"));
 		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"10\"}"));
 		
@@ -202,7 +200,6 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
-		System.out.println(packet.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"errore di autenticazione\"}"));
 		
 		//******caso3: login già effettuato
@@ -211,7 +208,6 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
-		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}"));
 
 		//******caso4: signUp effettuato
@@ -221,8 +217,6 @@ public class AuthenticationTransferTest {
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
 		packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
-		System.out.println(packet.getString());
-		System.out.println(packet_broadcast.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"true\"}"));
 		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"username\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
 		
@@ -232,7 +226,6 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
-		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"signUp\",\"answer\":\"false\",\"error\":\"errore registrazione\"}"));
 		
 		//******caso5: getContacts
@@ -241,7 +234,6 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet= ((StubAuthenticationTransfer)authenticationTransfer).getResult();
-		System.out.println(packet.getString());
 		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"getContacts\", \"size\": \"2\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\", \"username1\": \"ClockWork7\", \"name1\": \"name\", \"surname1\": \"surname\", \"IP1\": \"IP\"}"));
 		
 		//******caso6: logout
@@ -250,7 +242,6 @@ public class AuthenticationTransferTest {
 		
 		authenticationTransfer.processToken(event, token);
 		packet_broadcast= ((StubAuthenticationTransfer)authenticationTransfer).getResult_broadcast();
-		System.out.println(packet_broadcast.getString() );
 		assertTrue("Messaggio inviato sbagliato",packet_broadcast.getString().equals("{\"type\":\"getContacts\", \"size\": \"1\", \"username0\": \"ClockWork7\", \"name0\": \"name\", \"surname0\": \"surname\", \"IP0\": \"IP\"}"));
 	}
 

@@ -46,7 +46,6 @@ public class AuthenticationTransfer extends ListenerTransfer{
    	if(type.equals("login")){
    	  WebSocketConnector connector = getUserConnector(token.getString("username"));
       if(connector==null){
-    	  System.out.println("login");
    	      User user=null;
 		  try {
 			user = authenticationManager.login(token.getString("username"),token.getString("password"),event.getConnector().getRemoteHost().toString());
@@ -60,8 +59,7 @@ public class AuthenticationTransfer extends ListenerTransfer{
 			wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\""+e.getMessage()+"\"}");
 		  }
       }else{
-    	  System.out.println("già loggato");
-    	wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}");
+        wspacket = new RawPacket("{\"type\":\"login\",\"answer\":\"false\",\"error\":\"Utente autenticato su un altro dispositivo\"}");
       }
    	  sendPacket(wspacket, event.getConnector());
    	}
