@@ -58,7 +58,7 @@ define([
     /**
      * funzione che effettua la scrittura della struttura della pagina
      */
-    render: function(isCaller,type, contact){
+    render: function(isCaller,typeCall, contact){
       /**
       * controllo se nel DOM esiste l'elemento content, se non esiste viene reinserito nel documento
       */
@@ -83,10 +83,12 @@ define([
         this.statisticsView.render();
       }else{
         if(isCaller===false){
-          CallCommunication.sendAnswer(type, contact, this);
+          CallCommunication.sendAnswer(typeCall, contact, this,false);
           this.calling=true;
         }else{
-          CallCommunication.sendCall(type, contact, this);
+          var temp=[];
+          temp.push(contact);
+          CallCommunication.sendCall(typeCall, temp, this,false);
           this.calling=true;
         }
       }
@@ -99,7 +101,6 @@ define([
       /**
        *  controllo che si effettua per verificare chi ha deciso di concludere la chiamata
        */
-      console.log("chiudo la finestra");
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
@@ -107,21 +108,19 @@ define([
       this.statisticsView.close();
     },
     
-    conference:function(isCaller,type,contatti){
-      console.log("Sono in callview");
+    conference:function(isCaller,typeCall,contatti){
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
       $(this.el).html(this.template());
       if(isCaller==true){
-        CallCommunication.sendCallConference(type,contatti,this);
+        CallCommunication.sendCall(typeCall,contatti,this,true);
       }else{
-        CallCommunication.sendAnswerConference(type,contatti,this);
+        CallCommunication.sendAnswer(typeCall,contatti,this,true);
       }
     },
 
     addVideoConference:function(nameCaller){
-      console.log("Nome caller "+nameCaller);
       var video="<video id='"+nameCaller+"' autoplay></video>";
       $(this.el).append(video);
     }

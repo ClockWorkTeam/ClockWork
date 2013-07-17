@@ -81,8 +81,7 @@ define([
       this.timeout=false;
       this.unrender();
 
-      if(!this.options.Conference){
-        console.log("Chiamante " + this.options.caller);
+      if(this.options.Conference==false){
         var event=new CustomEvent('acceptCall',{
           detail:{
             type:this.options.typeCall,
@@ -93,7 +92,6 @@ define([
         });
         
       }else{
-        console.log("Iniziamo la conferenza");
         var event=new CustomEvent('acceptCallConference',{
           detail:{
             type:this.options.typeCall,

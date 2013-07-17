@@ -56,7 +56,7 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
-            notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, NotificationCommunication:Notification});
+            notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, conference: response.conference, NotificationCommunication:Notification});
             setTimeout(function(){notificationView.timeoutCall()},5000);
           }else{
             var message = {
@@ -66,24 +66,10 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
             Connection.send(JSON.stringify(message));
           }
         }
-        
-         if (response.type === 'callConference'){
-          if(onCalling==false){
-            onCalling=true;
-            notificationView= new NotificationView({caller: response.contact, typeCall: response.typecall, Conference:true, NotificationCommunication:Notification});
-            setTimeout(function(){notificationView.timeoutCall()},5000);
-          }else{
-            var message = {
-							type:'busy',
-              contact: response.contact              
-            };
-            Connection.send(JSON.stringify(message));
-          }
-        }
         /**
          * segnala la presenza di chiusura chiamata ancora prima che quest'ultima inizi
          */
-        if (response.type === 'endCall'){
+        if (response.type === 'endCallEarly'){
           onCalling=false;
           if(notificationView != null){
             notificationView.unrender();

@@ -69,7 +69,6 @@ define([
  			function acceptCall(event){
 				sideBarView.setCall(event.detail.contact,event.detail.type);
 			};
-      console.log("Evvai");
       function acceptCallConference(event){
 				sideBarView.setCallConference(event.detail.contact,event.detail.type);
 			};
@@ -224,7 +223,6 @@ define([
      * e generare una conferenza con esso
      */
     setCallConference : function(contact,type){
-      console.log("Sono in sideview");
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){

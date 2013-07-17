@@ -128,7 +128,6 @@ define([
      * si occupa di gestire la vista della chiamata nel caso se ne effettui una o si accetti quella in ingresso
      */
     call:function(isCaller,type){
-      console.log("sto per chiamare");
       //if(NotificationCommunication.getStatus() && isCaller!=false){
       //  alert("hai già una chiamata attiva");
       //}
@@ -208,8 +207,6 @@ define([
     },
     
     conference : function(isCaller,contact){
-      console.log("Sono in functionview");
-      console.log("Prova");
       var contatti=[];
       for(var i=0;i<document.getElementsByTagName('input').length;i++){
         if(document.getElementsByTagName('input')[i].type=='checkbox' && document.getElementsByTagName('input')[i].checked){
