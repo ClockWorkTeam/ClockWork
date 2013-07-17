@@ -63,7 +63,6 @@ define([
      */
     render: function(){
       $(this.el).html(this.template({username : this.options.caller}));
-      $('#myModal').modal('toggle');
     },
     /**
      * funziona che si occupa di disabilitare la vista
