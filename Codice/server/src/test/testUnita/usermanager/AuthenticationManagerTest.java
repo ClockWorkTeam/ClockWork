@@ -70,14 +70,14 @@ public class AuthenticationManagerTest {
 	  assertTrue("Operazione di registrazione errata. Utente già esistente",false);
 	}catch(Exception e){
 	  assertTrue("Operazione di registrazione errata. Utente già esistente",true);
-	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username già presente"));	  
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username utilizzato da un altro utente"));	  
 	}
 	try{
 	  authenticationManager.createUser("false", "password", "name","surname", "10.01.01.01");
 	  assertTrue("Operazione di registrazione errata",false);
 	}catch(Exception e){
 	  assertTrue("Operazione di registrazione errata",true);
-	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Errore nell'inserimento dell'utente nel database"));	  
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Operazione di registrazione fallita"));	  
 	}
 	try{
 	  assertTrue("Operazione di registrazione errata",authenticationManager.createUser("false", "true", "name","surname", "10.01.01.01")!=null);

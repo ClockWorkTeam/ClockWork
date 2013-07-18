@@ -79,7 +79,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/packageServer.pdf
-	width 100text%
+	scale 48
 
 \end_inset
 
@@ -194,12 +194,8 @@ name "sub:Package-dao"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.server.dao
-\family default
- contiene tutte le classi, modellate come Singleton, che si occupano di
- eseguire le operazioni sul database.
+Il package dao contiene tutte le classi, modellate come Singleton, che 
+ si occupano di eseguire le operazioni sul database.
 \end_layout
 
 \begin_layout Paragraph
@@ -213,7 +209,7 @@ Costituito da:
 \family typewriter
 mytalk.server.dao.JavaConnectionSQLite
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:JavaConnectionSQLite"
@@ -228,7 +224,7 @@ reference "sub:JavaConnectionSQLite"
 \family typewriter
 mytalk.server.dao.RecordMessageDao
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.RecordMessageDao"
@@ -243,7 +239,7 @@ reference "sub:mytalk.server.dao.RecordMessageDao"
 \family typewriter
 mytalk.server.dao.RecordMessageDaoSQL
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.RecordMessageDaoSQL"
@@ -273,7 +269,7 @@ reference "sub:mytalk.server.dao.TutorialsDaoSQL"
 \family typewriter
 mytalk.server.dao.UserDao
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.UserDao"
@@ -288,7 +284,7 @@ reference "sub:mytalk.server.dao.UserDao"
 \family typewriter
 mytalk.server.dao.UserDaoSQL
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.UserDaoSQL"
@@ -329,7 +325,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/JavaConnectionSQLite.pdf
-	scale 90
+	scale 70
 
 \end_inset
 
@@ -541,7 +537,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/RecordMessageDao.pdf
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -653,7 +649,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe RecordMessageDaoSQLite
+Classe RecordMessageDaoSQL
 \end_layout
 
 \end_inset
@@ -721,9 +717,8 @@ select
 \emph on
 SQLException 
 \emph default
-viene catturata dal metodo stesso e viene restituito 
-\emph on
-null
+viene catturata dal metodo stesso e vengono restituiti  tutti i messaggi
+ aggiunti fino a quel momento
 \end_layout
 
 \begin_layout Itemize
@@ -813,7 +808,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/TutorialsDaoSQL.pdf
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -821,7 +816,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe TutorialsDaoSQLite
+Classe TutorialsDaoSQL
 \end_layout
 
 \end_inset
@@ -1012,7 +1007,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/UserDao.pdf
-	scale 70
+	scale 80
 
 \end_inset
 
@@ -1075,7 +1070,8 @@ boolean checkPassword(String username, String password):
 boolean setPassword(String username, String password): 
 \series default
 imposta la password dell'utente, avente lo username corrispondente a quello
- passato per parametro, con il nuovo valore
+ passato per parametro, con il nuovo valore.
+  La password viene salvata in chiaro.
 \end_layout
 
 \begin_layout Itemize
@@ -1212,9 +1208,9 @@ executeUpdate
 della classe JavaConnectionSQLite, passando come parametro la query per
  l'inserimento dei dati nella tabella 
 \emph on
-UserDataSQL.
-
+UserDataSQL
 \emph default
+, in cui la password viene memorizzata in chiaro.
  Infine restituisce un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
@@ -1280,6 +1276,7 @@ select
 (UserDataSQL,*, username=username AND (password=password),)
 \emph default
 .
+ Le password sono salvate in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1294,11 +1291,8 @@ e a quello passato per parametro, invocando il metodo
 \emph on
 executeUpdate 
 \emph default
-della classe JavaConnectionSQLite
-\emph on
-.
-
-\emph default
+della classe JavaConnectionSQLite, tramite il quale la password viene salvata
+ in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1674,7 +1668,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/shared/pdf/Tutorials.pdf
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -2020,6 +2014,14 @@ Vector<User> getAllUsers():
 metodo che restituisce tutta la lista di utenti
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+void removeAll(): 
+\series default
+metodo che rimuove tutti gli utenti dal vettore
+\end_layout
+
 \begin_layout Paragraph
 Metodi privati
 \end_layout
@@ -2046,7 +2048,8 @@ name "sub:Package-usermanager"
 \end_layout
 
 \begin_layout Standard
-Lo strato manager del server si occupa delle funzionalità logiche del server
+Il package usermanager del server si occupa delle funzionalità di gestione
+ e trasferimento  di tutti i dati riguardanti gli utenti
 \end_layout
 
 \begin_layout Paragraph
@@ -2058,7 +2061,7 @@ Costituito dalle classi:
 \family typewriter
 mytalk.server.usermanager.AuthenticationManager
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.AuthenicationManager"
@@ -2073,7 +2076,7 @@ reference "sub:mytalk.server.usermanager.AuthenicationManager"
 \family typewriter
 mytalk.server.usermanager.UserManager 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.UserManager"
@@ -2199,8 +2202,8 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti si prosegue controllando la validità della password, utilizzando
- il metodo 
+ Altrimenti si prosegue controllando la validità della password,salvata
+ in chiaro,  utilizzando il metodo 
 \emph on
 checkPassword
 \emph default
@@ -2262,7 +2265,7 @@ delle classi UserDaoSQL e UserList per modificare l'indirizzo IP ad una
 \emph on
 0
 \emph default
-, che rappresenta un'utente non connesso.
+, che rappresenta un utente non connesso.
  Infine restituisce l'utente ottenuto dalla prima operazione
 \end_layout
 
@@ -2280,7 +2283,7 @@ Exception,
 \emph default
 avente come messaggio 
 \emph on
-Username già presente
+Username utilizzato da un altro utente
 \emph default
 .
  Altrimenti
@@ -2303,7 +2306,7 @@ Exception
 \emph default
 , avente come messaggio 
 \emph on
-Errore nell'inserimento dell'utente nel database
+Operazione di registrazione fallita
 \emph default
 .
  Altrimenti aggiunge il nuovo utente in UserList e lo restituisce
@@ -2427,7 +2430,7 @@ riferimento alla istanza della classe UserDaoSQL, per eseguire le operazioni
 \begin_layout Itemize
 
 \series bold
-RecordMessageDao messageDao:
+RecordMessageDao recordMessageDao:
 \series default
  riferimento alla istanza della classe RecordMessageDaoSQL per permettere
  le operazioni sui messaggi registrati
@@ -2455,8 +2458,8 @@ di ciascuna delle due classi UserDaoSQL e RecordMessageDaoSQL
 \series bold
 boolean checkPassword(String username, String password):
 \series default
- controlla la corrispondenza dello username passato con la password passata,
- invocando il metodo 
+ controlla la corrispondenza dello username passato con la password passata
+ in chiaro, invocando il metodo 
 \emph on
 checkPassword 
 \emph default
@@ -2487,9 +2490,9 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti modifica la password esistente con quella passata, dell'utente
- avente username corrispondente a quello passato per parametro.
- Per fare ciò utilizza il metodo 
+ Altrimenti modifica la password esistente dell'utente trovato, inserendo
+  la password passata per parametro in chiaro.
+  Per fare ciò utilizza il metodo 
 \emph on
 setPassword 
 \emph default
@@ -2549,8 +2552,8 @@ getInstance
 \series bold
 User getUserData(String username)
 \series default
-: l'utente corrispondente al dato username, presente nel database, invocando
- il metodo 
+: ritorna l'utente corrispondente al dato username, presente nel database,
+ invocando il metodo 
 \emph on
 getUser
 \emph default
@@ -2563,7 +2566,17 @@ getUser
 RecordMessage createMessage(String sender, String addressee, String path,
  String date): 
 \series default
-inizialmente crea un oggetto di tipo RecordMessage con i dati passati per
+inizialmente controlla che il destinatario esista, e in caso contrario lancia
+ un'eccezione di tipo 
+\emph on
+Exception
+\emph default
+, avente come messaggio 
+\emph on
+Destinatario inesistente
+\emph default
+.
+ In seguito crea un oggetto di tipo RecordMessage con i dati passati per
  parametro e aggiunge il messaggio nella base di dati, invocando il metodo
  
 \emph on
@@ -2991,11 +3004,7 @@ name "sub:Package-transfer"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.server.transfer
-\family default
- si occupa della comunicazione con il client.
+Il package transfer si occupa della comunicazione con il client.
 \end_layout
 
 \begin_layout Paragraph
@@ -3216,7 +3225,8 @@ connectedUsers
 \series bold
 WebSocketConnector getUserConnector(String username): 
 \series default
-trova il connettore dell'utente connesso, con il dato username, al sistema
+ritorna il connettore dell'utente connesso, con il dato username, al sistema.
+ Se non lo trova ritorna null 
 \end_layout
 
 \begin_layout Itemize
@@ -3224,7 +3234,8 @@ trova il connettore dell'utente connesso, con il dato username, al sistema
 \series bold
 WebSocketConnector getIpConnector(String IP):
 \series default
- trova il connettore, avente il dato indirizzo IP, connesso al sistema
+ ritorna il connettore, avente il dato indirizzo IP, connesso al sistema.
+   Se non lo trova ritorna null 
 \end_layout
 
 \begin_layout Itemize
@@ -3251,8 +3262,8 @@ name "sub:AuthenticationTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe AuthenticationTransfer si occupa della registrazione e autenticazione
- degli utenti.
+La classe AuthenticationTransfer si occupa della gestione delle richieste
+ di registrazione o autenticazione degli utenti
 \end_layout
 
 \begin_layout Standard
@@ -3356,8 +3367,8 @@ login
 login 
 \emph default
 della classe AuthenticationManager, usando come parametri lo username e
- la password, presenti nel token, e l'indirizzo IP del connettore da cui
- riceve il pacchetto.
+ la password, presenti nel token in chiaro, e l'indirizzo IP del connettore
+ da cui riceve il pacchetto.
  Se l'operazione lancia un'eccezione 
 \emph on
 Exception 
@@ -3408,11 +3419,11 @@ Exception
 viene catturata e inviata una risposta negativa al client, specificando
  il tipo di errore, che può essere 
 \emph on
-Errore nell'inserimento dell'utente nel database 
+Operazione di registrazione fallita
 \emph default
 o 
 \emph on
-Username già presente.
+Username utilizzato da un altro utente.
 
 \emph default
  Altrimenti assegna al connettore lo username dell'utente autenticato, invia
@@ -3433,13 +3444,6 @@ convertUsers
 \end_layout
 
 \begin_layout Itemize
-invia una risposta positiva al client ed invia il nuovo indirizzo IP del
- contatto a tutti gli utenti connessi, utilizzando il metodo 
-\emph on
-broadcastToAll
-\end_layout
-
-\begin_layout Itemize
 
 \emph on
 getContacts
@@ -3448,7 +3452,7 @@ getContacts
 \emph on
 getAllContacts 
 \emph default
-della classeAuthenticationManager, per ottenere il vettore degli utenti
+della classe AuthenticationManager, per ottenere il vettore degli utenti
  presenti nel server, e il metodo 
 \emph on
 convertUsers
@@ -3490,15 +3494,12 @@ convertUsers
 void processOpened(WebSocketServerEvent event): 
 \series default
 metodo che si occupa di gestire la connessione di un dispositivo al server.
- Aggiunge il nuovo connettore ad 
+ Aggiunge il nuovo connettore a 
 \emph on
 connectedUsers,
 \emph default
- ed invia al nuovo connettore la lista di tutorials,
-\emph on
+ ed invia al nuovo connettore la lista di tutorials,  invocando il metodo
  
-\emph default
-invocando il metodo 
 \emph on
 convertTutorials
 \end_layout
@@ -3508,7 +3509,8 @@ convertTutorials
 \series bold
 void processClosed(WebSocketServerEvent event): 
 \series default
-metodo che si occupa di gestire la disconnessione di un dispositivo al server.
+metodo che si occupa di gestire la disconnessione di un dispositivo dal
+ server.
  Se non si è fatta l'operazione di 
 \emph on
 logout
@@ -3871,7 +3873,7 @@ getUserConnector
 , usando come parametro lo username presente nel token, per trovare il connettor
 e corrispondente.
  Infine manda al connettore trovato un pacchetto con lo stesso tipo, avente
- come attributi il file ricevuto in arrivo e lo username del mittente
+ come attributi il file in arrivo e lo username del mittente
 \end_layout
 
 \begin_layout Itemize
