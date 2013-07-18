@@ -1163,7 +1163,7 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i riferiment
 i al server
 \end_layout
 
@@ -2202,8 +2202,8 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti si prosegue controllando la validità della password,salvata
- in chiaro,  utilizzando il metodo 
+ Altrimenti si prosegue controllando la validità della password, salvata
+ in chiaro, utilizzando il metodo 
 \emph on
 checkPassword
 \emph default
@@ -3990,7 +3990,7 @@ Errore nella registrazione del messaggio.
 \emph on
 record
 \emph default
-, contente le informazioni ricevute
+, contenente le informazioni ricevute
 \end_layout
 
 \begin_layout Itemize
@@ -4047,8 +4047,16 @@ Classe UserTransfer
 \end_layout
 
 \end_inset
+\begin_layout Paragraph
+Attributi Privati
+\end_layout
 
-
+\end_layout
+\series bold
+UserManager userManager:
+\series default
+riferimento alla istanza della classe UserManager per permettere
+ i controlli
 \end_layout
 
 \end_inset
@@ -4061,6 +4069,11 @@ Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
+\series bold
+UserTransfer(UserManager userManager):
+\series default
+costruttore della classe, si collega alla istanza esistente di UserManager
+\end_layout
 
 \series bold
 void processToken(WebSocketServerTokenEvent event, Token token):
@@ -4077,10 +4090,11 @@ checkCredentials
 \emph default
 : invoca il metodo 
 \emph on
-checkPassword(User, String)
+checkPassword
 \emph default
-, passandogli come parametro lo user corrispondente all'utente che ha effettuato
- la richiesta e la password presente nel pacchetto, e invia al client la
+ di UserManager, passandogli come parametro lo user 
+ corrispondente all'utente che ha effettuato
+ la richiesta e la password presente nel pacchetto, salvata in chiaro, e invia al client la
  risposta ottenuta
 \end_layout
 
@@ -4089,16 +4103,18 @@ checkPassword(User, String)
 \emph on
 changeData:
 \emph default
- invoca i metodi 
+ invoca il metodo di UserManager
 \emph on
-setUserData(User, String, String) 
+setUserData 
 \emph default
-e 
+e verifica che ritorni quanto atteso, in caso contrario lancia un' eccezione, in seguito invoca
 \emph on
-setPassword(UserString) 
+setPassword
 \emph default
-per modificare i dati dell'utente con quelli ricevuti nel pacchetto
+, sempre di UserManager, per sostituire ai dati salvati nel database quelli ricevuti nel pacchetto e fa in modo che
+ il cambiamento venga mandato in broadcast a tutti gli utenti
 \end_layout
+
 
 \end_deeper
 \end_body
