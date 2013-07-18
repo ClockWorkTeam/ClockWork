@@ -1163,8 +1163,8 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contenente i riferiment
-i al server
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i
+ riferimenti al server
 \end_layout
 
 \begin_layout Itemize
@@ -2758,7 +2758,7 @@ team
 \end_inset
 
 , surname vuoto, IP=
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2791,7 +2791,7 @@ getContacts
 \end_inset
 
 , size:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 1
@@ -2815,7 +2815,7 @@ team
 \end_inset
 
 , surname0:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 
@@ -2823,7 +2823,7 @@ team
 \end_inset
 
 , IP0:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2858,7 +2858,7 @@ ClockworkTeam
 \end_inset
 
 , name vuoto , surname vuoto, IP=
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2891,7 +2891,7 @@ getContacts
 \end_inset
 
 , size:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 2
@@ -2915,7 +2915,7 @@ team
 \end_inset
 
 , surname0:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 
@@ -2923,7 +2923,7 @@ team
 \end_inset
 
 , IP0:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2947,7 +2947,7 @@ ClockworkTeam
 \end_inset
 
 , surname1:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 
@@ -2955,7 +2955,7 @@ ClockworkTeam
 \end_inset
 
 , IP1:
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -4047,16 +4047,12 @@ Classe UserTransfer
 \end_layout
 
 \end_inset
-\begin_layout Paragraph
-Attributi Privati
-\end_layout
+
 
 \end_layout
-\series bold
-UserManager userManager:
-\series default
-riferimento alla istanza della classe UserManager per permettere
- i controlli
+
+\begin_layout Paragraph
+Attributi Privati
 \end_layout
 
 \end_inset
@@ -4069,17 +4065,11 @@ Metodi pubblici
 \end_layout
 
 \begin_layout Itemize
+
 \series bold
 UserTransfer(UserManager userManager):
 \series default
-costruttore della classe, si collega alla istanza esistente di UserManager
-\end_layout
-
-\series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
-\series default
- metodo per la gestione dei token in arrivo.
- in particolare si occupa di quelli aventi come tipo:
+ costruttore della classe, si collega alla istanza esistente di UserManager
 \end_layout
 
 \begin_deeper
@@ -4092,10 +4082,9 @@ checkCredentials
 \emph on
 checkPassword
 \emph default
- di UserManager, passandogli come parametro lo user 
- corrispondente all'utente che ha effettuato
- la richiesta e la password presente nel pacchetto, salvata in chiaro, e invia al client la
- risposta ottenuta
+ di UserManager, passandogli come parametro lo user  corrispondente all'utente
+ che ha effettuato la richiesta e la password presente nel pacchetto, salvata
+ in chiaro, e invia al client la risposta ottenuta
 \end_layout
 
 \begin_layout Itemize
@@ -4105,16 +4094,17 @@ changeData:
 \emph default
  invoca il metodo di UserManager
 \emph on
-setUserData 
+ setUserData 
 \emph default
-e verifica che ritorni quanto atteso, in caso contrario lancia un' eccezione, in seguito invoca
+e verifica che ritorni quanto atteso, in caso contrario lancia un'eccezione,
+ in seguito invoca
 \emph on
-setPassword
+ setPassword
 \emph default
-, sempre di UserManager, per sostituire ai dati salvati nel database quelli ricevuti nel pacchetto e fa in modo che
- il cambiamento venga mandato in broadcast a tutti gli utenti
+, sempre di UserManager, per sostituire ai dati salvati nel database quelli
+ ricevuti nel pacchetto e fa in modo che il cambiamento venga mandato in
+ broadcast a tutti gli utenti
 \end_layout
-
 
 \end_deeper
 \end_body
