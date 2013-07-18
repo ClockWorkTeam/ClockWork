@@ -160,7 +160,7 @@ public class AuthenticationManagerTest {
 	  assertTrue("Operazione di registrazione errata. Utente già esistente",false);
 	}catch(Exception e){
 	  assertTrue("Operazione di registrazione errata. Utente già esistente",true);
-	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username già presente"));
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username utilizzato da un altro utente"));
 	  rs = connection.select("UserDataSQL","*","","");
 	  try {
 	    assertTrue("Utente inserito nel database",rs.getRow()==1);
