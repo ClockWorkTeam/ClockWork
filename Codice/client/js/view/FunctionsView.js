@@ -55,6 +55,7 @@ define([
      * funzione di inizializzazione dell'oggetto
      */
     initialize: function(){
+      this.callView=null;
       if(!this.options.From){
         this.listenTo(this.model, 'change', this.render);
       }
@@ -190,6 +191,9 @@ define([
     closeViewCall : function(){
       this.delegateEvents();
       this.callView=undefined;
+      if(this.options.callback){
+        this.options.callback.closeConference();
+      }
       if(typeof this.model == "undefined"){
         $(this.el).html(this.template({From: this.options.From}));
       }else{
@@ -207,7 +211,10 @@ define([
     },
     
     conference : function(isCaller,contact){
-      console.log("vado su conference");
+      if(this.options.callback){
+        this.options.callback.setConference();
+      }
+      console.log(this.callView);
       if(!this.callView){
         var contatti=[];
         for(var i=0;i<document.getElementsByTagName('input').length;i++){

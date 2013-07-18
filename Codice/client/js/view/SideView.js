@@ -116,6 +116,7 @@ define([
 			this.stopListening(this.collection, 'all', this.render);
 			$(this.el).html(this.template({logged: false}));
 			this.destroyContacts();
+      this.closeOtherContacts();
 		},
 
     /**
@@ -124,7 +125,7 @@ define([
 
 		destroyContacts: function(){
 			_.each(this.childViews, function(view){view.close();});
-			_.each(this.collection.record(), function(contact){contact.clear();});
+			_.each(this.collection.record(), function(contact){contact.destroy();});
 		},
 
     /**
@@ -144,12 +145,14 @@ define([
      */
     StartConference: function(){
       if(this.conference==true){
-        console.log('ciao');
+        this.currentFunctions.conference(null,null);
       }else{
         _.each(this.childViews, function(view){
           view.close();
         });
-        this.currentFunctions = new FunctionsView({From: 'Conf'});
+        if(!this.currentFunctions){
+          this.currentFunctions = new FunctionsView({From: 'Conf', callback: this});
+        }
         this.currentFunctions.render();
         $('#main').prepend(this.currentFunctions.el);
         this.collection.each(this.listContacts);
@@ -167,6 +170,7 @@ define([
      * si occupa di chiudere viste inattese
      */
     closeOtherContacts: function(contact){
+      console.log('closeothercontact');
       if(contact && this.authenticationView.userDataView){
         this.authenticationView.userDataView.unrender();
         this.authenticationView.userDataView=undefined;
@@ -187,7 +191,7 @@ define([
 					}
 				}
 			});
-			if(this.currentFunctions){ //callIP o conference
+			if(this.currentFunctions && this.conference==false){ //callIP o conference
 				this.currentFunctions.close();
 				this.currentFunctions=undefined;
 			}
@@ -229,14 +233,25 @@ define([
      * e generare una conferenza con esso
      */
     setCallConference : function(contact,type){
-      this.conference=true;;
+      this.conference=true;
+      var sideView=this;
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
-          this.currentFunctions = new FunctionsView({From: 'Conference'});
-          view.createCallConference(type,contact);
+          view.createCallConference(type,contact,sideView);
+          sideView.currentFunctions=view.currentFunctions;
         }
       });
+    },
+    
+    setConference : function(){
+      this.conference=true;
+    },
+    
+    closeConference : function(){
+      console.log("chiudo la conferenza");
+      this.conference=false;
+      this.closeOtherContacts();
     }
 
   });

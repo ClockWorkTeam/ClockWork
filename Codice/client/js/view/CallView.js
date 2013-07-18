@@ -114,7 +114,8 @@ define([
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
-      
+      this.delegateEvents();
+        var call=this;
         $(this.el).html(this.template());
         if(this.calling){
           console.log("prova ripristino");
