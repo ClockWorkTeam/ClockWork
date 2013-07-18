@@ -19,10 +19,10 @@
 
 <% if (!authenticated) { %>
   <% if (!signup) { %>
-    <label for='user'>Username</label><input type='text' id='user' name='user' />
-    <label for='password'>Password</label><input type='password' id='password' name='password' />
-    <button class="btn btn-small" id='login'>Login</button>
-    <span>Non sei registrato <button href="#authenticationModal" class="btn btn-small" data-toggle="modal" id='signup'>Registrazione</button></span>
+      <label for='user'>Username</label><input type='text' id='user' name='user' />
+      <label for='password'>Password</label><input type='password' id='password' name='password' />
+      <button class="btn btn-small" id='login'>Login</button>
+      <span>Non sei registrato <button href="#authenticationModal" class="btn btn-small" data-toggle="modal" id='signup'>Registrazione</button></span>
   <% } else{ %>
     <div id="authenticationModal" class="modal hide fade">
 	  <div class="modal-header">
