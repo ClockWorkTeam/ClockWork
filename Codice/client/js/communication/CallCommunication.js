@@ -620,7 +620,9 @@ define(['connection'], function(Connection){
      * termina chiamata dal callView
      */
     endCall: function() {
+      console.log(recipient.length +" and " + confirmedContact.length);
       for(var i=0;i<recipient.length;i++){
+        console.log(recipient[i]);
         if(peerConnection[recipient[i]] != null){
           Connection.removeEventListener('message',onCandidateListener[recipient[i]],false);
           Connection.removeEventListener('message',onEndCallListener[recipient[i]],false);

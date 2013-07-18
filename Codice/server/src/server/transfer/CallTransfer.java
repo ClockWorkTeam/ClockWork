@@ -124,6 +124,7 @@ public class CallTransfer extends ListenerTransfer {
        	contact= event.getConnector().getUsername();
       }
    	  if(connector!=null){
+   		  System.out.println(contact);
    		wspacket=new RawPacket("{\"type\":\"endCall\",\"contact\":\""+contact+"\"}");
    		sendPacket(wspacket,connector);
    	  }

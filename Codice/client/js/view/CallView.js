@@ -103,6 +103,7 @@ define([
       /**
        *  controllo che si effettua per verificare chi ha deciso di concludere la chiamata
        */
+       console.log("CHIUSURA IN CORSO");
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
