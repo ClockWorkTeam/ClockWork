@@ -21,11 +21,14 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.*;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.jwebsocket.api.WebSocketConnector;
+import org.jwebsocket.api.WebSocketEngine;
 import org.jwebsocket.api.WebSocketPacket;
 import org.jwebsocket.api.WebSocketServer;
 import org.jwebsocket.config.xml.EngineConfig;
@@ -61,7 +64,26 @@ public class CallTransferTest {
 			}
 		    return null;
 		}
-		
+		public WebSocketConnector getIpConnector(String ip){
+			if(connector.getUsername().equals(ip)){
+				return connector;
+			}
+		    return null;
+		}
+	}
+	
+	class StubBaseConnector extends BaseConnector {
+
+		public StubBaseConnector(WebSocketEngine aEngine) {
+			super(aEngine);
+		}	
+		public InetAddress getRemoteHost() {
+			InetAddress ia=null;
+			try {
+				ia = InetAddress.getLocalHost();
+			} catch (UnknownHostException e) {}
+            return ia;
+		}
 	}
 	
 	//creazione del token
@@ -93,7 +115,7 @@ public class CallTransferTest {
 		//EngineConfig e=new EngineConfig(String aId, String aName, String aJar, Integer aPort, Integer aSSLPort, String aKeyStore, String aKeyStorePassword, String aContext, String aServlet, int aTimeout, int aMaxFrameSize, List<String> aDomains, Integer aMaxConnections, String aOnMaxConnectionsStrategy, Map<String, Object> aSettigns)
 		EngineConfig engineConfig=new EngineConfig("prova", "prova", "prova", 1024, 1024, "prova", "prova", "prova", "prova", 1024, 1024, domains, 1024, "prova", aSettigns);
 		BaseEngine  baseEngine=new BaseEngine (engineConfig);
-		BaseConnector connector=new BaseConnector(baseEngine);
+		BaseConnector connector=new StubBaseConnector(baseEngine);
 		connector.setUsername("ClockWork7");
 		((StubCallTransfer)callTransfer).setConnector(connector);
 		
@@ -105,20 +127,96 @@ public class CallTransferTest {
 		//creazione dell'evento da inviare
 		WebSocketServerTokenEvent event=new WebSocketServerTokenEvent(connector, aServer);
 
-		//******caso1: sendText di un messaggio mandato
+		//******caso1: call attraverso indirizzo IP
 		//creazione del token
 		MapToken token = new MapToken();
-		token=createToken("{\"type\":\"sendText\",\"message\":\"message\",\"contact\":\"ClockWork7\"}");
+		InetAddress ia=InetAddress.getLocalHost();
+		token=createToken("{\"type\":\"call\",\"contact\":\""+ia.toString()+"\",\"callType\":\"callType\",\"conference\":\"conference\"}");
+		connector.setUsername(ia.toString());
 		
 		callTransfer.processToken(event, token);
 		WebSocketPacket packet= ((StubCallTransfer)callTransfer).getResult();
-		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"sendText\", \"message\":\"message\", \"contact\":\"ClockWork7\"}"));
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"call\", \"contact\":\""+ia.toString()+"\",\"callType\":\"callType\",\"conference\":\"conference\"}"));
+
 		
-		//******caso2: sendText di un messaggio non mandato
-		token=createToken("{\"type\":\"sendText\",\"message\":\"message\",\"contact\":\"username\"}");
+		//******caso2: call attraverso contatto
+		token=createToken("{\"type\":\"call\",\"contact\":\"ClockWork7\",\"callType\":\"callType\",\"conference\":\"conference\"}");
+		connector.setUsername("ClockWork7");
 		
 		callTransfer.processToken(event, token);
 		packet= ((StubCallTransfer)callTransfer).getResult();
-		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"notDelivered\", \"message\":\"message\", \"contact\":\"username\"}"));
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"call\", \"contact\":\"ClockWork7\",\"callType\":\"callType\",\"conference\":\"conference\"}"));
+		
+		
+		//******caso3: call con errore di connessione
+		token=createToken("{\"type\":\"call\",\"contact\":\"contact\",\"callType\":\"callType\",\"conference\":\"conference\"}");
+		connector.setUsername("ClockWork7");
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente non connesso al server\"}"));
+		
+		//******caso4: answeredCall attraverso indirizzo IP
+		ia=InetAddress.getLocalHost();
+		token=createToken("{\"type\":\"answeredCall\",\"contact\":\""+ia.toString()+"\",\"conference\":\"conference\"}");
+		connector.setUsername(ia.toString());
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"user\":\""+ia.toString()+"\", \"answer\":\"true\"}"));
+		
+		//******caso5: answeredCall attraverso contatto
+		token=createToken("{\"type\":\"answeredCall\",\"contact\":\"ClockWork7\",\"conference\":\"conference\"}");
+		connector.setUsername("ClockWork7");
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"user\":\"ClockWork7\", \"answer\":\"true\"}"));
+		
+		//******caso6: refuseCall attraverso indirizzo IP
+		ia=InetAddress.getLocalHost();
+		token=createToken("{\"type\":\"refuseCall\",\"contact\":\""+ia.toString()+"\"}");
+		connector.setUsername(ia.toString());
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Chiamata rifiutata\"}"));
+		
+		//******caso7: refuseCall attraverso contatto
+		token=createToken("{\"type\":\"refuseCall\",\"contact\":\"ClockWork7\"}");
+		connector.setUsername("ClockWork7");
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Chiamata rifiutata\"}"));
+		
+		//******caso8: busy attraverso indirizzo IP
+		ia=InetAddress.getLocalHost();
+		token=createToken("{\"type\":\"busy\",\"contact\":\""+ia.toString()+"\"}");
+		connector.setUsername(ia.toString());
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente occupato in un'altra conversazione\"}"));
+		
+		//******caso9: busy attraverso contatto
+		token=createToken("{\"type\":\"busy\",\"contact\":\"ClockWork7\"}");
+		connector.setUsername("ClockWork7");
+		
+		callTransfer.processToken(event, token);
+		packet= ((StubCallTransfer)callTransfer).getResult();
+		System.out.println(packet.getString());
+		assertTrue("Messaggio inviato sbagliato",packet.getString().equals("{\"type\":\"answeredCall\", \"answer\":\"false\", \"error\":\"Utente occupato in un'altra conversazione\"}"));
+
+
+		
 	}
 }
