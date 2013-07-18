@@ -194,12 +194,8 @@ name "sub:Package-dao"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.server.dao
-\family default
- contiene tutte le classi, modellate come Singleton, che si occupano di
- eseguire le operazioni sul database.
+Il package dao contiene tutte le classi, modellate come Singleton, che 
+ si occupano di eseguire le operazioni sul database.
 \end_layout
 
 \begin_layout Paragraph
@@ -1074,7 +1070,8 @@ boolean checkPassword(String username, String password):
 boolean setPassword(String username, String password): 
 \series default
 imposta la password dell'utente, avente lo username corrispondente a quello
- passato per parametro, con il nuovo valore
+ passato per parametro, con il nuovo valore. 
+ La password viene salvata in chiaro.
 \end_layout
 
 \begin_layout Itemize
@@ -1211,7 +1208,9 @@ executeUpdate
 della classe JavaConnectionSQLite, passando come parametro la query per
  l'inserimento dei dati nella tabella 
 \emph on
-UserDataSQL.
+UserDataSQL
+\emph default
+, in cui la password viene memorizzata in chiaro.
 
 \emph default
  Infine restituisce un booleano che indicherà il successo o il fallimento
@@ -1278,7 +1277,7 @@ select
 \emph on
 (UserDataSQL,*, username=username AND (password=password),)
 \emph default
-.
+. Le password sono salvate in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1293,11 +1292,8 @@ e a quello passato per parametro, invocando il metodo
 \emph on
 executeUpdate 
 \emph default
-della classe JavaConnectionSQLite
-\emph on
-.
+della classe JavaConnectionSQLite, tramite il quale la password viene salvata in chiaro.
 
-\emph default
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -2053,7 +2049,8 @@ name "sub:Package-usermanager"
 \end_layout
 
 \begin_layout Standard
-Lo strato manager del server si occupa delle funzionalità logiche del server
+Il package usermanager del server si occupa delle funzionalità di gestione e trasferimento 
+ di tutti i dati riguardanti gli utenti
 \end_layout
 
 \begin_layout Paragraph
@@ -2206,8 +2203,8 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti si prosegue controllando la validità della password, utilizzando
- il metodo 
+ Altrimenti si prosegue controllando la validità della password,salvata in chiaro,
+  utilizzando il metodo 
 \emph on
 checkPassword
 \emph default
@@ -2269,7 +2266,7 @@ delle classi UserDaoSQL e UserList per modificare l'indirizzo IP ad una
 \emph on
 0
 \emph default
-, che rappresenta un'utente non connesso.
+, che rappresenta un utente non connesso.
  Infine restituisce l'utente ottenuto dalla prima operazione
 \end_layout
 
@@ -2287,7 +2284,7 @@ Exception,
 \emph default
 avente come messaggio 
 \emph on
-Username già presente
+Username utilizzato da un altro utente
 \emph default
 .
  Altrimenti
@@ -2310,7 +2307,7 @@ Exception
 \emph default
 , avente come messaggio 
 \emph on
-Errore nell'inserimento dell'utente nel database
+Operazione di registrazione fallita
 \emph default
 .
  Altrimenti aggiunge il nuovo utente in UserList e lo restituisce
@@ -2434,7 +2431,7 @@ riferimento alla istanza della classe UserDaoSQL, per eseguire le operazioni
 \begin_layout Itemize
 
 \series bold
-RecordMessageDao messageDao:
+RecordMessageDao recordMessageDao:
 \series default
  riferimento alla istanza della classe RecordMessageDaoSQL per permettere
  le operazioni sui messaggi registrati
@@ -2462,7 +2459,7 @@ di ciascuna delle due classi UserDaoSQL e RecordMessageDaoSQL
 \series bold
 boolean checkPassword(String username, String password):
 \series default
- controlla la corrispondenza dello username passato con la password passata,
+ controlla la corrispondenza dello username passato con la password passata in chiaro,
  invocando il metodo 
 \emph on
 checkPassword 
@@ -2494,8 +2491,8 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti modifica la password esistente con quella passata, dell'utente
- avente username corrispondente a quello passato per parametro.
+ Altrimenti modifica la password esistente dell'utente trovato, inserendo
+  la password passata per parametro in chiaro. 
  Per fare ciò utilizza il metodo 
 \emph on
 setPassword 
@@ -2556,7 +2553,7 @@ getInstance
 \series bold
 User getUserData(String username)
 \series default
-: l'utente corrispondente al dato username, presente nel database, invocando
+: ritorna l'utente corrispondente al dato username, presente nel database, invocando
  il metodo 
 \emph on
 getUser
