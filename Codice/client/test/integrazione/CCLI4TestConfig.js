@@ -5,8 +5,7 @@ require.config({
     underscore: '../test/resources/underscore/underscore-min',
     backbone: '../test/resources/backbone/backbone',
     text: '../test/resources/require/text',
-    storage: '../test/resources/backbone/backbone.noStorage',
-    bootstrap: 'libs/bootstrap/bootstrap.min'
+    storage: '../test/resources/backbone/backbone.noStorage'
   },
   
   shim: {
@@ -17,16 +16,12 @@ require.config({
     backbone: {
       deps: [ 'underscore', 'jquery' ],
       exports: 'Backbone'
-    },
-
-  	bootstrap:{
-      deps: ['jquery']
     }
   }
 });
 
 QUnit.config.autostart = false;
  
-require(['../integrazione/CCLI2Test.js', 'bootstrap'], function(){
+require(['../integrazione/CCLI4Test.js'], function(){
   QUnit.start(); //Tests loaded, run tests
 });

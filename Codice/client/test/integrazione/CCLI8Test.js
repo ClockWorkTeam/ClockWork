@@ -1,6 +1,6 @@
-define(['../js/view/UserDataView', '../js/model/UserModel'], function( UserDataView, UserModel ) {
+define(['../js/view/ChatView'], function( ChatView ) {
 
-  module( 'Modifica dei dati', {
+  module( 'About modifying data', {
       setup: function() {
         var userModel = new UserModel({
             username: 'prova',
@@ -23,7 +23,7 @@ define(['../js/view/UserDataView', '../js/model/UserModel'], function( UserDataV
       }
   });
 
-  test('Modifica con dati validi', function() {
+  test('Data changed successfully.', function() {
     expect( 8 );
     
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -35,29 +35,29 @@ define(['../js/view/UserDataView', '../js/model/UserModel'], function( UserDataV
     this.userDataView.$("#oldPassword").val('prova');
     this.userDataView.checkPassword();
     
-    ok(this.checkSpy.called,'Chiamo il metodo per controllare la passwrod');
-    ok(this.sendStub.calledOnce, 'Invio il messaggio al server');
+    ok(this.checkSpy.called,'UserDataCommunication.checkPassword called');
+    ok(this.sendStub.calledOnce, 'Connection.send called once');
 
     var data = JSON.stringify({"type":"checkCredentials","answer":"true"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);    
     
-    ok(this.commSpy.called,'Chiamo il metodo per inviare la richiesta di cambiamento dati al server');
-    ok(this.sendStub.calledTwice,'Invio il messaggio al server');
+    ok(this.commSpy.called,'UserDataCommunication.changeData called');
+    ok(this.sendStub.calledTwice,'Connection.send called twice');
     
     data = JSON.stringify({"type":"changeData","answer":"true"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
-    equal( stub.getCall(0).args[0], 'Operazione riuscita', 'Alert correttamente visualizzato');
-    ok(this.userDataView.model.toJSON().password === 'prova2', 'Password cambiata con successo');
-    ok(this.userDataView.model.toJSON().name === 'prova2', 'Nome cambiato con successo');
-    ok(this.userDataView.model.toJSON().surname === 'prova2', 'Cognome cambiato con successo');
+    equal( stub.getCall(0).args[0], 'Operazione riuscita', 'Alert correctly displayed.');
+    ok(this.userDataView.model.toJSON().password === 'prova2', 'Password changed successfully');
+    ok(this.userDataView.model.toJSON().name === 'prova2', 'Name changed successfully');
+    ok(this.userDataView.model.toJSON().surname === 'prova2', 'Surname changed successfully');
 
   });
  
-  test('Errore nella modifica dei dati', function() {
+  test('Error while changing data.', function() {
     expect( 8 );
     
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -69,25 +69,25 @@ define(['../js/view/UserDataView', '../js/model/UserModel'], function( UserDataV
     this.userDataView.$("#oldPassword").val('prova');
     this.userDataView.checkPassword();
     
-    ok(this.checkSpy.called,'Chiamo il metodo per controllare la passwrod');
-    ok(this.sendStub.calledOnce, 'Invio il messaggio al server');
+    ok(this.checkSpy.called,'UserDataCommunication.checkPassword called');
+    ok(this.sendStub.calledOnce, 'Connection.send called once');
 
     var data = JSON.stringify({"type":"checkCredentials","answer":"true"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);    
     
-    ok(this.commSpy.called,'Chiamo il metodo per inviare la richiesta di cambiamento dati al server');
-    ok(this.sendStub.calledTwice,'Invio il messaggio al server');
+    ok(this.commSpy.called,'UserDataCommunication.changeData called');
+    ok(this.sendStub.calledTwice,'Connection.send called twice');
     
     data = JSON.stringify({"type":"changeData","answer":"false","error":"Error message"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
-    equal( stub.getCall(0).args[0], 'Error message', 'Alert correttamente visualizzato');
-    ok(this.userDataView.model.toJSON().password === 'prova', 'Password non cambiato');
-    ok(this.userDataView.model.toJSON().name === 'prova', 'Nome non cambiato');
-    ok(this.userDataView.model.toJSON().surname === 'prova', 'Cognome non cambiato');
+    equal( stub.getCall(0).args[0], 'Error message', 'Alert correctly displayed.');
+    ok(this.userDataView.model.toJSON().password === 'prova', 'Password not changed');
+    ok(this.userDataView.model.toJSON().name === 'prova', 'Name not changed');
+    ok(this.userDataView.model.toJSON().surname === 'prova', 'Surname not changed');
     
   });
   

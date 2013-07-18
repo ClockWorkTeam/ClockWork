@@ -27,6 +27,6 @@ require.config({
 
 QUnit.config.autostart = false;
  
-require(['../integrazione/CCLI2Test.js', 'bootstrap'], function(){
+require(['../integrazione/CCLI9Test.js', 'bootstrap'], function(){
   QUnit.start(); //Tests loaded, run tests
 });

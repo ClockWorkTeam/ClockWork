@@ -26,9 +26,10 @@ define([
      * si occupa di legare gli eventi ad oggetti del DOM
      */
     events: {
-      'click a#tutorial' : 'watch',
-      'click button#prev' : 'watch',
-      'click button#next' : 'watch'
+      'click a#tutorial' : 'viewTutorial',
+      'click button#prev' : 'viewTutorial',
+      'click button#indice' : 'render',
+      'click button#next' : 'viewTutorial'
     },
     
     el: $('#main'),
@@ -49,14 +50,13 @@ define([
      * funzione che effettua la scrittura della struttura della pagina
      */
     render: function() {
-      this.collection.add([{title: 'uno', url: 'dzHRt4VPzt4'},{title: 'due', url: 'dzHRt4VPzt4'}]);
       this.$el.html(this.template({ results: this.collection.models, list: true }));
     },
 
     /**
      * funzione che visualizza un video
      */
-    watch: function(event) {
+    viewTutorial: function(event) {
       var number = $(event.target).data('number');
       var fbool = (number == 0);
       var lbool = (number == this.collection.length-1);
