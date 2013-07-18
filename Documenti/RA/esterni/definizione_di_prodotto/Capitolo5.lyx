@@ -194,12 +194,8 @@ name "sub:Package-dao"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.server.dao
-\family default
- contiene tutte le classi, modellate come Singleton, che si occupano di
- eseguire le operazioni sul database.
+Il package dao contiene tutte le classi, modellate come Singleton, che si
+ occupano di eseguire le operazioni sul database.
 \end_layout
 
 \begin_layout Paragraph
@@ -213,7 +209,7 @@ Costituito da:
 \family typewriter
 mytalk.server.dao.JavaConnectionSQLite
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:JavaConnectionSQLite"
@@ -228,7 +224,7 @@ reference "sub:JavaConnectionSQLite"
 \family typewriter
 mytalk.server.dao.RecordMessageDao
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.RecordMessageDao"
@@ -243,7 +239,7 @@ reference "sub:mytalk.server.dao.RecordMessageDao"
 \family typewriter
 mytalk.server.dao.RecordMessageDaoSQL
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.RecordMessageDaoSQL"
@@ -273,7 +269,7 @@ reference "sub:mytalk.server.dao.TutorialsDaoSQL"
 \family typewriter
 mytalk.server.dao.UserDao
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.UserDao"
@@ -288,7 +284,7 @@ reference "sub:mytalk.server.dao.UserDao"
 \family typewriter
 mytalk.server.dao.UserDaoSQL
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.dao.UserDaoSQL"
@@ -857,9 +853,9 @@ Tutorials tutorials:
 \begin_layout Itemize
 
 \series bold
-[static] TutorialsDaoSQL tutorialsDaoSQL[=null]
+[static] TutorialsDaoSQL tutorialsDaoSQL[=null]:
 \series default
-: riferimento statico alla classe stessa
+ riferimento statico alla classe stessa
 \end_layout
 
 \begin_layout Paragraph
@@ -1055,9 +1051,9 @@ boolean removeUser(String username):
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+User getUser(String username):
 \series default
-: restituisce l'utente avente username corrispondente a quello dato
+ restituisce l'utente avente username corrispondente a quello dato
 \end_layout
 
 \begin_layout Itemize
@@ -1074,7 +1070,8 @@ boolean checkPassword(String username, String password):
 boolean setPassword(String username, String password): 
 \series default
 imposta la password dell'utente, avente lo username corrispondente a quello
- passato per parametro, con il nuovo valore
+ passato per parametro, con il nuovo valore.
+  La password viene salvata in chiaro.
 \end_layout
 
 \begin_layout Itemize
@@ -1166,8 +1163,8 @@ Attributi privati
 \series bold
 JavaConnectionSQLite connection:
 \series default
- riferimento all'istanza della classe JavaConnectionSQLite contente i riferiment
-i al server
+ riferimento all'istanza della classe JavaConnectionSQLite contenente i
+ riferimenti al server
 \end_layout
 
 \begin_layout Itemize
@@ -1211,9 +1208,9 @@ executeUpdate
 della classe JavaConnectionSQLite, passando come parametro la query per
  l'inserimento dei dati nella tabella 
 \emph on
-UserDataSQL.
-
+UserDataSQL
 \emph default
+, in cui la password viene memorizzata in chiaro.
  Infine restituisce un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
@@ -1241,9 +1238,9 @@ UserDataSQL.
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+User getUser(String username):
 \series default
-: invoca il metodo 
+ invoca il metodo 
 \emph on
 select
 \emph default
@@ -1279,6 +1276,7 @@ select
 (UserDataSQL,*, username=username AND (password=password),)
 \emph default
 .
+ Le password sono salvate in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1293,11 +1291,8 @@ e a quello passato per parametro, invocando il metodo
 \emph on
 executeUpdate 
 \emph default
-della classe JavaConnectionSQLite
-\emph on
-.
-
-\emph default
+della classe JavaConnectionSQLite, tramite il quale la password viene salvata
+ in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1505,7 +1500,11 @@ reference "sub:mytalk.server.shared.Tutorials"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.shared.RecordMessage
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.shared.RecordMessage"
@@ -1647,97 +1646,11 @@ ritorna la data di creazione del messaggio
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.shared.Tutorials
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:mytalk.server.shared.Tutorials"
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La classe Tutorials rappresenta la lista dei tutorials presenti nel server.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/server/shared/pdf/Tutorials.pdf
-	scale 80
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe Tutorials
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Map<String, String> tutorials: 
-\series default
-rappresenta la lista dei tutorials, come chiave di identificazione viene
- usato il titolo del tutorial
-\end_layout
-
-\begin_layout Paragraph
-Metodi pubblici
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tutorials(int num):
-\series default
- costruttore che inizializza la lista di tutorials della dimensione passatagli
- dal parametro
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-void insert(String title, String url):
-\series default
- inserisce un nuovo tutorial nella lista
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Map<String, String> getTutorials():
-\series default
- restituisce la lista di tutorial
-\end_layout
-
-\begin_layout Subsubsection
+\family typewriter
 mytalk.server.shared.User
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.shared.User"
@@ -1847,61 +1760,65 @@ User(String username, String name, String surname, String IP):
 \begin_layout Itemize
 
 \series bold
-String getUsername()
+String getUsername():
 \series default
-: ritorna lo username dell'utente
+ ritorna lo username dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String getName()
+String getName():
 \series default
-: ritorna il nome dell'utente
+ ritorna il nome dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String getSurname()
+String getSurname():
 \series default
-: ritorna il cognome dell'utente
+ ritorna il cognome dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String getIP()
+String getIP():
 \series default
-: ritorna l'indirizzo IP dell'utente
+ ritorna l'indirizzo IP dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setName(String name)
+void setName(String name):
 \series default
-: imposta il nome dell'utente con il nuovo valore
+ imposta il nome dell'utente con il nuovo valore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setSurname(String surname)
+void setSurname(String surname):
 \series default
-: imposta il cognome dell'utente con il nuovo valore
+ imposta il cognome dell'utente con il nuovo valore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setIP(String IP)
+void setIP(String IP):
 \series default
-: imposta l'indirizzo IP dell'utente con il nuovo valore
+ imposta l'indirizzo IP dell'utente con il nuovo valore
 \end_layout
 
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.shared.UserList
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.shared.UserList"
@@ -1966,9 +1883,9 @@ Vector<User> users:
 \begin_layout Itemize
 
 \series bold
-[static] UserList userList[=null]
+[static] UserList userList[=null]:
 \series default
-: riferimento statico alla classe stessa
+ riferimento statico alla classe stessa
 \end_layout
 
 \begin_layout Paragraph
@@ -2027,7 +1944,6 @@ void removeAll():
 metodo che rimuove tutti gli utenti dal vettore
 \end_layout
 
-
 \begin_layout Paragraph
 Metodi privati
 \end_layout
@@ -2042,6 +1958,100 @@ UserList():
 users
 \end_layout
 
+\begin_layout Subsubsection
+
+\family typewriter
+mytalk.server.shared.Tutorials
+\family default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.shared.Tutorials"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe Tutorials rappresenta la lista dei tutorials presenti nel server.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/server/shared/pdf/Tutorials.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe Tutorials
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Map<String, String> tutorials: 
+\series default
+rappresenta la lista dei tutorials, come chiave di identificazione viene
+ usato il titolo del tutorial
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tutorials(int num):
+\series default
+ costruttore che inizializza la lista di tutorials della dimensione passatagli
+ dal parametro
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void insert(String title, String url):
+\series default
+ inserisce un nuovo tutorial nella lista
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Map<String, String> getTutorials():
+\series default
+ restituisce la lista dei tutorials
+\end_layout
+
 \begin_layout Subsection
 Package usermanager 
 \begin_inset CommandInset label
@@ -2054,7 +2064,8 @@ name "sub:Package-usermanager"
 \end_layout
 
 \begin_layout Standard
-Lo strato manager del server si occupa delle funzionalità logiche del server
+Il package usermanager del server si occupa delle funzionalità di gestione
+ e trasferimento  di tutti i dati riguardanti gli utenti
 \end_layout
 
 \begin_layout Paragraph
@@ -2066,7 +2077,7 @@ Costituito dalle classi:
 \family typewriter
 mytalk.server.usermanager.AuthenticationManager
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.AuthenicationManager"
@@ -2081,7 +2092,7 @@ reference "sub:mytalk.server.usermanager.AuthenicationManager"
 \family typewriter
 mytalk.server.usermanager.UserManager 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.UserManager"
@@ -2207,8 +2218,8 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti si prosegue controllando la validità della password, utilizzando
- il metodo 
+ Altrimenti si prosegue controllando la validità della password, salvata
+ in chiaro, utilizzando il metodo 
 \emph on
 checkPassword
 \emph default
@@ -2270,7 +2281,7 @@ delle classi UserDaoSQL e UserList per modificare l'indirizzo IP ad una
 \emph on
 0
 \emph default
-, che rappresenta un'utente non connesso.
+, che rappresenta un utente non connesso.
  Infine restituisce l'utente ottenuto dalla prima operazione
 \end_layout
 
@@ -2288,7 +2299,7 @@ Exception,
 \emph default
 avente come messaggio 
 \emph on
-Username già presente
+Username utilizzato da un altro utente
 \emph default
 .
  Altrimenti
@@ -2311,7 +2322,7 @@ Exception
 \emph default
 , avente come messaggio 
 \emph on
-Errore nell'inserimento dell'utente nel database
+Operazione di registrazione fallita
 \emph default
 .
  Altrimenti aggiunge il nuovo utente in UserList e lo restituisce
@@ -2354,7 +2365,7 @@ status open
 Gli utenti non vengono presi direttamente dal database, perché nel caso
  di più utenti che accedono contemporaneamente si creerebbero più copie
  degli stessi dati, sprecando spazio.
- In questo modo invece lo spazio occupato dai utenti nel server resterà
+ In questo modo invece lo spazio occupato dagli utenti nel server resterà
  fisso, e ciò equivarrà allo spazio occupato dall'istanza di UserList, qualsiasi
  sia il numero degli utenti che accedono\SpecialChar \@.
 
@@ -2395,7 +2406,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/usermanager/pdf/UserManager.pdf
-	scale 90
+	scale 80
 
 \end_inset
 
@@ -2435,7 +2446,7 @@ riferimento alla istanza della classe UserDaoSQL, per eseguire le operazioni
 \begin_layout Itemize
 
 \series bold
-RecordMessageDao messageDao:
+RecordMessageDao recordMessageDao:
 \series default
  riferimento alla istanza della classe RecordMessageDaoSQL per permettere
  le operazioni sui messaggi registrati
@@ -2463,8 +2474,8 @@ di ciascuna delle due classi UserDaoSQL e RecordMessageDaoSQL
 \series bold
 boolean checkPassword(String username, String password):
 \series default
- controlla la corrispondenza dello username passato con la password passata,
- invocando il metodo 
+ controlla la corrispondenza dello username passato con la password passata
+ in chiaro, invocando il metodo 
 \emph on
 checkPassword 
 \emph default
@@ -2495,9 +2506,9 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti modifica la password esistente con quella passata, dell'utente
- avente username corrispondente a quello passato per parametro.
- Per fare ciò utilizza il metodo 
+ Altrimenti modifica la password esistente dell'utente trovato, inserendo
+  la password passata per parametro in chiaro.
+  Per fare ciò utilizza il metodo 
 \emph on
 setPassword 
 \emph default
@@ -2555,10 +2566,10 @@ getInstance
 \begin_layout Itemize
 
 \series bold
-User getUserData(String username)
+User getUserData(String username):
 \series default
-: l'utente corrispondente al dato username, presente nel database, invocando
- il metodo 
+ ritorna l'utente corrispondente al dato username, presente nel database,
+ invocando il metodo 
 \emph on
 getUser
 \emph default
@@ -2571,7 +2582,17 @@ getUser
 RecordMessage createMessage(String sender, String addressee, String path,
  String date): 
 \series default
-inizialmente crea un oggetto di tipo RecordMessage con i dati passati per
+inizialmente controlla che il destinatario esista, e in caso contrario lancia
+ un'eccezione di tipo 
+\emph on
+Exception
+\emph default
+, avente come messaggio 
+\emph on
+Destinatario inesistente
+\emph default
+.
+ In seguito crea un oggetto di tipo RecordMessage con i dati passati per
  parametro e aggiunge il messaggio nella base di dati, invocando il metodo
  
 \emph on
@@ -2599,7 +2620,7 @@ null
 \series bold
 Vector<RecordMessage> getMessages(String username):
 \series default
-ritorna il vettore dei messaggi differiti che sono stati mandati all'utente
+ ritorna il vettore dei messaggi differiti che sono stati mandati all'utente
  avente username corrispondente a quello dato.
  Per fare ciò invoca il metodo 
 \emph on
@@ -2650,7 +2671,7 @@ Costituito dalla classe:
 \family typewriter
 mytalk.server.functionmanager.Converter
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.functionmanager.Converter"
@@ -2744,7 +2765,7 @@ ClockWork
 \begin_inset Quotes erd
 \end_inset
 
-, name= 
+, name = 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2752,8 +2773,8 @@ team
 \begin_inset Quotes erd
 \end_inset
 
-, surname vuoto, IP=
-\begin_inset Quotes erd
+, surname vuoto, IP = 
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2777,7 +2798,7 @@ getContacts
 \end_layout
 
 \begin_layout Itemize
-la stringa risultante è quindi { type: 
+la stringa risultante è quindi {type: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2785,8 +2806,8 @@ getContacts
 \begin_inset Quotes erd
 \end_inset
 
-, size:
-\begin_inset Quotes erd
+, size: 
+\begin_inset Quotes eld
 \end_inset
 
 1
@@ -2809,16 +2830,16 @@ team
 \begin_inset Quotes erd
 \end_inset
 
-, surname0:
-\begin_inset Quotes erd
+, surname0: 
+\begin_inset Quotes eld
 \end_inset
 
 
 \begin_inset Quotes erd
 \end_inset
 
-, IP0:
-\begin_inset Quotes erd
+, IP0: 
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2852,8 +2873,8 @@ ClockworkTeam
 \begin_inset Quotes erd
 \end_inset
 
-, name vuoto , surname vuoto, IP=
-\begin_inset Quotes erd
+, name vuoto, surname vuoto, IP = 
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2877,7 +2898,7 @@ getContacts
 \end_layout
 
 \begin_layout Itemize
-la stringa risultante è quindi { type: 
+la stringa risultante è quindi {type: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2885,8 +2906,8 @@ getContacts
 \begin_inset Quotes erd
 \end_inset
 
-, size:
-\begin_inset Quotes erd
+, size: 
+\begin_inset Quotes eld
 \end_inset
 
 2
@@ -2909,16 +2930,16 @@ team
 \begin_inset Quotes erd
 \end_inset
 
-, surname0:
-\begin_inset Quotes erd
+, surname0: 
+\begin_inset Quotes eld
 \end_inset
 
 
 \begin_inset Quotes erd
 \end_inset
 
-, IP0:
-\begin_inset Quotes erd
+, IP0: 
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2941,16 +2962,16 @@ ClockworkTeam
 \begin_inset Quotes erd
 \end_inset
 
-, surname1:
-\begin_inset Quotes erd
+, surname1: 
+\begin_inset Quotes eld
 \end_inset
 
 
 \begin_inset Quotes erd
 \end_inset
 
-, IP1:
-\begin_inset Quotes erd
+, IP1: 
+\begin_inset Quotes eld
 \end_inset
 
 0
@@ -2971,8 +2992,12 @@ String convertMessages(Vector<RecordMessage> messages, String type):
  per argomento, inserendo inizialmente la stringa type e il numero di messaggi
  presenti nel vettore.
  La stringa risultante è analoga a quella mostrata negli esempi 1 e 2, per
- il metodo convertUsers(Vector<User> users, String type), con la differenza
- che al posto degli attributi degli utenti, si hanno quelli dei messaggi
+ il metodo 
+\shape italic
+convertUsers
+\shape default
+, con la differenza che al posto degli attributi degli utenti, si hanno
+ quelli dei messaggi
 \end_layout
 
 \begin_layout Itemize
@@ -2983,8 +3008,12 @@ String convertTutorials(Map<String, String> tutorials, String type):
  metodo che converte in forma di stringa JSON i tutorials passati per argomento,
  inserendo inizialmente la stringa type e il numero di tutorials presenti.
  La stringa risultante è analoga a quella mostrata negli esempi 1 e 2, per
- il metodo convertUsers(Vector<User> users, String type), con la differenza
- che al posto degli attributi degli utenti, si hanno quelli dei tutorial
+ il metodo 
+\shape italic
+convertUsers
+\shape default
+, con la differenza che al posto degli attributi degli utenti, si hanno
+ quelli dei tutorial
 \end_layout
 
 \begin_layout Subsection
@@ -2999,11 +3028,7 @@ name "sub:Package-transfer"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.server.transfer
-\family default
- si occupa della comunicazione con il client.
+Il package transfer si occupa della comunicazione con il client.
 \end_layout
 
 \begin_layout Paragraph
@@ -3015,7 +3040,7 @@ Costituito dalle classi:
 \family typewriter
 mytalk.server.transfer.ListenerTransfer 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.ListenerTransfer"
@@ -3030,7 +3055,7 @@ reference "sub:mytalk.server.transfer.ListenerTransfer"
 \family typewriter
 mytalk.server.transfer.AuthenticationTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:AuthenticationTransfer"
@@ -3045,7 +3070,7 @@ reference "sub:AuthenticationTransfer"
 \family typewriter
 mytalk.server.transfer.CallTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.CallTransfer"
@@ -3060,7 +3085,7 @@ reference "sub:mytalk.server.transfer.CallTransfer"
 \family typewriter
 mytalk.server.transfer.ChatTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.ChatTransfer"
@@ -3075,7 +3100,7 @@ reference "sub:mytalk.server.transfer.ChatTransfer"
 \family typewriter
 mytalk.server.transfer.FileTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.FileTransfer"
@@ -3090,7 +3115,7 @@ reference "sub:mytalk.server.transfer.FileTransfer"
 \family typewriter
 mytalk.server.transfer.RecordMessageTransfer
 \family default
-(vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.RecordMessageTransfer"
@@ -3105,7 +3130,7 @@ reference "sub:mytalk.server.transfer.RecordMessageTransfer"
 \family typewriter
 mytalk.server.transfer.UserTransfer 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.UserTransfer"
@@ -3146,7 +3171,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/transfer/pdf/ListenerTransfer.pdf
-	scale 90
+	scale 80
 
 \end_inset
 
@@ -3182,17 +3207,17 @@ TokenServer tokenServer:
 \begin_layout Itemize
 
 \series bold
-Collection<WebSocketConnector> connectedUsers
+Collection<WebSocketConnector> connectedUsers:
 \series default
-: lista dei connettori collegati al server
+ lista dei connettori collegati al server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Converter converter
+Converter converter:
 \series default
-: riferimento alla classe Converter
+ riferimento alla classe Converter
 \end_layout
 
 \begin_layout Paragraph
@@ -3224,7 +3249,8 @@ connectedUsers
 \series bold
 WebSocketConnector getUserConnector(String username): 
 \series default
-trova il connettore dell'utente connesso, con il dato username, al sistema
+ritorna il connettore dell'utente connesso, con il dato username, al sistema.
+ Se non lo trova ritorna null 
 \end_layout
 
 \begin_layout Itemize
@@ -3232,7 +3258,8 @@ trova il connettore dell'utente connesso, con il dato username, al sistema
 \series bold
 WebSocketConnector getIpConnector(String IP):
 \series default
- trova il connettore, avente il dato indirizzo IP, connesso al sistema
+ ritorna il connettore, avente il dato indirizzo IP, connesso al sistema.
+   Se non lo trova ritorna null 
 \end_layout
 
 \begin_layout Itemize
@@ -3259,8 +3286,8 @@ name "sub:AuthenticationTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe AuthenticationTransfer si occupa della registrazione e autenticazione
- degli utenti.
+La classe AuthenticationTransfer si occupa della gestione delle richieste
+ di registrazione o autenticazione degli utenti
 \end_layout
 
 \begin_layout Standard
@@ -3274,7 +3301,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/transfer/pdf/AuthenticationTransfer.pdf
-	scale 90
+	scale 65
 
 \end_inset
 
@@ -3286,8 +3313,6 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 Classe AuthenticationTransfer
 \end_layout
 
@@ -3364,8 +3389,8 @@ login
 login 
 \emph default
 della classe AuthenticationManager, usando come parametri lo username e
- la password, presenti nel token, e l'indirizzo IP del connettore da cui
- riceve il pacchetto.
+ la password, presenti nel token in chiaro, e l'indirizzo IP del connettore
+ da cui riceve il pacchetto.
  Se l'operazione lancia un'eccezione 
 \emph on
 Exception 
@@ -3416,11 +3441,11 @@ Exception
 viene catturata e inviata una risposta negativa al client, specificando
  il tipo di errore, che può essere 
 \emph on
-Errore nell'inserimento dell'utente nel database 
+Operazione di registrazione fallita
 \emph default
-o 
+ o 
 \emph on
-Username già presente.
+Username utilizzato da un altro utente.
 
 \emph default
  Altrimenti assegna al connettore lo username dell'utente autenticato, invia
@@ -3441,13 +3466,6 @@ convertUsers
 \end_layout
 
 \begin_layout Itemize
-invia una risposta positiva al client ed invia il nuovo indirizzo IP del
- contatto a tutti gli utenti connessi, utilizzando il metodo 
-\emph on
-broadcastToAll
-\end_layout
-
-\begin_layout Itemize
 
 \emph on
 getContacts
@@ -3456,7 +3474,7 @@ getContacts
 \emph on
 getAllContacts 
 \emph default
-della classeAuthenticationManager, per ottenere il vettore degli utenti
+della classe AuthenticationManager, per ottenere il vettore degli utenti
  presenti nel server, e il metodo 
 \emph on
 convertUsers
@@ -3475,8 +3493,8 @@ logout
 logout 
 \emph default
 della classe AuthenticationManager, rimuove dal connettore lo username,
- se l'operazione va a buon termine, segnala a tutti gli utenti connessi,
- utilizzando il metodo 
+ se l'operazione va a buon fine, segnala a tutti gli utenti connessi, utilizzand
+o il metodo 
 \emph on
 broadcastToAll, 
 \emph default
@@ -3498,15 +3516,12 @@ convertUsers
 void processOpened(WebSocketServerEvent event): 
 \series default
 metodo che si occupa di gestire la connessione di un dispositivo al server.
- Aggiunge il nuovo connettore ad 
+ Aggiunge il nuovo connettore a 
 \emph on
 connectedUsers,
 \emph default
- ed invia al nuovo connettore la lista di tutorials,
-\emph on
+ ed invia al nuovo connettore la lista di tutorials,  invocando il metodo
  
-\emph default
-invocando il metodo 
 \emph on
 convertTutorials
 \end_layout
@@ -3516,7 +3531,8 @@ convertTutorials
 \series bold
 void processClosed(WebSocketServerEvent event): 
 \series default
-metodo che si occupa di gestire la disconnessione di un dispositivo al server.
+metodo che si occupa di gestire la disconnessione di un dispositivo dal
+ server.
  Se non si è fatta l'operazione di 
 \emph on
 logout
@@ -3547,7 +3563,7 @@ name "sub:mytalk.server.transfer.CallTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe CalTransfer si occupa di gestire il traffico di pacchetti per
+La classe CallTransfer si occupa di gestire il traffico di pacchetti per
  effettuare l'inizializzazione di una comunicazione audio/video.
 \end_layout
 
@@ -3574,8 +3590,6 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 Classe CallTransfer
 \end_layout
 
@@ -3625,12 +3639,12 @@ error
 \emph on
 call
 \emph default
-: invia un pacchetto di tipo 
-\emph on
-call, 
-\emph default
-contenente il tipo di chiamata, passatogli dal client, e lo username dell'utente
- che ha effettuato la richiesta
+: controlla se l'utente è autenticato oppure no e realizza il 
+\shape italic
+WebSocketConnector
+\shape default
+ adeguato, se l'utente prova ad autenticarsi ma fallisce manda al client
+ un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
@@ -3638,11 +3652,15 @@ contenente il tipo di chiamata, passatogli dal client, e lo username dell'utente
 \emph on
 answeredCall: 
 \emph default
-invia un pacchetto di tipo 
+invia un pacchetto 
+\shape italic
+wspacket
+\shape default
+, con tipo 
 \emph on
 answeredCall
 \emph default
-, avente come risposta 
+ contenente il connettore, e la risposta 
 \emph on
 true
 \end_layout
@@ -3658,7 +3676,11 @@ answeredCall
 \emph default
 , avente come risposta 
 \emph on
-false
+false 
+\emph default
+e il messaggio 
+\shape italic
+Chiamata rifiutata
 \end_layout
 
 \begin_layout Itemize
@@ -3672,13 +3694,35 @@ answeredCall
 \emph default
 , avente come risposta 
 \emph on
-busy
+false 
+\emph default
+e il messaggio 
+\shape italic
+Utente occupato in un'altra conversazione
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+refusecam
+\shape default
+: invia un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+false 
+\emph default
+e il messaggio 
+\shape italic
+Utente rifiuta di accendere la telecamera
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-offer: 
+sdp: 
 \emph default
 invia un pacchetto contenente l'attributo 
 \emph on
@@ -3692,11 +3736,20 @@ passatogli dal client che ha effettuato la richiesta
 \emph on
 candidate: 
 \emph default
-invia un pacchetto contenente l'attributo 
+invia un pacchetto contenente il campo 
 \emph on
-cand 
+contact 
 \emph default
-passatogli dal client che ha effettuato la richiesta
+passatogli dal client che ha effettuato la richiesta, che può essere un
+ indirizzo 
+\shape italic
+IP
+\shape default
+ o un 
+\shape italic
+contact
+\shape default
+ autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -3706,7 +3759,9 @@ endCall:
 \emph default
 invia un pacchetto di tipo 
 \emph on
-endCall
+endCall 
+\emph default
+che interrompe la chiamata col connettore selezionato
 \end_layout
 
 \begin_layout Itemize
@@ -3716,7 +3771,37 @@ candidateReady:
 \emph default
 invia un pacchetto di tipo 
 \emph on
-candidateReady
+candidateReady 
+\emph default
+che comunica ad un utente che l'altro utente è pronto ad accettare candidati
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+endCallEarly:
+\shape default
+ invia un pacchetto di tipo 
+\emph on
+endCallEarly 
+\emph default
+che interrompe la chiamata col connettore selezionato
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+addConferenceCaller:
+\shape default
+ invia un pacchetto contenente un connettore da aggiungere ad una chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+addConferenceAnswer:
+\shape default
+ invia un pacchetto contenente un connettore da aggiungere ad una chiamata
 \end_layout
 
 \end_deeper
@@ -3879,7 +3964,7 @@ getUserConnector
 , usando come parametro lo username presente nel token, per trovare il connettor
 e corrispondente.
  Infine manda al connettore trovato un pacchetto con lo stesso tipo, avente
- come attributi il file ricevuto in arrivo e lo username del mittente
+ come attributi il file in arrivo e lo username del mittente
 \end_layout
 
 \begin_layout Itemize
@@ -3918,6 +4003,7 @@ name "sub:mytalk.server.transfer.RecordMessageTransfer"
 
 \begin_layout Standard
 La classe RecordMessageTransfer si occupa della registrazione dei messaggi.
+ Tale classe, seppur pianificata, non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -3996,7 +4082,7 @@ Errore nella registrazione del messaggio.
 \emph on
 record
 \emph default
-, contente le informazioni ricevute
+, contenente le informazioni ricevute
 \end_layout
 
 \begin_layout Itemize
@@ -4015,7 +4101,11 @@ ione
 
 \end_deeper
 \begin_layout Subsubsection
+
+\family typewriter
 mytalk.server.transfer.UserTransfer
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:mytalk.server.transfer.UserTransfer"
@@ -4057,6 +4147,10 @@ Classe UserTransfer
 
 \end_layout
 
+\begin_layout Paragraph
+Attributi Privati
+\end_layout
+
 \end_inset
 
 
@@ -4069,10 +4163,17 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
+UserTransfer(UserManager userManager):
+\series default
+ costruttore della classe, si collega alla istanza esistente di UserManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 void processToken(WebSocketServerTokenEvent event, Token token):
 \series default
- metodo per la gestione dei token in arrivo.
- in particolare si occupa di quelli aventi come tipo:
+ gestisce i token in arrivo aventi come tipo:
 \end_layout
 
 \begin_deeper
@@ -4083,11 +4184,11 @@ checkCredentials
 \emph default
 : invoca il metodo 
 \emph on
-checkPassword(User, String)
+checkPassword
 \emph default
-, passandogli come parametro lo user corrispondente all'utente che ha effettuato
- la richiesta e la password presente nel pacchetto, e invia al client la
- risposta ottenuta
+ di UserManager, passandogli come parametro lo user  corrispondente all'utente
+ che ha effettuato la richiesta e la password presente nel pacchetto, salvata
+ in chiaro, e invia al client la risposta ottenuta
 \end_layout
 
 \begin_layout Itemize
@@ -4095,15 +4196,18 @@ checkPassword(User, String)
 \emph on
 changeData:
 \emph default
- invoca i metodi 
+ invoca il metodo di UserManager
 \emph on
-setUserData(User, String, String) 
+ setUserData 
 \emph default
-e 
+e verifica che ritorni quanto atteso, in caso contrario lancia un'eccezione,
+ in seguito invoca
 \emph on
-setPassword(UserString) 
+ setPassword
 \emph default
-per modificare i dati dell'utente con quelli ricevuti nel pacchetto
+, sempre di UserManager, per sostituire ai dati salvati nel database quelli
+ ricevuti nel pacchetto e fa in modo che il cambiamento venga mandato in
+ broadcast a tutti gli utenti
 \end_layout
 
 \end_deeper

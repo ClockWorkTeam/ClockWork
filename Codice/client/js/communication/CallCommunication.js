@@ -58,9 +58,9 @@ define(['connection'], function(Connection){
    
   var onAddConferenceListener = null;
   
-  var onCandidateListener = null;
+  var onCandidateListener = [];
   
-  var onEndCallListener=null;
+  var onEndCallListener= [];
     
   var readyToSend = [];
     
@@ -501,7 +501,7 @@ define(['connection'], function(Connection){
         }
       }
       
-      onCandidateListener=onCandidate;
+      onCandidateListener[contact]=onCandidate;
         
         /**
          * si occupa di rimuovere dalla peerconnection dell'utente che ha chiuso la chiamata e
@@ -512,6 +512,8 @@ define(['connection'], function(Connection){
         console.log('RECEIVED: '+evt.data);
         var response = JSON.parse(evt.data);
         if (response.type ==='endCall' && response.contact==contact) {
+          Connection.removeEventListener('message',onEndCallListener[contact],false);
+          Connection.removeEventListener('message',onCandidateListener[contact],false);
           if(peerConnection[contact]!=null){
             peerConnection[contact].removeStream(localStream);
             peerConnection[contact].close();
@@ -556,12 +558,10 @@ define(['connection'], function(Connection){
             document.dispatchEvent(event);
             console.log('end stream');
             callView.endCall(false);
-            Connection.removeEventListener('message',onCandidateListener,false);
-            Connection.removeEventListener('message',onEndCall,false);
           } 
         }
       }
-      onEndCallListener=onEndCall  
+      onEndCallListener[contact]=onEndCall  
         /**
          * riconosce il fatto che l'utente remoto è pronto a ricevere candidati
          */ 
@@ -622,6 +622,8 @@ define(['connection'], function(Connection){
     endCall: function() {
       for(var i=0;i<recipient.length;i++){
         if(peerConnection[recipient[i]] != null){
+          Connection.removeEventListener('message',onCandidateListener[recipient[i]],false);
+          Connection.removeEventListener('message',onEndCallListener[recipient[i]],false);
           peerConnection[recipient[i]].removeStream(localStream);
           peerConnection[recipient[i]].close();
           peerConnection[recipient[i]]=null;

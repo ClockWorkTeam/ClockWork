@@ -76,7 +76,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/client/packageClient.pdf
-	width 100text%
+	scale 40
 
 \end_inset
 
@@ -176,12 +176,8 @@ name "sub:Package-View"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.client.view
-\family default
- costituisce la parte del sistema che definisce ed implementa l'interfaccia
- web usufruibile dagli utenti mediante pagine web.
+Il package view costituisce la parte del sistema che definisce ed implementa
+ l'interfaccia web usufruibile dagli utenti mediante pagine web.
  Diversamente da uno schema di tipo MVC il package view contiene non solo
  le parti di interfaccia ma anche parti logiche, come previsto dal framework
  Backbone.js, che prevede uno schema di tipo MV*.
@@ -487,7 +483,7 @@ click button#login:
 \series default
 evento che richiama la funzione  
 \emph on
-connect()
+connect
 \end_layout
 
 \begin_layout Itemize
@@ -497,7 +493,7 @@ click button#logout:
 \series default
 evento che richiama la funzione 
 \emph on
-disconnect()
+disconnect
 \end_layout
 
 \begin_layout Itemize
@@ -507,7 +503,7 @@ click button#signup:
 \series default
 evento che richiama la funzione 
 \emph on
-viewSignup()
+viewSignup
 \end_layout
 
 \begin_layout Itemize
@@ -517,7 +513,7 @@ click button#sign:
 \series default
 evento che richiama la funzione 
 \emph on
-signup()
+signup
 \end_layout
 
 \begin_layout Itemize
@@ -527,7 +523,7 @@ click button#deny:
 \series default
 evento che richiama la funzione 
 \emph on
-deny()
+deny
 \end_layout
 
 \begin_layout Itemize
@@ -537,7 +533,7 @@ click button#edit:
 \series default
 evento che richiama la funzione 
 \emph on
-editProfile()
+editProfile
 \end_layout
 
 \begin_layout Paragraph
@@ -555,7 +551,7 @@ contactsView
 \emph default
 e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -574,7 +570,7 @@ late
 \series default
  metodo che permette ad altre classi di usufruire del metodo 
 \emph on
-doLogin(String, String, String[], AuthenticationView) 
+doLogin
 \end_layout
 
 \begin_deeper
@@ -588,7 +584,7 @@ doLogin(String, String, String[], AuthenticationView)
  Si occupa di creare il model corrispondente all'utente, aggiornare il template
  e invocare il metodo 
 \emph on
-getContacts(AuthenticationView) 
+getContacts 
 \emph default
 sull'oggetto 
 \emph on
@@ -604,15 +600,10 @@ contactsView
  metodo che avvia l'operazione di login dell'utente richiamando il metodo
  
 \emph on
-checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticationVi
-ew) 
+checkCredentials 
 \emph default
-della classe 
-\emph on
-AuthenticationCommunication
-\emph default
- passandogli come parametri lo username e la password inseriti negli appositi
- campi
+della classe AuthenticationCommunication passandogli come parametri lo username
+ e la password inseriti negli appositi campi
 \end_layout
 
 \begin_layout Itemize
@@ -623,17 +614,10 @@ AuthenticationCommunication
  metodo che si occupa di chiudere la sessione con il server, invocando il
  metodo 
 \emph on
-logout(String)
+logout
 \emph default
- della classe 
-\emph on
-AuthenticationCommunication
-\emph default
-,
-\emph on
+ della classe AuthenticationCommunication, aggiornando il template e deallocando
  
-\emph default
-aggiornando il template e deallocando 
 \emph on
 userDataView 
 \emph default
@@ -656,17 +640,20 @@ contactsView
 [void] signup():
 \series default
  metodo che avvia l'operazione di registrazione dell'utente.
- Controlla che i campi obbligatori siano compilati e che la password e quella
- di conferma coincidano, in caso affermativo invoca il metodo 
+ Controlla che i campi obbligatori siano compilati, che lo username includa
+ solo i caratteri permessi e che la password e quella di conferma coincidano.
+ In caso affermativo invoca il metodo 
 \emph on
-signup(String, String, String, String, AuthenticationView.callBacks(), Authentica
-tionView) 
+signup 
 \emph default
-della classe 
-\emph on
-AuthenticationCommunication
-\emph default
- altrimenti mostra l'avviso di errore
+della classe AuthenticationCommunication, altrimenti mostra uno tra i messaggi
+ di errore 
+\shape italic
+Username può contenere solo lettere, numeri e underscore
+\shape default
+ e 
+\shape italic
+Le password inserite non coincidono
 \end_layout
 
 \begin_layout Itemize
@@ -675,7 +662,7 @@ AuthenticationCommunication
 [void] deny():
 \series default
  metodo per annullare la compilazione della registrazione e tornare allo
- stato precedente alla registrazione
+ stato precedente
 \end_layout
 
 \begin_layout Itemize
@@ -813,7 +800,7 @@ statisticsView
 \emph default
 e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -825,21 +812,21 @@ render()
  e che verifica che sia in corso una chiamata e, in caso affermativo, invoca
  il metodo 
 \shape italic
-recoverCall()
+recoverCall
 \shape default
  di CallCommunication e il metodo 
 \shape italic
-render()
+render
 \shape default
  di StatisticsView.
  Altrimenti, a seconda che l'utente sia il chiamato o il chiamante, invoca
  i metodi 
 \shape italic
-sendAnswer(String, ContactModel, CallView)
+sendAnswer
 \shape default
  o 
 \shape italic
-sendCall(String, ContactModel, CallView)
+sendCall
 \shape default
  di CallCommunication e assegna a 
 \emph on
@@ -877,9 +864,21 @@ endCall()
 \begin_layout Itemize
 
 \series bold
+[void] addVideoConference([String] nameCaller): 
+\series default
+metodo che aggiunge uno stream remoto ad una videoconferenza
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 [void] close():
 \series default
- metodo che chiude l'istanza della classe creata
+ metodo che invoca il metodo 
+\shape italic
+endCall
+\shape default
+ di CallCommunication e chiude l'istanza della classe creata 
 \end_layout
 
 \begin_layout Subsubsection
@@ -991,7 +990,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-render()
+render
 \emph default
  della classe alla collection in modo da richiamarlo ogni qual volta avvenga
  un cambiamento di quest'ultima
@@ -1005,7 +1004,7 @@ render()
  metodo per effettuare la scrittura nella pagina del template ChatTemplate
  inoltre, invoca il metodo 
 \shape italic
-putMessages() 
+putMessages 
 \emph on
 per visualizzare i messaggi scambiati fino ad ora
 \end_layout
@@ -1022,7 +1021,7 @@ collection
  tutti i messaggi di testo della conversazione scelta, e invoca la funzione
  
 \shape italic
-putMessage(TextMessageModel)
+putMessage
 \emph on
  per permetterne la visualizzazione all'utente
 \end_layout
@@ -1033,7 +1032,7 @@ putMessage(TextMessageModel)
 [void] putMessage([TextMessageModel] message)
 \series default
 : metodo che si occupa della scrittura di un messaggio di testo, presente
- nella 
+ in 
 \emph on
 collection,
 \emph default
@@ -1048,7 +1047,7 @@ collection,
 metodo per inviare un messaggio al contatto, per fare ciò invoca il metodo
  
 \shape italic
-send(String, string)
+send
 \shape default
  della classe ChatCommunication, con parametri lo username del contatto
  e il testo del messaggio.
@@ -1068,7 +1067,7 @@ collection
 \shape default
  la conversazione con l'utente e invoca il metodo 
 \shape italic
-close() 
+close
 \end_layout
 
 \begin_layout Itemize
@@ -1182,7 +1181,7 @@ click span.contact:
 \series default
 evento che richiama la funzione 
 \emph on
-view()
+view
 \end_layout
 
 \begin_layout Paragraph
@@ -1196,7 +1195,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-render()
+render
 \emph default
  della classe al model in modo da richiamarlo ogni qual volta avvenga un
  cambiamento di quest'ultimo
@@ -1218,7 +1217,7 @@ render()
  metodo che si occupa di avviare la FunctionsView relativa al contatto.
  Prima di fare ciò invoca il metodo 
 \shape italic
-closeOtherContacts(Strings)
+closeOtherContacts
 \shape default
  della classe SideView per controllare che tutte le view presenti nel content
  siano state chiuse
@@ -1232,21 +1231,34 @@ closeOtherContacts(Strings)
  metodo che viene chiamato quando si accetta una chiamata in arrivo; invoca
  il metodo 
 \shape italic
-closeOtherContacts(String)
+closeOtherContacts
 \shape default
  della classe SideView, per controllare che tutte le view presenti nel content
  siano state chiuse, e uno tra i metodi 
 \shape italic
-videocall(boolean)
+videocall
 \shape default
  o 
 \shape italic
-audiocall(boolean)
+audiocall
 \emph on
-, della classe FunctionsView,
+ della classe FunctionsView,
 \shape default
 \emph default
- a seconda del tipo di chiamata passata dal parametro
+ a seconda del tipo di chiamata passato dal parametro
+\end_layout
+
+\begin_layout Itemize
+[void] createCallConference([String] type, [Contact] contact, [SideView]
+ sideView): metodo che viene chiamato quando si accetta una richiesta di
+ videoconferenza che invoca il metodo 
+\shape italic
+closeOtherContacts
+\shape default
+ della classe SideView, per controllare che tutte le view presenti nel content
+ siano state chiuse e invoca il metodo 
+\shape italic
+conference
 \end_layout
 
 \begin_layout Itemize
@@ -1256,7 +1268,7 @@ audiocall(boolean)
 \series default
  metodo che chiude l'istanza della classe creata invocando il metodo 
 \shape italic
-unrender() 
+unrender 
 \emph on
 della classe FunctionsView
 \end_layout
@@ -1277,7 +1289,11 @@ name "sub:.FileView"
 \begin_layout Standard
 La classe FileView definisce la struttura, e la conseguente visualizzazione,
  della parte della pagina web che consente di selezionare un file salvato
- in locale per mandarlo all'utente autenticato selezionato
+ in locale per mandarlo all'utente autenticato selezionato.
+\end_layout
+
+\begin_layout Standard
+Pur essendo pianificata tale classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -1349,7 +1365,7 @@ click button#sendFile:
 \series default
 evento che richiama la funzione 
 \emph on
-sendFile()
+sendFile
 \end_layout
 
 \begin_layout Paragraph
@@ -1363,7 +1379,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, si occupa di richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -1381,9 +1397,9 @@ render()
 \series default
  metodo che invia il file al server, attraverso l'utilizzo del metodo 
 \emph on
-sendFile(String, File) 
+sendFile
 \emph default
-di FileCommunication
+ di FileCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -1513,7 +1529,7 @@ click button#dataContact:
 \series default
 evento che richiama la funzione 
 \emph on
-viewDataContact()
+viewDataContact
 \end_layout
 
 \begin_layout Itemize
@@ -1523,7 +1539,7 @@ click button#sendVideoText:
 \series default
 evento che richiama la funzione 
 \emph on
-sendVideoText()
+sendVideoText
 \end_layout
 
 \begin_layout Itemize
@@ -1533,7 +1549,7 @@ click button#sendFile:
 \series default
 evento che richiama la funzione 
 \emph on
-sendFile()
+sendFile
 \end_layout
 
 \begin_layout Itemize
@@ -1543,7 +1559,7 @@ click button#call:
 \series default
 evento che richiama la funzione 
 \emph on
-audiocall()
+audiocall
 \end_layout
 
 \begin_layout Itemize
@@ -1553,7 +1569,27 @@ click button#video:
 \series default
 evento che richiama la funzione 
 \emph on
-videocall()
+videocall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#record: 
+\series default
+evento che richiama la funzione 
+\shape italic
+record
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#startConference: 
+\series default
+evento che richiama la funzione 
+\shape italic
+conference
 \end_layout
 
 \begin_layout Paragraph
@@ -1567,7 +1603,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-render()
+render
 \emph default
  della classe al model in modo da richiamarlo ogni qual volta avvenga un
  cambiamento di quest'ultimo
@@ -1595,7 +1631,7 @@ chatView
 \emph default
 , se non è già esistente, e invoca il metodo 
 \shape italic
-render() 
+render 
 \emph on
 della classe ChatView
 \end_layout
@@ -1717,6 +1753,18 @@ della classe CallView
 [void] viewDataContact():
 \series default
  metodo che mostra i dati dell'utente selezionato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] conference():
+\series default
+ metodo che inizializza la conferenza e chiama il metodo 
+\shape italic
+conference
+\shape default
+ di CallView
 \end_layout
 
 \begin_layout Itemize
@@ -1846,7 +1894,7 @@ click button#acceptCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-acceptCall()
+acceptCall
 \end_layout
 
 \begin_layout Itemize
@@ -1856,7 +1904,7 @@ click button#refuseCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-refuseCall()
+refuseCall
 \end_layout
 
 \begin_layout Itemize
@@ -1867,8 +1915,6 @@ click button#viewMessage:
  evento che richiama la funzione 
 \emph on
 viewRecordMessage
-\emph default
-()
 \end_layout
 
 \begin_layout Itemize
@@ -1879,8 +1925,6 @@ click button#ignoreMessage:
  evento che richiama la funzione 
 \emph on
 ignoreMessage
-\emph default
-()
 \end_layout
 
 \begin_layout Itemize
@@ -1891,8 +1935,6 @@ click button#acceptFile
 : evento che richiama la funzione 
 \emph on
 acceptFile
-\emph default
-()
 \end_layout
 
 \begin_layout Itemize
@@ -1902,7 +1944,7 @@ click button#refuseFile
 \series default
 : evento che richiama la funzione 
 \emph on
-refuseFile()
+refuseFile
 \end_layout
 
 \begin_layout Paragraph
@@ -1925,7 +1967,7 @@ true
 \emph default
 e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -1944,7 +1986,7 @@ te
 \series default
  metodo per rimuovere la vista delle notifiche, invoca il metodo 
 \shape italic
-close()
+close
 \end_layout
 
 \begin_layout Itemize
@@ -1954,7 +1996,7 @@ close()
 \series default
  metodo per accettare una chiamata in arrivo, invoca il metodo 
 \shape italic
-unrender()
+unrender
 \shape default
  e assegna a 
 \emph on
@@ -1987,7 +2029,7 @@ false
 \emph default
  chiama il metodo 
 \shape italic
-refuseCall()
+refuseCall
 \end_layout
 
 \begin_layout Itemize
@@ -1997,11 +2039,11 @@ refuseCall()
 \series default
 metodo per rifiutare una chiamata, per fare ciò invoca il metodo
 \shape italic
- refuseCall(String)
+ refuseCall
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
-unrender() 
+unrender 
 \emph on
 della classe stessa
 \end_layout
@@ -2009,12 +2051,12 @@ della classe stessa
 \begin_layout Itemize
 
 \series bold
-[void] viewMessage(): 
+[void] viewRecordMessage(): 
 \series default
 metodo per visualizzare il messaggio video/audio ricevuto, invoca il metodo
  
 \shape italic
-unrender()
+unrender
 \shape default
  e invia un evento di tipo 
 \emph on
@@ -2031,7 +2073,7 @@ che viene catturato da SideView
 metodo per ignorare la visualizzazione del messaggio video/audio ricevuto,
  invoca il metodo 
 \shape italic
-unrender()
+unrender
 \shape default
  
 \end_layout
@@ -2044,7 +2086,7 @@ unrender()
  metodo per accettare la ricezione di un file in arrivo, scarica il file
  e invoca il metodo 
 \shape italic
-unrender()
+unrender
 \shape default
  
 \end_layout
@@ -2057,11 +2099,11 @@ unrender()
 metodo per rifiutare la ricezione di un file in arrivo, per fare ciò invoca
  il metodo
 \shape italic
- refuseFile(String)
+ refuseFile
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
-unrender() 
+unrender 
 \emph on
 della classe stessa
 \end_layout
@@ -2090,7 +2132,11 @@ name "sub:RecordMessageView"
 \begin_layout Standard
 La classe RecordMessageView definisce la struttura, e la conseguente visualizzaz
 ione, della parte della pagina web per effettuare registrazioni audio o
- audio/video da inviare ad un utente registrato
+ audio/video da inviare ad un utente registrato.
+\end_layout
+
+\begin_layout Standard
+Pur essendo pianificata questa classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -2170,7 +2216,7 @@ click button#startRecord:
 \series default
 evento che richiama la funzione 
 \shape italic
-startRecording()
+startRecording
 \end_layout
 
 \begin_layout Itemize
@@ -2180,7 +2226,7 @@ click button#stopRecord:
 \series default
 evento che richiama la funzione 
 \shape italic
-stopRecording()
+stopRecording
 \end_layout
 
 \begin_layout Itemize
@@ -2190,7 +2236,7 @@ click button#sendRecord:
 \series default
 evento che richiama la funzione 
 \shape italic
-sendRecording()
+sendRecording
 \end_layout
 
 \begin_layout Itemize
@@ -2200,7 +2246,7 @@ click li.message:
 \series default
  evento che richiama la funzione 
 \emph on
-viewMessage(Event)
+viewMessage
 \end_layout
 
 \begin_layout Itemize
@@ -2210,7 +2256,7 @@ click button#removeRecord:
 \series default
 evento che richiama la funzione 
 \emph on
-removeMessage()
+removeMessage
 \end_layout
 
 \begin_layout Paragraph
@@ -2229,7 +2275,7 @@ localstream
 \shape default
  e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -2275,11 +2321,7 @@ metodo per fermare la registrazione del messaggio, sostituisce il pulsante
 \series default
  metodo per inviare il messaggio, invocando il metodo 
 \emph on
-sendRecordMessage(String
-\emph default
-,
-\emph on
- Blob)
+sendRecordMessage
 \emph default
  di RecordMessageCommunication e ripristinando lo stato iniziale della view
 \end_layout
@@ -2300,7 +2342,7 @@ metodo per visualizzare il video messaggio selezionato, si occupa anche
 \series default
 metodo per eliminare il video messaggio selezionato, invoca il metodo 
 \emph on
-removeRecordMessage(RecordMessageModel) 
+removeRecordMessage 
 \emph default
 della classe RecordMessageCommunication
 \end_layout
@@ -2442,7 +2484,7 @@ click button#callIP:
 \series default
 evento che richiama la funzione 
 \shape italic
-callIP()
+callIP
 \end_layout
 
 \begin_layout Itemize
@@ -2452,7 +2494,7 @@ click button#Conference:
 \series default
 evento che richiama la funzione 
 \shape italic
-startConference()
+startConference
 \end_layout
 
 \begin_layout Paragraph
@@ -2505,14 +2547,26 @@ inviati da NotificationView.
 \series default
 metodo che invoca il metodo 
 \shape italic
-setCall(String, String) 
+setCall
 \emph on
-avente come parametri l'username del contatto che ha iniziato la chiamata
+ avente come parametri l'username del contatto che ha iniziato la chiamata
  e
 \emph default
  
 \emph on
 il tipo di chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] acceptCallConference([Event] event):
+\series default
+ metodo che invoca il metodo 
+\shape italic
+setCallConference
+\shape default
+ 
 \end_layout
 
 \end_deeper
@@ -2533,7 +2587,7 @@ authenticationView
  e aggiornando il template con lo stato dell'utente impostato a connesso.
  Inoltre invoca il metodo 
 \shape italic
-fetchContacts(String)
+fetchContacts
 \shape default
  della classe ContactsCommunication per popolare la lista degli utenti registrat
 i al server
@@ -2547,7 +2601,7 @@ i al server
  metodo per visualizzare l'ultimo utente aggiunto nella collection, per
  fare ciò invoca il metodo 
 \emph on
-viewContact(ContactModel)
+viewContact
 \end_layout
 
 \begin_layout Itemize
@@ -2576,11 +2630,11 @@ collection
 \emph default
 e il metodo 
 \emph on
-render()
+render
 \emph default
 , ripristina il template originale e invoca il metodo 
 \emph on
-destroyContacts()
+destroyContacts
 \end_layout
 
 \begin_layout Itemize
@@ -2605,7 +2659,7 @@ collection
  metodo per effettuare una comunicazione attraverso indirizzo IP, per fare
  ciò inizialmente invoca il metodo 
 \shape italic
-closeOtherContacts(Strings)
+closeOtherContacts
 \shape default
 , per controllare che tutte le view presenti nel content siano state chiuse,
  e inizializza 
@@ -2629,7 +2683,7 @@ IP
  metodo per effettuare una videoconferenza, , per fare ciò inizialmente
  invoca il metodo 
 \shape italic
-closeOtherContacts(Strings)
+closeOtherContacts
 \shape default
 , per controllare che tutte le view presenti nel content siano state chiuse,
  e inizializza 
@@ -2647,7 +2701,7 @@ Conference.
 \emph default
 Inoltre invoca il metodo 
 \emph on
-listContacts(ContactModel) 
+listContacts 
 \emph default
 per visualizzare la lista degli utenti da selezionare per la conferenza
 \end_layout
@@ -2682,7 +2736,7 @@ metodo per impostare la ricezione di una chiamata, i parametri rappresentano
  lo username del chiamante e il tipo di chiamata.
  Invoca la funzione 
 \shape italic
-createCall(String) 
+createCall 
 \emph on
 dell'istanza, della
 \emph default
@@ -2785,7 +2839,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, inoltre richiama il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -2796,7 +2850,7 @@ render()
  metodo per effettuare la scrittura nella pagina del template StatisticsTemplate
  ed invoca il metodo 
 \shape italic
-readStatistic() 
+readStatistic 
 \emph on
 per visualizzare le statistiche a video
 \end_layout
@@ -2813,7 +2867,7 @@ setPeerConn,
 \shape default
  collegandolo al metodo 
 \emph on
-showStatistics(Event)
+showStatistics
 \end_layout
 
 \begin_deeper
@@ -2827,7 +2881,7 @@ showStatistics(Event)
  trasmissione della chiamata.
  Riceve i dati necessari dal metodo 
 \emph on
-getStats() 
+getStats 
 \emph default
 dell'oggetto 
 \emph on
@@ -2940,7 +2994,15 @@ riferimento al template utilizzato
 \begin_layout Itemize
 
 \series bold
-[TutorialModel] currentTutorial:
+[TutorialsCollection] collection:
+\series default
+ lista dei tutorials disponibili
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[TutorialModel] model:
 \series default
  riferimento al tutorial corrente
 \end_layout
@@ -2958,7 +3020,7 @@ click li.videoTutorial:
 \series default
 evento che richiama la funzione 
 \shape italic
-viewTutorial(String)
+watch
 \end_layout
 
 \begin_layout Itemize
@@ -2968,7 +3030,7 @@ click button#next:
 \series default
 evento che richiama la funzione 
 \shape italic
-next()
+watch
 \end_layout
 
 \begin_layout Itemize
@@ -2978,7 +3040,7 @@ click button#previous:
 \series default
 evento che richiama la funzione 
 \shape italic
-prev()
+watch
 \end_layout
 
 \begin_layout Paragraph
@@ -2990,13 +3052,9 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, richiama il metodo 
+ metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-getTutorials() 
-\emph default
-della classe TutorialCommunication e collega il metodo 
-\emph on
-render()
+render
 \emph default
  della classe alla 
 \emph on
@@ -3017,35 +3075,19 @@ collection
 \begin_layout Itemize
 
 \series bold
-[void] viewTutorial([String] tutorial):
+[void] watch([Event] event):
 \series default
- metodo per visualizzare il tutorial selezionato, indicato attraverso il
- parametro, per fare ciò aggiorna il template.
+ metodo per visualizzare il tutorial selezionato, indicato attraverso un
+ parametro indice di 
+\shape italic
+collection
+\shape default
+.
  Inoltre assegna ad 
 \emph on
 currentTutorial 
 \emph default
 il tutorial selezionato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] next():
-\series default
- metodo per passare al video successivo, si occupa anche di aggiornare 
-\emph on
-currentTutorial
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] prev(): 
-\series default
-metodo per passare al video precedente, si occupa anche di aggiornare 
-\emph on
-currentTutorial
 \end_layout
 
 \begin_layout Itemize
@@ -3186,7 +3228,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, si occupa di richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -3205,7 +3247,7 @@ render()
 \series default
  metodo per rimuovere la vista dei dati dell'utente, invoca il metodo 
 \shape italic
-close()
+close
 \end_layout
 
 \begin_layout Itemize
@@ -3216,7 +3258,7 @@ close()
 metodo che provvede a controllare la correttezza della password, per fare
  ciò invoca il metodo 
 \emph on
-checkPassword(UserModel, String, UserDataView)
+checkPassword
 \emph default
  della classe UserDataCommunication
 \end_layout
@@ -3228,13 +3270,7 @@ checkPassword(UserModel, String, UserDataView)
 \series default
  metodo che permette ad altre classi di usufruire del metodo 
 \shape italic
-changeData(UserModel, 
-\shape default
-\emph on
-UserDataView
-\shape italic
-\emph default
-)
+changeData
 \end_layout
 
 \begin_deeper
@@ -3263,7 +3299,7 @@ user
 , coincida con quella di verifica, se supera il controllo invoca il metodo
  
 \shape italic
-changeData(UserModel, String, String, String, UserDataView)
+changeData
 \shape default
  di UserDataCommunication, passandogli i dati aggiornati
 \end_layout
@@ -3289,11 +3325,8 @@ name "sub:Package-Communication"
 \end_layout
 
 \begin_layout Standard
-Nel package 
-\family typewriter
-mytalk.client.communication
-\family default
- sono presenti le classi che effettuano la comunicazione con il server.
+Nel package communication sono presenti le classi che effettuano la comunicazion
+e con il server.
 \end_layout
 
 \begin_layout Paragraph
@@ -3450,9 +3483,7 @@ name "sub:AuthenticationCommunication"
 
 \begin_layout Standard
 La classe AuthenticationCommunication si occupa di inviare le credenziali
- inserite al server, e, inviare la risposta ricevuta a 
-\family typewriter
-mytalk.client.view.AuthenticationView
+ inserite al server, e inviare la risposta ricevuta ad AuthenticationView
 \end_layout
 
 \begin_layout Standard
@@ -3466,7 +3497,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/client/communication/pdf/AuthenticationCommunication.pdf
-	scale 90
+	scale 55
 
 \end_inset
 
@@ -3586,7 +3617,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/client/communication/pdf/CallCommunication.pdf
-	scale 90
+	scale 75
 
 \end_inset
 
@@ -3698,6 +3729,14 @@ recipient
  e il tipo di messaggio da inviare al server
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+[Contact[]] confirmedContact:
+\series default
+ array di contatti contenente tutti i Contact con cui si è in conversazione
+\end_layout
+
 \begin_layout Paragraph
 Metodi pubblici:
 \end_layout
@@ -3705,11 +3744,13 @@ Metodi pubblici:
 \begin_layout Itemize
 
 \series bold
-[void] sendCall([String] typecall, [ContactModel] contact, [CallView] view):
+[void] sendCall([String] typecall, [ContactModel] contact, [CallView] view,
+ [bool] conference):
 \series default
  metodo per inizializzare la chiamata, deve avere come parametri il tipo
- d chiamata, l'istanza della classe ContactModel relativa al contatto e
- una riferimento a CallView.
+ di chiamata, l'istanza della classe ContactModel relativa al contatto,
+ un riferimento a CallView e un booleano che indica se è una chiamata multipla
+ o no.
  Lancia l'evento 
 \shape italic
 setOnCall,
@@ -3746,7 +3787,11 @@ answeredCall
 \emph default
 ; se la risposta risulta affermativa invoca il metodo 
 \shape italic
-startCall(boolean, String, CallCommunication, CallView)
+addVideoConference
+\shape default
+ di CallView, per poi chiamare
+\shape italic
+ startCall
 \shape default
 , avente come parametri se l'utente è il chiamante, quindi in questo caso
  viene inviato true, il tipo di chiamata e i riferimenti alle due classi,
@@ -3770,25 +3815,89 @@ false
 
 \series bold
 [void] sendAnswer([String] typecall, [ContactModel] contact, [CallView]
- view): 
+ view, [bool] conference): 
 \series default
 metodo per inviare all'utente che ha effettuato la chiamata una risposta
  positiva e per invocare il metodo 
 \shape italic
-startCall(boolean,String, CallCommunication, CallView)
+startCall
 \shape default
 , avente come parametri se l'utente è il chiamante, quindi in questo caso
- viene inviato false, il tipo di chiamata e i riferimenti alle due classi
+ viene inviato false, il tipo di chiamata, i riferimenti alle due classi
+ e 
+\shape italic
+conference
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onAddConference([Event] event):
+\series default
+ metodo che gestisce la risposta da un utente con cui si vuole conversare,
+ che può essere:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+addConferenceCaller
+\shape default
+: avvia la comunicazione con l'utente inserendolo in 
+\shape italic
+confirmedContact
+\shape default
+ e invocando i metodi 
+\shape italic
+addVideoConference
+\shape default
+ e 
+\shape italic
+startCall
 \end_layout
 
 \begin_layout Itemize
 
+\shape italic
+addConferenceAnswer
+\shape default
+: avvia la comunicazione con l'utente inserendolo in 
+\shape italic
+confirmedContact
+\shape default
+ e invocando i metodi 
+\shape italic
+addVideoConference
+\shape default
+ e 
+\shape italic
+startCall
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+endCallEarly
+\shape default
+: impedisce l'avvio della chiamata
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
 \series bold
-[void] createPeerConnection(): 
+[void] createPeerConnection([Contact] user): 
 \series default
-metodo per inizializzare 
+metodo per inizializzare una 
 \shape italic
 peerConnection
+\shape default
+ con l'utente 
+\shape italic
+user
 \shape default
  e aggiungere gli ascoltatori per l'aggiunta e la rimozione dello stream
  remoto 
@@ -3831,11 +3940,15 @@ peerConnection
 \begin_layout Itemize
 
 \series bold
-[void] connect([boolean] started):
+[void] connect([boolean] started, [Contact] user):
 \series default
- metodo per inizializzare una RTCPeerConnection invocando il metodo 
+ metodo per inizializzare una RTCPeerConnection con 
 \shape italic
-createPeerConnection()
+user
+\shape default
+ invocando il metodo 
+\shape italic
+createPeerConnection
 \shape default
 , aggiungendo a 
 \shape italic
@@ -3845,202 +3958,128 @@ peerConnection
 \shape italic
 localStream
 \shape default
- e invocando il metodo 
+ e creando un messaggio contente il nostro 
 \shape italic
-createOffer(RTCSessionDescriptionCallback)
+sdp
 \shape default
- di RTCPeerConnection
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] gotDescription(
-\shape italic
-\emph on
-[RTCSessionDescription
-\shape default
-\emph default
-] description): 
-\series default
-metodo per impostare il proprio sdp tramite il metodo 
-\shape italic
-setLocalDescription(RTCSessionDescription)
-\shape default
- di RTCPeerConnection ed inviarlo all'utente con cui si vuole comunicare
- 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] onIceCandidate([Event] event): 
-\series default
-metodo per generare i candidati e memorizzarli in 
-\shape italic
-candidates
-\shape default
- e, una volta salvati tutti, inviarli all'utente remoto se è pronto a riceverli,
- altrimenti invia al server un messaggio che indica la disponibilità a ricevere
- candidati
+ da mandare all'utente con cui si vuole comunicare
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 [void] startCall([boolean] isCaller, [String] typecall, [CallCommunication]
- call, [CallView] view): 
+ call, [CallView] view, [Contact] contact): 
 \series default
 metodo per avviare la comunicazione tra due utenti.
  Imposta 
 \shape italic
-sourcevid
-\shape default
- e 
-\shape italic
 remotevid
 \shape default
-, inizializza il listener 
-\shape italic
-onMessage(Event)
-\shape default
- e nel caso l'utente sia il chiamante imposta lo stream audio o audio/video
- e invoca il metodo 
-\shape italic
-connect(boolean)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-[void] onMessage([Event] event):
-\series default
- metodo per gestire messaggi dal server, in base al pacchetto ricevuto effettua
- una determinata serie di azioni:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-se il pacchetto contiene come tipo 
-\emph on
-offer
-\emph default
-, ed è inviato dal chiamante, imposta 
-\shape italic
-localStream
-\shape default
-, inizializza 
-\shape italic
-peerConnection
-\shape default
- ed imposta il 
-\shape italic
-\emph on
-RTCSessionDescription
-\shape default
-\emph default
- ricevuto e invia il proprio
-\shape italic
-\emph on
- RTCSessionDescription
-\end_layout
-
-\begin_layout Itemize
-se il pacchetto è di tipo 
-\emph on
-answer
-\emph default
-, ed è inviato dal chiamato, imposta in 
-\shape italic
-peerConnection
-\shape default
- il 
-\shape italic
-\emph on
-RTCSessionDescription
-\shape default
-\emph default
- ricevuto
-\end_layout
-
-\begin_layout Itemize
-se il pacchetto contiene il tipo 
-\emph on
-candidateready
-\emph default
- imposta a 
-\emph on
-true
-\emph default
+, inizializza vari listener e se l'utente è il chiamante imposta il listener
  
 \shape italic
-messageReceived
+onAnswerSDP
 \shape default
- e nel caso in cui 
+, altrimenti il listener 
 \shape italic
-readyToSend
+onOfferSDP
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onOfferSDP([Event] event):
+\series default
+ metodo che invoca
+\shape italic
+ createPeerConnection
 \shape default
- sia 
-\emph on
-true
-\emph default
- invia 
+, aggiunge lo stream locale, chiama 
 \shape italic
-candidates
+setRemoteDescription
+\shape default
+ e crea l'
+\shape italic
+answer
+\shape default
+ per l'altro utente.
+ Una volta terminati i propri compiti il listener si cancella
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto contiene il tipo 
-\emph on
-candidate
-\emph default
- preleva il RTCIceCandidate e imposta in 
+
+\series bold
+[void] onAnswerSDP([Event] event):
+\series default
+ metodo che imposta 
+\shape italic
+started
+\shape default
+ a
+\shape italic
+ true
+\shape default
+ e invoca 
+\shape italic
+setRemoteDescription.
+ 
+\shape default
+Una volta terminati i propri compiti il listener si cancella
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] onCandidate([Event] event): 
+\series default
+metodo per impostare i candidati provenienti da un determinato utente all'intern
+o della 
 \shape italic
 peerConnection
+\shape default
+ associata a quell'utente 
 \end_layout
 
 \begin_layout Itemize
-se il pacchetto contiene il tipo 
-\emph on
-endcall
-\emph default
- interrompe 
+
+\series bold
+[void] onEndCall([Event] event):
+\series default
+ metodo per rimuovere gli stream video di altri utenti che abbandonano la
+ chiamata e, in caso 
+\shape italic
+confirmedContact
+\shape default
+ diventi vuoto, interrompere il 
 \shape italic
 localStream
 \shape default
-, chiude 
-\shape italic
-peerConnection
-\shape default
- e lancia l'evento 
-\shape italic
-setOnCall,
-\shape default
- che NotificationCommunication raccoglie per impostare la variabile 
-\emph on
-onCalling
-\emph default
- a 
-\emph on
-false
-\emph default
-, e invoca il metodo 
-\emph on
-endCall(bool)
-\emph default
- di CallView
+, segnalare la disponibilità ad altre chiamata e riportare l'utente su FunctionV
+iew 
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onCandidateReady([Event] event):
+\series default
+ metodo che riconosce il fatto che l'utente remoto sia pronto a ricevere
+ candidati
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-[void] recoverCall():
+[void] recoverCall([CallView] callView):
 \series default
- metodo per ripristinare la visione dello stream nel caso in cui fosse stata
- interrotta selezionando un altro utente
+ metodo per ripristinare la visione dello stream tramite 
+\shape italic
+addVideoConference
+\shape default
+ nel caso in cui fosse stata interrotta selezionando un altro utente
 \end_layout
 
 \begin_layout Itemize
@@ -4056,7 +4095,7 @@ localStream
 \shape italic
 peerConnection
 \shape default
- e lancia l'evento 
+, lancia l'evento 
 \shape italic
 setOnCall,
 \shape default
@@ -4072,7 +4111,8 @@ infine invia al server un pacchetto, contrassegnato dal tipo
 \emph on
 endcall
 \emph default
- contenente lo username del contatto con cui si era in chiamata
+ contenente lo username del contatto con cui si era in chiamata e si assicura
+ di chiudere tutte le view e i listener non più necessari
 \end_layout
 
 \begin_layout Subsubsection
@@ -4237,9 +4277,21 @@ Metodi pubblici:
 \emph on
 getContacts
 \emph default
- contenente lo username dell'utente ed attende la risposta, che consiste
- in un pacchetto, contrassegnato con lo stesso tipo, contenente il numero
- di contatti e la lista con i loro dati.
+ contenente lo username dell'utente ed avvia il listener onmessage
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onmessage([Event] event):
+\series default
+ listener che attende la risposta, che consiste in un pacchetto di tipo
+ 
+\emph on
+getContacts
+\emph default
+ contenente il numero di contatti e la lista con i loro dati.
  Per ogni contatto controlla che esso non sia già presente nella lista utenti,
  se affermativo aggiunge il contatto nella collection, altrimenti aggiorna
  l'attributo 
@@ -4253,6 +4305,7 @@ ContactUser
  corrispondente
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
@@ -4268,7 +4321,8 @@ name "sub:FileCommunication"
 
 \begin_layout Standard
 La classe FileCommunication si occupa di gestire l'invio di file ad un altro
- utente e la ricezione
+ utente e la ricezione.
+ Pur essendo pianificata tale classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -4527,7 +4581,8 @@ name "sub:RecordMessageCommunication"
 
 \begin_layout Standard
 La classe RecordMessageCommunication si occupa di registrare, inviare e
- ricevere i messaggi registrati
+ ricevere i messaggi registrati.
+ Pur essendo pianificata tale classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -4713,7 +4768,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/client/communication/pdf/UserDataCommunication.pdf
-	scale 90
+	scale 67
 
 \end_inset
 
@@ -4759,7 +4814,9 @@ checkCredentials
 \shape italic
 view.callBacks.changeData(UserModel, UserDataView)
 \shape default
-, altrimenti mostra un messaggio di errore
+, altrimenti mostra il messaggio di errore 
+\shape italic
+Password non corretta
 \end_layout
 
 \begin_layout Itemize
@@ -4775,7 +4832,11 @@ changeData
 \emph default
  ed attende la risposta.
  Se il pacchetto di risposta, contrassegnato dallo stesso tipo, è affermativo
- si aggiorneranno i dati del model e si chiama il metodo 
+ vengono aggiornati i dati del model, viene mostrato il messaggio 
+\shape italic
+Operazione riuscita
+\shape default
+ e si chiama il metodo 
 \shape italic
 render()
 \shape default
@@ -4794,11 +4855,8 @@ name "sub:Package-Collection"
 \end_layout
 
 \begin_layout Standard
-Nel package 
-\family typewriter
-mytalk.client.collection
-\family default
- sono presenti le classi che conterranno le liste di oggetti di tipo Model.
+Nel package collection sono presenti le classi che conterranno le liste
+ di oggetti di tipo Model.
  Non è presente una classe del package Collection per ogni classe del package
  Model 
 \end_layout
@@ -5180,12 +5238,9 @@ name "sub:Package-Model"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.client.model
-\family default
- costituisce la parte del sistema dedita alla conservazione dei dati presso
- il client, per la loro conseguente visualizzazione nell'interfaccia utente.
+Il package model costituisce la parte del sistema dedita alla conservazione
+ dei dati presso il client, per la loro conseguente visualizzazione nell'interfa
+ccia utente.
 \end_layout
 
 \begin_layout Paragraph

@@ -27,6 +27,7 @@ define([
 
 
   var ContactView = Backbone.View.extend({
+    conference:'',
     template: _.template(ContactTemplate),
 		tagName: 'li',
     /**
@@ -42,6 +43,7 @@ define([
      * funzione di inizializzazione dell'oggetto
      */
     initialize: function(){
+      this.conference=false;
       this.currentFunctions=null;
       this.listenTo(this.model, 'change', this.render);
       _.bindAll(this, 'view');
@@ -65,8 +67,11 @@ define([
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
       if(!this.currentFunctions)
         this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
-      this.currentFunctions.render();
-      $('#main').prepend(this.currentFunctions.el);
+      console.log("conferenza?? " +this.conference);
+     // if(this.conference==false){
+        this.currentFunctions.render();
+        $('#main').prepend(this.currentFunctions.el);
+    //  }
     },
 
     /**
@@ -90,18 +95,24 @@ define([
       $('#main').prepend(this.currentFunctions.el);
     },
     
-    createCallConference : function(type,contact){
+    createCallConference : function(type,contact, sideView){
       /**
        * condizione messa per evitare di chiudere functionview non ancora create
        */
+      
       if(!this.currentFunctions){
-        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
-      }else{
-        this.currentFunctions.render();
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel, callback:sideView});
       }
-      this.options.callback.closeOtherContacts(this.model.toJSON().username);
-      this.currentFunctions.conference(false,contact);
-      $('#main').prepend(this.currentFunctions.el);
+      if(this.conference==false){
+        this.conference=true;
+        this.options.callback.closeOtherContacts(this.model.toJSON().username);
+        this.currentFunctions.conference(false,contact);
+        $('#main').prepend(this.currentFunctions.el);
+      }else{
+        this.currentFunctions.conference(null,null);
+        }
+      
+      
     }
   });
 

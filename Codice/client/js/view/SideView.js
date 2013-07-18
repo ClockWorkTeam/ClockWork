@@ -47,6 +47,7 @@ define([
 
     myModel : '',
     authenticationView:'',
+    conference:'',
 
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
@@ -61,6 +62,7 @@ define([
      */
 
     initialize:function(){
+      this.conference=false;
 			_.bindAll(this, 'render', 'unrender', 'viewContact');
 			this.listenTo(this.collection, 'add', this.render);
 			document.addEventListener('acceptCall',acceptCall,false);
@@ -114,6 +116,7 @@ define([
 			this.stopListening(this.collection, 'all', this.render);
 			$(this.el).html(this.template({logged: false}));
 			this.destroyContacts();
+      this.closeOtherContacts();
 		},
 
     /**
@@ -122,7 +125,7 @@ define([
 
 		destroyContacts: function(){
 			_.each(this.childViews, function(view){view.close();});
-			_.each(this.collection.record(), function(contact){contact.clear();});
+			_.each(this.collection.record(), function(contact){contact.destroy();});
 		},
 
     /**
@@ -141,16 +144,19 @@ define([
      * si occupa di effettuare conferenze
      */
     StartConference: function(){
-      _.each(this.childViews, function(view){
-        view.close();
-      });
-      if(this.currentFunctions){
-        this.currentFunctions.close();
+      if(this.conference==true){
+        this.currentFunctions.conference(null,null);
+      }else{
+        _.each(this.childViews, function(view){
+          view.close();
+        });
+        if(!this.currentFunctions){
+          this.currentFunctions = new FunctionsView({From: 'Conf', callback: this});
+        }
+        this.currentFunctions.render();
+        $('#main').prepend(this.currentFunctions.el);
+        this.collection.each(this.listContacts);
       }
-      this.currentFunctions = new FunctionsView({From: 'Conf'});
-      this.currentFunctions.render();
-      $('#main').prepend(this.currentFunctions.el);
-      this.collection.each(this.listContacts);
     },
 
     /**
@@ -164,6 +170,7 @@ define([
      * si occupa di chiudere viste inattese
      */
     closeOtherContacts: function(contact){
+      console.log('closeothercontact');
       if(contact && this.authenticationView.userDataView){
         this.authenticationView.userDataView.unrender();
         this.authenticationView.userDataView=undefined;
@@ -184,7 +191,7 @@ define([
 					}
 				}
 			});
-			if(this.currentFunctions){ //callIP o conference
+			if(this.currentFunctions && this.conference==false){ //callIP o conference
 				this.currentFunctions.close();
 				this.currentFunctions=undefined;
 			}
@@ -202,7 +209,6 @@ define([
         trovato=true;
       }
       if(trovato==false){
-        console.log("sto cercando tra gli utenti");
         _.each(this.childViews,
         function(view){
           
@@ -211,7 +217,6 @@ define([
           }
         });
       }else{
-        console.log("sto cercando tra gli IP");
         this.closeOtherContacts();
       
         this.currentFunctions = new FunctionsView({From: 'IP'});  
@@ -228,13 +233,25 @@ define([
      * e generare una conferenza con esso
      */
     setCallConference : function(contact,type){
-      console.log("sto cercando nella conferenza");
+      this.conference=true;
+      var sideView=this;
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
-          view.createCallConference(type,contact);
+          view.createCallConference(type,contact,sideView);
+          sideView.currentFunctions=view.currentFunctions;
         }
       });
+    },
+    
+    setConference : function(){
+      this.conference=true;
+    },
+    
+    closeConference : function(){
+      console.log("chiudo la conferenza");
+      this.conference=false;
+      this.closeOtherContacts();
     }
 
   });

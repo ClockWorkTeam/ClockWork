@@ -1,28 +1,13 @@
-<!--
- * Nome: AuthenticationTemplate.html
- * Package: Template
- * Autore: Furlan Valentino
- * Data: 2013/04/05
- * Versione: 1.0
- *
- * Modifiche:
- * +--------+---------------+----------------------+
- * |  Data  | Programmatore | Modifiche            |
- * +--------+---------------+----------------------+
- * |13/04/06|     FV        | + Campi registrazione|
- * |--------|---------------|----------------------|
- * |13/04/05|     FV        | + Creazione documento|
- * |        |               | + Campi per login    |
- * |_______________________________________________|
- */
--->
+
 
 <% if (!authenticated) { %>
   <% if (!signup) { %>
+  <div class='authentication'>
       <label for='user'>Username</label><input type='text' id='user' name='user' />
       <label for='password'>Password</label><input type='password' id='password' name='password' />
       <button class="btn btn-small" id='login'>Login</button>
       <span>Non sei registrato <button href="#authenticationModal" class="btn btn-small" data-toggle="modal" id='signup'>Registrazione</button></span>
+   </div>
   <% } else{ %>
     <div id="authenticationModal" class="modal hide fade">
 	  <div class="modal-header">
@@ -46,11 +31,12 @@
 <% } %>
 
 <% if (authenticated) { %>
-		<p>Ciao, <%= name %>
-		 <span>
-		  <button class="btn btn-small btn-inverse" id='logout'>Logout</button>
-		  <button class="btn btn-small" id='edit'>Modifica dati profilo</button>
-	     </span>
-	    </p>
-	<% } %>
+<div class='authentication logged'>
+  Ciao, <%= name %>
+	<span>
+	  <button class="btn btn-small btn-inverse" id='logout'>Logout</button>
+	  <button class="btn btn-small" id='edit'>Modifica dati profilo</button>
+	</span>
+</div>
+<% } %>
 
