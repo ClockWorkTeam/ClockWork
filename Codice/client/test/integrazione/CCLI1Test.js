@@ -1,4 +1,4 @@
-define(['../js/view/AuthenticationView'], function( AuthenticationView, AuthenticationCommunication ) {
+define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
 
   module( 'About Login', {
       setup: function() {
@@ -7,10 +7,8 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView, Authenti
         this.commSpy = sinon.spy(this.AuthenticationCommunication, 'checkCredentials');
         this.Connection = require('connection');
         this.sendStub = sinon.stub(this.Connection, 'send');
-        this.callBacksSpy = sinon.spy(this.authenticationView, 'callBacks');
       },
       teardown: function() {
-        this.callBacksSpy.restore();
         this.sendStub.restore();
         this.commSpy.restore();
         this.authenticationView.remove();
@@ -18,13 +16,14 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView, Authenti
   });
 
   test('Login successful.', function() {
-    expect( 2 );
+    expect( 3 );
     
     this.authenticationView.$("#user").val('prova');
     this.authenticationView.$("#password").val('prova');
     this.authenticationView.connect();
     
     ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
+    ok(this.sendStub.called,'Connection.send called');
     
     var data = JSON.stringify({"type":"login","answer":"true"});
     var event = document.createEvent('MessageEvent');
@@ -35,7 +34,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView, Authenti
   });
  
   test('Login unsuccessful.', function() {
-    expect( 3 );
+    expect( 4 );
     
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
     
@@ -44,6 +43,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView, Authenti
     this.authenticationView.connect();
     
     ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
+    ok(this.sendStub.called,'Connection.send called');
     
     var data = JSON.stringify({"type":"login","answer":"false","error":"Messaggio di errore dal server"});
     var event = document.createEvent('MessageEvent');
@@ -51,7 +51,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView, Authenti
     this.Connection.dispatchEvent(event);
 
     equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert correctly displayed.');
-    ok(this.authenticationView.$("#logout").lenght == 0, 'Login unsuccessful');
+    ok(this.authenticationView.$("#logout").lenght == undefined, 'Login unsuccessful');
     
     stub.restore();
     
@@ -60,33 +60,92 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView, Authenti
   module( 'About Logout', {
       setup: function() {
         this.authenticationView = new AuthenticationView();
+        this.AuthenticationCommunication = require('communication/AuthenticationCommunication');
+        this.commSpy = sinon.spy(this.AuthenticationCommunication, 'logout');
+        this.Connection = require('connection');
+        this.sendStub = sinon.stub(this.Connection, 'send');
       },
       teardown: function() {
+        this.sendStub.restore();
+        this.commSpy.restore();
         this.authenticationView.remove();
       }
   });
   
   test('Logout successful.', function() {
-    expect( 1 );
-
-    this.connectSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.authenticationView, 'connect', this.connectSpy );
-    this.authenticationView.delegateEvents();
-    // Trigger the event
-     this.authenticationView.$el.find('button#login').click();
-    // Check the done status for the model is true
-    ok( this.connectSpy.called );
+    expect( 3 );
     
-    this.sendStub.restore();
+    this.authenticationView.disconnect();
+    
+    ok(this.commSpy.called,'AuthenticationCommunication.logout called');
+    ok(this.sendStub.called,'Connection.send called');
+    
+    ok(this.authenticationView.$("#logout").length == 0, 'Logout successful');
   });
   
   module( 'About Signup', {
       setup: function() {
         this.authenticationView = new AuthenticationView();
+        this.AuthenticationCommunication = require('communication/AuthenticationCommunication');
+        this.commSpy = sinon.spy(this.AuthenticationCommunication, 'signup');
+        this.Connection = require('connection');
+        this.sendStub = sinon.stub(this.Connection, 'send');
       },
       teardown: function() {
+        this.sendStub.restore();
+        this.commSpy.restore();
         this.authenticationView.remove();
       }
+  });
+  
+  test('Signup successful.', function() {
+    expect( 3 );
+    
+    this.authenticationView.viewSignup();
+    this.authenticationView.$("#user").val('prova');
+    this.authenticationView.$("#password").val('prova');
+    this.authenticationView.$("#password2").val('prova');
+    this.authenticationView.$("#name").val('prova');
+    this.authenticationView.$("#surname").val('prova');
+    this.authenticationView.signup();
+    
+    ok(this.commSpy.called,'AuthenticationCommunication.signup called');
+    ok(this.sendStub.called,'Connection.send called');
+    
+    var data = JSON.stringify({"type":"signUp","answer":"true"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+    this.Connection.dispatchEvent(event);
+    ok(this.authenticationView.$("#logout").length == 1, 'Signup successful');
+
+  });
+ 
+  test('Signup unsuccessful.', function() {
+    expect( 4 );
+    
+    var stub = this.stub(window, 'alert', function(msg) { return false; } );
+    
+    this.authenticationView.viewSignup();
+    this.authenticationView.$("#user").val('prova');
+    this.authenticationView.$("#password").val('prova');
+    this.authenticationView.$("#password2").val('prova');
+    this.authenticationView.$("#name").val('prova');
+    this.authenticationView.$("#surname").val('prova');
+    this.authenticationView.signup();
+    
+    ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
+    ok(this.sendStub.called,'Connection.send called');
+    
+    var data = JSON.stringify({"type":"signUp","answer":"false","error":"Messaggio di errore dal server"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
+    this.Connection.dispatchEvent(event);
+
+    equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert correctly displayed.');
+    ok(this.authenticationView.$("#logout").lenght == undefined, 'Signup unsuccessful');
+    
+    stub.restore();
+    
   });
   
 });

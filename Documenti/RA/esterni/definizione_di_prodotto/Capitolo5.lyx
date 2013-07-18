@@ -79,7 +79,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/packageServer.pdf
-	width 100text%
+	scale 48
 
 \end_inset
 
@@ -194,12 +194,8 @@ name "sub:Package-dao"
 \end_layout
 
 \begin_layout Standard
-Il package 
-\family typewriter
-mytalk.server.dao
-\family default
- contiene tutte le classi, modellate come Singleton, che si occupano di
- eseguire le operazioni sul database.
+Il package dao contiene tutte le classi, modellate come Singleton, che 
+ si occupano di eseguire le operazioni sul database.
 \end_layout
 
 \begin_layout Paragraph
@@ -329,7 +325,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/JavaConnectionSQLite.pdf
-	scale 90
+	scale 70
 
 \end_inset
 
@@ -541,7 +537,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/RecordMessageDao.pdf
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -653,7 +649,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe RecordMessageDaoSQLite
+Classe RecordMessageDaoSQL
 \end_layout
 
 \end_inset
@@ -721,8 +717,8 @@ select
 \emph on
 SQLException 
 \emph default
-viene catturata dal metodo stesso e vengono restituiti 
- tutti i messaggi aggiunti fino a quel momento
+viene catturata dal metodo stesso e vengono restituiti  tutti i messaggi
+ aggiunti fino a quel momento
 \end_layout
 
 \begin_layout Itemize
@@ -812,7 +808,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/TutorialsDaoSQL.pdf
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -820,7 +816,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classe TutorialsDaoSQLite
+Classe TutorialsDaoSQL
 \end_layout
 
 \end_inset
@@ -1011,7 +1007,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/dao/pdf/UserDao.pdf
-	scale 70
+	scale 80
 
 \end_inset
 
@@ -1074,7 +1070,8 @@ boolean checkPassword(String username, String password):
 boolean setPassword(String username, String password): 
 \series default
 imposta la password dell'utente, avente lo username corrispondente a quello
- passato per parametro, con il nuovo valore
+ passato per parametro, con il nuovo valore.
+  La password viene salvata in chiaro.
 \end_layout
 
 \begin_layout Itemize
@@ -1211,9 +1208,9 @@ executeUpdate
 della classe JavaConnectionSQLite, passando come parametro la query per
  l'inserimento dei dati nella tabella 
 \emph on
-UserDataSQL.
-
+UserDataSQL
 \emph default
+, in cui la password viene memorizzata in chiaro.
  Infine restituisce un booleano che indicherà il successo o il fallimento
  dell'operazione
 \end_layout
@@ -1279,6 +1276,7 @@ select
 (UserDataSQL,*, username=username AND (password=password),)
 \emph default
 .
+ Le password sono salvate in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1293,11 +1291,8 @@ e a quello passato per parametro, invocando il metodo
 \emph on
 executeUpdate 
 \emph default
-della classe JavaConnectionSQLite
-\emph on
-.
-
-\emph default
+della classe JavaConnectionSQLite, tramite il quale la password viene salvata
+ in chiaro.
  Restituisce un booleano che rappresenta il successo o il fallimento dell'operaz
 ione
 \end_layout
@@ -1673,7 +1668,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/shared/pdf/Tutorials.pdf
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -1733,7 +1728,7 @@ void insert(String title, String url):
 \series bold
 Map<String, String> getTutorials():
 \series default
- restituisce la lista di tutorial
+ restituisce la lista dei tutorials
 \end_layout
 
 \begin_layout Subsubsection
@@ -2019,6 +2014,14 @@ Vector<User> getAllUsers():
 metodo che restituisce tutta la lista di utenti
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+void removeAll(): 
+\series default
+metodo che rimuove tutti gli utenti dal vettore
+\end_layout
+
 \begin_layout Paragraph
 Metodi privati
 \end_layout
@@ -2045,7 +2048,8 @@ name "sub:Package-usermanager"
 \end_layout
 
 \begin_layout Standard
-Lo strato manager del server si occupa delle funzionalità logiche del server
+Il package usermanager del server si occupa delle funzionalità di gestione
+ e trasferimento  di tutti i dati riguardanti gli utenti
 \end_layout
 
 \begin_layout Paragraph
@@ -2057,7 +2061,7 @@ Costituito dalle classi:
 \family typewriter
 mytalk.server.usermanager.AuthenticationManager
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.AuthenicationManager"
@@ -2072,7 +2076,7 @@ reference "sub:mytalk.server.usermanager.AuthenicationManager"
 \family typewriter
 mytalk.server.usermanager.UserManager 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.usermanager.UserManager"
@@ -2115,7 +2119,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/usermanager/pdf/AuthenticationManager.pdf
-	scale 80
+	scale 75
 
 \end_inset
 
@@ -2198,8 +2202,8 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti si prosegue controllando la validità della password, utilizzando
- il metodo 
+ Altrimenti si prosegue controllando la validità della password,salvata
+ in chiaro,  utilizzando il metodo 
 \emph on
 checkPassword
 \emph default
@@ -2261,7 +2265,7 @@ delle classi UserDaoSQL e UserList per modificare l'indirizzo IP ad una
 \emph on
 0
 \emph default
-, che rappresenta un'utente non connesso.
+, che rappresenta un utente non connesso.
  Infine restituisce l'utente ottenuto dalla prima operazione
 \end_layout
 
@@ -2279,7 +2283,7 @@ Exception,
 \emph default
 avente come messaggio 
 \emph on
-Username già presente
+Username utilizzato da un altro utente
 \emph default
 .
  Altrimenti
@@ -2302,7 +2306,7 @@ Exception
 \emph default
 , avente come messaggio 
 \emph on
-Errore nell'inserimento dell'utente nel database
+Operazione di registrazione fallita
 \emph default
 .
  Altrimenti aggiunge il nuovo utente in UserList e lo restituisce
@@ -2386,7 +2390,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/usermanager/pdf/UserManager.pdf
-	scale 90
+	scale 78
 
 \end_inset
 
@@ -2426,7 +2430,7 @@ riferimento alla istanza della classe UserDaoSQL, per eseguire le operazioni
 \begin_layout Itemize
 
 \series bold
-RecordMessageDao messageDao:
+RecordMessageDao recordMessageDao:
 \series default
  riferimento alla istanza della classe RecordMessageDaoSQL per permettere
  le operazioni sui messaggi registrati
@@ -2454,8 +2458,8 @@ di ciascuna delle due classi UserDaoSQL e RecordMessageDaoSQL
 \series bold
 boolean checkPassword(String username, String password):
 \series default
- controlla la corrispondenza dello username passato con la password passata,
- invocando il metodo 
+ controlla la corrispondenza dello username passato con la password passata
+ in chiaro, invocando il metodo 
 \emph on
 checkPassword 
 \emph default
@@ -2486,9 +2490,9 @@ Exception
 Username errato
 \emph default
 .
- Altrimenti modifica la password esistente con quella passata, dell'utente
- avente username corrispondente a quello passato per parametro.
- Per fare ciò utilizza il metodo 
+ Altrimenti modifica la password esistente dell'utente trovato, inserendo
+  la password passata per parametro in chiaro.
+  Per fare ciò utilizza il metodo 
 \emph on
 setPassword 
 \emph default
@@ -2548,8 +2552,8 @@ getInstance
 \series bold
 User getUserData(String username)
 \series default
-: l'utente corrispondente al dato username, presente nel database, invocando
- il metodo 
+: ritorna l'utente corrispondente al dato username, presente nel database,
+ invocando il metodo 
 \emph on
 getUser
 \emph default
@@ -3006,7 +3010,7 @@ Costituito dalle classi:
 \family typewriter
 mytalk.server.transfer.ListenerTransfer 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.ListenerTransfer"
@@ -3021,7 +3025,7 @@ reference "sub:mytalk.server.transfer.ListenerTransfer"
 \family typewriter
 mytalk.server.transfer.AuthenticationTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:AuthenticationTransfer"
@@ -3036,7 +3040,7 @@ reference "sub:AuthenticationTransfer"
 \family typewriter
 mytalk.server.transfer.CallTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.CallTransfer"
@@ -3051,7 +3055,7 @@ reference "sub:mytalk.server.transfer.CallTransfer"
 \family typewriter
 mytalk.server.transfer.ChatTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.ChatTransfer"
@@ -3066,7 +3070,7 @@ reference "sub:mytalk.server.transfer.ChatTransfer"
 \family typewriter
 mytalk.server.transfer.FileTransfer
 \family default
- (vedasi sezione
+ (vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.FileTransfer"
@@ -3081,7 +3085,7 @@ reference "sub:mytalk.server.transfer.FileTransfer"
 \family typewriter
 mytalk.server.transfer.RecordMessageTransfer
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.RecordMessageTransfer"
@@ -3096,7 +3100,7 @@ reference "sub:mytalk.server.transfer.RecordMessageTransfer"
 \family typewriter
 mytalk.server.transfer.UserTransfer 
 \family default
-(vedasi sezione
+(vedasi sezione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:mytalk.server.transfer.UserTransfer"
@@ -3137,7 +3141,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/transfer/pdf/ListenerTransfer.pdf
-	scale 90
+	scale 80
 
 \end_inset
 
@@ -3265,7 +3269,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/server/transfer/pdf/AuthenticationTransfer.pdf
-	scale 90
+	scale 67
 
 \end_inset
 
