@@ -1642,96 +1642,6 @@ ritorna la data di creazione del messaggio
 \end_layout
 
 \begin_layout Subsubsection
-mytalk.server.shared.Tutorials
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:mytalk.server.shared.Tutorials"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La classe Tutorials rappresenta la lista dei tutorials presenti nel server.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/server/shared/pdf/Tutorials.pdf
-	scale 90
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Classe Tutorials
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Attributi privati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Map<String, String> tutorials: 
-\series default
-rappresenta la lista dei tutorials, come chiave di identificazione viene
- usato il titolo del tutorial
-\end_layout
-
-\begin_layout Paragraph
-Metodi pubblici
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Tutorials(int num):
-\series default
- costruttore che inizializza la lista di tutorials della dimensione passatagli
- dal parametro
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-void insert(String title, String url):
-\series default
- inserisce un nuovo tutorial nella lista
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Map<String, String> getTutorials():
-\series default
- restituisce la lista di tutorial
-\end_layout
-
-\begin_layout Subsubsection
 mytalk.server.shared.User
 \begin_inset CommandInset label
 LatexCommand label
@@ -2034,6 +1944,96 @@ UserList():
  costruttore della classe che inizializza il vettore 
 \emph on
 users
+\end_layout
+
+\begin_layout Subsubsection
+mytalk.server.shared.Tutorials
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mytalk.server.shared.Tutorials"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La classe Tutorials rappresenta la lista dei tutorials presenti nel server.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/server/shared/pdf/Tutorials.pdf
+	scale 90
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Classe Tutorials
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Attributi privati
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Map<String, String> tutorials: 
+\series default
+rappresenta la lista dei tutorials, come chiave di identificazione viene
+ usato il titolo del tutorial
+\end_layout
+
+\begin_layout Paragraph
+Metodi pubblici
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tutorials(int num):
+\series default
+ costruttore che inizializza la lista di tutorials della dimensione passatagli
+ dal parametro
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void insert(String title, String url):
+\series default
+ inserisce un nuovo tutorial nella lista
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Map<String, String> getTutorials():
+\series default
+ restituisce la lista di tutorial
 \end_layout
 
 \begin_layout Subsection
@@ -3911,8 +3911,8 @@ name "sub:mytalk.server.transfer.RecordMessageTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe RecordMessageTransfer si occupa della registrazione dei messaggi.
-Tale classe, seppur pianificata, non è stata implementata
+La classe RecordMessageTransfer si occupa della registrazione dei messaggi.Tale
+ classe, seppur pianificata, non è stata implementata
 \end_layout
 
 \begin_layout Standard
