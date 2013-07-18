@@ -1,19 +1,3 @@
-<!--
- * Nome: TutorialTemplate.html
- * Package: Template
- * Autore: Furlan Valentino
- * Data: 2013/04/05
- * Versione: 1.0
- *
- * Modifiche:
- * +--------+---------------+----------------------+
- * |  Data  | Programmatore | Modifiche            |
- * +--------+---------------+----------------------+
- * |        |               |                      |
- * |________|_______________|______________________|
- */
--->
-
   <% if (list) { %>
     <ul>
       <% _.each( results, function( item, i ){ %>
@@ -24,6 +8,7 @@
       <h2><%= titolo %></h2>
   	  <iframe width="560" height="315" src="//www.youtube.com/embed/<%= url %>?autoplay=1&rel=0" frameborder="0" allowfullscreen></iframe>
   	  <% if (!first) { %><button class="btn btn-small" id='prev' data-number="<%= position-1 %>">Video precedente</button><% } %>
+  	  <button class="btn btn-small" id='indice'>Torna all'indice</button>
   	  <% if (!last) { %><button class="btn btn-small" id='next'data-number="<%= position+1 %>">Video successivo</button><% } %>
   <% } %>
 

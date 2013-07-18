@@ -1365,7 +1365,7 @@ click button#sendFile:
 \series default
 evento che richiama la funzione 
 \emph on
-sendFile()
+sendFile
 \end_layout
 
 \begin_layout Paragraph
@@ -1379,7 +1379,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, si occupa di richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -1397,9 +1397,9 @@ render()
 \series default
  metodo che invia il file al server, attraverso l'utilizzo del metodo 
 \emph on
-sendFile(String, File) 
+sendFile
 \emph default
-di FileCommunication
+ di FileCommunication
 \end_layout
 
 \begin_layout Itemize
@@ -1529,7 +1529,7 @@ click button#dataContact:
 \series default
 evento che richiama la funzione 
 \emph on
-viewDataContact()
+viewDataContact
 \end_layout
 
 \begin_layout Itemize
@@ -1539,7 +1539,7 @@ click button#sendVideoText:
 \series default
 evento che richiama la funzione 
 \emph on
-sendVideoText()
+sendVideoText
 \end_layout
 
 \begin_layout Itemize
@@ -1549,7 +1549,7 @@ click button#sendFile:
 \series default
 evento che richiama la funzione 
 \emph on
-sendFile()
+sendFile
 \end_layout
 
 \begin_layout Itemize
@@ -1559,7 +1559,7 @@ click button#call:
 \series default
 evento che richiama la funzione 
 \emph on
-audiocall()
+audiocall
 \end_layout
 
 \begin_layout Itemize
@@ -1569,7 +1569,27 @@ click button#video:
 \series default
 evento che richiama la funzione 
 \emph on
-videocall()
+videocall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#record: 
+\series default
+evento che richiama la funzione 
+\shape italic
+record
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#startConference: 
+\series default
+evento che richiama la funzione 
+\shape italic
+conference
 \end_layout
 
 \begin_layout Paragraph
@@ -1583,7 +1603,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-render()
+render
 \emph default
  della classe al model in modo da richiamarlo ogni qual volta avvenga un
  cambiamento di quest'ultimo
@@ -1611,7 +1631,7 @@ chatView
 \emph default
 , se non è già esistente, e invoca il metodo 
 \shape italic
-render() 
+render 
 \emph on
 della classe ChatView
 \end_layout
@@ -1733,6 +1753,18 @@ della classe CallView
 [void] viewDataContact():
 \series default
  metodo che mostra i dati dell'utente selezionato
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] conference():
+\series default
+ metodo che inizializza la conferenza e chiama il metodo 
+\shape italic
+conference
+\shape default
+ di CallView
 \end_layout
 
 \begin_layout Itemize
@@ -1862,7 +1894,7 @@ click button#acceptCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-acceptCall()
+acceptCall
 \end_layout
 
 \begin_layout Itemize
@@ -1872,7 +1904,7 @@ click button#refuseCall:
 \series default
 evento che richiama la funzione 
 \shape italic
-refuseCall()
+refuseCall
 \end_layout
 
 \begin_layout Itemize
@@ -1883,8 +1915,6 @@ click button#viewMessage:
  evento che richiama la funzione 
 \emph on
 viewRecordMessage
-\emph default
-()
 \end_layout
 
 \begin_layout Itemize
@@ -1895,8 +1925,6 @@ click button#ignoreMessage:
  evento che richiama la funzione 
 \emph on
 ignoreMessage
-\emph default
-()
 \end_layout
 
 \begin_layout Itemize
@@ -1907,8 +1935,6 @@ click button#acceptFile
 : evento che richiama la funzione 
 \emph on
 acceptFile
-\emph default
-()
 \end_layout
 
 \begin_layout Itemize
@@ -1918,7 +1944,7 @@ click button#refuseFile
 \series default
 : evento che richiama la funzione 
 \emph on
-refuseFile()
+refuseFile
 \end_layout
 
 \begin_layout Paragraph
@@ -1941,7 +1967,7 @@ true
 \emph default
 e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -1960,7 +1986,7 @@ te
 \series default
  metodo per rimuovere la vista delle notifiche, invoca il metodo 
 \shape italic
-close()
+close
 \end_layout
 
 \begin_layout Itemize
@@ -1970,7 +1996,7 @@ close()
 \series default
  metodo per accettare una chiamata in arrivo, invoca il metodo 
 \shape italic
-unrender()
+unrender
 \shape default
  e assegna a 
 \emph on
@@ -2003,7 +2029,7 @@ false
 \emph default
  chiama il metodo 
 \shape italic
-refuseCall()
+refuseCall
 \end_layout
 
 \begin_layout Itemize
@@ -2013,11 +2039,11 @@ refuseCall()
 \series default
 metodo per rifiutare una chiamata, per fare ciò invoca il metodo
 \shape italic
- refuseCall(String)
+ refuseCall
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
-unrender() 
+unrender 
 \emph on
 della classe stessa
 \end_layout
@@ -2025,12 +2051,12 @@ della classe stessa
 \begin_layout Itemize
 
 \series bold
-[void] viewMessage(): 
+[void] viewRecordMessage(): 
 \series default
 metodo per visualizzare il messaggio video/audio ricevuto, invoca il metodo
  
 \shape italic
-unrender()
+unrender
 \shape default
  e invia un evento di tipo 
 \emph on
@@ -2047,7 +2073,7 @@ che viene catturato da SideView
 metodo per ignorare la visualizzazione del messaggio video/audio ricevuto,
  invoca il metodo 
 \shape italic
-unrender()
+unrender
 \shape default
  
 \end_layout
@@ -2060,7 +2086,7 @@ unrender()
  metodo per accettare la ricezione di un file in arrivo, scarica il file
  e invoca il metodo 
 \shape italic
-unrender()
+unrender
 \shape default
  
 \end_layout
@@ -2073,11 +2099,11 @@ unrender()
 metodo per rifiutare la ricezione di un file in arrivo, per fare ciò invoca
  il metodo
 \shape italic
- refuseFile(String)
+ refuseFile
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
-unrender() 
+unrender 
 \emph on
 della classe stessa
 \end_layout
@@ -2106,7 +2132,11 @@ name "sub:RecordMessageView"
 \begin_layout Standard
 La classe RecordMessageView definisce la struttura, e la conseguente visualizzaz
 ione, della parte della pagina web per effettuare registrazioni audio o
- audio/video da inviare ad un utente registrato
+ audio/video da inviare ad un utente registrato.
+\end_layout
+
+\begin_layout Standard
+Pur essendo pianificata questa classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -2186,7 +2216,7 @@ click button#startRecord:
 \series default
 evento che richiama la funzione 
 \shape italic
-startRecording()
+startRecording
 \end_layout
 
 \begin_layout Itemize
@@ -2196,7 +2226,7 @@ click button#stopRecord:
 \series default
 evento che richiama la funzione 
 \shape italic
-stopRecording()
+stopRecording
 \end_layout
 
 \begin_layout Itemize
@@ -2206,7 +2236,7 @@ click button#sendRecord:
 \series default
 evento che richiama la funzione 
 \shape italic
-sendRecording()
+sendRecording
 \end_layout
 
 \begin_layout Itemize
@@ -2216,7 +2246,7 @@ click li.message:
 \series default
  evento che richiama la funzione 
 \emph on
-viewMessage(Event)
+viewMessage
 \end_layout
 
 \begin_layout Itemize
@@ -2226,7 +2256,7 @@ click button#removeRecord:
 \series default
 evento che richiama la funzione 
 \emph on
-removeMessage()
+removeMessage
 \end_layout
 
 \begin_layout Paragraph
@@ -2245,7 +2275,7 @@ localstream
 \shape default
  e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -2291,11 +2321,7 @@ metodo per fermare la registrazione del messaggio, sostituisce il pulsante
 \series default
  metodo per inviare il messaggio, invocando il metodo 
 \emph on
-sendRecordMessage(String
-\emph default
-,
-\emph on
- Blob)
+sendRecordMessage
 \emph default
  di RecordMessageCommunication e ripristinando lo stato iniziale della view
 \end_layout
@@ -2316,7 +2342,7 @@ metodo per visualizzare il video messaggio selezionato, si occupa anche
 \series default
 metodo per eliminare il video messaggio selezionato, invoca il metodo 
 \emph on
-removeRecordMessage(RecordMessageModel) 
+removeRecordMessage 
 \emph default
 della classe RecordMessageCommunication
 \end_layout
@@ -2458,7 +2484,7 @@ click button#callIP:
 \series default
 evento che richiama la funzione 
 \shape italic
-callIP()
+callIP
 \end_layout
 
 \begin_layout Itemize
@@ -2468,7 +2494,7 @@ click button#Conference:
 \series default
 evento che richiama la funzione 
 \shape italic
-startConference()
+startConference
 \end_layout
 
 \begin_layout Paragraph
@@ -2521,14 +2547,26 @@ inviati da NotificationView.
 \series default
 metodo che invoca il metodo 
 \shape italic
-setCall(String, String) 
+setCall
 \emph on
-avente come parametri l'username del contatto che ha iniziato la chiamata
+ avente come parametri l'username del contatto che ha iniziato la chiamata
  e
 \emph default
  
 \emph on
 il tipo di chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] acceptCallConference([Event] event):
+\series default
+ metodo che invoca il metodo 
+\shape italic
+setCallConference
+\shape default
+ 
 \end_layout
 
 \end_deeper
@@ -2549,7 +2587,7 @@ authenticationView
  e aggiornando il template con lo stato dell'utente impostato a connesso.
  Inoltre invoca il metodo 
 \shape italic
-fetchContacts(String)
+fetchContacts
 \shape default
  della classe ContactsCommunication per popolare la lista degli utenti registrat
 i al server
@@ -2563,7 +2601,7 @@ i al server
  metodo per visualizzare l'ultimo utente aggiunto nella collection, per
  fare ciò invoca il metodo 
 \emph on
-viewContact(ContactModel)
+viewContact
 \end_layout
 
 \begin_layout Itemize
@@ -2592,11 +2630,11 @@ collection
 \emph default
 e il metodo 
 \emph on
-render()
+render
 \emph default
 , ripristina il template originale e invoca il metodo 
 \emph on
-destroyContacts()
+destroyContacts
 \end_layout
 
 \begin_layout Itemize
@@ -2621,7 +2659,7 @@ collection
  metodo per effettuare una comunicazione attraverso indirizzo IP, per fare
  ciò inizialmente invoca il metodo 
 \shape italic
-closeOtherContacts(Strings)
+closeOtherContacts
 \shape default
 , per controllare che tutte le view presenti nel content siano state chiuse,
  e inizializza 
@@ -2645,7 +2683,7 @@ IP
  metodo per effettuare una videoconferenza, , per fare ciò inizialmente
  invoca il metodo 
 \shape italic
-closeOtherContacts(Strings)
+closeOtherContacts
 \shape default
 , per controllare che tutte le view presenti nel content siano state chiuse,
  e inizializza 
@@ -2663,7 +2701,7 @@ Conference.
 \emph default
 Inoltre invoca il metodo 
 \emph on
-listContacts(ContactModel) 
+listContacts 
 \emph default
 per visualizzare la lista degli utenti da selezionare per la conferenza
 \end_layout
@@ -2698,7 +2736,7 @@ metodo per impostare la ricezione di una chiamata, i parametri rappresentano
  lo username del chiamante e il tipo di chiamata.
  Invoca la funzione 
 \shape italic
-createCall(String) 
+createCall 
 \emph on
 dell'istanza, della
 \emph default
@@ -2801,7 +2839,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, inoltre richiama il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -2812,7 +2850,7 @@ render()
  metodo per effettuare la scrittura nella pagina del template StatisticsTemplate
  ed invoca il metodo 
 \shape italic
-readStatistic() 
+readStatistic 
 \emph on
 per visualizzare le statistiche a video
 \end_layout
@@ -2829,7 +2867,7 @@ setPeerConn,
 \shape default
  collegandolo al metodo 
 \emph on
-showStatistics(Event)
+showStatistics
 \end_layout
 
 \begin_deeper
@@ -2843,7 +2881,7 @@ showStatistics(Event)
  trasmissione della chiamata.
  Riceve i dati necessari dal metodo 
 \emph on
-getStats() 
+getStats 
 \emph default
 dell'oggetto 
 \emph on
@@ -2956,7 +2994,15 @@ riferimento al template utilizzato
 \begin_layout Itemize
 
 \series bold
-[TutorialModel] currentTutorial:
+[TutorialsCollection] collection:
+\series default
+ lista dei tutorials disponibili
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[TutorialModel] model:
 \series default
  riferimento al tutorial corrente
 \end_layout
@@ -2974,7 +3020,7 @@ click li.videoTutorial:
 \series default
 evento che richiama la funzione 
 \shape italic
-viewTutorial(String)
+watch
 \end_layout
 
 \begin_layout Itemize
@@ -2984,7 +3030,7 @@ click button#next:
 \series default
 evento che richiama la funzione 
 \shape italic
-next()
+watch
 \end_layout
 
 \begin_layout Itemize
@@ -2994,7 +3040,7 @@ click button#previous:
 \series default
 evento che richiama la funzione 
 \shape italic
-prev()
+watch
 \end_layout
 
 \begin_layout Paragraph
@@ -3006,13 +3052,9 @@ Metodi pubblici:
 \series bold
 [void] initialize():
 \series default
- metodo per inizializzare l'oggetto, richiama il metodo 
+ metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-getTutorials() 
-\emph default
-della classe TutorialCommunication e collega il metodo 
-\emph on
-render()
+render
 \emph default
  della classe alla 
 \emph on
@@ -3033,35 +3075,19 @@ collection
 \begin_layout Itemize
 
 \series bold
-[void] viewTutorial([String] tutorial):
+[void] watch([Event] event):
 \series default
- metodo per visualizzare il tutorial selezionato, indicato attraverso il
- parametro, per fare ciò aggiorna il template.
+ metodo per visualizzare il tutorial selezionato, indicato attraverso un
+ parametro indice di 
+\shape italic
+collection
+\shape default
+.
  Inoltre assegna ad 
 \emph on
 currentTutorial 
 \emph default
 il tutorial selezionato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] next():
-\series default
- metodo per passare al video successivo, si occupa anche di aggiornare 
-\emph on
-currentTutorial
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] prev(): 
-\series default
-metodo per passare al video precedente, si occupa anche di aggiornare 
-\emph on
-currentTutorial
 \end_layout
 
 \begin_layout Itemize
@@ -3202,7 +3228,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, si occupa di richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -3221,7 +3247,7 @@ render()
 \series default
  metodo per rimuovere la vista dei dati dell'utente, invoca il metodo 
 \shape italic
-close()
+close
 \end_layout
 
 \begin_layout Itemize
@@ -3232,7 +3258,7 @@ close()
 metodo che provvede a controllare la correttezza della password, per fare
  ciò invoca il metodo 
 \emph on
-checkPassword(UserModel, String, UserDataView)
+checkPassword
 \emph default
  della classe UserDataCommunication
 \end_layout
@@ -3244,13 +3270,7 @@ checkPassword(UserModel, String, UserDataView)
 \series default
  metodo che permette ad altre classi di usufruire del metodo 
 \shape italic
-changeData(UserModel, 
-\shape default
-\emph on
-UserDataView
-\shape italic
-\emph default
-)
+changeData
 \end_layout
 
 \begin_deeper
@@ -3279,7 +3299,7 @@ user
 , coincida con quella di verifica, se supera il controllo invoca il metodo
  
 \shape italic
-changeData(UserModel, String, String, String, UserDataView)
+changeData
 \shape default
  di UserDataCommunication, passandogli i dati aggiornati
 \end_layout

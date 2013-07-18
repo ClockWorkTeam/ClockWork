@@ -194,8 +194,8 @@ name "sub:Package-dao"
 \end_layout
 
 \begin_layout Standard
-Il package dao contiene tutte le classi, modellate come Singleton, che 
- si occupano di eseguire le operazioni sul database.
+Il package dao contiene tutte le classi, modellate come Singleton, che si
+ occupano di eseguire le operazioni sul database.
 \end_layout
 
 \begin_layout Paragraph
@@ -853,9 +853,9 @@ Tutorials tutorials:
 \begin_layout Itemize
 
 \series bold
-[static] TutorialsDaoSQL tutorialsDaoSQL[=null]
+[static] TutorialsDaoSQL tutorialsDaoSQL[=null]:
 \series default
-: riferimento statico alla classe stessa
+ riferimento statico alla classe stessa
 \end_layout
 
 \begin_layout Paragraph
@@ -1051,9 +1051,9 @@ boolean removeUser(String username):
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+User getUser(String username):
 \series default
-: restituisce l'utente avente username corrispondente a quello dato
+ restituisce l'utente avente username corrispondente a quello dato
 \end_layout
 
 \begin_layout Itemize
@@ -1238,9 +1238,9 @@ UserDataSQL.
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+User getUser(String username):
 \series default
-: invoca il metodo 
+ invoca il metodo 
 \emph on
 select
 \emph default
@@ -1760,57 +1760,57 @@ User(String username, String name, String surname, String IP):
 \begin_layout Itemize
 
 \series bold
-String getUsername()
+String getUsername():
 \series default
-: ritorna lo username dell'utente
+ ritorna lo username dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String getName()
+String getName():
 \series default
-: ritorna il nome dell'utente
+ ritorna il nome dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String getSurname()
+String getSurname():
 \series default
-: ritorna il cognome dell'utente
+ ritorna il cognome dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-String getIP()
+String getIP():
 \series default
-: ritorna l'indirizzo IP dell'utente
+ ritorna l'indirizzo IP dell'utente
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setName(String name)
+void setName(String name):
 \series default
-: imposta il nome dell'utente con il nuovo valore
+ imposta il nome dell'utente con il nuovo valore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setSurname(String surname)
+void setSurname(String surname):
 \series default
-: imposta il cognome dell'utente con il nuovo valore
+ imposta il cognome dell'utente con il nuovo valore
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-void setIP(String IP)
+void setIP(String IP):
 \series default
-: imposta l'indirizzo IP dell'utente con il nuovo valore
+ imposta l'indirizzo IP dell'utente con il nuovo valore
 \end_layout
 
 \begin_layout Subsubsection
@@ -1883,9 +1883,9 @@ Vector<User> users:
 \begin_layout Itemize
 
 \series bold
-[static] UserList userList[=null]
+[static] UserList userList[=null]:
 \series default
-: riferimento statico alla classe stessa
+ riferimento statico alla classe stessa
 \end_layout
 
 \begin_layout Paragraph
@@ -2566,9 +2566,9 @@ getInstance
 \begin_layout Itemize
 
 \series bold
-User getUserData(String username)
+User getUserData(String username):
 \series default
-: ritorna l'utente corrispondente al dato username, presente nel database,
+ ritorna l'utente corrispondente al dato username, presente nel database,
  invocando il metodo 
 \emph on
 getUser
@@ -2620,7 +2620,7 @@ null
 \series bold
 Vector<RecordMessage> getMessages(String username):
 \series default
-ritorna il vettore dei messaggi differiti che sono stati mandati all'utente
+ ritorna il vettore dei messaggi differiti che sono stati mandati all'utente
  avente username corrispondente a quello dato.
  Per fare ciò invoca il metodo 
 \emph on
@@ -2992,8 +2992,12 @@ String convertMessages(Vector<RecordMessage> messages, String type):
  per argomento, inserendo inizialmente la stringa type e il numero di messaggi
  presenti nel vettore.
  La stringa risultante è analoga a quella mostrata negli esempi 1 e 2, per
- il metodo convertUsers(Vector<User> users, String type), con la differenza
- che al posto degli attributi degli utenti, si hanno quelli dei messaggi
+ il metodo 
+\shape italic
+convertUsers
+\shape default
+, con la differenza che al posto degli attributi degli utenti, si hanno
+ quelli dei messaggi
 \end_layout
 
 \begin_layout Itemize
@@ -3004,8 +3008,12 @@ String convertTutorials(Map<String, String> tutorials, String type):
  metodo che converte in forma di stringa JSON i tutorials passati per argomento,
  inserendo inizialmente la stringa type e il numero di tutorials presenti.
  La stringa risultante è analoga a quella mostrata negli esempi 1 e 2, per
- il metodo convertUsers(Vector<User> users, String type), con la differenza
- che al posto degli attributi degli utenti, si hanno quelli dei tutorial
+ il metodo 
+\shape italic
+convertUsers
+\shape default
+, con la differenza che al posto degli attributi degli utenti, si hanno
+ quelli dei tutorial
 \end_layout
 
 \begin_layout Subsection
@@ -3199,17 +3207,17 @@ TokenServer tokenServer:
 \begin_layout Itemize
 
 \series bold
-Collection<WebSocketConnector> connectedUsers
+Collection<WebSocketConnector> connectedUsers:
 \series default
-: lista dei connettori collegati al server
+ lista dei connettori collegati al server
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Converter converter
+Converter converter:
 \series default
-: riferimento alla classe Converter
+ riferimento alla classe Converter
 \end_layout
 
 \begin_layout Paragraph
@@ -3305,8 +3313,6 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 Classe AuthenticationTransfer
 \end_layout
 

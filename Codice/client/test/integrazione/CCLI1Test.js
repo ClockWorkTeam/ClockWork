@@ -1,6 +1,6 @@
 define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
 
-  module( 'About Login', {
+  module( 'Login', {
       setup: function() {
         this.authenticationView = new AuthenticationView();
         this.AuthenticationCommunication = require('communication/AuthenticationCommunication');
@@ -15,25 +15,25 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
       }
   });
 
-  test('Login successful.', function() {
+  test('Login con credenziali valide', function() {
     expect( 3 );
     
     this.authenticationView.$("#user").val('prova');
     this.authenticationView.$("#password").val('prova');
     this.authenticationView.connect();
     
-    ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
-    ok(this.sendStub.called,'Connection.send called');
+    ok(this.commSpy.called,'Chiamo il metodo per cercare i dati nel server');
+    ok(this.sendStub.called,'Invio il messaggio al server');
     
     var data = JSON.stringify({"type":"login","answer":"true"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
-    ok(this.authenticationView.$("#logout").length == 1, 'Login successful');
+    ok(this.authenticationView.$("#logout").length == 1, 'Login effettuato');
 
   });
  
-  test('Login unsuccessful.', function() {
+  test('Login con credenziali non valide', function() {
     expect( 4 );
     
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -42,22 +42,22 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.authenticationView.$("#password").val('prova');
     this.authenticationView.connect();
     
-    ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
-    ok(this.sendStub.called,'Connection.send called');
+    ok(this.commSpy.called,'Chiamo il metodo per cercare i dati nel server');
+    ok(this.sendStub.called,'Invio il messaggio al server');
     
     var data = JSON.stringify({"type":"login","answer":"false","error":"Messaggio di errore dal server"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
 
-    equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert correctly displayed.');
-    ok(this.authenticationView.$("#logout").lenght == undefined, 'Login unsuccessful');
+    equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert visualizzato correttamente');
+    ok(this.authenticationView.$("#logout").lenght == undefined, 'Login fallito');
     
     stub.restore();
     
   });
   
-  module( 'About Logout', {
+  module( 'Logout', {
       setup: function() {
         this.authenticationView = new AuthenticationView();
         this.AuthenticationCommunication = require('communication/AuthenticationCommunication');
@@ -72,18 +72,18 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
       }
   });
   
-  test('Logout successful.', function() {
+  test('Logout effettuato correttamente', function() {
     expect( 3 );
     
     this.authenticationView.disconnect();
     
-    ok(this.commSpy.called,'AuthenticationCommunication.logout called');
-    ok(this.sendStub.called,'Connection.send called');
+    ok(this.commSpy.called,'Chiamo il metodo per inviare il segnale al server');
+    ok(this.sendStub.called,'Invio il messaggio al server');
     
-    ok(this.authenticationView.$("#logout").length == 0, 'Logout successful');
+    ok(this.authenticationView.$("#logout").length == 0, 'Logout effettuato');
   });
   
-  module( 'About Signup', {
+  module( 'Registrazione', {
       setup: function() {
         this.authenticationView = new AuthenticationView();
         this.AuthenticationCommunication = require('communication/AuthenticationCommunication');
@@ -98,7 +98,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
       }
   });
   
-  test('Signup successful.', function() {
+  test('Registrazione con credenziali valide', function() {
     expect( 3 );
     
     this.authenticationView.viewSignup();
@@ -109,18 +109,18 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.authenticationView.$("#surname").val('prova');
     this.authenticationView.signup();
     
-    ok(this.commSpy.called,'AuthenticationCommunication.signup called');
-    ok(this.sendStub.called,'Connection.send called');
+    ok(this.commSpy.called,'Chiamo il metodo per inviare al server i dati');
+    ok(this.sendStub.called,'Invio il messaggio al server');
     
     var data = JSON.stringify({"type":"signUp","answer":"true"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
-    ok(this.authenticationView.$("#logout").length == 1, 'Signup successful');
+    ok(this.authenticationView.$("#logout").length == 1, 'Registrazione avvenuta correttamente');
 
   });
  
-  test('Signup unsuccessful.', function() {
+  test('Registrazione fallita a causa di errori', function() {
     expect( 4 );
     
     var stub = this.stub(window, 'alert', function(msg) { return false; } );
@@ -133,16 +133,16 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     this.authenticationView.$("#surname").val('prova');
     this.authenticationView.signup();
     
-    ok(this.commSpy.called,'AuthenticationCommunication.checkCredentials called');
-    ok(this.sendStub.called,'Connection.send called');
+    ok(this.commSpy.called,'Chiamo il metodo per inviare al server i dati');
+    ok(this.sendStub.called,'Invio il messaggio al server');
     
     var data = JSON.stringify({"type":"signUp","answer":"false","error":"Messaggio di errore dal server"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
 
-    equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert correctly displayed.');
-    ok(this.authenticationView.$("#logout").lenght == undefined, 'Signup unsuccessful');
+    equal( stub.getCall(0).args[0], 'Messaggio di errore dal server', 'Alert visualizzato correttamente');
+    ok(this.authenticationView.$("#logout").lenght == undefined, 'Registrazione fallita');
     
     stub.restore();
     
