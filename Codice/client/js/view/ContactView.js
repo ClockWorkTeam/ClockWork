@@ -68,10 +68,10 @@ define([
       if(!this.currentFunctions)
         this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
       console.log("conferenza?? " +this.conference);
-      if(this.conference==false){
+     // if(this.conference==false){
         this.currentFunctions.render();
         $('#main').prepend(this.currentFunctions.el);
-      }
+    //  }
     },
 
     /**
@@ -95,15 +95,14 @@ define([
       $('#main').prepend(this.currentFunctions.el);
     },
     
-    createCallConference : function(type,contact){
+    createCallConference : function(type,contact, sideView){
       /**
        * condizione messa per evitare di chiudere functionview non ancora create
        */
       
       if(!this.currentFunctions){
-        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel, callback:sideView});
       }
-      console.log(this.conference);
       if(this.conference==false){
         this.conference=true;
         this.options.callback.closeOtherContacts(this.model.toJSON().username);
