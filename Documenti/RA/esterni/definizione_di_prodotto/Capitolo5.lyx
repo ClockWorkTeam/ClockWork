@@ -2049,7 +2049,7 @@ void insert(String title, String url):
 \series bold
 Map<String, String> getTutorials():
 \series default
- restituisce la lista di tutorial
+ restituisce la lista dei tutorials
 \end_layout
 
 \begin_layout Subsection
@@ -2365,7 +2365,7 @@ status open
 Gli utenti non vengono presi direttamente dal database, perché nel caso
  di più utenti che accedono contemporaneamente si creerebbero più copie
  degli stessi dati, sprecando spazio.
- In questo modo invece lo spazio occupato dai utenti nel server resterà
+ In questo modo invece lo spazio occupato dagli utenti nel server resterà
  fisso, e ciò equivarrà allo spazio occupato dall'istanza di UserList, qualsiasi
  sia il numero degli utenti che accedono\SpecialChar \@.
 
@@ -3557,7 +3557,7 @@ name "sub:mytalk.server.transfer.CallTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe CalTransfer si occupa di gestire il traffico di pacchetti per
+La classe CallTransfer si occupa di gestire il traffico di pacchetti per
  effettuare l'inizializzazione di una comunicazione audio/video.
 \end_layout
 
@@ -3584,8 +3584,6 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 Classe CallTransfer
 \end_layout
 
@@ -3635,12 +3633,12 @@ error
 \emph on
 call
 \emph default
-: invia un pacchetto di tipo 
-\emph on
-call, 
-\emph default
-contenente il tipo di chiamata, passatogli dal client, e lo username dell'utente
- che ha effettuato la richiesta
+: controlla se l'utente è autenticato oppure no e realizza il 
+\shape italic
+WebSocketConnector
+\shape default
+ adeguato, se l'utente prova ad autenticarsi ma fallisce manda al client
+ un messaggio di errore
 \end_layout
 
 \begin_layout Itemize
@@ -3648,11 +3646,15 @@ contenente il tipo di chiamata, passatogli dal client, e lo username dell'utente
 \emph on
 answeredCall: 
 \emph default
-invia un pacchetto di tipo 
+invia un pacchetto 
+\shape italic
+wspacket
+\shape default
+, con tipo 
 \emph on
 answeredCall
 \emph default
-, avente come risposta 
+ contenente il connettore, e la risposta 
 \emph on
 true
 \end_layout
@@ -3668,7 +3670,11 @@ answeredCall
 \emph default
 , avente come risposta 
 \emph on
-false
+false 
+\emph default
+e il messaggio 
+\shape italic
+Chiamata rifiutata
 \end_layout
 
 \begin_layout Itemize
@@ -3682,13 +3688,35 @@ answeredCall
 \emph default
 , avente come risposta 
 \emph on
-busy
+false 
+\emph default
+e il messaggio 
+\shape italic
+Utente occupato in un'altra conversazione
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+refusecam
+\shape default
+: invia un pacchetto di tipo 
+\emph on
+answeredCall
+\emph default
+, avente come risposta 
+\emph on
+false 
+\emph default
+e il messaggio 
+\shape italic
+Utente rifiuta di accendere la telecamera
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-offer: 
+sdp: 
 \emph default
 invia un pacchetto contenente l'attributo 
 \emph on
@@ -3702,11 +3730,20 @@ passatogli dal client che ha effettuato la richiesta
 \emph on
 candidate: 
 \emph default
-invia un pacchetto contenente l'attributo 
+invia un pacchetto contenente il campo 
 \emph on
-cand 
+contact 
 \emph default
-passatogli dal client che ha effettuato la richiesta
+passatogli dal client che ha effettuato la richiesta, che può essere un
+ indirizzo 
+\shape italic
+IP
+\shape default
+ o un 
+\shape italic
+contact
+\shape default
+ autenticato
 \end_layout
 
 \begin_layout Itemize
@@ -3716,7 +3753,9 @@ endCall:
 \emph default
 invia un pacchetto di tipo 
 \emph on
-endCall
+endCall 
+\emph default
+che interrompe la chiamata col connettore selezionato
 \end_layout
 
 \begin_layout Itemize
@@ -3726,7 +3765,37 @@ candidateReady:
 \emph default
 invia un pacchetto di tipo 
 \emph on
-candidateReady
+candidateReady 
+\emph default
+che comunica ad un utente che l'altro utente è pronto ad accettare candidati
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+endCallEarly:
+\shape default
+ invia un pacchetto di tipo 
+\emph on
+endCallEarly 
+\emph default
+che interrompe la chiamata col connettore selezionato
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+addConferenceCaller:
+\shape default
+ invia un pacchetto contenente un connettore da aggiungere ad una chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+addConferenceAnswer:
+\shape default
+ invia un pacchetto contenente un connettore da aggiungere ad una chiamata
 \end_layout
 
 \end_deeper
@@ -4091,6 +4160,14 @@ Metodi pubblici
 UserTransfer(UserManager userManager):
 \series default
  costruttore della classe, si collega alla istanza esistente di UserManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+void processToken(WebSocketServerTokenEvent event, Token token):
+\series default
+ gestisce i token in arrivo aventi come tipo:
 \end_layout
 
 \begin_deeper
