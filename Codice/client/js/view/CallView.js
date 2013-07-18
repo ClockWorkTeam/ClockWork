@@ -116,19 +116,24 @@ define([
       }
       
         $(this.el).html(this.template());
-        if(isCaller==true){
-          CallCommunication.sendCall(typeCall,contatti,this,'true');
-     //     this.calling=true
+        if(this.calling){
+          console.log("prova ripristino");
+          CallCommunication.recoverCall(call);
         }else{
-          CallCommunication.sendAnswer(typeCall,contatti,this,'true');
-     //     this.calling=true
+          if(isCaller==true){
+            CallCommunication.sendCall(typeCall,contatti,this,'true');
+            this.calling=true
+          }else{
+            CallCommunication.sendAnswer(typeCall,contatti,this,'true');
+            this.calling=true
+          }
         }
       
     },
 
     addVideoConference:function(nameCaller){
       var video="<video id='"+nameCaller+"' autoplay></video>";
-      $(this.el).append(video);
+      $('#otherCaller').append(video);
     }
   });
 
