@@ -114,6 +114,10 @@ define([
 
 		unrender: function (){
 			this.stopListening(this.collection, 'all', this.render);
+      this.closeConference();
+      if(this.currentFunctions){
+        this.currentFunctions.close();
+      }
 			$(this.el).html(this.template({logged: false}));
 			this.destroyContacts();
       this.closeOtherContacts();

@@ -27,7 +27,8 @@ define([
 	  events: {
       'click button#submitChange': 'checkPassword',
       'click button#reset': 'render',
-      'click button#denyChange': 'unrender'
+      'click button#denyChange': 'unrender',
+      'click button#close': 'closeView'
 		},
 
     el: $('#main'),
@@ -48,7 +49,10 @@ define([
      */
     render: function() {
       $(this.el).html(this.template(this.model.toJSON()));
-      this.$('#userDataModal').modal('toggle');
+      this.$('#userDataModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
     },
 
     /**
@@ -56,6 +60,12 @@ define([
      */
 		unrender:function(){
 		  this.$('#userDataModal').modal('toggle');
+		  this.close();
+      $(this.el).html('');
+			$('body').append(this.el);
+		},
+    
+    closeView:function(){
 		  this.close();
       $(this.el).html('');
 			$('body').append(this.el);
