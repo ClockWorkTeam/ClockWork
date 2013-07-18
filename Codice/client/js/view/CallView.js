@@ -114,6 +114,7 @@ define([
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
+      console.log('ciao chiudo chiamata');
       this.delegateEvents();
         var call=this;
         $(this.el).html(this.template());
@@ -139,6 +140,11 @@ define([
   });
 
   CallView.prototype.close = function(){
+    
+    CallCommunication.endCall();
+    if(this.statisticsView){
+      this.statisticsView.close();
+    }
     this.remove();
     this.unbind();
   };

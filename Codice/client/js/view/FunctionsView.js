@@ -248,6 +248,9 @@ define([
     if(this.chatView){
       this.chatView.close();
     }
+    if(this.callView){
+      this.callView.close();
+    }
     this.remove();
     this.unbind();
   };
