@@ -1,94 +1,42 @@
-define(['../js/view/ChatView'], function( ChatView ) {
+define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
 
-  module( 'About modifying data', {
+  module( 'Chat', {
       setup: function() {
-        var userModel = new UserModel({
-            username: 'prova',
-            password: 'prova',
-            name: 'prova',
-            surname: 'prova'
-          });
-        this.userDataView = new UserDataView({model: userModel});
-        this.UserDataCommunication = require('communication/UserDataCommunication');
-        this.checkSpy = sinon.spy(this.UserDataCommunication, 'checkPassword');
-        this.commSpy = sinon.spy(this.UserDataCommunication, 'changeData');
+        this.authenticationView = new AuthenticationView();
         this.Connection = require('connection');
         this.sendStub = sinon.stub(this.Connection, 'send');
       },
       teardown: function() {
         this.sendStub.restore();
-        this.commSpy.restore();
-        this.checkSpy.restore();
-        this.userDataView.remove();
+        this.authenticationView.remove();
       }
   });
 
-  test('Data changed successfully.', function() {
-    expect( 8 );
+  test('Notifico un messaggio di chat in arrivo', function() {
+    expect( 2 );
     
-    var stub = this.stub(window, 'alert', function(msg) { return false; } );
-    
-    this.userDataView.$("#password").val('prova2');
-    this.userDataView.$("#password2").val('prova2');
-    this.userDataView.$("#name").val('prova2');
-    this.userDataView.$("#surname").val('prova2');
-    this.userDataView.$("#oldPassword").val('prova');
-    this.userDataView.checkPassword();
-    
-    ok(this.checkSpy.called,'UserDataCommunication.checkPassword called');
-    ok(this.sendStub.calledOnce, 'Connection.send called once');
+    this.authenticationView.$("#user").val('prova');
+    this.authenticationView.$("#password").val('prova');
+    this.authenticationView.connect();
 
-    var data = JSON.stringify({"type":"checkCredentials","answer":"true"});
-    var event = document.createEvent('MessageEvent');
-    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
-    this.Connection.dispatchEvent(event);    
-    
-    ok(this.commSpy.called,'UserDataCommunication.changeData called');
-    ok(this.sendStub.calledTwice,'Connection.send called twice');
-    
-    data = JSON.stringify({"type":"changeData","answer":"true"});
+    var data = JSON.stringify({"type":"login","answer":"true"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
-    equal( stub.getCall(0).args[0], 'Operazione riuscita', 'Alert correctly displayed.');
-    ok(this.userDataView.model.toJSON().password === 'prova2', 'Password changed successfully');
-    ok(this.userDataView.model.toJSON().name === 'prova2', 'Name changed successfully');
-    ok(this.userDataView.model.toJSON().surname === 'prova2', 'Surname changed successfully');
-
-  });
- 
-  test('Error while changing data.', function() {
-    expect( 8 );
     
-    var stub = this.stub(window, 'alert', function(msg) { return false; } );
+    ContactsCollection = require('collection/ContactsCollection');
+    ContactsCollection.add({username: 'qwe', name: 'qwe', surname: 'qwe', IP: '0' });
+    ContactsCollection.add({username: 'asd', name: 'asd', surname: 'asd', IP: '0' });
+    ContactsCollection.add({username: 'zxc', name: 'zxc', surname: 'zxc', IP: '0' });
+    ContactsCollection.add({username: 'jkl', name: 'jkl', surname: 'jkl', IP: '0' });
     
-    this.userDataView.$("#password").val('prova2');
-    this.userDataView.$("#password2").val('prova2');
-    this.userDataView.$("#name").val('prova2');
-    this.userDataView.$("#surname").val('prova2');
-    this.userDataView.$("#oldPassword").val('prova');
-    this.userDataView.checkPassword();
-    
-    ok(this.checkSpy.called,'UserDataCommunication.checkPassword called');
-    ok(this.sendStub.calledOnce, 'Connection.send called once');
-
-    var data = JSON.stringify({"type":"checkCredentials","answer":"true"});
-    var event = document.createEvent('MessageEvent');
-    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
-    this.Connection.dispatchEvent(event);    
-    
-    ok(this.commSpy.called,'UserDataCommunication.changeData called');
-    ok(this.sendStub.calledTwice,'Connection.send called twice');
-    
-    data = JSON.stringify({"type":"changeData","answer":"false","error":"Error message"});
+    var data = JSON.stringify({"type":"sendText","message":"prova", "contact":"qwe"});
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null)      
     this.Connection.dispatchEvent(event);
-    equal( stub.getCall(0).args[0], 'Error message', 'Alert correctly displayed.');
-    ok(this.userDataView.model.toJSON().password === 'prova', 'Password not changed');
-    ok(this.userDataView.model.toJSON().name === 'prova', 'Name not changed');
-    ok(this.userDataView.model.toJSON().surname === 'prova', 'Surname not changed');
-    
+    equal(ContactsCollection.where({username: 'qwe'})[0].get('unread'), 1, 'Notifica visualizzata correttamente');
+    equal(ContactsCollection.where({username: 'asd'})[0].get('unread'), 0, 'Notifica visualizzata correttamente');
+
   });
   
 });
