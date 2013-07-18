@@ -483,7 +483,7 @@ click button#login:
 \series default
 evento che richiama la funzione  
 \emph on
-connect()
+connect
 \end_layout
 
 \begin_layout Itemize
@@ -493,7 +493,7 @@ click button#logout:
 \series default
 evento che richiama la funzione 
 \emph on
-disconnect()
+disconnect
 \end_layout
 
 \begin_layout Itemize
@@ -503,7 +503,7 @@ click button#signup:
 \series default
 evento che richiama la funzione 
 \emph on
-viewSignup()
+viewSignup
 \end_layout
 
 \begin_layout Itemize
@@ -513,7 +513,7 @@ click button#sign:
 \series default
 evento che richiama la funzione 
 \emph on
-signup()
+signup
 \end_layout
 
 \begin_layout Itemize
@@ -523,7 +523,7 @@ click button#deny:
 \series default
 evento che richiama la funzione 
 \emph on
-deny()
+deny
 \end_layout
 
 \begin_layout Itemize
@@ -533,7 +533,7 @@ click button#edit:
 \series default
 evento che richiama la funzione 
 \emph on
-editProfile()
+editProfile
 \end_layout
 
 \begin_layout Paragraph
@@ -551,7 +551,7 @@ contactsView
 \emph default
 e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -570,7 +570,7 @@ late
 \series default
  metodo che permette ad altre classi di usufruire del metodo 
 \emph on
-doLogin(String, String, String[], AuthenticationView) 
+doLogin
 \end_layout
 
 \begin_deeper
@@ -584,7 +584,7 @@ doLogin(String, String, String[], AuthenticationView)
  Si occupa di creare il model corrispondente all'utente, aggiornare il template
  e invocare il metodo 
 \emph on
-getContacts(AuthenticationView) 
+getContacts 
 \emph default
 sull'oggetto 
 \emph on
@@ -600,15 +600,10 @@ contactsView
  metodo che avvia l'operazione di login dell'utente richiamando il metodo
  
 \emph on
-checkCredentials(String, String, AuthenticationView.callBacks(), AuthenticationVi
-ew) 
+checkCredentials 
 \emph default
-della classe 
-\emph on
-AuthenticationCommunication
-\emph default
- passandogli come parametri lo username e la password inseriti negli appositi
- campi
+della classe AuthenticationCommunication passandogli come parametri lo username
+ e la password inseriti negli appositi campi
 \end_layout
 
 \begin_layout Itemize
@@ -619,17 +614,10 @@ AuthenticationCommunication
  metodo che si occupa di chiudere la sessione con il server, invocando il
  metodo 
 \emph on
-logout(String)
+logout
 \emph default
- della classe 
-\emph on
-AuthenticationCommunication
-\emph default
-,
-\emph on
+ della classe AuthenticationCommunication, aggiornando il template e deallocando
  
-\emph default
-aggiornando il template e deallocando 
 \emph on
 userDataView 
 \emph default
@@ -652,17 +640,20 @@ contactsView
 [void] signup():
 \series default
  metodo che avvia l'operazione di registrazione dell'utente.
- Controlla che i campi obbligatori siano compilati e che la password e quella
- di conferma coincidano, in caso affermativo invoca il metodo 
+ Controlla che i campi obbligatori siano compilati, che lo username includa
+ solo i caratteri permessi e che la password e quella di conferma coincidano.
+ In caso affermativo invoca il metodo 
 \emph on
-signup(String, String, String, String, AuthenticationView.callBacks(), Authentica
-tionView) 
+signup 
 \emph default
-della classe 
-\emph on
-AuthenticationCommunication
-\emph default
- altrimenti mostra l'avviso di errore
+della classe AuthenticationCommunication, altrimenti mostra uno tra i messaggi
+ di errore 
+\shape italic
+Username può contenere solo lettere, numeri e underscore
+\shape default
+ e 
+\shape italic
+Le password inserite non coincidono
 \end_layout
 
 \begin_layout Itemize
@@ -671,7 +662,7 @@ AuthenticationCommunication
 [void] deny():
 \series default
  metodo per annullare la compilazione della registrazione e tornare allo
- stato precedente alla registrazione
+ stato precedente
 \end_layout
 
 \begin_layout Itemize
@@ -809,7 +800,7 @@ statisticsView
 \emph default
 e richiamare il metodo 
 \emph on
-render()
+render
 \end_layout
 
 \begin_layout Itemize
@@ -821,21 +812,21 @@ render()
  e che verifica che sia in corso una chiamata e, in caso affermativo, invoca
  il metodo 
 \shape italic
-recoverCall()
+recoverCall
 \shape default
  di CallCommunication e il metodo 
 \shape italic
-render()
+render
 \shape default
  di StatisticsView.
  Altrimenti, a seconda che l'utente sia il chiamato o il chiamante, invoca
  i metodi 
 \shape italic
-sendAnswer(String, ContactModel, CallView)
+sendAnswer
 \shape default
  o 
 \shape italic
-sendCall(String, ContactModel, CallView)
+sendCall
 \shape default
  di CallCommunication e assegna a 
 \emph on
@@ -873,9 +864,21 @@ endCall()
 \begin_layout Itemize
 
 \series bold
+[void] addVideoConference([String] nameCaller): 
+\series default
+metodo che aggiunge uno stream remoto ad una videoconferenza
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 [void] close():
 \series default
- metodo che chiude l'istanza della classe creata
+ metodo che invoca il metodo 
+\shape italic
+endCall
+\shape default
+ di CallCommunication e chiude l'istanza della classe creata 
 \end_layout
 
 \begin_layout Subsubsection
@@ -987,7 +990,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-render()
+render
 \emph default
  della classe alla collection in modo da richiamarlo ogni qual volta avvenga
  un cambiamento di quest'ultima
@@ -1001,7 +1004,7 @@ render()
  metodo per effettuare la scrittura nella pagina del template ChatTemplate
  inoltre, invoca il metodo 
 \shape italic
-putMessages() 
+putMessages 
 \emph on
 per visualizzare i messaggi scambiati fino ad ora
 \end_layout
@@ -1018,7 +1021,7 @@ collection
  tutti i messaggi di testo della conversazione scelta, e invoca la funzione
  
 \shape italic
-putMessage(TextMessageModel)
+putMessage
 \emph on
  per permetterne la visualizzazione all'utente
 \end_layout
@@ -1029,7 +1032,7 @@ putMessage(TextMessageModel)
 [void] putMessage([TextMessageModel] message)
 \series default
 : metodo che si occupa della scrittura di un messaggio di testo, presente
- nella 
+ in 
 \emph on
 collection,
 \emph default
@@ -1044,7 +1047,7 @@ collection,
 metodo per inviare un messaggio al contatto, per fare ciò invoca il metodo
  
 \shape italic
-send(String, string)
+send
 \shape default
  della classe ChatCommunication, con parametri lo username del contatto
  e il testo del messaggio.
@@ -1064,7 +1067,7 @@ collection
 \shape default
  la conversazione con l'utente e invoca il metodo 
 \shape italic
-close() 
+close
 \end_layout
 
 \begin_layout Itemize
@@ -1178,7 +1181,7 @@ click span.contact:
 \series default
 evento che richiama la funzione 
 \emph on
-view()
+view
 \end_layout
 
 \begin_layout Paragraph
@@ -1192,7 +1195,7 @@ Metodi pubblici:
 \series default
  metodo per inizializzare l'oggetto, collega il metodo 
 \emph on
-render()
+render
 \emph default
  della classe al model in modo da richiamarlo ogni qual volta avvenga un
  cambiamento di quest'ultimo
@@ -1214,7 +1217,7 @@ render()
  metodo che si occupa di avviare la FunctionsView relativa al contatto.
  Prima di fare ciò invoca il metodo 
 \shape italic
-closeOtherContacts(Strings)
+closeOtherContacts
 \shape default
  della classe SideView per controllare che tutte le view presenti nel content
  siano state chiuse
@@ -1228,21 +1231,34 @@ closeOtherContacts(Strings)
  metodo che viene chiamato quando si accetta una chiamata in arrivo; invoca
  il metodo 
 \shape italic
-closeOtherContacts(String)
+closeOtherContacts
 \shape default
  della classe SideView, per controllare che tutte le view presenti nel content
  siano state chiuse, e uno tra i metodi 
 \shape italic
-videocall(boolean)
+videocall
 \shape default
  o 
 \shape italic
-audiocall(boolean)
+audiocall
 \emph on
-, della classe FunctionsView,
+ della classe FunctionsView,
 \shape default
 \emph default
- a seconda del tipo di chiamata passata dal parametro
+ a seconda del tipo di chiamata passato dal parametro
+\end_layout
+
+\begin_layout Itemize
+[void] createCallConference([String] type, [Contact] contact, [SideView]
+ sideView): metodo che viene chiamato quando si accetta una richiesta di
+ videoconferenza che invoca il metodo 
+\shape italic
+closeOtherContacts
+\shape default
+ della classe SideView, per controllare che tutte le view presenti nel content
+ siano state chiuse e invoca il metodo 
+\shape italic
+conference
 \end_layout
 
 \begin_layout Itemize
@@ -1252,7 +1268,7 @@ audiocall(boolean)
 \series default
  metodo che chiude l'istanza della classe creata invocando il metodo 
 \shape italic
-unrender() 
+unrender 
 \emph on
 della classe FunctionsView
 \end_layout
@@ -1273,7 +1289,11 @@ name "sub:.FileView"
 \begin_layout Standard
 La classe FileView definisce la struttura, e la conseguente visualizzazione,
  della parte della pagina web che consente di selezionare un file salvato
- in locale per mandarlo all'utente autenticato selezionato
+ in locale per mandarlo all'utente autenticato selezionato.
+\end_layout
+
+\begin_layout Standard
+Pur essendo pianificata tale classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -4281,7 +4301,8 @@ name "sub:FileCommunication"
 
 \begin_layout Standard
 La classe FileCommunication si occupa di gestire l'invio di file ad un altro
- utente e la ricezione
+ utente e la ricezione.
+ Pur essendo pianificata tale classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
@@ -4540,7 +4561,8 @@ name "sub:RecordMessageCommunication"
 
 \begin_layout Standard
 La classe RecordMessageCommunication si occupa di registrare, inviare e
- ricevere i messaggi registrati
+ ricevere i messaggi registrati.
+ Pur essendo pianificata tale classe non è stata implementata
 \end_layout
 
 \begin_layout Standard
