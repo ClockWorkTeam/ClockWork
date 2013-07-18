@@ -102,10 +102,10 @@ public class AuthenticationManager{
 		userList.addUser(user);
 	    return user;
 	  }else{
-		  throw new Exception("Errore nell'inserimento dell'utente nel database");
+		  throw new Exception("Operazione di registrazione fallita");
 	  }
 	}else{
-	  throw new Exception("Username già presente");
+	  throw new Exception("Username utilizzato da un altro utente");
 	}
   }
 
