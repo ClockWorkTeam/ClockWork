@@ -353,7 +353,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-Connection connection:
+[Connection] connection:
 \series default
  riferimento alla connessione al database
 \end_layout
@@ -361,7 +361,7 @@ Connection connection:
 \begin_layout Itemize
 
 \series bold
-Statement statement: 
+[Statement] statement: 
 \series default
 riferimento alla risorsa impiegata per eseguire query sul database
 \end_layout
@@ -390,7 +390,7 @@ restituisce il riferimento alla classe stessa, serve per garantire che la
 \begin_layout Itemize
 
 \series bold
-void finalize():
+[void] finalize():
 \series default
  funge da distruttore della classe JavaConnectionSQLite.
  Prima di distruggere una istanza, la connessione al database dev'essere
@@ -405,7 +405,8 @@ SQLException
 \begin_layout Itemize
 
 \series bold
-ResultSet select(String table, String column, String condition, String extra):
+[ResultSet] select(String table, String column, String condition, String
+ extra):
 \series default
  ritorna una tupla di valori, della tabella indicata, che rispettano i parametri
  di controllo indicati.
@@ -464,7 +465,7 @@ null
 \begin_layout Itemize
 
 \series bold
-boolean executeUpdate(String query):
+[boolean] executeUpdate(String query):
 \series default
  si occupa di eseguire la query passata nel database, aggiornandolo.
  Se la query ha successo il metodo ritorna
@@ -570,7 +571,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-Vector<RecordMessage> getAllMessages(String username): 
+[Vector<RecordMessage>] getAllMessages(String username): 
 \series default
 ritorna il vettore dei messaggi differiti, presenti nel database, che sono
  stati mandati all'utente con username corrispondente a quello passato per
@@ -580,7 +581,7 @@ ritorna il vettore dei messaggi differiti, presenti nel database, che sono
 \begin_layout Itemize
 
 \series bold
-boolean addMessage(RecordMessage message):
+[boolean] addMessage(RecordMessage message):
 \series default
  aggiunge un messaggio differito nel database, se l'operazione ha buon termine
  restituisce 
@@ -597,7 +598,7 @@ false
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message):
+[boolean] removeMessage(RecordMessage message):
 \series default
  elimina un messaggio differito dal database, se l'operazione ha buon termine
  restituisce 
@@ -669,7 +670,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-JavaConnectionSQLite connection:
+[JavaConnectionSQLite] connection:
 \series default
  riferimento all'istanza della classe JavaConnectionSQLite che contiene
  i riferimenti al server
@@ -699,7 +700,7 @@ restituisce il riferimento alla classe stessa, serve per garantire che la
 \begin_layout Itemize
 
 \series bold
-Vector<RecordMessage> getAllMessages(String username):
+[Vector<RecordMessage>] getAllMessages(String username):
 \series default
  invoca il metodo 
 \emph on
@@ -724,7 +725,7 @@ viene catturata dal metodo stesso e vengono restituiti  tutti i messaggi
 \begin_layout Itemize
 
 \series bold
-boolean addMessage(RecordMessage message):
+[boolean] addMessage(RecordMessage message):
 \series default
  aggiunge un messaggio differito nel database, invocando il metodo 
 \emph on
@@ -743,7 +744,7 @@ RecordMessageDataSQL.
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(RecordMessage message):
+[boolean] removeMessage(RecordMessage message):
 \series default
  metodo che elimina un messaggio differito dal database, invocando il metodo
  
@@ -836,7 +837,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-JavaConnectionSQLite connection:
+[JavaConnectionSQLite] connection:
 \series default
  riferimento all'istanza della classe JavaConnectionSQLite contenente i
  riferimenti al server
@@ -845,7 +846,7 @@ JavaConnectionSQLite connection:
 \begin_layout Itemize
 
 \series bold
-Tutorials tutorials:
+[Tutorials] tutorials:
 \series default
  riferimento alla lista dei tutorials presenti nel server
 \end_layout
@@ -874,7 +875,7 @@ restituisce il riferimento alla classe stessa, serve per garantire che la
 \begin_layout Itemize
 
 \series bold
-Tutorials getTutorials():
+[Tutorials] getTutorials():
 \series default
  restituisce la lista di tutorials presenti in 
 \emph on
@@ -942,7 +943,7 @@ getTutorialsFromDB()
 \begin_layout Itemize
 
 \series bold
-void getTutorialsFromDB():
+[void] getTutorialsFromDB():
 \series default
  utilizza il metodo 
 \emph on
@@ -1035,7 +1036,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-boolean addUser(User user, String password):
+[boolean] addUser(User user, String password):
 \series default
  aggiunge un utente nel database
 \end_layout
@@ -1043,7 +1044,7 @@ boolean addUser(User user, String password):
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username):
+[boolean] removeUser(String username):
 \series default
  elimina un utente dal database
 \end_layout
@@ -1051,7 +1052,7 @@ boolean removeUser(String username):
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+[User] getUser(String username)
 \series default
 : restituisce l'utente avente username corrispondente a quello dato
 \end_layout
@@ -1059,7 +1060,7 @@ User getUser(String username)
 \begin_layout Itemize
 
 \series bold
-boolean checkPassword(String username, String password):
+[boolean] checkPassword(String username, String password):
 \series default
  controlla la correttezza dei parametri dati 
 \end_layout
@@ -1067,7 +1068,7 @@ boolean checkPassword(String username, String password):
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String username, String password): 
+[boolean] setPassword(String username, String password): 
 \series default
 imposta la password dell'utente, avente lo username corrispondente a quello
  passato per parametro, con il nuovo valore.
@@ -1077,7 +1078,7 @@ imposta la password dell'utente, avente lo username corrispondente a quello
 \begin_layout Itemize
 
 \series bold
-boolean setName(String username, String name):
+[boolean] setName(String username, String name):
 \series default
  imposta il nome dell'utente, avente lo username corrispondente a quello
  passato per parametro, con il nuovo valore
@@ -1086,7 +1087,7 @@ boolean setName(String username, String name):
 \begin_layout Itemize
 
 \series bold
-boolean setSurname(String username, String surname):
+[boolean] setSurname(String username, String surname):
 \series default
  imposta il cognome dell'utente, avente lo username corrispondente a quello
  passato per parametro, con il nuovo valore
@@ -1095,7 +1096,7 @@ boolean setSurname(String username, String surname):
 \begin_layout Itemize
 
 \series bold
-boolean setIP(String username, String IP):
+[boolean] setIP(String username, String IP):
 \series default
  imposta l'indirizzo IP dell'utente, avente lo username corrispondente a
  quello passato per parametro, con il nuovo valore
@@ -1161,7 +1162,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-JavaConnectionSQLite connection:
+[JavaConnectionSQLite] connection:
 \series default
  riferimento all'istanza della classe JavaConnectionSQLite contenente i
  riferimenti al server
@@ -1170,7 +1171,7 @@ JavaConnectionSQLite connection:
 \begin_layout Itemize
 
 \series bold
-UserList userList:
+[UserList] userList:
 \series default
  riferimento alla lista degli utenti registrati nel database
 \end_layout
@@ -1199,7 +1200,7 @@ restituisce il riferimento alla classe stessa, serve per garantire che la
 \begin_layout Itemize
 
 \series bold
-boolean addUser(User user, String password):
+[boolean] addUser(User user, String password):
 \series default
  aggiunge un utente nel database, invocando il metodo 
 \emph on
@@ -1218,7 +1219,7 @@ UserDataSQL
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username):
+[boolean] removeUser(String username):
 \series default
  rimuove dal database l'utente con username corrispondente a quello passato
  per parametro, per fare ciò invoca il metodo 
@@ -1238,7 +1239,7 @@ UserDataSQL.
 \begin_layout Itemize
 
 \series bold
-User getUser(String username)
+[User] getUser(String username)
 \series default
 : invoca il metodo 
 \emph on
@@ -1264,7 +1265,7 @@ null
 \begin_layout Itemize
 
 \series bold
-boolean checkPassword(String username, String password):
+[boolean] checkPassword(String username, String password):
 \series default
  controlla nel database la corrispondenza dello username passato con la
  password passata, per fare ciò utilizza il metodo 
@@ -1284,7 +1285,7 @@ ione
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String username, String password):
+[boolean] setPassword(String username, String password):
 \series default
  modifica nel database la password dell'utente, avente lo username corrispondent
 e a quello passato per parametro, invocando il metodo 
@@ -1300,7 +1301,7 @@ ione
 \begin_layout Itemize
 
 \series bold
-boolean setName(String username, String name):
+[boolean] setName(String username, String name):
 \series default
  modifica nel database il nome dell'utente, avente lo username corrispondente
  a quello passato per parametro, invocando il metodo 
@@ -1319,7 +1320,7 @@ ione
 \begin_layout Itemize
 
 \series bold
-boolean setSurname(String username, String surname):
+[boolean] setSurname(String username, String surname):
 \series default
  modifica nel database il cognome dell'utente, avente lo username corrispondente
  a quello passato per parametro, invocando il metodo 
@@ -1338,7 +1339,7 @@ ione
 \begin_layout Itemize
 
 \series bold
-boolean setIP(String username, String IP): 
+[boolean] setIP(String username, String IP): 
 \series default
 modifica nel database l'indirizzo IP dell'utente, avente lo username corrisponde
 nte a quello passato per parametro, invocando il metodo 
@@ -1387,7 +1388,7 @@ getUsersFromDB()
 \begin_layout Itemize
 
 \series bold
-void getUsersFromDB():
+[void] getUsersFromDB():
 \series default
  utilizza il metodo 
 \emph on
@@ -1562,7 +1563,7 @@ Attributi privati:
 \begin_layout Itemize
 
 \series bold
-String sender: 
+[String] sender: 
 \series default
 rappresenta il mittente, colui che crea il messaggio
 \end_layout
@@ -1570,7 +1571,7 @@ rappresenta il mittente, colui che crea il messaggio
 \begin_layout Itemize
 
 \series bold
-String addressee: 
+[String] addressee: 
 \series default
 rappresenta il destinatario, colui che riceve il messaggio
 \series bold
@@ -1580,7 +1581,7 @@ rappresenta il destinatario, colui che riceve il messaggio
 \begin_layout Itemize
 
 \series bold
-String path:
+[String] path:
 \series default
  rappresenta l'indirizzo dove si trova il messaggio differito all'interno
  del server
@@ -1589,7 +1590,7 @@ String path:
 \begin_layout Itemize
 
 \series bold
-String dateCreation:
+[String] dateCreation:
 \series default
  rappresenta la data di creazione del messaggio
 \end_layout
@@ -1615,7 +1616,7 @@ RecordMessage(String sender, String addressee, String path, String dateCreation)
 \begin_layout Itemize
 
 \series bold
-String getSender(): 
+[String] getSender(): 
 \series default
 ritorna il mittente del messaggio
 \end_layout
@@ -1623,7 +1624,7 @@ ritorna il mittente del messaggio
 \begin_layout Itemize
 
 \series bold
-String getAddressee(): 
+[String] getAddressee(): 
 \series default
 ritorna il destinatario del messaggio
 \end_layout
@@ -1631,7 +1632,7 @@ ritorna il destinatario del messaggio
 \begin_layout Itemize
 
 \series bold
-String getPath():
+[String] getPath():
 \series default
  ritorna l'indirizzo dove si trova il messaggio differito all'interno del
  server
@@ -1640,7 +1641,7 @@ String getPath():
 \begin_layout Itemize
 
 \series bold
-String getDate(): 
+[String] getDate(): 
 \series default
 ritorna la data di creazione del messaggio
 \end_layout
@@ -1704,7 +1705,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-String username:
+[String] username:
 \series default
  rappresenta lo username dell'utente
 \end_layout
@@ -1712,7 +1713,7 @@ String username:
 \begin_layout Itemize
 
 \series bold
-String name: 
+[String] name: 
 \series default
 rappresenta il nome dell'utente
 \end_layout
@@ -1720,7 +1721,7 @@ rappresenta il nome dell'utente
 \begin_layout Itemize
 
 \series bold
-String surname:
+[String] surname:
 \series default
  rappresenta il cognome dell'utente
 \end_layout
@@ -1728,7 +1729,7 @@ String surname:
 \begin_layout Itemize
 
 \series bold
-String IP:
+[String] IP:
 \series default
  rappresenta l'indirizzo IP dell'utente
 \begin_inset Foot
@@ -1760,7 +1761,7 @@ User(String username, String name, String surname, String IP):
 \begin_layout Itemize
 
 \series bold
-String getUsername()
+[String] getUsername()
 \series default
 : ritorna lo username dell'utente
 \end_layout
@@ -1768,7 +1769,7 @@ String getUsername()
 \begin_layout Itemize
 
 \series bold
-String getName()
+[String] getName()
 \series default
 : ritorna il nome dell'utente
 \end_layout
@@ -1776,7 +1777,7 @@ String getName()
 \begin_layout Itemize
 
 \series bold
-String getSurname()
+[String] getSurname()
 \series default
 : ritorna il cognome dell'utente
 \end_layout
@@ -1784,7 +1785,7 @@ String getSurname()
 \begin_layout Itemize
 
 \series bold
-String getIP()
+[String] getIP()
 \series default
 : ritorna l'indirizzo IP dell'utente
 \end_layout
@@ -1792,7 +1793,7 @@ String getIP()
 \begin_layout Itemize
 
 \series bold
-void setName(String name)
+[void] setName(String name)
 \series default
 : imposta il nome dell'utente con il nuovo valore
 \end_layout
@@ -1800,7 +1801,7 @@ void setName(String name)
 \begin_layout Itemize
 
 \series bold
-void setSurname(String surname)
+[void] setSurname(String surname)
 \series default
 : imposta il cognome dell'utente con il nuovo valore
 \end_layout
@@ -1808,7 +1809,7 @@ void setSurname(String surname)
 \begin_layout Itemize
 
 \series bold
-void setIP(String IP)
+[void] setIP(String IP)
 \series default
 : imposta l'indirizzo IP dell'utente con il nuovo valore
 \end_layout
@@ -1875,7 +1876,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-Vector<User> users:
+[Vector<User>] users:
 \series default
  rappresenta la lista degli utenti
 \end_layout
@@ -1904,7 +1905,7 @@ restituisce il riferimento alla classe stessa, serve per garantire che la
 \begin_layout Itemize
 
 \series bold
-void addUser(User user): 
+[void] addUser(User user): 
 \series default
 inserisce un nuovo utente nella lista degli utenti
 \end_layout
@@ -1912,7 +1913,7 @@ inserisce un nuovo utente nella lista degli utenti
 \begin_layout Itemize
 
 \series bold
-void removeUser(User user): 
+[void] removeUser(User user): 
 \series default
 elimina un utente dal vettore di utenti
 \end_layout
@@ -1920,7 +1921,7 @@ elimina un utente dal vettore di utenti
 \begin_layout Itemize
 
 \series bold
-User getUser(String username): 
+[User] getUser(String username): 
 \series default
 restituisce l'utente corrispondente ad un dato username, se tale utente
  non è presente nella lista restituisce 
@@ -1931,7 +1932,7 @@ null
 \begin_layout Itemize
 
 \series bold
-Vector<User> getAllUsers(): 
+[Vector<User>] getAllUsers(): 
 \series default
 metodo che restituisce tutta la lista di utenti
 \end_layout
@@ -1939,7 +1940,7 @@ metodo che restituisce tutta la lista di utenti
 \begin_layout Itemize
 
 \series bold
-void removeAll(): 
+[void] removeAll(): 
 \series default
 metodo che rimuove tutti gli utenti dal vettore
 \end_layout
@@ -2039,7 +2040,7 @@ Tutorials(int num):
 \begin_layout Itemize
 
 \series bold
-void insert(String title, String url):
+[void] insert(String title, String url):
 \series default
  inserisce un nuovo tutorial nella lista
 \end_layout
@@ -2047,9 +2048,9 @@ void insert(String title, String url):
 \begin_layout Itemize
 
 \series bold
-Map<String, String> getTutorials():
+[Map<String, String>] getTutorials():
 \series default
- restituisce la lista di tutorial
+ restituisce la lista dei tutorials
 \end_layout
 
 \begin_layout Subsection
@@ -2165,7 +2166,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-UserDao userDao:
+[UserDao] userDao:
 \series default
  riferimento alla istanza della classe UserDaoSQL contenente i dati per
  effettuare l'autenticazione
@@ -2176,7 +2177,7 @@ UserDao userDao:
 \begin_layout Itemize
 
 \series bold
-UserList userList:
+[UserList] userList:
 \series default
  riferimento alla istanza della classe UserList contenente la lista di utenti
  salvati nel server
@@ -2202,7 +2203,7 @@ di ciascuna delle due classi UserDaoSQL e UserList
 \begin_layout Itemize
 
 \series bold
-User login(String username, String password, String IP):
+[User] login(String username, String password, String IP):
 \series default
  inizialmente invoca il metodo 
 \emph on
@@ -2264,7 +2265,7 @@ setIP
 \begin_layout Itemize
 
 \series bold
-User logout(String username):
+[User] logout(String username):
 \series default
  controlla l'esistenza dello username nella base di dati, utilizzando il
  metodo 
@@ -2288,8 +2289,8 @@ delle classi UserDaoSQL e UserList per modificare l'indirizzo IP ad una
 \begin_layout Itemize
 
 \series bold
-User createUser(String username, String password, String name, String surname,
- String IP):
+[User] createUser(String username, String password, String name, String
+ surname, String IP):
 \series default
  inizialmente controlla se l'username passato per parametro corrisponde
  già a un utente presente nel database, se la risposta è affermativa lancia
@@ -2331,7 +2332,7 @@ Operazione di registrazione fallita
 \begin_layout Itemize
 
 \series bold
-boolean removeUser(String username):
+[boolean] removeUser(String username):
 \series default
  elimina un utente registrato dal database, utilizzando i metodi 
 \emph on
@@ -2349,7 +2350,7 @@ altrimenti procede con l'operazione di eliminazione
 \begin_layout Itemize
 
 \series bold
-Vector<User> getAllContacts(String username): 
+[Vector<User>] getAllContacts(String username): 
 \series default
 restituisce tutti gli utenti presenti nel server, utilizzando il metodo
  
@@ -2436,7 +2437,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-UserDao userDao: 
+[UserDao] userDao: 
 \series default
 riferimento alla istanza della classe UserDaoSQL, per eseguire le operazioni
  sull'utente e per recuperare la lista di tutti gli utenti registrati nel
@@ -2446,7 +2447,7 @@ riferimento alla istanza della classe UserDaoSQL, per eseguire le operazioni
 \begin_layout Itemize
 
 \series bold
-RecordMessageDao recordMessageDao:
+[RecordMessageDao] recordMessageDao:
 \series default
  riferimento alla istanza della classe RecordMessageDaoSQL per permettere
  le operazioni sui messaggi registrati
@@ -2472,7 +2473,7 @@ di ciascuna delle due classi UserDaoSQL e RecordMessageDaoSQL
 \begin_layout Itemize
 
 \series bold
-boolean checkPassword(String username, String password):
+[boolean] checkPassword(String username, String password):
 \series default
  controlla la corrispondenza dello username passato con la password passata
  in chiaro, invocando il metodo 
@@ -2485,7 +2486,7 @@ della classe UserDaoSQL
 \begin_layout Itemize
 
 \series bold
-boolean setPassword(String username, String password): 
+[boolean] setPassword(String username, String password): 
 \series default
 inizialmente controlla la presenza dello username nel database, invocando
  il metodo 
@@ -2518,7 +2519,7 @@ della classe UserDao
 \begin_layout Itemize
 
 \series bold
-boolean setUserData(String username, String name, String surname): 
+[boolean] setUserData(String username, String name, String surname): 
 \series default
 inizialmente controlla la presenza dello username nel database, invocando
  il metodo 
@@ -2566,7 +2567,7 @@ getInstance
 \begin_layout Itemize
 
 \series bold
-User getUserData(String username)
+[User] getUserData(String username)
 \series default
 : ritorna l'utente corrispondente al dato username, presente nel database,
  invocando il metodo 
@@ -2579,7 +2580,7 @@ getUser
 \begin_layout Itemize
 
 \series bold
-RecordMessage createMessage(String sender, String addressee, String path,
+[RecordMessage] createMessage(String sender, String addressee, String path,
  String date): 
 \series default
 inizialmente controlla che il destinatario esista, e in caso contrario lancia
@@ -2618,7 +2619,7 @@ null
 \begin_layout Itemize
 
 \series bold
-Vector<RecordMessage> getMessages(String username):
+[Vector<RecordMessage>] getMessages(String username):
 \series default
 ritorna il vettore dei messaggi differiti che sono stati mandati all'utente
  avente username corrispondente a quello dato.
@@ -2632,7 +2633,7 @@ getAllMessages
 \begin_layout Itemize
 
 \series bold
-boolean removeMessage(String sender, String addressee, String path, String
+[boolean] removeMessage(String sender, String addressee, String path, String
  date): 
 \series default
 rimuove un messaggio registrato avente come attributi quelli passati per
@@ -2738,7 +2739,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-String convertUsers(Vector<User> users, String type):
+[String] convertUsers(Vector<User> users, String type):
 \series default
  metodo che converte in forma di stringa JSON il vettore di utenti passato
  per argomento, inserendo inizialmente la stringa type e il numero di utenti
@@ -2986,7 +2987,7 @@ ClockworkTeam
 \begin_layout Itemize
 
 \series bold
-String convertMessages(Vector<RecordMessage> messages, String type):
+[String] convertMessages(Vector<RecordMessage> messages, String type):
 \series default
  metodo che converte in forma di stringa JSON il vettore di messaggi passato
  per argomento, inserendo inizialmente la stringa type e il numero di messaggi
@@ -2999,7 +3000,7 @@ String convertMessages(Vector<RecordMessage> messages, String type):
 \begin_layout Itemize
 
 \series bold
-String convertTutorials(Map<String, String> tutorials, String type):
+[String] convertTutorials(Map<String, String> tutorials, String type):
 \series default
  metodo che converte in forma di stringa JSON i tutorials passati per argomento,
  inserendo inizialmente la stringa type e il numero di tutorials presenti.
@@ -3191,7 +3192,7 @@ Attributi protetti
 \begin_layout Itemize
 
 \series bold
-TokenServer tokenServer:
+[TokenServer] tokenServer:
 \series default
  riferimento al token server di JWebSocket
 \end_layout
@@ -3199,7 +3200,7 @@ TokenServer tokenServer:
 \begin_layout Itemize
 
 \series bold
-Collection<WebSocketConnector> connectedUsers
+[Collection<WebSocketConnector>] connectedUsers
 \series default
 : lista dei connettori collegati al server
 \end_layout
@@ -3207,7 +3208,7 @@ Collection<WebSocketConnector> connectedUsers
 \begin_layout Itemize
 
 \series bold
-Converter converter
+[Converter] converter
 \series default
 : riferimento alla classe Converter
 \end_layout
@@ -3219,7 +3220,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void setTokenServer(ServerMyTalk server): 
+[void[ setTokenServer(ServerMyTalk server): 
 \series default
 inizializza 
 \emph on
@@ -3229,7 +3230,7 @@ tokenServer
 \begin_layout Itemize
 
 \series bold
-void broadcastToAll(WebSocketPacket packet):
+[void[ broadcastToAll(WebSocketPacket packet):
 \series default
  invia il pacchetto in broadcast a tutti gli utenti presenti in 
 \emph on
@@ -3239,7 +3240,7 @@ connectedUsers
 \begin_layout Itemize
 
 \series bold
-WebSocketConnector getUserConnector(String username): 
+[WebSocketConnector[ getUserConnector(String username): 
 \series default
 ritorna il connettore dell'utente connesso, con il dato username, al sistema.
  Se non lo trova ritorna null 
@@ -3248,7 +3249,7 @@ ritorna il connettore dell'utente connesso, con il dato username, al sistema.
 \begin_layout Itemize
 
 \series bold
-WebSocketConnector getIpConnector(String IP):
+[WebSocketConnector[ getIpConnector(String IP):
 \series default
  ritorna il connettore, avente il dato indirizzo IP, connesso al sistema.
    Se non lo trova ritorna null 
@@ -3257,7 +3258,8 @@ WebSocketConnector getIpConnector(String IP):
 \begin_layout Itemize
 
 \series bold
-void sendPacket(WebSocketPacket packet, WebSocketConnector connector): 
+[void[ sendPacket(WebSocketPacket packet, WebSocketConnector connector):
+ 
 \series default
 invia il dato pacchetto al dato connettore
 \end_layout
@@ -3327,7 +3329,7 @@ Attributi privati
 \begin_layout Itemize
 
 \series bold
-AuthenticationManager authenticationManager:
+[AuthenticationManager] authenticationManager:
 \series default
  riferimento alla singola istanza della classe AuthenticationManager presente
  nel server
@@ -3336,7 +3338,7 @@ AuthenticationManager authenticationManager:
 \begin_layout Itemize
 
 \series bold
-UserManager userManager:
+[UserManager] userManager:
 \series default
  riferimento alla singola istanza della classe UserManager presente nel
  server
@@ -3345,7 +3347,7 @@ UserManager userManager:
 \begin_layout Itemize
 
 \series bold
-Tutorials tutorials: 
+[Tutorials] tutorials: 
 \series default
 riferimento ai tutorials presenti nel package shared
 \end_layout
@@ -3367,7 +3369,7 @@ costruttore della classe, inizializza gli attributi della classe con i parametri
 \begin_layout Itemize
 
 \series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
+[void] processToken(WebSocketServerTokenEvent event, Token token):
 \series default
  gestisce i token in arrivo aventi come tipo:
 \end_layout
@@ -3507,7 +3509,7 @@ convertUsers
 \begin_layout Itemize
 
 \series bold
-void processOpened(WebSocketServerEvent event): 
+[void] processOpened(WebSocketServerEvent event): 
 \series default
 metodo che si occupa di gestire la connessione di un dispositivo al server.
  Aggiunge il nuovo connettore a 
@@ -3523,7 +3525,7 @@ convertTutorials
 \begin_layout Itemize
 
 \series bold
-void processClosed(WebSocketServerEvent event): 
+[void] processClosed(WebSocketServerEvent event): 
 \series default
 metodo che si occupa di gestire la disconnessione di un dispositivo dal
  server.
@@ -3557,7 +3559,7 @@ name "sub:mytalk.server.transfer.CallTransfer"
 \end_layout
 
 \begin_layout Standard
-La classe CalTransfer si occupa di gestire il traffico di pacchetti per
+La classe CallTransfer si occupa di gestire il traffico di pacchetti per
  effettuare l'inizializzazione di una comunicazione audio/video.
 \end_layout
 
@@ -3606,7 +3608,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
+[void] processToken(WebSocketServerTokenEvent event, Token token):
 \series default
  gestisce dei token in arrivo.
  Per ogni token che gestisce, invoca il metodo 
@@ -3788,7 +3790,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
+[void] processToken(WebSocketServerTokenEvent event, Token token):
 \series default
  gestisce i token in arrivo aventi come tipo 
 \emph on
@@ -3871,7 +3873,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
+[void] processToken(WebSocketServerTokenEvent event, Token token):
 \series default
  gestisce i token in arrivo aventi come tipo:
 \end_layout
@@ -3970,7 +3972,7 @@ Metodi pubblici
 \begin_layout Itemize
 
 \series bold
-void processToken(WebSocketServerTokenEvent event, Token token):
+[void] processToken(WebSocketServerTokenEvent event, Token token):
 \series default
  gestisce i token in arrivo aventi come tipo:
 \end_layout
@@ -4091,6 +4093,14 @@ Metodi pubblici
 UserTransfer(UserManager userManager):
 \series default
  costruttore della classe, si collega alla istanza esistente di UserManager
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] processToken(WebSocketServerTokenEvent event, Token token):
+\series default
+ gestisce i token in arrivo aventi come tipo:
 \end_layout
 
 \begin_deeper

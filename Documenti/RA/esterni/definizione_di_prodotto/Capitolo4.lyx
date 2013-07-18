@@ -3708,8 +3708,8 @@ Metodi pubblici:
  [bool] conference):
 \series default
  metodo per inizializzare la chiamata, deve avere come parametri il tipo
- d chiamata, l'istanza della classe ContactModel relativa al contatto, un
- riferimento a CallView e un booleano che indica se è una chiamata multipla
+ di chiamata, l'istanza della classe ContactModel relativa al contatto,
+ un riferimento a CallView e un booleano che indica se è una chiamata multipla
  o no.
  Lancia l'evento 
 \shape italic
@@ -4237,9 +4237,21 @@ Metodi pubblici:
 \emph on
 getContacts
 \emph default
- contenente lo username dell'utente ed attende la risposta, che consiste
- in un pacchetto, contrassegnato con lo stesso tipo, contenente il numero
- di contatti e la lista con i loro dati.
+ contenente lo username dell'utente ed avvia il listener onmessage
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+[void] onmessage([Event] event):
+\series default
+ listener che attende la risposta, che consiste in un pacchetto di tipo
+ 
+\emph on
+getContacts
+\emph default
+ contenente il numero di contatti e la lista con i loro dati.
  Per ogni contatto controlla che esso non sia già presente nella lista utenti,
  se affermativo aggiunge il contatto nella collection, altrimenti aggiorna
  l'attributo 
@@ -4253,6 +4265,7 @@ ContactUser
  corrispondente
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
 
 \family typewriter
@@ -4759,7 +4772,9 @@ checkCredentials
 \shape italic
 view.callBacks.changeData(UserModel, UserDataView)
 \shape default
-, altrimenti mostra un messaggio di errore
+, altrimenti mostra il messaggio di errore 
+\shape italic
+Password non corretta
 \end_layout
 
 \begin_layout Itemize
@@ -4775,7 +4790,11 @@ changeData
 \emph default
  ed attende la risposta.
  Se il pacchetto di risposta, contrassegnato dallo stesso tipo, è affermativo
- si aggiorneranno i dati del model e si chiama il metodo 
+ vengono aggiornati i dati del model, viene mostrato il messaggio 
+\shape italic
+Operazione riuscita
+\shape default
+ e si chiama il metodo 
 \shape italic
 render()
 \shape default
