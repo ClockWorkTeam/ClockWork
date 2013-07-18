@@ -13,10 +13,8 @@
  * |        |               | + creazione documento |
  */
 require(['./common'], function (common) {
-  require(['./common', 'connection', 'view/AuthenticationView', 'collection/ContactsCollection', 'communication/NotificationCommunication', 'bootstrap'],
-           function(common, Connection, AuthenticationView, ContactsCollection, NotificationCommunication, bootstrap){
-    NotificationCommunication.listenNotification();
-    var authentication_view = new AuthenticationView();
+  require(['./common', 'view/TutorialView', 'bootstrap'],
+           function(common, TutorialView, bootstrap){
+    var tutorialView = new TutorialView();
   });
 });
-

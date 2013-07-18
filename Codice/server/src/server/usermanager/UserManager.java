@@ -108,14 +108,16 @@ public class UserManager{
    * @throws Exception 
    */
   public RecordMessage createMessage(String sender, String addressee, String path, String date) throws Exception{
-	RecordMessage message = new RecordMessage(sender, addressee, path, date);
-	if( recordMessageDao.addMessage(message)){
-	  if(userDao.getUser(addressee).getIP()!="0"){
-		return message;
-	  }else{
-		return null;
-	  }
-	}else throw new Exception ("Errore nella registrazione del messaggio");
+	if(userDao.getUser(addressee)!=null){
+	  RecordMessage message = new RecordMessage(sender, addressee, path, date);
+	  if( recordMessageDao.addMessage(message)){
+	    if(userDao.getUser(addressee).getIP()!="0"){
+		  return message;
+	    }else{
+		  return null;
+	    }
+	  }else throw new Exception ("Errore nella registrazione del messaggio");
+	}else throw new Exception("Destinatario inesistente");
   }
 
   /** Metodo che trova i messaggi inviati all'user
