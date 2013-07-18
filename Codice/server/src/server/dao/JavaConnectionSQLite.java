@@ -58,6 +58,7 @@ public class JavaConnectionSQLite {
   	try {
   	  statement.close();
       connection.close();
+      javaConnectionSQLite=null;
   	}
     catch(SQLException e){System.out.println("Errore nella chiusura del database");}
   }

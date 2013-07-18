@@ -35,8 +35,8 @@ define([
     events: {
       'keyup input#password:last-of-type':'pressEnter',
       'keyup input#password2':'pressEnter',
-      'keyup input#name':'pressEnter',  
-      'keyup input#surname':'pressEnter',  
+      'keyup input#name':'pressEnter',
+      'keyup input#surname':'pressEnter',
       'click button#login': 'connect',
       'click button#logout': 'disconnect',
       'click button#signup': 'viewSignup',
@@ -61,7 +61,7 @@ define([
 		userModel:null,
 
     template: _.template(authenticationTemplate),
-    
+
     contactsView:'',
 
     /**
@@ -165,8 +165,8 @@ define([
 						*/
 						alert('Le password inserite non coincidono');
 					}
-			
-				
+
+
 				}
       }else{
          /**
