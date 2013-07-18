@@ -27,7 +27,6 @@ import static org.junit.Assert.*;
 
 import java.sql.*;
 import java.util.Vector;
-
 import org.junit.*;
 
 import server.dao.JavaConnectionSQLite;
@@ -37,71 +36,102 @@ import server.shared.UserList;
 import server.usermanager.UserManager;
 
 public class UserManagerTest {
-	UserManager userManager;
-	JavaConnectionSQLite connection = JavaConnectionSQLite.getInstance();
-	UserList userList;
-	ResultSet rs;
+  UserManager userManager;
+  private JavaConnectionSQLite connection;
+  private ResultSet rs;
 	
-	@Before
-	public void init() {
-		userManager=new UserManager();
-		connection.executeUpdate("DELETE FROM UserDataSQL;");
-		connection.executeUpdate("DELETE FROM RecordMessageDataSQL;");
+  @Before
+  public void init() {
+	userManager=new UserManager();
+	connection = JavaConnectionSQLite.getInstance();
+	connection.executeUpdate("DELETE FROM UserDataSQL;");
+	connection.executeUpdate("DELETE FROM RecordMessageDataSQL;");
+  }
+	
+  @After
+  public void remove() {
+	connection.executeUpdate("DELETE FROM UserDataSQL;");
+	connection.executeUpdate("DELETE FROM RecordMessageDataSQL;");
+	UserList.getInstance().removeAll();
+  }
+
+  @Test
+  public void testCheckPassword() {
+	assertFalse("Operazione di controllo password fallita",userManager.checkPassword("username", "password"));
+	
+	connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', 'IP');");
+	assertFalse("Operazione di controllo password fallita",userManager.checkPassword("wrongUsername", "password"));
+	assertFalse("Operazione di controllo password fallita",userManager.checkPassword("username", "wrongPassword"));
+	assertTrue("Operazione di controllo password fallita",userManager.checkPassword("username", "password"));
+  }
+
+  @Test
+  public void testSetPassword() {
+	try {
+	  userManager.setPassword("username", "password2");
+	  assertTrue("Operazione di cambio password errata. Username errato",false);
+	} catch (Exception e) {
+	  assertTrue("Operazione di cambio password errata. Username errato",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username errato"));
 	}
 
-	@Test
-	public void testSetPassword() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		
-		assertTrue("Operazione di cambio password fallita",userManager.setPassword("ClockWork", "newPassword"));
-		rs= connection.select("UserDataSQL","*","","");
-		assertTrue("Password non modificata", rs.getString("password").equals("newPassword"));
+	connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', 'IP');");	
+	try {
+	  assertTrue("Operazione di cambio password fallita", userManager.setPassword("username", "password2"));
+	  rs = connection.select("UserDataSQL","*","username='username'","");
+	  try{
+		assertTrue("Password non modificata nel riferimento presente nella base di dati", rs.getString("password").equals("password2"));
+	  }catch(Exception e){
+		assertTrue("user mancante", false);
+	  }
+	} catch (Exception e) {
+	  assertTrue("Operazione di cambio password fallita",false);
 	}
-
-	@Test
-	public void testCheckPassword() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		
-		rs= connection.select("UserDataSQL","*","password='password'","");
-		assertTrue("Password non modificata", !rs.isAfterLast());
-		
-		assertTrue("Operazione di controllo password fallita",userManager.checkPassword("ClockWork", "password"));	
+  }
+	
+  @Test
+  public void testSetUserData() {
+	try {
+	  userManager.setUserData("username", "newName","newSurname");
+	  assertTrue("Operazione di cambio dati errata. Username errato",false);
+	} catch (Exception e) {
+	  assertTrue("Operazione di cambio dati errata. Username errato",true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Username errato"));
 	}
 	
-	@Test
-	public void testSetUserData() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		
-		assertTrue("Operazione di settaggio fallita",userManager.setUserData("ClockWork", "ClockWork","Team7"));
-		
-		rs= connection.select("UserDataSQL","*","","");
-		assertTrue("Password non modificata", !rs.isAfterLast());
-		assertTrue("Password non modificata", rs.getString("username").equals("ClockWork"));
-		assertTrue("Password non modificata", rs.getString("name").equals("ClockWork"));
-		assertTrue("Password non modificata", rs.getString("surname").equals("Team7"));
-		
-		connection.executeUpdate("DELETE FROM UserDataSQL;");
-		
-		try{
-			assertTrue("Operazione di settaggio fallita",userManager.setUserData("ClockWork", "ClockWork","Team7"));
-		}
-		catch(Exception e){ System.out.println("Username errato"); }
+	connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', 'IP');");
+	try {
+	  assertTrue("Operazione di cambio dati fallita", userManager.setUserData("username", "newName","newSurname"));
+	  rs= connection.select("UserDataSQL","*","","");
+	  try{
+		assertTrue("Nome non modificato nel riferimento presente nella base di dati", rs.getString("name").equals("newName"));
+		assertTrue("Cognome non modificato nel riferimento presente nella base di dati", rs.getString("surname").equals("newSurname"));		
+	  }catch(Exception e){
+		assertTrue("user mancante", false);
+	  }
+	} catch (Exception e) {
+	  assertTrue("Operazione di cambio dati fallita",false);
 	}
+  }
 	
-	@Test
-	public void testGetUserData() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
-		
-		User user=userManager.getUserData("ClockWork");
-		
-		assertTrue("Password non modificata", user.getUsername().equals("ClockWork"));
-		assertTrue("Password non modificata", user.getName().equals("Clock Work"));
-		assertTrue("Password non modificata", user.getSurname().equals("Team"));
+  @Test
+  public void testGetUserData() {
+    assertTrue("Operazione errata. Non dovrebbe esistere l'utente", userManager.getUserData("username")==null);
+	
+    connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('username','password','name','surname', 'IP');");
+    assertTrue("Operazione fallita", userManager.getUserData("username")!=null);
+ }
+	
+ @Test
+  public void testCreateMessage(){
+	try{
+ 	  userManager.createMessage("sender", "addressee", "mex", "date");
+      assertTrue("Operazione errata, destinatario non presente", false);
+	}catch(Exception e) {
+  	  assertTrue("Operazione errata, destinatario non presente", true);
+	  assertTrue("Messaggio di errore sbagliato", e.getMessage().equals("Destinatario inesistente"));
 	}
-	
-	@Test
-	public void testCreateMessage() throws Exception {
-		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
+	/* connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork','password','Clock Work','Team', '0');");
 		connection.executeUpdate("INSERT INTO UserDataSQL VALUES ('ClockWork7','password','Clock Work','Team', '7');");
 		
 		RecordMessage message=userManager.createMessage("sender", "ClockWork7", "prova", "");
@@ -114,9 +144,9 @@ public class UserManagerTest {
 			message=userManager.createMessage("sender", "ClockWork777", "prova", "");
 		}
 		catch(Exception e){System.out.println("Addressee errato");}
-	}
+*/	}
 	
-	@Test
+/*	@Test
 	public void testGetMessages() throws Exception {
 		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('sender','ClockWork7','prova','');");
 		connection.executeUpdate("INSERT INTO RecordMessageDataSQL VALUES ('sender','ClockWork7','ciao','');");
@@ -143,5 +173,5 @@ public class UserManagerTest {
 		rs= connection.select("RecordMessageDataSQL","count(*) as num","","");
 		assertTrue("Password non modificata", rs.getString("num").equals("0"));
 	}
-	
+*/	
 }
