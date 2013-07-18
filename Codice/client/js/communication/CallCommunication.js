@@ -298,13 +298,13 @@ define(['connection'], function(Connection){
           recipient.push(response.user);
           confirmedContact.push(response.user);
           callView.addVideoConference(response.user)
-          call.startCall(false, typeCall, call, callView,response.user)
+          call.startCall(false, call, callView,response.user)
         }
         if (response.type==='addConferenceAnswer'){
           recipient.push(response.user);
           confirmedContact.push(response.user);
           callView.addVideoConference(response.user)
-          call.startCall(true, typeCall, call, callView,response.user)
+          call.startCall(true, call, callView,response.user)
         }
         if (response.type==='endCallEarly'){
           allow=false;
@@ -596,7 +596,6 @@ define(['connection'], function(Connection){
     recoverCall: function (callView) {
       sourcevid = document.getElementById('sourcevid');
       for(var i=0;i<confirmedContact.length;i++){
-        console.log("Utente ripristina "+confirmedContact[i]);
         callView.addVideoConference(confirmedContact[i]);
         remotevid[confirmedContact[i]] = document.getElementById(confirmedContact[i]);
         remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
@@ -621,7 +620,6 @@ define(['connection'], function(Connection){
      * termina chiamata dal callView
      */
     endCall: function() {
-      console.log('grandezza di recipient '+recipient.length);
       for(var i=0;i<recipient.length;i++){
         if(peerConnection[recipient[i]] != null){
           peerConnection[recipient[i]].removeStream(localStream);

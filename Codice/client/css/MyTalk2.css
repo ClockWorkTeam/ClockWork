@@ -21,6 +21,10 @@ background-color: #E8EBF8;
 border-bottom: 2px ridge #8999CC;
 }
 
+#authentication span.inserData{
+float:left;
+}
+
 #authentication input{
   width: 90px;
   height: 17px;
@@ -29,12 +33,12 @@ border-bottom: 2px ridge #8999CC;
 }
 
 #sidebar{
- border-right: 1px ridge #8999CC; 
  margin-top: 0.5em;
 }
 
 #sidebar #callIP{
- font-size: 12px;
+  padding-left:0.4em;
+  padding-right:0.4em;
 }
 
 #sidebar span{
@@ -45,12 +49,13 @@ ul{
 list-style:none;
 }
 
-#sidebar #contacts{
- background-color: #E8EBF8; 
- border: 2px ridge #8999CC; 
- border-radius: 10px;
- border-right:none;
- border-left: none;
+#sidebar #contacts{min-height: 20px;
+padding: 19px;
+margin-bottom: 20px;
+background-color: #f5f5f5;
+border: 1px solid #e3e3e3;
+border-radius: 4px;
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
  margin-top: 0.5em;
  margin-bottom: 0.5em;
  margin-left: 0em;
@@ -112,21 +117,38 @@ text-align:center;
   display: inline;
 }
 
-
+#content #callTemplate{
+ float: left;
+ 
+}
 
 #content #callTemplate #remotevid{
- width:100%;
- height:100%;
+ width:110%;
+ height:110%
+ margin-top:-20em;
+ padding:0;
  border:2px ridge #110560;
- }
+ border-bottom:none;
+ position:relative;
+ left:-30;
+ 
+}		
+
  
  #content #callTemplate #sourcevid{
-  width:25%;
- height:20%;
- float:right;
- margin-top: -11em;
+  width: 20%;
+  height: 20%;
+  position:relative;
+  float:right;
+  margin-top:20em;
+  margin:0;
+ padding:0;
  border:2px ridge #110560;
  }
+
+#content #callTemplate{
+ display: inline;
+}
 
 #content #callTemplate span{
  float:right;
@@ -141,11 +163,14 @@ text-align:center;
 
 #statistics{
  float:right;
+ position:relative;
 }
 
 #main #chat{
  height:inherit;
+ float:center;
 }
+
 #main #chat ul{
  height:50%;
  margin:0;
@@ -160,4 +185,18 @@ text-align:center;
 
 #chat .sender{
  font-weight: bold;
+}
+
+#registration input{
+   width: 200px;
+   height: 20px;
+   margin-right: 5px;
+   margin-left: 5px;
+}
+
+#registration .control-label{
+ float: left;
+ width: 160px;
+ padding-top: 5px;
+ text-align: right;
 }
