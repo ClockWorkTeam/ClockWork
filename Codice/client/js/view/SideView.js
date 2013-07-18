@@ -47,6 +47,7 @@ define([
 
     myModel : '',
     authenticationView:'',
+    conference:'',
 
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
@@ -61,6 +62,7 @@ define([
      */
 
     initialize:function(){
+      this.conference=false;
 			_.bindAll(this, 'render', 'unrender', 'viewContact');
 			this.listenTo(this.collection, 'add', this.render);
 			document.addEventListener('acceptCall',acceptCall,false);
@@ -141,16 +143,17 @@ define([
      * si occupa di effettuare conferenze
      */
     StartConference: function(){
-      _.each(this.childViews, function(view){
-        view.close();
-      });
-      if(this.currentFunctions){
-        this.currentFunctions.close();
+      if(this.conference==true){
+        console.log('ciao');
+      }else{
+        _.each(this.childViews, function(view){
+          view.close();
+        });
+        this.currentFunctions = new FunctionsView({From: 'Conf'});
+        this.currentFunctions.render();
+        $('#main').prepend(this.currentFunctions.el);
+        this.collection.each(this.listContacts);
       }
-      this.currentFunctions = new FunctionsView({From: 'Conf'});
-      this.currentFunctions.render();
-      $('#main').prepend(this.currentFunctions.el);
-      this.collection.each(this.listContacts);
     },
 
     /**
@@ -202,7 +205,6 @@ define([
         trovato=true;
       }
       if(trovato==false){
-        console.log("sto cercando tra gli utenti");
         _.each(this.childViews,
         function(view){
           
@@ -211,7 +213,6 @@ define([
           }
         });
       }else{
-        console.log("sto cercando tra gli IP");
         this.closeOtherContacts();
       
         this.currentFunctions = new FunctionsView({From: 'IP'});  
@@ -228,10 +229,11 @@ define([
      * e generare una conferenza con esso
      */
     setCallConference : function(contact,type){
-      console.log("sto cercando nella conferenza");
+      this.conference=true;;
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
+          this.currentFunctions = new FunctionsView({From: 'Conference'});
           view.createCallConference(type,contact);
         }
       });

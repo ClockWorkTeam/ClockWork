@@ -207,22 +207,28 @@ define([
     },
     
     conference : function(isCaller,contact){
-      var contatti=[];
-      for(var i=0;i<document.getElementsByTagName('input').length;i++){
-        if(document.getElementsByTagName('input')[i].type=='checkbox' && document.getElementsByTagName('input')[i].checked){
-          contatti.push(document.getElementsByTagName('input')[i].name);
+      console.log("vado su conference");
+      if(!this.callView){
+        var contatti=[];
+        for(var i=0;i<document.getElementsByTagName('input').length;i++){
+          if(document.getElementsByTagName('input')[i].type=='checkbox' && document.getElementsByTagName('input')[i].checked){
+            contatti.push(document.getElementsByTagName('input')[i].name);
+          }
         }
-      }
-      if(this.callView){
-        this.forceClose();
-      }
-      this.callView=new CallView({FunctionsView:this});
-      if(isCaller==false){
-        this.callView.conference(false, 'video',contact);
+        if(this.callView){
+          this.forceClose();
+        }
+        this.callView=new CallView({FunctionsView:this});
+        if(isCaller==false){
+          this.callView.conference(false, 'video',contact);
+        }else{
+          this.callView.conference(true,'video',contatti);
+        }
+        $('#main').prepend(this.callView.el);
       }else{
-        this.callView.conference(true,'video',contatti);
+        console.log('ripristino la conferenza');
+        this.callView.conference(null,null,null);
       }
-      $('#main').prepend(this.callView.el);
     }
 
   });
