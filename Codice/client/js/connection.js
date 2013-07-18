@@ -17,6 +17,6 @@
  */
 
 define(function(){
-  var wsc = new WebSocket('ws://192.168.137.202:8787');
+  var wsc = new WebSocket('ws://192.168.1.5:8787');
   return wsc;
 });
