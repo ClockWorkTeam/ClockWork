@@ -1,9 +1,11 @@
-
-<div id='callTemplate'>
+<div id='callTemplate' class=
   <% if(typeof username != 'undefined'){ %>
+		'singola'>
     <h2><%= username %></h2>
-  <% }%>
+  <% }else{%>
+		'conferenza'>
+		<% }%>
   <div id='otherCaller'></div>
   <video id='sourcevid' autoplay></video>
-  <span> <button class='btn btn-small btn-inverse' id='endCall'>Termina chiamata</button></span>
+  <div> <button class='btn btn-small' id='endCall'>Termina chiamata</button></div>
 </div>

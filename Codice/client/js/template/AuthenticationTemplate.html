@@ -1,17 +1,15 @@
-
-
 <% if (!authenticated) { %>
   <% if (!signup) { %>
   <div class='authentication'>
       <label for='user'>Username</label><input type='text' id='user' name='user' />
       <label for='password'>Password</label><input type='password' id='password' name='password' />
       <button class="btn btn-small" id='login'>Login</button>
-      <span>Non sei registrato <button href="#authenticationModal" class="btn btn-small" data-toggle="modal" id='signup'>Registrazione</button></span>
+      <span>Non sei registrato <button href='#authenticationModal' class='btn btn-small' data-toggle='modal' data-backdrop='static' data-keyboard='static' id='signup'>Registrazione</button></span>
    </div>
   <% } else{ %>
     <div id="authenticationModal" class="modal hide fade">
 	  <div class="modal-header">
-	    <button class="button close" data-dismiss="modal" aria-hidden="true" id='deny'>x</button>
+	    <button class="button close" data-dismiss='modal' aria-hidden='true' id='deny'>x</button>
     	<h2>Registrazione</h2>
         <div class="modal-body">
            <span class="form-horizontal">
@@ -34,7 +32,7 @@
 <div class='authentication logged'>
   Ciao, <%= name %>
 	<span>
-	  <button class="btn btn-small btn-inverse" id='logout'>Logout</button>
+	  <button class="btn btn-small" id='logout'>Logout</button>
 	  <button class="btn btn-small" id='edit'>Modifica dati profilo</button>
 	</span>
 </div>
