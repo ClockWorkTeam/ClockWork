@@ -141,10 +141,12 @@ define([
      * si occupa di effettuare conferenze
      */
     StartConference: function(){
-      _.each(this.childViews, function(view){view.close();});
+      _.each(this.childViews, function(view){
+        view.close();
+      });
       if(this.currentFunctions){
-          this.currentFunctions.close();
-        }
+        this.currentFunctions.close();
+      }
       this.currentFunctions = new FunctionsView({From: 'Conf'});
       this.currentFunctions.render();
       $('#main').prepend(this.currentFunctions.el);
