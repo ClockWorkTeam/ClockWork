@@ -1851,7 +1851,7 @@ conference
 \series default
 metodo che chiude l'istanza della classe creata e invoca il metodo 
 \shape italic
-close()
+unrender()
 \emph on
  delle classi ChatView e CallView
 \end_layout
@@ -2044,7 +2044,9 @@ te
 \series default
  metodo per rimuovere la vista delle notifiche, invoca il metodo 
 \shape italic
-close
+close() 
+\emph on
+della classe stessa
 \end_layout
 
 \begin_layout Itemize
@@ -2064,11 +2066,15 @@ timeout
 \emph on
 false, 
 \emph default
-infine invia un evento di tipo 
+infine se la chiamata avviata non era conferenza invia un evento di tipo
+ 
 \emph on
 acceptCall
 \emph default
- per segnalare che si sta iniziando una chiamata
+ per segnalare che si sta iniziando una chiamata, altrimenti invia un evento
+ di tipo 
+\emph on
+acceptCallConference
 \end_layout
 
 \begin_layout Itemize
@@ -2083,7 +2089,7 @@ timeout
 \emph default
  risulta 
 \emph on
-false
+true
 \emph default
  chiama il metodo 
 \shape italic
@@ -2097,7 +2103,7 @@ refuseCall
 \series default
 metodo per rifiutare una chiamata, per fare ciò invoca il metodo
 \shape italic
- refuseCall
+ refuse
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
