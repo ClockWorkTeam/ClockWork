@@ -2821,6 +2821,30 @@ classe ContactView, relativa al contatto
 
 \series bold
 [void] setCallConference([ContactModel] contact, [String] type): 
+\series default
+metodo che cerca di generare una conferenza con l'utente chiamante.
+ Imposta l'attributo 
+\emph on
+conference
+\emph default
+ a 
+\emph on
+true 
+\emph default
+ed invoca i metodi 
+\emph on
+createCallConference([String] type, [ContactModel] contact, [SideView] sideView)
+ 
+\emph default
+e 
+\emph on
+metodo
+\emph default
+ 
+\emph on
+currentFunction 
+\emph default
+della classe stessa
 \end_layout
 
 \begin_layout Itemize
@@ -2830,9 +2854,9 @@ classe ContactView, relativa al contatto
 \series default
  metodo che imposta l'attributo 
 \emph on
-Conference 
+conference 
 \emph default
-e 
+a 
 \emph on
 true
 \end_layout
@@ -2842,7 +2866,20 @@ true
 \series bold
 [void] closeConfrence(): 
 \series default
-metodo che si occupa di chiudere le viste inattese
+metodo che si occupa di impostare a 
+\emph on
+false
+\emph default
+ l'attributo 
+\emph on
+conference
+\emph default
+ e di chiudere le istanze di FunctionsView e UserDataView aperte tramite
+ l'invocazione del metodo 
+\emph on
+closeOtherontacts() 
+\emph default
+della classe stessa
 \end_layout
 
 \begin_layout Subsubsection
@@ -3116,11 +3153,31 @@ Eventi:
 \begin_layout Itemize
 
 \series bold
-click li.videoTutorial: 
+click a#tutorial: 
 \series default
 evento che richiama la funzione 
 \shape italic
-watch
+viewTutorial
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#prev: 
+\series default
+evento che richiama la funzione 
+\shape italic
+viewTutorial
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click buttonn#indice: 
+\series default
+evento che richiama la funzione 
+\emph on
+render
 \end_layout
 
 \begin_layout Itemize
@@ -3130,17 +3187,7 @@ click button#next:
 \series default
 evento che richiama la funzione 
 \shape italic
-watch
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-click button#previous: 
-\series default
-evento che richiama la funzione 
-\shape italic
-watch
+viewTutorial
 \end_layout
 
 \begin_layout Paragraph
@@ -3175,7 +3222,7 @@ collection
 \begin_layout Itemize
 
 \series bold
-[void] watch([Event] event):
+[void] viewTutorial([Event] event):
 \series default
  metodo per visualizzare il tutorial selezionato, indicato attraverso un
  parametro indice di 
@@ -3188,14 +3235,6 @@ collection
 currentTutorial 
 \emph default
 il tutorial selezionato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] close(): 
-\series default
-metodo che chiude l'istanza della classe creata
 \end_layout
 
 \begin_layout Subsubsection
