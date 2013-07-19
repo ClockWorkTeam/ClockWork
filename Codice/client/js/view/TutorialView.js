@@ -43,7 +43,7 @@ define([
      */
     initialize: function(){
       _.bindAll(this, 'render');
-      this.render();
+      this.listenTo(this.collection, 'add', this.render);
     },
 
     /**

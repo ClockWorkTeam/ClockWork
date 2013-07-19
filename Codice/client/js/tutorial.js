@@ -13,8 +13,12 @@
  * |        |               | + creazione documento |
  */
 require(['./common'], function (common) {
-  require(['./common', 'view/TutorialView', 'bootstrap'],
-           function(common, TutorialView, bootstrap){
+  require(['view/TutorialView',
+           'bootstrap',
+           'communication/TutorialCommunication'],
+           function(TutorialView,
+           bootstrap,
+           TutorialCommunication){
     var tutorialView = new TutorialView();
   });
 });

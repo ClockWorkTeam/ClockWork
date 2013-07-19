@@ -76,6 +76,7 @@ public class Converter{
 		int i=0;
 		for(String key:keySet){
 			risp+=", \"title"+i+"\": \""+key+"\", \"path"+i+"\": \""+tutorials.get(key)+"\"";
+			i++;
 		}
 		risp+="}";
 		return risp;
