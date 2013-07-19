@@ -40,7 +40,8 @@ public class CallTransfer extends ListenerTransfer {
       sendPacket(wspacket,connector);
    	}else if(type.equals("answeredCall")){
   	  WebSocketConnector connector= this.getConnector(token.getString("contact"));
-      wspacket=new RawPacket("{\"type\":\"answeredCall\", \"user\":\"" +event.getConnector().getUsername()+"\", \"answer\":\"true\"}");
+  	  String contact= this.getContact(token.getString("contact"), event.getConnector());
+      wspacket=new RawPacket("{\"type\":\"answeredCall\", \"user\":\"" +contact+"\", \"answer\":\"true\"}");
    	  sendPacket(wspacket,connector);
    	}else if(type.equals("refuseCall")){
       WebSocketConnector connector=this.getConnector(token.getString("contact"));
