@@ -535,8 +535,7 @@ var CallCommunication = {
         }else{
           var message={type : 'endCallEarly', contact: recipient[i]};
         }
-        
-        Connection.send(JSON.stringify(message));
+        //Connection.send(JSON.stringify(message));
       }
       if(localStream!=null){
         localStream.stop()
