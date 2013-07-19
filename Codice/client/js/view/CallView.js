@@ -106,7 +106,11 @@ define([
        console.log("CHIUSURA IN CORSO");
       if(isEnding!=false)
         CallCommunication.endCall();
-      this.close();
+      if(this.statisticsView){
+        this.statisticsView.close();
+      }
+      this.remove();
+      this.unbind();
       this.options.FunctionsView.closeViewCall();
       this.statisticsView.close();
     },
@@ -158,7 +162,7 @@ define([
 
   CallView.prototype.close = function(){
     
-    CallCommunication.endCall();
+    //CallCommunication.endCall();
     if(this.statisticsView){
       this.statisticsView.close();
     }

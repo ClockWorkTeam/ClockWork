@@ -245,7 +245,7 @@ Comunicazione tra CallComunication e CallTransfer
 \begin_layout Standard
 
 \series bold
-Instaurazione di una chiamata:
+Instaurazione di una chiamata singola:
 \end_layout
 
 \begin_layout Standard
@@ -271,7 +271,7 @@ contact,
 \series bold
  
 \series default
-callType
+callType, conference
 \end_layout
 
 \begin_deeper
@@ -283,6 +283,58 @@ video
  o 
 \emph on
 audio
+\emph default
+, conference conterrà 
+\emph on
+false 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Instaurazione di una conferenza:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+call
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact,
+\series bold
+ 
+\series default
+callType, conference
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: callType conterrà il tipo di chiamata, 
+\emph on
+video
+\emph default
+ o 
+\emph on
+audio
+\emph default
+, conference conterrà 
+\emph on
+true
 \end_layout
 
 \end_deeper
@@ -311,9 +363,23 @@ answeredCall
 \series bold
 altri attributi: 
 \series default
-contact
+contact, conference
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: conference conterrà 
+\emph on
+false 
+\emph default
+se si tratta di una chiamata singola, 
+\emph on
+true 
+\emph default
+se si tratta di una conferenza
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 CallTransfer risponde inviando a CallComunication una stringa avente:
 \end_layout
@@ -333,14 +399,16 @@ answeredCall
 \series bold
 altri attributi: 
 \series default
-answer
+answer, user
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Descrizione degli attributi: answer contiene la stringa 
 \emph on
-true
+true, 
+\emph default
+user rappresenta l'utente che ha accettato la chiamata
 \end_layout
 
 \end_deeper
@@ -380,15 +448,118 @@ false,
 \emph default
 error contiene il motivo di rifiuto, scelto tra 
 \emph on
-Utente non connesso al server, Chiamata rifiutata 
+Utente non connesso al server, Chiamata rifiutata
 \emph default
-o 
+, 
 \emph on
-Utente occupato in un'altra conversazione
+Utente occupato in un'altra conversazione, Utente rifiuta di accendere la
+ telecamera
 \end_layout
 
 \end_deeper
 \begin_layout Standard
+
+\series bold
+Segnalazione presenza contatti videoconferenza
+\end_layout
+
+\begin_layout Standard
+CallCommunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+addConferenceCaller
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact, user
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione attributi: user contiene la stringa di un nuovo utente aggiuntosi
+ alla conferenza
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+CallTransfer risponde inviando a CallCommunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+addConferenceCaller
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi:
+\series default
+ user
+\end_layout
+
+\begin_layout Standard
+CallCommunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+addConferenceAnswer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact, user
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallCommunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+addConferenceAnswer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi:
+\series default
+ user
+\end_layout
+
+\begin_layout Standard
+\noindent
 
 \series bold
 Protocollo della descrizione della sessione:
@@ -430,10 +601,18 @@ type
 offer
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+Stringa creata da WebRTC, contact
+\end_layout
+
 \begin_deeper
 \begin_layout Itemize
-NOTA: la stringa non è altro che la stringa contenuta nel attributo description
- passato precedentemente
+Descrizione degli attributi: la stringa non è altro che la stringa contenuta
+ nel attributo description passato precedentemente
 \end_layout
 
 \end_deeper
@@ -479,6 +658,14 @@ type
 : 
 \emph on
 answer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact,description
 \end_layout
 
 \begin_deeper
@@ -530,6 +717,14 @@ type
 candidateReady
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
 \begin_layout Standard
 CallComunication risponde inviando a CallTransfer una stringa avente:
 \end_layout
@@ -564,6 +759,14 @@ type
 : 
 \emph on
 candidate
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
 \end_layout
 
 \begin_deeper
@@ -613,6 +816,64 @@ type
 : 
 \emph on
 endCall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Terminazione di una chiamata anticipata:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+endCallEarly
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
+\end_layout
+
+\begin_layout Standard
+CallTransfer risponde inviando a CallComunication una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+endCallEarly
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
 \end_layout
 
 \begin_layout Subsection*
@@ -987,7 +1248,15 @@ type
 \series default
 : 
 \emph on
-endCall
+endCallEarly
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact
 \end_layout
 
 \begin_layout Subsection*

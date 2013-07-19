@@ -262,7 +262,7 @@ var CallCommunication = {
          * creo un array a due dimensioni
          */
         candidates[user]=[];
-        peerConnection[user].onicecandidate = function(event){
+        peerConnection[user].onicecandidate = function(event){alert(peerConnection[user]);
       /**
         * funzione interna che si occupa di salvare gli icecandidate e di inviarli all'altro utente
         * solo nel qualcaso l'utente con cui si instaura la chiamata sia pronto a ricevere altrimenti
@@ -301,7 +301,7 @@ var CallCommunication = {
       console.log('Failed to create peerConnection, exception: ' + e.message);
     }
     peerConnection[user].addEventListener("addstream", onRemoteStreamAdded, false);
-    peerConnection[user].addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+    peerConnection[user].addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false);
     },
     
     /**
@@ -366,7 +366,7 @@ var CallCommunication = {
           started = true;
           call.createPeerConnection(contact);
           peerConnection[contact].addStream(localStream);
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           peerConnection[contact].createAnswer(function(desc){
             peerConnection[contact].setLocalDescription(desc);  
             var response=JSON.stringify(desc);
@@ -385,7 +385,7 @@ var CallCommunication = {
         var response = JSON.parse(evt.data);
         if (response.type==='answer' && isCaller && response.contact==contact){
           started=true;
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           Connection.removeEventListener('message',onAnswerSDP,false);  
         }
       }
@@ -399,8 +399,8 @@ var CallCommunication = {
         if (response.type ==='candidate' && started && response.contact==contact) {
           console.log('STARTED TRUE');
           console.log('Adding candidate ');
-          var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
-          candidate:response.candidate});
+          var candidate = null;//new RTCIceCandidate({sdpMLineIndex:response.label,
+          //candidate:response.candidate});
           peerConnection[response.contact].addIceCandidate(candidate);
         }
       }
@@ -443,7 +443,7 @@ var CallCommunication = {
           if(trovatoConfirmed==true){
             confirmedContact.splice(i,1);
             recipient.splice(j,1);
-            remotevid[contact].parentNode.removeChild(remotevid[contact]);
+            //remotevid[contact].parentNode.removeChild(remotevid[contact]);
             remotevid.splice(i,1);
           }
           /**

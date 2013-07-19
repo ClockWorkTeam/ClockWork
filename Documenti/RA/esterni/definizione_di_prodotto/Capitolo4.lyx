@@ -1219,7 +1219,7 @@ click span.contact:
 \series default
 evento che richiama la funzione 
 \emph on
-view
+view()
 \end_layout
 
 \begin_layout Paragraph
@@ -1300,7 +1300,9 @@ closeOtherContacts
  della classe SideView, per controllare che tutte le view presenti nel content
  siano state chiuse e invoca il metodo 
 \shape italic
-conference
+conference 
+\emph on
+della classe FunctionsView
 \end_layout
 
 \begin_layout Itemize
@@ -1310,7 +1312,7 @@ conference
 \series default
  metodo che chiude l'istanza della classe creata invocando il metodo 
 \shape italic
-unrender 
+close 
 \emph on
 della classe FunctionsView
 \end_layout
@@ -1791,14 +1793,6 @@ startChat()
 \begin_layout Itemize
 
 \series bold
-[void] sendVideoText(): 
-\series default
-metodo che si avvia RecordMessageView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 [void] forceClose():
 \series default
  metodo che forza la chiusura di una chiamata invocando 
@@ -1851,7 +1845,7 @@ conference
 \series default
 metodo che chiude l'istanza della classe creata e invoca il metodo 
 \shape italic
-close()
+unrender()
 \emph on
  delle classi ChatView e CallView
 \end_layout
@@ -2044,7 +2038,9 @@ te
 \series default
  metodo per rimuovere la vista delle notifiche, invoca il metodo 
 \shape italic
-close
+close() 
+\emph on
+della classe stessa
 \end_layout
 
 \begin_layout Itemize
@@ -2064,11 +2060,15 @@ timeout
 \emph on
 false, 
 \emph default
-infine invia un evento di tipo 
+infine se la chiamata avviata non era conferenza invia un evento di tipo
+ 
 \emph on
 acceptCall
 \emph default
- per segnalare che si sta iniziando una chiamata
+ per segnalare che si sta iniziando una chiamata, altrimenti invia un evento
+ di tipo 
+\emph on
+acceptCallConference
 \end_layout
 
 \begin_layout Itemize
@@ -2083,7 +2083,7 @@ timeout
 \emph default
  risulta 
 \emph on
-false
+true
 \emph default
  chiama il metodo 
 \shape italic
@@ -2097,7 +2097,7 @@ refuseCall
 \series default
 metodo per rifiutare una chiamata, per fare ciò invoca il metodo
 \shape italic
- refuseCall
+ refuse
 \shape default
  della classe NotificationCommunication e il metodo 
 \shape italic
@@ -2348,7 +2348,7 @@ ate
 \begin_layout Itemize
 
 \series bold
-[void] startRecording():
+[void] startRecord():
 \series default
  metodo per avviare la registrazione del messaggio, inizializza la variabile
  
@@ -2365,7 +2365,7 @@ e
 \begin_layout Itemize
 
 \series bold
-[void] stopRecording(): 
+[void] stopRecord(): 
 \series default
 metodo per fermare la registrazione del messaggio, sostituisce il pulsante
  per terminare la registrazione con i pulsanti per riavviarla e per inviare
@@ -2519,6 +2519,14 @@ riferimento al template utilizzato
 [ContactView[] ] childViews: 
 \series default
 riferimenti alle istanze della classe ContactView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[boolean] conference: 
+\series default
+variabile booleana che segnala se si è o no in una conferenza
 \end_layout
 
 \begin_layout Itemize
@@ -2738,8 +2746,8 @@ IP
 \series bold
 [void] startConference():
 \series default
- metodo per effettuare una videoconferenza, , per fare ciò inizialmente
- invoca il metodo 
+ metodo per effettuare una videoconferenza, per fare ciò inizialmente invoca
+ il metodo 
 \shape italic
 closeOtherContacts
 \shape default
@@ -2754,7 +2762,7 @@ From
 \emph default
  il valore 
 \emph on
-Conference.
+Conf.
  
 \emph default
 Inoltre invoca il metodo 
@@ -2801,6 +2809,71 @@ dell'istanza, della
  
 \emph on
 classe ContactView, relativa al contatto
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] setCallConference([ContactModel] contact, [String] type): 
+\series default
+metodo che cerca di generare una conferenza con l'utente chiamante.
+ Imposta l'attributo 
+\emph on
+conference
+\emph default
+ a 
+\emph on
+true 
+\emph default
+ed invoca i metodi 
+\emph on
+createCallConference([String] type, [ContactModel] contact, [SideView] sideView)
+ 
+\emph default
+e 
+\emph on
+metodo
+\emph default
+ 
+\emph on
+currentFunction 
+\emph default
+della classe stessa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] setConference():
+\series default
+ metodo che imposta l'attributo 
+\emph on
+conference 
+\emph default
+a 
+\emph on
+true
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] closeConfrence(): 
+\series default
+metodo che si occupa di impostare a 
+\emph on
+false
+\emph default
+ l'attributo 
+\emph on
+conference
+\emph default
+ e di chiudere le istanze di FunctionsView e UserDataView aperte tramite
+ l'invocazione del metodo 
+\emph on
+closeOtherontacts() 
+\emph default
+della classe stessa
 \end_layout
 
 \begin_layout Subsubsection
@@ -3074,11 +3147,31 @@ Eventi:
 \begin_layout Itemize
 
 \series bold
-click li.videoTutorial: 
+click a#tutorial: 
 \series default
 evento che richiama la funzione 
 \shape italic
-watch
+viewTutorial()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click button#prev: 
+\series default
+evento che richiama la funzione 
+\shape italic
+viewTutorial()
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+click buttonn#indice: 
+\series default
+evento che richiama la funzione 
+\emph on
+render()
 \end_layout
 
 \begin_layout Itemize
@@ -3088,17 +3181,7 @@ click button#next:
 \series default
 evento che richiama la funzione 
 \shape italic
-watch
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-click button#previous: 
-\series default
-evento che richiama la funzione 
-\shape italic
-watch
+viewTutorial()
 \end_layout
 
 \begin_layout Paragraph
@@ -3133,27 +3216,15 @@ collection
 \begin_layout Itemize
 
 \series bold
-[void] watch([Event] event):
+[void] viewTutorial([Event] event):
 \series default
- metodo per visualizzare il tutorial selezionato, indicato attraverso un
- parametro indice di 
+ metodo per visualizzare il video tutorial selezionato, indicato attraverso
+ un parametro indice di 
 \shape italic
 collection
 \shape default
 .
- Inoltre assegna ad 
-\emph on
-currentTutorial 
-\emph default
-il tutorial selezionato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] close(): 
-\series default
-metodo che chiude l'istanza della classe creata
+ Inoltre aggiorna il template in base al video tutorial visualizzato 
 \end_layout
 
 \begin_layout Subsubsection
@@ -3275,6 +3346,16 @@ evento che richiama la funzione
 unrender()
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+click button#close:
+\series default
+ evento che richiama la funzione 
+\emph on
+closeView()
+\end_layout
+
 \begin_layout Paragraph
 Metodi pubblici:
 \end_layout
@@ -3295,7 +3376,6 @@ render
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template TutorialTemplate
- 
 \end_layout
 
 \begin_layout Itemize
@@ -3305,6 +3385,17 @@ render
 \series default
  metodo per rimuovere la vista dei dati dell'utente, invoca il metodo 
 \shape italic
+close
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] closeView(): 
+\series default
+metodo che si occupa di rimuovere la vista dei dati dell'utente, invoca
+ il metodo 
+\emph on
 close
 \end_layout
 
@@ -3359,7 +3450,10 @@ user
 \shape italic
 changeData
 \shape default
- di UserDataCommunication, passandogli i dati aggiornati
+ di UserDataCommunication, passandogli i dati aggiornati.
+ Altrimenti mostra il messaggio di errore 
+\emph on
+Le due password inserite non coincidono
 \end_layout
 
 \end_deeper

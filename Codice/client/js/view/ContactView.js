@@ -47,12 +47,23 @@ define([
       this.currentFunctions=null;
       this.listenTo(this.model, 'change', this.render);
       _.bindAll(this, 'view');
+      var contactView=this;
+      document.addEventListener('endConference',setConference,false);
+      
+      function setConference(event){
+        
+        if(event.detail.contact==contactView.model.toJSON().username){
+          console.log("prova"+event.detail.contact);
+          contactView.conference=false;
+        }
+      }
     },
 
     /**
      * funzione che effettua la scrittura della struttura della pagina
      */
     render: function(){
+      
       this.$el.html(this.template({dom: this.options.dom, username: this.model.toJSON().username, ip: this.model.toJSON().IP, unread: this.model.toJSON().unread }));
       return this;
     },
@@ -111,8 +122,6 @@ define([
       }else{
         this.currentFunctions.conference(null,null);
         }
-      
-      
     }
   });
 
