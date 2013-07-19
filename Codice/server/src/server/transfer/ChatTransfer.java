@@ -35,7 +35,9 @@ public class ChatTransfer extends ListenerTransfer {
    		wspacket=new RawPacket("{\"type\":\"notDelivered\", \"message\":\""+token.getString("message")+"\", \"contact\":\""+token.getString("contact")+"\"}");
    		connector= event.getConnector();
    	  }
-   	  sendPacket(wspacket,connector);
+   	wspacket= new RawPacket (wspacket.getUTF8());
+   	  connector.sendPacket(wspacket);
+//   	  sendPacket(wspacket,connector);
    	}
   }
 }
