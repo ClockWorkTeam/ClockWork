@@ -205,14 +205,13 @@ define([
      * funziona per visualizzare i dettagli dell'utente selezionato
      */
     viewDataContact:function(){
-      alert('vedi dettaglio');
+      alert(" Nome: " +this.model.toJSON().name + "\n Cognome:" +this.model.toJSON().surname + "\n IP: "+ this.model.toJSON().IP);
     },
     
     conference : function(isCaller,contact){
       if(this.options.callback){
         this.options.callback.setConference();
       }
-      console.log(this.callView);
       if(!this.callView){
         var contatti=[];
         for(var i=0;i<document.getElementsByTagName('input').length;i++){
@@ -231,7 +230,6 @@ define([
         }
         $('#main').prepend(this.callView.el);
       }else{
-        console.log('ripristino la conferenza');
         this.callView.conference(null,null,null);
       }
     }
