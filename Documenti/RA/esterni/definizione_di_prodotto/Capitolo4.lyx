@@ -1791,14 +1791,6 @@ startChat()
 \begin_layout Itemize
 
 \series bold
-[void] sendVideoText(): 
-\series default
-metodo che si avvia RecordMessageView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 [void] forceClose():
 \series default
  metodo che forza la chiusura di una chiamata invocando 
@@ -3157,7 +3149,7 @@ click a#tutorial:
 \series default
 evento che richiama la funzione 
 \shape italic
-viewTutorial
+viewTutorial()
 \end_layout
 
 \begin_layout Itemize
@@ -3167,7 +3159,7 @@ click button#prev:
 \series default
 evento che richiama la funzione 
 \shape italic
-viewTutorial
+viewTutorial()
 \end_layout
 
 \begin_layout Itemize
@@ -3177,7 +3169,7 @@ click buttonn#indice:
 \series default
 evento che richiama la funzione 
 \emph on
-render
+render()
 \end_layout
 
 \begin_layout Itemize
@@ -3187,7 +3179,7 @@ click button#next:
 \series default
 evento che richiama la funzione 
 \shape italic
-viewTutorial
+viewTutorial()
 \end_layout
 
 \begin_layout Paragraph
@@ -3352,6 +3344,16 @@ evento che richiama la funzione
 unrender()
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+click button#close:
+\series default
+ evento che richiama la funzione 
+\emph on
+closeView()
+\end_layout
+
 \begin_layout Paragraph
 Metodi pubblici:
 \end_layout
@@ -3372,7 +3374,6 @@ render
 [void] render():
 \series default
  metodo per effettuare la scrittura nella pagina del template TutorialTemplate
- 
 \end_layout
 
 \begin_layout Itemize
@@ -3382,6 +3383,17 @@ render
 \series default
  metodo per rimuovere la vista dei dati dell'utente, invoca il metodo 
 \shape italic
+close
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] closeView(): 
+\series default
+metodo che si occupa di rimuovere la vista dei dati dell'utente, invoca
+ il metodo 
+\emph on
 close
 \end_layout
 
@@ -3436,7 +3448,10 @@ user
 \shape italic
 changeData
 \shape default
- di UserDataCommunication, passandogli i dati aggiornati
+ di UserDataCommunication, passandogli i dati aggiornati.
+ Altrimenti mostra il messaggio di errore 
+\emph on
+Le due password inserite non coincidono
 \end_layout
 
 \end_deeper
