@@ -17,7 +17,6 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
  
   test('The login form is render correctly.', function() {
     expect( 3 );
-
     // Check the number of items rendered
     equal(this.authenticationView.$el.find('label').length, 2, 'Two labels rendered.');
     equal(this.authenticationView.$el.find('input').length, 2, 'Two inputs rendered.');
@@ -32,7 +31,7 @@ define(['../js/view/AuthenticationView'], function( AuthenticationView ) {
     // Check the number of items rendered
     equal(this.authenticationView.$el.find('label').length, 5, 'Five labels rendered.');
     equal(this.authenticationView.$el.find('input').length, 5, 'Five inputs rendered.');
-    equal(this.authenticationView.$el.find('button').length, 2, 'Two buttons rendered.');
+    equal(this.authenticationView.$el.find('button').length, 3, 'Three buttons rendered.');
     
   });
   

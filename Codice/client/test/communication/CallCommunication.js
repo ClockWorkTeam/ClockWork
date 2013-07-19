@@ -366,7 +366,7 @@ var CallCommunication = {
           started = true;
           call.createPeerConnection(contact);
           peerConnection[contact].addStream(localStream);
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           peerConnection[contact].createAnswer(function(desc){
             peerConnection[contact].setLocalDescription(desc);  
             var response=JSON.stringify(desc);
@@ -502,7 +502,7 @@ var CallCommunication = {
       for(var i=0;i<confirmedContact.length;i++){
         callView.addVideoConference(confirmedContact[i]);
         remotevid[confirmedContact[i]] = document.getElementById(confirmedContact[i]);
-        remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
+        //remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
         console.log(remoteStream[confirmedContact[i]]);
       }
       sourcevid.src = window.webkitURL.createObjectURL(localStream);
