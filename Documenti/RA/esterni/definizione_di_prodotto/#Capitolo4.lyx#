@@ -2821,30 +2821,6 @@ classe ContactView, relativa al contatto
 
 \series bold
 [void] setCallConference([ContactModel] contact, [String] type): 
-\series default
-metodo che cerca di generare una conferenza con l'utente chiamante.
- Imposta l'attributo 
-\emph on
-conference
-\emph default
- a 
-\emph on
-true 
-\emph default
-ed invoca i metodi 
-\emph on
-createCallConference([String] type, [ContactModel] contact, [SideView] sideView)
- 
-\emph default
-e 
-\emph on
-metodo
-\emph default
- 
-\emph on
-currentFunction 
-\emph default
-della classe stessa
 \end_layout
 
 \begin_layout Itemize
@@ -2854,9 +2830,9 @@ della classe stessa
 \series default
  metodo che imposta l'attributo 
 \emph on
-conference 
+Conference 
 \emph default
-a 
+e 
 \emph on
 true
 \end_layout
@@ -2866,20 +2842,7 @@ true
 \series bold
 [void] closeConfrence(): 
 \series default
-metodo che si occupa di impostare a 
-\emph on
-false
-\emph default
- l'attributo 
-\emph on
-conference
-\emph default
- e di chiudere le istanze di FunctionsView e UserDataView aperte tramite
- l'invocazione del metodo 
-\emph on
-closeOtherontacts() 
-\emph default
-della classe stessa
+metodo che si occupa di chiudere le viste inattese
 \end_layout
 
 \begin_layout Subsubsection
