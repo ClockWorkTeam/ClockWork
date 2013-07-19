@@ -119,7 +119,6 @@ define([
       if(!document.getElementById('content')){
         $('#main').prepend(this.el);
       }
-      console.log('ciao chiudo chiamata');
       this.delegateEvents();
         var call=this;
         $(this.el).html(this.template());
@@ -127,6 +126,7 @@ define([
           console.log("prova ripristino");
           CallCommunication.recoverCall(call);
         }else{
+          console.log("Contatti" +contatti)
           if(isCaller==true){
             CallCommunication.sendCall(typeCall,contatti,this,'true');
             this.calling=true
@@ -162,7 +162,7 @@ define([
 
   CallView.prototype.close = function(){
     
-    //CallCommunication.endCall();
+    CallCommunication.endCall();
     if(this.statisticsView){
       this.statisticsView.close();
     }

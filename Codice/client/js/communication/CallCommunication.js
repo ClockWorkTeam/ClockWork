@@ -162,6 +162,7 @@ define(['connection'], function(Connection){
              * già presenti nella videoconferenza
              */
             for(var i=0;i<confirmedContact.length-1;i++){
+              console.log("CHIAMIAMO GLI ALTRI");
               message= {type:'addConferenceCaller', user: confirmedContact[i], contact: response.user};
               Connection.send(JSON.stringify(message));
               message= {type:'addConferenceAnswer', user: response.user, contact: confirmedContact[i]};
@@ -293,7 +294,7 @@ define(['connection'], function(Connection){
       
      function onAddConference(evt){
         var response = JSON.parse(evt.data);
-        
+        console.log("Grandezza " +recipient.length);
         if (response.type==='addConferenceCaller'){
           recipient.push(response.user);
           confirmedContact.push(response.user);
@@ -509,7 +510,7 @@ define(['connection'], function(Connection){
          * l'utente nella schermata di functionview
          */
       function onEndCall(evt){
-        console.log('RECEIVED: '+evt.data);
+   //     console.log('RECEIVED: '+evt.data);
         var response = JSON.parse(evt.data);
         if (response.type ==='endCall' && response.contact==contact) {
           Connection.removeEventListener('message',onEndCallListener[contact],false);
@@ -557,6 +558,8 @@ define(['connection'], function(Connection){
            */
           if(confirmedContact.length==0){
             localStream.stop();
+            confirmedContact.splice(0,confirmedContact.length);
+            recipient.splice(0,recipient.length);
             var event=new CustomEvent('setOnCall',{
               detail:{
                 type:false
@@ -564,11 +567,15 @@ define(['connection'], function(Connection){
               bubbles:true,
               cancelable:true
             });
+             if(onAddConferenceListener!=null){
+              Connection.removeEventListener('message',onAddConferenceListener,false);
+            }
             document.dispatchEvent(event);
             console.log('end stream');
             callView.endCall(false);
           } 
         }
+         console.log(recipient.length +" and " + confirmedContact.length);
       }
       onEndCallListener[contact]=onEndCall  
         /**
@@ -657,7 +664,7 @@ define(['connection'], function(Connection){
         bubbles:true,
         cancelable:true
       });
-      if(onAddConferenceListener==null){
+      if(onAddConferenceListener!=null){
         Connection.removeEventListener('message',onAddConferenceListener,false);
       }
       Connection.removeEventListener('message',onCandidateListener,false);

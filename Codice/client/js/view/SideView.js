@@ -48,6 +48,7 @@ define([
     myModel : '',
     authenticationView:'',
     conference:'',
+    conferenceView:'',
 
     /**
      * si occupa di legare gli eventi ad oggetti del DOM
@@ -244,6 +245,7 @@ define([
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
+          console.log("PROVA PROVA PROVA");
           view.createCallConference(type,contact,sideView);
           sideView.currentFunctions=view.currentFunctions;
         }
