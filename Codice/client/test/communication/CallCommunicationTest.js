@@ -146,8 +146,6 @@ module('About CallCommunication.sendAnswer', {
       //equal( this.alertStub.called, false, 'response.answer === "true"');
   });
 
-
-
 module('About CallCommunication.createPeerConnection', {
   setup: function() {
     var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
@@ -200,10 +198,7 @@ module('About CallCommunication.createPeerConnection', {
     this.closeSpy.restore();
 
   });
-  /**/
-  
-  
-  
+
 module('About CallCommunication.connect', {
 
   setup: function() {
@@ -276,16 +271,26 @@ module('About CallCommunication.gotDescription', {
     equal( this.sendSpy.callCount, 1, 'Connection.send called.');
 
   });
-
+*/
 module('About CallCommunication.startCall', {
 
   setup: function() {
+    
+    this.pcStub = sinon.stub(CallCommunication, 'createPeerConnection');
+    var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+    peerConnection['user'] = new webkitRTCPeerConnection(pcConfig);
+    
     this.getUserMediaSpy = sinon.spy(navigator, 'webkitGetUserMedia');
     this.objSpy = sinon.spy(window.webkitURL, 'createObjectURL');
-    this.connectSpy = sinon.spy(CallCommunication, 'connect');
+    this.connectSpy = sinon.stub(CallCommunication, 'connect');
+    this.setRemoteDescriptionStub = sinon.stub(peerConnection['user'], 'setRemoteDescription');
+    this.addIceCandidateStub = sinon.stub(peerConnection['user'], 'addIceCandidate');
+    
+    
     
     window.Connection = Connection;
-    this.addSpy = sinon.stub(window.Connection, 'addEventListener');
+    this.addSpy = sinon.spy(window.Connection, 'addEventListener');
+    this.removeSpy = sinon.spy(window.Connection, 'removeEventListener');
   },
 
   teardown: function() {
@@ -293,28 +298,37 @@ module('About CallCommunication.startCall', {
     this.objSpy.restore();
     this.connectSpy.restore();
     this.addSpy.restore();
+    this.removeSpy.restore();
+    this.setRemoteDescriptionStub.restore();
+    this.addIceCandidateStub.restore();
   }
   
 });
   
   test('isCaller==true && typecall=="video"', function() {
-    expect( 1 );
+    expect( 4 );
     
     var view = new callView();
-    CallCommunication.startCall(true, 'audio', CallCommunication, view);
+    CallCommunication.startCall(true, CallCommunication, view, 'user');
 
-    equal( this.getUserMediaSpy.callCount, 1, 'webkitGetUserMedia called.');
+    var data = JSON.stringify({"type":"answer","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"candidate","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+
+    //equal( this.getUserMediaSpy.callCount, 1, 'webkitGetUserMedia called.');
+    equal( this.addSpy.callCount, 4, 'webkitGetUserMedia called.');
+    equal( this.setRemoteDescriptionStub.callCount, 1, 'setRemoteDescriptionStub called.');
+    equal( this.addIceCandidateStub.callCount, 1, 'removeEventListener called.');
+    equal( this.removeSpy.callCount, 1, 'removeEventListener called.');
 
   });
   
-  test('isCaller==true && typecall=="audio"', function() {
-    expect( 1 );
-    
-    var view = new callView();
-    CallCommunication.startCall(true, 'audio', CallCommunication, view);
-
-    equal( this.getUserMediaSpy.callCount, 1, 'webkitGetUserMedia called.');
-
-  });
-*/
+  
+  
 });
