@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Jul 18 17:45:47 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jul 19 09:50:37 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -194,19 +194,22 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000132D'
-              name = '+candidates : String[ ]' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              name = '+candidates' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
-                <UML:Multiplicity xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000132E'>
+                <UML:Multiplicity xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AB4'>
                   <UML:Multiplicity.range>
-                    <UML:MultiplicityRange xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000132F'
+                    <UML:MultiplicityRange xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AB5'
                       lower = '1' upper = '1'/>
                   </UML:Multiplicity.range>
                 </UML:Multiplicity>
               </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+              </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000133C'
-              name = 'sendCall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+sendCall' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -243,7 +246,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001341'
-              name = 'sendAnswer' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+sendAnswer' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -290,6 +293,12 @@
                     <UML:Class xmi.idref = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001330'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AB6'
+                  name = 'user' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA9'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001348'
@@ -309,42 +318,10 @@
                     <UML:Class xmi.idref = '-64--88-56-1-4efa3ca7:13f1fd868b3:-8000:0000000000000EA8'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000134B'
-              name = '+gotDescritption' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000134C'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
+                <UML:Parameter xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AB7'
+                  name = 'user' isSpecification = 'false' kind = 'in'>
                   <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001330'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000134D'
-                  name = 'description' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '127-0-0-1--704b7b79:13fc9942df8:-8000:00000000000025E2'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000134E'
-              name = '+onIceCandidate' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
-              isLeaf = 'false' isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:000000000000134F'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001330'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-                <UML:Parameter xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001350'
-                  name = 'event' isSpecification = 'false' kind = 'in'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '127-0-0-1--704b7b79:13fc9942df8:-8000:00000000000025E3'/>
+                    <UML:Class xmi.idref = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA9'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
@@ -384,6 +361,12 @@
                     <UML:Class xmi.idref = '-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000987'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AB8'
+                  name = 'contact' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA9'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001357'
@@ -395,6 +378,12 @@
                   name = 'return' isSpecification = 'false' kind = 'return'>
                   <UML:Parameter.type>
                     <UML:Class xmi.idref = '10-1-124-1--112bb65e:13f332d45b0:-8000:0000000000001330'/>
+                  </UML:Parameter.type>
+                </UML:Parameter>
+                <UML:Parameter xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AB9'
+                  name = 'callView' isSpecification = 'false' kind = 'in'>
+                  <UML:Parameter.type>
+                    <UML:Class xmi.idref = '-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000987'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
@@ -412,6 +401,21 @@
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
+            <UML:Attribute xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA5'
+              name = '+confirmedContact' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AAE'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AAF'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA9'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
           </UML:Classifier.feature>
         </UML:Class>
         <UML:Class xmi.id = '-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000966'
@@ -444,6 +448,15 @@
         <UML:Class xmi.id = '127-0-0-1--704b7b79:13fc9942df8:-8000:00000000000025E3'
           name = 'Event' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA8'
+          name = 'Int' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000AA9'
+          name = 'Contact' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000000ABA'
+          name = 'CalView' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -452,7 +465,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 16, 561, 328]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 16, 646, 312]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000962"
        fill="1"
        fillcolor="255 255 200"
@@ -465,8 +478,8 @@
     <rectangle name="Fig0.0"
       x="48"
       y="16"
-      width="561"
-      height="328"
+      width="646"
+      height="312"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -475,7 +488,7 @@
     <text name="Fig0.1"
       x="49"
       y="17"
-      width="559"
+      width="644"
       height="22"
       fill="0"
       fillcolor="255 255 200"
@@ -489,7 +502,7 @@
       justification="Center"
     >CallCommunication</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[49, 17, 541, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[49, 17, 559, 0]"
          href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000962"
          fill="0"
          fillcolor="255 255 200"
@@ -503,7 +516,7 @@
       <rectangle name="Fig0.2.0"
         x="49"
         y="17"
-        width="541"
+        width="559"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -514,7 +527,7 @@
     <rectangle name="Fig0.3"
       x="48"
       y="39"
-      width="561"
+      width="646"
       height="1"
       fill="1"
       fillcolor="black"
@@ -522,7 +535,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 40, 559, 152]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 40, 644, 168]"
          href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000962"
          fill="0"
          fillcolor="255 255 200"
@@ -535,8 +548,8 @@
       <rectangle name="Fig0.4.0"
         x="49"
         y="40"
-        width="559"
-        height="152"
+        width="644"
+        height="168"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -545,7 +558,7 @@
       <text name="Fig0.4.1"
         x="49"
         y="40"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -561,7 +574,7 @@
       <text name="Fig0.4.2"
         x="49"
         y="56"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -577,7 +590,7 @@
       <text name="Fig0.4.3"
         x="49"
         y="72"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -593,7 +606,7 @@
       <text name="Fig0.4.4"
         x="49"
         y="88"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -609,7 +622,7 @@
       <text name="Fig0.4.5"
         x="49"
         y="104"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -625,7 +638,7 @@
       <text name="Fig0.4.6"
         x="49"
         y="120"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -641,7 +654,7 @@
       <text name="Fig0.4.7"
         x="49"
         y="136"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -657,7 +670,7 @@
       <text name="Fig0.4.8"
         x="49"
         y="152"
-        width="559"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -673,8 +686,8 @@
       <text name="Fig0.4.9"
         x="49"
         y="168"
-        width="559"
-        height="22"
+        width="644"
+        height="16"
         fill="0"
         fillcolor="255 255 200"
         stroke="0"
@@ -685,12 +698,28 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+candidates : String[ ]</text>
+      >+candidates : String</text>
+      <text name="Fig0.4.10"
+        x="49"
+        y="184"
+        width="644"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+confirmedContact : Contact</text>
     </group>
     <rectangle name="Fig0.5"
       x="48"
-      y="191"
-      width="561"
+      y="207"
+      width="646"
       height="1"
       fill="1"
       fillcolor="black"
@@ -698,7 +727,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 192, 559, 152]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 208, 644, 120]"
          href="-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000962"
          fill="0"
          fillcolor="255 255 200"
@@ -710,9 +739,9 @@
       
       <rectangle name="Fig0.6.0"
         x="49"
-        y="192"
-        width="559"
-        height="152"
+        y="208"
+        width="644"
+        height="120"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -720,8 +749,8 @@
       />
       <text name="Fig0.6.1"
         x="49"
-        y="192"
-        width="559"
+        y="208"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -733,11 +762,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >sendCall(typecall : String,contact : ContactModel,view : CallView,conference : boolean) : void</text>
+      >+sendCall(typecall : String,contact : ContactModel,view : CallView,conference : boolean) : void</text>
       <text name="Fig0.6.2"
         x="49"
-        y="208"
-        width="559"
+        y="224"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -749,11 +778,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >sendAnswer(typecall : String,contact : ContactModel,view : CallView,conference : boolean) : void</text>
+      >+sendAnswer(typecall : String,contact : ContactModel,view : CallView,conference : boolean) : void</text>
       <text name="Fig0.6.3"
         x="49"
-        y="224"
-        width="559"
+        y="240"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -765,11 +794,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+createPeerConnection() : void</text>
+      >+createPeerConnection(user : Contact) : void</text>
       <text name="Fig0.6.4"
         x="49"
-        y="240"
-        width="559"
+        y="256"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -781,11 +810,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+connect(started : boolean) : void</text>
+      >+connect(started : boolean,user : Contact) : void</text>
       <text name="Fig0.6.5"
         x="49"
-        y="256"
-        width="559"
+        y="272"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -797,11 +826,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+gotDescritption(description : RTCSessionDescription) : void</text>
+      >+startCall(isCaller : boolean,typecall : String,call : CallCommunication,view : CallView,contact : Contact) : void</text>
       <text name="Fig0.6.6"
         x="49"
-        y="272"
-        width="559"
+        y="288"
+        width="644"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -813,43 +842,11 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+onIceCandidate(event : Event) : void</text>
+      >+recoverCall(callView : CallView) : void</text>
       <text name="Fig0.6.7"
         x="49"
-        y="288"
-        width="559"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+startCall(isCaller : boolean,typecall : String,call : CallCommunication,view : CallView) : void</text>
-      <text name="Fig0.6.8"
-        x="49"
         y="304"
-        width="559"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+recoverCall() : void</text>
-      <text name="Fig0.6.9"
-        x="49"
-        y="320"
-        width="559"
+        width="644"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -864,6 +861,38 @@
       >+endCall() : void</text>
     </group>
   </group>
+  <text name="Fig1"
+    x="149"
+    y="168"
+    width="34"
+    height="19"
+    fill="0"
+    fillcolor="white"
+    stroke="0"
+    strokecolor="black"
+    textcolor="black"
+    font="Dialog"
+    italic="false"
+    bold="false"
+    textsize="12"
+    justification="Center"
+  >[ ]</text>
+  <text name="Fig2"
+    x="196"
+    y="184"
+    width="34"
+    height="19"
+    fill="0"
+    fillcolor="white"
+    stroke="0"
+    strokecolor="black"
+    textcolor="black"
+    font="Dialog"
+    italic="false"
+    bold="false"
+    textsize="12"
+    justification="Center"
+  >[ ]</text>
 </pgml>
 <pgml description="org.argouml.uml.diagram.use_case.ui.UMLUseCaseDiagram|-64--88-56-1--27e5b851:13f1f6e90e1:-8000:0000000000000961"
       name="Diagramma dei Casi d&apos;Uso"
