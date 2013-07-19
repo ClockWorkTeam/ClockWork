@@ -650,10 +650,16 @@ della classe AuthenticationCommunication, altrimenti mostra uno tra i messaggi
  di errore 
 \shape italic
 Username può contenere solo lettere, numeri e underscore
-\shape default
- e 
-\shape italic
-Le password inserite non coincidono
+\emph on
+,
+\emph default
+ Le password inserite non coincidono 
+\emph on
+e 
+\emph default
+Non hai compilato tutti i campi obbligatori
+\emph on
+.
 \end_layout
 
 \begin_layout Itemize
@@ -858,7 +864,39 @@ della classe StatisticsView.
 \emph on
 endCall()
 \emph default
- della classe CallCommunication.
+ della classe CallCommunication
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] conference([boolean]isCaller, [String] typeCall, [String] contatti):
+ 
+\series default
+metodo che abilita gli eventi invocandi il metodo 
+\emph on
+delegateEvents() 
+\emph default
+della classe stessa, aggiorna il template e verifica se è in corso una conferenz
+a e, in caso affermativo, invoca il metodo 
+\shape italic
+recoverCall
+\shape default
+ di CallCommunication.
+ Altrimenti, a seconda che l'utente sia il chiamato o il chiamante, invoca
+ i metodi 
+\shape italic
+sendAnswer
+\shape default
+ o 
+\shape italic
+sendCall
+\shape default
+ di CallCommunication e assegna a 
+\emph on
+calling 
+\emph default
+lo stato di chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1050,7 +1088,7 @@ metodo per inviare un messaggio al contatto, per fare ciò invoca il metodo
 send
 \shape default
  della classe ChatCommunication, con parametri lo username del contatto
- e il testo del messaggio.
+ ed il testo del messaggio.
  Provvede anche ad aggiungere il messaggio a 
 \shape italic
 collection
@@ -1249,9 +1287,13 @@ audiocall
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 [void] createCallConference([String] type, [Contact] contact, [SideView]
- sideView): metodo che viene chiamato quando si accetta una richiesta di
- videoconferenza che invoca il metodo 
+ sideView): 
+\series default
+metodo che viene chiamato quando si accetta una richiesta di videoconferenza
+ che invoca il metodo 
 \shape italic
 closeOtherContacts
 \shape default
@@ -1293,7 +1335,7 @@ La classe FileView definisce la struttura, e la conseguente visualizzazione,
 \end_layout
 
 \begin_layout Standard
-Pur essendo pianificata tale classe non è stata implementata
+Pur essendo pianificata tale classe non è stata implementata.
 \end_layout
 
 \begin_layout Standard
@@ -1547,7 +1589,7 @@ sendVideoText
 \series bold
 click button#sendFile:
 \series default
-evento che richiama la funzione 
+ evento che richiama la funzione 
 \emph on
 sendFile
 \end_layout
@@ -1617,6 +1659,25 @@ render
  metodo per effettuare la scrittura nella pagina del template FunctionsTemplate,
  per fare ciò controlla se l'istanza è stata creata da SideView o da ContactView
  e se esiste già una chiamata in corso, nel qual caso mostra la chiamata
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+[void] unrender():
+\series default
+ metodo per chiudere definitivamente l'istanza, invoca il metodo 
+\shape italic
+unrender() 
+\emph on
+della classe ChatView
+\shape default
+\emph default
+ e il metodo 
+\shape italic
+close()
+\shape default
+ della classe stessa
 \end_layout
 
 \begin_layout Itemize
@@ -1696,7 +1757,7 @@ passando come parametri quello di audiocall e la stringa
 \series bold
 [void] videocall([boolean] isCaller): 
 \series default
-metodo per avviare una chiamata audio, per fare ciò invoca il metodo 
+metodo per avviare una chiamata video, per fare ciò invoca il metodo 
 \shape italic
 call(boolean, String), 
 \emph on
@@ -1730,6 +1791,14 @@ startChat()
 \begin_layout Itemize
 
 \series bold
+[void] sendVideoText(): 
+\series default
+metodo che si avvia RecordMessageView
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 [void] forceClose():
 \series default
  metodo che forza la chiusura di una chiamata invocando 
@@ -1744,7 +1813,8 @@ della classe CallView
 \series bold
 [void] closeViewCall():
 \series default
- metodo che, a chiamata terminata, ripristina la vista
+ metodo che, a chiamata terminata, ripristina la vista del contatto con
+ cui si era in chiamata
 \end_layout
 
 \begin_layout Itemize
@@ -1758,32 +1828,20 @@ della classe CallView
 \begin_layout Itemize
 
 \series bold
-[void] conference():
+[void] conference([boolean] isCaller, [String] contact):
 \series default
- metodo che inizializza la conferenza e chiama il metodo 
+ metodo che inizializza la conferenza.
+ Controlla i contatti selezionati per la conferenza e li contatta.
+ Si chiudono le chiamate presenti tramite invocato il metodo 
+\emph on
+forceClose() 
+\emph default
+della classe callView ed infine chiama il metodo 
 \shape italic
 conference
 \shape default
- di CallView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-[void] unrender():
-\series default
- metodo per chiudere definitivamente l'istanza, invoca il metodo 
-\shape italic
-unrender() 
-\emph on
-della classe ChatView
-\shape default
-\emph default
- e il metodo 
-\shape italic
-close()
-\shape default
- della classe stessa
+ di CallView verificando se si è o no il chiamante e passando i parametri.
+ Altrimenti ripristina la conferenza
 \end_layout
 
 \begin_layout Itemize
@@ -1795,7 +1853,7 @@ metodo che chiude l'istanza della classe creata e invoca il metodo
 \shape italic
 close()
 \emph on
- della classe ChatView
+ delle classi ChatView e CallView
 \end_layout
 
 \begin_layout Subsubsection

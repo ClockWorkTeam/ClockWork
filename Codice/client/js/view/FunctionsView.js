@@ -95,8 +95,10 @@ define([
      * funzione atta a rimuovere la vista e le sue sottoviste
      */
     unrender:function(){
-      this.chatView.unrender();
-      this.chatView=undefined;
+      if(this.chatView){
+        this.chatView.unrender();
+        this.chatView=undefined;
+      }
       this.close();
     },
     /**

@@ -12,6 +12,7 @@ ul{
 #header{
  background-color: #E8EBF8;
 }
+
 #header h1{
  color: #0803A4;
  text-shadow: 3px 3px 3px #fff;
@@ -41,11 +42,14 @@ ul{
 }
 
 #sidebar{
+margin:0;
  float:left;
- width:10em;
+ width:15%;
  margin-top: 1em;
  height:80%;
+ padding:1em;
 }
+
 #sidebar #callIP{
  padding-left:0.4em;
  padding-right:0.4em;
@@ -70,7 +74,11 @@ ul{
 }
 
 #main{
+ padding:1em;
+ margin:0;
  height:80%;
+ width: 80%;
+ float:right;
 }
 
 #content h2{
@@ -84,16 +92,25 @@ ul{
 #content #functionsTemplate #dataContact{
  float:right;
 }
-#content #callTemplate{
+#content .singola{
  float:left;
- width:70%; 
- height:95%;
+ width:65%; 
  border-right:0.1em ridge #210B61;
 }
-#content #callTemplate #otherCaller video{
- width:94%;
+#content .singola #otherCaller video{
+ width:85%;
  padding:0;
  border:1px ridge #110560;
+}		
+#content .conferenza #otherCaller{
+ height:75%;
+}
+
+#content .conferenza #otherCaller video{
+ display:inline;
+ margin:0;
+ padding:0;
+/* border:1px ridge #110560;*/
 }		
 #content #callTemplate #sourcevid{
  position: absolute;
@@ -102,8 +119,8 @@ ul{
  width: 8em;
  border:2px ridge #110560;
 }
-#content #callTemplate span{
- float:right;
+#content #callTemplate div{
+ text-align:center;
 }
 #callTemplate button{
   margin-top: 1em;
@@ -136,4 +153,10 @@ ul{
 .sent, .received {
  margin-top: 0;
  margin-bottom: 0;
+}
+
+#statistics{
+ position: absolute;
+ bottom:0.3em;
+ right:0.3em;
 }

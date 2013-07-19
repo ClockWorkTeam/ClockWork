@@ -68,10 +68,10 @@ define([
       if(!this.currentFunctions)
         this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
       console.log("conferenza?? " +this.conference);
-     // if(this.conference==false){
+      if(this.conference==false){
         this.currentFunctions.render();
         $('#main').prepend(this.currentFunctions.el);
-    //  }
+      }
     },
 
     /**

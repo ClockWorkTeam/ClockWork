@@ -103,6 +103,7 @@ define([
       /**
        *  controllo che si effettua per verificare chi ha deciso di concludere la chiamata
        */
+       console.log("CHIUSURA IN CORSO");
       if(isEnding!=false)
         CallCommunication.endCall();
       this.close();
@@ -136,6 +137,22 @@ define([
     addVideoConference:function(nameCaller){
       var video="<video id='"+nameCaller+"' autoplay></video>";
       $('#otherCaller').append(video);
+      if(document.getElementById("otherCaller").childNodes.length==2){
+				document.getElementById("otherCaller").childNodes[0].style.width='49%';
+				document.getElementById("otherCaller").childNodes[1].style.width='49%';
+			}
+      if(document.getElementById("otherCaller").childNodes.length==3){
+				document.getElementById("otherCaller").childNodes[0].style.width='33%';
+				document.getElementById("otherCaller").childNodes[1].style.width='33%';
+								document.getElementById("otherCaller").childNodes[2].style.width='33%';
+			}
+      if(document.getElementById("otherCaller").childNodes.length>=4){
+				for(var i=0; i<document.getElementById("otherCaller").childNodes.length; i++){
+					document.getElementById("otherCaller").childNodes[i].style.height='49%';
+			  }
+			}
+
+      
     }
   });
 
