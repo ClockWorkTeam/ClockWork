@@ -122,7 +122,7 @@ define([
       }
 			$(this.el).html(this.template({logged: false}));
 			this.destroyContacts();
-     // this.closeOtherContacts();
+      this.closeOtherContacts();
 		},
 
     /**

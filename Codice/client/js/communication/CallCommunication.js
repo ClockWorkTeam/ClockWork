@@ -537,6 +537,15 @@ define(['connection'], function(Connection){
             }
           }
           if(trovatoConfirmed==true){
+            var event=new CustomEvent("endConference",{
+              detail:{
+                contact:confirmedContact[i]
+              },
+            bubbles:true,
+            cancelable:true
+            });
+            document.dispatchEvent(event);
+            console.log("abbiamo trovato chi se n'è andato");
             confirmedContact.splice(i,1);
             recipient.splice(j,1);
             remotevid[contact].parentNode.removeChild(remotevid[contact]);

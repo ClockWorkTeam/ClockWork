@@ -245,7 +245,7 @@ Comunicazione tra CallComunication e CallTransfer
 \begin_layout Standard
 
 \series bold
-Instaurazione di una chiamata:
+Instaurazione di una chiamata singola:
 \end_layout
 
 \begin_layout Standard
@@ -271,7 +271,7 @@ contact,
 \series bold
  
 \series default
-callType
+callType, conference
 \end_layout
 
 \begin_deeper
@@ -283,6 +283,58 @@ video
  o 
 \emph on
 audio
+\emph default
+, conference conterrà 
+\emph on
+false 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Instaurazione di una conferenza:
+\end_layout
+
+\begin_layout Standard
+CallComunication invia a CallTransfer una stringa avente:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+type
+\series default
+: 
+\emph on
+call
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+contact,
+\series bold
+ 
+\series default
+callType, conference
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: callType conterrà il tipo di chiamata, 
+\emph on
+video
+\emph default
+ o 
+\emph on
+audio
+\emph default
+, conference conterrà 
+\emph on
+true
 \end_layout
 
 \end_deeper
@@ -311,9 +363,23 @@ answeredCall
 \series bold
 altri attributi: 
 \series default
-contact
+contact, conference
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Descrizione degli attributi: conference conterrà 
+\emph on
+false 
+\emph default
+se si tratta di una chiamata singola, 
+\emph on
+true 
+\emph default
+se si tratta di una conferenza
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 CallTransfer risponde inviando a CallComunication una stringa avente:
 \end_layout
@@ -333,14 +399,16 @@ answeredCall
 \series bold
 altri attributi: 
 \series default
-answer
+answer, user
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Descrizione degli attributi: answer contiene la stringa 
 \emph on
-true
+true, 
+\emph default
+user rappresenta l'utente che ha accettato la chiamata
 \end_layout
 
 \end_deeper
@@ -430,10 +498,18 @@ type
 offer
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+altri attributi: 
+\series default
+Stringa creata da WebRTC, contact
+\end_layout
+
 \begin_deeper
 \begin_layout Itemize
-NOTA: la stringa non è altro che la stringa contenuta nel attributo description
- passato precedentemente
+Descrizione degli attributi:la stringa non è altro che la stringa contenuta
+ nel attributo description passato precedentemente
 \end_layout
 
 \end_deeper
@@ -479,6 +555,8 @@ type
 : 
 \emph on
 answer
+\emph default
+, contact
 \end_layout
 
 \begin_deeper
