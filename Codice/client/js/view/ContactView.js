@@ -133,6 +133,7 @@ define([
       //this.currentFunctions.unrender();
       this.currentFunctions.close();
     }
+    this.conference=false;
   };
 
   return ContactView;
