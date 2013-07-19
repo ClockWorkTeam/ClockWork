@@ -443,7 +443,7 @@ var CallCommunication = {
           if(trovatoConfirmed==true){
             confirmedContact.splice(i,1);
             recipient.splice(j,1);
-            remotevid[contact].parentNode.removeChild(remotevid[contact]);
+            //remotevid[contact].parentNode.removeChild(remotevid[contact]);
             remotevid.splice(i,1);
           }
           /**
