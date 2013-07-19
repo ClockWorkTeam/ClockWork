@@ -428,8 +428,8 @@ questa classe verifica il funzionamento dei metodi per interagire col database
 ionManager.
  Nel dettaglio si verificano i metodi per il controllo e la modifica dei
  dati di un utente registrato, la gestione dei messaggi registrati (vedasi
- RecordMessageDaoSQL) e il prelievo di tutti gli utenti registrati presso
- il server
+ RecordMessageDaoSQL) e il prelievo sia di tutti gli utenti registrati presso
+ il server che di tutti i messaggi di un utente
 \end_layout
 
 \begin_layout Itemize
@@ -464,6 +464,11 @@ AuthenticationTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con AuthenticationCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di autenticazione,
+ disconnessione e registrazione di un utente, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -492,6 +497,12 @@ CallTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con CallCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di chiamata audio/video,
+ di rifiuto chiamata e di conferenza, inviando l'esito dell'operazione.
+ Inoltre viene testato il recupero dei contatti associati ad un utente
 \end_layout
 
 \begin_layout Itemize
@@ -520,6 +531,11 @@ ChatTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con ChatCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di gestione dei messaggi,
+ inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -548,6 +564,11 @@ FileTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con FileCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di gestione o rifiuto
+ dei file, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -576,6 +597,11 @@ RecordMessageTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con RecordMessageCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di inserimento, gestione
+ e rimozione dei messaggi, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -583,7 +609,7 @@ Descrizione:
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificata
 \end_layout
 
 \begin_layout Paragraph
@@ -604,6 +630,11 @@ UserTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con UserCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di controllo e modifica
+ dei dati di un utente, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -653,16 +684,7 @@ questa classe verifica il corretto funzionamento dei metodi di creazione
  e cancellazione di un oggetto di tipo ContactModel.
  Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
  inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
-\end_inset
-
-IP
-\begin_inset Quotes erd
-\end_inset
-
- e l'effettiva cancellazione di tutti i campi quando richiesto
+ default
 \end_layout
 
 \begin_layout Itemize
@@ -697,6 +719,12 @@ RecordMessageModelConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di creazione
+ e cancellazione di un oggetto di tipo RecordMessageModel.
+ Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
+ inseriti o, in assenza di tali valori, che vengano inseriti i valori di
+ default
 \end_layout
 
 \begin_layout Itemize
@@ -704,7 +732,7 @@ Descrizione:
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificato
 \end_layout
 
 \begin_layout Paragraph
@@ -736,16 +764,7 @@ questa classe verifica il corretto funzionamento dei metodi di creazione
  e cancellazione di un oggetto di tipo TextMessageModel.
  Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
  inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
-\end_inset
-
-source
-\begin_inset Quotes erd
-\end_inset
-
- e l'effettiva cancellazione di tutti i campi quando richiesto
+ default
 \end_layout
 
 \begin_layout Itemize
@@ -785,16 +804,7 @@ questa classe verifica il corretto funzionamento dei metodi di creazione
  e cancellazione di un oggetto di tipo TutorialModel.
  Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
  inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
-\end_inset
-
-url
-\begin_inset Quotes erd
-\end_inset
-
- e l'effettiva cancellazione di tutti i campi quando richiesto
+ default
 \end_layout
 
 \begin_layout Itemize
@@ -834,16 +844,7 @@ questa classe verifica il corretto funzionamento dei metodi di creazione
  e cancellazione di un oggetto di tipo UserModel.
  Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
  inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
-\end_inset
-
-password
-\begin_inset Quotes erd
-\end_inset
-
- e l'effettiva cancellazione di tutti i campi quando richiesto
+ default
 \end_layout
 
 \begin_layout Itemize
@@ -923,6 +924,12 @@ RecordMessagesCollectionConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di creazione,
+ modifica e cancellazione di un oggetto di tipo RecordMessagesCollection.
+ Nel dettaglio si verifica il funzionamento della chiamata al costruttore
+ dell'oggetto RecordMessageModel, la rimozione e l'aggiunta di oggetti dalla
+ lista
 \end_layout
 
 \begin_layout Itemize
@@ -930,7 +937,7 @@ Descrizione:
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificato
 \end_layout
 
 \begin_layout Paragraph
@@ -1010,7 +1017,7 @@ questa classe verifica il corretto funzionamento dei metodi di creazione,
 \series bold
 Esito:
 \series default
- pianificato
+ nessun errore riscontrato
 \end_layout
 
 \begin_layout Subsubsection
@@ -1083,6 +1090,11 @@ CallCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica l'invio, la ricezione, l'instaurazione e la chiusura
+ di una chiamata 
 \end_layout
 
 \begin_layout Itemize
@@ -1117,6 +1129,10 @@ ChatCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica l'invio e la ricezione dei messaggi
 \end_layout
 
 \begin_layout Itemize
@@ -1151,6 +1167,12 @@ ContactsCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica la presenza di tutti i contatti del server e
+ l'inserimento o l'aggiornamento dello stato di questi ultimi nella collection
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -1185,6 +1207,10 @@ FileCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica l'invio e la ricezione dei file
 \end_layout
 
 \begin_layout Itemize
@@ -1192,7 +1218,7 @@ Descrizione:
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificato
 \end_layout
 
 \begin_layout Paragraph
@@ -1219,6 +1245,11 @@ NotificationCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica la segnalazione e il rifiuto di una chiamata
+ in arrivo
 \end_layout
 
 \begin_layout Itemize
@@ -1253,6 +1284,10 @@ RecordMessageCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica l'invio e la ricezione dei messaggi
 \end_layout
 
 \begin_layout Itemize
@@ -1260,7 +1295,7 @@ Descrizione:
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificato
 \end_layout
 
 \begin_layout Paragraph
@@ -1287,6 +1322,10 @@ TutorialCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica la ricezione dei tutorial
 \end_layout
 
 \begin_layout Itemize
@@ -1321,6 +1360,11 @@ UserDataCommunicationConfig
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il corretto funzionamento dei metodi di comunicazione
+ tra client e server necessari per l'autenticazione.
+ Nel dettaglio si verifica la correttezza delle credenziali inserite e la
+ modifica del proprio profilo
 \end_layout
 
 \begin_layout Itemize
@@ -1682,7 +1726,7 @@ sia creato correttamente e che gli elementi della pagina siano collegati
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificato
 \end_layout
 
 \begin_layout Paragraph
@@ -1812,7 +1856,7 @@ sia creato correttamente e che gli elementi della pagina siano collegati
 \series bold
 Esito: 
 \series default
-pianificato
+nessun errore riscontrato
 \end_layout
 
 \begin_layout Paragraph
