@@ -283,15 +283,19 @@ module('About CallCommunication.startCall', {
     this.getUserMediaSpy = sinon.spy(navigator, 'webkitGetUserMedia');
     this.objSpy = sinon.spy(window.webkitURL, 'createObjectURL');
     this.connectSpy = sinon.stub(CallCommunication, 'connect');
+    this.addStreamStub = sinon.stub(peerConnection['user'], 'addStream');
     this.setRemoteDescriptionStub = sinon.stub(peerConnection['user'], 'setRemoteDescription');
     this.addIceCandidateStub = sinon.stub(peerConnection['user'], 'addIceCandidate');
     this.removeStreamStub = sinon.stub(peerConnection['user'], 'removeStream');
+    this.createAnswer = sinon.stub(peerConnection['user'], 'createAnswer');
+    this.closeAnswer = sinon.stub(peerConnection['user'], 'close');
     
     
     
     window.Connection = Connection;
     this.addSpy = sinon.spy(window.Connection, 'addEventListener');
     this.removeSpy = sinon.spy(window.Connection, 'removeEventListener');
+    
   },
 
   teardown: function() {
@@ -303,12 +307,15 @@ module('About CallCommunication.startCall', {
     this.setRemoteDescriptionStub.restore();
     this.addIceCandidateStub.restore();
     this.removeStreamStub.restore();
+    this.addStreamStub.restore();
+    this.createAnswer.restore();
+    this.closeAnswer.restore();
   }
   
 });
   
-  test('isCaller==true && typecall=="video"', function() {
-    expect( 4 );
+  test('isCaller==true|false && typecall=="video"', function() {
+    expect( 8 );
     
     var view = new callView();
     CallCommunication.startCall(true, CallCommunication, view, 'user');
@@ -339,6 +346,33 @@ module('About CallCommunication.startCall', {
     equal( this.addIceCandidateStub.callCount, 1, 'addIceCandidateStub called.');
     equal( this.removeSpy.callCount, 4, 'removeEventListener called.');
 
+    CallCommunication.startCall(false, CallCommunication, view, 'user');
+
+    var data = JSON.stringify({"type":"offer","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"candidate","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"endCall","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"candidateReady","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+
+    //equal( this.getUserMediaSpy.callCount, 1, 'webkitGetUserMedia called.');
+    equal( this.addSpy.callCount-4, 4, 'webkitGetUserMedia called.');
+    equal( this.setRemoteDescriptionStub.callCount-1, 1, 'setRemoteDescriptionStub called.');
+    equal( this.addIceCandidateStub.callCount-1, 1, 'addIceCandidateStub called.');
+    equal( this.removeSpy.callCount-4, 4, 'removeEventListener called.');
   });
   
   

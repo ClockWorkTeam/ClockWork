@@ -366,7 +366,7 @@ var CallCommunication = {
           started = true;
           call.createPeerConnection(contact);
           peerConnection[contact].addStream(localStream);
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           peerConnection[contact].createAnswer(function(desc){
             peerConnection[contact].setLocalDescription(desc);  
             var response=JSON.stringify(desc);
