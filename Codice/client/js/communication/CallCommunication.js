@@ -11,13 +11,12 @@
  * +---------+---------------+------------------------------------------+ 
  * |130712   |    BG         | # Inserito controllo onIceCandidate      | 
  * |         |               |   allo scopo di verificare se è una      | 
- * |         |               |   videoconferenza o meno
+ * |         |               |   videoconferenza o meno                 | 
  * +---------+---------------+------------------------------------------+
- * |13/07/11 |    BG         | + Medoto sendCallConference              | 
- * |         |               | + Medoto sendAnswerConference            | 
- * |         |               | + Medoto startCallConference             | 
- * |         |               | + Metodo addCallConference               | 
- * |         |               | + Metodo createPeerConnectionConference  | 
+ * |13/07/11 |    BG         | # Modificato sendCall                    | 
+ * |         |               | # Modificato sendAnswer                  | 
+ * |         |               | # Modificato startCall                   | 
+ * |         |               | # Modificato createPeerConnection        | 
  * |         |               | # Modificato medoto gotDescription       | 
  * +---------+---------------+------------------------------------------+
  * |13/04/12 |    PMA        | + Medoto recoverCall                     | 
@@ -162,7 +161,6 @@ define(['connection'], function(Connection){
              * già presenti nella videoconferenza
              */
             for(var i=0;i<confirmedContact.length-1;i++){
-              console.log("CHIAMIAMO GLI ALTRI");
               message= {type:'addConferenceCaller', user: confirmedContact[i], contact: response.user};
               Connection.send(JSON.stringify(message));
               message= {type:'addConferenceAnswer', user: response.user, contact: confirmedContact[i]};
@@ -294,7 +292,6 @@ define(['connection'], function(Connection){
       
      function onAddConference(evt){
         var response = JSON.parse(evt.data);
-        console.log("Grandezza " +recipient.length);
         if (response.type==='addConferenceCaller'){
           recipient.push(response.user);
           confirmedContact.push(response.user);
@@ -510,7 +507,6 @@ define(['connection'], function(Connection){
          * l'utente nella schermata di functionview
          */
       function onEndCall(evt){
-   //     console.log('RECEIVED: '+evt.data);
         var response = JSON.parse(evt.data);
         if (response.type ==='endCall' && response.contact==contact) {
           Connection.removeEventListener('message',onEndCallListener[contact],false);
@@ -546,7 +542,6 @@ define(['connection'], function(Connection){
             cancelable:true
             });
             document.dispatchEvent(event);
-            console.log("abbiamo trovato chi se n'è andato");
             confirmedContact.splice(i,1);
             recipient.splice(j,1);
             remotevid[contact].parentNode.removeChild(remotevid[contact]);
@@ -575,7 +570,6 @@ define(['connection'], function(Connection){
             callView.endCall(false);
           } 
         }
-         console.log(recipient.length +" and " + confirmedContact.length);
       }
       onEndCallListener[contact]=onEndCall  
         /**
@@ -615,7 +609,6 @@ define(['connection'], function(Connection){
         callView.addVideoConference(confirmedContact[i]);
         remotevid[confirmedContact[i]] = document.getElementById(confirmedContact[i]);
         remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
-        console.log(remoteStream[confirmedContact[i]]);
       }
       sourcevid.src = window.webkitURL.createObjectURL(localStream);
       
@@ -636,9 +629,7 @@ define(['connection'], function(Connection){
      * termina chiamata dal callView
      */
     endCall: function() {
-      console.log(recipient.length +" and " + confirmedContact.length);
       for(var i=0;i<recipient.length;i++){
-        console.log(recipient[i]);
         if(peerConnection[recipient[i]] != null){
           Connection.removeEventListener('message',onCandidateListener[recipient[i]],false);
           Connection.removeEventListener('message',onEndCallListener[recipient[i]],false);

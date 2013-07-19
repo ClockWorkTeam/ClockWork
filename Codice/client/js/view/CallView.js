@@ -80,7 +80,6 @@ define([
       */
       var call=this;
       if(this.calling){
-        console.log("prova ripristino");
         CallCommunication.recoverCall(call);
         this.statisticsView.render();
       }else{
@@ -103,7 +102,6 @@ define([
       /**
        *  controllo che si effettua per verificare chi ha deciso di concludere la chiamata
        */
-       console.log("CHIUSURA IN CORSO");
       if(isEnding!=false)
         CallCommunication.endCall();
       if(this.statisticsView){
@@ -123,10 +121,8 @@ define([
         var call=this;
         $(this.el).html(this.template());
         if(this.calling){
-          console.log("prova ripristino");
           CallCommunication.recoverCall(call);
         }else{
-          console.log("Contatti" +contatti)
           if(isCaller==true){
             CallCommunication.sendCall(typeCall,contatti,this,'true');
             this.calling=true
