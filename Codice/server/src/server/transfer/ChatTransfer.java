@@ -36,8 +36,7 @@ public class ChatTransfer extends ListenerTransfer {
    		connector= event.getConnector();
    	  }
    	wspacket= new RawPacket (wspacket.getUTF8());
-   	  connector.sendPacket(wspacket);
-//   	  sendPacket(wspacket,connector);
+    sendPacket(wspacket,connector);
    	}
   }
 }

@@ -82,20 +82,6 @@ reference "tab:Risultati-test-statici"
 \end_layout
 
 \begin_layout Standard
-\noindent
-Per quanto riguarda la complessità ciclomatica si è oltrepassato il limite
- previsto solamente nella classe CallCommunication, si provvederà entro
- la data di rilascio a riportare tale valore entro limiti accettabili tramite
- ottimizzazione del codice creato.
- Il numero di variabili locali maggiore si è riscontrato nella classe Statistics
-View poiché all'interno di tale classe vengono generate le variabili riguardanti
- le statistiche della chiamata.
- Si ritiene positivo la bassa presenza di annidamenti interni al codice,
- buon segno di manutenibilità del codice, eccezione fatta per la classe
- CallCommunication che provvederemo ad ottimizzare entro la data di rilascio.
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace defskip
 \end_inset
 
@@ -161,7 +147,7 @@ Complessità ciclomatica
 \begin_inset Text
 
 \begin_layout Plain Layout
-2,2520325203 
+2,252 
 \end_layout
 
 \end_inset
@@ -190,7 +176,7 @@ Volume di Halstead
 \begin_inset Text
 
 \begin_layout Plain Layout
-204,347804878 
+204,347
 \end_layout
 
 \end_inset
@@ -277,7 +263,7 @@ Numero livelli di annidamento
 \begin_inset Text
 
 \begin_layout Plain Layout
-0,9756097561 
+0,975
 \end_layout
 
 \end_inset
@@ -358,7 +344,7 @@ Indice di dipendenza
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Risultati dell'analisi statica client
+Risultati dell'analisi statica del codice del client
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Risultati-test-statici"
@@ -419,7 +405,9 @@ Server
 \end_layout
 
 \begin_layout Standard
-I risultati ottenuti sono visibili nella tabella 
+Per effettuare analisi statica sul codice prodotto per il lato server è
+ stato utilizzato il plugin Metrics per Eclipse.
+ I risultati ottenuti sono visibili nella tabella
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Risultati-test-statici-1"
@@ -689,7 +677,7 @@ Indice di dipendenza
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Risultati analisi statica server
+Risultati dell'analisi statica del codice del server
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Risultati-test-statici-1"
