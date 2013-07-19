@@ -61,7 +61,7 @@
 \begin_body
 
 \begin_layout Section
-Test Statici
+Analisi Statica
 \end_layout
 
 \begin_layout Subsection
@@ -69,8 +69,8 @@ Client
 \end_layout
 
 \begin_layout Standard
-Per effettuare test sul codice prodotto per il lato client sono stati utilizzati
- due strumenti, jsmeter e jslint.
+Per effettuare analisi statica sul codice prodotto per il lato client sono
+ stati utilizzati due strumenti, jsmeter e jslint.
  I risultati ottenuti sono visibili nella tabella 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -358,7 +358,7 @@ Indice di dipendenza
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Risultati test statici client
+Risultati dell'analisi statica client
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Risultati-test-statici"
@@ -419,9 +419,7 @@ Server
 \end_layout
 
 \begin_layout Standard
-Per effettuare test sul codice prodotto per il lato server sono stati utilizzati
- due strumenti, jsmeter e jslint.
- I risultati ottenuti sono visibili nella tabella 
+I risultati ottenuti sono visibili nella tabella 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Risultati-test-statici-1"
@@ -429,20 +427,6 @@ reference "tab:Risultati-test-statici-1"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\noindent
-Per quanto riguarda la complessità ciclomatica si è oltrepassato il limite
- previsto solamente nella classe CallCommunication, si provvederà entro
- la data di rilascio a riportare tale valore entro limiti accettabili tramite
- ottimizzazione del codice creato.
- Il numero di variabili locali maggiore si è riscontrato nella classe Statistics
-View poiché all'interno di tale classe vengono generate le variabili riguardanti
- le statistiche della chiamata.
- Si ritiene positivo la bassa presenza di annidamenti interni al codice,
- buon segno di manutenibilità del codice, eccezione fatta per la classe
- CallCommunication che provvederemo ad ottimizzare entro la data di rilascio.
 \end_layout
 
 \begin_layout Standard
@@ -705,7 +689,7 @@ Indice di dipendenza
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Risultati test statici server
+Risultati analisi statica server
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Risultati-test-statici-1"
