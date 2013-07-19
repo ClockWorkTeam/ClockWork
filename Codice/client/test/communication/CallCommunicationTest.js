@@ -285,6 +285,7 @@ module('About CallCommunication.startCall', {
     this.connectSpy = sinon.stub(CallCommunication, 'connect');
     this.setRemoteDescriptionStub = sinon.stub(peerConnection['user'], 'setRemoteDescription');
     this.addIceCandidateStub = sinon.stub(peerConnection['user'], 'addIceCandidate');
+    this.removeStreamStub = sinon.stub(peerConnection['user'], 'removeStream');
     
     
     
@@ -301,6 +302,7 @@ module('About CallCommunication.startCall', {
     this.removeSpy.restore();
     this.setRemoteDescriptionStub.restore();
     this.addIceCandidateStub.restore();
+    this.removeStreamStub.restore();
   }
   
 });
@@ -320,12 +322,22 @@ module('About CallCommunication.startCall', {
     var event = document.createEvent('MessageEvent');
     event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
     window.Connection.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"endCall","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
+    
+    var data = JSON.stringify({"type":"candidateReady","contact":"user"});
+    var event = document.createEvent('MessageEvent');
+    event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
+    window.Connection.dispatchEvent(event);
 
     //equal( this.getUserMediaSpy.callCount, 1, 'webkitGetUserMedia called.');
     equal( this.addSpy.callCount, 4, 'webkitGetUserMedia called.');
     equal( this.setRemoteDescriptionStub.callCount, 1, 'setRemoteDescriptionStub called.');
-    equal( this.addIceCandidateStub.callCount, 1, 'removeEventListener called.');
-    equal( this.removeSpy.callCount, 1, 'removeEventListener called.');
+    equal( this.addIceCandidateStub.callCount, 1, 'addIceCandidateStub called.');
+    equal( this.removeSpy.callCount, 4, 'removeEventListener called.');
 
   });
   
