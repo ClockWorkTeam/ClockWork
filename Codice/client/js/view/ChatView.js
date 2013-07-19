@@ -54,6 +54,7 @@ define([
      * funzione di inizializzazione dell'oggetto
      */
     initialize: function(){
+      this.delegateEvents();
       this.listenTo(this.collection, 'all', this.render);
       _.bindAll(this, 'render', 'send');
     },

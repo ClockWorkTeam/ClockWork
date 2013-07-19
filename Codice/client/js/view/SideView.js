@@ -177,7 +177,6 @@ define([
      * si occupa di chiudere viste inattese
      */
     closeOtherContacts: function(contact){
-      console.log('closeothercontact');
       if(contact && this.authenticationView.userDataView){
         this.authenticationView.userDataView.unrender();
         this.authenticationView.userDataView=undefined;
@@ -245,7 +244,6 @@ define([
       _.each(this.childViews,
       function(view){
         if(view.model.toJSON().username==contact){
-          console.log("PROVA PROVA PROVA");
           view.createCallConference(type,contact,sideView);
           sideView.currentFunctions=view.currentFunctions;
         }
@@ -257,7 +255,6 @@ define([
     },
     
     closeConference : function(){
-      console.log("chiudo la conferenza");
       this.conference=false;
       this.closeOtherContacts();
     }
