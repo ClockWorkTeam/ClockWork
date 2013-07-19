@@ -375,6 +375,60 @@ module('About CallCommunication.startCall', {
     equal( this.removeSpy.callCount-4, 4, 'removeEventListener called.');
   });
   
+  module('About CallCommunication.recoverCall', {
+
+  setup: function() {
+    
+    //this.pcStub = sinon.stub(CallCommunication, 'createPeerConnection');
+    var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+    peerConnection['user'] = new webkitRTCPeerConnection(pcConfig);
+    remoteStream['user'] = new webkitRTCPeerConnection(pcConfig);
+    localStream=null;
+    
+    this.getUserMediaSpy = sinon.spy(navigator, 'webkitGetUserMedia');
+    this.objSpy = sinon.spy(window.webkitURL, 'createObjectURL');
+    this.connectSpy = sinon.stub(CallCommunication, 'connect');
+    this.addStreamStub = sinon.stub(peerConnection['user'], 'addStream');
+    this.setRemoteDescriptionStub = sinon.stub(peerConnection['user'], 'setRemoteDescription');
+    this.addIceCandidateStub = sinon.stub(peerConnection['user'], 'addIceCandidate');
+    this.removeStreamStub = sinon.stub(peerConnection['user'], 'removeStream');
+    this.createAnswer = sinon.stub(peerConnection['user'], 'createAnswer');
+    this.closeAnswer = sinon.stub(peerConnection['user'], 'close');
+    
+    
+    
+    
+    window.Connection = Connection;
+    this.addSpy = sinon.spy(window.Connection, 'addEventListener');
+    this.removeSpy = sinon.spy(window.Connection, 'removeEventListener');
+    
+  },
+
+  teardown: function() {
+    this.getUserMediaSpy.restore();
+    this.objSpy.restore();
+    this.connectSpy.restore();
+    this.addSpy.restore();
+    this.removeSpy.restore();
+    this.setRemoteDescriptionStub.restore();
+    this.addIceCandidateStub.restore();
+    this.removeStreamStub.restore();
+    this.addStreamStub.restore();
+    this.createAnswer.restore();
+    this.closeAnswer.restore();
+  }
   
+});
+  
+  test('isCaller==true|false && typecall=="video"', function() {
+    expect( 2 );
+    
+    var callView = { addVideoConference: this.spy() };;
+    CallCommunication.recoverCall(callView);
+
+    //equal( this.getUserMediaSpy.callCount, 1, 'webkitGetUserMedia called.');
+    equal( this.objSpy.callCount, 1, 'webkitGetUserMedia called.');
+    equal( callView.addVideoConference.callCount, 2, 'setRemoteDescriptionStub called.');
+  });
   
 });
