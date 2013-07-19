@@ -121,7 +121,8 @@ define([
    */
   ContactView.prototype.close = function(){
     if(this.currentFunctions){
-      this.currentFunctions.unrender();
+      //this.currentFunctions.unrender();
+      this.currentFunctions.close();
     }
   };
 

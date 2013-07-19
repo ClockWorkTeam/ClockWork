@@ -248,7 +248,8 @@ define([
    */
   FunctionsView.prototype.close = function(){
     if(this.chatView){
-      this.chatView.close();
+     // this.chatView.close();
+      this.chatView.unrender();
     }
     if(this.callView){
       this.callView.close();
