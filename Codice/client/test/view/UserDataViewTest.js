@@ -24,7 +24,7 @@ define(['../js/view/UserDataView'], function( UserDataView ) {
     expect( 3 );
 
     // Check the number of items rendered
-    equal(this.userDataView.$el.find('button').length, 3, 'Three buttons rendered.');
+    equal(this.userDataView.$el.find('button').length, 4, 'Four buttons rendered.');
     equal(this.userDataView.$el.find('ul').length, 1, 'One list rendered.');
     equal(this.userDataView.$el.find('input').length, 5, 'Five input rendered.');
 

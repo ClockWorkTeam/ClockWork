@@ -366,7 +366,7 @@ var CallCommunication = {
           started = true;
           call.createPeerConnection(contact);
           peerConnection[contact].addStream(localStream);
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           peerConnection[contact].createAnswer(function(desc){
             peerConnection[contact].setLocalDescription(desc);  
             var response=JSON.stringify(desc);
@@ -385,7 +385,7 @@ var CallCommunication = {
         var response = JSON.parse(evt.data);
         if (response.type==='answer' && isCaller && response.contact==contact){
           started=true;
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           Connection.removeEventListener('message',onAnswerSDP,false);  
         }
       }
@@ -399,8 +399,8 @@ var CallCommunication = {
         if (response.type ==='candidate' && started && response.contact==contact) {
           console.log('STARTED TRUE');
           console.log('Adding candidate ');
-          var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
-          candidate:response.candidate});
+          var candidate = null;//new RTCIceCandidate({sdpMLineIndex:response.label,
+          //candidate:response.candidate});
           peerConnection[response.contact].addIceCandidate(candidate);
         }
       }
@@ -443,7 +443,7 @@ var CallCommunication = {
           if(trovatoConfirmed==true){
             confirmedContact.splice(i,1);
             recipient.splice(j,1);
-            remotevid[contact].parentNode.removeChild(remotevid[contact]);
+            //remotevid[contact].parentNode.removeChild(remotevid[contact]);
             remotevid.splice(i,1);
           }
           /**
@@ -502,7 +502,7 @@ var CallCommunication = {
       for(var i=0;i<confirmedContact.length;i++){
         callView.addVideoConference(confirmedContact[i]);
         remotevid[confirmedContact[i]] = document.getElementById(confirmedContact[i]);
-        remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
+        //remotevid[confirmedContact[i]].src = window.webkitURL.createObjectURL(remoteStream[confirmedContact[i]]);
         console.log(remoteStream[confirmedContact[i]]);
       }
       sourcevid.src = window.webkitURL.createObjectURL(localStream);
@@ -535,8 +535,7 @@ var CallCommunication = {
         }else{
           var message={type : 'endCallEarly', contact: recipient[i]};
         }
-        
-        Connection.send(JSON.stringify(message));
+        //Connection.send(JSON.stringify(message));
       }
       if(localStream!=null){
         localStream.stop()

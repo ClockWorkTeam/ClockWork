@@ -20,7 +20,7 @@ define(['../js/view/CallView'], function( CallView ) {
 		
 		$(this.callView.el).html(this.callView.template({ username: 'clockwork' }));
     // Check the number of items rendered
-    equal(this.callView.$el.find('video').length, 2, 'Two video frames rendered.');
+    equal(this.callView.$el.find('video').length, 1, 'Video frame rendered.');
     equal(this.callView.$el.find('button').length, 1, 'One button rendered.');
   });
 

@@ -36,14 +36,12 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
   });
   
  test('The template is render correctly when the contact is online.', function() {
-    expect( 4 );
+    expect( 2 );
 		
 		$(this.functionsView.el).html(this.functionsView.template({ username:'clockwork', IP:'1' }));
     // Check the number of items rendered
     notStrictEqual(this.functionsView.$el.innerHTML, '(Online)', 'The online string is displayed.');
     equal(this.functionsView.$el.find('button').length, 4, 'Four buttons rendered.');
-    equal(this.functionsView.$el.find('input').length, 1, 'One input rendered.');
-		equal(this.functionsView.$el.find('input')[0].type, 'checkbox', 'One input checkbox rendered.');
   });
   
  test('The template is render correctly when the contact is offline.', function() {
@@ -112,21 +110,6 @@ define(['../js/view/FunctionsView'], function( FunctionsView ) {
      this.functionsView.$el.find('button#video').click();
     // Check the done status for the model is true
     ok( this.videocallSpy.called );
-    
-    this.sendStub.restore();
-  });
-  
-  test('Can wire up send method to DOM element.', function() {
-    expect( 1 );
-
-		$(this.functionsView.el).html(this.functionsView.template({ username:'clockwork', IP:'1' }));
-    this.recordSpy = sinon.spy();
-    this.sendStub = sinon.stub(this.functionsView, 'record', this.recordSpy );
-    this.functionsView.delegateEvents();
-    // Trigger the event
-     this.functionsView.$el.find('input#record').click();
-    // Check the done status for the model is true
-    ok( this.recordSpy.called );
     
     this.sendStub.restore();
   });
