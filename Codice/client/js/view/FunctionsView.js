@@ -131,10 +131,6 @@ define([
      * si occupa di gestire la vista della chiamata nel caso se ne effettui una o si accetti quella in ingresso
      */
     call:function(isCaller,type){
-      //if(NotificationCommunication.getStatus() && isCaller!=false){
-      //  alert("hai già una chiamata attiva");
-      //}
-
       if(this.callView){
         this.forceClose();
       }
@@ -247,7 +243,6 @@ define([
    * si occupa di chiudere la vista
    */
   FunctionsView.prototype.close = function(){
-    this.stopListening(this.model, 'change', this.render);
     if(this.chatView){
      // this.chatView.close();
       this.chatView.unrender();
