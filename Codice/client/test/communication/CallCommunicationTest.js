@@ -148,100 +148,15 @@ module('About CallCommunication.sendAnswer', {
 
 
 
-
-
-
-/*
-  test('The contact is busy.', function() {
-      expect( 8 );
-      
-      var contact = new ContactModel();
-      var callView = { endCall: this.spy() };
-      CallCommunication.sendCall('audio', contact, callView);
-      
-      var data = JSON.stringify({"type":"answeredCall","answer":"busy","error":"utente occupato"});
-      var event = document.createEvent('MessageEvent');
-      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
-      window.Connection.dispatchEvent(event);
-      
-      equal( this.dispatchStub.callCount, 2, 'document.dispatchEvent called twice.');
-      equal( this.sendSpy.callCount, 1, 'Connection.send called.');
-      equal( this.addSpy.callCount, 1, 'Connection.addEventListener called.');
-      equal(callView.endCall.callCount, 1, 'callView.endCall called');
-      equal( this.alertStub.callCount, 1, 'response.answer === "busy"');
-      equal( this.alertStub.getCall(0).args[0], 'utente occupato', "Alert correctly displayed." );
-      equal( this.startStub.called, false, 'startCall not called.');
-      equal( this.removeSpy.callCount, 1, 'Connection.removeEventListener called.');
-     
-  });
-
-  test('There was an error during the setup of the call.', function() {
-      expect( 8 );
-      
-      var contact = new ContactModel();
-      var callView = { endCall: this.spy() };
-      CallCommunication.sendCall('audio', contact, callView);
-      
-      var data = JSON.stringify({"type":"answeredCall","answer":"error","error":"errore durante la chiamata"});
-      var event = document.createEvent('MessageEvent');
-      event.initMessageEvent('message', false, false, data, 'ws://127.0.0.1', 12, window, null);
-      window.Connection.dispatchEvent(event);
-      
-      equal( this.dispatchStub.callCount, 2, 'document.dispatchEvent called twice.');
-      equal( this.sendSpy.callCount, 1, 'Connection.send called.');
-      equal( this.addSpy.callCount, 1, 'Connection.addEventListener called.');
-      equal(callView.endCall.callCount, 1, 'callView.endCall called');
-      equal( this.alertStub.callCount, 1, 'response.answer === "error"');
-      equal( this.alertStub.getCall(0).args[0], 'errore durante la chiamata', "Alert correctly displayed." );
-      equal( this.startStub.called, false, 'startCall not called.');
-      equal( this.removeSpy.callCount, 1, 'Connection.removeEventListener called.');
-     
-  });
-  
-module('About CallCommunication.sendAnswer', {
-
-  setup: function() {
-
-    window.Connection = Connection;
-    this.sendSpy = sinon.stub(window.Connection, 'send');
-    
-    this.startStub = sinon.stub(CallCommunication, 'startCall' );
-
-  },
-
-  teardown: function() {
-
-    this.startStub.restore();
-    
-    this.sendSpy.restore();
-    
-  }
-  
-});
-  
-  test('Answer to an incoming call.', function() {
-    expect( 2 );
-    
-    var contact = new ContactModel();
-    var callView = { endCall: this.spy() };
-    
-    CallCommunication.sendAnswer('audio', contact, callView);
-    
-    equal( this.sendSpy.callCount, 1, 'Connection.send called.');
-    equal( this.startStub.callCount, 1, 'startCall called.');
-
-  });
-  
 module('About CallCommunication.createPeerConnection', {
-
   setup: function() {
-    
+    var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+    peerConnection['user'] = new webkitRTCPeerConnection(pcConfig);
+    remotevid['user'] = new webkitRTCPeerConnection(pcConfig);
   },
 
   teardown: function() {
-    
   }
-  
 });
   
   test('onRemoteStreamAdded Called', function() {
@@ -250,12 +165,12 @@ module('About CallCommunication.createPeerConnection', {
     var createObjURLStub = this.stub(window.webkitURL, 'createObjectURL');
     this.dispatchStub = this.stub(document, 'dispatchEvent' );
     
-    CallCommunication.createPeerConnection();
+    CallCommunication.createPeerConnection('user');
     
     var data = JSON.stringify({"type":"stream","stream":"blob"});
     var event = document.createEvent('Event');
     event.initEvent('addstream', false, false, data, 'ws://127.0.0.1', 12, window, null);
-    peerConnection.dispatchEvent(event);
+    peerConnection['user'].dispatchEvent(event);
     
     equal( createObjURLStub.callCount, 1, 'window.webkitURL.createObjectURL called.');
     equal( this.dispatchStub.callCount, 1, 'window.dispatchEvent called.');
@@ -268,15 +183,15 @@ module('About CallCommunication.createPeerConnection', {
   test('onRemoteStreamRemoved Called', function() {
     expect( 2 );
     
-    CallCommunication.createPeerConnection();
+    CallCommunication.createPeerConnection('user');
     
-    this.removeSpy = this.stub(peerConnection, 'removeStream');
-    this.closeSpy = this.stub(peerConnection, 'close');
+    this.removeSpy = this.stub(peerConnection['user'], 'removeStream');
+    this.closeSpy = this.stub(peerConnection['user'], 'close');
     
     var data = JSON.stringify({"type":"stream","stream":"blob"});
     var event = document.createEvent('Event');
     event.initEvent('oniceconnectionstatechange', false, false, data, 'ws://127.0.0.1', 12, window, null);
-    peerConnection.dispatchEvent(event);
+    peerConnection['user'].dispatchEvent(event);
     
     equal( this.removeSpy.callCount, 1, 'peerConnection.removeStream called.');
     equal( this.closeSpy.callCount, 1, 'peerConnection.close called.');
@@ -285,11 +200,16 @@ module('About CallCommunication.createPeerConnection', {
     this.closeSpy.restore();
 
   });
+  /**/
+  
+  
   
 module('About CallCommunication.connect', {
 
   setup: function() {
     this.pcStub = sinon.stub(CallCommunication, 'createPeerConnection');
+    var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+    peerConnection['user'] = new webkitRTCPeerConnection(pcConfig);
     this.alertStub = sinon.stub(window, 'alert', function(msg) { return false; } );
   },
 
@@ -303,11 +223,11 @@ module('About CallCommunication.connect', {
   test('Call not started and localStream started', function() {
     expect( 4 );
     
-    this.addStub = this.stub(peerConnection, 'addStream');
-    this.createStub = this.stub(peerConnection, 'createOffer');
+    this.addStub = this.stub(peerConnection['user'], 'addStream');
+    this.createStub = this.stub(peerConnection['user'], 'createOffer');
     
     localStream = true;
-    CallCommunication.connect(false);
+    CallCommunication.connect(false,'user');
 
     equal( this.alertStub.callCount, 0, '!started == true && localStream started'); 
     equal( this.addStub.callCount, 1, 'peerConnection.addstream called.');
@@ -323,7 +243,7 @@ module('About CallCommunication.connect', {
     expect( 3 );
 
     localStream = false;
-    CallCommunication.connect(false);
+    CallCommunication.connect(false,'user');
 
     equal( this.pcStub.callCount, 0, 'createPeerConnection not called.');
     equal( this.alertStub.callCount, 1, '!started == false || localStream == false');
@@ -331,7 +251,7 @@ module('About CallCommunication.connect', {
 
 
   });
-  
+  /*
 module('About CallCommunication.gotDescription', {
 
   setup: function() {
