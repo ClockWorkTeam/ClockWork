@@ -61,1330 +61,315 @@
 \begin_body
 
 \begin_layout Section
-Test di unità
-\end_layout
-
-\begin_layout Standard
-I test descritti e implementati verificano singolarmente il comportamento
- delle funzioni della componente specifica alla quale il test fa riferimento.
- I test descritti di seguito verificano le componenti del server.
-\end_layout
-
-\begin_layout Subsection
-Server
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.server.dao 
-\end_layout
-
-\begin_layout Paragraph
-JavaConnectionSQLiteTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-JavaConnectionSQLite
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi che instaurano il collegament
-o con la base di dati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-LoginDaoSQLTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-LoginDaoSQL
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti l'autenticazione
- presso il server.
- Nel dettaglio si verifica che i dati inseriti dall'utente vengano controllati
- e che l'autenticazione avvenga solo in caso di correttezza di tali dati,
- inoltre, viene verificato che la procedura di 
-\shape italic
-logout 
-\emph on
-funzioni in maniera corretta
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito:
-\series default
- nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-RecordMessageDaoSQLTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-RecordMessageDaoSQL
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la gestione
- dei messaggi registrati.
- Nel dettaglio si verifica il salvataggio sul server, la cancellazione ed
- il prelievo di un singolo messaggio registrato, ed il metodo che si occupa
- di prelevare tutti i messaggi registrati destinati a un certo utente
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-TutorialDaoSQLTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TutorialDaoSQL
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la gestione
- dei collegamenti ai video tutorial.
- Nel dettaglio si verifica il metodo che permette di prelevare tale collegamento
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-pianificato
-\end_layout
-
-\begin_layout Paragraph
-UserDaoSQLTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-UserDaoSQL
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la gestione
- degli utenti salvati presso il server.
- Nel dettaglio si verificano i metodi per l'inserimento e la rimozione di
- un utente, per il prelievo di tutti gli utenti registrati e per la modifica
- dei dati salvati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.server.shared
-\end_layout
-
-\begin_layout Paragraph
-RecordMessageTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-RecordMessage
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la gestione
- degli oggetti RecordMessage.
- Nel dettaglio si verificano la creazione di un oggetto di tipo RecordMessage
- e la modifica di ciascun campo dati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-TutorialsTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TutorialsTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la gestione
- degli oggetti Tutorials.
- Nel dettaglio si verificano la creazione e il prelievo di tali oggetti
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-pianificato
-\end_layout
-
-\begin_layout Paragraph
-UserTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-User
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la gestione
- degli oggetti User.
- Nel dettaglio si verificano la creazione di un oggetto di tipo User, la
- modifica di ciascun campo dati, l'inserimento e la rimozione di messaggi
- registrati
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-UserListTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-UserList
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi riguardanti la lista
- di utenti registrati presso il server.
- Nel dettaglio si verificano i metodi per l'aggiunta e la rimozione di un
- utente e i metodi per il prelievo di uno o di tutti gli utenti 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.server.functionmanager
-\family default
- 
-\end_layout
-
-\begin_layout Paragraph
-ConverterTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-Converter
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi per la conversione da
- oggetti salvati nel database a stringhe
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.server.usermanager 
-\end_layout
-
-\begin_layout Paragraph
-AuthenticationManagerTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-AuthenticationManager
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi per richiedere al database
- la creazione o rimozione di un utente e dei metodi per validare o meno
- l'autenticazione di un utente ed inviare al richiedente l'esito di ciascuna
- operazione
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-UserManagerTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-UserManager
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il funzionamento dei metodi per interagire col database
- su qualsiasi dato riguardante gli utenti che non sia già coperto da Authenticat
-ionManager.
- Nel dettaglio si verificano i metodi per la modifica dei dati di un utente
- registrato, la gestione dei messaggi registrati (vedasi RecordMessageDaoSQL)
- e il prelievo di tutti gli utenti registrati presso il server
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
+Test Statici
 \end_layout
 
 \begin_layout Subsection
 Client
 \end_layout
 
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.client.model 
-\end_layout
+\begin_layout Standard
+Per effettuare test sul codice prodotto per il lato client sono stati utilizzati
+ due strumenti, jsmeter e jslint.
+ I risultati ottenuti sono visibili nella tabella 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Risultati-test-statici"
 
-\begin_layout Paragraph
-ContactModelTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-ContactModel
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-ContactModelTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione
- e cancellazione di un oggetto di tipo ContactModel.
- Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
- inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
 \end_inset
 
-IP
-\begin_inset Quotes erd
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Per quanto riguarda la complessità ciclomatica si è oltrepassato il limite
+ previsto solamente nella classe CallCommunication, si provvederà entro
+ la data di rilascio a riportare tale valore entro limiti accettabili tramite
+ ottimizzazione del codice creato.
+ Il numero di variabili locali maggiore si è riscontrato nella classe Statistics
+View poiché all'interno di tale classe vengono generate le numero variabili
+ riguardanti le statistiche della chiamata, perciò tale risultato un punto
+ negativo nello sviluppo del progetto.
+ Si ritiene positivo la bassa presenza di annidamenti interni al codice,
+ segno di buon segno della manutenibilità del codice, eccezion fatta per
+ la classe CallCommunication che provvederemo ad ottimizzare entro la data
+ di rilascio
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metrica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Valore Medio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Risultato Peggiore 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Complessità ciclomatica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,939 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Volume di Halstead
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+144,082
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5,17 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Numero di parametri
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Numero di variabili locali
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,521
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Numero livelli di annidamento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,739
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Indice di utilità
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,472
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Indice di dipendenza
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2,071
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset
 
- e l'effettiva cancellazione di tutti i campi quando richiesto
-\end_layout
 
-\begin_layout Itemize
+\begin_inset Caption
 
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
+\begin_layout Plain Layout
+Risultati test statici client
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Risultati-test-statici"
 
-\begin_layout Paragraph
-TextMessageModelTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TextMessageModel
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-TextMessageModelTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione
- e cancellazione di un oggetto di tipo TextMessageModel.
- Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
- inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
 \end_inset
 
-source
-\begin_inset Quotes erd
+
+\end_layout
+
 \end_inset
 
- e l'effettiva cancellazione di tutti i campi quando richiesto
+
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-TutorialModelTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TutorialModel
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-TutorialModelTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione
- e cancellazione di un oggetto di tipo TutorialModel.
- Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
- inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
 \end_inset
 
-url
-\begin_inset Quotes erd
-\end_inset
 
- e l'effettiva cancellazione di tutti i campi quando richiesto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-UserModelTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-UserModel
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-UserModelTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione
- e cancellazione di un oggetto di tipo UserModel.
- Nel dettaglio si verifica che il costruttore crei l'oggetto con i valori
- inseriti o, in assenza di tali valori, che vengano inseriti i valori di
- default.
- Inoltre si verifica il funzionamento del cambiamento del campo 
-\begin_inset Quotes eld
-\end_inset
-
-password
-\begin_inset Quotes erd
-\end_inset
-
- e l'effettiva cancellazione di tutti i campi quando richiesto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Subsubsection
-Package
-\family typewriter
- myTalk.client.collection
-\end_layout
-
-\begin_layout Paragraph
-ContactsCollectionTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-ContactsCollection
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione:
-\series default
- ContactsCollectionTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione,
- modifica e cancellazione di un oggetto di tipo ContactsCollection.
- Nel dettaglio si verifica il funzionamento della chiamata al costruttore
- dell'oggetto ContactModel, la rimozione e l'aggiunta di oggetti dalla lista
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-TextMessagesCollectionTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TextMessagesCollection
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-TextMessagesCollectionTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione,
- modifica e cancellazione di un oggetto di tipo TextMessagesCollection.
- Nel dettaglio si verifica il funzionamento della chiamata al costruttore
- dell'oggetto TextMessageModel, la rimozione e l'aggiunta di oggetti dalla
- lista
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-TutorialsCollectionTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TutorialsCollection
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-TutorialsCollectionTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di creazione,
- modifica e cancellazione di un oggetto di tipo TutorialsCollection.
- Nel dettaglio si verifica il funzionamento della chiamata al costruttore
- dell'oggetto TutorialModel, la rimozione e l'aggiunta di oggetti dalla
- lista
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito:
-\series default
- pianificato
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.client.communication
-\end_layout
-
-\begin_layout Paragraph
-AuthenticationCommunicationTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-AuthenticationCommunication
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-AutenticationCommunicationTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi di comunicazione
- tra client e server necessari per l'autenticazione.
- Nel dettaglio si verifica l'effettivo collegamento con il server e il falliment
-o del tentativo di autenticazione se i dati inseriti non corrispondono ad
- alcun utente registrato
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.client.template
-\end_layout
-
-\begin_layout Subsubsection
-Package 
-\family typewriter
-myTalk.client.view
-\end_layout
-
-\begin_layout Paragraph
-AuthenticationViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-AuthenticationView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-AuthenticationViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di effettuare l'autenticazione al server.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-CallViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-CallView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-CallViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di effettuare e ricevere chiamate.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-ChatViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-ChatView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-ChatViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di comunicare testualmente con altri
- utenti.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-ContactViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-ContactView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-ContactViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi che permettono
- all'utente di visualizzare gli altri utenti registrati presso il server.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-FileViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-FileView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-FileViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di inviare file.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-pianificato
-\end_layout
-
-\begin_layout Paragraph
-FunctionsViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-FunctionsView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-FunctionsViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di scegliere quali funzioni utilizzare,
- tra le molteplici offerte dal prodotto.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-NotificationViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-NotificationView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-NotificationViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi che forniscono
- all'utente la possibilità di reagire a richieste provenienti dal server
- o da altri utenti.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-RecordMessageViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-RecordMessageView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-RecordMessageViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di registrare un messaggio ed inviarlo
- ad un utente registrato.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-SideViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-SideView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-SideViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi che mostrano
- a schermo la barra laterale contenente la lista dei contatti.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-StatisticsViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-StatisticsView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-StatisticsViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi che forniscono
- all'utente le statistiche sulle chiamate effettuate.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
-\end_layout
-
-\begin_layout Paragraph
-TutorialViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-TutorialView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-TutorialViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di visualizzare i tutorial video del
- prodotto.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-pianificato
-\end_layout
-
-\begin_layout Paragraph
-UserDataViewTest
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe Verificata: 
-\series default
-UserDataView
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Classe di Configurazione: 
-\series default
-UserDataViewTestConfig
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione: 
-\series default
-questa classe verifica il corretto funzionamento dei metodi necessari per
- fornire all'utente la possibilità di modificare i propri dati salvati sul
- server.
- Nel dettaglio si verifica che ogni 
-\shape italic
-form 
-\shape default
-sia creato correttamente e che gli elementi della pagina siano collegati
- alla struttura logica nel modo previsto
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Esito: 
-\series default
-nessun errore riscontrato
 \end_layout
 
 \end_body
