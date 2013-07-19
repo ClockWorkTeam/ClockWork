@@ -247,6 +247,7 @@ define([
    * si occupa di chiudere la vista
    */
   FunctionsView.prototype.close = function(){
+    this.stopListening(this.model, 'change', this.render);
     if(this.chatView){
      // this.chatView.close();
       this.chatView.unrender();
