@@ -58,7 +58,7 @@
 			CodeGeneration
 		</plugin>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Wed Jul 10 19:44:17 CEST 2013'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jul 19 11:17:56 CEST 2013'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -138,33 +138,35 @@
                   </UML:Parameter.type>
                 </UML:Parameter>
                 <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002465'
-                  name = 'tutorial' isSpecification = 'false' kind = 'in'>
+                  name = 'event' isSpecification = 'false' kind = 'in'>
                   <UML:Parameter.type>
-                    <UML:DataType href = 'http://argouml.org/profiles/uml14/default-uml14.xmi#-84-17--56-5-43645a83:11466542d86:-8000:000000000000087E'/>
+                    <UML:Class xmi.idref = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E1A'/>
                   </UML:Parameter.type>
                 </UML:Parameter>
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
-            <UML:Operation xmi.id = '10-1--38-1--449470da:13db6b8e67f:-8000:0000000000000A6C'
-              name = '+next' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1--38-1--449470da:13db6b8e67f:-8000:0000000000000A6D'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:00000000000011C0'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Attribute xmi.id = '10-1--38-1--449470da:13db6b8e67f:-8000:0000000000000A6E'
-              name = '+currentTutorial' visibility = 'public' isSpecification = 'false'
-              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
+            <UML:Attribute xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E12'
+              name = '+collection' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
-                <UML:Multiplicity xmi.id = '10-1--38-1--449470da:13db6b8e67f:-8000:0000000000000A6F'>
+                <UML:Multiplicity xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E13'>
                   <UML:Multiplicity.range>
-                    <UML:MultiplicityRange xmi.id = '10-1--38-1--449470da:13db6b8e67f:-8000:0000000000000A70'
+                    <UML:MultiplicityRange xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E14'
+                      lower = '1' upper = '1'/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:StructuralFeature.multiplicity>
+              <UML:StructuralFeature.type>
+                <UML:Class xmi.idref = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E19'/>
+              </UML:StructuralFeature.type>
+            </UML:Attribute>
+            <UML:Attribute xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E16'
+              name = '+model' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <UML:StructuralFeature.multiplicity>
+                <UML:Multiplicity xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E17'>
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E18'
                       lower = '1' upper = '1'/>
                   </UML:Multiplicity.range>
                 </UML:Multiplicity>
@@ -173,32 +175,6 @@
                 <UML:Class xmi.idref = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002464'/>
               </UML:StructuralFeature.type>
             </UML:Attribute>
-            <UML:Operation xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:00000000000011C1'
-              name = '+prev' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1-7a142cd:13f2d73ce44:-8000:00000000000011C2'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:00000000000011C0'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
-            <UML:Operation xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002466'
-              name = '+close' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
-              isAbstract = 'false'>
-              <UML:BehavioralFeature.parameter>
-                <UML:Parameter xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002467'
-                  name = 'return' isSpecification = 'false' kind = 'return'>
-                  <UML:Parameter.type>
-                    <UML:Class xmi.idref = '10-1-124-1-7a142cd:13f2d73ce44:-8000:00000000000011C0'/>
-                  </UML:Parameter.type>
-                </UML:Parameter>
-              </UML:BehavioralFeature.parameter>
-            </UML:Operation>
           </UML:Classifier.feature>
         </UML:Class>
         <UML:Class xmi.id = '10-1--38-1--13f4f896:13db66d1dc6:-8000:0000000000000871'
@@ -216,6 +192,15 @@
         <UML:Class xmi.id = '10-1-124-1--44a67dd4:13f2e01f57e:-8000:0000000000002464'
           name = 'TutorialModel' visibility = 'public' isSpecification = 'false' isRoot = 'false'
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E15'
+          name = 'TutorialCollection' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E19'
+          name = 'TutorialsCollection' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+        <UML:Class xmi.id = '10-1-76-1--338c6b63:13ff5d6c4ce:-8000:0000000000001E1A'
+          name = 'Event' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
@@ -224,7 +209,7 @@
       name="Diagramma di Classe"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[80, 32, 220, 184]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[80, 32, 207, 152]pathVisible=false;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="10-1--38-1--13f4f896:13db66d1dc6:-8000:0000000000000866"
        fill="1"
        fillcolor="255 255 200"
@@ -237,8 +222,8 @@
     <rectangle name="Fig0.0"
       x="80"
       y="32"
-      width="220"
-      height="184"
+      width="207"
+      height="152"
       fill="1"
       fillcolor="255 255 200"
       stroke="1"
@@ -247,7 +232,7 @@
     <text name="Fig0.1"
       x="81"
       y="33"
-      width="218"
+      width="205"
       height="22"
       fill="0"
       fillcolor="255 255 200"
@@ -261,7 +246,7 @@
       justification="Center"
     >TutorialView</text>
     <group name="Fig0.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[81, 33, 195, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[81, 33, 218, 0]"
          href="10-1--38-1--13f4f896:13db66d1dc6:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -275,7 +260,7 @@
       <rectangle name="Fig0.2.0"
         x="81"
         y="33"
-        width="195"
+        width="218"
         height="0"
         fill="0"
         fillcolor="255 255 200"
@@ -286,7 +271,7 @@
     <rectangle name="Fig0.3"
       x="80"
       y="55"
-      width="220"
+      width="207"
       height="1"
       fill="1"
       fillcolor="black"
@@ -294,7 +279,7 @@
       strokecolor="black"
     />
     <group name="Fig0.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[81, 56, 218, 56]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[81, 56, 205, 72]"
          href="10-1--38-1--13f4f896:13db66d1dc6:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -307,8 +292,8 @@
       <rectangle name="Fig0.4.0"
         x="81"
         y="56"
-        width="218"
-        height="56"
+        width="205"
+        height="72"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -317,7 +302,7 @@
       <text name="Fig0.4.1"
         x="81"
         y="56"
-        width="218"
+        width="205"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -333,7 +318,7 @@
       <text name="Fig0.4.2"
         x="81"
         y="72"
-        width="218"
+        width="205"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -349,10 +334,10 @@
       <text name="Fig0.4.3"
         x="81"
         y="88"
-        width="218"
-        height="22"
+        width="205"
+        height="16"
         fill="0"
-        fillcolor="255 255 200"
+        fillcolor="white"
         stroke="0"
         strokecolor="black"
         textcolor="black"
@@ -361,12 +346,28 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+currentTutorial : TutorialModel</text>
+      >+collection : TutorialsCollection</text>
+      <text name="Fig0.4.4"
+        x="81"
+        y="104"
+        width="205"
+        height="22"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        textcolor="black"
+        font="Dialog"
+        italic="false"
+        bold="false"
+        textsize="12"
+        justification="Left"
+      >+model : TutorialModel</text>
     </group>
     <rectangle name="Fig0.5"
       x="80"
-      y="111"
-      width="220"
+      y="127"
+      width="207"
       height="1"
       fill="1"
       fillcolor="black"
@@ -374,7 +375,7 @@
       strokecolor="black"
     />
     <group name="Fig0.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[81, 112, 218, 104]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[81, 128, 205, 56]"
          href="10-1--38-1--13f4f896:13db66d1dc6:-8000:0000000000000866"
          fill="0"
          fillcolor="255 255 200"
@@ -386,9 +387,9 @@
       
       <rectangle name="Fig0.6.0"
         x="81"
-        y="112"
-        width="218"
-        height="104"
+        y="128"
+        width="205"
+        height="56"
         fill="0"
         fillcolor="white"
         stroke="0"
@@ -396,8 +397,8 @@
       />
       <text name="Fig0.6.1"
         x="81"
-        y="112"
-        width="218"
+        y="128"
+        width="205"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -412,8 +413,8 @@
       >+initialize() : void</text>
       <text name="Fig0.6.2"
         x="81"
-        y="128"
-        width="218"
+        y="144"
+        width="205"
         height="16"
         fill="0"
         fillcolor="255 255 200"
@@ -428,56 +429,8 @@
       >+render() : void</text>
       <text name="Fig0.6.3"
         x="81"
-        y="144"
-        width="218"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+viewTutorial(tutorial : String) : void</text>
-      <text name="Fig0.6.4"
-        x="81"
         y="160"
-        width="218"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+next() : void</text>
-      <text name="Fig0.6.5"
-        x="81"
-        y="176"
-        width="218"
-        height="16"
-        fill="0"
-        fillcolor="255 255 200"
-        stroke="0"
-        strokecolor="black"
-        textcolor="black"
-        font="Dialog"
-        italic="false"
-        bold="false"
-        textsize="12"
-        justification="Left"
-      >+prev() : void</text>
-      <text name="Fig0.6.6"
-        x="81"
-        y="192"
-        width="218"
+        width="205"
         height="22"
         fill="0"
         fillcolor="255 255 200"
@@ -489,7 +442,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >+close() : void</text>
+      >+viewTutorial(event : Event) : void</text>
     </group>
   </group>
 </pgml>
