@@ -428,8 +428,8 @@ questa classe verifica il funzionamento dei metodi per interagire col database
 ionManager.
  Nel dettaglio si verificano i metodi per il controllo e la modifica dei
  dati di un utente registrato, la gestione dei messaggi registrati (vedasi
- RecordMessageDaoSQL) e il prelievo di tutti gli utenti registrati presso
- il server
+ RecordMessageDaoSQL) e il prelievo sia di tutti gli utenti registrati presso
+ il server che di tutti i messaggi di un utente
 \end_layout
 
 \begin_layout Itemize
@@ -464,6 +464,11 @@ AuthenticationTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con AuthenticationCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di autenticazione,
+ disconnessione e registrazione di un utente, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -492,6 +497,12 @@ CallTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con CallCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di chiamata audio/video,
+ di rifiuto chiamata e di conferenza, inviando l'esito dell'operazione.
+ Inoltre viene testato il recupero dei contatti associati ad un utente
 \end_layout
 
 \begin_layout Itemize
@@ -520,6 +531,11 @@ ChatTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con ChatCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di gestione dei messaggi,
+ inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -548,6 +564,11 @@ FileTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con FileCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di gestione o rifiuto
+ dei file, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -576,6 +597,11 @@ RecordMessageTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con RecordMessageCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di inserimento, gestione
+ e rimozione dei messaggi, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
@@ -583,7 +609,7 @@ Descrizione:
 \series bold
 Esito: 
 \series default
-nessun errore riscontrato
+pianificata
 \end_layout
 
 \begin_layout Paragraph
@@ -604,6 +630,11 @@ UserTransfer
 
 \series bold
 Descrizione: 
+\series default
+questa classe verifica il funzionamento dei metodi per la comunicazione
+ con UserCommunication.
+ Nel dettaglio si occupa di effettuare le operazioni di controllo e modifica
+ dei dati di un utente, inviando l'esito dell'operazione
 \end_layout
 
 \begin_layout Itemize
