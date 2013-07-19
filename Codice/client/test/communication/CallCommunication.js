@@ -262,7 +262,7 @@ var CallCommunication = {
          * creo un array a due dimensioni
          */
         candidates[user]=[];
-        peerConnection[user].onicecandidate = function(event){
+        peerConnection[user].onicecandidate = function(event){alert(peerConnection[user]);
       /**
         * funzione interna che si occupa di salvare gli icecandidate e di inviarli all'altro utente
         * solo nel qualcaso l'utente con cui si instaura la chiamata sia pronto a ricevere altrimenti
@@ -301,7 +301,7 @@ var CallCommunication = {
       console.log('Failed to create peerConnection, exception: ' + e.message);
     }
     peerConnection[user].addEventListener("addstream", onRemoteStreamAdded, false);
-    peerConnection[user].addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false)
+    peerConnection[user].addEventListener("oniceconnectionstatechange", onRemoteStreamRemoved, false);
     },
     
     /**
