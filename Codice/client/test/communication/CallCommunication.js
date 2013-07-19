@@ -385,7 +385,7 @@ var CallCommunication = {
         var response = JSON.parse(evt.data);
         if (response.type==='answer' && isCaller && response.contact==contact){
           started=true;
-          peerConnection[contact].setRemoteDescription(new RTCSessionDescription(response));
+          peerConnection[contact].setRemoteDescription(/*new RTCSessionDescription(response)*/);
           Connection.removeEventListener('message',onAnswerSDP,false);  
         }
       }
@@ -399,8 +399,8 @@ var CallCommunication = {
         if (response.type ==='candidate' && started && response.contact==contact) {
           console.log('STARTED TRUE');
           console.log('Adding candidate ');
-          var candidate = new RTCIceCandidate({sdpMLineIndex:response.label,
-          candidate:response.candidate});
+          var candidate = null;//new RTCIceCandidate({sdpMLineIndex:response.label,
+          //candidate:response.candidate});
           peerConnection[response.contact].addIceCandidate(candidate);
         }
       }
