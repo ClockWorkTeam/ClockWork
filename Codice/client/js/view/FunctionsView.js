@@ -54,7 +54,7 @@ define([
 			}else if(this.countConf==7){
 				event.target.checked=false;
 				this.countConf-=1;
-				alert("Numero massimo di contatti per la conferenza è 7");
+				alert("Numero massimo di contatti per la conferenza è 6");
 			}
 		},
 
