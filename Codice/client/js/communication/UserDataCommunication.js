@@ -69,7 +69,7 @@ define(['connection'], function(Connection){
               surname: surname,
               password: password
             });
-          view.render();
+          view.unrender();
           alert('Operazione riuscita');		
           }else if(response.answer === 'false'){
             alert(response.error);		

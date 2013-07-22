@@ -142,6 +142,9 @@ define([
       _.each(this.childViews, function(view){view.close();});
       if(!this.currentFunctions){
         this.currentFunctions = new FunctionsView({From: 'IP'});
+      }else{
+        this.currentFunctions.close();
+        this.currentFunctions = new FunctionsView({From: 'IP', callback: this});
       }
       this.currentFunctions.render();
       $('#main').prepend(this.currentFunctions.el);
@@ -158,6 +161,10 @@ define([
           view.close();
         });
         if(!this.currentFunctions){
+          this.currentFunctions = new FunctionsView({From: 'Conf', callback: this});
+        }
+        else{
+          this.currentFunctions.close();
           this.currentFunctions = new FunctionsView({From: 'Conf', callback: this});
         }
         this.currentFunctions.render();

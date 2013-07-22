@@ -42,6 +42,7 @@ define([
       'click button#signup': 'viewSignup',
       'click button#sign': 'signup',
       'click button#deny': 'deny',
+      'click button#close': 'closeView',
       'click button#edit': 'editProfile'
     },
     /**
@@ -185,6 +186,10 @@ define([
       this.$('#authenticationModal').modal('toggle');
       this.render();
      
+    },
+    
+    closeView : function(){
+      this.render();
     },
 
     editProfile: function(){
