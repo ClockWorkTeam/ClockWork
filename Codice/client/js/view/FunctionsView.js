@@ -70,7 +70,7 @@ define([
      * se si è già in chiamata con la persona selezionata si carica direttamente la vista della
      * CallView senza caricare quella della FunctionView altrimenti si andrà a generare quest'ultima
      */
-      if(this.callView){
+      if(this.callView && this.options.contactView.conference==false){
         if(this.model.toJSON().IP==='0'){
           this.forceClose();
         }else{
@@ -187,6 +187,7 @@ define([
      * venga terminata
      */
     closeViewCall : function(){
+      this.options.contactView.conference=false;
       this.delegateEvents();
       this.callView=undefined;
       if(this.options.callback){

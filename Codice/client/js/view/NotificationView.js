@@ -73,9 +73,9 @@ define([
      */
     unrender:function(){
 	  this.$('#notificationModal').modal('toggle');
-      this.close();
-      $(this.el).html('');
-      $('body').append(this.el);
+    this.close();
+    $(this.el).html('');
+    $('body').append(this.el);
     },
 
     /**
@@ -83,6 +83,7 @@ define([
      */
     acceptCall : function(){
       this.timeout=false;
+      this.options.NotificationCommunication.stopTimeOut();
       this.unrender();
       console.log(this.options.conference);
       if(this.options.conference=='false'){

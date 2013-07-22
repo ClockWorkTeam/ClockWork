@@ -76,13 +76,13 @@ define([
        * condizione messa per evitare di chiudere functionview non ancora create
        */
       this.options.callback.closeOtherContacts(this.model.toJSON().username);
-      if(!this.currentFunctions)
-        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
-      console.log("conferenza?? " +this.conference);
-      if(this.conference==false){
-        this.currentFunctions.render();
-        $('#main').prepend(this.currentFunctions.el);
+      if(!this.currentFunctions){
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel, contactView:this});
       }
+      console.log("conferenza?? " +this.conference);
+      this.currentFunctions.render(this);
+      $('#main').prepend(this.currentFunctions.el);
+      
     },
 
     /**
@@ -93,7 +93,7 @@ define([
        * condizione messa per evitare di chiudere functionview non ancora create
        */
       if(!this.currentFunctions){
-        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel});
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel, contactView:this});
       }else{
         this.currentFunctions.render();
       }
@@ -112,7 +112,7 @@ define([
        */
       
       if(!this.currentFunctions){
-        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel, callback:sideView});
+        this.currentFunctions = new FunctionsView({model: this.model, userModel: this.options.userModel, callback:sideView, contactView:this});
       }
       if(this.conference==false){
         this.conference=true;

@@ -220,9 +220,11 @@ define(['connection'], function(Connection){
       /**
        * richiesta di accensione della telecamera
        */
+       console.log("SIAMO SU ANSWER"+allow+" abbiamo " +typeCall);
       if(typeCall=='video'){
         navigator.webkitGetUserMedia({video:true, audio:true},
         function(stream) {
+          
           if(allow==true){
             sourcevid.src = window.webkitURL.createObjectURL(stream);
             localStream=stream;
@@ -232,6 +234,7 @@ define(['connection'], function(Connection){
             /**
              * avvio la chiamata con la persona che mi ha contattato
              */
+            console.log("prova prova");
             call.startCall(false, call, callView,contact);
             recipient.push(contact);
             confirmedContact.push(contact);
@@ -427,6 +430,7 @@ define(['connection'], function(Connection){
      * instaura la chiamata
      */
     startCall: function (isCaller, call, callView,contact){
+      console.log("StartCall");
       remotevid[contact]=document.getElementById(contact);
       remoteStream[contact]=null;
       var started = false;
@@ -633,7 +637,6 @@ define(['connection'], function(Connection){
         if(peerConnection[recipient[i]] != null){
           Connection.removeEventListener('message',onCandidateListener[recipient[i]],false);
           Connection.removeEventListener('message',onEndCallListener[recipient[i]],false);
-          peerConnection[recipient[i]].removeStream(localStream);
           peerConnection[recipient[i]].close();
           peerConnection[recipient[i]]=null;
           var message={type : 'endCall', contact: recipient[i]};

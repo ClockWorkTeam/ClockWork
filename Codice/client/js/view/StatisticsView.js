@@ -100,6 +100,9 @@ define([
                 for (var i = 0; i < results.length; ++i) {
                   var res = results[i];
                   actualTime=res.timestamp;
+                  if(baseTime == undefined){
+                    baseTime = 0;
+                  }
                   if(baseTime==0){
                     baseTime=res.timestamp;
                   }

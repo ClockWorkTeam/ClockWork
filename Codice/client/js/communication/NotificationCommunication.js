@@ -29,6 +29,8 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
    * variabile che indica se sono già in chiamata o meno
    */
   var onCalling=false;
+  
+  var timeOut=null;
   return {
     //getStatus: function(){
     //  return onCalling;
@@ -56,10 +58,9 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         if (response.type === 'call'){
           if(onCalling==false){
             onCalling=true;
-
+           
             notificationView= new NotificationView({caller: response.contact, typeCall: response.callType, conference: response.conference, NotificationCommunication:Notification});
-            setTimeout(function(){notificationView.timeoutCall()},30000);
-
+            timeOut=setTimeout(function(){notificationView.timeoutCall()},30000);
           }else{
             var message = {
 							type:'busy',
@@ -91,6 +92,10 @@ define(['connection', 'view/NotificationView'],function(Connection, Notification
         contact: caller
       };
       Connection.send(JSON.stringify(message));
+    },
+    
+    stopTimeOut : function(){
+      clearTimeout(timeOut);
     }
   };
 });
