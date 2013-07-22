@@ -63,6 +63,7 @@ define([
 		  this.close();
       $(this.el).html('');
 			$('body').append(this.el);
+      console.log("prova");
 		},
     
     closeView:function(){
@@ -82,6 +83,7 @@ define([
      * funzione che si occupa di accettare i nuovi dati e di inviarli per essere processati
      */
 		callBacks: function(){
+      var view=this;
       return {
         changeData: function(model, view){
 					if($('#password').val()=== $('#password2').val()){
