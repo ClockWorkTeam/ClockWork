@@ -1,22 +1,24 @@
-
-<div class="row-fluid" id='functionsTemplate'>
-  <% if(typeof From !='undefined'){ %>
-    <% if(From =='IP'){ %>
-
-        <label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
-       <span> <input type="text" name="ip" id="ip" /> </span>
-       <div class="form-inline">
-         <button class='btn btn-small' id= "startChat">Inizia chat</button>
-         <button class='btn btn-small' id="call">Chiama</button>
-         <button class='btn btn-small' id="video">Videochiama</button>
-       </div>
-    <% }else if (From == "Conf") { %>
+<% if(typeof From !='undefined'){ %>
+  <% if(From =='IP'){ %>
+    <div class='formIP'>
+      <label for="ip">Inserisci l'indirizzo IP che vuoi contattare:</label>
+      <span> <input type="text" name="ip" id="ip" /> </span>
+      <div class="form-inline">
+        <button class='btn btn-small' id= "startChat">Inizia chat</button>
+        <button class='btn btn-small' id="call">Chiama</button>
+        <button class='btn btn-small' id="video">Videochiama</button>
+      </div>
+    </div>
+  <% }else if (From == "Conf") { %>
+		<div class='conferenceForm'>
       <ul id="optionContacts"></ul>
       <button class='btn btn-small' id= "startConference">Chiama contatti</button>
+    </div>  
     <% } else {%>
       <div id="empty"></div>
     <% } %>
   <% } else { %>
+		<div class="row-fluid" id='functionsTemplate'>
     <h2> <%= username %>
     	<span id="status"> <% if(IP=="0"){ %> (Offline) <% }else{%> (Online) <%}%> </p>
     </h2>
@@ -27,6 +29,7 @@
            <button class='btn btn-small' id="call">Chiama</button>
            <button class='btn btn-small' id="video">Videochiama</button>
         <% } %>
+        </div>
       </div>
   <% } %>
-</div>
+
