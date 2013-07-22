@@ -158,7 +158,7 @@ define([
 
   CallView.prototype.close = function(){
     
-    CallCommunication.endCall();
+   // CallCommunication.endCall();
     if(this.statisticsView){
       this.statisticsView.close();
     }
