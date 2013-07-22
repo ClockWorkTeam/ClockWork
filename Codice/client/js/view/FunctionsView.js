@@ -39,9 +39,24 @@ define([
       'click button#sendVideoText':'sendVideoText',
       'click button#call':'audiocall',
       'click button#video':'videocall',
-      'click input#record' : 'record',
+      'click input.contactForConf' : 'contactForConference',
       'click button#startConference' : 'conference',
     },
+
+    contactForConference:function(event){
+			if(event.target.checked==true){
+				this.countConf+=1;
+			}else{
+				this.countConf-=1;
+			}
+			if(this.countConf==6){
+				alert("Numero massimo di contatti raggiunto");
+			}else if(this.countConf==7){
+				event.target.checked=false;
+				this.countConf-=1;
+				alert("Numero massimo di contatti per la conferenza è 6");
+			}
+		},
 
     el : $('#content'),
     
@@ -65,7 +80,6 @@ define([
      * funzione che effettua la scrittura della struttura della pagina
      */
     render: function(){
-      
     /**
      * se si è già in chiamata con la persona selezionata si carica direttamente la vista della
      * CallView senza caricare quella della FunctionView altrimenti si andrà a generare quest'ultima
@@ -86,6 +100,7 @@ define([
           $(this.el).html(this.template(this.model.toJSON()));
           this.startChat();
         }else{
+					      this.countConf=0;
           $(this.el).html(this.template({From: this.options.From}));
         }
       }
