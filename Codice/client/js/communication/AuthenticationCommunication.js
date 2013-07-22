@@ -72,6 +72,7 @@ define(['connection'], function(Connection){
           if(response.answer === 'true'){
             response.name=name;
             response.surname=surname;
+            view.$('#authenticationModal').modal('toggle');
             callBacks.doLogin(user, pass, response, view);
           }else{ 
             alert(response.error);

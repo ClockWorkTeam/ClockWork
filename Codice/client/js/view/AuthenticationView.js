@@ -160,7 +160,6 @@ define([
 						 * se lo username non è già presente nel sistema procedo all'autenticazione
 						 */
 						AuthenticationCommunication.signup(user, pass, name, surname, this.callBacks(), this);
-            this.$('#authenticationModal').modal('toggle');
 					}else{
 						/**
 						* errore nel caso la password e la sua conferma non corrispondano
