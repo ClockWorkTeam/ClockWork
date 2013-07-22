@@ -187,7 +187,9 @@ define([
      * venga terminata
      */
     closeViewCall : function(){
-      this.options.contactView.conference=false;
+      if(this.options.contactView){
+        this.options.contactView.conference=false;
+      }
       this.delegateEvents();
       this.callView=undefined;
       if(this.options.callback){
