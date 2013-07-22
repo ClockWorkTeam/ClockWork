@@ -41,8 +41,7 @@ define([
       'click button#logout': 'disconnect',
       'click button#signup': 'viewSignup',
       'click button#sign': 'signup',
-      'click button#deny': 'deny',
-      'click button#close': 'closeView',
+      'click button.deny': 'deny',
       'click button#edit': 'editProfile'
     },
     /**
